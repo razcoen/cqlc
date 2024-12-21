@@ -1,0 +1,20 @@
+syntax = "proto3";
+
+package cqlc.v1;
+
+option go_package = "cqlc/v1;cqlcv1";
+
+message Config {
+  repeated GenerateConfig generate = 1; 
+}
+
+message GenerateConfig {
+  string queries = 1;
+  string schema = 2;
+  optional GenerateConfigGo go = 3;
+}
+
+message GenerateConfigGo {
+  string package = 1;
+  string out = 2;
+}
