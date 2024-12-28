@@ -1,16 +1,16 @@
 package cql
 
 import (
-	"reflect"
 	"testing"
 
+	"github.com/google/go-cmp/cmp"
 	"github.com/stretchr/testify/require"
 )
 
 func TestSchemaBuilder(t *testing.T) {
 	t1, err := NewTableBuilder("t1").
-		WithColumn("c1", NewNativeTypeText()).
-		WithColumn("c2", NewCollectionTypeSet(NativeTypeTimestamp)).
+		WithColumn("c1", NativeTypeText.IntoDataType()).
+		WithColumn("c2", CollectionTypeSet{T: NativeTypeTimestamp.IntoCollectableType()}.IntoDataType()).
 		Build()
 	require.NoError(t, err)
 	k1, err := NewKeyspaceBuilder("k1").
@@ -23,12 +23,15 @@ func TestSchemaBuilder(t *testing.T) {
 		Keyspaces: []*Keyspace{
 			{Name: "k1", Tables: []*Table{{
 				Name: "t1", Columns: []*Column{
-					{Name: "c1", DataType: NewNativeTypeText()},
-					{Name: "c2", DataType: NewCollectionTypeSet(NativeTypeTimestamp)},
+					{Name: "c1", DataType: NativeTypeText.IntoDataType()},
+					{Name: "c2", DataType: CollectionTypeSet{T: NativeTypeTimestamp.IntoCollectableType()}.IntoDataType()},
 				},
 			}}},
 			{Name: defaultKeyspaceName},
 		},
 	}
-	require.True(t, reflect.DeepEqual(expected, s1))
+	diff := cmp.Diff(expected, s1)
+	if diff != "" {
+		t.Errorf("returned schema different than expected: %s", diff)
+	}
 }

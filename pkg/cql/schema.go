@@ -5,8 +5,9 @@ type Schema struct {
 }
 
 type Keyspace struct {
-	Name   string
-	Tables []*Table
+	Name             string
+	Tables           []*Table
+	UserDefinedTypes []*UserDefinedType
 }
 
 type Table struct {

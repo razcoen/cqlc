@@ -398,7 +398,7 @@ tableOptions
     : kwCompact kwStorage (kwAnd tableOptions)?
     | clusteringOrder (kwAnd tableOptions)?
     | tableOptionItem (kwAnd tableOptionItem)*
-    ;
+    | kwTtl;
 
 clusteringOrder
     : kwClustering kwOrder kwBy syntaxBracketLr (column orderDirection?) (syntaxComma column orderDirection?)* syntaxBracketRr

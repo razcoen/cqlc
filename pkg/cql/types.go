@@ -7,28 +7,45 @@ import (
 	"unicode"
 )
 
-// Reference: https://cassandra.apache.org/doc/stable/cassandra/cql/types.html
+// References:
+// Cassandra: https://cassandra.apache.org/doc/stable/cassandra/cql/types.html
+// Datastax: https://docs.datastax.com/en/cql-oss/3.3/cql/cql_reference/collection_type_r.html
 
 type DataType struct {
-	NativeType     *NativeType
-	CollectionType *CollectionType
+	NativeType      *NativeType
+	CollectionType  *CollectionType
+	FrozenType      *FrozenType
+	UserDefinedType *UserDefinedType
+}
+
+func (dt DataType) String() string {
+	switch {
+	case dt.NativeType != nil:
+		return dt.NativeType.String()
+	case dt.CollectionType != nil:
+		return dt.CollectionType.String()
+	case dt.FrozenType != nil:
+		return dt.FrozenType.String()
+	case dt.UserDefinedType != nil:
+		return ""
+		// return dt.UserDefinedType.String()
+	default:
+		// TODO: Handle such error
+		return ""
+	}
 }
 
 var (
 	ErrInvalidNativeType         = errors.New("invalid native type")
 	ErrInvalidCollectionTypeSet  = errors.New("invalid collection type set")
+	ErrInvalidFrozenType         = errors.New("invalid frozen type")
 	ErrInvalidCollectionTypeList = errors.New("invalid collection type list")
 	ErrInvalidCollectionTypeMap  = errors.New("invalid collection type map")
 	ErrInvalidCollectionType     = errors.New("invalid collection type")
 )
 
 func ParseDataType(str string) (*DataType, error) {
-	str = strings.Map(func(r rune) rune {
-		if unicode.IsSpace(r) {
-			return -1 // Returning -1 removes the character
-		}
-		return r
-	}, str)
+	str = formatIntoLowercaseWithoutWhitespace(str)
 	var parseErr error
 	nt, err := ParseNativeType(str)
 	if err == nil {
@@ -40,41 +57,22 @@ func ParseDataType(str string) (*DataType, error) {
 		return &DataType{CollectionType: ct}, nil
 	}
 	parseErr = errors.Join(parseErr, err)
+	ft, err := ParseFrozenType(str)
+	if err == nil {
+		return &DataType{FrozenType: ft}, nil
+	}
+	parseErr = errors.Join(parseErr, err)
 	return nil, parseErr
 }
 
-func NewNativeTypeAscii() *DataType     { return &DataType{NativeType: ntptr(NativeTypeAscii)} }
-func NewNativeTypeBigint() *DataType    { return &DataType{NativeType: ntptr(NativeTypeBigint)} }
-func NewNativeTypeBlob() *DataType      { return &DataType{NativeType: ntptr(NativeTypeBlob)} }
-func NewNativeTypeBoolean() *DataType   { return &DataType{NativeType: ntptr(NativeTypeBoolean)} }
-func NewNativeTypeCounter() *DataType   { return &DataType{NativeType: ntptr(NativeTypeCounter)} }
-func NewNativeTypeDate() *DataType      { return &DataType{NativeType: ntptr(NativeTypeDate)} }
-func NewNativeTypeDecimal() *DataType   { return &DataType{NativeType: ntptr(NativeTypeDecimal)} }
-func NewNativeTypeDouble() *DataType    { return &DataType{NativeType: ntptr(NativeTypeDouble)} }
-func NewNativeTypeDuration() *DataType  { return &DataType{NativeType: ntptr(NativeTypeDuration)} }
-func NewNativeTypeFloat() *DataType     { return &DataType{NativeType: ntptr(NativeTypeFloat)} }
-func NewNativeTypeInet() *DataType      { return &DataType{NativeType: ntptr(NativeTypeInet)} }
-func NewNativeTypeInt() *DataType       { return &DataType{NativeType: ntptr(NativeTypeInt)} }
-func NewNativeTypeSmallint() *DataType  { return &DataType{NativeType: ntptr(NativeTypeSmallint)} }
-func NewNativeTypeText() *DataType      { return &DataType{NativeType: ntptr(NativeTypeText)} }
-func NewNativeTypeTime() *DataType      { return &DataType{NativeType: ntptr(NativeTypeTime)} }
-func NewNativeTypeTimestamp() *DataType { return &DataType{NativeType: ntptr(NativeTypeTimestamp)} }
-func NewNativeTypeTimeuuid() *DataType  { return &DataType{NativeType: ntptr(NativeTypeTimeuuid)} }
-func NewNativeTypeTinyint() *DataType   { return &DataType{NativeType: ntptr(NativeTypeTinyint)} }
-func NewNativeTypeUUID() *DataType      { return &DataType{NativeType: ntptr(NativeTypeUUID)} }
-func NewNativeTypeVarchar() *DataType   { return &DataType{NativeType: ntptr(NativeTypeVarchar)} }
-func NewNativeTypeVarint() *DataType    { return &DataType{NativeType: ntptr(NativeTypeVarint)} }
-func NewCollectionTypeSet(t NativeType) *DataType {
-	return &DataType{CollectionType: &CollectionType{Set: &CollectionTypeSet{T: t}}}
+func formatIntoLowercaseWithoutWhitespace(str string) string {
+	return strings.Map(func(r rune) rune {
+		if unicode.IsSpace(r) {
+			return -1 // Returning -1 removes the character
+		}
+		return r
+	}, strings.ToLower(str))
 }
-func NewCollectionTypeList(t NativeType) *DataType {
-	return &DataType{CollectionType: &CollectionType{List: &CollectionTypeList{T: t}}}
-}
-func NewCollectionTypeMap(k, v NativeType) *DataType {
-	return &DataType{CollectionType: &CollectionType{Map: &CollectionTypeMap{K: k, V: v}}}
-}
-
-func ntptr(nt NativeType) *NativeType { return &nt }
 
 type NativeType string
 
@@ -106,8 +104,19 @@ func (nt NativeType) String() string {
 	return string(nt)
 }
 
+func (nt NativeType) IntoDataType() *DataType {
+	return &DataType{
+		NativeType: &nt,
+	}
+}
+
+func (nt NativeType) IntoCollectableType() *CollectableType {
+	return &CollectableType{
+		NativeType: &nt,
+	}
+}
+
 func ParseNativeType(nt string) (NativeType, error) {
-	nt = strings.ToLower(nt)
 	nativeTypeSet := map[NativeType]bool{
 		NativeTypeAscii:     true,
 		NativeTypeBigint:    true,
@@ -144,7 +153,11 @@ type CollectionType struct {
 	Map  *CollectionTypeMap
 }
 
-func (ct *CollectionType) String() string {
+func (ct CollectionType) IntoDataType() *DataType {
+	return &DataType{CollectionType: &ct}
+}
+
+func (ct CollectionType) String() string {
 	switch {
 	case ct.Set != nil:
 		return ct.Set.String()
@@ -160,19 +173,19 @@ func (ct *CollectionType) String() string {
 
 func ParseCollectionType(collection string) (*CollectionType, error) {
 	switch collection[0] {
-	case 'S':
+	case 's':
 		set, err := ParseCollectionTypeSet(collection)
 		if err != nil {
 			return nil, fmt.Errorf("parse collection type set: %w", err)
 		}
 		return &CollectionType{Set: set}, nil
-	case 'L':
+	case 'l':
 		list, err := ParseCollectionTypeList(collection)
 		if err != nil {
 			return nil, fmt.Errorf("parse collection type list: %w", err)
 		}
 		return &CollectionType{List: list}, nil
-	case 'M':
+	case 'm':
 		mp, err := ParseCollectionTypeMap(collection)
 		if err != nil {
 			return nil, fmt.Errorf("parse collection type map: %w", err)
@@ -182,54 +195,137 @@ func ParseCollectionType(collection string) (*CollectionType, error) {
 	return nil, ErrInvalidCollectionType
 }
 
-type CollectionTypeSet struct{ T NativeType }
+type CollectionTypeSet struct{ T *CollectableType }
 
-func (s CollectionTypeSet) String() string { return fmt.Sprintf("SET<%s>", s.T.String()) }
+func (s CollectionTypeSet) IntoDataType() *DataType {
+	return &DataType{CollectionType: &CollectionType{Set: &s}}
+}
+
+func (s CollectionTypeSet) String() string { return fmt.Sprintf("set<%s>", s.T.String()) }
 
 func ParseCollectionTypeSet(set string) (*CollectionTypeSet, error) {
-	if set[0:4] != "SET<" || set[len(set)-1:] != ">" {
+	if set[0:4] != "set<" || set[len(set)-1:] != ">" {
 		return nil, ErrInvalidCollectionTypeSet
 	}
-	nt, err := ParseNativeType(set[4 : len(set)-1])
+	nt, err := ParseCollectableType(set[4 : len(set)-1])
 	if err != nil {
 		return nil, fmt.Errorf("parse set native type: %w", err)
 	}
 	return &CollectionTypeSet{T: nt}, nil
 }
 
-type CollectionTypeList struct{ T NativeType }
+type CollectionTypeList struct{ T *CollectableType }
 
-func (l CollectionTypeList) String() string { return fmt.Sprintf("LIST<%s>", l.T.String()) }
+func (l CollectionTypeList) IntoDataType() *DataType {
+	return &DataType{CollectionType: &CollectionType{List: &l}}
+}
+
+func (l CollectionTypeList) String() string { return fmt.Sprintf("list<%s>", l.T.String()) }
 
 func ParseCollectionTypeList(list string) (*CollectionTypeList, error) {
-	if list[0:5] != "LIST<" || list[len(list)-1:] != ">" {
+	if list[0:5] != "list<" || list[len(list)-1:] != ">" {
 		return nil, ErrInvalidCollectionTypeList
 	}
-	nt, err := ParseNativeType(list[5 : len(list)-1])
+	nt, err := ParseCollectableType(list[5 : len(list)-1])
 	if err != nil {
 		return nil, fmt.Errorf("parse list native type: %w", err)
 	}
 	return &CollectionTypeList{T: nt}, nil
 }
 
-type CollectionTypeMap struct{ K, V NativeType }
+type CollectionTypeMap struct{ K, V *CollectableType }
+
+func (m CollectionTypeMap) IntoDataType() *DataType {
+	return &DataType{CollectionType: &CollectionType{Map: &m}}
+}
 
 func (m CollectionTypeMap) String() string {
-	return fmt.Sprintf("MAP<%s,%s>", m.K.String(), m.V.String())
+	return fmt.Sprintf("map<%s,%s>", m.K.String(), m.V.String())
 }
 
 func ParseCollectionTypeMap(mp string) (*CollectionTypeMap, error) {
 	comma := strings.Index(mp, ",")
-	if mp[0:4] != "MAP<" || mp[len(mp)-1:] != ">" || comma == -1 {
+	if mp[0:4] != "map<" || mp[len(mp)-1:] != ">" || comma == -1 {
 		return nil, ErrInvalidCollectionTypeSet
 	}
-	k, err := ParseNativeType(mp[4:comma])
+	k, err := ParseCollectableType(mp[4:comma])
 	if err != nil {
 		return nil, fmt.Errorf("parse map key native type: %w", err)
 	}
-	v, err := ParseNativeType(mp[comma+1 : len(mp)-1])
+	v, err := ParseCollectableType(mp[comma+1 : len(mp)-1])
 	if err != nil {
 		return nil, fmt.Errorf("parse map value native type: %w", err)
 	}
 	return &CollectionTypeMap{K: k, V: v}, nil
+}
+
+type FrozenType struct {
+	DataType *DataType
+}
+
+func (ft FrozenType) IntoDataType() *DataType {
+	return &DataType{FrozenType: &ft}
+}
+
+func (ft FrozenType) String() string {
+	return fmt.Sprintf("frozen<%s>", ft.DataType.String())
+}
+
+func ParseFrozenType(str string) (*FrozenType, error) {
+	if str[0:7] != "frozen<" || str[len(str)-1:] != ">" {
+		return nil, ErrInvalidFrozenType
+	}
+	dt, err := ParseDataType(str[7 : len(str)-1])
+	if err != nil {
+		return nil, fmt.Errorf("parse frozen type: %w", err)
+	}
+	return &FrozenType{DataType: dt}, nil
+}
+
+type CollectableType struct {
+	NativeType *NativeType
+	FrozenType *FrozenType
+}
+
+func (t CollectableType) String() string {
+	switch {
+	case t.NativeType != nil:
+		return t.NativeType.String()
+	case t.FrozenType != nil:
+		return t.FrozenType.String()
+	default:
+		// TODO: Handle such error
+		return ""
+	}
+}
+
+func ParseCollectableType(str string) (*CollectableType, error) {
+	var parseErr error
+	nt, err := ParseNativeType(str)
+	if err == nil {
+		return &CollectableType{NativeType: &nt}, nil
+	}
+	parseErr = errors.Join(parseErr, err)
+	ft, err := ParseFrozenType(str)
+	if err == nil {
+		return &CollectableType{FrozenType: ft}, nil
+	}
+	parseErr = errors.Join(parseErr, err)
+	return nil, parseErr
+}
+
+type UserDefinedType struct {
+	Name   string
+	Fields []*UserDefinedTypeField
+}
+
+func (t UserDefinedType) IntoDataType() *DataType {
+	return &DataType{
+		UserDefinedType: &t,
+	}
+}
+
+type UserDefinedTypeField struct {
+	Name     string
+	DataType *DataType
 }
