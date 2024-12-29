@@ -1,6 +1,6 @@
-// Code generated from CqlParser.g4 by ANTLR 4.13.2. DO NOT EDIT.
+// Code generated from CQLParser.g4 by ANTLR 4.13.2. DO NOT EDIT.
 
-package parser // CqlParser
+package parser // CQLParser
 
 import (
 	"fmt"
@@ -15,11 +15,11 @@ var _ = fmt.Printf
 var _ = strconv.Itoa
 var _ = sync.Once{}
 
-type CqlParser struct {
+type CQLParser struct {
 	*antlr.BaseParser
 }
 
-var CqlParserParserStaticData struct {
+var CQLParserParserStaticData struct {
 	once                   sync.Once
 	serializedATN          []int32
 	LiteralNames           []string
@@ -31,7 +31,7 @@ var CqlParserParserStaticData struct {
 }
 
 func cqlparserParserInit() {
-	staticData := &CqlParserParserStaticData
+	staticData := &CQLParserParserStaticData
 	staticData.LiteralNames = []string{
 		"", "'('", "')'", "'{'", "'}'", "'['", "']'", "','", "';'", "':'", "'.'",
 		"'*'", "'/'", "'%'", "'+'", "'--'", "'-'", "'\"'", "'''", "'='", "'<'",
@@ -1234,489 +1234,489 @@ func cqlparserParserInit() {
 	}
 }
 
-// CqlParserInit initializes any static state used to implement CqlParser. By default the
+// CQLParserInit initializes any static state used to implement CQLParser. By default the
 // static state used to implement the parser is lazily initialized during the first call to
-// NewCqlParser(). You can call this function if you wish to initialize the static state ahead
+// NewCQLParser(). You can call this function if you wish to initialize the static state ahead
 // of time.
-func CqlParserInit() {
-	staticData := &CqlParserParserStaticData
+func CQLParserInit() {
+	staticData := &CQLParserParserStaticData
 	staticData.once.Do(cqlparserParserInit)
 }
 
-// NewCqlParser produces a new parser instance for the optional input antlr.TokenStream.
-func NewCqlParser(input antlr.TokenStream) *CqlParser {
-	CqlParserInit()
-	this := new(CqlParser)
+// NewCQLParser produces a new parser instance for the optional input antlr.TokenStream.
+func NewCQLParser(input antlr.TokenStream) *CQLParser {
+	CQLParserInit()
+	this := new(CQLParser)
 	this.BaseParser = antlr.NewBaseParser(input)
-	staticData := &CqlParserParserStaticData
+	staticData := &CQLParserParserStaticData
 	this.Interpreter = antlr.NewParserATNSimulator(this, staticData.atn, staticData.decisionToDFA, staticData.PredictionContextCache)
 	this.RuleNames = staticData.RuleNames
 	this.LiteralNames = staticData.LiteralNames
 	this.SymbolicNames = staticData.SymbolicNames
-	this.GrammarFileName = "CqlParser.g4"
+	this.GrammarFileName = "CQLParser.g4"
 
 	return this
 }
 
-// CqlParser tokens.
+// CQLParser tokens.
 const (
-	CqlParserEOF                 = antlr.TokenEOF
-	CqlParserLR_BRACKET          = 1
-	CqlParserRR_BRACKET          = 2
-	CqlParserLC_BRACKET          = 3
-	CqlParserRC_BRACKET          = 4
-	CqlParserLS_BRACKET          = 5
-	CqlParserRS_BRACKET          = 6
-	CqlParserCOMMA               = 7
-	CqlParserSEMI                = 8
-	CqlParserCOLON               = 9
-	CqlParserDOT                 = 10
-	CqlParserSTAR                = 11
-	CqlParserDIVIDE              = 12
-	CqlParserMODULE              = 13
-	CqlParserPLUS                = 14
-	CqlParserMINUSMINUS          = 15
-	CqlParserMINUS               = 16
-	CqlParserDQUOTE              = 17
-	CqlParserSQUOTE              = 18
-	CqlParserOPERATOR_EQ         = 19
-	CqlParserOPERATOR_LT         = 20
-	CqlParserOPERATOR_GT         = 21
-	CqlParserOPERATOR_LTE        = 22
-	CqlParserOPERATOR_GTE        = 23
-	CqlParserK_ADD               = 24
-	CqlParserK_AGGREGATE         = 25
-	CqlParserK_ALL               = 26
-	CqlParserK_ALLOW             = 27
-	CqlParserK_ALTER             = 28
-	CqlParserK_AND               = 29
-	CqlParserK_ANY               = 30
-	CqlParserK_APPLY             = 31
-	CqlParserK_AS                = 32
-	CqlParserK_ASC               = 33
-	CqlParserK_AUTHORIZE         = 34
-	CqlParserK_BATCH             = 35
-	CqlParserK_BEGIN             = 36
-	CqlParserK_BY                = 37
-	CqlParserK_CALLED            = 38
-	CqlParserK_CLUSTERING        = 39
-	CqlParserK_COLUMNFAMILY      = 40
-	CqlParserK_COMPACT           = 41
-	CqlParserK_CONSISTENCY       = 42
-	CqlParserK_CONTAINS          = 43
-	CqlParserK_CREATE            = 44
-	CqlParserK_CUSTOM            = 45
-	CqlParserK_DELETE            = 46
-	CqlParserK_DESC              = 47
-	CqlParserK_DESCRIBE          = 48
-	CqlParserK_DISTINCT          = 49
-	CqlParserK_DROP              = 50
-	CqlParserK_DURABLE_WRITES    = 51
-	CqlParserK_EACH_QUORUM       = 52
-	CqlParserK_ENTRIES           = 53
-	CqlParserK_EXECUTE           = 54
-	CqlParserK_EXISTS            = 55
-	CqlParserK_FALSE             = 56
-	CqlParserK_FILTERING         = 57
-	CqlParserK_FINALFUNC         = 58
-	CqlParserK_FROM              = 59
-	CqlParserK_FULL              = 60
-	CqlParserK_FUNCTION          = 61
-	CqlParserK_FUNCTIONS         = 62
-	CqlParserK_GRANT             = 63
-	CqlParserK_IF                = 64
-	CqlParserK_IN                = 65
-	CqlParserK_INDEX             = 66
-	CqlParserK_INFINITY          = 67
-	CqlParserK_INITCOND          = 68
-	CqlParserK_INPUT             = 69
-	CqlParserK_INSERT            = 70
-	CqlParserK_INTO              = 71
-	CqlParserK_IS                = 72
-	CqlParserK_JSON              = 73
-	CqlParserK_KEY               = 74
-	CqlParserK_KEYS              = 75
-	CqlParserK_KEYSPACE          = 76
-	CqlParserK_KEYSPACES         = 77
-	CqlParserK_LANGUAGE          = 78
-	CqlParserK_LEVEL             = 79
-	CqlParserK_LIMIT             = 80
-	CqlParserK_LOCAL_ONE         = 81
-	CqlParserK_LOCAL_QUORUM      = 82
-	CqlParserK_LOGGED            = 83
-	CqlParserK_LOGIN             = 84
-	CqlParserK_MATERIALIZED      = 85
-	CqlParserK_MODIFY            = 86
-	CqlParserK_NAN               = 87
-	CqlParserK_NORECURSIVE       = 88
-	CqlParserK_NOSUPERUSER       = 89
-	CqlParserK_NOT               = 90
-	CqlParserK_NULL              = 91
-	CqlParserK_OF                = 92
-	CqlParserK_ON                = 93
-	CqlParserK_ONE               = 94
-	CqlParserK_OPTIONS           = 95
-	CqlParserK_OR                = 96
-	CqlParserK_ORDER             = 97
-	CqlParserK_PARTITION         = 98
-	CqlParserK_PASSWORD          = 99
-	CqlParserK_PER               = 100
-	CqlParserK_PERMISSION        = 101
-	CqlParserK_PERMISSIONS       = 102
-	CqlParserK_PRIMARY           = 103
-	CqlParserK_QUORUM            = 104
-	CqlParserK_RENAME            = 105
-	CqlParserK_REPLACE           = 106
-	CqlParserK_REPLICATION       = 107
-	CqlParserK_RETURNS           = 108
-	CqlParserK_REVOKE            = 109
-	CqlParserK_ROLE              = 110
-	CqlParserK_ROLES             = 111
-	CqlParserK_SCHEMA            = 112
-	CqlParserK_SELECT            = 113
-	CqlParserK_SET               = 114
-	CqlParserK_SFUNC             = 115
-	CqlParserK_STATIC            = 116
-	CqlParserK_STORAGE           = 117
-	CqlParserK_STYPE             = 118
-	CqlParserK_SUPERUSER         = 119
-	CqlParserK_TABLE             = 120
-	CqlParserK_THREE             = 121
-	CqlParserK_TIMESTAMP         = 122
-	CqlParserK_TO                = 123
-	CqlParserK_TOKEN             = 124
-	CqlParserK_TRIGGER           = 125
-	CqlParserK_TRUE              = 126
-	CqlParserK_TRUNCATE          = 127
-	CqlParserK_TTL               = 128
-	CqlParserK_TWO               = 129
-	CqlParserK_TYPE              = 130
-	CqlParserK_UNLOGGED          = 131
-	CqlParserK_UPDATE            = 132
-	CqlParserK_USE               = 133
-	CqlParserK_USER              = 134
-	CqlParserK_USING             = 135
-	CqlParserK_UUID              = 136
-	CqlParserK_VALUES            = 137
-	CqlParserK_VIEW              = 138
-	CqlParserK_WHERE             = 139
-	CqlParserK_WITH              = 140
-	CqlParserK_WRITETIME         = 141
-	CqlParserK_ASCII             = 142
-	CqlParserK_BIGINT            = 143
-	CqlParserK_BLOB              = 144
-	CqlParserK_BOOLEAN           = 145
-	CqlParserK_COUNTER           = 146
-	CqlParserK_DATE              = 147
-	CqlParserK_DECIMAL           = 148
-	CqlParserK_DOUBLE            = 149
-	CqlParserK_FLOAT             = 150
-	CqlParserK_FROZEN            = 151
-	CqlParserK_INET              = 152
-	CqlParserK_INT               = 153
-	CqlParserK_LIST              = 154
-	CqlParserK_MAP               = 155
-	CqlParserK_SMALLINT          = 156
-	CqlParserK_TEXT              = 157
-	CqlParserK_TIMEUUID          = 158
-	CqlParserK_TIME              = 159
-	CqlParserK_TINYINT           = 160
-	CqlParserK_TUPLE             = 161
-	CqlParserK_VARCHAR           = 162
-	CqlParserK_VARINT            = 163
-	CqlParserCODE_BLOCK          = 164
-	CqlParserSTRING_LITERAL      = 165
-	CqlParserDECIMAL_LITERAL     = 166
-	CqlParserFLOAT_LITERAL       = 167
-	CqlParserHEXADECIMAL_LITERAL = 168
-	CqlParserREAL_LITERAL        = 169
-	CqlParserOBJECT_NAME         = 170
-	CqlParserUUID                = 171
-	CqlParserSPACE               = 172
-	CqlParserSPEC_MYSQL_COMMENT  = 173
-	CqlParserCOMMENT_INPUT       = 174
-	CqlParserLINE_COMMENT        = 175
+	CQLParserEOF                 = antlr.TokenEOF
+	CQLParserLR_BRACKET          = 1
+	CQLParserRR_BRACKET          = 2
+	CQLParserLC_BRACKET          = 3
+	CQLParserRC_BRACKET          = 4
+	CQLParserLS_BRACKET          = 5
+	CQLParserRS_BRACKET          = 6
+	CQLParserCOMMA               = 7
+	CQLParserSEMI                = 8
+	CQLParserCOLON               = 9
+	CQLParserDOT                 = 10
+	CQLParserSTAR                = 11
+	CQLParserDIVIDE              = 12
+	CQLParserMODULE              = 13
+	CQLParserPLUS                = 14
+	CQLParserMINUSMINUS          = 15
+	CQLParserMINUS               = 16
+	CQLParserDQUOTE              = 17
+	CQLParserSQUOTE              = 18
+	CQLParserOPERATOR_EQ         = 19
+	CQLParserOPERATOR_LT         = 20
+	CQLParserOPERATOR_GT         = 21
+	CQLParserOPERATOR_LTE        = 22
+	CQLParserOPERATOR_GTE        = 23
+	CQLParserK_ADD               = 24
+	CQLParserK_AGGREGATE         = 25
+	CQLParserK_ALL               = 26
+	CQLParserK_ALLOW             = 27
+	CQLParserK_ALTER             = 28
+	CQLParserK_AND               = 29
+	CQLParserK_ANY               = 30
+	CQLParserK_APPLY             = 31
+	CQLParserK_AS                = 32
+	CQLParserK_ASC               = 33
+	CQLParserK_AUTHORIZE         = 34
+	CQLParserK_BATCH             = 35
+	CQLParserK_BEGIN             = 36
+	CQLParserK_BY                = 37
+	CQLParserK_CALLED            = 38
+	CQLParserK_CLUSTERING        = 39
+	CQLParserK_COLUMNFAMILY      = 40
+	CQLParserK_COMPACT           = 41
+	CQLParserK_CONSISTENCY       = 42
+	CQLParserK_CONTAINS          = 43
+	CQLParserK_CREATE            = 44
+	CQLParserK_CUSTOM            = 45
+	CQLParserK_DELETE            = 46
+	CQLParserK_DESC              = 47
+	CQLParserK_DESCRIBE          = 48
+	CQLParserK_DISTINCT          = 49
+	CQLParserK_DROP              = 50
+	CQLParserK_DURABLE_WRITES    = 51
+	CQLParserK_EACH_QUORUM       = 52
+	CQLParserK_ENTRIES           = 53
+	CQLParserK_EXECUTE           = 54
+	CQLParserK_EXISTS            = 55
+	CQLParserK_FALSE             = 56
+	CQLParserK_FILTERING         = 57
+	CQLParserK_FINALFUNC         = 58
+	CQLParserK_FROM              = 59
+	CQLParserK_FULL              = 60
+	CQLParserK_FUNCTION          = 61
+	CQLParserK_FUNCTIONS         = 62
+	CQLParserK_GRANT             = 63
+	CQLParserK_IF                = 64
+	CQLParserK_IN                = 65
+	CQLParserK_INDEX             = 66
+	CQLParserK_INFINITY          = 67
+	CQLParserK_INITCOND          = 68
+	CQLParserK_INPUT             = 69
+	CQLParserK_INSERT            = 70
+	CQLParserK_INTO              = 71
+	CQLParserK_IS                = 72
+	CQLParserK_JSON              = 73
+	CQLParserK_KEY               = 74
+	CQLParserK_KEYS              = 75
+	CQLParserK_KEYSPACE          = 76
+	CQLParserK_KEYSPACES         = 77
+	CQLParserK_LANGUAGE          = 78
+	CQLParserK_LEVEL             = 79
+	CQLParserK_LIMIT             = 80
+	CQLParserK_LOCAL_ONE         = 81
+	CQLParserK_LOCAL_QUORUM      = 82
+	CQLParserK_LOGGED            = 83
+	CQLParserK_LOGIN             = 84
+	CQLParserK_MATERIALIZED      = 85
+	CQLParserK_MODIFY            = 86
+	CQLParserK_NAN               = 87
+	CQLParserK_NORECURSIVE       = 88
+	CQLParserK_NOSUPERUSER       = 89
+	CQLParserK_NOT               = 90
+	CQLParserK_NULL              = 91
+	CQLParserK_OF                = 92
+	CQLParserK_ON                = 93
+	CQLParserK_ONE               = 94
+	CQLParserK_OPTIONS           = 95
+	CQLParserK_OR                = 96
+	CQLParserK_ORDER             = 97
+	CQLParserK_PARTITION         = 98
+	CQLParserK_PASSWORD          = 99
+	CQLParserK_PER               = 100
+	CQLParserK_PERMISSION        = 101
+	CQLParserK_PERMISSIONS       = 102
+	CQLParserK_PRIMARY           = 103
+	CQLParserK_QUORUM            = 104
+	CQLParserK_RENAME            = 105
+	CQLParserK_REPLACE           = 106
+	CQLParserK_REPLICATION       = 107
+	CQLParserK_RETURNS           = 108
+	CQLParserK_REVOKE            = 109
+	CQLParserK_ROLE              = 110
+	CQLParserK_ROLES             = 111
+	CQLParserK_SCHEMA            = 112
+	CQLParserK_SELECT            = 113
+	CQLParserK_SET               = 114
+	CQLParserK_SFUNC             = 115
+	CQLParserK_STATIC            = 116
+	CQLParserK_STORAGE           = 117
+	CQLParserK_STYPE             = 118
+	CQLParserK_SUPERUSER         = 119
+	CQLParserK_TABLE             = 120
+	CQLParserK_THREE             = 121
+	CQLParserK_TIMESTAMP         = 122
+	CQLParserK_TO                = 123
+	CQLParserK_TOKEN             = 124
+	CQLParserK_TRIGGER           = 125
+	CQLParserK_TRUE              = 126
+	CQLParserK_TRUNCATE          = 127
+	CQLParserK_TTL               = 128
+	CQLParserK_TWO               = 129
+	CQLParserK_TYPE              = 130
+	CQLParserK_UNLOGGED          = 131
+	CQLParserK_UPDATE            = 132
+	CQLParserK_USE               = 133
+	CQLParserK_USER              = 134
+	CQLParserK_USING             = 135
+	CQLParserK_UUID              = 136
+	CQLParserK_VALUES            = 137
+	CQLParserK_VIEW              = 138
+	CQLParserK_WHERE             = 139
+	CQLParserK_WITH              = 140
+	CQLParserK_WRITETIME         = 141
+	CQLParserK_ASCII             = 142
+	CQLParserK_BIGINT            = 143
+	CQLParserK_BLOB              = 144
+	CQLParserK_BOOLEAN           = 145
+	CQLParserK_COUNTER           = 146
+	CQLParserK_DATE              = 147
+	CQLParserK_DECIMAL           = 148
+	CQLParserK_DOUBLE            = 149
+	CQLParserK_FLOAT             = 150
+	CQLParserK_FROZEN            = 151
+	CQLParserK_INET              = 152
+	CQLParserK_INT               = 153
+	CQLParserK_LIST              = 154
+	CQLParserK_MAP               = 155
+	CQLParserK_SMALLINT          = 156
+	CQLParserK_TEXT              = 157
+	CQLParserK_TIMEUUID          = 158
+	CQLParserK_TIME              = 159
+	CQLParserK_TINYINT           = 160
+	CQLParserK_TUPLE             = 161
+	CQLParserK_VARCHAR           = 162
+	CQLParserK_VARINT            = 163
+	CQLParserCODE_BLOCK          = 164
+	CQLParserSTRING_LITERAL      = 165
+	CQLParserDECIMAL_LITERAL     = 166
+	CQLParserFLOAT_LITERAL       = 167
+	CQLParserHEXADECIMAL_LITERAL = 168
+	CQLParserREAL_LITERAL        = 169
+	CQLParserOBJECT_NAME         = 170
+	CQLParserUUID                = 171
+	CQLParserSPACE               = 172
+	CQLParserSPEC_MYSQL_COMMENT  = 173
+	CQLParserCOMMENT_INPUT       = 174
+	CQLParserLINE_COMMENT        = 175
 )
 
-// CqlParser rules.
+// CQLParser rules.
 const (
-	CqlParserRULE_root                         = 0
-	CqlParserRULE_cqls                         = 1
-	CqlParserRULE_statementSeparator           = 2
-	CqlParserRULE_empty_                       = 3
-	CqlParserRULE_cql                          = 4
-	CqlParserRULE_revoke                       = 5
-	CqlParserRULE_listRoles                    = 6
-	CqlParserRULE_listPermissions              = 7
-	CqlParserRULE_grant                        = 8
-	CqlParserRULE_priviledge                   = 9
-	CqlParserRULE_resource                     = 10
-	CqlParserRULE_createUser                   = 11
-	CqlParserRULE_createRole                   = 12
-	CqlParserRULE_createType                   = 13
-	CqlParserRULE_typeMemberColumnList         = 14
-	CqlParserRULE_createTrigger                = 15
-	CqlParserRULE_createMaterializedView       = 16
-	CqlParserRULE_materializedViewWhere        = 17
-	CqlParserRULE_columnNotNullList            = 18
-	CqlParserRULE_columnNotNull                = 19
-	CqlParserRULE_materializedViewOptions      = 20
-	CqlParserRULE_createKeyspace               = 21
-	CqlParserRULE_createFunction               = 22
-	CqlParserRULE_codeBlock                    = 23
-	CqlParserRULE_paramList                    = 24
-	CqlParserRULE_returnMode                   = 25
-	CqlParserRULE_createAggregate              = 26
-	CqlParserRULE_initCondDefinition           = 27
-	CqlParserRULE_initCondHash                 = 28
-	CqlParserRULE_initCondHashItem             = 29
-	CqlParserRULE_initCondListNested           = 30
-	CqlParserRULE_initCondList                 = 31
-	CqlParserRULE_orReplace                    = 32
-	CqlParserRULE_alterUser                    = 33
-	CqlParserRULE_userPassword                 = 34
-	CqlParserRULE_userSuperUser                = 35
-	CqlParserRULE_alterType                    = 36
-	CqlParserRULE_alterTypeOperation           = 37
-	CqlParserRULE_alterTypeRename              = 38
-	CqlParserRULE_alterTypeRenameList          = 39
-	CqlParserRULE_alterTypeRenameItem          = 40
-	CqlParserRULE_alterTypeAdd                 = 41
-	CqlParserRULE_alterTypeAlterType           = 42
-	CqlParserRULE_alterTable                   = 43
-	CqlParserRULE_alterTableOperation          = 44
-	CqlParserRULE_alterTableWith               = 45
-	CqlParserRULE_alterTableRename             = 46
-	CqlParserRULE_alterTableDropCompactStorage = 47
-	CqlParserRULE_alterTableDropColumns        = 48
-	CqlParserRULE_alterTableDropColumnList     = 49
-	CqlParserRULE_alterTableAdd                = 50
-	CqlParserRULE_alterTableColumnDefinition   = 51
-	CqlParserRULE_alterRole                    = 52
-	CqlParserRULE_roleWith                     = 53
-	CqlParserRULE_roleWithOptions              = 54
-	CqlParserRULE_alterMaterializedView        = 55
-	CqlParserRULE_dropUser                     = 56
-	CqlParserRULE_dropType                     = 57
-	CqlParserRULE_dropMaterializedView         = 58
-	CqlParserRULE_dropAggregate                = 59
-	CqlParserRULE_dropFunction                 = 60
-	CqlParserRULE_dropTrigger                  = 61
-	CqlParserRULE_dropRole                     = 62
-	CqlParserRULE_dropTable                    = 63
-	CqlParserRULE_dropKeyspace                 = 64
-	CqlParserRULE_dropIndex                    = 65
-	CqlParserRULE_createTable                  = 66
-	CqlParserRULE_withElement                  = 67
-	CqlParserRULE_tableOptions                 = 68
-	CqlParserRULE_clusteringOrder              = 69
-	CqlParserRULE_tableOptionItem              = 70
-	CqlParserRULE_tableOptionName              = 71
-	CqlParserRULE_tableOptionValue             = 72
-	CqlParserRULE_optionHash                   = 73
-	CqlParserRULE_optionHashItem               = 74
-	CqlParserRULE_optionHashKey                = 75
-	CqlParserRULE_optionHashValue              = 76
-	CqlParserRULE_columnDefinitionList         = 77
-	CqlParserRULE_columnDefinition             = 78
-	CqlParserRULE_primaryKeyColumn             = 79
-	CqlParserRULE_primaryKeyElement            = 80
-	CqlParserRULE_primaryKeyDefinition         = 81
-	CqlParserRULE_singlePrimaryKey             = 82
-	CqlParserRULE_compoundKey                  = 83
-	CqlParserRULE_compositeKey                 = 84
-	CqlParserRULE_partitionKeyList             = 85
-	CqlParserRULE_clusteringKeyList            = 86
-	CqlParserRULE_partitionKey                 = 87
-	CqlParserRULE_clusteringKey                = 88
-	CqlParserRULE_applyBatch                   = 89
-	CqlParserRULE_beginBatch                   = 90
-	CqlParserRULE_batchType                    = 91
-	CqlParserRULE_alterKeyspace                = 92
-	CqlParserRULE_replicationList              = 93
-	CqlParserRULE_replicationListItem          = 94
-	CqlParserRULE_durableWrites                = 95
-	CqlParserRULE_use_                         = 96
-	CqlParserRULE_truncate                     = 97
-	CqlParserRULE_createIndex                  = 98
-	CqlParserRULE_indexName                    = 99
-	CqlParserRULE_indexColumnSpec              = 100
-	CqlParserRULE_indexKeysSpec                = 101
-	CqlParserRULE_indexEntriesSSpec            = 102
-	CqlParserRULE_indexFullSpec                = 103
-	CqlParserRULE_delete_                      = 104
-	CqlParserRULE_deleteColumnList             = 105
-	CqlParserRULE_deleteColumnItem             = 106
-	CqlParserRULE_update                       = 107
-	CqlParserRULE_ifSpec                       = 108
-	CqlParserRULE_ifConditionList              = 109
-	CqlParserRULE_ifCondition                  = 110
-	CqlParserRULE_assignments                  = 111
-	CqlParserRULE_assignmentElement            = 112
-	CqlParserRULE_assignmentSet                = 113
-	CqlParserRULE_assignmentMap                = 114
-	CqlParserRULE_assignmentList               = 115
-	CqlParserRULE_assignmentTuple              = 116
-	CqlParserRULE_insert                       = 117
-	CqlParserRULE_usingTtlTimestamp            = 118
-	CqlParserRULE_timestamp                    = 119
-	CqlParserRULE_ttl                          = 120
-	CqlParserRULE_usingTimestampSpec           = 121
-	CqlParserRULE_ifNotExist                   = 122
-	CqlParserRULE_ifExist                      = 123
-	CqlParserRULE_insertValuesSpec             = 124
-	CqlParserRULE_insertColumnSpec             = 125
-	CqlParserRULE_columnList                   = 126
-	CqlParserRULE_expressionList               = 127
-	CqlParserRULE_expression                   = 128
-	CqlParserRULE_select_                      = 129
-	CqlParserRULE_allowFilteringSpec           = 130
-	CqlParserRULE_limitSpec                    = 131
-	CqlParserRULE_fromSpec                     = 132
-	CqlParserRULE_fromSpecElement              = 133
-	CqlParserRULE_orderSpec                    = 134
-	CqlParserRULE_orderSpecElement             = 135
-	CqlParserRULE_whereSpec                    = 136
-	CqlParserRULE_distinctSpec                 = 137
-	CqlParserRULE_selectElements               = 138
-	CqlParserRULE_selectElement                = 139
-	CqlParserRULE_relationElements             = 140
-	CqlParserRULE_relationElement              = 141
-	CqlParserRULE_relalationContains           = 142
-	CqlParserRULE_relalationContainsKey        = 143
-	CqlParserRULE_functionCall                 = 144
-	CqlParserRULE_functionArgs                 = 145
-	CqlParserRULE_constant                     = 146
-	CqlParserRULE_decimalLiteral               = 147
-	CqlParserRULE_floatLiteral                 = 148
-	CqlParserRULE_stringLiteral                = 149
-	CqlParserRULE_booleanLiteral               = 150
-	CqlParserRULE_hexadecimalLiteral           = 151
-	CqlParserRULE_keyspace                     = 152
-	CqlParserRULE_table                        = 153
-	CqlParserRULE_column                       = 154
-	CqlParserRULE_dataType                     = 155
-	CqlParserRULE_dataTypeName                 = 156
-	CqlParserRULE_dataTypeDefinition           = 157
-	CqlParserRULE_orderDirection               = 158
-	CqlParserRULE_role                         = 159
-	CqlParserRULE_trigger                      = 160
-	CqlParserRULE_triggerClass                 = 161
-	CqlParserRULE_materializedView             = 162
-	CqlParserRULE_type_                        = 163
-	CqlParserRULE_aggregate                    = 164
-	CqlParserRULE_function_                    = 165
-	CqlParserRULE_language                     = 166
-	CqlParserRULE_user                         = 167
-	CqlParserRULE_password                     = 168
-	CqlParserRULE_hashKey                      = 169
-	CqlParserRULE_param                        = 170
-	CqlParserRULE_paramName                    = 171
-	CqlParserRULE_kwAdd                        = 172
-	CqlParserRULE_kwAggregate                  = 173
-	CqlParserRULE_kwAll                        = 174
-	CqlParserRULE_kwAllPermissions             = 175
-	CqlParserRULE_kwAllow                      = 176
-	CqlParserRULE_kwAlter                      = 177
-	CqlParserRULE_kwAnd                        = 178
-	CqlParserRULE_kwApply                      = 179
-	CqlParserRULE_kwAs                         = 180
-	CqlParserRULE_kwAsc                        = 181
-	CqlParserRULE_kwAuthorize                  = 182
-	CqlParserRULE_kwBatch                      = 183
-	CqlParserRULE_kwBegin                      = 184
-	CqlParserRULE_kwBy                         = 185
-	CqlParserRULE_kwCalled                     = 186
-	CqlParserRULE_kwClustering                 = 187
-	CqlParserRULE_kwCompact                    = 188
-	CqlParserRULE_kwContains                   = 189
-	CqlParserRULE_kwCreate                     = 190
-	CqlParserRULE_kwDelete                     = 191
-	CqlParserRULE_kwDesc                       = 192
-	CqlParserRULE_kwDescibe                    = 193
-	CqlParserRULE_kwDistinct                   = 194
-	CqlParserRULE_kwDrop                       = 195
-	CqlParserRULE_kwDurableWrites              = 196
-	CqlParserRULE_kwEntries                    = 197
-	CqlParserRULE_kwExecute                    = 198
-	CqlParserRULE_kwExists                     = 199
-	CqlParserRULE_kwFiltering                  = 200
-	CqlParserRULE_kwFinalfunc                  = 201
-	CqlParserRULE_kwFrom                       = 202
-	CqlParserRULE_kwFull                       = 203
-	CqlParserRULE_kwFunction                   = 204
-	CqlParserRULE_kwFunctions                  = 205
-	CqlParserRULE_kwGrant                      = 206
-	CqlParserRULE_kwIf                         = 207
-	CqlParserRULE_kwIn                         = 208
-	CqlParserRULE_kwIndex                      = 209
-	CqlParserRULE_kwInitcond                   = 210
-	CqlParserRULE_kwInput                      = 211
-	CqlParserRULE_kwInsert                     = 212
-	CqlParserRULE_kwInto                       = 213
-	CqlParserRULE_kwIs                         = 214
-	CqlParserRULE_kwJson                       = 215
-	CqlParserRULE_kwKey                        = 216
-	CqlParserRULE_kwKeys                       = 217
-	CqlParserRULE_kwKeyspace                   = 218
-	CqlParserRULE_kwKeyspaces                  = 219
-	CqlParserRULE_kwLanguage                   = 220
-	CqlParserRULE_kwLimit                      = 221
-	CqlParserRULE_kwList                       = 222
-	CqlParserRULE_kwLogged                     = 223
-	CqlParserRULE_kwLogin                      = 224
-	CqlParserRULE_kwMaterialized               = 225
-	CqlParserRULE_kwModify                     = 226
-	CqlParserRULE_kwNosuperuser                = 227
-	CqlParserRULE_kwNorecursive                = 228
-	CqlParserRULE_kwNot                        = 229
-	CqlParserRULE_kwNull                       = 230
-	CqlParserRULE_kwOf                         = 231
-	CqlParserRULE_kwOn                         = 232
-	CqlParserRULE_kwOptions                    = 233
-	CqlParserRULE_kwOr                         = 234
-	CqlParserRULE_kwOrder                      = 235
-	CqlParserRULE_kwPassword                   = 236
-	CqlParserRULE_kwPrimary                    = 237
-	CqlParserRULE_kwRename                     = 238
-	CqlParserRULE_kwReplace                    = 239
-	CqlParserRULE_kwReplication                = 240
-	CqlParserRULE_kwReturns                    = 241
-	CqlParserRULE_kwRole                       = 242
-	CqlParserRULE_kwRoles                      = 243
-	CqlParserRULE_kwSelect                     = 244
-	CqlParserRULE_kwSet                        = 245
-	CqlParserRULE_kwSfunc                      = 246
-	CqlParserRULE_kwStorage                    = 247
-	CqlParserRULE_kwStype                      = 248
-	CqlParserRULE_kwSuperuser                  = 249
-	CqlParserRULE_kwTable                      = 250
-	CqlParserRULE_kwTimestamp                  = 251
-	CqlParserRULE_kwTo                         = 252
-	CqlParserRULE_kwTrigger                    = 253
-	CqlParserRULE_kwTruncate                   = 254
-	CqlParserRULE_kwTtl                        = 255
-	CqlParserRULE_kwType                       = 256
-	CqlParserRULE_kwUnlogged                   = 257
-	CqlParserRULE_kwUpdate                     = 258
-	CqlParserRULE_kwUse                        = 259
-	CqlParserRULE_kwUser                       = 260
-	CqlParserRULE_kwUsing                      = 261
-	CqlParserRULE_kwValues                     = 262
-	CqlParserRULE_kwView                       = 263
-	CqlParserRULE_kwWhere                      = 264
-	CqlParserRULE_kwWith                       = 265
-	CqlParserRULE_kwRevoke                     = 266
-	CqlParserRULE_syntaxBracketLr              = 267
-	CqlParserRULE_syntaxBracketRr              = 268
-	CqlParserRULE_syntaxBracketLc              = 269
-	CqlParserRULE_syntaxBracketRc              = 270
-	CqlParserRULE_syntaxBracketLa              = 271
-	CqlParserRULE_syntaxBracketRa              = 272
-	CqlParserRULE_syntaxBracketLs              = 273
-	CqlParserRULE_syntaxBracketRs              = 274
-	CqlParserRULE_syntaxComma                  = 275
-	CqlParserRULE_syntaxColon                  = 276
+	CQLParserRULE_root                         = 0
+	CQLParserRULE_cqls                         = 1
+	CQLParserRULE_statementSeparator           = 2
+	CQLParserRULE_empty_                       = 3
+	CQLParserRULE_cql                          = 4
+	CQLParserRULE_revoke                       = 5
+	CQLParserRULE_listRoles                    = 6
+	CQLParserRULE_listPermissions              = 7
+	CQLParserRULE_grant                        = 8
+	CQLParserRULE_priviledge                   = 9
+	CQLParserRULE_resource                     = 10
+	CQLParserRULE_createUser                   = 11
+	CQLParserRULE_createRole                   = 12
+	CQLParserRULE_createType                   = 13
+	CQLParserRULE_typeMemberColumnList         = 14
+	CQLParserRULE_createTrigger                = 15
+	CQLParserRULE_createMaterializedView       = 16
+	CQLParserRULE_materializedViewWhere        = 17
+	CQLParserRULE_columnNotNullList            = 18
+	CQLParserRULE_columnNotNull                = 19
+	CQLParserRULE_materializedViewOptions      = 20
+	CQLParserRULE_createKeyspace               = 21
+	CQLParserRULE_createFunction               = 22
+	CQLParserRULE_codeBlock                    = 23
+	CQLParserRULE_paramList                    = 24
+	CQLParserRULE_returnMode                   = 25
+	CQLParserRULE_createAggregate              = 26
+	CQLParserRULE_initCondDefinition           = 27
+	CQLParserRULE_initCondHash                 = 28
+	CQLParserRULE_initCondHashItem             = 29
+	CQLParserRULE_initCondListNested           = 30
+	CQLParserRULE_initCondList                 = 31
+	CQLParserRULE_orReplace                    = 32
+	CQLParserRULE_alterUser                    = 33
+	CQLParserRULE_userPassword                 = 34
+	CQLParserRULE_userSuperUser                = 35
+	CQLParserRULE_alterType                    = 36
+	CQLParserRULE_alterTypeOperation           = 37
+	CQLParserRULE_alterTypeRename              = 38
+	CQLParserRULE_alterTypeRenameList          = 39
+	CQLParserRULE_alterTypeRenameItem          = 40
+	CQLParserRULE_alterTypeAdd                 = 41
+	CQLParserRULE_alterTypeAlterType           = 42
+	CQLParserRULE_alterTable                   = 43
+	CQLParserRULE_alterTableOperation          = 44
+	CQLParserRULE_alterTableWith               = 45
+	CQLParserRULE_alterTableRename             = 46
+	CQLParserRULE_alterTableDropCompactStorage = 47
+	CQLParserRULE_alterTableDropColumns        = 48
+	CQLParserRULE_alterTableDropColumnList     = 49
+	CQLParserRULE_alterTableAdd                = 50
+	CQLParserRULE_alterTableColumnDefinition   = 51
+	CQLParserRULE_alterRole                    = 52
+	CQLParserRULE_roleWith                     = 53
+	CQLParserRULE_roleWithOptions              = 54
+	CQLParserRULE_alterMaterializedView        = 55
+	CQLParserRULE_dropUser                     = 56
+	CQLParserRULE_dropType                     = 57
+	CQLParserRULE_dropMaterializedView         = 58
+	CQLParserRULE_dropAggregate                = 59
+	CQLParserRULE_dropFunction                 = 60
+	CQLParserRULE_dropTrigger                  = 61
+	CQLParserRULE_dropRole                     = 62
+	CQLParserRULE_dropTable                    = 63
+	CQLParserRULE_dropKeyspace                 = 64
+	CQLParserRULE_dropIndex                    = 65
+	CQLParserRULE_createTable                  = 66
+	CQLParserRULE_withElement                  = 67
+	CQLParserRULE_tableOptions                 = 68
+	CQLParserRULE_clusteringOrder              = 69
+	CQLParserRULE_tableOptionItem              = 70
+	CQLParserRULE_tableOptionName              = 71
+	CQLParserRULE_tableOptionValue             = 72
+	CQLParserRULE_optionHash                   = 73
+	CQLParserRULE_optionHashItem               = 74
+	CQLParserRULE_optionHashKey                = 75
+	CQLParserRULE_optionHashValue              = 76
+	CQLParserRULE_columnDefinitionList         = 77
+	CQLParserRULE_columnDefinition             = 78
+	CQLParserRULE_primaryKeyColumn             = 79
+	CQLParserRULE_primaryKeyElement            = 80
+	CQLParserRULE_primaryKeyDefinition         = 81
+	CQLParserRULE_singlePrimaryKey             = 82
+	CQLParserRULE_compoundKey                  = 83
+	CQLParserRULE_compositeKey                 = 84
+	CQLParserRULE_partitionKeyList             = 85
+	CQLParserRULE_clusteringKeyList            = 86
+	CQLParserRULE_partitionKey                 = 87
+	CQLParserRULE_clusteringKey                = 88
+	CQLParserRULE_applyBatch                   = 89
+	CQLParserRULE_beginBatch                   = 90
+	CQLParserRULE_batchType                    = 91
+	CQLParserRULE_alterKeyspace                = 92
+	CQLParserRULE_replicationList              = 93
+	CQLParserRULE_replicationListItem          = 94
+	CQLParserRULE_durableWrites                = 95
+	CQLParserRULE_use_                         = 96
+	CQLParserRULE_truncate                     = 97
+	CQLParserRULE_createIndex                  = 98
+	CQLParserRULE_indexName                    = 99
+	CQLParserRULE_indexColumnSpec              = 100
+	CQLParserRULE_indexKeysSpec                = 101
+	CQLParserRULE_indexEntriesSSpec            = 102
+	CQLParserRULE_indexFullSpec                = 103
+	CQLParserRULE_delete_                      = 104
+	CQLParserRULE_deleteColumnList             = 105
+	CQLParserRULE_deleteColumnItem             = 106
+	CQLParserRULE_update                       = 107
+	CQLParserRULE_ifSpec                       = 108
+	CQLParserRULE_ifConditionList              = 109
+	CQLParserRULE_ifCondition                  = 110
+	CQLParserRULE_assignments                  = 111
+	CQLParserRULE_assignmentElement            = 112
+	CQLParserRULE_assignmentSet                = 113
+	CQLParserRULE_assignmentMap                = 114
+	CQLParserRULE_assignmentList               = 115
+	CQLParserRULE_assignmentTuple              = 116
+	CQLParserRULE_insert                       = 117
+	CQLParserRULE_usingTtlTimestamp            = 118
+	CQLParserRULE_timestamp                    = 119
+	CQLParserRULE_ttl                          = 120
+	CQLParserRULE_usingTimestampSpec           = 121
+	CQLParserRULE_ifNotExist                   = 122
+	CQLParserRULE_ifExist                      = 123
+	CQLParserRULE_insertValuesSpec             = 124
+	CQLParserRULE_insertColumnSpec             = 125
+	CQLParserRULE_columnList                   = 126
+	CQLParserRULE_expressionList               = 127
+	CQLParserRULE_expression                   = 128
+	CQLParserRULE_select_                      = 129
+	CQLParserRULE_allowFilteringSpec           = 130
+	CQLParserRULE_limitSpec                    = 131
+	CQLParserRULE_fromSpec                     = 132
+	CQLParserRULE_fromSpecElement              = 133
+	CQLParserRULE_orderSpec                    = 134
+	CQLParserRULE_orderSpecElement             = 135
+	CQLParserRULE_whereSpec                    = 136
+	CQLParserRULE_distinctSpec                 = 137
+	CQLParserRULE_selectElements               = 138
+	CQLParserRULE_selectElement                = 139
+	CQLParserRULE_relationElements             = 140
+	CQLParserRULE_relationElement              = 141
+	CQLParserRULE_relalationContains           = 142
+	CQLParserRULE_relalationContainsKey        = 143
+	CQLParserRULE_functionCall                 = 144
+	CQLParserRULE_functionArgs                 = 145
+	CQLParserRULE_constant                     = 146
+	CQLParserRULE_decimalLiteral               = 147
+	CQLParserRULE_floatLiteral                 = 148
+	CQLParserRULE_stringLiteral                = 149
+	CQLParserRULE_booleanLiteral               = 150
+	CQLParserRULE_hexadecimalLiteral           = 151
+	CQLParserRULE_keyspace                     = 152
+	CQLParserRULE_table                        = 153
+	CQLParserRULE_column                       = 154
+	CQLParserRULE_dataType                     = 155
+	CQLParserRULE_dataTypeName                 = 156
+	CQLParserRULE_dataTypeDefinition           = 157
+	CQLParserRULE_orderDirection               = 158
+	CQLParserRULE_role                         = 159
+	CQLParserRULE_trigger                      = 160
+	CQLParserRULE_triggerClass                 = 161
+	CQLParserRULE_materializedView             = 162
+	CQLParserRULE_type_                        = 163
+	CQLParserRULE_aggregate                    = 164
+	CQLParserRULE_function_                    = 165
+	CQLParserRULE_language                     = 166
+	CQLParserRULE_user                         = 167
+	CQLParserRULE_password                     = 168
+	CQLParserRULE_hashKey                      = 169
+	CQLParserRULE_param                        = 170
+	CQLParserRULE_paramName                    = 171
+	CQLParserRULE_kwAdd                        = 172
+	CQLParserRULE_kwAggregate                  = 173
+	CQLParserRULE_kwAll                        = 174
+	CQLParserRULE_kwAllPermissions             = 175
+	CQLParserRULE_kwAllow                      = 176
+	CQLParserRULE_kwAlter                      = 177
+	CQLParserRULE_kwAnd                        = 178
+	CQLParserRULE_kwApply                      = 179
+	CQLParserRULE_kwAs                         = 180
+	CQLParserRULE_kwAsc                        = 181
+	CQLParserRULE_kwAuthorize                  = 182
+	CQLParserRULE_kwBatch                      = 183
+	CQLParserRULE_kwBegin                      = 184
+	CQLParserRULE_kwBy                         = 185
+	CQLParserRULE_kwCalled                     = 186
+	CQLParserRULE_kwClustering                 = 187
+	CQLParserRULE_kwCompact                    = 188
+	CQLParserRULE_kwContains                   = 189
+	CQLParserRULE_kwCreate                     = 190
+	CQLParserRULE_kwDelete                     = 191
+	CQLParserRULE_kwDesc                       = 192
+	CQLParserRULE_kwDescibe                    = 193
+	CQLParserRULE_kwDistinct                   = 194
+	CQLParserRULE_kwDrop                       = 195
+	CQLParserRULE_kwDurableWrites              = 196
+	CQLParserRULE_kwEntries                    = 197
+	CQLParserRULE_kwExecute                    = 198
+	CQLParserRULE_kwExists                     = 199
+	CQLParserRULE_kwFiltering                  = 200
+	CQLParserRULE_kwFinalfunc                  = 201
+	CQLParserRULE_kwFrom                       = 202
+	CQLParserRULE_kwFull                       = 203
+	CQLParserRULE_kwFunction                   = 204
+	CQLParserRULE_kwFunctions                  = 205
+	CQLParserRULE_kwGrant                      = 206
+	CQLParserRULE_kwIf                         = 207
+	CQLParserRULE_kwIn                         = 208
+	CQLParserRULE_kwIndex                      = 209
+	CQLParserRULE_kwInitcond                   = 210
+	CQLParserRULE_kwInput                      = 211
+	CQLParserRULE_kwInsert                     = 212
+	CQLParserRULE_kwInto                       = 213
+	CQLParserRULE_kwIs                         = 214
+	CQLParserRULE_kwJson                       = 215
+	CQLParserRULE_kwKey                        = 216
+	CQLParserRULE_kwKeys                       = 217
+	CQLParserRULE_kwKeyspace                   = 218
+	CQLParserRULE_kwKeyspaces                  = 219
+	CQLParserRULE_kwLanguage                   = 220
+	CQLParserRULE_kwLimit                      = 221
+	CQLParserRULE_kwList                       = 222
+	CQLParserRULE_kwLogged                     = 223
+	CQLParserRULE_kwLogin                      = 224
+	CQLParserRULE_kwMaterialized               = 225
+	CQLParserRULE_kwModify                     = 226
+	CQLParserRULE_kwNosuperuser                = 227
+	CQLParserRULE_kwNorecursive                = 228
+	CQLParserRULE_kwNot                        = 229
+	CQLParserRULE_kwNull                       = 230
+	CQLParserRULE_kwOf                         = 231
+	CQLParserRULE_kwOn                         = 232
+	CQLParserRULE_kwOptions                    = 233
+	CQLParserRULE_kwOr                         = 234
+	CQLParserRULE_kwOrder                      = 235
+	CQLParserRULE_kwPassword                   = 236
+	CQLParserRULE_kwPrimary                    = 237
+	CQLParserRULE_kwRename                     = 238
+	CQLParserRULE_kwReplace                    = 239
+	CQLParserRULE_kwReplication                = 240
+	CQLParserRULE_kwReturns                    = 241
+	CQLParserRULE_kwRole                       = 242
+	CQLParserRULE_kwRoles                      = 243
+	CQLParserRULE_kwSelect                     = 244
+	CQLParserRULE_kwSet                        = 245
+	CQLParserRULE_kwSfunc                      = 246
+	CQLParserRULE_kwStorage                    = 247
+	CQLParserRULE_kwStype                      = 248
+	CQLParserRULE_kwSuperuser                  = 249
+	CQLParserRULE_kwTable                      = 250
+	CQLParserRULE_kwTimestamp                  = 251
+	CQLParserRULE_kwTo                         = 252
+	CQLParserRULE_kwTrigger                    = 253
+	CQLParserRULE_kwTruncate                   = 254
+	CQLParserRULE_kwTtl                        = 255
+	CQLParserRULE_kwType                       = 256
+	CQLParserRULE_kwUnlogged                   = 257
+	CQLParserRULE_kwUpdate                     = 258
+	CQLParserRULE_kwUse                        = 259
+	CQLParserRULE_kwUser                       = 260
+	CQLParserRULE_kwUsing                      = 261
+	CQLParserRULE_kwValues                     = 262
+	CQLParserRULE_kwView                       = 263
+	CQLParserRULE_kwWhere                      = 264
+	CQLParserRULE_kwWith                       = 265
+	CQLParserRULE_kwRevoke                     = 266
+	CQLParserRULE_syntaxBracketLr              = 267
+	CQLParserRULE_syntaxBracketRr              = 268
+	CQLParserRULE_syntaxBracketLc              = 269
+	CQLParserRULE_syntaxBracketRc              = 270
+	CQLParserRULE_syntaxBracketLa              = 271
+	CQLParserRULE_syntaxBracketRa              = 272
+	CQLParserRULE_syntaxBracketLs              = 273
+	CQLParserRULE_syntaxBracketRs              = 274
+	CQLParserRULE_syntaxComma                  = 275
+	CQLParserRULE_syntaxColon                  = 276
 )
 
 // IRootContext is an interface to support dynamic dispatch.
@@ -1743,13 +1743,13 @@ type RootContext struct {
 func NewEmptyRootContext() *RootContext {
 	var p = new(RootContext)
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
-	p.RuleIndex = CqlParserRULE_root
+	p.RuleIndex = CQLParserRULE_root
 	return p
 }
 
 func InitEmptyRootContext(p *RootContext) {
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
-	p.RuleIndex = CqlParserRULE_root
+	p.RuleIndex = CQLParserRULE_root
 }
 
 func (*RootContext) IsRootContext() {}
@@ -1760,7 +1760,7 @@ func NewRootContext(parser antlr.Parser, parent antlr.ParserRuleContext, invokin
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, parent, invokingState)
 
 	p.parser = parser
-	p.RuleIndex = CqlParserRULE_root
+	p.RuleIndex = CQLParserRULE_root
 
 	return p
 }
@@ -1768,7 +1768,7 @@ func NewRootContext(parser antlr.Parser, parent antlr.ParserRuleContext, invokin
 func (s *RootContext) GetParser() antlr.Parser { return s.parser }
 
 func (s *RootContext) EOF() antlr.TerminalNode {
-	return s.GetToken(CqlParserEOF, 0)
+	return s.GetToken(CQLParserEOF, 0)
 }
 
 func (s *RootContext) Cqls() ICqlsContext {
@@ -1788,7 +1788,7 @@ func (s *RootContext) Cqls() ICqlsContext {
 }
 
 func (s *RootContext) MINUSMINUS() antlr.TerminalNode {
-	return s.GetToken(CqlParserMINUSMINUS, 0)
+	return s.GetToken(CQLParserMINUSMINUS, 0)
 }
 
 func (s *RootContext) GetRuleContext() antlr.RuleContext {
@@ -1800,20 +1800,20 @@ func (s *RootContext) ToStringTree(ruleNames []string, recog antlr.Recognizer) s
 }
 
 func (s *RootContext) EnterRule(listener antlr.ParseTreeListener) {
-	if listenerT, ok := listener.(CqlParserListener); ok {
+	if listenerT, ok := listener.(CQLParserListener); ok {
 		listenerT.EnterRoot(s)
 	}
 }
 
 func (s *RootContext) ExitRule(listener antlr.ParseTreeListener) {
-	if listenerT, ok := listener.(CqlParserListener); ok {
+	if listenerT, ok := listener.(CQLParserListener); ok {
 		listenerT.ExitRoot(s)
 	}
 }
 
-func (p *CqlParser) Root() (localctx IRootContext) {
+func (p *CQLParser) Root() (localctx IRootContext) {
 	localctx = NewRootContext(p, p.GetParserRuleContext(), p.GetState())
-	p.EnterRule(localctx, 0, CqlParserRULE_root)
+	p.EnterRule(localctx, 0, CQLParserRULE_root)
 	var _la int
 
 	p.EnterOuterAlt(localctx, 1)
@@ -1838,10 +1838,10 @@ func (p *CqlParser) Root() (localctx IRootContext) {
 	}
 	_la = p.GetTokenStream().LA(1)
 
-	if _la == CqlParserMINUSMINUS {
+	if _la == CQLParserMINUSMINUS {
 		{
 			p.SetState(557)
-			p.Match(CqlParserMINUSMINUS)
+			p.Match(CQLParserMINUSMINUS)
 			if p.HasError() {
 				// Recognition error - abort rule
 				goto errorExit
@@ -1851,7 +1851,7 @@ func (p *CqlParser) Root() (localctx IRootContext) {
 	}
 	{
 		p.SetState(560)
-		p.Match(CqlParserEOF)
+		p.Match(CQLParserEOF)
 		if p.HasError() {
 			// Recognition error - abort rule
 			goto errorExit
@@ -1900,13 +1900,13 @@ type CqlsContext struct {
 func NewEmptyCqlsContext() *CqlsContext {
 	var p = new(CqlsContext)
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
-	p.RuleIndex = CqlParserRULE_cqls
+	p.RuleIndex = CQLParserRULE_cqls
 	return p
 }
 
 func InitEmptyCqlsContext(p *CqlsContext) {
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
-	p.RuleIndex = CqlParserRULE_cqls
+	p.RuleIndex = CQLParserRULE_cqls
 }
 
 func (*CqlsContext) IsCqlsContext() {}
@@ -1917,7 +1917,7 @@ func NewCqlsContext(parser antlr.Parser, parent antlr.ParserRuleContext, invokin
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, parent, invokingState)
 
 	p.parser = parser
-	p.RuleIndex = CqlParserRULE_cqls
+	p.RuleIndex = CQLParserRULE_cqls
 
 	return p
 }
@@ -2048,11 +2048,11 @@ func (s *CqlsContext) StatementSeparator(i int) IStatementSeparatorContext {
 }
 
 func (s *CqlsContext) AllMINUSMINUS() []antlr.TerminalNode {
-	return s.GetTokens(CqlParserMINUSMINUS)
+	return s.GetTokens(CQLParserMINUSMINUS)
 }
 
 func (s *CqlsContext) MINUSMINUS(i int) antlr.TerminalNode {
-	return s.GetToken(CqlParserMINUSMINUS, i)
+	return s.GetToken(CQLParserMINUSMINUS, i)
 }
 
 func (s *CqlsContext) GetRuleContext() antlr.RuleContext {
@@ -2064,20 +2064,20 @@ func (s *CqlsContext) ToStringTree(ruleNames []string, recog antlr.Recognizer) s
 }
 
 func (s *CqlsContext) EnterRule(listener antlr.ParseTreeListener) {
-	if listenerT, ok := listener.(CqlParserListener); ok {
+	if listenerT, ok := listener.(CQLParserListener); ok {
 		listenerT.EnterCqls(s)
 	}
 }
 
 func (s *CqlsContext) ExitRule(listener antlr.ParseTreeListener) {
-	if listenerT, ok := listener.(CqlParserListener); ok {
+	if listenerT, ok := listener.(CQLParserListener); ok {
 		listenerT.ExitCqls(s)
 	}
 }
 
-func (p *CqlParser) Cqls() (localctx ICqlsContext) {
+func (p *CQLParser) Cqls() (localctx ICqlsContext) {
 	localctx = NewCqlsContext(p, p.GetParserRuleContext(), p.GetState())
-	p.EnterRule(localctx, 2, CqlParserRULE_cqls)
+	p.EnterRule(localctx, 2, CQLParserRULE_cqls)
 	var _la int
 
 	var _alt int
@@ -2101,7 +2101,7 @@ func (p *CqlParser) Cqls() (localctx ICqlsContext) {
 			}
 
 			switch p.GetTokenStream().LA(1) {
-			case CqlParserK_ALTER, CqlParserK_APPLY, CqlParserK_BEGIN, CqlParserK_CREATE, CqlParserK_DELETE, CqlParserK_DROP, CqlParserK_GRANT, CqlParserK_INSERT, CqlParserK_REVOKE, CqlParserK_SELECT, CqlParserK_TRUNCATE, CqlParserK_UPDATE, CqlParserK_USE, CqlParserK_LIST:
+			case CQLParserK_ALTER, CQLParserK_APPLY, CQLParserK_BEGIN, CQLParserK_CREATE, CQLParserK_DELETE, CQLParserK_DROP, CQLParserK_GRANT, CQLParserK_INSERT, CQLParserK_REVOKE, CQLParserK_SELECT, CQLParserK_TRUNCATE, CQLParserK_UPDATE, CQLParserK_USE, CQLParserK_LIST:
 				{
 					p.SetState(562)
 					p.Cql()
@@ -2113,10 +2113,10 @@ func (p *CqlParser) Cqls() (localctx ICqlsContext) {
 				}
 				_la = p.GetTokenStream().LA(1)
 
-				if _la == CqlParserMINUSMINUS {
+				if _la == CQLParserMINUSMINUS {
 					{
 						p.SetState(563)
-						p.Match(CqlParserMINUSMINUS)
+						p.Match(CQLParserMINUSMINUS)
 						if p.HasError() {
 							// Recognition error - abort rule
 							goto errorExit
@@ -2129,7 +2129,7 @@ func (p *CqlParser) Cqls() (localctx ICqlsContext) {
 					p.StatementSeparator()
 				}
 
-			case CqlParserSEMI:
+			case CQLParserSEMI:
 				{
 					p.SetState(568)
 					p.Empty_()
@@ -2158,7 +2158,7 @@ func (p *CqlParser) Cqls() (localctx ICqlsContext) {
 	}
 
 	switch p.GetTokenStream().LA(1) {
-	case CqlParserK_ALTER, CqlParserK_APPLY, CqlParserK_BEGIN, CqlParserK_CREATE, CqlParserK_DELETE, CqlParserK_DROP, CqlParserK_GRANT, CqlParserK_INSERT, CqlParserK_REVOKE, CqlParserK_SELECT, CqlParserK_TRUNCATE, CqlParserK_UPDATE, CqlParserK_USE, CqlParserK_LIST:
+	case CQLParserK_ALTER, CQLParserK_APPLY, CQLParserK_BEGIN, CQLParserK_CREATE, CQLParserK_DELETE, CQLParserK_DROP, CQLParserK_GRANT, CQLParserK_INSERT, CQLParserK_REVOKE, CQLParserK_SELECT, CQLParserK_TRUNCATE, CQLParserK_UPDATE, CQLParserK_USE, CQLParserK_LIST:
 		{
 			p.SetState(574)
 			p.Cql()
@@ -2174,10 +2174,10 @@ func (p *CqlParser) Cqls() (localctx ICqlsContext) {
 			}
 			_la = p.GetTokenStream().LA(1)
 
-			if _la == CqlParserMINUSMINUS {
+			if _la == CQLParserMINUSMINUS {
 				{
 					p.SetState(575)
-					p.Match(CqlParserMINUSMINUS)
+					p.Match(CQLParserMINUSMINUS)
 					if p.HasError() {
 						// Recognition error - abort rule
 						goto errorExit
@@ -2194,7 +2194,7 @@ func (p *CqlParser) Cqls() (localctx ICqlsContext) {
 			goto errorExit
 		}
 
-	case CqlParserSEMI:
+	case CQLParserSEMI:
 		{
 			p.SetState(581)
 			p.Empty_()
@@ -2240,13 +2240,13 @@ type StatementSeparatorContext struct {
 func NewEmptyStatementSeparatorContext() *StatementSeparatorContext {
 	var p = new(StatementSeparatorContext)
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
-	p.RuleIndex = CqlParserRULE_statementSeparator
+	p.RuleIndex = CQLParserRULE_statementSeparator
 	return p
 }
 
 func InitEmptyStatementSeparatorContext(p *StatementSeparatorContext) {
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
-	p.RuleIndex = CqlParserRULE_statementSeparator
+	p.RuleIndex = CQLParserRULE_statementSeparator
 }
 
 func (*StatementSeparatorContext) IsStatementSeparatorContext() {}
@@ -2257,7 +2257,7 @@ func NewStatementSeparatorContext(parser antlr.Parser, parent antlr.ParserRuleCo
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, parent, invokingState)
 
 	p.parser = parser
-	p.RuleIndex = CqlParserRULE_statementSeparator
+	p.RuleIndex = CQLParserRULE_statementSeparator
 
 	return p
 }
@@ -2265,7 +2265,7 @@ func NewStatementSeparatorContext(parser antlr.Parser, parent antlr.ParserRuleCo
 func (s *StatementSeparatorContext) GetParser() antlr.Parser { return s.parser }
 
 func (s *StatementSeparatorContext) SEMI() antlr.TerminalNode {
-	return s.GetToken(CqlParserSEMI, 0)
+	return s.GetToken(CQLParserSEMI, 0)
 }
 
 func (s *StatementSeparatorContext) GetRuleContext() antlr.RuleContext {
@@ -2277,24 +2277,24 @@ func (s *StatementSeparatorContext) ToStringTree(ruleNames []string, recog antlr
 }
 
 func (s *StatementSeparatorContext) EnterRule(listener antlr.ParseTreeListener) {
-	if listenerT, ok := listener.(CqlParserListener); ok {
+	if listenerT, ok := listener.(CQLParserListener); ok {
 		listenerT.EnterStatementSeparator(s)
 	}
 }
 
 func (s *StatementSeparatorContext) ExitRule(listener antlr.ParseTreeListener) {
-	if listenerT, ok := listener.(CqlParserListener); ok {
+	if listenerT, ok := listener.(CQLParserListener); ok {
 		listenerT.ExitStatementSeparator(s)
 	}
 }
 
-func (p *CqlParser) StatementSeparator() (localctx IStatementSeparatorContext) {
+func (p *CQLParser) StatementSeparator() (localctx IStatementSeparatorContext) {
 	localctx = NewStatementSeparatorContext(p, p.GetParserRuleContext(), p.GetState())
-	p.EnterRule(localctx, 4, CqlParserRULE_statementSeparator)
+	p.EnterRule(localctx, 4, CQLParserRULE_statementSeparator)
 	p.EnterOuterAlt(localctx, 1)
 	{
 		p.SetState(584)
-		p.Match(CqlParserSEMI)
+		p.Match(CQLParserSEMI)
 		if p.HasError() {
 			// Recognition error - abort rule
 			goto errorExit
@@ -2336,13 +2336,13 @@ type Empty_Context struct {
 func NewEmptyEmpty_Context() *Empty_Context {
 	var p = new(Empty_Context)
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
-	p.RuleIndex = CqlParserRULE_empty_
+	p.RuleIndex = CQLParserRULE_empty_
 	return p
 }
 
 func InitEmptyEmpty_Context(p *Empty_Context) {
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
-	p.RuleIndex = CqlParserRULE_empty_
+	p.RuleIndex = CQLParserRULE_empty_
 }
 
 func (*Empty_Context) IsEmpty_Context() {}
@@ -2353,7 +2353,7 @@ func NewEmpty_Context(parser antlr.Parser, parent antlr.ParserRuleContext, invok
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, parent, invokingState)
 
 	p.parser = parser
-	p.RuleIndex = CqlParserRULE_empty_
+	p.RuleIndex = CQLParserRULE_empty_
 
 	return p
 }
@@ -2385,20 +2385,20 @@ func (s *Empty_Context) ToStringTree(ruleNames []string, recog antlr.Recognizer)
 }
 
 func (s *Empty_Context) EnterRule(listener antlr.ParseTreeListener) {
-	if listenerT, ok := listener.(CqlParserListener); ok {
+	if listenerT, ok := listener.(CQLParserListener); ok {
 		listenerT.EnterEmpty_(s)
 	}
 }
 
 func (s *Empty_Context) ExitRule(listener antlr.ParseTreeListener) {
-	if listenerT, ok := listener.(CqlParserListener); ok {
+	if listenerT, ok := listener.(CQLParserListener); ok {
 		listenerT.ExitEmpty_(s)
 	}
 }
 
-func (p *CqlParser) Empty_() (localctx IEmpty_Context) {
+func (p *CQLParser) Empty_() (localctx IEmpty_Context) {
 	localctx = NewEmpty_Context(p, p.GetParserRuleContext(), p.GetState())
-	p.EnterRule(localctx, 6, CqlParserRULE_empty_)
+	p.EnterRule(localctx, 6, CQLParserRULE_empty_)
 	p.EnterOuterAlt(localctx, 1)
 	{
 		p.SetState(586)
@@ -2476,13 +2476,13 @@ type CqlContext struct {
 func NewEmptyCqlContext() *CqlContext {
 	var p = new(CqlContext)
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
-	p.RuleIndex = CqlParserRULE_cql
+	p.RuleIndex = CQLParserRULE_cql
 	return p
 }
 
 func InitEmptyCqlContext(p *CqlContext) {
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
-	p.RuleIndex = CqlParserRULE_cql
+	p.RuleIndex = CQLParserRULE_cql
 }
 
 func (*CqlContext) IsCqlContext() {}
@@ -2493,7 +2493,7 @@ func NewCqlContext(parser antlr.Parser, parent antlr.ParserRuleContext, invoking
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, parent, invokingState)
 
 	p.parser = parser
-	p.RuleIndex = CqlParserRULE_cql
+	p.RuleIndex = CQLParserRULE_cql
 
 	return p
 }
@@ -3101,20 +3101,20 @@ func (s *CqlContext) ToStringTree(ruleNames []string, recog antlr.Recognizer) st
 }
 
 func (s *CqlContext) EnterRule(listener antlr.ParseTreeListener) {
-	if listenerT, ok := listener.(CqlParserListener); ok {
+	if listenerT, ok := listener.(CQLParserListener); ok {
 		listenerT.EnterCql(s)
 	}
 }
 
 func (s *CqlContext) ExitRule(listener antlr.ParseTreeListener) {
-	if listenerT, ok := listener.(CqlParserListener); ok {
+	if listenerT, ok := listener.(CQLParserListener); ok {
 		listenerT.ExitCql(s)
 	}
 }
 
-func (p *CqlParser) Cql() (localctx ICqlContext) {
+func (p *CQLParser) Cql() (localctx ICqlContext) {
 	localctx = NewCqlContext(p, p.GetParserRuleContext(), p.GetState())
-	p.EnterRule(localctx, 8, CqlParserRULE_cql)
+	p.EnterRule(localctx, 8, CQLParserRULE_cql)
 	p.SetState(625)
 	p.GetErrorHandler().Sync(p)
 	if p.HasError() {
@@ -3425,13 +3425,13 @@ type RevokeContext struct {
 func NewEmptyRevokeContext() *RevokeContext {
 	var p = new(RevokeContext)
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
-	p.RuleIndex = CqlParserRULE_revoke
+	p.RuleIndex = CQLParserRULE_revoke
 	return p
 }
 
 func InitEmptyRevokeContext(p *RevokeContext) {
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
-	p.RuleIndex = CqlParserRULE_revoke
+	p.RuleIndex = CQLParserRULE_revoke
 }
 
 func (*RevokeContext) IsRevokeContext() {}
@@ -3442,7 +3442,7 @@ func NewRevokeContext(parser antlr.Parser, parent antlr.ParserRuleContext, invok
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, parent, invokingState)
 
 	p.parser = parser
-	p.RuleIndex = CqlParserRULE_revoke
+	p.RuleIndex = CQLParserRULE_revoke
 
 	return p
 }
@@ -3554,20 +3554,20 @@ func (s *RevokeContext) ToStringTree(ruleNames []string, recog antlr.Recognizer)
 }
 
 func (s *RevokeContext) EnterRule(listener antlr.ParseTreeListener) {
-	if listenerT, ok := listener.(CqlParserListener); ok {
+	if listenerT, ok := listener.(CQLParserListener); ok {
 		listenerT.EnterRevoke(s)
 	}
 }
 
 func (s *RevokeContext) ExitRule(listener antlr.ParseTreeListener) {
-	if listenerT, ok := listener.(CqlParserListener); ok {
+	if listenerT, ok := listener.(CQLParserListener); ok {
 		listenerT.ExitRevoke(s)
 	}
 }
 
-func (p *CqlParser) Revoke() (localctx IRevokeContext) {
+func (p *CQLParser) Revoke() (localctx IRevokeContext) {
 	localctx = NewRevokeContext(p, p.GetParserRuleContext(), p.GetState())
-	p.EnterRule(localctx, 10, CqlParserRULE_revoke)
+	p.EnterRule(localctx, 10, CQLParserRULE_revoke)
 	p.EnterOuterAlt(localctx, 1)
 	{
 		p.SetState(627)
@@ -3633,13 +3633,13 @@ type ListRolesContext struct {
 func NewEmptyListRolesContext() *ListRolesContext {
 	var p = new(ListRolesContext)
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
-	p.RuleIndex = CqlParserRULE_listRoles
+	p.RuleIndex = CQLParserRULE_listRoles
 	return p
 }
 
 func InitEmptyListRolesContext(p *ListRolesContext) {
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
-	p.RuleIndex = CqlParserRULE_listRoles
+	p.RuleIndex = CQLParserRULE_listRoles
 }
 
 func (*ListRolesContext) IsListRolesContext() {}
@@ -3650,7 +3650,7 @@ func NewListRolesContext(parser antlr.Parser, parent antlr.ParserRuleContext, in
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, parent, invokingState)
 
 	p.parser = parser
-	p.RuleIndex = CqlParserRULE_listRoles
+	p.RuleIndex = CQLParserRULE_listRoles
 
 	return p
 }
@@ -3746,20 +3746,20 @@ func (s *ListRolesContext) ToStringTree(ruleNames []string, recog antlr.Recogniz
 }
 
 func (s *ListRolesContext) EnterRule(listener antlr.ParseTreeListener) {
-	if listenerT, ok := listener.(CqlParserListener); ok {
+	if listenerT, ok := listener.(CQLParserListener); ok {
 		listenerT.EnterListRoles(s)
 	}
 }
 
 func (s *ListRolesContext) ExitRule(listener antlr.ParseTreeListener) {
-	if listenerT, ok := listener.(CqlParserListener); ok {
+	if listenerT, ok := listener.(CQLParserListener); ok {
 		listenerT.ExitListRoles(s)
 	}
 }
 
-func (p *CqlParser) ListRoles() (localctx IListRolesContext) {
+func (p *CQLParser) ListRoles() (localctx IListRolesContext) {
 	localctx = NewListRolesContext(p, p.GetParserRuleContext(), p.GetState())
-	p.EnterRule(localctx, 12, CqlParserRULE_listRoles)
+	p.EnterRule(localctx, 12, CQLParserRULE_listRoles)
 	var _la int
 
 	p.EnterOuterAlt(localctx, 1)
@@ -3778,7 +3778,7 @@ func (p *CqlParser) ListRoles() (localctx IListRolesContext) {
 	}
 	_la = p.GetTokenStream().LA(1)
 
-	if _la == CqlParserK_OF {
+	if _la == CQLParserK_OF {
 		{
 			p.SetState(636)
 			p.KwOf()
@@ -3796,7 +3796,7 @@ func (p *CqlParser) ListRoles() (localctx IListRolesContext) {
 	}
 	_la = p.GetTokenStream().LA(1)
 
-	if _la == CqlParserK_NORECURSIVE {
+	if _la == CQLParserK_NORECURSIVE {
 		{
 			p.SetState(641)
 			p.KwNorecursive()
@@ -3844,13 +3844,13 @@ type ListPermissionsContext struct {
 func NewEmptyListPermissionsContext() *ListPermissionsContext {
 	var p = new(ListPermissionsContext)
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
-	p.RuleIndex = CqlParserRULE_listPermissions
+	p.RuleIndex = CQLParserRULE_listPermissions
 	return p
 }
 
 func InitEmptyListPermissionsContext(p *ListPermissionsContext) {
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
-	p.RuleIndex = CqlParserRULE_listPermissions
+	p.RuleIndex = CQLParserRULE_listPermissions
 }
 
 func (*ListPermissionsContext) IsListPermissionsContext() {}
@@ -3861,7 +3861,7 @@ func NewListPermissionsContext(parser antlr.Parser, parent antlr.ParserRuleConte
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, parent, invokingState)
 
 	p.parser = parser
-	p.RuleIndex = CqlParserRULE_listPermissions
+	p.RuleIndex = CQLParserRULE_listPermissions
 
 	return p
 }
@@ -3973,20 +3973,20 @@ func (s *ListPermissionsContext) ToStringTree(ruleNames []string, recog antlr.Re
 }
 
 func (s *ListPermissionsContext) EnterRule(listener antlr.ParseTreeListener) {
-	if listenerT, ok := listener.(CqlParserListener); ok {
+	if listenerT, ok := listener.(CQLParserListener); ok {
 		listenerT.EnterListPermissions(s)
 	}
 }
 
 func (s *ListPermissionsContext) ExitRule(listener antlr.ParseTreeListener) {
-	if listenerT, ok := listener.(CqlParserListener); ok {
+	if listenerT, ok := listener.(CQLParserListener); ok {
 		listenerT.ExitListPermissions(s)
 	}
 }
 
-func (p *CqlParser) ListPermissions() (localctx IListPermissionsContext) {
+func (p *CQLParser) ListPermissions() (localctx IListPermissionsContext) {
 	localctx = NewListPermissionsContext(p, p.GetParserRuleContext(), p.GetState())
-	p.EnterRule(localctx, 14, CqlParserRULE_listPermissions)
+	p.EnterRule(localctx, 14, CQLParserRULE_listPermissions)
 	var _la int
 
 	p.EnterOuterAlt(localctx, 1)
@@ -4005,7 +4005,7 @@ func (p *CqlParser) ListPermissions() (localctx IListPermissionsContext) {
 	}
 	_la = p.GetTokenStream().LA(1)
 
-	if _la == CqlParserK_ON {
+	if _la == CQLParserK_ON {
 		{
 			p.SetState(646)
 			p.KwOn()
@@ -4023,7 +4023,7 @@ func (p *CqlParser) ListPermissions() (localctx IListPermissionsContext) {
 	}
 	_la = p.GetTokenStream().LA(1)
 
-	if _la == CqlParserK_OF {
+	if _la == CQLParserK_OF {
 		{
 			p.SetState(651)
 			p.KwOf()
@@ -4075,13 +4075,13 @@ type GrantContext struct {
 func NewEmptyGrantContext() *GrantContext {
 	var p = new(GrantContext)
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
-	p.RuleIndex = CqlParserRULE_grant
+	p.RuleIndex = CQLParserRULE_grant
 	return p
 }
 
 func InitEmptyGrantContext(p *GrantContext) {
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
-	p.RuleIndex = CqlParserRULE_grant
+	p.RuleIndex = CQLParserRULE_grant
 }
 
 func (*GrantContext) IsGrantContext() {}
@@ -4092,7 +4092,7 @@ func NewGrantContext(parser antlr.Parser, parent antlr.ParserRuleContext, invoki
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, parent, invokingState)
 
 	p.parser = parser
-	p.RuleIndex = CqlParserRULE_grant
+	p.RuleIndex = CQLParserRULE_grant
 
 	return p
 }
@@ -4204,20 +4204,20 @@ func (s *GrantContext) ToStringTree(ruleNames []string, recog antlr.Recognizer) 
 }
 
 func (s *GrantContext) EnterRule(listener antlr.ParseTreeListener) {
-	if listenerT, ok := listener.(CqlParserListener); ok {
+	if listenerT, ok := listener.(CQLParserListener); ok {
 		listenerT.EnterGrant(s)
 	}
 }
 
 func (s *GrantContext) ExitRule(listener antlr.ParseTreeListener) {
-	if listenerT, ok := listener.(CqlParserListener); ok {
+	if listenerT, ok := listener.(CQLParserListener); ok {
 		listenerT.ExitGrant(s)
 	}
 }
 
-func (p *CqlParser) Grant() (localctx IGrantContext) {
+func (p *CQLParser) Grant() (localctx IGrantContext) {
 	localctx = NewGrantContext(p, p.GetParserRuleContext(), p.GetState())
-	p.EnterRule(localctx, 16, CqlParserRULE_grant)
+	p.EnterRule(localctx, 16, CQLParserRULE_grant)
 	p.EnterOuterAlt(localctx, 1)
 	{
 		p.SetState(656)
@@ -4288,13 +4288,13 @@ type PriviledgeContext struct {
 func NewEmptyPriviledgeContext() *PriviledgeContext {
 	var p = new(PriviledgeContext)
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
-	p.RuleIndex = CqlParserRULE_priviledge
+	p.RuleIndex = CQLParserRULE_priviledge
 	return p
 }
 
 func InitEmptyPriviledgeContext(p *PriviledgeContext) {
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
-	p.RuleIndex = CqlParserRULE_priviledge
+	p.RuleIndex = CQLParserRULE_priviledge
 }
 
 func (*PriviledgeContext) IsPriviledgeContext() {}
@@ -4305,7 +4305,7 @@ func NewPriviledgeContext(parser antlr.Parser, parent antlr.ParserRuleContext, i
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, parent, invokingState)
 
 	p.parser = parser
-	p.RuleIndex = CqlParserRULE_priviledge
+	p.RuleIndex = CQLParserRULE_priviledge
 
 	return p
 }
@@ -4481,20 +4481,20 @@ func (s *PriviledgeContext) ToStringTree(ruleNames []string, recog antlr.Recogni
 }
 
 func (s *PriviledgeContext) EnterRule(listener antlr.ParseTreeListener) {
-	if listenerT, ok := listener.(CqlParserListener); ok {
+	if listenerT, ok := listener.(CQLParserListener); ok {
 		listenerT.EnterPriviledge(s)
 	}
 }
 
 func (s *PriviledgeContext) ExitRule(listener antlr.ParseTreeListener) {
-	if listenerT, ok := listener.(CqlParserListener); ok {
+	if listenerT, ok := listener.(CQLParserListener); ok {
 		listenerT.ExitPriviledge(s)
 	}
 }
 
-func (p *CqlParser) Priviledge() (localctx IPriviledgeContext) {
+func (p *CQLParser) Priviledge() (localctx IPriviledgeContext) {
 	localctx = NewPriviledgeContext(p, p.GetParserRuleContext(), p.GetState())
-	p.EnterRule(localctx, 18, CqlParserRULE_priviledge)
+	p.EnterRule(localctx, 18, CQLParserRULE_priviledge)
 	p.SetState(675)
 	p.GetErrorHandler().Sync(p)
 	if p.HasError() {
@@ -4502,7 +4502,7 @@ func (p *CqlParser) Priviledge() (localctx IPriviledgeContext) {
 	}
 
 	switch p.GetTokenStream().LA(1) {
-	case CqlParserK_ALL:
+	case CQLParserK_ALL:
 		p.EnterOuterAlt(localctx, 1)
 		p.SetState(665)
 		p.GetErrorHandler().Sync(p)
@@ -4527,56 +4527,56 @@ func (p *CqlParser) Priviledge() (localctx IPriviledgeContext) {
 			goto errorExit
 		}
 
-	case CqlParserK_ALTER:
+	case CQLParserK_ALTER:
 		p.EnterOuterAlt(localctx, 2)
 		{
 			p.SetState(667)
 			p.KwAlter()
 		}
 
-	case CqlParserK_AUTHORIZE:
+	case CQLParserK_AUTHORIZE:
 		p.EnterOuterAlt(localctx, 3)
 		{
 			p.SetState(668)
 			p.KwAuthorize()
 		}
 
-	case CqlParserK_DESCRIBE:
+	case CQLParserK_DESCRIBE:
 		p.EnterOuterAlt(localctx, 4)
 		{
 			p.SetState(669)
 			p.KwDescibe()
 		}
 
-	case CqlParserK_EXECUTE:
+	case CQLParserK_EXECUTE:
 		p.EnterOuterAlt(localctx, 5)
 		{
 			p.SetState(670)
 			p.KwExecute()
 		}
 
-	case CqlParserK_CREATE:
+	case CQLParserK_CREATE:
 		p.EnterOuterAlt(localctx, 6)
 		{
 			p.SetState(671)
 			p.KwCreate()
 		}
 
-	case CqlParserK_DROP:
+	case CQLParserK_DROP:
 		p.EnterOuterAlt(localctx, 7)
 		{
 			p.SetState(672)
 			p.KwDrop()
 		}
 
-	case CqlParserK_MODIFY:
+	case CQLParserK_MODIFY:
 		p.EnterOuterAlt(localctx, 8)
 		{
 			p.SetState(673)
 			p.KwModify()
 		}
 
-	case CqlParserK_SELECT:
+	case CQLParserK_SELECT:
 		p.EnterOuterAlt(localctx, 9)
 		{
 			p.SetState(674)
@@ -4636,13 +4636,13 @@ type ResourceContext struct {
 func NewEmptyResourceContext() *ResourceContext {
 	var p = new(ResourceContext)
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
-	p.RuleIndex = CqlParserRULE_resource
+	p.RuleIndex = CQLParserRULE_resource
 	return p
 }
 
 func InitEmptyResourceContext(p *ResourceContext) {
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
-	p.RuleIndex = CqlParserRULE_resource
+	p.RuleIndex = CQLParserRULE_resource
 }
 
 func (*ResourceContext) IsResourceContext() {}
@@ -4653,7 +4653,7 @@ func NewResourceContext(parser antlr.Parser, parent antlr.ParserRuleContext, inv
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, parent, invokingState)
 
 	p.parser = parser
-	p.RuleIndex = CqlParserRULE_resource
+	p.RuleIndex = CQLParserRULE_resource
 
 	return p
 }
@@ -4773,7 +4773,7 @@ func (s *ResourceContext) Function_() IFunction_Context {
 }
 
 func (s *ResourceContext) DOT() antlr.TerminalNode {
-	return s.GetToken(CqlParserDOT, 0)
+	return s.GetToken(CQLParserDOT, 0)
 }
 
 func (s *ResourceContext) KwKeyspaces() IKwKeyspacesContext {
@@ -4881,20 +4881,20 @@ func (s *ResourceContext) ToStringTree(ruleNames []string, recog antlr.Recognize
 }
 
 func (s *ResourceContext) EnterRule(listener antlr.ParseTreeListener) {
-	if listenerT, ok := listener.(CqlParserListener); ok {
+	if listenerT, ok := listener.(CQLParserListener); ok {
 		listenerT.EnterResource(s)
 	}
 }
 
 func (s *ResourceContext) ExitRule(listener antlr.ParseTreeListener) {
-	if listenerT, ok := listener.(CqlParserListener); ok {
+	if listenerT, ok := listener.(CQLParserListener); ok {
 		listenerT.ExitResource(s)
 	}
 }
 
-func (p *CqlParser) Resource() (localctx IResourceContext) {
+func (p *CQLParser) Resource() (localctx IResourceContext) {
 	localctx = NewResourceContext(p, p.GetParserRuleContext(), p.GetState())
-	p.EnterRule(localctx, 20, CqlParserRULE_resource)
+	p.EnterRule(localctx, 20, CQLParserRULE_resource)
 	var _la int
 
 	p.SetState(715)
@@ -4954,7 +4954,7 @@ func (p *CqlParser) Resource() (localctx IResourceContext) {
 			}
 			{
 				p.SetState(688)
-				p.Match(CqlParserDOT)
+				p.Match(CQLParserDOT)
 				if p.HasError() {
 					// Recognition error - abort rule
 					goto errorExit
@@ -5000,7 +5000,7 @@ func (p *CqlParser) Resource() (localctx IResourceContext) {
 		}
 		_la = p.GetTokenStream().LA(1)
 
-		if _la == CqlParserK_TABLE {
+		if _la == CQLParserK_TABLE {
 			{
 				p.SetState(700)
 				p.KwTable()
@@ -5017,7 +5017,7 @@ func (p *CqlParser) Resource() (localctx IResourceContext) {
 			}
 			{
 				p.SetState(704)
-				p.Match(CqlParserDOT)
+				p.Match(CQLParserDOT)
 				if p.HasError() {
 					// Recognition error - abort rule
 					goto errorExit
@@ -5101,13 +5101,13 @@ type CreateUserContext struct {
 func NewEmptyCreateUserContext() *CreateUserContext {
 	var p = new(CreateUserContext)
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
-	p.RuleIndex = CqlParserRULE_createUser
+	p.RuleIndex = CQLParserRULE_createUser
 	return p
 }
 
 func InitEmptyCreateUserContext(p *CreateUserContext) {
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
-	p.RuleIndex = CqlParserRULE_createUser
+	p.RuleIndex = CQLParserRULE_createUser
 }
 
 func (*CreateUserContext) IsCreateUserContext() {}
@@ -5118,7 +5118,7 @@ func NewCreateUserContext(parser antlr.Parser, parent antlr.ParserRuleContext, i
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, parent, invokingState)
 
 	p.parser = parser
-	p.RuleIndex = CqlParserRULE_createUser
+	p.RuleIndex = CQLParserRULE_createUser
 
 	return p
 }
@@ -5278,20 +5278,20 @@ func (s *CreateUserContext) ToStringTree(ruleNames []string, recog antlr.Recogni
 }
 
 func (s *CreateUserContext) EnterRule(listener antlr.ParseTreeListener) {
-	if listenerT, ok := listener.(CqlParserListener); ok {
+	if listenerT, ok := listener.(CQLParserListener); ok {
 		listenerT.EnterCreateUser(s)
 	}
 }
 
 func (s *CreateUserContext) ExitRule(listener antlr.ParseTreeListener) {
-	if listenerT, ok := listener.(CqlParserListener); ok {
+	if listenerT, ok := listener.(CQLParserListener); ok {
 		listenerT.ExitCreateUser(s)
 	}
 }
 
-func (p *CqlParser) CreateUser() (localctx ICreateUserContext) {
+func (p *CQLParser) CreateUser() (localctx ICreateUserContext) {
 	localctx = NewCreateUserContext(p, p.GetParserRuleContext(), p.GetState())
-	p.EnterRule(localctx, 22, CqlParserRULE_createUser)
+	p.EnterRule(localctx, 22, CQLParserRULE_createUser)
 	var _la int
 
 	p.EnterOuterAlt(localctx, 1)
@@ -5310,7 +5310,7 @@ func (p *CqlParser) CreateUser() (localctx ICreateUserContext) {
 	}
 	_la = p.GetTokenStream().LA(1)
 
-	if _la == CqlParserK_IF {
+	if _la == CQLParserK_IF {
 		{
 			p.SetState(719)
 			p.IfNotExist()
@@ -5339,19 +5339,19 @@ func (p *CqlParser) CreateUser() (localctx ICreateUserContext) {
 		goto errorExit
 	}
 	switch p.GetTokenStream().LA(1) {
-	case CqlParserK_SUPERUSER:
+	case CQLParserK_SUPERUSER:
 		{
 			p.SetState(726)
 			p.KwSuperuser()
 		}
 
-	case CqlParserK_NOSUPERUSER:
+	case CQLParserK_NOSUPERUSER:
 		{
 			p.SetState(727)
 			p.KwNosuperuser()
 		}
 
-	case CqlParserEOF, CqlParserSEMI, CqlParserMINUSMINUS:
+	case CQLParserEOF, CQLParserSEMI, CQLParserMINUSMINUS:
 
 	default:
 	}
@@ -5395,13 +5395,13 @@ type CreateRoleContext struct {
 func NewEmptyCreateRoleContext() *CreateRoleContext {
 	var p = new(CreateRoleContext)
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
-	p.RuleIndex = CqlParserRULE_createRole
+	p.RuleIndex = CQLParserRULE_createRole
 	return p
 }
 
 func InitEmptyCreateRoleContext(p *CreateRoleContext) {
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
-	p.RuleIndex = CqlParserRULE_createRole
+	p.RuleIndex = CQLParserRULE_createRole
 }
 
 func (*CreateRoleContext) IsCreateRoleContext() {}
@@ -5412,7 +5412,7 @@ func NewCreateRoleContext(parser antlr.Parser, parent antlr.ParserRuleContext, i
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, parent, invokingState)
 
 	p.parser = parser
-	p.RuleIndex = CqlParserRULE_createRole
+	p.RuleIndex = CQLParserRULE_createRole
 
 	return p
 }
@@ -5508,20 +5508,20 @@ func (s *CreateRoleContext) ToStringTree(ruleNames []string, recog antlr.Recogni
 }
 
 func (s *CreateRoleContext) EnterRule(listener antlr.ParseTreeListener) {
-	if listenerT, ok := listener.(CqlParserListener); ok {
+	if listenerT, ok := listener.(CQLParserListener); ok {
 		listenerT.EnterCreateRole(s)
 	}
 }
 
 func (s *CreateRoleContext) ExitRule(listener antlr.ParseTreeListener) {
-	if listenerT, ok := listener.(CqlParserListener); ok {
+	if listenerT, ok := listener.(CQLParserListener); ok {
 		listenerT.ExitCreateRole(s)
 	}
 }
 
-func (p *CqlParser) CreateRole() (localctx ICreateRoleContext) {
+func (p *CQLParser) CreateRole() (localctx ICreateRoleContext) {
 	localctx = NewCreateRoleContext(p, p.GetParserRuleContext(), p.GetState())
-	p.EnterRule(localctx, 24, CqlParserRULE_createRole)
+	p.EnterRule(localctx, 24, CQLParserRULE_createRole)
 	var _la int
 
 	p.EnterOuterAlt(localctx, 1)
@@ -5540,7 +5540,7 @@ func (p *CqlParser) CreateRole() (localctx ICreateRoleContext) {
 	}
 	_la = p.GetTokenStream().LA(1)
 
-	if _la == CqlParserK_IF {
+	if _la == CQLParserK_IF {
 		{
 			p.SetState(732)
 			p.IfNotExist()
@@ -5558,7 +5558,7 @@ func (p *CqlParser) CreateRole() (localctx ICreateRoleContext) {
 	}
 	_la = p.GetTokenStream().LA(1)
 
-	if _la == CqlParserK_WITH {
+	if _la == CQLParserK_WITH {
 		{
 			p.SetState(736)
 			p.RoleWith()
@@ -5609,13 +5609,13 @@ type CreateTypeContext struct {
 func NewEmptyCreateTypeContext() *CreateTypeContext {
 	var p = new(CreateTypeContext)
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
-	p.RuleIndex = CqlParserRULE_createType
+	p.RuleIndex = CQLParserRULE_createType
 	return p
 }
 
 func InitEmptyCreateTypeContext(p *CreateTypeContext) {
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
-	p.RuleIndex = CqlParserRULE_createType
+	p.RuleIndex = CQLParserRULE_createType
 }
 
 func (*CreateTypeContext) IsCreateTypeContext() {}
@@ -5626,7 +5626,7 @@ func NewCreateTypeContext(parser antlr.Parser, parent antlr.ParserRuleContext, i
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, parent, invokingState)
 
 	p.parser = parser
-	p.RuleIndex = CqlParserRULE_createType
+	p.RuleIndex = CQLParserRULE_createType
 
 	return p
 }
@@ -5762,7 +5762,7 @@ func (s *CreateTypeContext) Keyspace() IKeyspaceContext {
 }
 
 func (s *CreateTypeContext) DOT() antlr.TerminalNode {
-	return s.GetToken(CqlParserDOT, 0)
+	return s.GetToken(CQLParserDOT, 0)
 }
 
 func (s *CreateTypeContext) GetRuleContext() antlr.RuleContext {
@@ -5774,20 +5774,20 @@ func (s *CreateTypeContext) ToStringTree(ruleNames []string, recog antlr.Recogni
 }
 
 func (s *CreateTypeContext) EnterRule(listener antlr.ParseTreeListener) {
-	if listenerT, ok := listener.(CqlParserListener); ok {
+	if listenerT, ok := listener.(CQLParserListener); ok {
 		listenerT.EnterCreateType(s)
 	}
 }
 
 func (s *CreateTypeContext) ExitRule(listener antlr.ParseTreeListener) {
-	if listenerT, ok := listener.(CqlParserListener); ok {
+	if listenerT, ok := listener.(CQLParserListener); ok {
 		listenerT.ExitCreateType(s)
 	}
 }
 
-func (p *CqlParser) CreateType() (localctx ICreateTypeContext) {
+func (p *CQLParser) CreateType() (localctx ICreateTypeContext) {
 	localctx = NewCreateTypeContext(p, p.GetParserRuleContext(), p.GetState())
-	p.EnterRule(localctx, 26, CqlParserRULE_createType)
+	p.EnterRule(localctx, 26, CQLParserRULE_createType)
 	var _la int
 
 	p.EnterOuterAlt(localctx, 1)
@@ -5806,7 +5806,7 @@ func (p *CqlParser) CreateType() (localctx ICreateTypeContext) {
 	}
 	_la = p.GetTokenStream().LA(1)
 
-	if _la == CqlParserK_IF {
+	if _la == CQLParserK_IF {
 		{
 			p.SetState(741)
 			p.IfNotExist()
@@ -5823,7 +5823,7 @@ func (p *CqlParser) CreateType() (localctx ICreateTypeContext) {
 		}
 		{
 			p.SetState(745)
-			p.Match(CqlParserDOT)
+			p.Match(CQLParserDOT)
 			if p.HasError() {
 				// Recognition error - abort rule
 				goto errorExit
@@ -5890,13 +5890,13 @@ type TypeMemberColumnListContext struct {
 func NewEmptyTypeMemberColumnListContext() *TypeMemberColumnListContext {
 	var p = new(TypeMemberColumnListContext)
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
-	p.RuleIndex = CqlParserRULE_typeMemberColumnList
+	p.RuleIndex = CQLParserRULE_typeMemberColumnList
 	return p
 }
 
 func InitEmptyTypeMemberColumnListContext(p *TypeMemberColumnListContext) {
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
-	p.RuleIndex = CqlParserRULE_typeMemberColumnList
+	p.RuleIndex = CQLParserRULE_typeMemberColumnList
 }
 
 func (*TypeMemberColumnListContext) IsTypeMemberColumnListContext() {}
@@ -5907,7 +5907,7 @@ func NewTypeMemberColumnListContext(parser antlr.Parser, parent antlr.ParserRule
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, parent, invokingState)
 
 	p.parser = parser
-	p.RuleIndex = CqlParserRULE_typeMemberColumnList
+	p.RuleIndex = CQLParserRULE_typeMemberColumnList
 
 	return p
 }
@@ -6046,20 +6046,20 @@ func (s *TypeMemberColumnListContext) ToStringTree(ruleNames []string, recog ant
 }
 
 func (s *TypeMemberColumnListContext) EnterRule(listener antlr.ParseTreeListener) {
-	if listenerT, ok := listener.(CqlParserListener); ok {
+	if listenerT, ok := listener.(CQLParserListener); ok {
 		listenerT.EnterTypeMemberColumnList(s)
 	}
 }
 
 func (s *TypeMemberColumnListContext) ExitRule(listener antlr.ParseTreeListener) {
-	if listenerT, ok := listener.(CqlParserListener); ok {
+	if listenerT, ok := listener.(CQLParserListener); ok {
 		listenerT.ExitTypeMemberColumnList(s)
 	}
 }
 
-func (p *CqlParser) TypeMemberColumnList() (localctx ITypeMemberColumnListContext) {
+func (p *CQLParser) TypeMemberColumnList() (localctx ITypeMemberColumnListContext) {
 	localctx = NewTypeMemberColumnListContext(p, p.GetParserRuleContext(), p.GetState())
-	p.EnterRule(localctx, 28, CqlParserRULE_typeMemberColumnList)
+	p.EnterRule(localctx, 28, CQLParserRULE_typeMemberColumnList)
 	var _la int
 
 	p.EnterOuterAlt(localctx, 1)
@@ -6078,7 +6078,7 @@ func (p *CqlParser) TypeMemberColumnList() (localctx ITypeMemberColumnListContex
 	}
 	_la = p.GetTokenStream().LA(1)
 
-	for _la == CqlParserCOMMA {
+	for _la == CQLParserCOMMA {
 		{
 			p.SetState(756)
 			p.SyntaxComma()
@@ -6142,13 +6142,13 @@ type CreateTriggerContext struct {
 func NewEmptyCreateTriggerContext() *CreateTriggerContext {
 	var p = new(CreateTriggerContext)
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
-	p.RuleIndex = CqlParserRULE_createTrigger
+	p.RuleIndex = CQLParserRULE_createTrigger
 	return p
 }
 
 func InitEmptyCreateTriggerContext(p *CreateTriggerContext) {
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
-	p.RuleIndex = CqlParserRULE_createTrigger
+	p.RuleIndex = CQLParserRULE_createTrigger
 }
 
 func (*CreateTriggerContext) IsCreateTriggerContext() {}
@@ -6159,7 +6159,7 @@ func NewCreateTriggerContext(parser antlr.Parser, parent antlr.ParserRuleContext
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, parent, invokingState)
 
 	p.parser = parser
-	p.RuleIndex = CqlParserRULE_createTrigger
+	p.RuleIndex = CQLParserRULE_createTrigger
 
 	return p
 }
@@ -6279,7 +6279,7 @@ func (s *CreateTriggerContext) Keyspace() IKeyspaceContext {
 }
 
 func (s *CreateTriggerContext) DOT() antlr.TerminalNode {
-	return s.GetToken(CqlParserDOT, 0)
+	return s.GetToken(CQLParserDOT, 0)
 }
 
 func (s *CreateTriggerContext) GetRuleContext() antlr.RuleContext {
@@ -6291,20 +6291,20 @@ func (s *CreateTriggerContext) ToStringTree(ruleNames []string, recog antlr.Reco
 }
 
 func (s *CreateTriggerContext) EnterRule(listener antlr.ParseTreeListener) {
-	if listenerT, ok := listener.(CqlParserListener); ok {
+	if listenerT, ok := listener.(CQLParserListener); ok {
 		listenerT.EnterCreateTrigger(s)
 	}
 }
 
 func (s *CreateTriggerContext) ExitRule(listener antlr.ParseTreeListener) {
-	if listenerT, ok := listener.(CqlParserListener); ok {
+	if listenerT, ok := listener.(CQLParserListener); ok {
 		listenerT.ExitCreateTrigger(s)
 	}
 }
 
-func (p *CqlParser) CreateTrigger() (localctx ICreateTriggerContext) {
+func (p *CQLParser) CreateTrigger() (localctx ICreateTriggerContext) {
 	localctx = NewCreateTriggerContext(p, p.GetParserRuleContext(), p.GetState())
-	p.EnterRule(localctx, 30, CqlParserRULE_createTrigger)
+	p.EnterRule(localctx, 30, CQLParserRULE_createTrigger)
 	var _la int
 
 	p.EnterOuterAlt(localctx, 1)
@@ -6323,7 +6323,7 @@ func (p *CqlParser) CreateTrigger() (localctx ICreateTriggerContext) {
 	}
 	_la = p.GetTokenStream().LA(1)
 
-	if _la == CqlParserK_IF {
+	if _la == CQLParserK_IF {
 		{
 			p.SetState(767)
 			p.IfNotExist()
@@ -6340,7 +6340,7 @@ func (p *CqlParser) CreateTrigger() (localctx ICreateTriggerContext) {
 		}
 		{
 			p.SetState(771)
-			p.Match(CqlParserDOT)
+			p.Match(CQLParserDOT)
 			if p.HasError() {
 				// Recognition error - abort rule
 				goto errorExit
@@ -6419,13 +6419,13 @@ type CreateMaterializedViewContext struct {
 func NewEmptyCreateMaterializedViewContext() *CreateMaterializedViewContext {
 	var p = new(CreateMaterializedViewContext)
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
-	p.RuleIndex = CqlParserRULE_createMaterializedView
+	p.RuleIndex = CQLParserRULE_createMaterializedView
 	return p
 }
 
 func InitEmptyCreateMaterializedViewContext(p *CreateMaterializedViewContext) {
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
-	p.RuleIndex = CqlParserRULE_createMaterializedView
+	p.RuleIndex = CQLParserRULE_createMaterializedView
 }
 
 func (*CreateMaterializedViewContext) IsCreateMaterializedViewContext() {}
@@ -6436,7 +6436,7 @@ func NewCreateMaterializedViewContext(parser antlr.Parser, parent antlr.ParserRu
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, parent, invokingState)
 
 	p.parser = parser
-	p.RuleIndex = CqlParserRULE_createMaterializedView
+	p.RuleIndex = CQLParserRULE_createMaterializedView
 
 	return p
 }
@@ -6750,11 +6750,11 @@ func (s *CreateMaterializedViewContext) Keyspace(i int) IKeyspaceContext {
 }
 
 func (s *CreateMaterializedViewContext) AllDOT() []antlr.TerminalNode {
-	return s.GetTokens(CqlParserDOT)
+	return s.GetTokens(CQLParserDOT)
 }
 
 func (s *CreateMaterializedViewContext) DOT(i int) antlr.TerminalNode {
-	return s.GetToken(CqlParserDOT, i)
+	return s.GetToken(CQLParserDOT, i)
 }
 
 func (s *CreateMaterializedViewContext) KwWith() IKwWithContext {
@@ -6798,20 +6798,20 @@ func (s *CreateMaterializedViewContext) ToStringTree(ruleNames []string, recog a
 }
 
 func (s *CreateMaterializedViewContext) EnterRule(listener antlr.ParseTreeListener) {
-	if listenerT, ok := listener.(CqlParserListener); ok {
+	if listenerT, ok := listener.(CQLParserListener); ok {
 		listenerT.EnterCreateMaterializedView(s)
 	}
 }
 
 func (s *CreateMaterializedViewContext) ExitRule(listener antlr.ParseTreeListener) {
-	if listenerT, ok := listener.(CqlParserListener); ok {
+	if listenerT, ok := listener.(CQLParserListener); ok {
 		listenerT.ExitCreateMaterializedView(s)
 	}
 }
 
-func (p *CqlParser) CreateMaterializedView() (localctx ICreateMaterializedViewContext) {
+func (p *CQLParser) CreateMaterializedView() (localctx ICreateMaterializedViewContext) {
 	localctx = NewCreateMaterializedViewContext(p, p.GetParserRuleContext(), p.GetState())
-	p.EnterRule(localctx, 32, CqlParserRULE_createMaterializedView)
+	p.EnterRule(localctx, 32, CQLParserRULE_createMaterializedView)
 	var _la int
 
 	p.EnterOuterAlt(localctx, 1)
@@ -6834,7 +6834,7 @@ func (p *CqlParser) CreateMaterializedView() (localctx ICreateMaterializedViewCo
 	}
 	_la = p.GetTokenStream().LA(1)
 
-	if _la == CqlParserK_IF {
+	if _la == CQLParserK_IF {
 		{
 			p.SetState(782)
 			p.IfNotExist()
@@ -6851,7 +6851,7 @@ func (p *CqlParser) CreateMaterializedView() (localctx ICreateMaterializedViewCo
 		}
 		{
 			p.SetState(786)
-			p.Match(CqlParserDOT)
+			p.Match(CQLParserDOT)
 			if p.HasError() {
 				// Recognition error - abort rule
 				goto errorExit
@@ -6891,7 +6891,7 @@ func (p *CqlParser) CreateMaterializedView() (localctx ICreateMaterializedViewCo
 		}
 		{
 			p.SetState(796)
-			p.Match(CqlParserDOT)
+			p.Match(CQLParserDOT)
 			if p.HasError() {
 				// Recognition error - abort rule
 				goto errorExit
@@ -6936,7 +6936,7 @@ func (p *CqlParser) CreateMaterializedView() (localctx ICreateMaterializedViewCo
 	}
 	_la = p.GetTokenStream().LA(1)
 
-	if _la == CqlParserK_WITH {
+	if _la == CQLParserK_WITH {
 		{
 			p.SetState(807)
 			p.KwWith()
@@ -6986,13 +6986,13 @@ type MaterializedViewWhereContext struct {
 func NewEmptyMaterializedViewWhereContext() *MaterializedViewWhereContext {
 	var p = new(MaterializedViewWhereContext)
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
-	p.RuleIndex = CqlParserRULE_materializedViewWhere
+	p.RuleIndex = CQLParserRULE_materializedViewWhere
 	return p
 }
 
 func InitEmptyMaterializedViewWhereContext(p *MaterializedViewWhereContext) {
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
-	p.RuleIndex = CqlParserRULE_materializedViewWhere
+	p.RuleIndex = CQLParserRULE_materializedViewWhere
 }
 
 func (*MaterializedViewWhereContext) IsMaterializedViewWhereContext() {}
@@ -7003,7 +7003,7 @@ func NewMaterializedViewWhereContext(parser antlr.Parser, parent antlr.ParserRul
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, parent, invokingState)
 
 	p.parser = parser
-	p.RuleIndex = CqlParserRULE_materializedViewWhere
+	p.RuleIndex = CQLParserRULE_materializedViewWhere
 
 	return p
 }
@@ -7083,20 +7083,20 @@ func (s *MaterializedViewWhereContext) ToStringTree(ruleNames []string, recog an
 }
 
 func (s *MaterializedViewWhereContext) EnterRule(listener antlr.ParseTreeListener) {
-	if listenerT, ok := listener.(CqlParserListener); ok {
+	if listenerT, ok := listener.(CQLParserListener); ok {
 		listenerT.EnterMaterializedViewWhere(s)
 	}
 }
 
 func (s *MaterializedViewWhereContext) ExitRule(listener antlr.ParseTreeListener) {
-	if listenerT, ok := listener.(CqlParserListener); ok {
+	if listenerT, ok := listener.(CQLParserListener); ok {
 		listenerT.ExitMaterializedViewWhere(s)
 	}
 }
 
-func (p *CqlParser) MaterializedViewWhere() (localctx IMaterializedViewWhereContext) {
+func (p *CQLParser) MaterializedViewWhere() (localctx IMaterializedViewWhereContext) {
 	localctx = NewMaterializedViewWhereContext(p, p.GetParserRuleContext(), p.GetState())
-	p.EnterRule(localctx, 34, CqlParserRULE_materializedViewWhere)
+	p.EnterRule(localctx, 34, CQLParserRULE_materializedViewWhere)
 	var _la int
 
 	p.EnterOuterAlt(localctx, 1)
@@ -7115,7 +7115,7 @@ func (p *CqlParser) MaterializedViewWhere() (localctx IMaterializedViewWhereCont
 	}
 	_la = p.GetTokenStream().LA(1)
 
-	if _la == CqlParserK_AND {
+	if _la == CQLParserK_AND {
 		{
 			p.SetState(814)
 			p.KwAnd()
@@ -7165,13 +7165,13 @@ type ColumnNotNullListContext struct {
 func NewEmptyColumnNotNullListContext() *ColumnNotNullListContext {
 	var p = new(ColumnNotNullListContext)
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
-	p.RuleIndex = CqlParserRULE_columnNotNullList
+	p.RuleIndex = CQLParserRULE_columnNotNullList
 	return p
 }
 
 func InitEmptyColumnNotNullListContext(p *ColumnNotNullListContext) {
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
-	p.RuleIndex = CqlParserRULE_columnNotNullList
+	p.RuleIndex = CQLParserRULE_columnNotNullList
 }
 
 func (*ColumnNotNullListContext) IsColumnNotNullListContext() {}
@@ -7182,7 +7182,7 @@ func NewColumnNotNullListContext(parser antlr.Parser, parent antlr.ParserRuleCon
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, parent, invokingState)
 
 	p.parser = parser
-	p.RuleIndex = CqlParserRULE_columnNotNullList
+	p.RuleIndex = CQLParserRULE_columnNotNullList
 
 	return p
 }
@@ -7280,20 +7280,20 @@ func (s *ColumnNotNullListContext) ToStringTree(ruleNames []string, recog antlr.
 }
 
 func (s *ColumnNotNullListContext) EnterRule(listener antlr.ParseTreeListener) {
-	if listenerT, ok := listener.(CqlParserListener); ok {
+	if listenerT, ok := listener.(CQLParserListener); ok {
 		listenerT.EnterColumnNotNullList(s)
 	}
 }
 
 func (s *ColumnNotNullListContext) ExitRule(listener antlr.ParseTreeListener) {
-	if listenerT, ok := listener.(CqlParserListener); ok {
+	if listenerT, ok := listener.(CQLParserListener); ok {
 		listenerT.ExitColumnNotNullList(s)
 	}
 }
 
-func (p *CqlParser) ColumnNotNullList() (localctx IColumnNotNullListContext) {
+func (p *CQLParser) ColumnNotNullList() (localctx IColumnNotNullListContext) {
 	localctx = NewColumnNotNullListContext(p, p.GetParserRuleContext(), p.GetState())
-	p.EnterRule(localctx, 36, CqlParserRULE_columnNotNullList)
+	p.EnterRule(localctx, 36, CQLParserRULE_columnNotNullList)
 	var _alt int
 
 	p.EnterOuterAlt(localctx, 1)
@@ -7371,13 +7371,13 @@ type ColumnNotNullContext struct {
 func NewEmptyColumnNotNullContext() *ColumnNotNullContext {
 	var p = new(ColumnNotNullContext)
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
-	p.RuleIndex = CqlParserRULE_columnNotNull
+	p.RuleIndex = CQLParserRULE_columnNotNull
 	return p
 }
 
 func InitEmptyColumnNotNullContext(p *ColumnNotNullContext) {
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
-	p.RuleIndex = CqlParserRULE_columnNotNull
+	p.RuleIndex = CQLParserRULE_columnNotNull
 }
 
 func (*ColumnNotNullContext) IsColumnNotNullContext() {}
@@ -7388,7 +7388,7 @@ func NewColumnNotNullContext(parser antlr.Parser, parent antlr.ParserRuleContext
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, parent, invokingState)
 
 	p.parser = parser
-	p.RuleIndex = CqlParserRULE_columnNotNull
+	p.RuleIndex = CQLParserRULE_columnNotNull
 
 	return p
 }
@@ -7468,20 +7468,20 @@ func (s *ColumnNotNullContext) ToStringTree(ruleNames []string, recog antlr.Reco
 }
 
 func (s *ColumnNotNullContext) EnterRule(listener antlr.ParseTreeListener) {
-	if listenerT, ok := listener.(CqlParserListener); ok {
+	if listenerT, ok := listener.(CQLParserListener); ok {
 		listenerT.EnterColumnNotNull(s)
 	}
 }
 
 func (s *ColumnNotNullContext) ExitRule(listener antlr.ParseTreeListener) {
-	if listenerT, ok := listener.(CqlParserListener); ok {
+	if listenerT, ok := listener.(CQLParserListener); ok {
 		listenerT.ExitColumnNotNull(s)
 	}
 }
 
-func (p *CqlParser) ColumnNotNull() (localctx IColumnNotNullContext) {
+func (p *CQLParser) ColumnNotNull() (localctx IColumnNotNullContext) {
 	localctx = NewColumnNotNullContext(p, p.GetParserRuleContext(), p.GetState())
-	p.EnterRule(localctx, 38, CqlParserRULE_columnNotNull)
+	p.EnterRule(localctx, 38, CQLParserRULE_columnNotNull)
 	p.EnterOuterAlt(localctx, 1)
 	{
 		p.SetState(828)
@@ -7537,13 +7537,13 @@ type MaterializedViewOptionsContext struct {
 func NewEmptyMaterializedViewOptionsContext() *MaterializedViewOptionsContext {
 	var p = new(MaterializedViewOptionsContext)
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
-	p.RuleIndex = CqlParserRULE_materializedViewOptions
+	p.RuleIndex = CQLParserRULE_materializedViewOptions
 	return p
 }
 
 func InitEmptyMaterializedViewOptionsContext(p *MaterializedViewOptionsContext) {
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
-	p.RuleIndex = CqlParserRULE_materializedViewOptions
+	p.RuleIndex = CQLParserRULE_materializedViewOptions
 }
 
 func (*MaterializedViewOptionsContext) IsMaterializedViewOptionsContext() {}
@@ -7554,7 +7554,7 @@ func NewMaterializedViewOptionsContext(parser antlr.Parser, parent antlr.ParserR
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, parent, invokingState)
 
 	p.parser = parser
-	p.RuleIndex = CqlParserRULE_materializedViewOptions
+	p.RuleIndex = CQLParserRULE_materializedViewOptions
 
 	return p
 }
@@ -7618,20 +7618,20 @@ func (s *MaterializedViewOptionsContext) ToStringTree(ruleNames []string, recog 
 }
 
 func (s *MaterializedViewOptionsContext) EnterRule(listener antlr.ParseTreeListener) {
-	if listenerT, ok := listener.(CqlParserListener); ok {
+	if listenerT, ok := listener.(CQLParserListener); ok {
 		listenerT.EnterMaterializedViewOptions(s)
 	}
 }
 
 func (s *MaterializedViewOptionsContext) ExitRule(listener antlr.ParseTreeListener) {
-	if listenerT, ok := listener.(CqlParserListener); ok {
+	if listenerT, ok := listener.(CQLParserListener); ok {
 		listenerT.ExitMaterializedViewOptions(s)
 	}
 }
 
-func (p *CqlParser) MaterializedViewOptions() (localctx IMaterializedViewOptionsContext) {
+func (p *CQLParser) MaterializedViewOptions() (localctx IMaterializedViewOptionsContext) {
 	localctx = NewMaterializedViewOptionsContext(p, p.GetParserRuleContext(), p.GetState())
-	p.EnterRule(localctx, 40, CqlParserRULE_materializedViewOptions)
+	p.EnterRule(localctx, 40, CQLParserRULE_materializedViewOptions)
 	p.SetState(839)
 	p.GetErrorHandler().Sync(p)
 	if p.HasError() {
@@ -7718,13 +7718,13 @@ type CreateKeyspaceContext struct {
 func NewEmptyCreateKeyspaceContext() *CreateKeyspaceContext {
 	var p = new(CreateKeyspaceContext)
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
-	p.RuleIndex = CqlParserRULE_createKeyspace
+	p.RuleIndex = CQLParserRULE_createKeyspace
 	return p
 }
 
 func InitEmptyCreateKeyspaceContext(p *CreateKeyspaceContext) {
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
-	p.RuleIndex = CqlParserRULE_createKeyspace
+	p.RuleIndex = CQLParserRULE_createKeyspace
 }
 
 func (*CreateKeyspaceContext) IsCreateKeyspaceContext() {}
@@ -7735,7 +7735,7 @@ func NewCreateKeyspaceContext(parser antlr.Parser, parent antlr.ParserRuleContex
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, parent, invokingState)
 
 	p.parser = parser
-	p.RuleIndex = CqlParserRULE_createKeyspace
+	p.RuleIndex = CQLParserRULE_createKeyspace
 
 	return p
 }
@@ -7823,7 +7823,7 @@ func (s *CreateKeyspaceContext) KwReplication() IKwReplicationContext {
 }
 
 func (s *CreateKeyspaceContext) OPERATOR_EQ() antlr.TerminalNode {
-	return s.GetToken(CqlParserOPERATOR_EQ, 0)
+	return s.GetToken(CQLParserOPERATOR_EQ, 0)
 }
 
 func (s *CreateKeyspaceContext) SyntaxBracketLc() ISyntaxBracketLcContext {
@@ -7931,20 +7931,20 @@ func (s *CreateKeyspaceContext) ToStringTree(ruleNames []string, recog antlr.Rec
 }
 
 func (s *CreateKeyspaceContext) EnterRule(listener antlr.ParseTreeListener) {
-	if listenerT, ok := listener.(CqlParserListener); ok {
+	if listenerT, ok := listener.(CQLParserListener); ok {
 		listenerT.EnterCreateKeyspace(s)
 	}
 }
 
 func (s *CreateKeyspaceContext) ExitRule(listener antlr.ParseTreeListener) {
-	if listenerT, ok := listener.(CqlParserListener); ok {
+	if listenerT, ok := listener.(CQLParserListener); ok {
 		listenerT.ExitCreateKeyspace(s)
 	}
 }
 
-func (p *CqlParser) CreateKeyspace() (localctx ICreateKeyspaceContext) {
+func (p *CQLParser) CreateKeyspace() (localctx ICreateKeyspaceContext) {
 	localctx = NewCreateKeyspaceContext(p, p.GetParserRuleContext(), p.GetState())
-	p.EnterRule(localctx, 42, CqlParserRULE_createKeyspace)
+	p.EnterRule(localctx, 42, CQLParserRULE_createKeyspace)
 	var _la int
 
 	p.EnterOuterAlt(localctx, 1)
@@ -7963,7 +7963,7 @@ func (p *CqlParser) CreateKeyspace() (localctx ICreateKeyspaceContext) {
 	}
 	_la = p.GetTokenStream().LA(1)
 
-	if _la == CqlParserK_IF {
+	if _la == CQLParserK_IF {
 		{
 			p.SetState(843)
 			p.IfNotExist()
@@ -7984,7 +7984,7 @@ func (p *CqlParser) CreateKeyspace() (localctx ICreateKeyspaceContext) {
 	}
 	{
 		p.SetState(849)
-		p.Match(CqlParserOPERATOR_EQ)
+		p.Match(CQLParserOPERATOR_EQ)
 		if p.HasError() {
 			// Recognition error - abort rule
 			goto errorExit
@@ -8009,7 +8009,7 @@ func (p *CqlParser) CreateKeyspace() (localctx ICreateKeyspaceContext) {
 	}
 	_la = p.GetTokenStream().LA(1)
 
-	if _la == CqlParserK_AND {
+	if _la == CQLParserK_AND {
 		{
 			p.SetState(853)
 			p.KwAnd()
@@ -8072,13 +8072,13 @@ type CreateFunctionContext struct {
 func NewEmptyCreateFunctionContext() *CreateFunctionContext {
 	var p = new(CreateFunctionContext)
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
-	p.RuleIndex = CqlParserRULE_createFunction
+	p.RuleIndex = CQLParserRULE_createFunction
 	return p
 }
 
 func InitEmptyCreateFunctionContext(p *CreateFunctionContext) {
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
-	p.RuleIndex = CqlParserRULE_createFunction
+	p.RuleIndex = CQLParserRULE_createFunction
 }
 
 func (*CreateFunctionContext) IsCreateFunctionContext() {}
@@ -8089,7 +8089,7 @@ func NewCreateFunctionContext(parser antlr.Parser, parent antlr.ParserRuleContex
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, parent, invokingState)
 
 	p.parser = parser
-	p.RuleIndex = CqlParserRULE_createFunction
+	p.RuleIndex = CQLParserRULE_createFunction
 
 	return p
 }
@@ -8337,7 +8337,7 @@ func (s *CreateFunctionContext) Keyspace() IKeyspaceContext {
 }
 
 func (s *CreateFunctionContext) DOT() antlr.TerminalNode {
-	return s.GetToken(CqlParserDOT, 0)
+	return s.GetToken(CQLParserDOT, 0)
 }
 
 func (s *CreateFunctionContext) ParamList() IParamListContext {
@@ -8365,20 +8365,20 @@ func (s *CreateFunctionContext) ToStringTree(ruleNames []string, recog antlr.Rec
 }
 
 func (s *CreateFunctionContext) EnterRule(listener antlr.ParseTreeListener) {
-	if listenerT, ok := listener.(CqlParserListener); ok {
+	if listenerT, ok := listener.(CQLParserListener); ok {
 		listenerT.EnterCreateFunction(s)
 	}
 }
 
 func (s *CreateFunctionContext) ExitRule(listener antlr.ParseTreeListener) {
-	if listenerT, ok := listener.(CqlParserListener); ok {
+	if listenerT, ok := listener.(CQLParserListener); ok {
 		listenerT.ExitCreateFunction(s)
 	}
 }
 
-func (p *CqlParser) CreateFunction() (localctx ICreateFunctionContext) {
+func (p *CQLParser) CreateFunction() (localctx ICreateFunctionContext) {
 	localctx = NewCreateFunctionContext(p, p.GetParserRuleContext(), p.GetState())
-	p.EnterRule(localctx, 44, CqlParserRULE_createFunction)
+	p.EnterRule(localctx, 44, CQLParserRULE_createFunction)
 	var _la int
 
 	p.EnterOuterAlt(localctx, 1)
@@ -8393,7 +8393,7 @@ func (p *CqlParser) CreateFunction() (localctx ICreateFunctionContext) {
 	}
 	_la = p.GetTokenStream().LA(1)
 
-	if _la == CqlParserK_OR {
+	if _la == CQLParserK_OR {
 		{
 			p.SetState(859)
 			p.OrReplace()
@@ -8411,7 +8411,7 @@ func (p *CqlParser) CreateFunction() (localctx ICreateFunctionContext) {
 	}
 	_la = p.GetTokenStream().LA(1)
 
-	if _la == CqlParserK_IF {
+	if _la == CQLParserK_IF {
 		{
 			p.SetState(863)
 			p.IfNotExist()
@@ -8428,7 +8428,7 @@ func (p *CqlParser) CreateFunction() (localctx ICreateFunctionContext) {
 		}
 		{
 			p.SetState(867)
-			p.Match(CqlParserDOT)
+			p.Match(CQLParserDOT)
 			if p.HasError() {
 				// Recognition error - abort rule
 				goto errorExit
@@ -8453,7 +8453,7 @@ func (p *CqlParser) CreateFunction() (localctx ICreateFunctionContext) {
 	}
 	_la = p.GetTokenStream().LA(1)
 
-	if _la == CqlParserK_INPUT || _la == CqlParserOBJECT_NAME {
+	if _la == CQLParserK_INPUT || _la == CQLParserOBJECT_NAME {
 		{
 			p.SetState(873)
 			p.ParamList()
@@ -8529,13 +8529,13 @@ type CodeBlockContext struct {
 func NewEmptyCodeBlockContext() *CodeBlockContext {
 	var p = new(CodeBlockContext)
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
-	p.RuleIndex = CqlParserRULE_codeBlock
+	p.RuleIndex = CQLParserRULE_codeBlock
 	return p
 }
 
 func InitEmptyCodeBlockContext(p *CodeBlockContext) {
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
-	p.RuleIndex = CqlParserRULE_codeBlock
+	p.RuleIndex = CQLParserRULE_codeBlock
 }
 
 func (*CodeBlockContext) IsCodeBlockContext() {}
@@ -8546,7 +8546,7 @@ func NewCodeBlockContext(parser antlr.Parser, parent antlr.ParserRuleContext, in
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, parent, invokingState)
 
 	p.parser = parser
-	p.RuleIndex = CqlParserRULE_codeBlock
+	p.RuleIndex = CQLParserRULE_codeBlock
 
 	return p
 }
@@ -8554,11 +8554,11 @@ func NewCodeBlockContext(parser antlr.Parser, parent antlr.ParserRuleContext, in
 func (s *CodeBlockContext) GetParser() antlr.Parser { return s.parser }
 
 func (s *CodeBlockContext) CODE_BLOCK() antlr.TerminalNode {
-	return s.GetToken(CqlParserCODE_BLOCK, 0)
+	return s.GetToken(CQLParserCODE_BLOCK, 0)
 }
 
 func (s *CodeBlockContext) STRING_LITERAL() antlr.TerminalNode {
-	return s.GetToken(CqlParserSTRING_LITERAL, 0)
+	return s.GetToken(CQLParserSTRING_LITERAL, 0)
 }
 
 func (s *CodeBlockContext) GetRuleContext() antlr.RuleContext {
@@ -8570,20 +8570,20 @@ func (s *CodeBlockContext) ToStringTree(ruleNames []string, recog antlr.Recogniz
 }
 
 func (s *CodeBlockContext) EnterRule(listener antlr.ParseTreeListener) {
-	if listenerT, ok := listener.(CqlParserListener); ok {
+	if listenerT, ok := listener.(CQLParserListener); ok {
 		listenerT.EnterCodeBlock(s)
 	}
 }
 
 func (s *CodeBlockContext) ExitRule(listener antlr.ParseTreeListener) {
-	if listenerT, ok := listener.(CqlParserListener); ok {
+	if listenerT, ok := listener.(CQLParserListener); ok {
 		listenerT.ExitCodeBlock(s)
 	}
 }
 
-func (p *CqlParser) CodeBlock() (localctx ICodeBlockContext) {
+func (p *CQLParser) CodeBlock() (localctx ICodeBlockContext) {
 	localctx = NewCodeBlockContext(p, p.GetParserRuleContext(), p.GetState())
-	p.EnterRule(localctx, 46, CqlParserRULE_codeBlock)
+	p.EnterRule(localctx, 46, CQLParserRULE_codeBlock)
 	var _la int
 
 	p.EnterOuterAlt(localctx, 1)
@@ -8591,7 +8591,7 @@ func (p *CqlParser) CodeBlock() (localctx ICodeBlockContext) {
 		p.SetState(885)
 		_la = p.GetTokenStream().LA(1)
 
-		if !(_la == CqlParserCODE_BLOCK || _la == CqlParserSTRING_LITERAL) {
+		if !(_la == CQLParserCODE_BLOCK || _la == CQLParserSTRING_LITERAL) {
 			p.GetErrorHandler().RecoverInline(p)
 		} else {
 			p.GetErrorHandler().ReportMatch(p)
@@ -8637,13 +8637,13 @@ type ParamListContext struct {
 func NewEmptyParamListContext() *ParamListContext {
 	var p = new(ParamListContext)
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
-	p.RuleIndex = CqlParserRULE_paramList
+	p.RuleIndex = CQLParserRULE_paramList
 	return p
 }
 
 func InitEmptyParamListContext(p *ParamListContext) {
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
-	p.RuleIndex = CqlParserRULE_paramList
+	p.RuleIndex = CQLParserRULE_paramList
 }
 
 func (*ParamListContext) IsParamListContext() {}
@@ -8654,7 +8654,7 @@ func NewParamListContext(parser antlr.Parser, parent antlr.ParserRuleContext, in
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, parent, invokingState)
 
 	p.parser = parser
-	p.RuleIndex = CqlParserRULE_paramList
+	p.RuleIndex = CQLParserRULE_paramList
 
 	return p
 }
@@ -8752,20 +8752,20 @@ func (s *ParamListContext) ToStringTree(ruleNames []string, recog antlr.Recogniz
 }
 
 func (s *ParamListContext) EnterRule(listener antlr.ParseTreeListener) {
-	if listenerT, ok := listener.(CqlParserListener); ok {
+	if listenerT, ok := listener.(CQLParserListener); ok {
 		listenerT.EnterParamList(s)
 	}
 }
 
 func (s *ParamListContext) ExitRule(listener antlr.ParseTreeListener) {
-	if listenerT, ok := listener.(CqlParserListener); ok {
+	if listenerT, ok := listener.(CQLParserListener); ok {
 		listenerT.ExitParamList(s)
 	}
 }
 
-func (p *CqlParser) ParamList() (localctx IParamListContext) {
+func (p *CQLParser) ParamList() (localctx IParamListContext) {
 	localctx = NewParamListContext(p, p.GetParserRuleContext(), p.GetState())
-	p.EnterRule(localctx, 48, CqlParserRULE_paramList)
+	p.EnterRule(localctx, 48, CQLParserRULE_paramList)
 	var _la int
 
 	p.EnterOuterAlt(localctx, 1)
@@ -8780,7 +8780,7 @@ func (p *CqlParser) ParamList() (localctx IParamListContext) {
 	}
 	_la = p.GetTokenStream().LA(1)
 
-	for _la == CqlParserCOMMA {
+	for _la == CQLParserCOMMA {
 		{
 			p.SetState(888)
 			p.SyntaxComma()
@@ -8838,13 +8838,13 @@ type ReturnModeContext struct {
 func NewEmptyReturnModeContext() *ReturnModeContext {
 	var p = new(ReturnModeContext)
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
-	p.RuleIndex = CqlParserRULE_returnMode
+	p.RuleIndex = CQLParserRULE_returnMode
 	return p
 }
 
 func InitEmptyReturnModeContext(p *ReturnModeContext) {
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
-	p.RuleIndex = CqlParserRULE_returnMode
+	p.RuleIndex = CQLParserRULE_returnMode
 }
 
 func (*ReturnModeContext) IsReturnModeContext() {}
@@ -8855,7 +8855,7 @@ func NewReturnModeContext(parser antlr.Parser, parent antlr.ParserRuleContext, i
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, parent, invokingState)
 
 	p.parser = parser
-	p.RuleIndex = CqlParserRULE_returnMode
+	p.RuleIndex = CQLParserRULE_returnMode
 
 	return p
 }
@@ -8976,20 +8976,20 @@ func (s *ReturnModeContext) ToStringTree(ruleNames []string, recog antlr.Recogni
 }
 
 func (s *ReturnModeContext) EnterRule(listener antlr.ParseTreeListener) {
-	if listenerT, ok := listener.(CqlParserListener); ok {
+	if listenerT, ok := listener.(CQLParserListener); ok {
 		listenerT.EnterReturnMode(s)
 	}
 }
 
 func (s *ReturnModeContext) ExitRule(listener antlr.ParseTreeListener) {
-	if listenerT, ok := listener.(CqlParserListener); ok {
+	if listenerT, ok := listener.(CQLParserListener); ok {
 		listenerT.ExitReturnMode(s)
 	}
 }
 
-func (p *CqlParser) ReturnMode() (localctx IReturnModeContext) {
+func (p *CQLParser) ReturnMode() (localctx IReturnModeContext) {
 	localctx = NewReturnModeContext(p, p.GetParserRuleContext(), p.GetState())
-	p.EnterRule(localctx, 50, CqlParserRULE_returnMode)
+	p.EnterRule(localctx, 50, CQLParserRULE_returnMode)
 	p.EnterOuterAlt(localctx, 1)
 	p.SetState(900)
 	p.GetErrorHandler().Sync(p)
@@ -8998,13 +8998,13 @@ func (p *CqlParser) ReturnMode() (localctx IReturnModeContext) {
 	}
 
 	switch p.GetTokenStream().LA(1) {
-	case CqlParserK_CALLED:
+	case CQLParserK_CALLED:
 		{
 			p.SetState(896)
 			p.KwCalled()
 		}
 
-	case CqlParserK_RETURNS:
+	case CQLParserK_RETURNS:
 		{
 			p.SetState(897)
 			p.KwReturns()
@@ -9083,13 +9083,13 @@ type CreateAggregateContext struct {
 func NewEmptyCreateAggregateContext() *CreateAggregateContext {
 	var p = new(CreateAggregateContext)
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
-	p.RuleIndex = CqlParserRULE_createAggregate
+	p.RuleIndex = CQLParserRULE_createAggregate
 	return p
 }
 
 func InitEmptyCreateAggregateContext(p *CreateAggregateContext) {
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
-	p.RuleIndex = CqlParserRULE_createAggregate
+	p.RuleIndex = CQLParserRULE_createAggregate
 }
 
 func (*CreateAggregateContext) IsCreateAggregateContext() {}
@@ -9100,7 +9100,7 @@ func NewCreateAggregateContext(parser antlr.Parser, parent antlr.ParserRuleConte
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, parent, invokingState)
 
 	p.parser = parser
-	p.RuleIndex = CqlParserRULE_createAggregate
+	p.RuleIndex = CQLParserRULE_createAggregate
 
 	return p
 }
@@ -9398,7 +9398,7 @@ func (s *CreateAggregateContext) Keyspace() IKeyspaceContext {
 }
 
 func (s *CreateAggregateContext) DOT() antlr.TerminalNode {
-	return s.GetToken(CqlParserDOT, 0)
+	return s.GetToken(CQLParserDOT, 0)
 }
 
 func (s *CreateAggregateContext) GetRuleContext() antlr.RuleContext {
@@ -9410,20 +9410,20 @@ func (s *CreateAggregateContext) ToStringTree(ruleNames []string, recog antlr.Re
 }
 
 func (s *CreateAggregateContext) EnterRule(listener antlr.ParseTreeListener) {
-	if listenerT, ok := listener.(CqlParserListener); ok {
+	if listenerT, ok := listener.(CQLParserListener); ok {
 		listenerT.EnterCreateAggregate(s)
 	}
 }
 
 func (s *CreateAggregateContext) ExitRule(listener antlr.ParseTreeListener) {
-	if listenerT, ok := listener.(CqlParserListener); ok {
+	if listenerT, ok := listener.(CQLParserListener); ok {
 		listenerT.ExitCreateAggregate(s)
 	}
 }
 
-func (p *CqlParser) CreateAggregate() (localctx ICreateAggregateContext) {
+func (p *CQLParser) CreateAggregate() (localctx ICreateAggregateContext) {
 	localctx = NewCreateAggregateContext(p, p.GetParserRuleContext(), p.GetState())
-	p.EnterRule(localctx, 52, CqlParserRULE_createAggregate)
+	p.EnterRule(localctx, 52, CQLParserRULE_createAggregate)
 	var _la int
 
 	p.EnterOuterAlt(localctx, 1)
@@ -9438,7 +9438,7 @@ func (p *CqlParser) CreateAggregate() (localctx ICreateAggregateContext) {
 	}
 	_la = p.GetTokenStream().LA(1)
 
-	if _la == CqlParserK_OR {
+	if _la == CQLParserK_OR {
 		{
 			p.SetState(907)
 			p.OrReplace()
@@ -9456,7 +9456,7 @@ func (p *CqlParser) CreateAggregate() (localctx ICreateAggregateContext) {
 	}
 	_la = p.GetTokenStream().LA(1)
 
-	if _la == CqlParserK_IF {
+	if _la == CQLParserK_IF {
 		{
 			p.SetState(911)
 			p.IfNotExist()
@@ -9473,7 +9473,7 @@ func (p *CqlParser) CreateAggregate() (localctx ICreateAggregateContext) {
 		}
 		{
 			p.SetState(915)
-			p.Match(CqlParserDOT)
+			p.Match(CQLParserDOT)
 			if p.HasError() {
 				// Recognition error - abort rule
 				goto errorExit
@@ -9570,13 +9570,13 @@ type InitCondDefinitionContext struct {
 func NewEmptyInitCondDefinitionContext() *InitCondDefinitionContext {
 	var p = new(InitCondDefinitionContext)
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
-	p.RuleIndex = CqlParserRULE_initCondDefinition
+	p.RuleIndex = CQLParserRULE_initCondDefinition
 	return p
 }
 
 func InitEmptyInitCondDefinitionContext(p *InitCondDefinitionContext) {
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
-	p.RuleIndex = CqlParserRULE_initCondDefinition
+	p.RuleIndex = CQLParserRULE_initCondDefinition
 }
 
 func (*InitCondDefinitionContext) IsInitCondDefinitionContext() {}
@@ -9587,7 +9587,7 @@ func NewInitCondDefinitionContext(parser antlr.Parser, parent antlr.ParserRuleCo
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, parent, invokingState)
 
 	p.parser = parser
-	p.RuleIndex = CqlParserRULE_initCondDefinition
+	p.RuleIndex = CQLParserRULE_initCondDefinition
 
 	return p
 }
@@ -9667,20 +9667,20 @@ func (s *InitCondDefinitionContext) ToStringTree(ruleNames []string, recog antlr
 }
 
 func (s *InitCondDefinitionContext) EnterRule(listener antlr.ParseTreeListener) {
-	if listenerT, ok := listener.(CqlParserListener); ok {
+	if listenerT, ok := listener.(CQLParserListener); ok {
 		listenerT.EnterInitCondDefinition(s)
 	}
 }
 
 func (s *InitCondDefinitionContext) ExitRule(listener antlr.ParseTreeListener) {
-	if listenerT, ok := listener.(CqlParserListener); ok {
+	if listenerT, ok := listener.(CQLParserListener); ok {
 		listenerT.ExitInitCondDefinition(s)
 	}
 }
 
-func (p *CqlParser) InitCondDefinition() (localctx IInitCondDefinitionContext) {
+func (p *CQLParser) InitCondDefinition() (localctx IInitCondDefinitionContext) {
 	localctx = NewInitCondDefinitionContext(p, p.GetParserRuleContext(), p.GetState())
-	p.EnterRule(localctx, 54, CqlParserRULE_initCondDefinition)
+	p.EnterRule(localctx, 54, CQLParserRULE_initCondDefinition)
 	p.SetState(936)
 	p.GetErrorHandler().Sync(p)
 	if p.HasError() {
@@ -9760,13 +9760,13 @@ type InitCondHashContext struct {
 func NewEmptyInitCondHashContext() *InitCondHashContext {
 	var p = new(InitCondHashContext)
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
-	p.RuleIndex = CqlParserRULE_initCondHash
+	p.RuleIndex = CQLParserRULE_initCondHash
 	return p
 }
 
 func InitEmptyInitCondHashContext(p *InitCondHashContext) {
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
-	p.RuleIndex = CqlParserRULE_initCondHash
+	p.RuleIndex = CQLParserRULE_initCondHash
 }
 
 func (*InitCondHashContext) IsInitCondHashContext() {}
@@ -9777,7 +9777,7 @@ func NewInitCondHashContext(parser antlr.Parser, parent antlr.ParserRuleContext,
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, parent, invokingState)
 
 	p.parser = parser
-	p.RuleIndex = CqlParserRULE_initCondHash
+	p.RuleIndex = CQLParserRULE_initCondHash
 
 	return p
 }
@@ -9907,20 +9907,20 @@ func (s *InitCondHashContext) ToStringTree(ruleNames []string, recog antlr.Recog
 }
 
 func (s *InitCondHashContext) EnterRule(listener antlr.ParseTreeListener) {
-	if listenerT, ok := listener.(CqlParserListener); ok {
+	if listenerT, ok := listener.(CQLParserListener); ok {
 		listenerT.EnterInitCondHash(s)
 	}
 }
 
 func (s *InitCondHashContext) ExitRule(listener antlr.ParseTreeListener) {
-	if listenerT, ok := listener.(CqlParserListener); ok {
+	if listenerT, ok := listener.(CQLParserListener); ok {
 		listenerT.ExitInitCondHash(s)
 	}
 }
 
-func (p *CqlParser) InitCondHash() (localctx IInitCondHashContext) {
+func (p *CQLParser) InitCondHash() (localctx IInitCondHashContext) {
 	localctx = NewInitCondHashContext(p, p.GetParserRuleContext(), p.GetState())
-	p.EnterRule(localctx, 56, CqlParserRULE_initCondHash)
+	p.EnterRule(localctx, 56, CQLParserRULE_initCondHash)
 	var _la int
 
 	p.EnterOuterAlt(localctx, 1)
@@ -9939,7 +9939,7 @@ func (p *CqlParser) InitCondHash() (localctx IInitCondHashContext) {
 	}
 	_la = p.GetTokenStream().LA(1)
 
-	for _la == CqlParserCOMMA {
+	for _la == CQLParserCOMMA {
 		{
 			p.SetState(940)
 			p.SyntaxComma()
@@ -9998,13 +9998,13 @@ type InitCondHashItemContext struct {
 func NewEmptyInitCondHashItemContext() *InitCondHashItemContext {
 	var p = new(InitCondHashItemContext)
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
-	p.RuleIndex = CqlParserRULE_initCondHashItem
+	p.RuleIndex = CQLParserRULE_initCondHashItem
 	return p
 }
 
 func InitEmptyInitCondHashItemContext(p *InitCondHashItemContext) {
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
-	p.RuleIndex = CqlParserRULE_initCondHashItem
+	p.RuleIndex = CQLParserRULE_initCondHashItem
 }
 
 func (*InitCondHashItemContext) IsInitCondHashItemContext() {}
@@ -10015,7 +10015,7 @@ func NewInitCondHashItemContext(parser antlr.Parser, parent antlr.ParserRuleCont
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, parent, invokingState)
 
 	p.parser = parser
-	p.RuleIndex = CqlParserRULE_initCondHashItem
+	p.RuleIndex = CQLParserRULE_initCondHashItem
 
 	return p
 }
@@ -10039,7 +10039,7 @@ func (s *InitCondHashItemContext) HashKey() IHashKeyContext {
 }
 
 func (s *InitCondHashItemContext) COLON() antlr.TerminalNode {
-	return s.GetToken(CqlParserCOLON, 0)
+	return s.GetToken(CQLParserCOLON, 0)
 }
 
 func (s *InitCondHashItemContext) InitCondDefinition() IInitCondDefinitionContext {
@@ -10067,20 +10067,20 @@ func (s *InitCondHashItemContext) ToStringTree(ruleNames []string, recog antlr.R
 }
 
 func (s *InitCondHashItemContext) EnterRule(listener antlr.ParseTreeListener) {
-	if listenerT, ok := listener.(CqlParserListener); ok {
+	if listenerT, ok := listener.(CQLParserListener); ok {
 		listenerT.EnterInitCondHashItem(s)
 	}
 }
 
 func (s *InitCondHashItemContext) ExitRule(listener antlr.ParseTreeListener) {
-	if listenerT, ok := listener.(CqlParserListener); ok {
+	if listenerT, ok := listener.(CQLParserListener); ok {
 		listenerT.ExitInitCondHashItem(s)
 	}
 }
 
-func (p *CqlParser) InitCondHashItem() (localctx IInitCondHashItemContext) {
+func (p *CQLParser) InitCondHashItem() (localctx IInitCondHashItemContext) {
 	localctx = NewInitCondHashItemContext(p, p.GetParserRuleContext(), p.GetState())
-	p.EnterRule(localctx, 58, CqlParserRULE_initCondHashItem)
+	p.EnterRule(localctx, 58, CQLParserRULE_initCondHashItem)
 	p.EnterOuterAlt(localctx, 1)
 	{
 		p.SetState(950)
@@ -10088,7 +10088,7 @@ func (p *CqlParser) InitCondHashItem() (localctx IInitCondHashItemContext) {
 	}
 	{
 		p.SetState(951)
-		p.Match(CqlParserCOLON)
+		p.Match(CQLParserCOLON)
 		if p.HasError() {
 			// Recognition error - abort rule
 			goto errorExit
@@ -10141,13 +10141,13 @@ type InitCondListNestedContext struct {
 func NewEmptyInitCondListNestedContext() *InitCondListNestedContext {
 	var p = new(InitCondListNestedContext)
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
-	p.RuleIndex = CqlParserRULE_initCondListNested
+	p.RuleIndex = CQLParserRULE_initCondListNested
 	return p
 }
 
 func InitEmptyInitCondListNestedContext(p *InitCondListNestedContext) {
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
-	p.RuleIndex = CqlParserRULE_initCondListNested
+	p.RuleIndex = CQLParserRULE_initCondListNested
 }
 
 func (*InitCondListNestedContext) IsInitCondListNestedContext() {}
@@ -10158,7 +10158,7 @@ func NewInitCondListNestedContext(parser antlr.Parser, parent antlr.ParserRuleCo
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, parent, invokingState)
 
 	p.parser = parser
-	p.RuleIndex = CqlParserRULE_initCondListNested
+	p.RuleIndex = CQLParserRULE_initCondListNested
 
 	return p
 }
@@ -10329,20 +10329,20 @@ func (s *InitCondListNestedContext) ToStringTree(ruleNames []string, recog antlr
 }
 
 func (s *InitCondListNestedContext) EnterRule(listener antlr.ParseTreeListener) {
-	if listenerT, ok := listener.(CqlParserListener); ok {
+	if listenerT, ok := listener.(CQLParserListener); ok {
 		listenerT.EnterInitCondListNested(s)
 	}
 }
 
 func (s *InitCondListNestedContext) ExitRule(listener antlr.ParseTreeListener) {
-	if listenerT, ok := listener.(CqlParserListener); ok {
+	if listenerT, ok := listener.(CQLParserListener); ok {
 		listenerT.ExitInitCondListNested(s)
 	}
 }
 
-func (p *CqlParser) InitCondListNested() (localctx IInitCondListNestedContext) {
+func (p *CQLParser) InitCondListNested() (localctx IInitCondListNestedContext) {
 	localctx = NewInitCondListNestedContext(p, p.GetParserRuleContext(), p.GetState())
-	p.EnterRule(localctx, 60, CqlParserRULE_initCondListNested)
+	p.EnterRule(localctx, 60, CQLParserRULE_initCondListNested)
 	var _la int
 
 	p.EnterOuterAlt(localctx, 1)
@@ -10361,7 +10361,7 @@ func (p *CqlParser) InitCondListNested() (localctx IInitCondListNestedContext) {
 	}
 	_la = p.GetTokenStream().LA(1)
 
-	for _la == CqlParserLR_BRACKET || _la == CqlParserCOMMA {
+	for _la == CQLParserLR_BRACKET || _la == CQLParserCOMMA {
 		p.SetState(960)
 		p.GetErrorHandler().Sync(p)
 		if p.HasError() {
@@ -10369,7 +10369,7 @@ func (p *CqlParser) InitCondListNested() (localctx IInitCondListNestedContext) {
 		}
 
 		switch p.GetTokenStream().LA(1) {
-		case CqlParserCOMMA:
+		case CQLParserCOMMA:
 			{
 				p.SetState(956)
 				p.SyntaxComma()
@@ -10379,7 +10379,7 @@ func (p *CqlParser) InitCondListNested() (localctx IInitCondListNestedContext) {
 				p.Constant()
 			}
 
-		case CqlParserLR_BRACKET:
+		case CQLParserLR_BRACKET:
 			{
 				p.SetState(959)
 				p.InitCondList()
@@ -10442,13 +10442,13 @@ type InitCondListContext struct {
 func NewEmptyInitCondListContext() *InitCondListContext {
 	var p = new(InitCondListContext)
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
-	p.RuleIndex = CqlParserRULE_initCondList
+	p.RuleIndex = CQLParserRULE_initCondList
 	return p
 }
 
 func InitEmptyInitCondListContext(p *InitCondListContext) {
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
-	p.RuleIndex = CqlParserRULE_initCondList
+	p.RuleIndex = CQLParserRULE_initCondList
 }
 
 func (*InitCondListContext) IsInitCondListContext() {}
@@ -10459,7 +10459,7 @@ func NewInitCondListContext(parser antlr.Parser, parent antlr.ParserRuleContext,
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, parent, invokingState)
 
 	p.parser = parser
-	p.RuleIndex = CqlParserRULE_initCondList
+	p.RuleIndex = CQLParserRULE_initCondList
 
 	return p
 }
@@ -10589,20 +10589,20 @@ func (s *InitCondListContext) ToStringTree(ruleNames []string, recog antlr.Recog
 }
 
 func (s *InitCondListContext) EnterRule(listener antlr.ParseTreeListener) {
-	if listenerT, ok := listener.(CqlParserListener); ok {
+	if listenerT, ok := listener.(CQLParserListener); ok {
 		listenerT.EnterInitCondList(s)
 	}
 }
 
 func (s *InitCondListContext) ExitRule(listener antlr.ParseTreeListener) {
-	if listenerT, ok := listener.(CqlParserListener); ok {
+	if listenerT, ok := listener.(CQLParserListener); ok {
 		listenerT.ExitInitCondList(s)
 	}
 }
 
-func (p *CqlParser) InitCondList() (localctx IInitCondListContext) {
+func (p *CQLParser) InitCondList() (localctx IInitCondListContext) {
 	localctx = NewInitCondListContext(p, p.GetParserRuleContext(), p.GetState())
-	p.EnterRule(localctx, 62, CqlParserRULE_initCondList)
+	p.EnterRule(localctx, 62, CQLParserRULE_initCondList)
 	var _la int
 
 	p.EnterOuterAlt(localctx, 1)
@@ -10621,7 +10621,7 @@ func (p *CqlParser) InitCondList() (localctx IInitCondListContext) {
 	}
 	_la = p.GetTokenStream().LA(1)
 
-	for _la == CqlParserCOMMA {
+	for _la == CQLParserCOMMA {
 		{
 			p.SetState(969)
 			p.SyntaxComma()
@@ -10679,13 +10679,13 @@ type OrReplaceContext struct {
 func NewEmptyOrReplaceContext() *OrReplaceContext {
 	var p = new(OrReplaceContext)
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
-	p.RuleIndex = CqlParserRULE_orReplace
+	p.RuleIndex = CQLParserRULE_orReplace
 	return p
 }
 
 func InitEmptyOrReplaceContext(p *OrReplaceContext) {
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
-	p.RuleIndex = CqlParserRULE_orReplace
+	p.RuleIndex = CQLParserRULE_orReplace
 }
 
 func (*OrReplaceContext) IsOrReplaceContext() {}
@@ -10696,7 +10696,7 @@ func NewOrReplaceContext(parser antlr.Parser, parent antlr.ParserRuleContext, in
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, parent, invokingState)
 
 	p.parser = parser
-	p.RuleIndex = CqlParserRULE_orReplace
+	p.RuleIndex = CQLParserRULE_orReplace
 
 	return p
 }
@@ -10744,20 +10744,20 @@ func (s *OrReplaceContext) ToStringTree(ruleNames []string, recog antlr.Recogniz
 }
 
 func (s *OrReplaceContext) EnterRule(listener antlr.ParseTreeListener) {
-	if listenerT, ok := listener.(CqlParserListener); ok {
+	if listenerT, ok := listener.(CQLParserListener); ok {
 		listenerT.EnterOrReplace(s)
 	}
 }
 
 func (s *OrReplaceContext) ExitRule(listener antlr.ParseTreeListener) {
-	if listenerT, ok := listener.(CqlParserListener); ok {
+	if listenerT, ok := listener.(CQLParserListener); ok {
 		listenerT.ExitOrReplace(s)
 	}
 }
 
-func (p *CqlParser) OrReplace() (localctx IOrReplaceContext) {
+func (p *CQLParser) OrReplace() (localctx IOrReplaceContext) {
 	localctx = NewOrReplaceContext(p, p.GetParserRuleContext(), p.GetState())
-	p.EnterRule(localctx, 64, CqlParserRULE_orReplace)
+	p.EnterRule(localctx, 64, CQLParserRULE_orReplace)
 	p.EnterOuterAlt(localctx, 1)
 	{
 		p.SetState(979)
@@ -10808,13 +10808,13 @@ type AlterUserContext struct {
 func NewEmptyAlterUserContext() *AlterUserContext {
 	var p = new(AlterUserContext)
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
-	p.RuleIndex = CqlParserRULE_alterUser
+	p.RuleIndex = CQLParserRULE_alterUser
 	return p
 }
 
 func InitEmptyAlterUserContext(p *AlterUserContext) {
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
-	p.RuleIndex = CqlParserRULE_alterUser
+	p.RuleIndex = CQLParserRULE_alterUser
 }
 
 func (*AlterUserContext) IsAlterUserContext() {}
@@ -10825,7 +10825,7 @@ func NewAlterUserContext(parser antlr.Parser, parent antlr.ParserRuleContext, in
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, parent, invokingState)
 
 	p.parser = parser
-	p.RuleIndex = CqlParserRULE_alterUser
+	p.RuleIndex = CQLParserRULE_alterUser
 
 	return p
 }
@@ -10937,20 +10937,20 @@ func (s *AlterUserContext) ToStringTree(ruleNames []string, recog antlr.Recogniz
 }
 
 func (s *AlterUserContext) EnterRule(listener antlr.ParseTreeListener) {
-	if listenerT, ok := listener.(CqlParserListener); ok {
+	if listenerT, ok := listener.(CQLParserListener); ok {
 		listenerT.EnterAlterUser(s)
 	}
 }
 
 func (s *AlterUserContext) ExitRule(listener antlr.ParseTreeListener) {
-	if listenerT, ok := listener.(CqlParserListener); ok {
+	if listenerT, ok := listener.(CQLParserListener); ok {
 		listenerT.ExitAlterUser(s)
 	}
 }
 
-func (p *CqlParser) AlterUser() (localctx IAlterUserContext) {
+func (p *CQLParser) AlterUser() (localctx IAlterUserContext) {
 	localctx = NewAlterUserContext(p, p.GetParserRuleContext(), p.GetState())
-	p.EnterRule(localctx, 66, CqlParserRULE_alterUser)
+	p.EnterRule(localctx, 66, CQLParserRULE_alterUser)
 	var _la int
 
 	p.EnterOuterAlt(localctx, 1)
@@ -10981,7 +10981,7 @@ func (p *CqlParser) AlterUser() (localctx IAlterUserContext) {
 	}
 	_la = p.GetTokenStream().LA(1)
 
-	if _la == CqlParserK_NOSUPERUSER || _la == CqlParserK_SUPERUSER {
+	if _la == CQLParserK_NOSUPERUSER || _la == CQLParserK_SUPERUSER {
 		{
 			p.SetState(987)
 			p.UserSuperUser()
@@ -11025,13 +11025,13 @@ type UserPasswordContext struct {
 func NewEmptyUserPasswordContext() *UserPasswordContext {
 	var p = new(UserPasswordContext)
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
-	p.RuleIndex = CqlParserRULE_userPassword
+	p.RuleIndex = CQLParserRULE_userPassword
 	return p
 }
 
 func InitEmptyUserPasswordContext(p *UserPasswordContext) {
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
-	p.RuleIndex = CqlParserRULE_userPassword
+	p.RuleIndex = CQLParserRULE_userPassword
 }
 
 func (*UserPasswordContext) IsUserPasswordContext() {}
@@ -11042,7 +11042,7 @@ func NewUserPasswordContext(parser antlr.Parser, parent antlr.ParserRuleContext,
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, parent, invokingState)
 
 	p.parser = parser
-	p.RuleIndex = CqlParserRULE_userPassword
+	p.RuleIndex = CQLParserRULE_userPassword
 
 	return p
 }
@@ -11090,20 +11090,20 @@ func (s *UserPasswordContext) ToStringTree(ruleNames []string, recog antlr.Recog
 }
 
 func (s *UserPasswordContext) EnterRule(listener antlr.ParseTreeListener) {
-	if listenerT, ok := listener.(CqlParserListener); ok {
+	if listenerT, ok := listener.(CQLParserListener); ok {
 		listenerT.EnterUserPassword(s)
 	}
 }
 
 func (s *UserPasswordContext) ExitRule(listener antlr.ParseTreeListener) {
-	if listenerT, ok := listener.(CqlParserListener); ok {
+	if listenerT, ok := listener.(CQLParserListener); ok {
 		listenerT.ExitUserPassword(s)
 	}
 }
 
-func (p *CqlParser) UserPassword() (localctx IUserPasswordContext) {
+func (p *CQLParser) UserPassword() (localctx IUserPasswordContext) {
 	localctx = NewUserPasswordContext(p, p.GetParserRuleContext(), p.GetState())
-	p.EnterRule(localctx, 68, CqlParserRULE_userPassword)
+	p.EnterRule(localctx, 68, CQLParserRULE_userPassword)
 	p.EnterOuterAlt(localctx, 1)
 	{
 		p.SetState(990)
@@ -11150,13 +11150,13 @@ type UserSuperUserContext struct {
 func NewEmptyUserSuperUserContext() *UserSuperUserContext {
 	var p = new(UserSuperUserContext)
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
-	p.RuleIndex = CqlParserRULE_userSuperUser
+	p.RuleIndex = CQLParserRULE_userSuperUser
 	return p
 }
 
 func InitEmptyUserSuperUserContext(p *UserSuperUserContext) {
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
-	p.RuleIndex = CqlParserRULE_userSuperUser
+	p.RuleIndex = CQLParserRULE_userSuperUser
 }
 
 func (*UserSuperUserContext) IsUserSuperUserContext() {}
@@ -11167,7 +11167,7 @@ func NewUserSuperUserContext(parser antlr.Parser, parent antlr.ParserRuleContext
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, parent, invokingState)
 
 	p.parser = parser
-	p.RuleIndex = CqlParserRULE_userSuperUser
+	p.RuleIndex = CQLParserRULE_userSuperUser
 
 	return p
 }
@@ -11215,20 +11215,20 @@ func (s *UserSuperUserContext) ToStringTree(ruleNames []string, recog antlr.Reco
 }
 
 func (s *UserSuperUserContext) EnterRule(listener antlr.ParseTreeListener) {
-	if listenerT, ok := listener.(CqlParserListener); ok {
+	if listenerT, ok := listener.(CQLParserListener); ok {
 		listenerT.EnterUserSuperUser(s)
 	}
 }
 
 func (s *UserSuperUserContext) ExitRule(listener antlr.ParseTreeListener) {
-	if listenerT, ok := listener.(CqlParserListener); ok {
+	if listenerT, ok := listener.(CQLParserListener); ok {
 		listenerT.ExitUserSuperUser(s)
 	}
 }
 
-func (p *CqlParser) UserSuperUser() (localctx IUserSuperUserContext) {
+func (p *CQLParser) UserSuperUser() (localctx IUserSuperUserContext) {
 	localctx = NewUserSuperUserContext(p, p.GetParserRuleContext(), p.GetState())
-	p.EnterRule(localctx, 70, CqlParserRULE_userSuperUser)
+	p.EnterRule(localctx, 70, CQLParserRULE_userSuperUser)
 	p.SetState(995)
 	p.GetErrorHandler().Sync(p)
 	if p.HasError() {
@@ -11236,14 +11236,14 @@ func (p *CqlParser) UserSuperUser() (localctx IUserSuperUserContext) {
 	}
 
 	switch p.GetTokenStream().LA(1) {
-	case CqlParserK_SUPERUSER:
+	case CQLParserK_SUPERUSER:
 		p.EnterOuterAlt(localctx, 1)
 		{
 			p.SetState(993)
 			p.KwSuperuser()
 		}
 
-	case CqlParserK_NOSUPERUSER:
+	case CQLParserK_NOSUPERUSER:
 		p.EnterOuterAlt(localctx, 2)
 		{
 			p.SetState(994)
@@ -11295,13 +11295,13 @@ type AlterTypeContext struct {
 func NewEmptyAlterTypeContext() *AlterTypeContext {
 	var p = new(AlterTypeContext)
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
-	p.RuleIndex = CqlParserRULE_alterType
+	p.RuleIndex = CQLParserRULE_alterType
 	return p
 }
 
 func InitEmptyAlterTypeContext(p *AlterTypeContext) {
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
-	p.RuleIndex = CqlParserRULE_alterType
+	p.RuleIndex = CQLParserRULE_alterType
 }
 
 func (*AlterTypeContext) IsAlterTypeContext() {}
@@ -11312,7 +11312,7 @@ func NewAlterTypeContext(parser antlr.Parser, parent antlr.ParserRuleContext, in
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, parent, invokingState)
 
 	p.parser = parser
-	p.RuleIndex = CqlParserRULE_alterType
+	p.RuleIndex = CQLParserRULE_alterType
 
 	return p
 }
@@ -11400,7 +11400,7 @@ func (s *AlterTypeContext) Keyspace() IKeyspaceContext {
 }
 
 func (s *AlterTypeContext) DOT() antlr.TerminalNode {
-	return s.GetToken(CqlParserDOT, 0)
+	return s.GetToken(CQLParserDOT, 0)
 }
 
 func (s *AlterTypeContext) GetRuleContext() antlr.RuleContext {
@@ -11412,20 +11412,20 @@ func (s *AlterTypeContext) ToStringTree(ruleNames []string, recog antlr.Recogniz
 }
 
 func (s *AlterTypeContext) EnterRule(listener antlr.ParseTreeListener) {
-	if listenerT, ok := listener.(CqlParserListener); ok {
+	if listenerT, ok := listener.(CQLParserListener); ok {
 		listenerT.EnterAlterType(s)
 	}
 }
 
 func (s *AlterTypeContext) ExitRule(listener antlr.ParseTreeListener) {
-	if listenerT, ok := listener.(CqlParserListener); ok {
+	if listenerT, ok := listener.(CQLParserListener); ok {
 		listenerT.ExitAlterType(s)
 	}
 }
 
-func (p *CqlParser) AlterType() (localctx IAlterTypeContext) {
+func (p *CQLParser) AlterType() (localctx IAlterTypeContext) {
 	localctx = NewAlterTypeContext(p, p.GetParserRuleContext(), p.GetState())
-	p.EnterRule(localctx, 72, CqlParserRULE_alterType)
+	p.EnterRule(localctx, 72, CQLParserRULE_alterType)
 	p.EnterOuterAlt(localctx, 1)
 	{
 		p.SetState(997)
@@ -11445,7 +11445,7 @@ func (p *CqlParser) AlterType() (localctx IAlterTypeContext) {
 		}
 		{
 			p.SetState(1000)
-			p.Match(CqlParserDOT)
+			p.Match(CQLParserDOT)
 			if p.HasError() {
 				// Recognition error - abort rule
 				goto errorExit
@@ -11501,13 +11501,13 @@ type AlterTypeOperationContext struct {
 func NewEmptyAlterTypeOperationContext() *AlterTypeOperationContext {
 	var p = new(AlterTypeOperationContext)
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
-	p.RuleIndex = CqlParserRULE_alterTypeOperation
+	p.RuleIndex = CQLParserRULE_alterTypeOperation
 	return p
 }
 
 func InitEmptyAlterTypeOperationContext(p *AlterTypeOperationContext) {
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
-	p.RuleIndex = CqlParserRULE_alterTypeOperation
+	p.RuleIndex = CQLParserRULE_alterTypeOperation
 }
 
 func (*AlterTypeOperationContext) IsAlterTypeOperationContext() {}
@@ -11518,7 +11518,7 @@ func NewAlterTypeOperationContext(parser antlr.Parser, parent antlr.ParserRuleCo
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, parent, invokingState)
 
 	p.parser = parser
-	p.RuleIndex = CqlParserRULE_alterTypeOperation
+	p.RuleIndex = CQLParserRULE_alterTypeOperation
 
 	return p
 }
@@ -11582,20 +11582,20 @@ func (s *AlterTypeOperationContext) ToStringTree(ruleNames []string, recog antlr
 }
 
 func (s *AlterTypeOperationContext) EnterRule(listener antlr.ParseTreeListener) {
-	if listenerT, ok := listener.(CqlParserListener); ok {
+	if listenerT, ok := listener.(CQLParserListener); ok {
 		listenerT.EnterAlterTypeOperation(s)
 	}
 }
 
 func (s *AlterTypeOperationContext) ExitRule(listener antlr.ParseTreeListener) {
-	if listenerT, ok := listener.(CqlParserListener); ok {
+	if listenerT, ok := listener.(CQLParserListener); ok {
 		listenerT.ExitAlterTypeOperation(s)
 	}
 }
 
-func (p *CqlParser) AlterTypeOperation() (localctx IAlterTypeOperationContext) {
+func (p *CQLParser) AlterTypeOperation() (localctx IAlterTypeOperationContext) {
 	localctx = NewAlterTypeOperationContext(p, p.GetParserRuleContext(), p.GetState())
-	p.EnterRule(localctx, 74, CqlParserRULE_alterTypeOperation)
+	p.EnterRule(localctx, 74, CQLParserRULE_alterTypeOperation)
 	p.SetState(1010)
 	p.GetErrorHandler().Sync(p)
 	if p.HasError() {
@@ -11603,21 +11603,21 @@ func (p *CqlParser) AlterTypeOperation() (localctx IAlterTypeOperationContext) {
 	}
 
 	switch p.GetTokenStream().LA(1) {
-	case CqlParserK_ALTER:
+	case CQLParserK_ALTER:
 		p.EnterOuterAlt(localctx, 1)
 		{
 			p.SetState(1007)
 			p.AlterTypeAlterType()
 		}
 
-	case CqlParserK_ADD:
+	case CQLParserK_ADD:
 		p.EnterOuterAlt(localctx, 2)
 		{
 			p.SetState(1008)
 			p.AlterTypeAdd()
 		}
 
-	case CqlParserK_RENAME:
+	case CQLParserK_RENAME:
 		p.EnterOuterAlt(localctx, 3)
 		{
 			p.SetState(1009)
@@ -11665,13 +11665,13 @@ type AlterTypeRenameContext struct {
 func NewEmptyAlterTypeRenameContext() *AlterTypeRenameContext {
 	var p = new(AlterTypeRenameContext)
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
-	p.RuleIndex = CqlParserRULE_alterTypeRename
+	p.RuleIndex = CQLParserRULE_alterTypeRename
 	return p
 }
 
 func InitEmptyAlterTypeRenameContext(p *AlterTypeRenameContext) {
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
-	p.RuleIndex = CqlParserRULE_alterTypeRename
+	p.RuleIndex = CQLParserRULE_alterTypeRename
 }
 
 func (*AlterTypeRenameContext) IsAlterTypeRenameContext() {}
@@ -11682,7 +11682,7 @@ func NewAlterTypeRenameContext(parser antlr.Parser, parent antlr.ParserRuleConte
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, parent, invokingState)
 
 	p.parser = parser
-	p.RuleIndex = CqlParserRULE_alterTypeRename
+	p.RuleIndex = CQLParserRULE_alterTypeRename
 
 	return p
 }
@@ -11730,20 +11730,20 @@ func (s *AlterTypeRenameContext) ToStringTree(ruleNames []string, recog antlr.Re
 }
 
 func (s *AlterTypeRenameContext) EnterRule(listener antlr.ParseTreeListener) {
-	if listenerT, ok := listener.(CqlParserListener); ok {
+	if listenerT, ok := listener.(CQLParserListener); ok {
 		listenerT.EnterAlterTypeRename(s)
 	}
 }
 
 func (s *AlterTypeRenameContext) ExitRule(listener antlr.ParseTreeListener) {
-	if listenerT, ok := listener.(CqlParserListener); ok {
+	if listenerT, ok := listener.(CQLParserListener); ok {
 		listenerT.ExitAlterTypeRename(s)
 	}
 }
 
-func (p *CqlParser) AlterTypeRename() (localctx IAlterTypeRenameContext) {
+func (p *CQLParser) AlterTypeRename() (localctx IAlterTypeRenameContext) {
 	localctx = NewAlterTypeRenameContext(p, p.GetParserRuleContext(), p.GetState())
-	p.EnterRule(localctx, 76, CqlParserRULE_alterTypeRename)
+	p.EnterRule(localctx, 76, CQLParserRULE_alterTypeRename)
 	p.EnterOuterAlt(localctx, 1)
 	{
 		p.SetState(1012)
@@ -11792,13 +11792,13 @@ type AlterTypeRenameListContext struct {
 func NewEmptyAlterTypeRenameListContext() *AlterTypeRenameListContext {
 	var p = new(AlterTypeRenameListContext)
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
-	p.RuleIndex = CqlParserRULE_alterTypeRenameList
+	p.RuleIndex = CQLParserRULE_alterTypeRenameList
 	return p
 }
 
 func InitEmptyAlterTypeRenameListContext(p *AlterTypeRenameListContext) {
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
-	p.RuleIndex = CqlParserRULE_alterTypeRenameList
+	p.RuleIndex = CQLParserRULE_alterTypeRenameList
 }
 
 func (*AlterTypeRenameListContext) IsAlterTypeRenameListContext() {}
@@ -11809,7 +11809,7 @@ func NewAlterTypeRenameListContext(parser antlr.Parser, parent antlr.ParserRuleC
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, parent, invokingState)
 
 	p.parser = parser
-	p.RuleIndex = CqlParserRULE_alterTypeRenameList
+	p.RuleIndex = CQLParserRULE_alterTypeRenameList
 
 	return p
 }
@@ -11907,20 +11907,20 @@ func (s *AlterTypeRenameListContext) ToStringTree(ruleNames []string, recog antl
 }
 
 func (s *AlterTypeRenameListContext) EnterRule(listener antlr.ParseTreeListener) {
-	if listenerT, ok := listener.(CqlParserListener); ok {
+	if listenerT, ok := listener.(CQLParserListener); ok {
 		listenerT.EnterAlterTypeRenameList(s)
 	}
 }
 
 func (s *AlterTypeRenameListContext) ExitRule(listener antlr.ParseTreeListener) {
-	if listenerT, ok := listener.(CqlParserListener); ok {
+	if listenerT, ok := listener.(CQLParserListener); ok {
 		listenerT.ExitAlterTypeRenameList(s)
 	}
 }
 
-func (p *CqlParser) AlterTypeRenameList() (localctx IAlterTypeRenameListContext) {
+func (p *CQLParser) AlterTypeRenameList() (localctx IAlterTypeRenameListContext) {
 	localctx = NewAlterTypeRenameListContext(p, p.GetParserRuleContext(), p.GetState())
-	p.EnterRule(localctx, 78, CqlParserRULE_alterTypeRenameList)
+	p.EnterRule(localctx, 78, CQLParserRULE_alterTypeRenameList)
 	var _la int
 
 	p.EnterOuterAlt(localctx, 1)
@@ -11935,7 +11935,7 @@ func (p *CqlParser) AlterTypeRenameList() (localctx IAlterTypeRenameListContext)
 	}
 	_la = p.GetTokenStream().LA(1)
 
-	for _la == CqlParserK_AND {
+	for _la == CQLParserK_AND {
 		{
 			p.SetState(1016)
 			p.KwAnd()
@@ -11990,13 +11990,13 @@ type AlterTypeRenameItemContext struct {
 func NewEmptyAlterTypeRenameItemContext() *AlterTypeRenameItemContext {
 	var p = new(AlterTypeRenameItemContext)
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
-	p.RuleIndex = CqlParserRULE_alterTypeRenameItem
+	p.RuleIndex = CQLParserRULE_alterTypeRenameItem
 	return p
 }
 
 func InitEmptyAlterTypeRenameItemContext(p *AlterTypeRenameItemContext) {
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
-	p.RuleIndex = CqlParserRULE_alterTypeRenameItem
+	p.RuleIndex = CQLParserRULE_alterTypeRenameItem
 }
 
 func (*AlterTypeRenameItemContext) IsAlterTypeRenameItemContext() {}
@@ -12007,7 +12007,7 @@ func NewAlterTypeRenameItemContext(parser antlr.Parser, parent antlr.ParserRuleC
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, parent, invokingState)
 
 	p.parser = parser
-	p.RuleIndex = CqlParserRULE_alterTypeRenameItem
+	p.RuleIndex = CQLParserRULE_alterTypeRenameItem
 
 	return p
 }
@@ -12080,20 +12080,20 @@ func (s *AlterTypeRenameItemContext) ToStringTree(ruleNames []string, recog antl
 }
 
 func (s *AlterTypeRenameItemContext) EnterRule(listener antlr.ParseTreeListener) {
-	if listenerT, ok := listener.(CqlParserListener); ok {
+	if listenerT, ok := listener.(CQLParserListener); ok {
 		listenerT.EnterAlterTypeRenameItem(s)
 	}
 }
 
 func (s *AlterTypeRenameItemContext) ExitRule(listener antlr.ParseTreeListener) {
-	if listenerT, ok := listener.(CqlParserListener); ok {
+	if listenerT, ok := listener.(CQLParserListener); ok {
 		listenerT.ExitAlterTypeRenameItem(s)
 	}
 }
 
-func (p *CqlParser) AlterTypeRenameItem() (localctx IAlterTypeRenameItemContext) {
+func (p *CQLParser) AlterTypeRenameItem() (localctx IAlterTypeRenameItemContext) {
 	localctx = NewAlterTypeRenameItemContext(p, p.GetParserRuleContext(), p.GetState())
-	p.EnterRule(localctx, 80, CqlParserRULE_alterTypeRenameItem)
+	p.EnterRule(localctx, 80, CQLParserRULE_alterTypeRenameItem)
 	p.EnterOuterAlt(localctx, 1)
 	{
 		p.SetState(1024)
@@ -12149,13 +12149,13 @@ type AlterTypeAddContext struct {
 func NewEmptyAlterTypeAddContext() *AlterTypeAddContext {
 	var p = new(AlterTypeAddContext)
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
-	p.RuleIndex = CqlParserRULE_alterTypeAdd
+	p.RuleIndex = CQLParserRULE_alterTypeAdd
 	return p
 }
 
 func InitEmptyAlterTypeAddContext(p *AlterTypeAddContext) {
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
-	p.RuleIndex = CqlParserRULE_alterTypeAdd
+	p.RuleIndex = CQLParserRULE_alterTypeAdd
 }
 
 func (*AlterTypeAddContext) IsAlterTypeAddContext() {}
@@ -12166,7 +12166,7 @@ func NewAlterTypeAddContext(parser antlr.Parser, parent antlr.ParserRuleContext,
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, parent, invokingState)
 
 	p.parser = parser
-	p.RuleIndex = CqlParserRULE_alterTypeAdd
+	p.RuleIndex = CQLParserRULE_alterTypeAdd
 
 	return p
 }
@@ -12321,20 +12321,20 @@ func (s *AlterTypeAddContext) ToStringTree(ruleNames []string, recog antlr.Recog
 }
 
 func (s *AlterTypeAddContext) EnterRule(listener antlr.ParseTreeListener) {
-	if listenerT, ok := listener.(CqlParserListener); ok {
+	if listenerT, ok := listener.(CQLParserListener); ok {
 		listenerT.EnterAlterTypeAdd(s)
 	}
 }
 
 func (s *AlterTypeAddContext) ExitRule(listener antlr.ParseTreeListener) {
-	if listenerT, ok := listener.(CqlParserListener); ok {
+	if listenerT, ok := listener.(CQLParserListener); ok {
 		listenerT.ExitAlterTypeAdd(s)
 	}
 }
 
-func (p *CqlParser) AlterTypeAdd() (localctx IAlterTypeAddContext) {
+func (p *CQLParser) AlterTypeAdd() (localctx IAlterTypeAddContext) {
 	localctx = NewAlterTypeAddContext(p, p.GetParserRuleContext(), p.GetState())
-	p.EnterRule(localctx, 82, CqlParserRULE_alterTypeAdd)
+	p.EnterRule(localctx, 82, CQLParserRULE_alterTypeAdd)
 	var _la int
 
 	p.EnterOuterAlt(localctx, 1)
@@ -12357,7 +12357,7 @@ func (p *CqlParser) AlterTypeAdd() (localctx IAlterTypeAddContext) {
 	}
 	_la = p.GetTokenStream().LA(1)
 
-	for _la == CqlParserCOMMA {
+	for _la == CQLParserCOMMA {
 		{
 			p.SetState(1031)
 			p.SyntaxComma()
@@ -12417,13 +12417,13 @@ type AlterTypeAlterTypeContext struct {
 func NewEmptyAlterTypeAlterTypeContext() *AlterTypeAlterTypeContext {
 	var p = new(AlterTypeAlterTypeContext)
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
-	p.RuleIndex = CqlParserRULE_alterTypeAlterType
+	p.RuleIndex = CQLParserRULE_alterTypeAlterType
 	return p
 }
 
 func InitEmptyAlterTypeAlterTypeContext(p *AlterTypeAlterTypeContext) {
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
-	p.RuleIndex = CqlParserRULE_alterTypeAlterType
+	p.RuleIndex = CQLParserRULE_alterTypeAlterType
 }
 
 func (*AlterTypeAlterTypeContext) IsAlterTypeAlterTypeContext() {}
@@ -12434,7 +12434,7 @@ func NewAlterTypeAlterTypeContext(parser antlr.Parser, parent antlr.ParserRuleCo
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, parent, invokingState)
 
 	p.parser = parser
-	p.RuleIndex = CqlParserRULE_alterTypeAlterType
+	p.RuleIndex = CQLParserRULE_alterTypeAlterType
 
 	return p
 }
@@ -12514,20 +12514,20 @@ func (s *AlterTypeAlterTypeContext) ToStringTree(ruleNames []string, recog antlr
 }
 
 func (s *AlterTypeAlterTypeContext) EnterRule(listener antlr.ParseTreeListener) {
-	if listenerT, ok := listener.(CqlParserListener); ok {
+	if listenerT, ok := listener.(CQLParserListener); ok {
 		listenerT.EnterAlterTypeAlterType(s)
 	}
 }
 
 func (s *AlterTypeAlterTypeContext) ExitRule(listener antlr.ParseTreeListener) {
-	if listenerT, ok := listener.(CqlParserListener); ok {
+	if listenerT, ok := listener.(CQLParserListener); ok {
 		listenerT.ExitAlterTypeAlterType(s)
 	}
 }
 
-func (p *CqlParser) AlterTypeAlterType() (localctx IAlterTypeAlterTypeContext) {
+func (p *CQLParser) AlterTypeAlterType() (localctx IAlterTypeAlterTypeContext) {
 	localctx = NewAlterTypeAlterTypeContext(p, p.GetParserRuleContext(), p.GetState())
-	p.EnterRule(localctx, 84, CqlParserRULE_alterTypeAlterType)
+	p.EnterRule(localctx, 84, CQLParserRULE_alterTypeAlterType)
 	p.EnterOuterAlt(localctx, 1)
 	{
 		p.SetState(1040)
@@ -12586,13 +12586,13 @@ type AlterTableContext struct {
 func NewEmptyAlterTableContext() *AlterTableContext {
 	var p = new(AlterTableContext)
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
-	p.RuleIndex = CqlParserRULE_alterTable
+	p.RuleIndex = CQLParserRULE_alterTable
 	return p
 }
 
 func InitEmptyAlterTableContext(p *AlterTableContext) {
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
-	p.RuleIndex = CqlParserRULE_alterTable
+	p.RuleIndex = CQLParserRULE_alterTable
 }
 
 func (*AlterTableContext) IsAlterTableContext() {}
@@ -12603,7 +12603,7 @@ func NewAlterTableContext(parser antlr.Parser, parent antlr.ParserRuleContext, i
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, parent, invokingState)
 
 	p.parser = parser
-	p.RuleIndex = CqlParserRULE_alterTable
+	p.RuleIndex = CQLParserRULE_alterTable
 
 	return p
 }
@@ -12691,7 +12691,7 @@ func (s *AlterTableContext) Keyspace() IKeyspaceContext {
 }
 
 func (s *AlterTableContext) DOT() antlr.TerminalNode {
-	return s.GetToken(CqlParserDOT, 0)
+	return s.GetToken(CQLParserDOT, 0)
 }
 
 func (s *AlterTableContext) GetRuleContext() antlr.RuleContext {
@@ -12703,20 +12703,20 @@ func (s *AlterTableContext) ToStringTree(ruleNames []string, recog antlr.Recogni
 }
 
 func (s *AlterTableContext) EnterRule(listener antlr.ParseTreeListener) {
-	if listenerT, ok := listener.(CqlParserListener); ok {
+	if listenerT, ok := listener.(CQLParserListener); ok {
 		listenerT.EnterAlterTable(s)
 	}
 }
 
 func (s *AlterTableContext) ExitRule(listener antlr.ParseTreeListener) {
-	if listenerT, ok := listener.(CqlParserListener); ok {
+	if listenerT, ok := listener.(CQLParserListener); ok {
 		listenerT.ExitAlterTable(s)
 	}
 }
 
-func (p *CqlParser) AlterTable() (localctx IAlterTableContext) {
+func (p *CQLParser) AlterTable() (localctx IAlterTableContext) {
 	localctx = NewAlterTableContext(p, p.GetParserRuleContext(), p.GetState())
-	p.EnterRule(localctx, 86, CqlParserRULE_alterTable)
+	p.EnterRule(localctx, 86, CQLParserRULE_alterTable)
 	p.EnterOuterAlt(localctx, 1)
 	{
 		p.SetState(1045)
@@ -12736,7 +12736,7 @@ func (p *CqlParser) AlterTable() (localctx IAlterTableContext) {
 		}
 		{
 			p.SetState(1048)
-			p.Match(CqlParserDOT)
+			p.Match(CQLParserDOT)
 			if p.HasError() {
 				// Recognition error - abort rule
 				goto errorExit
@@ -12794,13 +12794,13 @@ type AlterTableOperationContext struct {
 func NewEmptyAlterTableOperationContext() *AlterTableOperationContext {
 	var p = new(AlterTableOperationContext)
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
-	p.RuleIndex = CqlParserRULE_alterTableOperation
+	p.RuleIndex = CQLParserRULE_alterTableOperation
 	return p
 }
 
 func InitEmptyAlterTableOperationContext(p *AlterTableOperationContext) {
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
-	p.RuleIndex = CqlParserRULE_alterTableOperation
+	p.RuleIndex = CQLParserRULE_alterTableOperation
 }
 
 func (*AlterTableOperationContext) IsAlterTableOperationContext() {}
@@ -12811,7 +12811,7 @@ func NewAlterTableOperationContext(parser antlr.Parser, parent antlr.ParserRuleC
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, parent, invokingState)
 
 	p.parser = parser
-	p.RuleIndex = CqlParserRULE_alterTableOperation
+	p.RuleIndex = CQLParserRULE_alterTableOperation
 
 	return p
 }
@@ -12907,20 +12907,20 @@ func (s *AlterTableOperationContext) ToStringTree(ruleNames []string, recog antl
 }
 
 func (s *AlterTableOperationContext) EnterRule(listener antlr.ParseTreeListener) {
-	if listenerT, ok := listener.(CqlParserListener); ok {
+	if listenerT, ok := listener.(CQLParserListener); ok {
 		listenerT.EnterAlterTableOperation(s)
 	}
 }
 
 func (s *AlterTableOperationContext) ExitRule(listener antlr.ParseTreeListener) {
-	if listenerT, ok := listener.(CqlParserListener); ok {
+	if listenerT, ok := listener.(CQLParserListener); ok {
 		listenerT.ExitAlterTableOperation(s)
 	}
 }
 
-func (p *CqlParser) AlterTableOperation() (localctx IAlterTableOperationContext) {
+func (p *CQLParser) AlterTableOperation() (localctx IAlterTableOperationContext) {
 	localctx = NewAlterTableOperationContext(p, p.GetParserRuleContext(), p.GetState())
-	p.EnterRule(localctx, 88, CqlParserRULE_alterTableOperation)
+	p.EnterRule(localctx, 88, CQLParserRULE_alterTableOperation)
 	p.SetState(1060)
 	p.GetErrorHandler().Sync(p)
 	if p.HasError() {
@@ -13003,13 +13003,13 @@ type AlterTableWithContext struct {
 func NewEmptyAlterTableWithContext() *AlterTableWithContext {
 	var p = new(AlterTableWithContext)
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
-	p.RuleIndex = CqlParserRULE_alterTableWith
+	p.RuleIndex = CQLParserRULE_alterTableWith
 	return p
 }
 
 func InitEmptyAlterTableWithContext(p *AlterTableWithContext) {
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
-	p.RuleIndex = CqlParserRULE_alterTableWith
+	p.RuleIndex = CQLParserRULE_alterTableWith
 }
 
 func (*AlterTableWithContext) IsAlterTableWithContext() {}
@@ -13020,7 +13020,7 @@ func NewAlterTableWithContext(parser antlr.Parser, parent antlr.ParserRuleContex
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, parent, invokingState)
 
 	p.parser = parser
-	p.RuleIndex = CqlParserRULE_alterTableWith
+	p.RuleIndex = CQLParserRULE_alterTableWith
 
 	return p
 }
@@ -13068,20 +13068,20 @@ func (s *AlterTableWithContext) ToStringTree(ruleNames []string, recog antlr.Rec
 }
 
 func (s *AlterTableWithContext) EnterRule(listener antlr.ParseTreeListener) {
-	if listenerT, ok := listener.(CqlParserListener); ok {
+	if listenerT, ok := listener.(CQLParserListener); ok {
 		listenerT.EnterAlterTableWith(s)
 	}
 }
 
 func (s *AlterTableWithContext) ExitRule(listener antlr.ParseTreeListener) {
-	if listenerT, ok := listener.(CqlParserListener); ok {
+	if listenerT, ok := listener.(CQLParserListener); ok {
 		listenerT.ExitAlterTableWith(s)
 	}
 }
 
-func (p *CqlParser) AlterTableWith() (localctx IAlterTableWithContext) {
+func (p *CQLParser) AlterTableWith() (localctx IAlterTableWithContext) {
 	localctx = NewAlterTableWithContext(p, p.GetParserRuleContext(), p.GetState())
-	p.EnterRule(localctx, 90, CqlParserRULE_alterTableWith)
+	p.EnterRule(localctx, 90, CQLParserRULE_alterTableWith)
 	p.EnterOuterAlt(localctx, 1)
 	{
 		p.SetState(1062)
@@ -13130,13 +13130,13 @@ type AlterTableRenameContext struct {
 func NewEmptyAlterTableRenameContext() *AlterTableRenameContext {
 	var p = new(AlterTableRenameContext)
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
-	p.RuleIndex = CqlParserRULE_alterTableRename
+	p.RuleIndex = CQLParserRULE_alterTableRename
 	return p
 }
 
 func InitEmptyAlterTableRenameContext(p *AlterTableRenameContext) {
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
-	p.RuleIndex = CqlParserRULE_alterTableRename
+	p.RuleIndex = CQLParserRULE_alterTableRename
 }
 
 func (*AlterTableRenameContext) IsAlterTableRenameContext() {}
@@ -13147,7 +13147,7 @@ func NewAlterTableRenameContext(parser antlr.Parser, parent antlr.ParserRuleCont
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, parent, invokingState)
 
 	p.parser = parser
-	p.RuleIndex = CqlParserRULE_alterTableRename
+	p.RuleIndex = CQLParserRULE_alterTableRename
 
 	return p
 }
@@ -13236,20 +13236,20 @@ func (s *AlterTableRenameContext) ToStringTree(ruleNames []string, recog antlr.R
 }
 
 func (s *AlterTableRenameContext) EnterRule(listener antlr.ParseTreeListener) {
-	if listenerT, ok := listener.(CqlParserListener); ok {
+	if listenerT, ok := listener.(CQLParserListener); ok {
 		listenerT.EnterAlterTableRename(s)
 	}
 }
 
 func (s *AlterTableRenameContext) ExitRule(listener antlr.ParseTreeListener) {
-	if listenerT, ok := listener.(CqlParserListener); ok {
+	if listenerT, ok := listener.(CQLParserListener); ok {
 		listenerT.ExitAlterTableRename(s)
 	}
 }
 
-func (p *CqlParser) AlterTableRename() (localctx IAlterTableRenameContext) {
+func (p *CQLParser) AlterTableRename() (localctx IAlterTableRenameContext) {
 	localctx = NewAlterTableRenameContext(p, p.GetParserRuleContext(), p.GetState())
-	p.EnterRule(localctx, 92, CqlParserRULE_alterTableRename)
+	p.EnterRule(localctx, 92, CQLParserRULE_alterTableRename)
 	p.EnterOuterAlt(localctx, 1)
 	{
 		p.SetState(1065)
@@ -13305,13 +13305,13 @@ type AlterTableDropCompactStorageContext struct {
 func NewEmptyAlterTableDropCompactStorageContext() *AlterTableDropCompactStorageContext {
 	var p = new(AlterTableDropCompactStorageContext)
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
-	p.RuleIndex = CqlParserRULE_alterTableDropCompactStorage
+	p.RuleIndex = CQLParserRULE_alterTableDropCompactStorage
 	return p
 }
 
 func InitEmptyAlterTableDropCompactStorageContext(p *AlterTableDropCompactStorageContext) {
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
-	p.RuleIndex = CqlParserRULE_alterTableDropCompactStorage
+	p.RuleIndex = CQLParserRULE_alterTableDropCompactStorage
 }
 
 func (*AlterTableDropCompactStorageContext) IsAlterTableDropCompactStorageContext() {}
@@ -13322,7 +13322,7 @@ func NewAlterTableDropCompactStorageContext(parser antlr.Parser, parent antlr.Pa
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, parent, invokingState)
 
 	p.parser = parser
-	p.RuleIndex = CqlParserRULE_alterTableDropCompactStorage
+	p.RuleIndex = CQLParserRULE_alterTableDropCompactStorage
 
 	return p
 }
@@ -13386,20 +13386,20 @@ func (s *AlterTableDropCompactStorageContext) ToStringTree(ruleNames []string, r
 }
 
 func (s *AlterTableDropCompactStorageContext) EnterRule(listener antlr.ParseTreeListener) {
-	if listenerT, ok := listener.(CqlParserListener); ok {
+	if listenerT, ok := listener.(CQLParserListener); ok {
 		listenerT.EnterAlterTableDropCompactStorage(s)
 	}
 }
 
 func (s *AlterTableDropCompactStorageContext) ExitRule(listener antlr.ParseTreeListener) {
-	if listenerT, ok := listener.(CqlParserListener); ok {
+	if listenerT, ok := listener.(CQLParserListener); ok {
 		listenerT.ExitAlterTableDropCompactStorage(s)
 	}
 }
 
-func (p *CqlParser) AlterTableDropCompactStorage() (localctx IAlterTableDropCompactStorageContext) {
+func (p *CQLParser) AlterTableDropCompactStorage() (localctx IAlterTableDropCompactStorageContext) {
 	localctx = NewAlterTableDropCompactStorageContext(p, p.GetParserRuleContext(), p.GetState())
-	p.EnterRule(localctx, 94, CqlParserRULE_alterTableDropCompactStorage)
+	p.EnterRule(localctx, 94, CQLParserRULE_alterTableDropCompactStorage)
 	p.EnterOuterAlt(localctx, 1)
 	{
 		p.SetState(1070)
@@ -13450,13 +13450,13 @@ type AlterTableDropColumnsContext struct {
 func NewEmptyAlterTableDropColumnsContext() *AlterTableDropColumnsContext {
 	var p = new(AlterTableDropColumnsContext)
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
-	p.RuleIndex = CqlParserRULE_alterTableDropColumns
+	p.RuleIndex = CQLParserRULE_alterTableDropColumns
 	return p
 }
 
 func InitEmptyAlterTableDropColumnsContext(p *AlterTableDropColumnsContext) {
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
-	p.RuleIndex = CqlParserRULE_alterTableDropColumns
+	p.RuleIndex = CQLParserRULE_alterTableDropColumns
 }
 
 func (*AlterTableDropColumnsContext) IsAlterTableDropColumnsContext() {}
@@ -13467,7 +13467,7 @@ func NewAlterTableDropColumnsContext(parser antlr.Parser, parent antlr.ParserRul
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, parent, invokingState)
 
 	p.parser = parser
-	p.RuleIndex = CqlParserRULE_alterTableDropColumns
+	p.RuleIndex = CQLParserRULE_alterTableDropColumns
 
 	return p
 }
@@ -13515,20 +13515,20 @@ func (s *AlterTableDropColumnsContext) ToStringTree(ruleNames []string, recog an
 }
 
 func (s *AlterTableDropColumnsContext) EnterRule(listener antlr.ParseTreeListener) {
-	if listenerT, ok := listener.(CqlParserListener); ok {
+	if listenerT, ok := listener.(CQLParserListener); ok {
 		listenerT.EnterAlterTableDropColumns(s)
 	}
 }
 
 func (s *AlterTableDropColumnsContext) ExitRule(listener antlr.ParseTreeListener) {
-	if listenerT, ok := listener.(CqlParserListener); ok {
+	if listenerT, ok := listener.(CQLParserListener); ok {
 		listenerT.ExitAlterTableDropColumns(s)
 	}
 }
 
-func (p *CqlParser) AlterTableDropColumns() (localctx IAlterTableDropColumnsContext) {
+func (p *CQLParser) AlterTableDropColumns() (localctx IAlterTableDropColumnsContext) {
 	localctx = NewAlterTableDropColumnsContext(p, p.GetParserRuleContext(), p.GetState())
-	p.EnterRule(localctx, 96, CqlParserRULE_alterTableDropColumns)
+	p.EnterRule(localctx, 96, CQLParserRULE_alterTableDropColumns)
 	p.EnterOuterAlt(localctx, 1)
 	{
 		p.SetState(1074)
@@ -13577,13 +13577,13 @@ type AlterTableDropColumnListContext struct {
 func NewEmptyAlterTableDropColumnListContext() *AlterTableDropColumnListContext {
 	var p = new(AlterTableDropColumnListContext)
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
-	p.RuleIndex = CqlParserRULE_alterTableDropColumnList
+	p.RuleIndex = CQLParserRULE_alterTableDropColumnList
 	return p
 }
 
 func InitEmptyAlterTableDropColumnListContext(p *AlterTableDropColumnListContext) {
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
-	p.RuleIndex = CqlParserRULE_alterTableDropColumnList
+	p.RuleIndex = CQLParserRULE_alterTableDropColumnList
 }
 
 func (*AlterTableDropColumnListContext) IsAlterTableDropColumnListContext() {}
@@ -13594,7 +13594,7 @@ func NewAlterTableDropColumnListContext(parser antlr.Parser, parent antlr.Parser
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, parent, invokingState)
 
 	p.parser = parser
-	p.RuleIndex = CqlParserRULE_alterTableDropColumnList
+	p.RuleIndex = CQLParserRULE_alterTableDropColumnList
 
 	return p
 }
@@ -13692,20 +13692,20 @@ func (s *AlterTableDropColumnListContext) ToStringTree(ruleNames []string, recog
 }
 
 func (s *AlterTableDropColumnListContext) EnterRule(listener antlr.ParseTreeListener) {
-	if listenerT, ok := listener.(CqlParserListener); ok {
+	if listenerT, ok := listener.(CQLParserListener); ok {
 		listenerT.EnterAlterTableDropColumnList(s)
 	}
 }
 
 func (s *AlterTableDropColumnListContext) ExitRule(listener antlr.ParseTreeListener) {
-	if listenerT, ok := listener.(CqlParserListener); ok {
+	if listenerT, ok := listener.(CQLParserListener); ok {
 		listenerT.ExitAlterTableDropColumnList(s)
 	}
 }
 
-func (p *CqlParser) AlterTableDropColumnList() (localctx IAlterTableDropColumnListContext) {
+func (p *CQLParser) AlterTableDropColumnList() (localctx IAlterTableDropColumnListContext) {
 	localctx = NewAlterTableDropColumnListContext(p, p.GetParserRuleContext(), p.GetState())
-	p.EnterRule(localctx, 98, CqlParserRULE_alterTableDropColumnList)
+	p.EnterRule(localctx, 98, CQLParserRULE_alterTableDropColumnList)
 	var _la int
 
 	p.EnterOuterAlt(localctx, 1)
@@ -13720,7 +13720,7 @@ func (p *CqlParser) AlterTableDropColumnList() (localctx IAlterTableDropColumnLi
 	}
 	_la = p.GetTokenStream().LA(1)
 
-	for _la == CqlParserCOMMA {
+	for _la == CQLParserCOMMA {
 		{
 			p.SetState(1078)
 			p.SyntaxComma()
@@ -13774,13 +13774,13 @@ type AlterTableAddContext struct {
 func NewEmptyAlterTableAddContext() *AlterTableAddContext {
 	var p = new(AlterTableAddContext)
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
-	p.RuleIndex = CqlParserRULE_alterTableAdd
+	p.RuleIndex = CQLParserRULE_alterTableAdd
 	return p
 }
 
 func InitEmptyAlterTableAddContext(p *AlterTableAddContext) {
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
-	p.RuleIndex = CqlParserRULE_alterTableAdd
+	p.RuleIndex = CQLParserRULE_alterTableAdd
 }
 
 func (*AlterTableAddContext) IsAlterTableAddContext() {}
@@ -13791,7 +13791,7 @@ func NewAlterTableAddContext(parser antlr.Parser, parent antlr.ParserRuleContext
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, parent, invokingState)
 
 	p.parser = parser
-	p.RuleIndex = CqlParserRULE_alterTableAdd
+	p.RuleIndex = CQLParserRULE_alterTableAdd
 
 	return p
 }
@@ -13839,20 +13839,20 @@ func (s *AlterTableAddContext) ToStringTree(ruleNames []string, recog antlr.Reco
 }
 
 func (s *AlterTableAddContext) EnterRule(listener antlr.ParseTreeListener) {
-	if listenerT, ok := listener.(CqlParserListener); ok {
+	if listenerT, ok := listener.(CQLParserListener); ok {
 		listenerT.EnterAlterTableAdd(s)
 	}
 }
 
 func (s *AlterTableAddContext) ExitRule(listener antlr.ParseTreeListener) {
-	if listenerT, ok := listener.(CqlParserListener); ok {
+	if listenerT, ok := listener.(CQLParserListener); ok {
 		listenerT.ExitAlterTableAdd(s)
 	}
 }
 
-func (p *CqlParser) AlterTableAdd() (localctx IAlterTableAddContext) {
+func (p *CQLParser) AlterTableAdd() (localctx IAlterTableAddContext) {
 	localctx = NewAlterTableAddContext(p, p.GetParserRuleContext(), p.GetState())
-	p.EnterRule(localctx, 100, CqlParserRULE_alterTableAdd)
+	p.EnterRule(localctx, 100, CQLParserRULE_alterTableAdd)
 	p.EnterOuterAlt(localctx, 1)
 	{
 		p.SetState(1086)
@@ -13903,13 +13903,13 @@ type AlterTableColumnDefinitionContext struct {
 func NewEmptyAlterTableColumnDefinitionContext() *AlterTableColumnDefinitionContext {
 	var p = new(AlterTableColumnDefinitionContext)
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
-	p.RuleIndex = CqlParserRULE_alterTableColumnDefinition
+	p.RuleIndex = CQLParserRULE_alterTableColumnDefinition
 	return p
 }
 
 func InitEmptyAlterTableColumnDefinitionContext(p *AlterTableColumnDefinitionContext) {
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
-	p.RuleIndex = CqlParserRULE_alterTableColumnDefinition
+	p.RuleIndex = CQLParserRULE_alterTableColumnDefinition
 }
 
 func (*AlterTableColumnDefinitionContext) IsAlterTableColumnDefinitionContext() {}
@@ -13920,7 +13920,7 @@ func NewAlterTableColumnDefinitionContext(parser antlr.Parser, parent antlr.Pars
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, parent, invokingState)
 
 	p.parser = parser
-	p.RuleIndex = CqlParserRULE_alterTableColumnDefinition
+	p.RuleIndex = CQLParserRULE_alterTableColumnDefinition
 
 	return p
 }
@@ -14059,20 +14059,20 @@ func (s *AlterTableColumnDefinitionContext) ToStringTree(ruleNames []string, rec
 }
 
 func (s *AlterTableColumnDefinitionContext) EnterRule(listener antlr.ParseTreeListener) {
-	if listenerT, ok := listener.(CqlParserListener); ok {
+	if listenerT, ok := listener.(CQLParserListener); ok {
 		listenerT.EnterAlterTableColumnDefinition(s)
 	}
 }
 
 func (s *AlterTableColumnDefinitionContext) ExitRule(listener antlr.ParseTreeListener) {
-	if listenerT, ok := listener.(CqlParserListener); ok {
+	if listenerT, ok := listener.(CQLParserListener); ok {
 		listenerT.ExitAlterTableColumnDefinition(s)
 	}
 }
 
-func (p *CqlParser) AlterTableColumnDefinition() (localctx IAlterTableColumnDefinitionContext) {
+func (p *CQLParser) AlterTableColumnDefinition() (localctx IAlterTableColumnDefinitionContext) {
 	localctx = NewAlterTableColumnDefinitionContext(p, p.GetParserRuleContext(), p.GetState())
-	p.EnterRule(localctx, 102, CqlParserRULE_alterTableColumnDefinition)
+	p.EnterRule(localctx, 102, CQLParserRULE_alterTableColumnDefinition)
 	var _la int
 
 	p.EnterOuterAlt(localctx, 1)
@@ -14091,7 +14091,7 @@ func (p *CqlParser) AlterTableColumnDefinition() (localctx IAlterTableColumnDefi
 	}
 	_la = p.GetTokenStream().LA(1)
 
-	for _la == CqlParserCOMMA {
+	for _la == CQLParserCOMMA {
 		{
 			p.SetState(1091)
 			p.SyntaxComma()
@@ -14151,13 +14151,13 @@ type AlterRoleContext struct {
 func NewEmptyAlterRoleContext() *AlterRoleContext {
 	var p = new(AlterRoleContext)
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
-	p.RuleIndex = CqlParserRULE_alterRole
+	p.RuleIndex = CQLParserRULE_alterRole
 	return p
 }
 
 func InitEmptyAlterRoleContext(p *AlterRoleContext) {
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
-	p.RuleIndex = CqlParserRULE_alterRole
+	p.RuleIndex = CQLParserRULE_alterRole
 }
 
 func (*AlterRoleContext) IsAlterRoleContext() {}
@@ -14168,7 +14168,7 @@ func NewAlterRoleContext(parser antlr.Parser, parent antlr.ParserRuleContext, in
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, parent, invokingState)
 
 	p.parser = parser
-	p.RuleIndex = CqlParserRULE_alterRole
+	p.RuleIndex = CQLParserRULE_alterRole
 
 	return p
 }
@@ -14248,20 +14248,20 @@ func (s *AlterRoleContext) ToStringTree(ruleNames []string, recog antlr.Recogniz
 }
 
 func (s *AlterRoleContext) EnterRule(listener antlr.ParseTreeListener) {
-	if listenerT, ok := listener.(CqlParserListener); ok {
+	if listenerT, ok := listener.(CQLParserListener); ok {
 		listenerT.EnterAlterRole(s)
 	}
 }
 
 func (s *AlterRoleContext) ExitRule(listener antlr.ParseTreeListener) {
-	if listenerT, ok := listener.(CqlParserListener); ok {
+	if listenerT, ok := listener.(CQLParserListener); ok {
 		listenerT.ExitAlterRole(s)
 	}
 }
 
-func (p *CqlParser) AlterRole() (localctx IAlterRoleContext) {
+func (p *CQLParser) AlterRole() (localctx IAlterRoleContext) {
 	localctx = NewAlterRoleContext(p, p.GetParserRuleContext(), p.GetState())
-	p.EnterRule(localctx, 104, CqlParserRULE_alterRole)
+	p.EnterRule(localctx, 104, CQLParserRULE_alterRole)
 	var _la int
 
 	p.EnterOuterAlt(localctx, 1)
@@ -14284,7 +14284,7 @@ func (p *CqlParser) AlterRole() (localctx IAlterRoleContext) {
 	}
 	_la = p.GetTokenStream().LA(1)
 
-	if _la == CqlParserK_WITH {
+	if _la == CQLParserK_WITH {
 		{
 			p.SetState(1103)
 			p.RoleWith()
@@ -14331,13 +14331,13 @@ type RoleWithContext struct {
 func NewEmptyRoleWithContext() *RoleWithContext {
 	var p = new(RoleWithContext)
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
-	p.RuleIndex = CqlParserRULE_roleWith
+	p.RuleIndex = CQLParserRULE_roleWith
 	return p
 }
 
 func InitEmptyRoleWithContext(p *RoleWithContext) {
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
-	p.RuleIndex = CqlParserRULE_roleWith
+	p.RuleIndex = CQLParserRULE_roleWith
 }
 
 func (*RoleWithContext) IsRoleWithContext() {}
@@ -14348,7 +14348,7 @@ func NewRoleWithContext(parser antlr.Parser, parent antlr.ParserRuleContext, inv
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, parent, invokingState)
 
 	p.parser = parser
-	p.RuleIndex = CqlParserRULE_roleWith
+	p.RuleIndex = CQLParserRULE_roleWith
 
 	return p
 }
@@ -14462,20 +14462,20 @@ func (s *RoleWithContext) ToStringTree(ruleNames []string, recog antlr.Recognize
 }
 
 func (s *RoleWithContext) EnterRule(listener antlr.ParseTreeListener) {
-	if listenerT, ok := listener.(CqlParserListener); ok {
+	if listenerT, ok := listener.(CQLParserListener); ok {
 		listenerT.EnterRoleWith(s)
 	}
 }
 
 func (s *RoleWithContext) ExitRule(listener antlr.ParseTreeListener) {
-	if listenerT, ok := listener.(CqlParserListener); ok {
+	if listenerT, ok := listener.(CQLParserListener); ok {
 		listenerT.ExitRoleWith(s)
 	}
 }
 
-func (p *CqlParser) RoleWith() (localctx IRoleWithContext) {
+func (p *CQLParser) RoleWith() (localctx IRoleWithContext) {
 	localctx = NewRoleWithContext(p, p.GetParserRuleContext(), p.GetState())
-	p.EnterRule(localctx, 106, CqlParserRULE_roleWith)
+	p.EnterRule(localctx, 106, CQLParserRULE_roleWith)
 	var _la int
 
 	p.EnterOuterAlt(localctx, 1)
@@ -14495,7 +14495,7 @@ func (p *CqlParser) RoleWith() (localctx IRoleWithContext) {
 	}
 	_la = p.GetTokenStream().LA(1)
 
-	for _la == CqlParserK_AND {
+	for _la == CQLParserK_AND {
 		{
 			p.SetState(1108)
 			p.KwAnd()
@@ -14555,13 +14555,13 @@ type RoleWithOptionsContext struct {
 func NewEmptyRoleWithOptionsContext() *RoleWithOptionsContext {
 	var p = new(RoleWithOptionsContext)
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
-	p.RuleIndex = CqlParserRULE_roleWithOptions
+	p.RuleIndex = CQLParserRULE_roleWithOptions
 	return p
 }
 
 func InitEmptyRoleWithOptionsContext(p *RoleWithOptionsContext) {
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
-	p.RuleIndex = CqlParserRULE_roleWithOptions
+	p.RuleIndex = CQLParserRULE_roleWithOptions
 }
 
 func (*RoleWithOptionsContext) IsRoleWithOptionsContext() {}
@@ -14572,7 +14572,7 @@ func NewRoleWithOptionsContext(parser antlr.Parser, parent antlr.ParserRuleConte
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, parent, invokingState)
 
 	p.parser = parser
-	p.RuleIndex = CqlParserRULE_roleWithOptions
+	p.RuleIndex = CQLParserRULE_roleWithOptions
 
 	return p
 }
@@ -14596,7 +14596,7 @@ func (s *RoleWithOptionsContext) KwPassword() IKwPasswordContext {
 }
 
 func (s *RoleWithOptionsContext) OPERATOR_EQ() antlr.TerminalNode {
-	return s.GetToken(CqlParserOPERATOR_EQ, 0)
+	return s.GetToken(CQLParserOPERATOR_EQ, 0)
 }
 
 func (s *RoleWithOptionsContext) StringLiteral() IStringLiteralContext {
@@ -14704,20 +14704,20 @@ func (s *RoleWithOptionsContext) ToStringTree(ruleNames []string, recog antlr.Re
 }
 
 func (s *RoleWithOptionsContext) EnterRule(listener antlr.ParseTreeListener) {
-	if listenerT, ok := listener.(CqlParserListener); ok {
+	if listenerT, ok := listener.(CQLParserListener); ok {
 		listenerT.EnterRoleWithOptions(s)
 	}
 }
 
 func (s *RoleWithOptionsContext) ExitRule(listener antlr.ParseTreeListener) {
-	if listenerT, ok := listener.(CqlParserListener); ok {
+	if listenerT, ok := listener.(CQLParserListener); ok {
 		listenerT.ExitRoleWithOptions(s)
 	}
 }
 
-func (p *CqlParser) RoleWithOptions() (localctx IRoleWithOptionsContext) {
+func (p *CQLParser) RoleWithOptions() (localctx IRoleWithOptionsContext) {
 	localctx = NewRoleWithOptionsContext(p, p.GetParserRuleContext(), p.GetState())
-	p.EnterRule(localctx, 108, CqlParserRULE_roleWithOptions)
+	p.EnterRule(localctx, 108, CQLParserRULE_roleWithOptions)
 	p.SetState(1132)
 	p.GetErrorHandler().Sync(p)
 	if p.HasError() {
@@ -14725,7 +14725,7 @@ func (p *CqlParser) RoleWithOptions() (localctx IRoleWithOptionsContext) {
 	}
 
 	switch p.GetTokenStream().LA(1) {
-	case CqlParserK_PASSWORD:
+	case CQLParserK_PASSWORD:
 		p.EnterOuterAlt(localctx, 1)
 		{
 			p.SetState(1116)
@@ -14733,7 +14733,7 @@ func (p *CqlParser) RoleWithOptions() (localctx IRoleWithOptionsContext) {
 		}
 		{
 			p.SetState(1117)
-			p.Match(CqlParserOPERATOR_EQ)
+			p.Match(CQLParserOPERATOR_EQ)
 			if p.HasError() {
 				// Recognition error - abort rule
 				goto errorExit
@@ -14744,7 +14744,7 @@ func (p *CqlParser) RoleWithOptions() (localctx IRoleWithOptionsContext) {
 			p.StringLiteral()
 		}
 
-	case CqlParserK_LOGIN:
+	case CQLParserK_LOGIN:
 		p.EnterOuterAlt(localctx, 2)
 		{
 			p.SetState(1120)
@@ -14752,7 +14752,7 @@ func (p *CqlParser) RoleWithOptions() (localctx IRoleWithOptionsContext) {
 		}
 		{
 			p.SetState(1121)
-			p.Match(CqlParserOPERATOR_EQ)
+			p.Match(CQLParserOPERATOR_EQ)
 			if p.HasError() {
 				// Recognition error - abort rule
 				goto errorExit
@@ -14763,7 +14763,7 @@ func (p *CqlParser) RoleWithOptions() (localctx IRoleWithOptionsContext) {
 			p.BooleanLiteral()
 		}
 
-	case CqlParserK_SUPERUSER:
+	case CQLParserK_SUPERUSER:
 		p.EnterOuterAlt(localctx, 3)
 		{
 			p.SetState(1124)
@@ -14771,7 +14771,7 @@ func (p *CqlParser) RoleWithOptions() (localctx IRoleWithOptionsContext) {
 		}
 		{
 			p.SetState(1125)
-			p.Match(CqlParserOPERATOR_EQ)
+			p.Match(CQLParserOPERATOR_EQ)
 			if p.HasError() {
 				// Recognition error - abort rule
 				goto errorExit
@@ -14782,7 +14782,7 @@ func (p *CqlParser) RoleWithOptions() (localctx IRoleWithOptionsContext) {
 			p.BooleanLiteral()
 		}
 
-	case CqlParserK_OPTIONS:
+	case CQLParserK_OPTIONS:
 		p.EnterOuterAlt(localctx, 4)
 		{
 			p.SetState(1128)
@@ -14790,7 +14790,7 @@ func (p *CqlParser) RoleWithOptions() (localctx IRoleWithOptionsContext) {
 		}
 		{
 			p.SetState(1129)
-			p.Match(CqlParserOPERATOR_EQ)
+			p.Match(CQLParserOPERATOR_EQ)
 			if p.HasError() {
 				// Recognition error - abort rule
 				goto errorExit
@@ -14848,13 +14848,13 @@ type AlterMaterializedViewContext struct {
 func NewEmptyAlterMaterializedViewContext() *AlterMaterializedViewContext {
 	var p = new(AlterMaterializedViewContext)
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
-	p.RuleIndex = CqlParserRULE_alterMaterializedView
+	p.RuleIndex = CQLParserRULE_alterMaterializedView
 	return p
 }
 
 func InitEmptyAlterMaterializedViewContext(p *AlterMaterializedViewContext) {
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
-	p.RuleIndex = CqlParserRULE_alterMaterializedView
+	p.RuleIndex = CQLParserRULE_alterMaterializedView
 }
 
 func (*AlterMaterializedViewContext) IsAlterMaterializedViewContext() {}
@@ -14865,7 +14865,7 @@ func NewAlterMaterializedViewContext(parser antlr.Parser, parent antlr.ParserRul
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, parent, invokingState)
 
 	p.parser = parser
-	p.RuleIndex = CqlParserRULE_alterMaterializedView
+	p.RuleIndex = CQLParserRULE_alterMaterializedView
 
 	return p
 }
@@ -14953,7 +14953,7 @@ func (s *AlterMaterializedViewContext) Keyspace() IKeyspaceContext {
 }
 
 func (s *AlterMaterializedViewContext) DOT() antlr.TerminalNode {
-	return s.GetToken(CqlParserDOT, 0)
+	return s.GetToken(CQLParserDOT, 0)
 }
 
 func (s *AlterMaterializedViewContext) KwWith() IKwWithContext {
@@ -14997,20 +14997,20 @@ func (s *AlterMaterializedViewContext) ToStringTree(ruleNames []string, recog an
 }
 
 func (s *AlterMaterializedViewContext) EnterRule(listener antlr.ParseTreeListener) {
-	if listenerT, ok := listener.(CqlParserListener); ok {
+	if listenerT, ok := listener.(CQLParserListener); ok {
 		listenerT.EnterAlterMaterializedView(s)
 	}
 }
 
 func (s *AlterMaterializedViewContext) ExitRule(listener antlr.ParseTreeListener) {
-	if listenerT, ok := listener.(CqlParserListener); ok {
+	if listenerT, ok := listener.(CQLParserListener); ok {
 		listenerT.ExitAlterMaterializedView(s)
 	}
 }
 
-func (p *CqlParser) AlterMaterializedView() (localctx IAlterMaterializedViewContext) {
+func (p *CQLParser) AlterMaterializedView() (localctx IAlterMaterializedViewContext) {
 	localctx = NewAlterMaterializedViewContext(p, p.GetParserRuleContext(), p.GetState())
-	p.EnterRule(localctx, 110, CqlParserRULE_alterMaterializedView)
+	p.EnterRule(localctx, 110, CQLParserRULE_alterMaterializedView)
 	var _la int
 
 	p.EnterOuterAlt(localctx, 1)
@@ -15036,7 +15036,7 @@ func (p *CqlParser) AlterMaterializedView() (localctx IAlterMaterializedViewCont
 		}
 		{
 			p.SetState(1138)
-			p.Match(CqlParserDOT)
+			p.Match(CQLParserDOT)
 			if p.HasError() {
 				// Recognition error - abort rule
 				goto errorExit
@@ -15057,7 +15057,7 @@ func (p *CqlParser) AlterMaterializedView() (localctx IAlterMaterializedViewCont
 	}
 	_la = p.GetTokenStream().LA(1)
 
-	if _la == CqlParserK_WITH {
+	if _la == CQLParserK_WITH {
 		{
 			p.SetState(1143)
 			p.KwWith()
@@ -15107,13 +15107,13 @@ type DropUserContext struct {
 func NewEmptyDropUserContext() *DropUserContext {
 	var p = new(DropUserContext)
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
-	p.RuleIndex = CqlParserRULE_dropUser
+	p.RuleIndex = CQLParserRULE_dropUser
 	return p
 }
 
 func InitEmptyDropUserContext(p *DropUserContext) {
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
-	p.RuleIndex = CqlParserRULE_dropUser
+	p.RuleIndex = CQLParserRULE_dropUser
 }
 
 func (*DropUserContext) IsDropUserContext() {}
@@ -15124,7 +15124,7 @@ func NewDropUserContext(parser antlr.Parser, parent antlr.ParserRuleContext, inv
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, parent, invokingState)
 
 	p.parser = parser
-	p.RuleIndex = CqlParserRULE_dropUser
+	p.RuleIndex = CQLParserRULE_dropUser
 
 	return p
 }
@@ -15204,20 +15204,20 @@ func (s *DropUserContext) ToStringTree(ruleNames []string, recog antlr.Recognize
 }
 
 func (s *DropUserContext) EnterRule(listener antlr.ParseTreeListener) {
-	if listenerT, ok := listener.(CqlParserListener); ok {
+	if listenerT, ok := listener.(CQLParserListener); ok {
 		listenerT.EnterDropUser(s)
 	}
 }
 
 func (s *DropUserContext) ExitRule(listener antlr.ParseTreeListener) {
-	if listenerT, ok := listener.(CqlParserListener); ok {
+	if listenerT, ok := listener.(CQLParserListener); ok {
 		listenerT.ExitDropUser(s)
 	}
 }
 
-func (p *CqlParser) DropUser() (localctx IDropUserContext) {
+func (p *CQLParser) DropUser() (localctx IDropUserContext) {
 	localctx = NewDropUserContext(p, p.GetParserRuleContext(), p.GetState())
-	p.EnterRule(localctx, 112, CqlParserRULE_dropUser)
+	p.EnterRule(localctx, 112, CQLParserRULE_dropUser)
 	var _la int
 
 	p.EnterOuterAlt(localctx, 1)
@@ -15236,7 +15236,7 @@ func (p *CqlParser) DropUser() (localctx IDropUserContext) {
 	}
 	_la = p.GetTokenStream().LA(1)
 
-	if _la == CqlParserK_IF {
+	if _la == CQLParserK_IF {
 		{
 			p.SetState(1150)
 			p.IfExist()
@@ -15288,13 +15288,13 @@ type DropTypeContext struct {
 func NewEmptyDropTypeContext() *DropTypeContext {
 	var p = new(DropTypeContext)
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
-	p.RuleIndex = CqlParserRULE_dropType
+	p.RuleIndex = CQLParserRULE_dropType
 	return p
 }
 
 func InitEmptyDropTypeContext(p *DropTypeContext) {
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
-	p.RuleIndex = CqlParserRULE_dropType
+	p.RuleIndex = CQLParserRULE_dropType
 }
 
 func (*DropTypeContext) IsDropTypeContext() {}
@@ -15305,7 +15305,7 @@ func NewDropTypeContext(parser antlr.Parser, parent antlr.ParserRuleContext, inv
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, parent, invokingState)
 
 	p.parser = parser
-	p.RuleIndex = CqlParserRULE_dropType
+	p.RuleIndex = CQLParserRULE_dropType
 
 	return p
 }
@@ -15393,7 +15393,7 @@ func (s *DropTypeContext) Keyspace() IKeyspaceContext {
 }
 
 func (s *DropTypeContext) DOT() antlr.TerminalNode {
-	return s.GetToken(CqlParserDOT, 0)
+	return s.GetToken(CQLParserDOT, 0)
 }
 
 func (s *DropTypeContext) GetRuleContext() antlr.RuleContext {
@@ -15405,20 +15405,20 @@ func (s *DropTypeContext) ToStringTree(ruleNames []string, recog antlr.Recognize
 }
 
 func (s *DropTypeContext) EnterRule(listener antlr.ParseTreeListener) {
-	if listenerT, ok := listener.(CqlParserListener); ok {
+	if listenerT, ok := listener.(CQLParserListener); ok {
 		listenerT.EnterDropType(s)
 	}
 }
 
 func (s *DropTypeContext) ExitRule(listener antlr.ParseTreeListener) {
-	if listenerT, ok := listener.(CqlParserListener); ok {
+	if listenerT, ok := listener.(CQLParserListener); ok {
 		listenerT.ExitDropType(s)
 	}
 }
 
-func (p *CqlParser) DropType() (localctx IDropTypeContext) {
+func (p *CQLParser) DropType() (localctx IDropTypeContext) {
 	localctx = NewDropTypeContext(p, p.GetParserRuleContext(), p.GetState())
-	p.EnterRule(localctx, 114, CqlParserRULE_dropType)
+	p.EnterRule(localctx, 114, CQLParserRULE_dropType)
 	var _la int
 
 	p.EnterOuterAlt(localctx, 1)
@@ -15437,7 +15437,7 @@ func (p *CqlParser) DropType() (localctx IDropTypeContext) {
 	}
 	_la = p.GetTokenStream().LA(1)
 
-	if _la == CqlParserK_IF {
+	if _la == CQLParserK_IF {
 		{
 			p.SetState(1157)
 			p.IfExist()
@@ -15454,7 +15454,7 @@ func (p *CqlParser) DropType() (localctx IDropTypeContext) {
 		}
 		{
 			p.SetState(1161)
-			p.Match(CqlParserDOT)
+			p.Match(CQLParserDOT)
 			if p.HasError() {
 				// Recognition error - abort rule
 				goto errorExit
@@ -15510,13 +15510,13 @@ type DropMaterializedViewContext struct {
 func NewEmptyDropMaterializedViewContext() *DropMaterializedViewContext {
 	var p = new(DropMaterializedViewContext)
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
-	p.RuleIndex = CqlParserRULE_dropMaterializedView
+	p.RuleIndex = CQLParserRULE_dropMaterializedView
 	return p
 }
 
 func InitEmptyDropMaterializedViewContext(p *DropMaterializedViewContext) {
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
-	p.RuleIndex = CqlParserRULE_dropMaterializedView
+	p.RuleIndex = CQLParserRULE_dropMaterializedView
 }
 
 func (*DropMaterializedViewContext) IsDropMaterializedViewContext() {}
@@ -15527,7 +15527,7 @@ func NewDropMaterializedViewContext(parser antlr.Parser, parent antlr.ParserRule
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, parent, invokingState)
 
 	p.parser = parser
-	p.RuleIndex = CqlParserRULE_dropMaterializedView
+	p.RuleIndex = CQLParserRULE_dropMaterializedView
 
 	return p
 }
@@ -15631,7 +15631,7 @@ func (s *DropMaterializedViewContext) Keyspace() IKeyspaceContext {
 }
 
 func (s *DropMaterializedViewContext) DOT() antlr.TerminalNode {
-	return s.GetToken(CqlParserDOT, 0)
+	return s.GetToken(CQLParserDOT, 0)
 }
 
 func (s *DropMaterializedViewContext) GetRuleContext() antlr.RuleContext {
@@ -15643,20 +15643,20 @@ func (s *DropMaterializedViewContext) ToStringTree(ruleNames []string, recog ant
 }
 
 func (s *DropMaterializedViewContext) EnterRule(listener antlr.ParseTreeListener) {
-	if listenerT, ok := listener.(CqlParserListener); ok {
+	if listenerT, ok := listener.(CQLParserListener); ok {
 		listenerT.EnterDropMaterializedView(s)
 	}
 }
 
 func (s *DropMaterializedViewContext) ExitRule(listener antlr.ParseTreeListener) {
-	if listenerT, ok := listener.(CqlParserListener); ok {
+	if listenerT, ok := listener.(CQLParserListener); ok {
 		listenerT.ExitDropMaterializedView(s)
 	}
 }
 
-func (p *CqlParser) DropMaterializedView() (localctx IDropMaterializedViewContext) {
+func (p *CQLParser) DropMaterializedView() (localctx IDropMaterializedViewContext) {
 	localctx = NewDropMaterializedViewContext(p, p.GetParserRuleContext(), p.GetState())
-	p.EnterRule(localctx, 116, CqlParserRULE_dropMaterializedView)
+	p.EnterRule(localctx, 116, CQLParserRULE_dropMaterializedView)
 	var _la int
 
 	p.EnterOuterAlt(localctx, 1)
@@ -15679,7 +15679,7 @@ func (p *CqlParser) DropMaterializedView() (localctx IDropMaterializedViewContex
 	}
 	_la = p.GetTokenStream().LA(1)
 
-	if _la == CqlParserK_IF {
+	if _la == CQLParserK_IF {
 		{
 			p.SetState(1170)
 			p.IfExist()
@@ -15696,7 +15696,7 @@ func (p *CqlParser) DropMaterializedView() (localctx IDropMaterializedViewContex
 		}
 		{
 			p.SetState(1174)
-			p.Match(CqlParserDOT)
+			p.Match(CQLParserDOT)
 			if p.HasError() {
 				// Recognition error - abort rule
 				goto errorExit
@@ -15751,13 +15751,13 @@ type DropAggregateContext struct {
 func NewEmptyDropAggregateContext() *DropAggregateContext {
 	var p = new(DropAggregateContext)
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
-	p.RuleIndex = CqlParserRULE_dropAggregate
+	p.RuleIndex = CQLParserRULE_dropAggregate
 	return p
 }
 
 func InitEmptyDropAggregateContext(p *DropAggregateContext) {
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
-	p.RuleIndex = CqlParserRULE_dropAggregate
+	p.RuleIndex = CQLParserRULE_dropAggregate
 }
 
 func (*DropAggregateContext) IsDropAggregateContext() {}
@@ -15768,7 +15768,7 @@ func NewDropAggregateContext(parser antlr.Parser, parent antlr.ParserRuleContext
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, parent, invokingState)
 
 	p.parser = parser
-	p.RuleIndex = CqlParserRULE_dropAggregate
+	p.RuleIndex = CQLParserRULE_dropAggregate
 
 	return p
 }
@@ -15856,7 +15856,7 @@ func (s *DropAggregateContext) Keyspace() IKeyspaceContext {
 }
 
 func (s *DropAggregateContext) DOT() antlr.TerminalNode {
-	return s.GetToken(CqlParserDOT, 0)
+	return s.GetToken(CQLParserDOT, 0)
 }
 
 func (s *DropAggregateContext) GetRuleContext() antlr.RuleContext {
@@ -15868,20 +15868,20 @@ func (s *DropAggregateContext) ToStringTree(ruleNames []string, recog antlr.Reco
 }
 
 func (s *DropAggregateContext) EnterRule(listener antlr.ParseTreeListener) {
-	if listenerT, ok := listener.(CqlParserListener); ok {
+	if listenerT, ok := listener.(CQLParserListener); ok {
 		listenerT.EnterDropAggregate(s)
 	}
 }
 
 func (s *DropAggregateContext) ExitRule(listener antlr.ParseTreeListener) {
-	if listenerT, ok := listener.(CqlParserListener); ok {
+	if listenerT, ok := listener.(CQLParserListener); ok {
 		listenerT.ExitDropAggregate(s)
 	}
 }
 
-func (p *CqlParser) DropAggregate() (localctx IDropAggregateContext) {
+func (p *CQLParser) DropAggregate() (localctx IDropAggregateContext) {
 	localctx = NewDropAggregateContext(p, p.GetParserRuleContext(), p.GetState())
-	p.EnterRule(localctx, 118, CqlParserRULE_dropAggregate)
+	p.EnterRule(localctx, 118, CQLParserRULE_dropAggregate)
 	var _la int
 
 	p.EnterOuterAlt(localctx, 1)
@@ -15900,7 +15900,7 @@ func (p *CqlParser) DropAggregate() (localctx IDropAggregateContext) {
 	}
 	_la = p.GetTokenStream().LA(1)
 
-	if _la == CqlParserK_IF {
+	if _la == CQLParserK_IF {
 		{
 			p.SetState(1182)
 			p.IfExist()
@@ -15917,7 +15917,7 @@ func (p *CqlParser) DropAggregate() (localctx IDropAggregateContext) {
 		}
 		{
 			p.SetState(1186)
-			p.Match(CqlParserDOT)
+			p.Match(CQLParserDOT)
 			if p.HasError() {
 				// Recognition error - abort rule
 				goto errorExit
@@ -15972,13 +15972,13 @@ type DropFunctionContext struct {
 func NewEmptyDropFunctionContext() *DropFunctionContext {
 	var p = new(DropFunctionContext)
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
-	p.RuleIndex = CqlParserRULE_dropFunction
+	p.RuleIndex = CQLParserRULE_dropFunction
 	return p
 }
 
 func InitEmptyDropFunctionContext(p *DropFunctionContext) {
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
-	p.RuleIndex = CqlParserRULE_dropFunction
+	p.RuleIndex = CQLParserRULE_dropFunction
 }
 
 func (*DropFunctionContext) IsDropFunctionContext() {}
@@ -15989,7 +15989,7 @@ func NewDropFunctionContext(parser antlr.Parser, parent antlr.ParserRuleContext,
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, parent, invokingState)
 
 	p.parser = parser
-	p.RuleIndex = CqlParserRULE_dropFunction
+	p.RuleIndex = CQLParserRULE_dropFunction
 
 	return p
 }
@@ -16077,7 +16077,7 @@ func (s *DropFunctionContext) Keyspace() IKeyspaceContext {
 }
 
 func (s *DropFunctionContext) DOT() antlr.TerminalNode {
-	return s.GetToken(CqlParserDOT, 0)
+	return s.GetToken(CQLParserDOT, 0)
 }
 
 func (s *DropFunctionContext) GetRuleContext() antlr.RuleContext {
@@ -16089,20 +16089,20 @@ func (s *DropFunctionContext) ToStringTree(ruleNames []string, recog antlr.Recog
 }
 
 func (s *DropFunctionContext) EnterRule(listener antlr.ParseTreeListener) {
-	if listenerT, ok := listener.(CqlParserListener); ok {
+	if listenerT, ok := listener.(CQLParserListener); ok {
 		listenerT.EnterDropFunction(s)
 	}
 }
 
 func (s *DropFunctionContext) ExitRule(listener antlr.ParseTreeListener) {
-	if listenerT, ok := listener.(CqlParserListener); ok {
+	if listenerT, ok := listener.(CQLParserListener); ok {
 		listenerT.ExitDropFunction(s)
 	}
 }
 
-func (p *CqlParser) DropFunction() (localctx IDropFunctionContext) {
+func (p *CQLParser) DropFunction() (localctx IDropFunctionContext) {
 	localctx = NewDropFunctionContext(p, p.GetParserRuleContext(), p.GetState())
-	p.EnterRule(localctx, 120, CqlParserRULE_dropFunction)
+	p.EnterRule(localctx, 120, CQLParserRULE_dropFunction)
 	var _la int
 
 	p.EnterOuterAlt(localctx, 1)
@@ -16121,7 +16121,7 @@ func (p *CqlParser) DropFunction() (localctx IDropFunctionContext) {
 	}
 	_la = p.GetTokenStream().LA(1)
 
-	if _la == CqlParserK_IF {
+	if _la == CQLParserK_IF {
 		{
 			p.SetState(1194)
 			p.IfExist()
@@ -16138,7 +16138,7 @@ func (p *CqlParser) DropFunction() (localctx IDropFunctionContext) {
 		}
 		{
 			p.SetState(1198)
-			p.Match(CqlParserDOT)
+			p.Match(CQLParserDOT)
 			if p.HasError() {
 				// Recognition error - abort rule
 				goto errorExit
@@ -16195,13 +16195,13 @@ type DropTriggerContext struct {
 func NewEmptyDropTriggerContext() *DropTriggerContext {
 	var p = new(DropTriggerContext)
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
-	p.RuleIndex = CqlParserRULE_dropTrigger
+	p.RuleIndex = CQLParserRULE_dropTrigger
 	return p
 }
 
 func InitEmptyDropTriggerContext(p *DropTriggerContext) {
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
-	p.RuleIndex = CqlParserRULE_dropTrigger
+	p.RuleIndex = CQLParserRULE_dropTrigger
 }
 
 func (*DropTriggerContext) IsDropTriggerContext() {}
@@ -16212,7 +16212,7 @@ func NewDropTriggerContext(parser antlr.Parser, parent antlr.ParserRuleContext, 
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, parent, invokingState)
 
 	p.parser = parser
-	p.RuleIndex = CqlParserRULE_dropTrigger
+	p.RuleIndex = CQLParserRULE_dropTrigger
 
 	return p
 }
@@ -16332,7 +16332,7 @@ func (s *DropTriggerContext) Keyspace() IKeyspaceContext {
 }
 
 func (s *DropTriggerContext) DOT() antlr.TerminalNode {
-	return s.GetToken(CqlParserDOT, 0)
+	return s.GetToken(CQLParserDOT, 0)
 }
 
 func (s *DropTriggerContext) GetRuleContext() antlr.RuleContext {
@@ -16344,20 +16344,20 @@ func (s *DropTriggerContext) ToStringTree(ruleNames []string, recog antlr.Recogn
 }
 
 func (s *DropTriggerContext) EnterRule(listener antlr.ParseTreeListener) {
-	if listenerT, ok := listener.(CqlParserListener); ok {
+	if listenerT, ok := listener.(CQLParserListener); ok {
 		listenerT.EnterDropTrigger(s)
 	}
 }
 
 func (s *DropTriggerContext) ExitRule(listener antlr.ParseTreeListener) {
-	if listenerT, ok := listener.(CqlParserListener); ok {
+	if listenerT, ok := listener.(CQLParserListener); ok {
 		listenerT.ExitDropTrigger(s)
 	}
 }
 
-func (p *CqlParser) DropTrigger() (localctx IDropTriggerContext) {
+func (p *CQLParser) DropTrigger() (localctx IDropTriggerContext) {
 	localctx = NewDropTriggerContext(p, p.GetParserRuleContext(), p.GetState())
-	p.EnterRule(localctx, 122, CqlParserRULE_dropTrigger)
+	p.EnterRule(localctx, 122, CQLParserRULE_dropTrigger)
 	var _la int
 
 	p.EnterOuterAlt(localctx, 1)
@@ -16376,7 +16376,7 @@ func (p *CqlParser) DropTrigger() (localctx IDropTriggerContext) {
 	}
 	_la = p.GetTokenStream().LA(1)
 
-	if _la == CqlParserK_IF {
+	if _la == CQLParserK_IF {
 		{
 			p.SetState(1206)
 			p.IfExist()
@@ -16401,7 +16401,7 @@ func (p *CqlParser) DropTrigger() (localctx IDropTriggerContext) {
 		}
 		{
 			p.SetState(1212)
-			p.Match(CqlParserDOT)
+			p.Match(CQLParserDOT)
 			if p.HasError() {
 				// Recognition error - abort rule
 				goto errorExit
@@ -16454,13 +16454,13 @@ type DropRoleContext struct {
 func NewEmptyDropRoleContext() *DropRoleContext {
 	var p = new(DropRoleContext)
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
-	p.RuleIndex = CqlParserRULE_dropRole
+	p.RuleIndex = CQLParserRULE_dropRole
 	return p
 }
 
 func InitEmptyDropRoleContext(p *DropRoleContext) {
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
-	p.RuleIndex = CqlParserRULE_dropRole
+	p.RuleIndex = CQLParserRULE_dropRole
 }
 
 func (*DropRoleContext) IsDropRoleContext() {}
@@ -16471,7 +16471,7 @@ func NewDropRoleContext(parser antlr.Parser, parent antlr.ParserRuleContext, inv
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, parent, invokingState)
 
 	p.parser = parser
-	p.RuleIndex = CqlParserRULE_dropRole
+	p.RuleIndex = CQLParserRULE_dropRole
 
 	return p
 }
@@ -16551,20 +16551,20 @@ func (s *DropRoleContext) ToStringTree(ruleNames []string, recog antlr.Recognize
 }
 
 func (s *DropRoleContext) EnterRule(listener antlr.ParseTreeListener) {
-	if listenerT, ok := listener.(CqlParserListener); ok {
+	if listenerT, ok := listener.(CQLParserListener); ok {
 		listenerT.EnterDropRole(s)
 	}
 }
 
 func (s *DropRoleContext) ExitRule(listener antlr.ParseTreeListener) {
-	if listenerT, ok := listener.(CqlParserListener); ok {
+	if listenerT, ok := listener.(CQLParserListener); ok {
 		listenerT.ExitDropRole(s)
 	}
 }
 
-func (p *CqlParser) DropRole() (localctx IDropRoleContext) {
+func (p *CQLParser) DropRole() (localctx IDropRoleContext) {
 	localctx = NewDropRoleContext(p, p.GetParserRuleContext(), p.GetState())
-	p.EnterRule(localctx, 124, CqlParserRULE_dropRole)
+	p.EnterRule(localctx, 124, CQLParserRULE_dropRole)
 	var _la int
 
 	p.EnterOuterAlt(localctx, 1)
@@ -16583,7 +16583,7 @@ func (p *CqlParser) DropRole() (localctx IDropRoleContext) {
 	}
 	_la = p.GetTokenStream().LA(1)
 
-	if _la == CqlParserK_IF {
+	if _la == CQLParserK_IF {
 		{
 			p.SetState(1220)
 			p.IfExist()
@@ -16635,13 +16635,13 @@ type DropTableContext struct {
 func NewEmptyDropTableContext() *DropTableContext {
 	var p = new(DropTableContext)
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
-	p.RuleIndex = CqlParserRULE_dropTable
+	p.RuleIndex = CQLParserRULE_dropTable
 	return p
 }
 
 func InitEmptyDropTableContext(p *DropTableContext) {
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
-	p.RuleIndex = CqlParserRULE_dropTable
+	p.RuleIndex = CQLParserRULE_dropTable
 }
 
 func (*DropTableContext) IsDropTableContext() {}
@@ -16652,7 +16652,7 @@ func NewDropTableContext(parser antlr.Parser, parent antlr.ParserRuleContext, in
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, parent, invokingState)
 
 	p.parser = parser
-	p.RuleIndex = CqlParserRULE_dropTable
+	p.RuleIndex = CQLParserRULE_dropTable
 
 	return p
 }
@@ -16740,7 +16740,7 @@ func (s *DropTableContext) Keyspace() IKeyspaceContext {
 }
 
 func (s *DropTableContext) DOT() antlr.TerminalNode {
-	return s.GetToken(CqlParserDOT, 0)
+	return s.GetToken(CQLParserDOT, 0)
 }
 
 func (s *DropTableContext) GetRuleContext() antlr.RuleContext {
@@ -16752,20 +16752,20 @@ func (s *DropTableContext) ToStringTree(ruleNames []string, recog antlr.Recogniz
 }
 
 func (s *DropTableContext) EnterRule(listener antlr.ParseTreeListener) {
-	if listenerT, ok := listener.(CqlParserListener); ok {
+	if listenerT, ok := listener.(CQLParserListener); ok {
 		listenerT.EnterDropTable(s)
 	}
 }
 
 func (s *DropTableContext) ExitRule(listener antlr.ParseTreeListener) {
-	if listenerT, ok := listener.(CqlParserListener); ok {
+	if listenerT, ok := listener.(CQLParserListener); ok {
 		listenerT.ExitDropTable(s)
 	}
 }
 
-func (p *CqlParser) DropTable() (localctx IDropTableContext) {
+func (p *CQLParser) DropTable() (localctx IDropTableContext) {
 	localctx = NewDropTableContext(p, p.GetParserRuleContext(), p.GetState())
-	p.EnterRule(localctx, 126, CqlParserRULE_dropTable)
+	p.EnterRule(localctx, 126, CQLParserRULE_dropTable)
 	var _la int
 
 	p.EnterOuterAlt(localctx, 1)
@@ -16784,7 +16784,7 @@ func (p *CqlParser) DropTable() (localctx IDropTableContext) {
 	}
 	_la = p.GetTokenStream().LA(1)
 
-	if _la == CqlParserK_IF {
+	if _la == CQLParserK_IF {
 		{
 			p.SetState(1227)
 			p.IfExist()
@@ -16801,7 +16801,7 @@ func (p *CqlParser) DropTable() (localctx IDropTableContext) {
 		}
 		{
 			p.SetState(1231)
-			p.Match(CqlParserDOT)
+			p.Match(CQLParserDOT)
 			if p.HasError() {
 				// Recognition error - abort rule
 				goto errorExit
@@ -16854,13 +16854,13 @@ type DropKeyspaceContext struct {
 func NewEmptyDropKeyspaceContext() *DropKeyspaceContext {
 	var p = new(DropKeyspaceContext)
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
-	p.RuleIndex = CqlParserRULE_dropKeyspace
+	p.RuleIndex = CQLParserRULE_dropKeyspace
 	return p
 }
 
 func InitEmptyDropKeyspaceContext(p *DropKeyspaceContext) {
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
-	p.RuleIndex = CqlParserRULE_dropKeyspace
+	p.RuleIndex = CQLParserRULE_dropKeyspace
 }
 
 func (*DropKeyspaceContext) IsDropKeyspaceContext() {}
@@ -16871,7 +16871,7 @@ func NewDropKeyspaceContext(parser antlr.Parser, parent antlr.ParserRuleContext,
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, parent, invokingState)
 
 	p.parser = parser
-	p.RuleIndex = CqlParserRULE_dropKeyspace
+	p.RuleIndex = CQLParserRULE_dropKeyspace
 
 	return p
 }
@@ -16951,20 +16951,20 @@ func (s *DropKeyspaceContext) ToStringTree(ruleNames []string, recog antlr.Recog
 }
 
 func (s *DropKeyspaceContext) EnterRule(listener antlr.ParseTreeListener) {
-	if listenerT, ok := listener.(CqlParserListener); ok {
+	if listenerT, ok := listener.(CQLParserListener); ok {
 		listenerT.EnterDropKeyspace(s)
 	}
 }
 
 func (s *DropKeyspaceContext) ExitRule(listener antlr.ParseTreeListener) {
-	if listenerT, ok := listener.(CqlParserListener); ok {
+	if listenerT, ok := listener.(CQLParserListener); ok {
 		listenerT.ExitDropKeyspace(s)
 	}
 }
 
-func (p *CqlParser) DropKeyspace() (localctx IDropKeyspaceContext) {
+func (p *CQLParser) DropKeyspace() (localctx IDropKeyspaceContext) {
 	localctx = NewDropKeyspaceContext(p, p.GetParserRuleContext(), p.GetState())
-	p.EnterRule(localctx, 128, CqlParserRULE_dropKeyspace)
+	p.EnterRule(localctx, 128, CQLParserRULE_dropKeyspace)
 	var _la int
 
 	p.EnterOuterAlt(localctx, 1)
@@ -16983,7 +16983,7 @@ func (p *CqlParser) DropKeyspace() (localctx IDropKeyspaceContext) {
 	}
 	_la = p.GetTokenStream().LA(1)
 
-	if _la == CqlParserK_IF {
+	if _la == CQLParserK_IF {
 		{
 			p.SetState(1239)
 			p.IfExist()
@@ -17035,13 +17035,13 @@ type DropIndexContext struct {
 func NewEmptyDropIndexContext() *DropIndexContext {
 	var p = new(DropIndexContext)
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
-	p.RuleIndex = CqlParserRULE_dropIndex
+	p.RuleIndex = CQLParserRULE_dropIndex
 	return p
 }
 
 func InitEmptyDropIndexContext(p *DropIndexContext) {
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
-	p.RuleIndex = CqlParserRULE_dropIndex
+	p.RuleIndex = CQLParserRULE_dropIndex
 }
 
 func (*DropIndexContext) IsDropIndexContext() {}
@@ -17052,7 +17052,7 @@ func NewDropIndexContext(parser antlr.Parser, parent antlr.ParserRuleContext, in
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, parent, invokingState)
 
 	p.parser = parser
-	p.RuleIndex = CqlParserRULE_dropIndex
+	p.RuleIndex = CQLParserRULE_dropIndex
 
 	return p
 }
@@ -17140,7 +17140,7 @@ func (s *DropIndexContext) Keyspace() IKeyspaceContext {
 }
 
 func (s *DropIndexContext) DOT() antlr.TerminalNode {
-	return s.GetToken(CqlParserDOT, 0)
+	return s.GetToken(CQLParserDOT, 0)
 }
 
 func (s *DropIndexContext) GetRuleContext() antlr.RuleContext {
@@ -17152,20 +17152,20 @@ func (s *DropIndexContext) ToStringTree(ruleNames []string, recog antlr.Recogniz
 }
 
 func (s *DropIndexContext) EnterRule(listener antlr.ParseTreeListener) {
-	if listenerT, ok := listener.(CqlParserListener); ok {
+	if listenerT, ok := listener.(CQLParserListener); ok {
 		listenerT.EnterDropIndex(s)
 	}
 }
 
 func (s *DropIndexContext) ExitRule(listener antlr.ParseTreeListener) {
-	if listenerT, ok := listener.(CqlParserListener); ok {
+	if listenerT, ok := listener.(CQLParserListener); ok {
 		listenerT.ExitDropIndex(s)
 	}
 }
 
-func (p *CqlParser) DropIndex() (localctx IDropIndexContext) {
+func (p *CQLParser) DropIndex() (localctx IDropIndexContext) {
 	localctx = NewDropIndexContext(p, p.GetParserRuleContext(), p.GetState())
-	p.EnterRule(localctx, 130, CqlParserRULE_dropIndex)
+	p.EnterRule(localctx, 130, CQLParserRULE_dropIndex)
 	var _la int
 
 	p.EnterOuterAlt(localctx, 1)
@@ -17184,7 +17184,7 @@ func (p *CqlParser) DropIndex() (localctx IDropIndexContext) {
 	}
 	_la = p.GetTokenStream().LA(1)
 
-	if _la == CqlParserK_IF {
+	if _la == CQLParserK_IF {
 		{
 			p.SetState(1246)
 			p.IfExist()
@@ -17201,7 +17201,7 @@ func (p *CqlParser) DropIndex() (localctx IDropIndexContext) {
 		}
 		{
 			p.SetState(1250)
-			p.Match(CqlParserDOT)
+			p.Match(CQLParserDOT)
 			if p.HasError() {
 				// Recognition error - abort rule
 				goto errorExit
@@ -17260,13 +17260,13 @@ type CreateTableContext struct {
 func NewEmptyCreateTableContext() *CreateTableContext {
 	var p = new(CreateTableContext)
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
-	p.RuleIndex = CqlParserRULE_createTable
+	p.RuleIndex = CQLParserRULE_createTable
 	return p
 }
 
 func InitEmptyCreateTableContext(p *CreateTableContext) {
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
-	p.RuleIndex = CqlParserRULE_createTable
+	p.RuleIndex = CQLParserRULE_createTable
 }
 
 func (*CreateTableContext) IsCreateTableContext() {}
@@ -17277,7 +17277,7 @@ func NewCreateTableContext(parser antlr.Parser, parent antlr.ParserRuleContext, 
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, parent, invokingState)
 
 	p.parser = parser
-	p.RuleIndex = CqlParserRULE_createTable
+	p.RuleIndex = CQLParserRULE_createTable
 
 	return p
 }
@@ -17413,7 +17413,7 @@ func (s *CreateTableContext) Keyspace() IKeyspaceContext {
 }
 
 func (s *CreateTableContext) DOT() antlr.TerminalNode {
-	return s.GetToken(CqlParserDOT, 0)
+	return s.GetToken(CQLParserDOT, 0)
 }
 
 func (s *CreateTableContext) WithElement() IWithElementContext {
@@ -17441,20 +17441,20 @@ func (s *CreateTableContext) ToStringTree(ruleNames []string, recog antlr.Recogn
 }
 
 func (s *CreateTableContext) EnterRule(listener antlr.ParseTreeListener) {
-	if listenerT, ok := listener.(CqlParserListener); ok {
+	if listenerT, ok := listener.(CQLParserListener); ok {
 		listenerT.EnterCreateTable(s)
 	}
 }
 
 func (s *CreateTableContext) ExitRule(listener antlr.ParseTreeListener) {
-	if listenerT, ok := listener.(CqlParserListener); ok {
+	if listenerT, ok := listener.(CQLParserListener); ok {
 		listenerT.ExitCreateTable(s)
 	}
 }
 
-func (p *CqlParser) CreateTable() (localctx ICreateTableContext) {
+func (p *CQLParser) CreateTable() (localctx ICreateTableContext) {
 	localctx = NewCreateTableContext(p, p.GetParserRuleContext(), p.GetState())
-	p.EnterRule(localctx, 132, CqlParserRULE_createTable)
+	p.EnterRule(localctx, 132, CQLParserRULE_createTable)
 	var _la int
 
 	p.EnterOuterAlt(localctx, 1)
@@ -17473,7 +17473,7 @@ func (p *CqlParser) CreateTable() (localctx ICreateTableContext) {
 	}
 	_la = p.GetTokenStream().LA(1)
 
-	if _la == CqlParserK_IF {
+	if _la == CQLParserK_IF {
 		{
 			p.SetState(1258)
 			p.IfNotExist()
@@ -17490,7 +17490,7 @@ func (p *CqlParser) CreateTable() (localctx ICreateTableContext) {
 		}
 		{
 			p.SetState(1262)
-			p.Match(CqlParserDOT)
+			p.Match(CQLParserDOT)
 			if p.HasError() {
 				// Recognition error - abort rule
 				goto errorExit
@@ -17523,7 +17523,7 @@ func (p *CqlParser) CreateTable() (localctx ICreateTableContext) {
 	}
 	_la = p.GetTokenStream().LA(1)
 
-	if _la == CqlParserK_WITH {
+	if _la == CQLParserK_WITH {
 		{
 			p.SetState(1270)
 			p.WithElement()
@@ -17567,13 +17567,13 @@ type WithElementContext struct {
 func NewEmptyWithElementContext() *WithElementContext {
 	var p = new(WithElementContext)
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
-	p.RuleIndex = CqlParserRULE_withElement
+	p.RuleIndex = CQLParserRULE_withElement
 	return p
 }
 
 func InitEmptyWithElementContext(p *WithElementContext) {
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
-	p.RuleIndex = CqlParserRULE_withElement
+	p.RuleIndex = CQLParserRULE_withElement
 }
 
 func (*WithElementContext) IsWithElementContext() {}
@@ -17584,7 +17584,7 @@ func NewWithElementContext(parser antlr.Parser, parent antlr.ParserRuleContext, 
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, parent, invokingState)
 
 	p.parser = parser
-	p.RuleIndex = CqlParserRULE_withElement
+	p.RuleIndex = CQLParserRULE_withElement
 
 	return p
 }
@@ -17632,20 +17632,20 @@ func (s *WithElementContext) ToStringTree(ruleNames []string, recog antlr.Recogn
 }
 
 func (s *WithElementContext) EnterRule(listener antlr.ParseTreeListener) {
-	if listenerT, ok := listener.(CqlParserListener); ok {
+	if listenerT, ok := listener.(CQLParserListener); ok {
 		listenerT.EnterWithElement(s)
 	}
 }
 
 func (s *WithElementContext) ExitRule(listener antlr.ParseTreeListener) {
-	if listenerT, ok := listener.(CqlParserListener); ok {
+	if listenerT, ok := listener.(CQLParserListener); ok {
 		listenerT.ExitWithElement(s)
 	}
 }
 
-func (p *CqlParser) WithElement() (localctx IWithElementContext) {
+func (p *CQLParser) WithElement() (localctx IWithElementContext) {
 	localctx = NewWithElementContext(p, p.GetParserRuleContext(), p.GetState())
-	p.EnterRule(localctx, 134, CqlParserRULE_withElement)
+	p.EnterRule(localctx, 134, CQLParserRULE_withElement)
 	p.EnterOuterAlt(localctx, 1)
 	{
 		p.SetState(1273)
@@ -17699,13 +17699,13 @@ type TableOptionsContext struct {
 func NewEmptyTableOptionsContext() *TableOptionsContext {
 	var p = new(TableOptionsContext)
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
-	p.RuleIndex = CqlParserRULE_tableOptions
+	p.RuleIndex = CQLParserRULE_tableOptions
 	return p
 }
 
 func InitEmptyTableOptionsContext(p *TableOptionsContext) {
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
-	p.RuleIndex = CqlParserRULE_tableOptions
+	p.RuleIndex = CQLParserRULE_tableOptions
 }
 
 func (*TableOptionsContext) IsTableOptionsContext() {}
@@ -17716,7 +17716,7 @@ func NewTableOptionsContext(parser antlr.Parser, parent antlr.ParserRuleContext,
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, parent, invokingState)
 
 	p.parser = parser
-	p.RuleIndex = CqlParserRULE_tableOptions
+	p.RuleIndex = CQLParserRULE_tableOptions
 
 	return p
 }
@@ -17894,20 +17894,20 @@ func (s *TableOptionsContext) ToStringTree(ruleNames []string, recog antlr.Recog
 }
 
 func (s *TableOptionsContext) EnterRule(listener antlr.ParseTreeListener) {
-	if listenerT, ok := listener.(CqlParserListener); ok {
+	if listenerT, ok := listener.(CQLParserListener); ok {
 		listenerT.EnterTableOptions(s)
 	}
 }
 
 func (s *TableOptionsContext) ExitRule(listener antlr.ParseTreeListener) {
-	if listenerT, ok := listener.(CqlParserListener); ok {
+	if listenerT, ok := listener.(CQLParserListener); ok {
 		listenerT.ExitTableOptions(s)
 	}
 }
 
-func (p *CqlParser) TableOptions() (localctx ITableOptionsContext) {
+func (p *CQLParser) TableOptions() (localctx ITableOptionsContext) {
 	localctx = NewTableOptionsContext(p, p.GetParserRuleContext(), p.GetState())
-	p.EnterRule(localctx, 136, CqlParserRULE_tableOptions)
+	p.EnterRule(localctx, 136, CQLParserRULE_tableOptions)
 	var _alt int
 
 	p.SetState(1299)
@@ -17917,7 +17917,7 @@ func (p *CqlParser) TableOptions() (localctx ITableOptionsContext) {
 	}
 
 	switch p.GetTokenStream().LA(1) {
-	case CqlParserK_COMPACT:
+	case CQLParserK_COMPACT:
 		p.EnterOuterAlt(localctx, 1)
 		{
 			p.SetState(1276)
@@ -17944,7 +17944,7 @@ func (p *CqlParser) TableOptions() (localctx ITableOptionsContext) {
 			goto errorExit
 		}
 
-	case CqlParserK_CLUSTERING:
+	case CQLParserK_CLUSTERING:
 		p.EnterOuterAlt(localctx, 2)
 		{
 			p.SetState(1283)
@@ -17967,7 +17967,7 @@ func (p *CqlParser) TableOptions() (localctx ITableOptionsContext) {
 			goto errorExit
 		}
 
-	case CqlParserOBJECT_NAME:
+	case CQLParserOBJECT_NAME:
 		p.EnterOuterAlt(localctx, 3)
 		{
 			p.SetState(1289)
@@ -18005,7 +18005,7 @@ func (p *CqlParser) TableOptions() (localctx ITableOptionsContext) {
 			}
 		}
 
-	case CqlParserK_TTL:
+	case CQLParserK_TTL:
 		p.EnterOuterAlt(localctx, 4)
 		{
 			p.SetState(1298)
@@ -18062,13 +18062,13 @@ type ClusteringOrderContext struct {
 func NewEmptyClusteringOrderContext() *ClusteringOrderContext {
 	var p = new(ClusteringOrderContext)
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
-	p.RuleIndex = CqlParserRULE_clusteringOrder
+	p.RuleIndex = CQLParserRULE_clusteringOrder
 	return p
 }
 
 func InitEmptyClusteringOrderContext(p *ClusteringOrderContext) {
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
-	p.RuleIndex = CqlParserRULE_clusteringOrder
+	p.RuleIndex = CQLParserRULE_clusteringOrder
 }
 
 func (*ClusteringOrderContext) IsClusteringOrderContext() {}
@@ -18079,7 +18079,7 @@ func NewClusteringOrderContext(parser antlr.Parser, parent antlr.ParserRuleConte
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, parent, invokingState)
 
 	p.parser = parser
-	p.RuleIndex = CqlParserRULE_clusteringOrder
+	p.RuleIndex = CQLParserRULE_clusteringOrder
 
 	return p
 }
@@ -18298,20 +18298,20 @@ func (s *ClusteringOrderContext) ToStringTree(ruleNames []string, recog antlr.Re
 }
 
 func (s *ClusteringOrderContext) EnterRule(listener antlr.ParseTreeListener) {
-	if listenerT, ok := listener.(CqlParserListener); ok {
+	if listenerT, ok := listener.(CQLParserListener); ok {
 		listenerT.EnterClusteringOrder(s)
 	}
 }
 
 func (s *ClusteringOrderContext) ExitRule(listener antlr.ParseTreeListener) {
-	if listenerT, ok := listener.(CqlParserListener); ok {
+	if listenerT, ok := listener.(CQLParserListener); ok {
 		listenerT.ExitClusteringOrder(s)
 	}
 }
 
-func (p *CqlParser) ClusteringOrder() (localctx IClusteringOrderContext) {
+func (p *CQLParser) ClusteringOrder() (localctx IClusteringOrderContext) {
 	localctx = NewClusteringOrderContext(p, p.GetParserRuleContext(), p.GetState())
-	p.EnterRule(localctx, 138, CqlParserRULE_clusteringOrder)
+	p.EnterRule(localctx, 138, CQLParserRULE_clusteringOrder)
 	var _la int
 
 	p.EnterOuterAlt(localctx, 1)
@@ -18343,7 +18343,7 @@ func (p *CqlParser) ClusteringOrder() (localctx IClusteringOrderContext) {
 	}
 	_la = p.GetTokenStream().LA(1)
 
-	if _la == CqlParserK_ASC || _la == CqlParserK_DESC {
+	if _la == CQLParserK_ASC || _la == CQLParserK_DESC {
 		{
 			p.SetState(1306)
 			p.OrderDirection()
@@ -18358,7 +18358,7 @@ func (p *CqlParser) ClusteringOrder() (localctx IClusteringOrderContext) {
 	}
 	_la = p.GetTokenStream().LA(1)
 
-	for _la == CqlParserCOMMA {
+	for _la == CQLParserCOMMA {
 		{
 			p.SetState(1309)
 			p.SyntaxComma()
@@ -18374,7 +18374,7 @@ func (p *CqlParser) ClusteringOrder() (localctx IClusteringOrderContext) {
 		}
 		_la = p.GetTokenStream().LA(1)
 
-		if _la == CqlParserK_ASC || _la == CqlParserK_DESC {
+		if _la == CQLParserK_ASC || _la == CQLParserK_DESC {
 			{
 				p.SetState(1311)
 				p.OrderDirection()
@@ -18432,13 +18432,13 @@ type TableOptionItemContext struct {
 func NewEmptyTableOptionItemContext() *TableOptionItemContext {
 	var p = new(TableOptionItemContext)
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
-	p.RuleIndex = CqlParserRULE_tableOptionItem
+	p.RuleIndex = CQLParserRULE_tableOptionItem
 	return p
 }
 
 func InitEmptyTableOptionItemContext(p *TableOptionItemContext) {
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
-	p.RuleIndex = CqlParserRULE_tableOptionItem
+	p.RuleIndex = CQLParserRULE_tableOptionItem
 }
 
 func (*TableOptionItemContext) IsTableOptionItemContext() {}
@@ -18449,7 +18449,7 @@ func NewTableOptionItemContext(parser antlr.Parser, parent antlr.ParserRuleConte
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, parent, invokingState)
 
 	p.parser = parser
-	p.RuleIndex = CqlParserRULE_tableOptionItem
+	p.RuleIndex = CQLParserRULE_tableOptionItem
 
 	return p
 }
@@ -18473,7 +18473,7 @@ func (s *TableOptionItemContext) TableOptionName() ITableOptionNameContext {
 }
 
 func (s *TableOptionItemContext) OPERATOR_EQ() antlr.TerminalNode {
-	return s.GetToken(CqlParserOPERATOR_EQ, 0)
+	return s.GetToken(CQLParserOPERATOR_EQ, 0)
 }
 
 func (s *TableOptionItemContext) TableOptionValue() ITableOptionValueContext {
@@ -18517,20 +18517,20 @@ func (s *TableOptionItemContext) ToStringTree(ruleNames []string, recog antlr.Re
 }
 
 func (s *TableOptionItemContext) EnterRule(listener antlr.ParseTreeListener) {
-	if listenerT, ok := listener.(CqlParserListener); ok {
+	if listenerT, ok := listener.(CQLParserListener); ok {
 		listenerT.EnterTableOptionItem(s)
 	}
 }
 
 func (s *TableOptionItemContext) ExitRule(listener antlr.ParseTreeListener) {
-	if listenerT, ok := listener.(CqlParserListener); ok {
+	if listenerT, ok := listener.(CQLParserListener); ok {
 		listenerT.ExitTableOptionItem(s)
 	}
 }
 
-func (p *CqlParser) TableOptionItem() (localctx ITableOptionItemContext) {
+func (p *CQLParser) TableOptionItem() (localctx ITableOptionItemContext) {
 	localctx = NewTableOptionItemContext(p, p.GetParserRuleContext(), p.GetState())
-	p.EnterRule(localctx, 140, CqlParserRULE_tableOptionItem)
+	p.EnterRule(localctx, 140, CQLParserRULE_tableOptionItem)
 	p.SetState(1329)
 	p.GetErrorHandler().Sync(p)
 	if p.HasError() {
@@ -18546,7 +18546,7 @@ func (p *CqlParser) TableOptionItem() (localctx ITableOptionItemContext) {
 		}
 		{
 			p.SetState(1322)
-			p.Match(CqlParserOPERATOR_EQ)
+			p.Match(CQLParserOPERATOR_EQ)
 			if p.HasError() {
 				// Recognition error - abort rule
 				goto errorExit
@@ -18565,7 +18565,7 @@ func (p *CqlParser) TableOptionItem() (localctx ITableOptionItemContext) {
 		}
 		{
 			p.SetState(1326)
-			p.Match(CqlParserOPERATOR_EQ)
+			p.Match(CQLParserOPERATOR_EQ)
 			if p.HasError() {
 				// Recognition error - abort rule
 				goto errorExit
@@ -18615,13 +18615,13 @@ type TableOptionNameContext struct {
 func NewEmptyTableOptionNameContext() *TableOptionNameContext {
 	var p = new(TableOptionNameContext)
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
-	p.RuleIndex = CqlParserRULE_tableOptionName
+	p.RuleIndex = CQLParserRULE_tableOptionName
 	return p
 }
 
 func InitEmptyTableOptionNameContext(p *TableOptionNameContext) {
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
-	p.RuleIndex = CqlParserRULE_tableOptionName
+	p.RuleIndex = CQLParserRULE_tableOptionName
 }
 
 func (*TableOptionNameContext) IsTableOptionNameContext() {}
@@ -18632,7 +18632,7 @@ func NewTableOptionNameContext(parser antlr.Parser, parent antlr.ParserRuleConte
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, parent, invokingState)
 
 	p.parser = parser
-	p.RuleIndex = CqlParserRULE_tableOptionName
+	p.RuleIndex = CQLParserRULE_tableOptionName
 
 	return p
 }
@@ -18640,7 +18640,7 @@ func NewTableOptionNameContext(parser antlr.Parser, parent antlr.ParserRuleConte
 func (s *TableOptionNameContext) GetParser() antlr.Parser { return s.parser }
 
 func (s *TableOptionNameContext) OBJECT_NAME() antlr.TerminalNode {
-	return s.GetToken(CqlParserOBJECT_NAME, 0)
+	return s.GetToken(CQLParserOBJECT_NAME, 0)
 }
 
 func (s *TableOptionNameContext) GetRuleContext() antlr.RuleContext {
@@ -18652,24 +18652,24 @@ func (s *TableOptionNameContext) ToStringTree(ruleNames []string, recog antlr.Re
 }
 
 func (s *TableOptionNameContext) EnterRule(listener antlr.ParseTreeListener) {
-	if listenerT, ok := listener.(CqlParserListener); ok {
+	if listenerT, ok := listener.(CQLParserListener); ok {
 		listenerT.EnterTableOptionName(s)
 	}
 }
 
 func (s *TableOptionNameContext) ExitRule(listener antlr.ParseTreeListener) {
-	if listenerT, ok := listener.(CqlParserListener); ok {
+	if listenerT, ok := listener.(CQLParserListener); ok {
 		listenerT.ExitTableOptionName(s)
 	}
 }
 
-func (p *CqlParser) TableOptionName() (localctx ITableOptionNameContext) {
+func (p *CQLParser) TableOptionName() (localctx ITableOptionNameContext) {
 	localctx = NewTableOptionNameContext(p, p.GetParserRuleContext(), p.GetState())
-	p.EnterRule(localctx, 142, CqlParserRULE_tableOptionName)
+	p.EnterRule(localctx, 142, CQLParserRULE_tableOptionName)
 	p.EnterOuterAlt(localctx, 1)
 	{
 		p.SetState(1331)
-		p.Match(CqlParserOBJECT_NAME)
+		p.Match(CQLParserOBJECT_NAME)
 		if p.HasError() {
 			// Recognition error - abort rule
 			goto errorExit
@@ -18712,13 +18712,13 @@ type TableOptionValueContext struct {
 func NewEmptyTableOptionValueContext() *TableOptionValueContext {
 	var p = new(TableOptionValueContext)
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
-	p.RuleIndex = CqlParserRULE_tableOptionValue
+	p.RuleIndex = CQLParserRULE_tableOptionValue
 	return p
 }
 
 func InitEmptyTableOptionValueContext(p *TableOptionValueContext) {
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
-	p.RuleIndex = CqlParserRULE_tableOptionValue
+	p.RuleIndex = CQLParserRULE_tableOptionValue
 }
 
 func (*TableOptionValueContext) IsTableOptionValueContext() {}
@@ -18729,7 +18729,7 @@ func NewTableOptionValueContext(parser antlr.Parser, parent antlr.ParserRuleCont
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, parent, invokingState)
 
 	p.parser = parser
-	p.RuleIndex = CqlParserRULE_tableOptionValue
+	p.RuleIndex = CQLParserRULE_tableOptionValue
 
 	return p
 }
@@ -18777,20 +18777,20 @@ func (s *TableOptionValueContext) ToStringTree(ruleNames []string, recog antlr.R
 }
 
 func (s *TableOptionValueContext) EnterRule(listener antlr.ParseTreeListener) {
-	if listenerT, ok := listener.(CqlParserListener); ok {
+	if listenerT, ok := listener.(CQLParserListener); ok {
 		listenerT.EnterTableOptionValue(s)
 	}
 }
 
 func (s *TableOptionValueContext) ExitRule(listener antlr.ParseTreeListener) {
-	if listenerT, ok := listener.(CqlParserListener); ok {
+	if listenerT, ok := listener.(CQLParserListener); ok {
 		listenerT.ExitTableOptionValue(s)
 	}
 }
 
-func (p *CqlParser) TableOptionValue() (localctx ITableOptionValueContext) {
+func (p *CQLParser) TableOptionValue() (localctx ITableOptionValueContext) {
 	localctx = NewTableOptionValueContext(p, p.GetParserRuleContext(), p.GetState())
-	p.EnterRule(localctx, 144, CqlParserRULE_tableOptionValue)
+	p.EnterRule(localctx, 144, CQLParserRULE_tableOptionValue)
 	p.SetState(1335)
 	p.GetErrorHandler().Sync(p)
 	if p.HasError() {
@@ -18798,14 +18798,14 @@ func (p *CqlParser) TableOptionValue() (localctx ITableOptionValueContext) {
 	}
 
 	switch p.GetTokenStream().LA(1) {
-	case CqlParserSTRING_LITERAL:
+	case CQLParserSTRING_LITERAL:
 		p.EnterOuterAlt(localctx, 1)
 		{
 			p.SetState(1333)
 			p.StringLiteral()
 		}
 
-	case CqlParserDECIMAL_LITERAL, CqlParserFLOAT_LITERAL:
+	case CQLParserDECIMAL_LITERAL, CQLParserFLOAT_LITERAL:
 		p.EnterOuterAlt(localctx, 2)
 		{
 			p.SetState(1334)
@@ -18857,13 +18857,13 @@ type OptionHashContext struct {
 func NewEmptyOptionHashContext() *OptionHashContext {
 	var p = new(OptionHashContext)
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
-	p.RuleIndex = CqlParserRULE_optionHash
+	p.RuleIndex = CQLParserRULE_optionHash
 	return p
 }
 
 func InitEmptyOptionHashContext(p *OptionHashContext) {
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
-	p.RuleIndex = CqlParserRULE_optionHash
+	p.RuleIndex = CQLParserRULE_optionHash
 }
 
 func (*OptionHashContext) IsOptionHashContext() {}
@@ -18874,7 +18874,7 @@ func NewOptionHashContext(parser antlr.Parser, parent antlr.ParserRuleContext, i
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, parent, invokingState)
 
 	p.parser = parser
-	p.RuleIndex = CqlParserRULE_optionHash
+	p.RuleIndex = CQLParserRULE_optionHash
 
 	return p
 }
@@ -19004,20 +19004,20 @@ func (s *OptionHashContext) ToStringTree(ruleNames []string, recog antlr.Recogni
 }
 
 func (s *OptionHashContext) EnterRule(listener antlr.ParseTreeListener) {
-	if listenerT, ok := listener.(CqlParserListener); ok {
+	if listenerT, ok := listener.(CQLParserListener); ok {
 		listenerT.EnterOptionHash(s)
 	}
 }
 
 func (s *OptionHashContext) ExitRule(listener antlr.ParseTreeListener) {
-	if listenerT, ok := listener.(CqlParserListener); ok {
+	if listenerT, ok := listener.(CQLParserListener); ok {
 		listenerT.ExitOptionHash(s)
 	}
 }
 
-func (p *CqlParser) OptionHash() (localctx IOptionHashContext) {
+func (p *CQLParser) OptionHash() (localctx IOptionHashContext) {
 	localctx = NewOptionHashContext(p, p.GetParserRuleContext(), p.GetState())
-	p.EnterRule(localctx, 146, CqlParserRULE_optionHash)
+	p.EnterRule(localctx, 146, CQLParserRULE_optionHash)
 	var _la int
 
 	p.EnterOuterAlt(localctx, 1)
@@ -19036,7 +19036,7 @@ func (p *CqlParser) OptionHash() (localctx IOptionHashContext) {
 	}
 	_la = p.GetTokenStream().LA(1)
 
-	for _la == CqlParserCOMMA {
+	for _la == CQLParserCOMMA {
 		{
 			p.SetState(1339)
 			p.SyntaxComma()
@@ -19095,13 +19095,13 @@ type OptionHashItemContext struct {
 func NewEmptyOptionHashItemContext() *OptionHashItemContext {
 	var p = new(OptionHashItemContext)
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
-	p.RuleIndex = CqlParserRULE_optionHashItem
+	p.RuleIndex = CQLParserRULE_optionHashItem
 	return p
 }
 
 func InitEmptyOptionHashItemContext(p *OptionHashItemContext) {
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
-	p.RuleIndex = CqlParserRULE_optionHashItem
+	p.RuleIndex = CQLParserRULE_optionHashItem
 }
 
 func (*OptionHashItemContext) IsOptionHashItemContext() {}
@@ -19112,7 +19112,7 @@ func NewOptionHashItemContext(parser antlr.Parser, parent antlr.ParserRuleContex
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, parent, invokingState)
 
 	p.parser = parser
-	p.RuleIndex = CqlParserRULE_optionHashItem
+	p.RuleIndex = CQLParserRULE_optionHashItem
 
 	return p
 }
@@ -19136,7 +19136,7 @@ func (s *OptionHashItemContext) OptionHashKey() IOptionHashKeyContext {
 }
 
 func (s *OptionHashItemContext) COLON() antlr.TerminalNode {
-	return s.GetToken(CqlParserCOLON, 0)
+	return s.GetToken(CQLParserCOLON, 0)
 }
 
 func (s *OptionHashItemContext) OptionHashValue() IOptionHashValueContext {
@@ -19164,20 +19164,20 @@ func (s *OptionHashItemContext) ToStringTree(ruleNames []string, recog antlr.Rec
 }
 
 func (s *OptionHashItemContext) EnterRule(listener antlr.ParseTreeListener) {
-	if listenerT, ok := listener.(CqlParserListener); ok {
+	if listenerT, ok := listener.(CQLParserListener); ok {
 		listenerT.EnterOptionHashItem(s)
 	}
 }
 
 func (s *OptionHashItemContext) ExitRule(listener antlr.ParseTreeListener) {
-	if listenerT, ok := listener.(CqlParserListener); ok {
+	if listenerT, ok := listener.(CQLParserListener); ok {
 		listenerT.ExitOptionHashItem(s)
 	}
 }
 
-func (p *CqlParser) OptionHashItem() (localctx IOptionHashItemContext) {
+func (p *CQLParser) OptionHashItem() (localctx IOptionHashItemContext) {
 	localctx = NewOptionHashItemContext(p, p.GetParserRuleContext(), p.GetState())
-	p.EnterRule(localctx, 148, CqlParserRULE_optionHashItem)
+	p.EnterRule(localctx, 148, CQLParserRULE_optionHashItem)
 	p.EnterOuterAlt(localctx, 1)
 	{
 		p.SetState(1349)
@@ -19185,7 +19185,7 @@ func (p *CqlParser) OptionHashItem() (localctx IOptionHashItemContext) {
 	}
 	{
 		p.SetState(1350)
-		p.Match(CqlParserCOLON)
+		p.Match(CQLParserCOLON)
 		if p.HasError() {
 			// Recognition error - abort rule
 			goto errorExit
@@ -19231,13 +19231,13 @@ type OptionHashKeyContext struct {
 func NewEmptyOptionHashKeyContext() *OptionHashKeyContext {
 	var p = new(OptionHashKeyContext)
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
-	p.RuleIndex = CqlParserRULE_optionHashKey
+	p.RuleIndex = CQLParserRULE_optionHashKey
 	return p
 }
 
 func InitEmptyOptionHashKeyContext(p *OptionHashKeyContext) {
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
-	p.RuleIndex = CqlParserRULE_optionHashKey
+	p.RuleIndex = CQLParserRULE_optionHashKey
 }
 
 func (*OptionHashKeyContext) IsOptionHashKeyContext() {}
@@ -19248,7 +19248,7 @@ func NewOptionHashKeyContext(parser antlr.Parser, parent antlr.ParserRuleContext
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, parent, invokingState)
 
 	p.parser = parser
-	p.RuleIndex = CqlParserRULE_optionHashKey
+	p.RuleIndex = CQLParserRULE_optionHashKey
 
 	return p
 }
@@ -19280,20 +19280,20 @@ func (s *OptionHashKeyContext) ToStringTree(ruleNames []string, recog antlr.Reco
 }
 
 func (s *OptionHashKeyContext) EnterRule(listener antlr.ParseTreeListener) {
-	if listenerT, ok := listener.(CqlParserListener); ok {
+	if listenerT, ok := listener.(CQLParserListener); ok {
 		listenerT.EnterOptionHashKey(s)
 	}
 }
 
 func (s *OptionHashKeyContext) ExitRule(listener antlr.ParseTreeListener) {
-	if listenerT, ok := listener.(CqlParserListener); ok {
+	if listenerT, ok := listener.(CQLParserListener); ok {
 		listenerT.ExitOptionHashKey(s)
 	}
 }
 
-func (p *CqlParser) OptionHashKey() (localctx IOptionHashKeyContext) {
+func (p *CQLParser) OptionHashKey() (localctx IOptionHashKeyContext) {
 	localctx = NewOptionHashKeyContext(p, p.GetParserRuleContext(), p.GetState())
-	p.EnterRule(localctx, 150, CqlParserRULE_optionHashKey)
+	p.EnterRule(localctx, 150, CQLParserRULE_optionHashKey)
 	p.EnterOuterAlt(localctx, 1)
 	{
 		p.SetState(1353)
@@ -19336,13 +19336,13 @@ type OptionHashValueContext struct {
 func NewEmptyOptionHashValueContext() *OptionHashValueContext {
 	var p = new(OptionHashValueContext)
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
-	p.RuleIndex = CqlParserRULE_optionHashValue
+	p.RuleIndex = CQLParserRULE_optionHashValue
 	return p
 }
 
 func InitEmptyOptionHashValueContext(p *OptionHashValueContext) {
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
-	p.RuleIndex = CqlParserRULE_optionHashValue
+	p.RuleIndex = CQLParserRULE_optionHashValue
 }
 
 func (*OptionHashValueContext) IsOptionHashValueContext() {}
@@ -19353,7 +19353,7 @@ func NewOptionHashValueContext(parser antlr.Parser, parent antlr.ParserRuleConte
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, parent, invokingState)
 
 	p.parser = parser
-	p.RuleIndex = CqlParserRULE_optionHashValue
+	p.RuleIndex = CQLParserRULE_optionHashValue
 
 	return p
 }
@@ -19401,20 +19401,20 @@ func (s *OptionHashValueContext) ToStringTree(ruleNames []string, recog antlr.Re
 }
 
 func (s *OptionHashValueContext) EnterRule(listener antlr.ParseTreeListener) {
-	if listenerT, ok := listener.(CqlParserListener); ok {
+	if listenerT, ok := listener.(CQLParserListener); ok {
 		listenerT.EnterOptionHashValue(s)
 	}
 }
 
 func (s *OptionHashValueContext) ExitRule(listener antlr.ParseTreeListener) {
-	if listenerT, ok := listener.(CqlParserListener); ok {
+	if listenerT, ok := listener.(CQLParserListener); ok {
 		listenerT.ExitOptionHashValue(s)
 	}
 }
 
-func (p *CqlParser) OptionHashValue() (localctx IOptionHashValueContext) {
+func (p *CQLParser) OptionHashValue() (localctx IOptionHashValueContext) {
 	localctx = NewOptionHashValueContext(p, p.GetParserRuleContext(), p.GetState())
-	p.EnterRule(localctx, 152, CqlParserRULE_optionHashValue)
+	p.EnterRule(localctx, 152, CQLParserRULE_optionHashValue)
 	p.SetState(1357)
 	p.GetErrorHandler().Sync(p)
 	if p.HasError() {
@@ -19422,14 +19422,14 @@ func (p *CqlParser) OptionHashValue() (localctx IOptionHashValueContext) {
 	}
 
 	switch p.GetTokenStream().LA(1) {
-	case CqlParserSTRING_LITERAL:
+	case CQLParserSTRING_LITERAL:
 		p.EnterOuterAlt(localctx, 1)
 		{
 			p.SetState(1355)
 			p.StringLiteral()
 		}
 
-	case CqlParserDECIMAL_LITERAL, CqlParserFLOAT_LITERAL:
+	case CQLParserDECIMAL_LITERAL, CQLParserFLOAT_LITERAL:
 		p.EnterOuterAlt(localctx, 2)
 		{
 			p.SetState(1356)
@@ -19480,13 +19480,13 @@ type ColumnDefinitionListContext struct {
 func NewEmptyColumnDefinitionListContext() *ColumnDefinitionListContext {
 	var p = new(ColumnDefinitionListContext)
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
-	p.RuleIndex = CqlParserRULE_columnDefinitionList
+	p.RuleIndex = CQLParserRULE_columnDefinitionList
 	return p
 }
 
 func InitEmptyColumnDefinitionListContext(p *ColumnDefinitionListContext) {
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
-	p.RuleIndex = CqlParserRULE_columnDefinitionList
+	p.RuleIndex = CQLParserRULE_columnDefinitionList
 }
 
 func (*ColumnDefinitionListContext) IsColumnDefinitionListContext() {}
@@ -19497,7 +19497,7 @@ func NewColumnDefinitionListContext(parser antlr.Parser, parent antlr.ParserRule
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, parent, invokingState)
 
 	p.parser = parser
-	p.RuleIndex = CqlParserRULE_columnDefinitionList
+	p.RuleIndex = CQLParserRULE_columnDefinitionList
 
 	return p
 }
@@ -19611,20 +19611,20 @@ func (s *ColumnDefinitionListContext) ToStringTree(ruleNames []string, recog ant
 }
 
 func (s *ColumnDefinitionListContext) EnterRule(listener antlr.ParseTreeListener) {
-	if listenerT, ok := listener.(CqlParserListener); ok {
+	if listenerT, ok := listener.(CQLParserListener); ok {
 		listenerT.EnterColumnDefinitionList(s)
 	}
 }
 
 func (s *ColumnDefinitionListContext) ExitRule(listener antlr.ParseTreeListener) {
-	if listenerT, ok := listener.(CqlParserListener); ok {
+	if listenerT, ok := listener.(CQLParserListener); ok {
 		listenerT.ExitColumnDefinitionList(s)
 	}
 }
 
-func (p *CqlParser) ColumnDefinitionList() (localctx IColumnDefinitionListContext) {
+func (p *CQLParser) ColumnDefinitionList() (localctx IColumnDefinitionListContext) {
 	localctx = NewColumnDefinitionListContext(p, p.GetParserRuleContext(), p.GetState())
-	p.EnterRule(localctx, 154, CqlParserRULE_columnDefinitionList)
+	p.EnterRule(localctx, 154, CQLParserRULE_columnDefinitionList)
 	var _la int
 
 	var _alt int
@@ -19673,7 +19673,7 @@ func (p *CqlParser) ColumnDefinitionList() (localctx IColumnDefinitionListContex
 	}
 	_la = p.GetTokenStream().LA(1)
 
-	if _la == CqlParserCOMMA {
+	if _la == CQLParserCOMMA {
 		{
 			p.SetState(1368)
 			p.SyntaxComma()
@@ -19722,13 +19722,13 @@ type ColumnDefinitionContext struct {
 func NewEmptyColumnDefinitionContext() *ColumnDefinitionContext {
 	var p = new(ColumnDefinitionContext)
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
-	p.RuleIndex = CqlParserRULE_columnDefinition
+	p.RuleIndex = CQLParserRULE_columnDefinition
 	return p
 }
 
 func InitEmptyColumnDefinitionContext(p *ColumnDefinitionContext) {
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
-	p.RuleIndex = CqlParserRULE_columnDefinition
+	p.RuleIndex = CQLParserRULE_columnDefinition
 }
 
 func (*ColumnDefinitionContext) IsColumnDefinitionContext() {}
@@ -19739,7 +19739,7 @@ func NewColumnDefinitionContext(parser antlr.Parser, parent antlr.ParserRuleCont
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, parent, invokingState)
 
 	p.parser = parser
-	p.RuleIndex = CqlParserRULE_columnDefinition
+	p.RuleIndex = CQLParserRULE_columnDefinition
 
 	return p
 }
@@ -19803,20 +19803,20 @@ func (s *ColumnDefinitionContext) ToStringTree(ruleNames []string, recog antlr.R
 }
 
 func (s *ColumnDefinitionContext) EnterRule(listener antlr.ParseTreeListener) {
-	if listenerT, ok := listener.(CqlParserListener); ok {
+	if listenerT, ok := listener.(CQLParserListener); ok {
 		listenerT.EnterColumnDefinition(s)
 	}
 }
 
 func (s *ColumnDefinitionContext) ExitRule(listener antlr.ParseTreeListener) {
-	if listenerT, ok := listener.(CqlParserListener); ok {
+	if listenerT, ok := listener.(CQLParserListener); ok {
 		listenerT.ExitColumnDefinition(s)
 	}
 }
 
-func (p *CqlParser) ColumnDefinition() (localctx IColumnDefinitionContext) {
+func (p *CQLParser) ColumnDefinition() (localctx IColumnDefinitionContext) {
 	localctx = NewColumnDefinitionContext(p, p.GetParserRuleContext(), p.GetState())
-	p.EnterRule(localctx, 156, CqlParserRULE_columnDefinition)
+	p.EnterRule(localctx, 156, CQLParserRULE_columnDefinition)
 	var _la int
 
 	p.EnterOuterAlt(localctx, 1)
@@ -19835,7 +19835,7 @@ func (p *CqlParser) ColumnDefinition() (localctx IColumnDefinitionContext) {
 	}
 	_la = p.GetTokenStream().LA(1)
 
-	if _la == CqlParserK_PRIMARY {
+	if _la == CQLParserK_PRIMARY {
 		{
 			p.SetState(1375)
 			p.PrimaryKeyColumn()
@@ -19879,13 +19879,13 @@ type PrimaryKeyColumnContext struct {
 func NewEmptyPrimaryKeyColumnContext() *PrimaryKeyColumnContext {
 	var p = new(PrimaryKeyColumnContext)
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
-	p.RuleIndex = CqlParserRULE_primaryKeyColumn
+	p.RuleIndex = CQLParserRULE_primaryKeyColumn
 	return p
 }
 
 func InitEmptyPrimaryKeyColumnContext(p *PrimaryKeyColumnContext) {
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
-	p.RuleIndex = CqlParserRULE_primaryKeyColumn
+	p.RuleIndex = CQLParserRULE_primaryKeyColumn
 }
 
 func (*PrimaryKeyColumnContext) IsPrimaryKeyColumnContext() {}
@@ -19896,7 +19896,7 @@ func NewPrimaryKeyColumnContext(parser antlr.Parser, parent antlr.ParserRuleCont
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, parent, invokingState)
 
 	p.parser = parser
-	p.RuleIndex = CqlParserRULE_primaryKeyColumn
+	p.RuleIndex = CQLParserRULE_primaryKeyColumn
 
 	return p
 }
@@ -19944,20 +19944,20 @@ func (s *PrimaryKeyColumnContext) ToStringTree(ruleNames []string, recog antlr.R
 }
 
 func (s *PrimaryKeyColumnContext) EnterRule(listener antlr.ParseTreeListener) {
-	if listenerT, ok := listener.(CqlParserListener); ok {
+	if listenerT, ok := listener.(CQLParserListener); ok {
 		listenerT.EnterPrimaryKeyColumn(s)
 	}
 }
 
 func (s *PrimaryKeyColumnContext) ExitRule(listener antlr.ParseTreeListener) {
-	if listenerT, ok := listener.(CqlParserListener); ok {
+	if listenerT, ok := listener.(CQLParserListener); ok {
 		listenerT.ExitPrimaryKeyColumn(s)
 	}
 }
 
-func (p *CqlParser) PrimaryKeyColumn() (localctx IPrimaryKeyColumnContext) {
+func (p *CQLParser) PrimaryKeyColumn() (localctx IPrimaryKeyColumnContext) {
 	localctx = NewPrimaryKeyColumnContext(p, p.GetParserRuleContext(), p.GetState())
-	p.EnterRule(localctx, 158, CqlParserRULE_primaryKeyColumn)
+	p.EnterRule(localctx, 158, CQLParserRULE_primaryKeyColumn)
 	p.EnterOuterAlt(localctx, 1)
 	{
 		p.SetState(1378)
@@ -20007,13 +20007,13 @@ type PrimaryKeyElementContext struct {
 func NewEmptyPrimaryKeyElementContext() *PrimaryKeyElementContext {
 	var p = new(PrimaryKeyElementContext)
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
-	p.RuleIndex = CqlParserRULE_primaryKeyElement
+	p.RuleIndex = CQLParserRULE_primaryKeyElement
 	return p
 }
 
 func InitEmptyPrimaryKeyElementContext(p *PrimaryKeyElementContext) {
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
-	p.RuleIndex = CqlParserRULE_primaryKeyElement
+	p.RuleIndex = CQLParserRULE_primaryKeyElement
 }
 
 func (*PrimaryKeyElementContext) IsPrimaryKeyElementContext() {}
@@ -20024,7 +20024,7 @@ func NewPrimaryKeyElementContext(parser antlr.Parser, parent antlr.ParserRuleCon
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, parent, invokingState)
 
 	p.parser = parser
-	p.RuleIndex = CqlParserRULE_primaryKeyElement
+	p.RuleIndex = CQLParserRULE_primaryKeyElement
 
 	return p
 }
@@ -20120,20 +20120,20 @@ func (s *PrimaryKeyElementContext) ToStringTree(ruleNames []string, recog antlr.
 }
 
 func (s *PrimaryKeyElementContext) EnterRule(listener antlr.ParseTreeListener) {
-	if listenerT, ok := listener.(CqlParserListener); ok {
+	if listenerT, ok := listener.(CQLParserListener); ok {
 		listenerT.EnterPrimaryKeyElement(s)
 	}
 }
 
 func (s *PrimaryKeyElementContext) ExitRule(listener antlr.ParseTreeListener) {
-	if listenerT, ok := listener.(CqlParserListener); ok {
+	if listenerT, ok := listener.(CQLParserListener); ok {
 		listenerT.ExitPrimaryKeyElement(s)
 	}
 }
 
-func (p *CqlParser) PrimaryKeyElement() (localctx IPrimaryKeyElementContext) {
+func (p *CQLParser) PrimaryKeyElement() (localctx IPrimaryKeyElementContext) {
 	localctx = NewPrimaryKeyElementContext(p, p.GetParserRuleContext(), p.GetState())
-	p.EnterRule(localctx, 160, CqlParserRULE_primaryKeyElement)
+	p.EnterRule(localctx, 160, CQLParserRULE_primaryKeyElement)
 	p.EnterOuterAlt(localctx, 1)
 	{
 		p.SetState(1381)
@@ -20193,13 +20193,13 @@ type PrimaryKeyDefinitionContext struct {
 func NewEmptyPrimaryKeyDefinitionContext() *PrimaryKeyDefinitionContext {
 	var p = new(PrimaryKeyDefinitionContext)
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
-	p.RuleIndex = CqlParserRULE_primaryKeyDefinition
+	p.RuleIndex = CQLParserRULE_primaryKeyDefinition
 	return p
 }
 
 func InitEmptyPrimaryKeyDefinitionContext(p *PrimaryKeyDefinitionContext) {
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
-	p.RuleIndex = CqlParserRULE_primaryKeyDefinition
+	p.RuleIndex = CQLParserRULE_primaryKeyDefinition
 }
 
 func (*PrimaryKeyDefinitionContext) IsPrimaryKeyDefinitionContext() {}
@@ -20210,7 +20210,7 @@ func NewPrimaryKeyDefinitionContext(parser antlr.Parser, parent antlr.ParserRule
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, parent, invokingState)
 
 	p.parser = parser
-	p.RuleIndex = CqlParserRULE_primaryKeyDefinition
+	p.RuleIndex = CQLParserRULE_primaryKeyDefinition
 
 	return p
 }
@@ -20274,20 +20274,20 @@ func (s *PrimaryKeyDefinitionContext) ToStringTree(ruleNames []string, recog ant
 }
 
 func (s *PrimaryKeyDefinitionContext) EnterRule(listener antlr.ParseTreeListener) {
-	if listenerT, ok := listener.(CqlParserListener); ok {
+	if listenerT, ok := listener.(CQLParserListener); ok {
 		listenerT.EnterPrimaryKeyDefinition(s)
 	}
 }
 
 func (s *PrimaryKeyDefinitionContext) ExitRule(listener antlr.ParseTreeListener) {
-	if listenerT, ok := listener.(CqlParserListener); ok {
+	if listenerT, ok := listener.(CQLParserListener); ok {
 		listenerT.ExitPrimaryKeyDefinition(s)
 	}
 }
 
-func (p *CqlParser) PrimaryKeyDefinition() (localctx IPrimaryKeyDefinitionContext) {
+func (p *CQLParser) PrimaryKeyDefinition() (localctx IPrimaryKeyDefinitionContext) {
 	localctx = NewPrimaryKeyDefinitionContext(p, p.GetParserRuleContext(), p.GetState())
-	p.EnterRule(localctx, 162, CqlParserRULE_primaryKeyDefinition)
+	p.EnterRule(localctx, 162, CQLParserRULE_primaryKeyDefinition)
 	p.SetState(1390)
 	p.GetErrorHandler().Sync(p)
 	if p.HasError() {
@@ -20355,13 +20355,13 @@ type SinglePrimaryKeyContext struct {
 func NewEmptySinglePrimaryKeyContext() *SinglePrimaryKeyContext {
 	var p = new(SinglePrimaryKeyContext)
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
-	p.RuleIndex = CqlParserRULE_singlePrimaryKey
+	p.RuleIndex = CQLParserRULE_singlePrimaryKey
 	return p
 }
 
 func InitEmptySinglePrimaryKeyContext(p *SinglePrimaryKeyContext) {
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
-	p.RuleIndex = CqlParserRULE_singlePrimaryKey
+	p.RuleIndex = CQLParserRULE_singlePrimaryKey
 }
 
 func (*SinglePrimaryKeyContext) IsSinglePrimaryKeyContext() {}
@@ -20372,7 +20372,7 @@ func NewSinglePrimaryKeyContext(parser antlr.Parser, parent antlr.ParserRuleCont
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, parent, invokingState)
 
 	p.parser = parser
-	p.RuleIndex = CqlParserRULE_singlePrimaryKey
+	p.RuleIndex = CQLParserRULE_singlePrimaryKey
 
 	return p
 }
@@ -20404,20 +20404,20 @@ func (s *SinglePrimaryKeyContext) ToStringTree(ruleNames []string, recog antlr.R
 }
 
 func (s *SinglePrimaryKeyContext) EnterRule(listener antlr.ParseTreeListener) {
-	if listenerT, ok := listener.(CqlParserListener); ok {
+	if listenerT, ok := listener.(CQLParserListener); ok {
 		listenerT.EnterSinglePrimaryKey(s)
 	}
 }
 
 func (s *SinglePrimaryKeyContext) ExitRule(listener antlr.ParseTreeListener) {
-	if listenerT, ok := listener.(CqlParserListener); ok {
+	if listenerT, ok := listener.(CQLParserListener); ok {
 		listenerT.ExitSinglePrimaryKey(s)
 	}
 }
 
-func (p *CqlParser) SinglePrimaryKey() (localctx ISinglePrimaryKeyContext) {
+func (p *CQLParser) SinglePrimaryKey() (localctx ISinglePrimaryKeyContext) {
 	localctx = NewSinglePrimaryKeyContext(p, p.GetParserRuleContext(), p.GetState())
-	p.EnterRule(localctx, 164, CqlParserRULE_singlePrimaryKey)
+	p.EnterRule(localctx, 164, CQLParserRULE_singlePrimaryKey)
 	p.EnterOuterAlt(localctx, 1)
 	{
 		p.SetState(1392)
@@ -20461,13 +20461,13 @@ type CompoundKeyContext struct {
 func NewEmptyCompoundKeyContext() *CompoundKeyContext {
 	var p = new(CompoundKeyContext)
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
-	p.RuleIndex = CqlParserRULE_compoundKey
+	p.RuleIndex = CQLParserRULE_compoundKey
 	return p
 }
 
 func InitEmptyCompoundKeyContext(p *CompoundKeyContext) {
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
-	p.RuleIndex = CqlParserRULE_compoundKey
+	p.RuleIndex = CQLParserRULE_compoundKey
 }
 
 func (*CompoundKeyContext) IsCompoundKeyContext() {}
@@ -20478,7 +20478,7 @@ func NewCompoundKeyContext(parser antlr.Parser, parent antlr.ParserRuleContext, 
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, parent, invokingState)
 
 	p.parser = parser
-	p.RuleIndex = CqlParserRULE_compoundKey
+	p.RuleIndex = CQLParserRULE_compoundKey
 
 	return p
 }
@@ -20542,20 +20542,20 @@ func (s *CompoundKeyContext) ToStringTree(ruleNames []string, recog antlr.Recogn
 }
 
 func (s *CompoundKeyContext) EnterRule(listener antlr.ParseTreeListener) {
-	if listenerT, ok := listener.(CqlParserListener); ok {
+	if listenerT, ok := listener.(CQLParserListener); ok {
 		listenerT.EnterCompoundKey(s)
 	}
 }
 
 func (s *CompoundKeyContext) ExitRule(listener antlr.ParseTreeListener) {
-	if listenerT, ok := listener.(CqlParserListener); ok {
+	if listenerT, ok := listener.(CQLParserListener); ok {
 		listenerT.ExitCompoundKey(s)
 	}
 }
 
-func (p *CqlParser) CompoundKey() (localctx ICompoundKeyContext) {
+func (p *CQLParser) CompoundKey() (localctx ICompoundKeyContext) {
 	localctx = NewCompoundKeyContext(p, p.GetParserRuleContext(), p.GetState())
-	p.EnterRule(localctx, 166, CqlParserRULE_compoundKey)
+	p.EnterRule(localctx, 166, CQLParserRULE_compoundKey)
 	p.EnterOuterAlt(localctx, 1)
 	{
 		p.SetState(1394)
@@ -20610,13 +20610,13 @@ type CompositeKeyContext struct {
 func NewEmptyCompositeKeyContext() *CompositeKeyContext {
 	var p = new(CompositeKeyContext)
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
-	p.RuleIndex = CqlParserRULE_compositeKey
+	p.RuleIndex = CQLParserRULE_compositeKey
 	return p
 }
 
 func InitEmptyCompositeKeyContext(p *CompositeKeyContext) {
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
-	p.RuleIndex = CqlParserRULE_compositeKey
+	p.RuleIndex = CQLParserRULE_compositeKey
 }
 
 func (*CompositeKeyContext) IsCompositeKeyContext() {}
@@ -20627,7 +20627,7 @@ func NewCompositeKeyContext(parser antlr.Parser, parent antlr.ParserRuleContext,
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, parent, invokingState)
 
 	p.parser = parser
-	p.RuleIndex = CqlParserRULE_compositeKey
+	p.RuleIndex = CQLParserRULE_compositeKey
 
 	return p
 }
@@ -20723,20 +20723,20 @@ func (s *CompositeKeyContext) ToStringTree(ruleNames []string, recog antlr.Recog
 }
 
 func (s *CompositeKeyContext) EnterRule(listener antlr.ParseTreeListener) {
-	if listenerT, ok := listener.(CqlParserListener); ok {
+	if listenerT, ok := listener.(CQLParserListener); ok {
 		listenerT.EnterCompositeKey(s)
 	}
 }
 
 func (s *CompositeKeyContext) ExitRule(listener antlr.ParseTreeListener) {
-	if listenerT, ok := listener.(CqlParserListener); ok {
+	if listenerT, ok := listener.(CQLParserListener); ok {
 		listenerT.ExitCompositeKey(s)
 	}
 }
 
-func (p *CqlParser) CompositeKey() (localctx ICompositeKeyContext) {
+func (p *CQLParser) CompositeKey() (localctx ICompositeKeyContext) {
 	localctx = NewCompositeKeyContext(p, p.GetParserRuleContext(), p.GetState())
-	p.EnterRule(localctx, 168, CqlParserRULE_compositeKey)
+	p.EnterRule(localctx, 168, CQLParserRULE_compositeKey)
 	p.EnterOuterAlt(localctx, 1)
 	{
 		p.SetState(1398)
@@ -20798,13 +20798,13 @@ type PartitionKeyListContext struct {
 func NewEmptyPartitionKeyListContext() *PartitionKeyListContext {
 	var p = new(PartitionKeyListContext)
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
-	p.RuleIndex = CqlParserRULE_partitionKeyList
+	p.RuleIndex = CQLParserRULE_partitionKeyList
 	return p
 }
 
 func InitEmptyPartitionKeyListContext(p *PartitionKeyListContext) {
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
-	p.RuleIndex = CqlParserRULE_partitionKeyList
+	p.RuleIndex = CQLParserRULE_partitionKeyList
 }
 
 func (*PartitionKeyListContext) IsPartitionKeyListContext() {}
@@ -20815,7 +20815,7 @@ func NewPartitionKeyListContext(parser antlr.Parser, parent antlr.ParserRuleCont
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, parent, invokingState)
 
 	p.parser = parser
-	p.RuleIndex = CqlParserRULE_partitionKeyList
+	p.RuleIndex = CQLParserRULE_partitionKeyList
 
 	return p
 }
@@ -20913,20 +20913,20 @@ func (s *PartitionKeyListContext) ToStringTree(ruleNames []string, recog antlr.R
 }
 
 func (s *PartitionKeyListContext) EnterRule(listener antlr.ParseTreeListener) {
-	if listenerT, ok := listener.(CqlParserListener); ok {
+	if listenerT, ok := listener.(CQLParserListener); ok {
 		listenerT.EnterPartitionKeyList(s)
 	}
 }
 
 func (s *PartitionKeyListContext) ExitRule(listener antlr.ParseTreeListener) {
-	if listenerT, ok := listener.(CqlParserListener); ok {
+	if listenerT, ok := listener.(CQLParserListener); ok {
 		listenerT.ExitPartitionKeyList(s)
 	}
 }
 
-func (p *CqlParser) PartitionKeyList() (localctx IPartitionKeyListContext) {
+func (p *CQLParser) PartitionKeyList() (localctx IPartitionKeyListContext) {
 	localctx = NewPartitionKeyListContext(p, p.GetParserRuleContext(), p.GetState())
-	p.EnterRule(localctx, 170, CqlParserRULE_partitionKeyList)
+	p.EnterRule(localctx, 170, CQLParserRULE_partitionKeyList)
 	var _la int
 
 	p.EnterOuterAlt(localctx, 1)
@@ -20942,7 +20942,7 @@ func (p *CqlParser) PartitionKeyList() (localctx IPartitionKeyListContext) {
 	}
 	_la = p.GetTokenStream().LA(1)
 
-	for _la == CqlParserCOMMA {
+	for _la == CQLParserCOMMA {
 		{
 			p.SetState(1405)
 			p.SyntaxComma()
@@ -20998,13 +20998,13 @@ type ClusteringKeyListContext struct {
 func NewEmptyClusteringKeyListContext() *ClusteringKeyListContext {
 	var p = new(ClusteringKeyListContext)
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
-	p.RuleIndex = CqlParserRULE_clusteringKeyList
+	p.RuleIndex = CQLParserRULE_clusteringKeyList
 	return p
 }
 
 func InitEmptyClusteringKeyListContext(p *ClusteringKeyListContext) {
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
-	p.RuleIndex = CqlParserRULE_clusteringKeyList
+	p.RuleIndex = CQLParserRULE_clusteringKeyList
 }
 
 func (*ClusteringKeyListContext) IsClusteringKeyListContext() {}
@@ -21015,7 +21015,7 @@ func NewClusteringKeyListContext(parser antlr.Parser, parent antlr.ParserRuleCon
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, parent, invokingState)
 
 	p.parser = parser
-	p.RuleIndex = CqlParserRULE_clusteringKeyList
+	p.RuleIndex = CQLParserRULE_clusteringKeyList
 
 	return p
 }
@@ -21113,20 +21113,20 @@ func (s *ClusteringKeyListContext) ToStringTree(ruleNames []string, recog antlr.
 }
 
 func (s *ClusteringKeyListContext) EnterRule(listener antlr.ParseTreeListener) {
-	if listenerT, ok := listener.(CqlParserListener); ok {
+	if listenerT, ok := listener.(CQLParserListener); ok {
 		listenerT.EnterClusteringKeyList(s)
 	}
 }
 
 func (s *ClusteringKeyListContext) ExitRule(listener antlr.ParseTreeListener) {
-	if listenerT, ok := listener.(CqlParserListener); ok {
+	if listenerT, ok := listener.(CQLParserListener); ok {
 		listenerT.ExitClusteringKeyList(s)
 	}
 }
 
-func (p *CqlParser) ClusteringKeyList() (localctx IClusteringKeyListContext) {
+func (p *CQLParser) ClusteringKeyList() (localctx IClusteringKeyListContext) {
 	localctx = NewClusteringKeyListContext(p, p.GetParserRuleContext(), p.GetState())
-	p.EnterRule(localctx, 172, CqlParserRULE_clusteringKeyList)
+	p.EnterRule(localctx, 172, CQLParserRULE_clusteringKeyList)
 	var _la int
 
 	p.EnterOuterAlt(localctx, 1)
@@ -21142,7 +21142,7 @@ func (p *CqlParser) ClusteringKeyList() (localctx IClusteringKeyListContext) {
 	}
 	_la = p.GetTokenStream().LA(1)
 
-	for _la == CqlParserCOMMA {
+	for _la == CQLParserCOMMA {
 		{
 			p.SetState(1414)
 			p.SyntaxComma()
@@ -21195,13 +21195,13 @@ type PartitionKeyContext struct {
 func NewEmptyPartitionKeyContext() *PartitionKeyContext {
 	var p = new(PartitionKeyContext)
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
-	p.RuleIndex = CqlParserRULE_partitionKey
+	p.RuleIndex = CQLParserRULE_partitionKey
 	return p
 }
 
 func InitEmptyPartitionKeyContext(p *PartitionKeyContext) {
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
-	p.RuleIndex = CqlParserRULE_partitionKey
+	p.RuleIndex = CQLParserRULE_partitionKey
 }
 
 func (*PartitionKeyContext) IsPartitionKeyContext() {}
@@ -21212,7 +21212,7 @@ func NewPartitionKeyContext(parser antlr.Parser, parent antlr.ParserRuleContext,
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, parent, invokingState)
 
 	p.parser = parser
-	p.RuleIndex = CqlParserRULE_partitionKey
+	p.RuleIndex = CQLParserRULE_partitionKey
 
 	return p
 }
@@ -21244,20 +21244,20 @@ func (s *PartitionKeyContext) ToStringTree(ruleNames []string, recog antlr.Recog
 }
 
 func (s *PartitionKeyContext) EnterRule(listener antlr.ParseTreeListener) {
-	if listenerT, ok := listener.(CqlParserListener); ok {
+	if listenerT, ok := listener.(CQLParserListener); ok {
 		listenerT.EnterPartitionKey(s)
 	}
 }
 
 func (s *PartitionKeyContext) ExitRule(listener antlr.ParseTreeListener) {
-	if listenerT, ok := listener.(CqlParserListener); ok {
+	if listenerT, ok := listener.(CQLParserListener); ok {
 		listenerT.ExitPartitionKey(s)
 	}
 }
 
-func (p *CqlParser) PartitionKey() (localctx IPartitionKeyContext) {
+func (p *CQLParser) PartitionKey() (localctx IPartitionKeyContext) {
 	localctx = NewPartitionKeyContext(p, p.GetParserRuleContext(), p.GetState())
-	p.EnterRule(localctx, 174, CqlParserRULE_partitionKey)
+	p.EnterRule(localctx, 174, CQLParserRULE_partitionKey)
 	p.EnterOuterAlt(localctx, 1)
 	{
 		p.SetState(1422)
@@ -21299,13 +21299,13 @@ type ClusteringKeyContext struct {
 func NewEmptyClusteringKeyContext() *ClusteringKeyContext {
 	var p = new(ClusteringKeyContext)
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
-	p.RuleIndex = CqlParserRULE_clusteringKey
+	p.RuleIndex = CQLParserRULE_clusteringKey
 	return p
 }
 
 func InitEmptyClusteringKeyContext(p *ClusteringKeyContext) {
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
-	p.RuleIndex = CqlParserRULE_clusteringKey
+	p.RuleIndex = CQLParserRULE_clusteringKey
 }
 
 func (*ClusteringKeyContext) IsClusteringKeyContext() {}
@@ -21316,7 +21316,7 @@ func NewClusteringKeyContext(parser antlr.Parser, parent antlr.ParserRuleContext
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, parent, invokingState)
 
 	p.parser = parser
-	p.RuleIndex = CqlParserRULE_clusteringKey
+	p.RuleIndex = CQLParserRULE_clusteringKey
 
 	return p
 }
@@ -21348,20 +21348,20 @@ func (s *ClusteringKeyContext) ToStringTree(ruleNames []string, recog antlr.Reco
 }
 
 func (s *ClusteringKeyContext) EnterRule(listener antlr.ParseTreeListener) {
-	if listenerT, ok := listener.(CqlParserListener); ok {
+	if listenerT, ok := listener.(CQLParserListener); ok {
 		listenerT.EnterClusteringKey(s)
 	}
 }
 
 func (s *ClusteringKeyContext) ExitRule(listener antlr.ParseTreeListener) {
-	if listenerT, ok := listener.(CqlParserListener); ok {
+	if listenerT, ok := listener.(CQLParserListener); ok {
 		listenerT.ExitClusteringKey(s)
 	}
 }
 
-func (p *CqlParser) ClusteringKey() (localctx IClusteringKeyContext) {
+func (p *CQLParser) ClusteringKey() (localctx IClusteringKeyContext) {
 	localctx = NewClusteringKeyContext(p, p.GetParserRuleContext(), p.GetState())
-	p.EnterRule(localctx, 176, CqlParserRULE_clusteringKey)
+	p.EnterRule(localctx, 176, CQLParserRULE_clusteringKey)
 	p.EnterOuterAlt(localctx, 1)
 	{
 		p.SetState(1424)
@@ -21404,13 +21404,13 @@ type ApplyBatchContext struct {
 func NewEmptyApplyBatchContext() *ApplyBatchContext {
 	var p = new(ApplyBatchContext)
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
-	p.RuleIndex = CqlParserRULE_applyBatch
+	p.RuleIndex = CQLParserRULE_applyBatch
 	return p
 }
 
 func InitEmptyApplyBatchContext(p *ApplyBatchContext) {
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
-	p.RuleIndex = CqlParserRULE_applyBatch
+	p.RuleIndex = CQLParserRULE_applyBatch
 }
 
 func (*ApplyBatchContext) IsApplyBatchContext() {}
@@ -21421,7 +21421,7 @@ func NewApplyBatchContext(parser antlr.Parser, parent antlr.ParserRuleContext, i
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, parent, invokingState)
 
 	p.parser = parser
-	p.RuleIndex = CqlParserRULE_applyBatch
+	p.RuleIndex = CQLParserRULE_applyBatch
 
 	return p
 }
@@ -21469,20 +21469,20 @@ func (s *ApplyBatchContext) ToStringTree(ruleNames []string, recog antlr.Recogni
 }
 
 func (s *ApplyBatchContext) EnterRule(listener antlr.ParseTreeListener) {
-	if listenerT, ok := listener.(CqlParserListener); ok {
+	if listenerT, ok := listener.(CQLParserListener); ok {
 		listenerT.EnterApplyBatch(s)
 	}
 }
 
 func (s *ApplyBatchContext) ExitRule(listener antlr.ParseTreeListener) {
-	if listenerT, ok := listener.(CqlParserListener); ok {
+	if listenerT, ok := listener.(CQLParserListener); ok {
 		listenerT.ExitApplyBatch(s)
 	}
 }
 
-func (p *CqlParser) ApplyBatch() (localctx IApplyBatchContext) {
+func (p *CQLParser) ApplyBatch() (localctx IApplyBatchContext) {
 	localctx = NewApplyBatchContext(p, p.GetParserRuleContext(), p.GetState())
-	p.EnterRule(localctx, 178, CqlParserRULE_applyBatch)
+	p.EnterRule(localctx, 178, CQLParserRULE_applyBatch)
 	p.EnterOuterAlt(localctx, 1)
 	{
 		p.SetState(1426)
@@ -21531,13 +21531,13 @@ type BeginBatchContext struct {
 func NewEmptyBeginBatchContext() *BeginBatchContext {
 	var p = new(BeginBatchContext)
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
-	p.RuleIndex = CqlParserRULE_beginBatch
+	p.RuleIndex = CQLParserRULE_beginBatch
 	return p
 }
 
 func InitEmptyBeginBatchContext(p *BeginBatchContext) {
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
-	p.RuleIndex = CqlParserRULE_beginBatch
+	p.RuleIndex = CQLParserRULE_beginBatch
 }
 
 func (*BeginBatchContext) IsBeginBatchContext() {}
@@ -21548,7 +21548,7 @@ func NewBeginBatchContext(parser antlr.Parser, parent antlr.ParserRuleContext, i
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, parent, invokingState)
 
 	p.parser = parser
-	p.RuleIndex = CqlParserRULE_beginBatch
+	p.RuleIndex = CQLParserRULE_beginBatch
 
 	return p
 }
@@ -21628,20 +21628,20 @@ func (s *BeginBatchContext) ToStringTree(ruleNames []string, recog antlr.Recogni
 }
 
 func (s *BeginBatchContext) EnterRule(listener antlr.ParseTreeListener) {
-	if listenerT, ok := listener.(CqlParserListener); ok {
+	if listenerT, ok := listener.(CQLParserListener); ok {
 		listenerT.EnterBeginBatch(s)
 	}
 }
 
 func (s *BeginBatchContext) ExitRule(listener antlr.ParseTreeListener) {
-	if listenerT, ok := listener.(CqlParserListener); ok {
+	if listenerT, ok := listener.(CQLParserListener); ok {
 		listenerT.ExitBeginBatch(s)
 	}
 }
 
-func (p *CqlParser) BeginBatch() (localctx IBeginBatchContext) {
+func (p *CQLParser) BeginBatch() (localctx IBeginBatchContext) {
 	localctx = NewBeginBatchContext(p, p.GetParserRuleContext(), p.GetState())
-	p.EnterRule(localctx, 180, CqlParserRULE_beginBatch)
+	p.EnterRule(localctx, 180, CQLParserRULE_beginBatch)
 	var _la int
 
 	p.EnterOuterAlt(localctx, 1)
@@ -21656,7 +21656,7 @@ func (p *CqlParser) BeginBatch() (localctx IBeginBatchContext) {
 	}
 	_la = p.GetTokenStream().LA(1)
 
-	if _la == CqlParserK_LOGGED || _la == CqlParserK_UNLOGGED {
+	if _la == CQLParserK_LOGGED || _la == CQLParserK_UNLOGGED {
 		{
 			p.SetState(1430)
 			p.BatchType()
@@ -21674,7 +21674,7 @@ func (p *CqlParser) BeginBatch() (localctx IBeginBatchContext) {
 	}
 	_la = p.GetTokenStream().LA(1)
 
-	if _la == CqlParserK_USING {
+	if _la == CQLParserK_USING {
 		{
 			p.SetState(1434)
 			p.UsingTimestampSpec()
@@ -21718,13 +21718,13 @@ type BatchTypeContext struct {
 func NewEmptyBatchTypeContext() *BatchTypeContext {
 	var p = new(BatchTypeContext)
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
-	p.RuleIndex = CqlParserRULE_batchType
+	p.RuleIndex = CQLParserRULE_batchType
 	return p
 }
 
 func InitEmptyBatchTypeContext(p *BatchTypeContext) {
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
-	p.RuleIndex = CqlParserRULE_batchType
+	p.RuleIndex = CQLParserRULE_batchType
 }
 
 func (*BatchTypeContext) IsBatchTypeContext() {}
@@ -21735,7 +21735,7 @@ func NewBatchTypeContext(parser antlr.Parser, parent antlr.ParserRuleContext, in
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, parent, invokingState)
 
 	p.parser = parser
-	p.RuleIndex = CqlParserRULE_batchType
+	p.RuleIndex = CQLParserRULE_batchType
 
 	return p
 }
@@ -21783,20 +21783,20 @@ func (s *BatchTypeContext) ToStringTree(ruleNames []string, recog antlr.Recogniz
 }
 
 func (s *BatchTypeContext) EnterRule(listener antlr.ParseTreeListener) {
-	if listenerT, ok := listener.(CqlParserListener); ok {
+	if listenerT, ok := listener.(CQLParserListener); ok {
 		listenerT.EnterBatchType(s)
 	}
 }
 
 func (s *BatchTypeContext) ExitRule(listener antlr.ParseTreeListener) {
-	if listenerT, ok := listener.(CqlParserListener); ok {
+	if listenerT, ok := listener.(CQLParserListener); ok {
 		listenerT.ExitBatchType(s)
 	}
 }
 
-func (p *CqlParser) BatchType() (localctx IBatchTypeContext) {
+func (p *CQLParser) BatchType() (localctx IBatchTypeContext) {
 	localctx = NewBatchTypeContext(p, p.GetParserRuleContext(), p.GetState())
-	p.EnterRule(localctx, 182, CqlParserRULE_batchType)
+	p.EnterRule(localctx, 182, CQLParserRULE_batchType)
 	p.SetState(1439)
 	p.GetErrorHandler().Sync(p)
 	if p.HasError() {
@@ -21804,14 +21804,14 @@ func (p *CqlParser) BatchType() (localctx IBatchTypeContext) {
 	}
 
 	switch p.GetTokenStream().LA(1) {
-	case CqlParserK_LOGGED:
+	case CQLParserK_LOGGED:
 		p.EnterOuterAlt(localctx, 1)
 		{
 			p.SetState(1437)
 			p.KwLogged()
 		}
 
-	case CqlParserK_UNLOGGED:
+	case CQLParserK_UNLOGGED:
 		p.EnterOuterAlt(localctx, 2)
 		{
 			p.SetState(1438)
@@ -21868,13 +21868,13 @@ type AlterKeyspaceContext struct {
 func NewEmptyAlterKeyspaceContext() *AlterKeyspaceContext {
 	var p = new(AlterKeyspaceContext)
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
-	p.RuleIndex = CqlParserRULE_alterKeyspace
+	p.RuleIndex = CQLParserRULE_alterKeyspace
 	return p
 }
 
 func InitEmptyAlterKeyspaceContext(p *AlterKeyspaceContext) {
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
-	p.RuleIndex = CqlParserRULE_alterKeyspace
+	p.RuleIndex = CQLParserRULE_alterKeyspace
 }
 
 func (*AlterKeyspaceContext) IsAlterKeyspaceContext() {}
@@ -21885,7 +21885,7 @@ func NewAlterKeyspaceContext(parser antlr.Parser, parent antlr.ParserRuleContext
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, parent, invokingState)
 
 	p.parser = parser
-	p.RuleIndex = CqlParserRULE_alterKeyspace
+	p.RuleIndex = CQLParserRULE_alterKeyspace
 
 	return p
 }
@@ -21973,7 +21973,7 @@ func (s *AlterKeyspaceContext) KwReplication() IKwReplicationContext {
 }
 
 func (s *AlterKeyspaceContext) OPERATOR_EQ() antlr.TerminalNode {
-	return s.GetToken(CqlParserOPERATOR_EQ, 0)
+	return s.GetToken(CQLParserOPERATOR_EQ, 0)
 }
 
 func (s *AlterKeyspaceContext) SyntaxBracketLc() ISyntaxBracketLcContext {
@@ -22065,20 +22065,20 @@ func (s *AlterKeyspaceContext) ToStringTree(ruleNames []string, recog antlr.Reco
 }
 
 func (s *AlterKeyspaceContext) EnterRule(listener antlr.ParseTreeListener) {
-	if listenerT, ok := listener.(CqlParserListener); ok {
+	if listenerT, ok := listener.(CQLParserListener); ok {
 		listenerT.EnterAlterKeyspace(s)
 	}
 }
 
 func (s *AlterKeyspaceContext) ExitRule(listener antlr.ParseTreeListener) {
-	if listenerT, ok := listener.(CqlParserListener); ok {
+	if listenerT, ok := listener.(CQLParserListener); ok {
 		listenerT.ExitAlterKeyspace(s)
 	}
 }
 
-func (p *CqlParser) AlterKeyspace() (localctx IAlterKeyspaceContext) {
+func (p *CQLParser) AlterKeyspace() (localctx IAlterKeyspaceContext) {
 	localctx = NewAlterKeyspaceContext(p, p.GetParserRuleContext(), p.GetState())
-	p.EnterRule(localctx, 184, CqlParserRULE_alterKeyspace)
+	p.EnterRule(localctx, 184, CQLParserRULE_alterKeyspace)
 	var _la int
 
 	p.EnterOuterAlt(localctx, 1)
@@ -22104,7 +22104,7 @@ func (p *CqlParser) AlterKeyspace() (localctx IAlterKeyspaceContext) {
 	}
 	{
 		p.SetState(1446)
-		p.Match(CqlParserOPERATOR_EQ)
+		p.Match(CQLParserOPERATOR_EQ)
 		if p.HasError() {
 			// Recognition error - abort rule
 			goto errorExit
@@ -22129,7 +22129,7 @@ func (p *CqlParser) AlterKeyspace() (localctx IAlterKeyspaceContext) {
 	}
 	_la = p.GetTokenStream().LA(1)
 
-	if _la == CqlParserK_AND {
+	if _la == CQLParserK_AND {
 		{
 			p.SetState(1450)
 			p.KwAnd()
@@ -22179,13 +22179,13 @@ type ReplicationListContext struct {
 func NewEmptyReplicationListContext() *ReplicationListContext {
 	var p = new(ReplicationListContext)
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
-	p.RuleIndex = CqlParserRULE_replicationList
+	p.RuleIndex = CQLParserRULE_replicationList
 	return p
 }
 
 func InitEmptyReplicationListContext(p *ReplicationListContext) {
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
-	p.RuleIndex = CqlParserRULE_replicationList
+	p.RuleIndex = CQLParserRULE_replicationList
 }
 
 func (*ReplicationListContext) IsReplicationListContext() {}
@@ -22196,7 +22196,7 @@ func NewReplicationListContext(parser antlr.Parser, parent antlr.ParserRuleConte
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, parent, invokingState)
 
 	p.parser = parser
-	p.RuleIndex = CqlParserRULE_replicationList
+	p.RuleIndex = CQLParserRULE_replicationList
 
 	return p
 }
@@ -22294,20 +22294,20 @@ func (s *ReplicationListContext) ToStringTree(ruleNames []string, recog antlr.Re
 }
 
 func (s *ReplicationListContext) EnterRule(listener antlr.ParseTreeListener) {
-	if listenerT, ok := listener.(CqlParserListener); ok {
+	if listenerT, ok := listener.(CQLParserListener); ok {
 		listenerT.EnterReplicationList(s)
 	}
 }
 
 func (s *ReplicationListContext) ExitRule(listener antlr.ParseTreeListener) {
-	if listenerT, ok := listener.(CqlParserListener); ok {
+	if listenerT, ok := listener.(CQLParserListener); ok {
 		listenerT.ExitReplicationList(s)
 	}
 }
 
-func (p *CqlParser) ReplicationList() (localctx IReplicationListContext) {
+func (p *CQLParser) ReplicationList() (localctx IReplicationListContext) {
 	localctx = NewReplicationListContext(p, p.GetParserRuleContext(), p.GetState())
-	p.EnterRule(localctx, 186, CqlParserRULE_replicationList)
+	p.EnterRule(localctx, 186, CQLParserRULE_replicationList)
 	var _la int
 
 	p.EnterOuterAlt(localctx, 1)
@@ -22323,7 +22323,7 @@ func (p *CqlParser) ReplicationList() (localctx IReplicationListContext) {
 	}
 	_la = p.GetTokenStream().LA(1)
 
-	for _la == CqlParserCOMMA {
+	for _la == CQLParserCOMMA {
 		{
 			p.SetState(1456)
 			p.SyntaxComma()
@@ -22379,13 +22379,13 @@ type ReplicationListItemContext struct {
 func NewEmptyReplicationListItemContext() *ReplicationListItemContext {
 	var p = new(ReplicationListItemContext)
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
-	p.RuleIndex = CqlParserRULE_replicationListItem
+	p.RuleIndex = CQLParserRULE_replicationListItem
 	return p
 }
 
 func InitEmptyReplicationListItemContext(p *ReplicationListItemContext) {
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
-	p.RuleIndex = CqlParserRULE_replicationListItem
+	p.RuleIndex = CQLParserRULE_replicationListItem
 }
 
 func (*ReplicationListItemContext) IsReplicationListItemContext() {}
@@ -22396,7 +22396,7 @@ func NewReplicationListItemContext(parser antlr.Parser, parent antlr.ParserRuleC
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, parent, invokingState)
 
 	p.parser = parser
-	p.RuleIndex = CqlParserRULE_replicationListItem
+	p.RuleIndex = CQLParserRULE_replicationListItem
 
 	return p
 }
@@ -22404,19 +22404,19 @@ func NewReplicationListItemContext(parser antlr.Parser, parent antlr.ParserRuleC
 func (s *ReplicationListItemContext) GetParser() antlr.Parser { return s.parser }
 
 func (s *ReplicationListItemContext) AllSTRING_LITERAL() []antlr.TerminalNode {
-	return s.GetTokens(CqlParserSTRING_LITERAL)
+	return s.GetTokens(CQLParserSTRING_LITERAL)
 }
 
 func (s *ReplicationListItemContext) STRING_LITERAL(i int) antlr.TerminalNode {
-	return s.GetToken(CqlParserSTRING_LITERAL, i)
+	return s.GetToken(CQLParserSTRING_LITERAL, i)
 }
 
 func (s *ReplicationListItemContext) COLON() antlr.TerminalNode {
-	return s.GetToken(CqlParserCOLON, 0)
+	return s.GetToken(CQLParserCOLON, 0)
 }
 
 func (s *ReplicationListItemContext) DECIMAL_LITERAL() antlr.TerminalNode {
-	return s.GetToken(CqlParserDECIMAL_LITERAL, 0)
+	return s.GetToken(CQLParserDECIMAL_LITERAL, 0)
 }
 
 func (s *ReplicationListItemContext) GetRuleContext() antlr.RuleContext {
@@ -22428,20 +22428,20 @@ func (s *ReplicationListItemContext) ToStringTree(ruleNames []string, recog antl
 }
 
 func (s *ReplicationListItemContext) EnterRule(listener antlr.ParseTreeListener) {
-	if listenerT, ok := listener.(CqlParserListener); ok {
+	if listenerT, ok := listener.(CQLParserListener); ok {
 		listenerT.EnterReplicationListItem(s)
 	}
 }
 
 func (s *ReplicationListItemContext) ExitRule(listener antlr.ParseTreeListener) {
-	if listenerT, ok := listener.(CqlParserListener); ok {
+	if listenerT, ok := listener.(CQLParserListener); ok {
 		listenerT.ExitReplicationListItem(s)
 	}
 }
 
-func (p *CqlParser) ReplicationListItem() (localctx IReplicationListItemContext) {
+func (p *CQLParser) ReplicationListItem() (localctx IReplicationListItemContext) {
 	localctx = NewReplicationListItemContext(p, p.GetParserRuleContext(), p.GetState())
-	p.EnterRule(localctx, 188, CqlParserRULE_replicationListItem)
+	p.EnterRule(localctx, 188, CQLParserRULE_replicationListItem)
 	p.SetState(1470)
 	p.GetErrorHandler().Sync(p)
 	if p.HasError() {
@@ -22453,7 +22453,7 @@ func (p *CqlParser) ReplicationListItem() (localctx IReplicationListItemContext)
 		p.EnterOuterAlt(localctx, 1)
 		{
 			p.SetState(1464)
-			p.Match(CqlParserSTRING_LITERAL)
+			p.Match(CQLParserSTRING_LITERAL)
 			if p.HasError() {
 				// Recognition error - abort rule
 				goto errorExit
@@ -22461,7 +22461,7 @@ func (p *CqlParser) ReplicationListItem() (localctx IReplicationListItemContext)
 		}
 		{
 			p.SetState(1465)
-			p.Match(CqlParserCOLON)
+			p.Match(CQLParserCOLON)
 			if p.HasError() {
 				// Recognition error - abort rule
 				goto errorExit
@@ -22469,7 +22469,7 @@ func (p *CqlParser) ReplicationListItem() (localctx IReplicationListItemContext)
 		}
 		{
 			p.SetState(1466)
-			p.Match(CqlParserSTRING_LITERAL)
+			p.Match(CQLParserSTRING_LITERAL)
 			if p.HasError() {
 				// Recognition error - abort rule
 				goto errorExit
@@ -22480,7 +22480,7 @@ func (p *CqlParser) ReplicationListItem() (localctx IReplicationListItemContext)
 		p.EnterOuterAlt(localctx, 2)
 		{
 			p.SetState(1467)
-			p.Match(CqlParserSTRING_LITERAL)
+			p.Match(CQLParserSTRING_LITERAL)
 			if p.HasError() {
 				// Recognition error - abort rule
 				goto errorExit
@@ -22488,7 +22488,7 @@ func (p *CqlParser) ReplicationListItem() (localctx IReplicationListItemContext)
 		}
 		{
 			p.SetState(1468)
-			p.Match(CqlParserCOLON)
+			p.Match(CQLParserCOLON)
 			if p.HasError() {
 				// Recognition error - abort rule
 				goto errorExit
@@ -22496,7 +22496,7 @@ func (p *CqlParser) ReplicationListItem() (localctx IReplicationListItemContext)
 		}
 		{
 			p.SetState(1469)
-			p.Match(CqlParserDECIMAL_LITERAL)
+			p.Match(CQLParserDECIMAL_LITERAL)
 			if p.HasError() {
 				// Recognition error - abort rule
 				goto errorExit
@@ -22544,13 +22544,13 @@ type DurableWritesContext struct {
 func NewEmptyDurableWritesContext() *DurableWritesContext {
 	var p = new(DurableWritesContext)
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
-	p.RuleIndex = CqlParserRULE_durableWrites
+	p.RuleIndex = CQLParserRULE_durableWrites
 	return p
 }
 
 func InitEmptyDurableWritesContext(p *DurableWritesContext) {
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
-	p.RuleIndex = CqlParserRULE_durableWrites
+	p.RuleIndex = CQLParserRULE_durableWrites
 }
 
 func (*DurableWritesContext) IsDurableWritesContext() {}
@@ -22561,7 +22561,7 @@ func NewDurableWritesContext(parser antlr.Parser, parent antlr.ParserRuleContext
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, parent, invokingState)
 
 	p.parser = parser
-	p.RuleIndex = CqlParserRULE_durableWrites
+	p.RuleIndex = CQLParserRULE_durableWrites
 
 	return p
 }
@@ -22585,7 +22585,7 @@ func (s *DurableWritesContext) KwDurableWrites() IKwDurableWritesContext {
 }
 
 func (s *DurableWritesContext) OPERATOR_EQ() antlr.TerminalNode {
-	return s.GetToken(CqlParserOPERATOR_EQ, 0)
+	return s.GetToken(CQLParserOPERATOR_EQ, 0)
 }
 
 func (s *DurableWritesContext) BooleanLiteral() IBooleanLiteralContext {
@@ -22613,20 +22613,20 @@ func (s *DurableWritesContext) ToStringTree(ruleNames []string, recog antlr.Reco
 }
 
 func (s *DurableWritesContext) EnterRule(listener antlr.ParseTreeListener) {
-	if listenerT, ok := listener.(CqlParserListener); ok {
+	if listenerT, ok := listener.(CQLParserListener); ok {
 		listenerT.EnterDurableWrites(s)
 	}
 }
 
 func (s *DurableWritesContext) ExitRule(listener antlr.ParseTreeListener) {
-	if listenerT, ok := listener.(CqlParserListener); ok {
+	if listenerT, ok := listener.(CQLParserListener); ok {
 		listenerT.ExitDurableWrites(s)
 	}
 }
 
-func (p *CqlParser) DurableWrites() (localctx IDurableWritesContext) {
+func (p *CQLParser) DurableWrites() (localctx IDurableWritesContext) {
 	localctx = NewDurableWritesContext(p, p.GetParserRuleContext(), p.GetState())
-	p.EnterRule(localctx, 190, CqlParserRULE_durableWrites)
+	p.EnterRule(localctx, 190, CQLParserRULE_durableWrites)
 	p.EnterOuterAlt(localctx, 1)
 	{
 		p.SetState(1472)
@@ -22634,7 +22634,7 @@ func (p *CqlParser) DurableWrites() (localctx IDurableWritesContext) {
 	}
 	{
 		p.SetState(1473)
-		p.Match(CqlParserOPERATOR_EQ)
+		p.Match(CQLParserOPERATOR_EQ)
 		if p.HasError() {
 			// Recognition error - abort rule
 			goto errorExit
@@ -22681,13 +22681,13 @@ type Use_Context struct {
 func NewEmptyUse_Context() *Use_Context {
 	var p = new(Use_Context)
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
-	p.RuleIndex = CqlParserRULE_use_
+	p.RuleIndex = CQLParserRULE_use_
 	return p
 }
 
 func InitEmptyUse_Context(p *Use_Context) {
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
-	p.RuleIndex = CqlParserRULE_use_
+	p.RuleIndex = CQLParserRULE_use_
 }
 
 func (*Use_Context) IsUse_Context() {}
@@ -22698,7 +22698,7 @@ func NewUse_Context(parser antlr.Parser, parent antlr.ParserRuleContext, invokin
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, parent, invokingState)
 
 	p.parser = parser
-	p.RuleIndex = CqlParserRULE_use_
+	p.RuleIndex = CQLParserRULE_use_
 
 	return p
 }
@@ -22746,20 +22746,20 @@ func (s *Use_Context) ToStringTree(ruleNames []string, recog antlr.Recognizer) s
 }
 
 func (s *Use_Context) EnterRule(listener antlr.ParseTreeListener) {
-	if listenerT, ok := listener.(CqlParserListener); ok {
+	if listenerT, ok := listener.(CQLParserListener); ok {
 		listenerT.EnterUse_(s)
 	}
 }
 
 func (s *Use_Context) ExitRule(listener antlr.ParseTreeListener) {
-	if listenerT, ok := listener.(CqlParserListener); ok {
+	if listenerT, ok := listener.(CQLParserListener); ok {
 		listenerT.ExitUse_(s)
 	}
 }
 
-func (p *CqlParser) Use_() (localctx IUse_Context) {
+func (p *CQLParser) Use_() (localctx IUse_Context) {
 	localctx = NewUse_Context(p, p.GetParserRuleContext(), p.GetState())
-	p.EnterRule(localctx, 192, CqlParserRULE_use_)
+	p.EnterRule(localctx, 192, CQLParserRULE_use_)
 	p.EnterOuterAlt(localctx, 1)
 	{
 		p.SetState(1476)
@@ -22809,13 +22809,13 @@ type TruncateContext struct {
 func NewEmptyTruncateContext() *TruncateContext {
 	var p = new(TruncateContext)
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
-	p.RuleIndex = CqlParserRULE_truncate
+	p.RuleIndex = CQLParserRULE_truncate
 	return p
 }
 
 func InitEmptyTruncateContext(p *TruncateContext) {
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
-	p.RuleIndex = CqlParserRULE_truncate
+	p.RuleIndex = CQLParserRULE_truncate
 }
 
 func (*TruncateContext) IsTruncateContext() {}
@@ -22826,7 +22826,7 @@ func NewTruncateContext(parser antlr.Parser, parent antlr.ParserRuleContext, inv
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, parent, invokingState)
 
 	p.parser = parser
-	p.RuleIndex = CqlParserRULE_truncate
+	p.RuleIndex = CQLParserRULE_truncate
 
 	return p
 }
@@ -22898,7 +22898,7 @@ func (s *TruncateContext) Keyspace() IKeyspaceContext {
 }
 
 func (s *TruncateContext) DOT() antlr.TerminalNode {
-	return s.GetToken(CqlParserDOT, 0)
+	return s.GetToken(CQLParserDOT, 0)
 }
 
 func (s *TruncateContext) GetRuleContext() antlr.RuleContext {
@@ -22910,20 +22910,20 @@ func (s *TruncateContext) ToStringTree(ruleNames []string, recog antlr.Recognize
 }
 
 func (s *TruncateContext) EnterRule(listener antlr.ParseTreeListener) {
-	if listenerT, ok := listener.(CqlParserListener); ok {
+	if listenerT, ok := listener.(CQLParserListener); ok {
 		listenerT.EnterTruncate(s)
 	}
 }
 
 func (s *TruncateContext) ExitRule(listener antlr.ParseTreeListener) {
-	if listenerT, ok := listener.(CqlParserListener); ok {
+	if listenerT, ok := listener.(CQLParserListener); ok {
 		listenerT.ExitTruncate(s)
 	}
 }
 
-func (p *CqlParser) Truncate() (localctx ITruncateContext) {
+func (p *CQLParser) Truncate() (localctx ITruncateContext) {
 	localctx = NewTruncateContext(p, p.GetParserRuleContext(), p.GetState())
-	p.EnterRule(localctx, 194, CqlParserRULE_truncate)
+	p.EnterRule(localctx, 194, CQLParserRULE_truncate)
 	var _la int
 
 	p.EnterOuterAlt(localctx, 1)
@@ -22938,7 +22938,7 @@ func (p *CqlParser) Truncate() (localctx ITruncateContext) {
 	}
 	_la = p.GetTokenStream().LA(1)
 
-	if _la == CqlParserK_TABLE {
+	if _la == CQLParserK_TABLE {
 		{
 			p.SetState(1480)
 			p.KwTable()
@@ -22955,7 +22955,7 @@ func (p *CqlParser) Truncate() (localctx ITruncateContext) {
 		}
 		{
 			p.SetState(1484)
-			p.Match(CqlParserDOT)
+			p.Match(CQLParserDOT)
 			if p.HasError() {
 				// Recognition error - abort rule
 				goto errorExit
@@ -23015,13 +23015,13 @@ type CreateIndexContext struct {
 func NewEmptyCreateIndexContext() *CreateIndexContext {
 	var p = new(CreateIndexContext)
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
-	p.RuleIndex = CqlParserRULE_createIndex
+	p.RuleIndex = CQLParserRULE_createIndex
 	return p
 }
 
 func InitEmptyCreateIndexContext(p *CreateIndexContext) {
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
-	p.RuleIndex = CqlParserRULE_createIndex
+	p.RuleIndex = CQLParserRULE_createIndex
 }
 
 func (*CreateIndexContext) IsCreateIndexContext() {}
@@ -23032,7 +23032,7 @@ func NewCreateIndexContext(parser antlr.Parser, parent antlr.ParserRuleContext, 
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, parent, invokingState)
 
 	p.parser = parser
-	p.RuleIndex = CqlParserRULE_createIndex
+	p.RuleIndex = CQLParserRULE_createIndex
 
 	return p
 }
@@ -23200,7 +23200,7 @@ func (s *CreateIndexContext) Keyspace() IKeyspaceContext {
 }
 
 func (s *CreateIndexContext) DOT() antlr.TerminalNode {
-	return s.GetToken(CqlParserDOT, 0)
+	return s.GetToken(CQLParserDOT, 0)
 }
 
 func (s *CreateIndexContext) GetRuleContext() antlr.RuleContext {
@@ -23212,20 +23212,20 @@ func (s *CreateIndexContext) ToStringTree(ruleNames []string, recog antlr.Recogn
 }
 
 func (s *CreateIndexContext) EnterRule(listener antlr.ParseTreeListener) {
-	if listenerT, ok := listener.(CqlParserListener); ok {
+	if listenerT, ok := listener.(CQLParserListener); ok {
 		listenerT.EnterCreateIndex(s)
 	}
 }
 
 func (s *CreateIndexContext) ExitRule(listener antlr.ParseTreeListener) {
-	if listenerT, ok := listener.(CqlParserListener); ok {
+	if listenerT, ok := listener.(CQLParserListener); ok {
 		listenerT.ExitCreateIndex(s)
 	}
 }
 
-func (p *CqlParser) CreateIndex() (localctx ICreateIndexContext) {
+func (p *CQLParser) CreateIndex() (localctx ICreateIndexContext) {
 	localctx = NewCreateIndexContext(p, p.GetParserRuleContext(), p.GetState())
-	p.EnterRule(localctx, 196, CqlParserRULE_createIndex)
+	p.EnterRule(localctx, 196, CQLParserRULE_createIndex)
 	var _la int
 
 	p.EnterOuterAlt(localctx, 1)
@@ -23244,7 +23244,7 @@ func (p *CqlParser) CreateIndex() (localctx ICreateIndexContext) {
 	}
 	_la = p.GetTokenStream().LA(1)
 
-	if _la == CqlParserK_IF {
+	if _la == CQLParserK_IF {
 		{
 			p.SetState(1492)
 			p.IfNotExist()
@@ -23258,7 +23258,7 @@ func (p *CqlParser) CreateIndex() (localctx ICreateIndexContext) {
 	}
 	_la = p.GetTokenStream().LA(1)
 
-	if _la == CqlParserSTRING_LITERAL || _la == CqlParserOBJECT_NAME {
+	if _la == CQLParserSTRING_LITERAL || _la == CQLParserOBJECT_NAME {
 		{
 			p.SetState(1495)
 			p.IndexName()
@@ -23279,7 +23279,7 @@ func (p *CqlParser) CreateIndex() (localctx ICreateIndexContext) {
 		}
 		{
 			p.SetState(1500)
-			p.Match(CqlParserDOT)
+			p.Match(CQLParserDOT)
 			if p.HasError() {
 				// Recognition error - abort rule
 				goto errorExit
@@ -23342,13 +23342,13 @@ type IndexNameContext struct {
 func NewEmptyIndexNameContext() *IndexNameContext {
 	var p = new(IndexNameContext)
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
-	p.RuleIndex = CqlParserRULE_indexName
+	p.RuleIndex = CQLParserRULE_indexName
 	return p
 }
 
 func InitEmptyIndexNameContext(p *IndexNameContext) {
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
-	p.RuleIndex = CqlParserRULE_indexName
+	p.RuleIndex = CQLParserRULE_indexName
 }
 
 func (*IndexNameContext) IsIndexNameContext() {}
@@ -23359,7 +23359,7 @@ func NewIndexNameContext(parser antlr.Parser, parent antlr.ParserRuleContext, in
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, parent, invokingState)
 
 	p.parser = parser
-	p.RuleIndex = CqlParserRULE_indexName
+	p.RuleIndex = CQLParserRULE_indexName
 
 	return p
 }
@@ -23367,7 +23367,7 @@ func NewIndexNameContext(parser antlr.Parser, parent antlr.ParserRuleContext, in
 func (s *IndexNameContext) GetParser() antlr.Parser { return s.parser }
 
 func (s *IndexNameContext) OBJECT_NAME() antlr.TerminalNode {
-	return s.GetToken(CqlParserOBJECT_NAME, 0)
+	return s.GetToken(CQLParserOBJECT_NAME, 0)
 }
 
 func (s *IndexNameContext) StringLiteral() IStringLiteralContext {
@@ -23395,20 +23395,20 @@ func (s *IndexNameContext) ToStringTree(ruleNames []string, recog antlr.Recogniz
 }
 
 func (s *IndexNameContext) EnterRule(listener antlr.ParseTreeListener) {
-	if listenerT, ok := listener.(CqlParserListener); ok {
+	if listenerT, ok := listener.(CQLParserListener); ok {
 		listenerT.EnterIndexName(s)
 	}
 }
 
 func (s *IndexNameContext) ExitRule(listener antlr.ParseTreeListener) {
-	if listenerT, ok := listener.(CqlParserListener); ok {
+	if listenerT, ok := listener.(CQLParserListener); ok {
 		listenerT.ExitIndexName(s)
 	}
 }
 
-func (p *CqlParser) IndexName() (localctx IIndexNameContext) {
+func (p *CQLParser) IndexName() (localctx IIndexNameContext) {
 	localctx = NewIndexNameContext(p, p.GetParserRuleContext(), p.GetState())
-	p.EnterRule(localctx, 198, CqlParserRULE_indexName)
+	p.EnterRule(localctx, 198, CQLParserRULE_indexName)
 	p.SetState(1511)
 	p.GetErrorHandler().Sync(p)
 	if p.HasError() {
@@ -23416,18 +23416,18 @@ func (p *CqlParser) IndexName() (localctx IIndexNameContext) {
 	}
 
 	switch p.GetTokenStream().LA(1) {
-	case CqlParserOBJECT_NAME:
+	case CQLParserOBJECT_NAME:
 		p.EnterOuterAlt(localctx, 1)
 		{
 			p.SetState(1509)
-			p.Match(CqlParserOBJECT_NAME)
+			p.Match(CQLParserOBJECT_NAME)
 			if p.HasError() {
 				// Recognition error - abort rule
 				goto errorExit
 			}
 		}
 
-	case CqlParserSTRING_LITERAL:
+	case CQLParserSTRING_LITERAL:
 		p.EnterOuterAlt(localctx, 2)
 		{
 			p.SetState(1510)
@@ -23477,13 +23477,13 @@ type IndexColumnSpecContext struct {
 func NewEmptyIndexColumnSpecContext() *IndexColumnSpecContext {
 	var p = new(IndexColumnSpecContext)
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
-	p.RuleIndex = CqlParserRULE_indexColumnSpec
+	p.RuleIndex = CQLParserRULE_indexColumnSpec
 	return p
 }
 
 func InitEmptyIndexColumnSpecContext(p *IndexColumnSpecContext) {
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
-	p.RuleIndex = CqlParserRULE_indexColumnSpec
+	p.RuleIndex = CQLParserRULE_indexColumnSpec
 }
 
 func (*IndexColumnSpecContext) IsIndexColumnSpecContext() {}
@@ -23494,7 +23494,7 @@ func NewIndexColumnSpecContext(parser antlr.Parser, parent antlr.ParserRuleConte
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, parent, invokingState)
 
 	p.parser = parser
-	p.RuleIndex = CqlParserRULE_indexColumnSpec
+	p.RuleIndex = CQLParserRULE_indexColumnSpec
 
 	return p
 }
@@ -23574,20 +23574,20 @@ func (s *IndexColumnSpecContext) ToStringTree(ruleNames []string, recog antlr.Re
 }
 
 func (s *IndexColumnSpecContext) EnterRule(listener antlr.ParseTreeListener) {
-	if listenerT, ok := listener.(CqlParserListener); ok {
+	if listenerT, ok := listener.(CQLParserListener); ok {
 		listenerT.EnterIndexColumnSpec(s)
 	}
 }
 
 func (s *IndexColumnSpecContext) ExitRule(listener antlr.ParseTreeListener) {
-	if listenerT, ok := listener.(CqlParserListener); ok {
+	if listenerT, ok := listener.(CQLParserListener); ok {
 		listenerT.ExitIndexColumnSpec(s)
 	}
 }
 
-func (p *CqlParser) IndexColumnSpec() (localctx IIndexColumnSpecContext) {
+func (p *CQLParser) IndexColumnSpec() (localctx IIndexColumnSpecContext) {
 	localctx = NewIndexColumnSpecContext(p, p.GetParserRuleContext(), p.GetState())
-	p.EnterRule(localctx, 200, CqlParserRULE_indexColumnSpec)
+	p.EnterRule(localctx, 200, CQLParserRULE_indexColumnSpec)
 	p.SetState(1517)
 	p.GetErrorHandler().Sync(p)
 	if p.HasError() {
@@ -23595,28 +23595,28 @@ func (p *CqlParser) IndexColumnSpec() (localctx IIndexColumnSpecContext) {
 	}
 
 	switch p.GetTokenStream().LA(1) {
-	case CqlParserDQUOTE, CqlParserOBJECT_NAME:
+	case CQLParserDQUOTE, CQLParserOBJECT_NAME:
 		p.EnterOuterAlt(localctx, 1)
 		{
 			p.SetState(1513)
 			p.Column()
 		}
 
-	case CqlParserK_KEYS:
+	case CQLParserK_KEYS:
 		p.EnterOuterAlt(localctx, 2)
 		{
 			p.SetState(1514)
 			p.IndexKeysSpec()
 		}
 
-	case CqlParserK_ENTRIES:
+	case CQLParserK_ENTRIES:
 		p.EnterOuterAlt(localctx, 3)
 		{
 			p.SetState(1515)
 			p.IndexEntriesSSpec()
 		}
 
-	case CqlParserK_FULL:
+	case CQLParserK_FULL:
 		p.EnterOuterAlt(localctx, 4)
 		{
 			p.SetState(1516)
@@ -23666,13 +23666,13 @@ type IndexKeysSpecContext struct {
 func NewEmptyIndexKeysSpecContext() *IndexKeysSpecContext {
 	var p = new(IndexKeysSpecContext)
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
-	p.RuleIndex = CqlParserRULE_indexKeysSpec
+	p.RuleIndex = CQLParserRULE_indexKeysSpec
 	return p
 }
 
 func InitEmptyIndexKeysSpecContext(p *IndexKeysSpecContext) {
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
-	p.RuleIndex = CqlParserRULE_indexKeysSpec
+	p.RuleIndex = CQLParserRULE_indexKeysSpec
 }
 
 func (*IndexKeysSpecContext) IsIndexKeysSpecContext() {}
@@ -23683,7 +23683,7 @@ func NewIndexKeysSpecContext(parser antlr.Parser, parent antlr.ParserRuleContext
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, parent, invokingState)
 
 	p.parser = parser
-	p.RuleIndex = CqlParserRULE_indexKeysSpec
+	p.RuleIndex = CQLParserRULE_indexKeysSpec
 
 	return p
 }
@@ -23723,7 +23723,7 @@ func (s *IndexKeysSpecContext) SyntaxBracketLr() ISyntaxBracketLrContext {
 }
 
 func (s *IndexKeysSpecContext) OBJECT_NAME() antlr.TerminalNode {
-	return s.GetToken(CqlParserOBJECT_NAME, 0)
+	return s.GetToken(CQLParserOBJECT_NAME, 0)
 }
 
 func (s *IndexKeysSpecContext) SyntaxBracketRr() ISyntaxBracketRrContext {
@@ -23751,20 +23751,20 @@ func (s *IndexKeysSpecContext) ToStringTree(ruleNames []string, recog antlr.Reco
 }
 
 func (s *IndexKeysSpecContext) EnterRule(listener antlr.ParseTreeListener) {
-	if listenerT, ok := listener.(CqlParserListener); ok {
+	if listenerT, ok := listener.(CQLParserListener); ok {
 		listenerT.EnterIndexKeysSpec(s)
 	}
 }
 
 func (s *IndexKeysSpecContext) ExitRule(listener antlr.ParseTreeListener) {
-	if listenerT, ok := listener.(CqlParserListener); ok {
+	if listenerT, ok := listener.(CQLParserListener); ok {
 		listenerT.ExitIndexKeysSpec(s)
 	}
 }
 
-func (p *CqlParser) IndexKeysSpec() (localctx IIndexKeysSpecContext) {
+func (p *CQLParser) IndexKeysSpec() (localctx IIndexKeysSpecContext) {
 	localctx = NewIndexKeysSpecContext(p, p.GetParserRuleContext(), p.GetState())
-	p.EnterRule(localctx, 202, CqlParserRULE_indexKeysSpec)
+	p.EnterRule(localctx, 202, CQLParserRULE_indexKeysSpec)
 	p.EnterOuterAlt(localctx, 1)
 	{
 		p.SetState(1519)
@@ -23776,7 +23776,7 @@ func (p *CqlParser) IndexKeysSpec() (localctx IIndexKeysSpecContext) {
 	}
 	{
 		p.SetState(1521)
-		p.Match(CqlParserOBJECT_NAME)
+		p.Match(CQLParserOBJECT_NAME)
 		if p.HasError() {
 			// Recognition error - abort rule
 			goto errorExit
@@ -23825,13 +23825,13 @@ type IndexEntriesSSpecContext struct {
 func NewEmptyIndexEntriesSSpecContext() *IndexEntriesSSpecContext {
 	var p = new(IndexEntriesSSpecContext)
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
-	p.RuleIndex = CqlParserRULE_indexEntriesSSpec
+	p.RuleIndex = CQLParserRULE_indexEntriesSSpec
 	return p
 }
 
 func InitEmptyIndexEntriesSSpecContext(p *IndexEntriesSSpecContext) {
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
-	p.RuleIndex = CqlParserRULE_indexEntriesSSpec
+	p.RuleIndex = CQLParserRULE_indexEntriesSSpec
 }
 
 func (*IndexEntriesSSpecContext) IsIndexEntriesSSpecContext() {}
@@ -23842,7 +23842,7 @@ func NewIndexEntriesSSpecContext(parser antlr.Parser, parent antlr.ParserRuleCon
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, parent, invokingState)
 
 	p.parser = parser
-	p.RuleIndex = CqlParserRULE_indexEntriesSSpec
+	p.RuleIndex = CQLParserRULE_indexEntriesSSpec
 
 	return p
 }
@@ -23882,7 +23882,7 @@ func (s *IndexEntriesSSpecContext) SyntaxBracketLr() ISyntaxBracketLrContext {
 }
 
 func (s *IndexEntriesSSpecContext) OBJECT_NAME() antlr.TerminalNode {
-	return s.GetToken(CqlParserOBJECT_NAME, 0)
+	return s.GetToken(CQLParserOBJECT_NAME, 0)
 }
 
 func (s *IndexEntriesSSpecContext) SyntaxBracketRr() ISyntaxBracketRrContext {
@@ -23910,20 +23910,20 @@ func (s *IndexEntriesSSpecContext) ToStringTree(ruleNames []string, recog antlr.
 }
 
 func (s *IndexEntriesSSpecContext) EnterRule(listener antlr.ParseTreeListener) {
-	if listenerT, ok := listener.(CqlParserListener); ok {
+	if listenerT, ok := listener.(CQLParserListener); ok {
 		listenerT.EnterIndexEntriesSSpec(s)
 	}
 }
 
 func (s *IndexEntriesSSpecContext) ExitRule(listener antlr.ParseTreeListener) {
-	if listenerT, ok := listener.(CqlParserListener); ok {
+	if listenerT, ok := listener.(CQLParserListener); ok {
 		listenerT.ExitIndexEntriesSSpec(s)
 	}
 }
 
-func (p *CqlParser) IndexEntriesSSpec() (localctx IIndexEntriesSSpecContext) {
+func (p *CQLParser) IndexEntriesSSpec() (localctx IIndexEntriesSSpecContext) {
 	localctx = NewIndexEntriesSSpecContext(p, p.GetParserRuleContext(), p.GetState())
-	p.EnterRule(localctx, 204, CqlParserRULE_indexEntriesSSpec)
+	p.EnterRule(localctx, 204, CQLParserRULE_indexEntriesSSpec)
 	p.EnterOuterAlt(localctx, 1)
 	{
 		p.SetState(1524)
@@ -23935,7 +23935,7 @@ func (p *CqlParser) IndexEntriesSSpec() (localctx IIndexEntriesSSpecContext) {
 	}
 	{
 		p.SetState(1526)
-		p.Match(CqlParserOBJECT_NAME)
+		p.Match(CQLParserOBJECT_NAME)
 		if p.HasError() {
 			// Recognition error - abort rule
 			goto errorExit
@@ -23984,13 +23984,13 @@ type IndexFullSpecContext struct {
 func NewEmptyIndexFullSpecContext() *IndexFullSpecContext {
 	var p = new(IndexFullSpecContext)
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
-	p.RuleIndex = CqlParserRULE_indexFullSpec
+	p.RuleIndex = CQLParserRULE_indexFullSpec
 	return p
 }
 
 func InitEmptyIndexFullSpecContext(p *IndexFullSpecContext) {
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
-	p.RuleIndex = CqlParserRULE_indexFullSpec
+	p.RuleIndex = CQLParserRULE_indexFullSpec
 }
 
 func (*IndexFullSpecContext) IsIndexFullSpecContext() {}
@@ -24001,7 +24001,7 @@ func NewIndexFullSpecContext(parser antlr.Parser, parent antlr.ParserRuleContext
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, parent, invokingState)
 
 	p.parser = parser
-	p.RuleIndex = CqlParserRULE_indexFullSpec
+	p.RuleIndex = CQLParserRULE_indexFullSpec
 
 	return p
 }
@@ -24041,7 +24041,7 @@ func (s *IndexFullSpecContext) SyntaxBracketLr() ISyntaxBracketLrContext {
 }
 
 func (s *IndexFullSpecContext) OBJECT_NAME() antlr.TerminalNode {
-	return s.GetToken(CqlParserOBJECT_NAME, 0)
+	return s.GetToken(CQLParserOBJECT_NAME, 0)
 }
 
 func (s *IndexFullSpecContext) SyntaxBracketRr() ISyntaxBracketRrContext {
@@ -24069,20 +24069,20 @@ func (s *IndexFullSpecContext) ToStringTree(ruleNames []string, recog antlr.Reco
 }
 
 func (s *IndexFullSpecContext) EnterRule(listener antlr.ParseTreeListener) {
-	if listenerT, ok := listener.(CqlParserListener); ok {
+	if listenerT, ok := listener.(CQLParserListener); ok {
 		listenerT.EnterIndexFullSpec(s)
 	}
 }
 
 func (s *IndexFullSpecContext) ExitRule(listener antlr.ParseTreeListener) {
-	if listenerT, ok := listener.(CqlParserListener); ok {
+	if listenerT, ok := listener.(CQLParserListener); ok {
 		listenerT.ExitIndexFullSpec(s)
 	}
 }
 
-func (p *CqlParser) IndexFullSpec() (localctx IIndexFullSpecContext) {
+func (p *CQLParser) IndexFullSpec() (localctx IIndexFullSpecContext) {
 	localctx = NewIndexFullSpecContext(p, p.GetParserRuleContext(), p.GetState())
-	p.EnterRule(localctx, 206, CqlParserRULE_indexFullSpec)
+	p.EnterRule(localctx, 206, CQLParserRULE_indexFullSpec)
 	p.EnterOuterAlt(localctx, 1)
 	{
 		p.SetState(1529)
@@ -24094,7 +24094,7 @@ func (p *CqlParser) IndexFullSpec() (localctx IIndexFullSpecContext) {
 	}
 	{
 		p.SetState(1531)
-		p.Match(CqlParserOBJECT_NAME)
+		p.Match(CQLParserOBJECT_NAME)
 		if p.HasError() {
 			// Recognition error - abort rule
 			goto errorExit
@@ -24147,13 +24147,13 @@ type Delete_Context struct {
 func NewEmptyDelete_Context() *Delete_Context {
 	var p = new(Delete_Context)
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
-	p.RuleIndex = CqlParserRULE_delete_
+	p.RuleIndex = CQLParserRULE_delete_
 	return p
 }
 
 func InitEmptyDelete_Context(p *Delete_Context) {
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
-	p.RuleIndex = CqlParserRULE_delete_
+	p.RuleIndex = CQLParserRULE_delete_
 }
 
 func (*Delete_Context) IsDelete_Context() {}
@@ -24164,7 +24164,7 @@ func NewDelete_Context(parser antlr.Parser, parent antlr.ParserRuleContext, invo
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, parent, invokingState)
 
 	p.parser = parser
-	p.RuleIndex = CqlParserRULE_delete_
+	p.RuleIndex = CQLParserRULE_delete_
 
 	return p
 }
@@ -24308,20 +24308,20 @@ func (s *Delete_Context) ToStringTree(ruleNames []string, recog antlr.Recognizer
 }
 
 func (s *Delete_Context) EnterRule(listener antlr.ParseTreeListener) {
-	if listenerT, ok := listener.(CqlParserListener); ok {
+	if listenerT, ok := listener.(CQLParserListener); ok {
 		listenerT.EnterDelete_(s)
 	}
 }
 
 func (s *Delete_Context) ExitRule(listener antlr.ParseTreeListener) {
-	if listenerT, ok := listener.(CqlParserListener); ok {
+	if listenerT, ok := listener.(CQLParserListener); ok {
 		listenerT.ExitDelete_(s)
 	}
 }
 
-func (p *CqlParser) Delete_() (localctx IDelete_Context) {
+func (p *CQLParser) Delete_() (localctx IDelete_Context) {
 	localctx = NewDelete_Context(p, p.GetParserRuleContext(), p.GetState())
-	p.EnterRule(localctx, 208, CqlParserRULE_delete_)
+	p.EnterRule(localctx, 208, CQLParserRULE_delete_)
 	var _la int
 
 	p.EnterOuterAlt(localctx, 1)
@@ -24332,7 +24332,7 @@ func (p *CqlParser) Delete_() (localctx IDelete_Context) {
 	}
 	_la = p.GetTokenStream().LA(1)
 
-	if _la == CqlParserK_BEGIN {
+	if _la == CQLParserK_BEGIN {
 		{
 			p.SetState(1534)
 			p.BeginBatch()
@@ -24350,7 +24350,7 @@ func (p *CqlParser) Delete_() (localctx IDelete_Context) {
 	}
 	_la = p.GetTokenStream().LA(1)
 
-	if _la == CqlParserOBJECT_NAME {
+	if _la == CQLParserOBJECT_NAME {
 		{
 			p.SetState(1538)
 			p.DeleteColumnList()
@@ -24368,7 +24368,7 @@ func (p *CqlParser) Delete_() (localctx IDelete_Context) {
 	}
 	_la = p.GetTokenStream().LA(1)
 
-	if _la == CqlParserK_USING {
+	if _la == CQLParserK_USING {
 		{
 			p.SetState(1542)
 			p.UsingTimestampSpec()
@@ -24438,13 +24438,13 @@ type DeleteColumnListContext struct {
 func NewEmptyDeleteColumnListContext() *DeleteColumnListContext {
 	var p = new(DeleteColumnListContext)
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
-	p.RuleIndex = CqlParserRULE_deleteColumnList
+	p.RuleIndex = CQLParserRULE_deleteColumnList
 	return p
 }
 
 func InitEmptyDeleteColumnListContext(p *DeleteColumnListContext) {
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
-	p.RuleIndex = CqlParserRULE_deleteColumnList
+	p.RuleIndex = CQLParserRULE_deleteColumnList
 }
 
 func (*DeleteColumnListContext) IsDeleteColumnListContext() {}
@@ -24455,7 +24455,7 @@ func NewDeleteColumnListContext(parser antlr.Parser, parent antlr.ParserRuleCont
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, parent, invokingState)
 
 	p.parser = parser
-	p.RuleIndex = CqlParserRULE_deleteColumnList
+	p.RuleIndex = CQLParserRULE_deleteColumnList
 
 	return p
 }
@@ -24553,20 +24553,20 @@ func (s *DeleteColumnListContext) ToStringTree(ruleNames []string, recog antlr.R
 }
 
 func (s *DeleteColumnListContext) EnterRule(listener antlr.ParseTreeListener) {
-	if listenerT, ok := listener.(CqlParserListener); ok {
+	if listenerT, ok := listener.(CQLParserListener); ok {
 		listenerT.EnterDeleteColumnList(s)
 	}
 }
 
 func (s *DeleteColumnListContext) ExitRule(listener antlr.ParseTreeListener) {
-	if listenerT, ok := listener.(CqlParserListener); ok {
+	if listenerT, ok := listener.(CQLParserListener); ok {
 		listenerT.ExitDeleteColumnList(s)
 	}
 }
 
-func (p *CqlParser) DeleteColumnList() (localctx IDeleteColumnListContext) {
+func (p *CQLParser) DeleteColumnList() (localctx IDeleteColumnListContext) {
 	localctx = NewDeleteColumnListContext(p, p.GetParserRuleContext(), p.GetState())
-	p.EnterRule(localctx, 210, CqlParserRULE_deleteColumnList)
+	p.EnterRule(localctx, 210, CQLParserRULE_deleteColumnList)
 	var _la int
 
 	p.EnterOuterAlt(localctx, 1)
@@ -24582,7 +24582,7 @@ func (p *CqlParser) DeleteColumnList() (localctx IDeleteColumnListContext) {
 	}
 	_la = p.GetTokenStream().LA(1)
 
-	for _la == CqlParserCOMMA {
+	for _la == CQLParserCOMMA {
 		{
 			p.SetState(1551)
 			p.SyntaxComma()
@@ -24639,13 +24639,13 @@ type DeleteColumnItemContext struct {
 func NewEmptyDeleteColumnItemContext() *DeleteColumnItemContext {
 	var p = new(DeleteColumnItemContext)
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
-	p.RuleIndex = CqlParserRULE_deleteColumnItem
+	p.RuleIndex = CQLParserRULE_deleteColumnItem
 	return p
 }
 
 func InitEmptyDeleteColumnItemContext(p *DeleteColumnItemContext) {
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
-	p.RuleIndex = CqlParserRULE_deleteColumnItem
+	p.RuleIndex = CQLParserRULE_deleteColumnItem
 }
 
 func (*DeleteColumnItemContext) IsDeleteColumnItemContext() {}
@@ -24656,7 +24656,7 @@ func NewDeleteColumnItemContext(parser antlr.Parser, parent antlr.ParserRuleCont
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, parent, invokingState)
 
 	p.parser = parser
-	p.RuleIndex = CqlParserRULE_deleteColumnItem
+	p.RuleIndex = CQLParserRULE_deleteColumnItem
 
 	return p
 }
@@ -24664,15 +24664,15 @@ func NewDeleteColumnItemContext(parser antlr.Parser, parent antlr.ParserRuleCont
 func (s *DeleteColumnItemContext) GetParser() antlr.Parser { return s.parser }
 
 func (s *DeleteColumnItemContext) OBJECT_NAME() antlr.TerminalNode {
-	return s.GetToken(CqlParserOBJECT_NAME, 0)
+	return s.GetToken(CQLParserOBJECT_NAME, 0)
 }
 
 func (s *DeleteColumnItemContext) LS_BRACKET() antlr.TerminalNode {
-	return s.GetToken(CqlParserLS_BRACKET, 0)
+	return s.GetToken(CQLParserLS_BRACKET, 0)
 }
 
 func (s *DeleteColumnItemContext) RS_BRACKET() antlr.TerminalNode {
-	return s.GetToken(CqlParserRS_BRACKET, 0)
+	return s.GetToken(CQLParserRS_BRACKET, 0)
 }
 
 func (s *DeleteColumnItemContext) StringLiteral() IStringLiteralContext {
@@ -24716,20 +24716,20 @@ func (s *DeleteColumnItemContext) ToStringTree(ruleNames []string, recog antlr.R
 }
 
 func (s *DeleteColumnItemContext) EnterRule(listener antlr.ParseTreeListener) {
-	if listenerT, ok := listener.(CqlParserListener); ok {
+	if listenerT, ok := listener.(CQLParserListener); ok {
 		listenerT.EnterDeleteColumnItem(s)
 	}
 }
 
 func (s *DeleteColumnItemContext) ExitRule(listener antlr.ParseTreeListener) {
-	if listenerT, ok := listener.(CqlParserListener); ok {
+	if listenerT, ok := listener.(CQLParserListener); ok {
 		listenerT.ExitDeleteColumnItem(s)
 	}
 }
 
-func (p *CqlParser) DeleteColumnItem() (localctx IDeleteColumnItemContext) {
+func (p *CQLParser) DeleteColumnItem() (localctx IDeleteColumnItemContext) {
 	localctx = NewDeleteColumnItemContext(p, p.GetParserRuleContext(), p.GetState())
-	p.EnterRule(localctx, 212, CqlParserRULE_deleteColumnItem)
+	p.EnterRule(localctx, 212, CQLParserRULE_deleteColumnItem)
 	p.SetState(1568)
 	p.GetErrorHandler().Sync(p)
 	if p.HasError() {
@@ -24741,7 +24741,7 @@ func (p *CqlParser) DeleteColumnItem() (localctx IDeleteColumnItemContext) {
 		p.EnterOuterAlt(localctx, 1)
 		{
 			p.SetState(1559)
-			p.Match(CqlParserOBJECT_NAME)
+			p.Match(CQLParserOBJECT_NAME)
 			if p.HasError() {
 				// Recognition error - abort rule
 				goto errorExit
@@ -24752,7 +24752,7 @@ func (p *CqlParser) DeleteColumnItem() (localctx IDeleteColumnItemContext) {
 		p.EnterOuterAlt(localctx, 2)
 		{
 			p.SetState(1560)
-			p.Match(CqlParserOBJECT_NAME)
+			p.Match(CQLParserOBJECT_NAME)
 			if p.HasError() {
 				// Recognition error - abort rule
 				goto errorExit
@@ -24760,7 +24760,7 @@ func (p *CqlParser) DeleteColumnItem() (localctx IDeleteColumnItemContext) {
 		}
 		{
 			p.SetState(1561)
-			p.Match(CqlParserLS_BRACKET)
+			p.Match(CQLParserLS_BRACKET)
 			if p.HasError() {
 				// Recognition error - abort rule
 				goto errorExit
@@ -24773,13 +24773,13 @@ func (p *CqlParser) DeleteColumnItem() (localctx IDeleteColumnItemContext) {
 		}
 
 		switch p.GetTokenStream().LA(1) {
-		case CqlParserSTRING_LITERAL:
+		case CQLParserSTRING_LITERAL:
 			{
 				p.SetState(1562)
 				p.StringLiteral()
 			}
 
-		case CqlParserDECIMAL_LITERAL:
+		case CQLParserDECIMAL_LITERAL:
 			{
 				p.SetState(1563)
 				p.DecimalLiteral()
@@ -24791,7 +24791,7 @@ func (p *CqlParser) DeleteColumnItem() (localctx IDeleteColumnItemContext) {
 		}
 		{
 			p.SetState(1566)
-			p.Match(CqlParserRS_BRACKET)
+			p.Match(CQLParserRS_BRACKET)
 			if p.HasError() {
 				// Recognition error - abort rule
 				goto errorExit
@@ -24847,13 +24847,13 @@ type UpdateContext struct {
 func NewEmptyUpdateContext() *UpdateContext {
 	var p = new(UpdateContext)
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
-	p.RuleIndex = CqlParserRULE_update
+	p.RuleIndex = CQLParserRULE_update
 	return p
 }
 
 func InitEmptyUpdateContext(p *UpdateContext) {
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
-	p.RuleIndex = CqlParserRULE_update
+	p.RuleIndex = CQLParserRULE_update
 }
 
 func (*UpdateContext) IsUpdateContext() {}
@@ -24864,7 +24864,7 @@ func NewUpdateContext(parser antlr.Parser, parent antlr.ParserRuleContext, invok
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, parent, invokingState)
 
 	p.parser = parser
-	p.RuleIndex = CqlParserRULE_update
+	p.RuleIndex = CQLParserRULE_update
 
 	return p
 }
@@ -24984,7 +24984,7 @@ func (s *UpdateContext) Keyspace() IKeyspaceContext {
 }
 
 func (s *UpdateContext) DOT() antlr.TerminalNode {
-	return s.GetToken(CqlParserDOT, 0)
+	return s.GetToken(CQLParserDOT, 0)
 }
 
 func (s *UpdateContext) UsingTtlTimestamp() IUsingTtlTimestampContext {
@@ -25044,20 +25044,20 @@ func (s *UpdateContext) ToStringTree(ruleNames []string, recog antlr.Recognizer)
 }
 
 func (s *UpdateContext) EnterRule(listener antlr.ParseTreeListener) {
-	if listenerT, ok := listener.(CqlParserListener); ok {
+	if listenerT, ok := listener.(CQLParserListener); ok {
 		listenerT.EnterUpdate(s)
 	}
 }
 
 func (s *UpdateContext) ExitRule(listener antlr.ParseTreeListener) {
-	if listenerT, ok := listener.(CqlParserListener); ok {
+	if listenerT, ok := listener.(CQLParserListener); ok {
 		listenerT.ExitUpdate(s)
 	}
 }
 
-func (p *CqlParser) Update() (localctx IUpdateContext) {
+func (p *CQLParser) Update() (localctx IUpdateContext) {
 	localctx = NewUpdateContext(p, p.GetParserRuleContext(), p.GetState())
-	p.EnterRule(localctx, 214, CqlParserRULE_update)
+	p.EnterRule(localctx, 214, CQLParserRULE_update)
 	var _la int
 
 	p.EnterOuterAlt(localctx, 1)
@@ -25068,7 +25068,7 @@ func (p *CqlParser) Update() (localctx IUpdateContext) {
 	}
 	_la = p.GetTokenStream().LA(1)
 
-	if _la == CqlParserK_BEGIN {
+	if _la == CQLParserK_BEGIN {
 		{
 			p.SetState(1570)
 			p.BeginBatch()
@@ -25089,7 +25089,7 @@ func (p *CqlParser) Update() (localctx IUpdateContext) {
 		}
 		{
 			p.SetState(1575)
-			p.Match(CqlParserDOT)
+			p.Match(CQLParserDOT)
 			if p.HasError() {
 				// Recognition error - abort rule
 				goto errorExit
@@ -25110,7 +25110,7 @@ func (p *CqlParser) Update() (localctx IUpdateContext) {
 	}
 	_la = p.GetTokenStream().LA(1)
 
-	if _la == CqlParserK_USING {
+	if _la == CQLParserK_USING {
 		{
 			p.SetState(1580)
 			p.UsingTtlTimestamp()
@@ -25186,13 +25186,13 @@ type IfSpecContext struct {
 func NewEmptyIfSpecContext() *IfSpecContext {
 	var p = new(IfSpecContext)
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
-	p.RuleIndex = CqlParserRULE_ifSpec
+	p.RuleIndex = CQLParserRULE_ifSpec
 	return p
 }
 
 func InitEmptyIfSpecContext(p *IfSpecContext) {
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
-	p.RuleIndex = CqlParserRULE_ifSpec
+	p.RuleIndex = CQLParserRULE_ifSpec
 }
 
 func (*IfSpecContext) IsIfSpecContext() {}
@@ -25203,7 +25203,7 @@ func NewIfSpecContext(parser antlr.Parser, parent antlr.ParserRuleContext, invok
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, parent, invokingState)
 
 	p.parser = parser
-	p.RuleIndex = CqlParserRULE_ifSpec
+	p.RuleIndex = CQLParserRULE_ifSpec
 
 	return p
 }
@@ -25251,20 +25251,20 @@ func (s *IfSpecContext) ToStringTree(ruleNames []string, recog antlr.Recognizer)
 }
 
 func (s *IfSpecContext) EnterRule(listener antlr.ParseTreeListener) {
-	if listenerT, ok := listener.(CqlParserListener); ok {
+	if listenerT, ok := listener.(CQLParserListener); ok {
 		listenerT.EnterIfSpec(s)
 	}
 }
 
 func (s *IfSpecContext) ExitRule(listener antlr.ParseTreeListener) {
-	if listenerT, ok := listener.(CqlParserListener); ok {
+	if listenerT, ok := listener.(CQLParserListener); ok {
 		listenerT.ExitIfSpec(s)
 	}
 }
 
-func (p *CqlParser) IfSpec() (localctx IIfSpecContext) {
+func (p *CQLParser) IfSpec() (localctx IIfSpecContext) {
 	localctx = NewIfSpecContext(p, p.GetParserRuleContext(), p.GetState())
-	p.EnterRule(localctx, 216, CqlParserRULE_ifSpec)
+	p.EnterRule(localctx, 216, CQLParserRULE_ifSpec)
 	p.EnterOuterAlt(localctx, 1)
 	{
 		p.SetState(1590)
@@ -25313,13 +25313,13 @@ type IfConditionListContext struct {
 func NewEmptyIfConditionListContext() *IfConditionListContext {
 	var p = new(IfConditionListContext)
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
-	p.RuleIndex = CqlParserRULE_ifConditionList
+	p.RuleIndex = CQLParserRULE_ifConditionList
 	return p
 }
 
 func InitEmptyIfConditionListContext(p *IfConditionListContext) {
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
-	p.RuleIndex = CqlParserRULE_ifConditionList
+	p.RuleIndex = CQLParserRULE_ifConditionList
 }
 
 func (*IfConditionListContext) IsIfConditionListContext() {}
@@ -25330,7 +25330,7 @@ func NewIfConditionListContext(parser antlr.Parser, parent antlr.ParserRuleConte
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, parent, invokingState)
 
 	p.parser = parser
-	p.RuleIndex = CqlParserRULE_ifConditionList
+	p.RuleIndex = CQLParserRULE_ifConditionList
 
 	return p
 }
@@ -25428,20 +25428,20 @@ func (s *IfConditionListContext) ToStringTree(ruleNames []string, recog antlr.Re
 }
 
 func (s *IfConditionListContext) EnterRule(listener antlr.ParseTreeListener) {
-	if listenerT, ok := listener.(CqlParserListener); ok {
+	if listenerT, ok := listener.(CQLParserListener); ok {
 		listenerT.EnterIfConditionList(s)
 	}
 }
 
 func (s *IfConditionListContext) ExitRule(listener antlr.ParseTreeListener) {
-	if listenerT, ok := listener.(CqlParserListener); ok {
+	if listenerT, ok := listener.(CQLParserListener); ok {
 		listenerT.ExitIfConditionList(s)
 	}
 }
 
-func (p *CqlParser) IfConditionList() (localctx IIfConditionListContext) {
+func (p *CQLParser) IfConditionList() (localctx IIfConditionListContext) {
 	localctx = NewIfConditionListContext(p, p.GetParserRuleContext(), p.GetState())
-	p.EnterRule(localctx, 218, CqlParserRULE_ifConditionList)
+	p.EnterRule(localctx, 218, CQLParserRULE_ifConditionList)
 	var _la int
 
 	p.EnterOuterAlt(localctx, 1)
@@ -25457,7 +25457,7 @@ func (p *CqlParser) IfConditionList() (localctx IIfConditionListContext) {
 	}
 	_la = p.GetTokenStream().LA(1)
 
-	for _la == CqlParserK_AND {
+	for _la == CQLParserK_AND {
 		{
 			p.SetState(1594)
 			p.KwAnd()
@@ -25512,13 +25512,13 @@ type IfConditionContext struct {
 func NewEmptyIfConditionContext() *IfConditionContext {
 	var p = new(IfConditionContext)
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
-	p.RuleIndex = CqlParserRULE_ifCondition
+	p.RuleIndex = CQLParserRULE_ifCondition
 	return p
 }
 
 func InitEmptyIfConditionContext(p *IfConditionContext) {
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
-	p.RuleIndex = CqlParserRULE_ifCondition
+	p.RuleIndex = CQLParserRULE_ifCondition
 }
 
 func (*IfConditionContext) IsIfConditionContext() {}
@@ -25529,7 +25529,7 @@ func NewIfConditionContext(parser antlr.Parser, parent antlr.ParserRuleContext, 
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, parent, invokingState)
 
 	p.parser = parser
-	p.RuleIndex = CqlParserRULE_ifCondition
+	p.RuleIndex = CQLParserRULE_ifCondition
 
 	return p
 }
@@ -25537,11 +25537,11 @@ func NewIfConditionContext(parser antlr.Parser, parent antlr.ParserRuleContext, 
 func (s *IfConditionContext) GetParser() antlr.Parser { return s.parser }
 
 func (s *IfConditionContext) OBJECT_NAME() antlr.TerminalNode {
-	return s.GetToken(CqlParserOBJECT_NAME, 0)
+	return s.GetToken(CQLParserOBJECT_NAME, 0)
 }
 
 func (s *IfConditionContext) OPERATOR_EQ() antlr.TerminalNode {
-	return s.GetToken(CqlParserOPERATOR_EQ, 0)
+	return s.GetToken(CQLParserOPERATOR_EQ, 0)
 }
 
 func (s *IfConditionContext) Constant() IConstantContext {
@@ -25569,24 +25569,24 @@ func (s *IfConditionContext) ToStringTree(ruleNames []string, recog antlr.Recogn
 }
 
 func (s *IfConditionContext) EnterRule(listener antlr.ParseTreeListener) {
-	if listenerT, ok := listener.(CqlParserListener); ok {
+	if listenerT, ok := listener.(CQLParserListener); ok {
 		listenerT.EnterIfCondition(s)
 	}
 }
 
 func (s *IfConditionContext) ExitRule(listener antlr.ParseTreeListener) {
-	if listenerT, ok := listener.(CqlParserListener); ok {
+	if listenerT, ok := listener.(CQLParserListener); ok {
 		listenerT.ExitIfCondition(s)
 	}
 }
 
-func (p *CqlParser) IfCondition() (localctx IIfConditionContext) {
+func (p *CQLParser) IfCondition() (localctx IIfConditionContext) {
 	localctx = NewIfConditionContext(p, p.GetParserRuleContext(), p.GetState())
-	p.EnterRule(localctx, 220, CqlParserRULE_ifCondition)
+	p.EnterRule(localctx, 220, CQLParserRULE_ifCondition)
 	p.EnterOuterAlt(localctx, 1)
 	{
 		p.SetState(1602)
-		p.Match(CqlParserOBJECT_NAME)
+		p.Match(CQLParserOBJECT_NAME)
 		if p.HasError() {
 			// Recognition error - abort rule
 			goto errorExit
@@ -25594,7 +25594,7 @@ func (p *CqlParser) IfCondition() (localctx IIfConditionContext) {
 	}
 	{
 		p.SetState(1603)
-		p.Match(CqlParserOPERATOR_EQ)
+		p.Match(CQLParserOPERATOR_EQ)
 		if p.HasError() {
 			// Recognition error - abort rule
 			goto errorExit
@@ -25643,13 +25643,13 @@ type AssignmentsContext struct {
 func NewEmptyAssignmentsContext() *AssignmentsContext {
 	var p = new(AssignmentsContext)
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
-	p.RuleIndex = CqlParserRULE_assignments
+	p.RuleIndex = CQLParserRULE_assignments
 	return p
 }
 
 func InitEmptyAssignmentsContext(p *AssignmentsContext) {
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
-	p.RuleIndex = CqlParserRULE_assignments
+	p.RuleIndex = CQLParserRULE_assignments
 }
 
 func (*AssignmentsContext) IsAssignmentsContext() {}
@@ -25660,7 +25660,7 @@ func NewAssignmentsContext(parser antlr.Parser, parent antlr.ParserRuleContext, 
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, parent, invokingState)
 
 	p.parser = parser
-	p.RuleIndex = CqlParserRULE_assignments
+	p.RuleIndex = CQLParserRULE_assignments
 
 	return p
 }
@@ -25758,20 +25758,20 @@ func (s *AssignmentsContext) ToStringTree(ruleNames []string, recog antlr.Recogn
 }
 
 func (s *AssignmentsContext) EnterRule(listener antlr.ParseTreeListener) {
-	if listenerT, ok := listener.(CqlParserListener); ok {
+	if listenerT, ok := listener.(CQLParserListener); ok {
 		listenerT.EnterAssignments(s)
 	}
 }
 
 func (s *AssignmentsContext) ExitRule(listener antlr.ParseTreeListener) {
-	if listenerT, ok := listener.(CqlParserListener); ok {
+	if listenerT, ok := listener.(CQLParserListener); ok {
 		listenerT.ExitAssignments(s)
 	}
 }
 
-func (p *CqlParser) Assignments() (localctx IAssignmentsContext) {
+func (p *CQLParser) Assignments() (localctx IAssignmentsContext) {
 	localctx = NewAssignmentsContext(p, p.GetParserRuleContext(), p.GetState())
-	p.EnterRule(localctx, 222, CqlParserRULE_assignments)
+	p.EnterRule(localctx, 222, CQLParserRULE_assignments)
 	var _la int
 
 	p.EnterOuterAlt(localctx, 1)
@@ -25787,7 +25787,7 @@ func (p *CqlParser) Assignments() (localctx IAssignmentsContext) {
 	}
 	_la = p.GetTokenStream().LA(1)
 
-	for _la == CqlParserCOMMA {
+	for _la == CQLParserCOMMA {
 		{
 			p.SetState(1607)
 			p.SyntaxComma()
@@ -25851,13 +25851,13 @@ type AssignmentElementContext struct {
 func NewEmptyAssignmentElementContext() *AssignmentElementContext {
 	var p = new(AssignmentElementContext)
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
-	p.RuleIndex = CqlParserRULE_assignmentElement
+	p.RuleIndex = CQLParserRULE_assignmentElement
 	return p
 }
 
 func InitEmptyAssignmentElementContext(p *AssignmentElementContext) {
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
-	p.RuleIndex = CqlParserRULE_assignmentElement
+	p.RuleIndex = CQLParserRULE_assignmentElement
 }
 
 func (*AssignmentElementContext) IsAssignmentElementContext() {}
@@ -25868,7 +25868,7 @@ func NewAssignmentElementContext(parser antlr.Parser, parent antlr.ParserRuleCon
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, parent, invokingState)
 
 	p.parser = parser
-	p.RuleIndex = CqlParserRULE_assignmentElement
+	p.RuleIndex = CQLParserRULE_assignmentElement
 
 	return p
 }
@@ -25876,15 +25876,15 @@ func NewAssignmentElementContext(parser antlr.Parser, parent antlr.ParserRuleCon
 func (s *AssignmentElementContext) GetParser() antlr.Parser { return s.parser }
 
 func (s *AssignmentElementContext) AllOBJECT_NAME() []antlr.TerminalNode {
-	return s.GetTokens(CqlParserOBJECT_NAME)
+	return s.GetTokens(CQLParserOBJECT_NAME)
 }
 
 func (s *AssignmentElementContext) OBJECT_NAME(i int) antlr.TerminalNode {
-	return s.GetToken(CqlParserOBJECT_NAME, i)
+	return s.GetToken(CQLParserOBJECT_NAME, i)
 }
 
 func (s *AssignmentElementContext) OPERATOR_EQ() antlr.TerminalNode {
-	return s.GetToken(CqlParserOPERATOR_EQ, 0)
+	return s.GetToken(CQLParserOPERATOR_EQ, 0)
 }
 
 func (s *AssignmentElementContext) Constant() IConstantContext {
@@ -25968,11 +25968,11 @@ func (s *AssignmentElementContext) DecimalLiteral() IDecimalLiteralContext {
 }
 
 func (s *AssignmentElementContext) PLUS() antlr.TerminalNode {
-	return s.GetToken(CqlParserPLUS, 0)
+	return s.GetToken(CQLParserPLUS, 0)
 }
 
 func (s *AssignmentElementContext) MINUS() antlr.TerminalNode {
-	return s.GetToken(CqlParserMINUS, 0)
+	return s.GetToken(CQLParserMINUS, 0)
 }
 
 func (s *AssignmentElementContext) SyntaxBracketLs() ISyntaxBracketLsContext {
@@ -26016,20 +26016,20 @@ func (s *AssignmentElementContext) ToStringTree(ruleNames []string, recog antlr.
 }
 
 func (s *AssignmentElementContext) EnterRule(listener antlr.ParseTreeListener) {
-	if listenerT, ok := listener.(CqlParserListener); ok {
+	if listenerT, ok := listener.(CQLParserListener); ok {
 		listenerT.EnterAssignmentElement(s)
 	}
 }
 
 func (s *AssignmentElementContext) ExitRule(listener antlr.ParseTreeListener) {
-	if listenerT, ok := listener.(CqlParserListener); ok {
+	if listenerT, ok := listener.(CQLParserListener); ok {
 		listenerT.ExitAssignmentElement(s)
 	}
 }
 
-func (p *CqlParser) AssignmentElement() (localctx IAssignmentElementContext) {
+func (p *CQLParser) AssignmentElement() (localctx IAssignmentElementContext) {
 	localctx = NewAssignmentElementContext(p, p.GetParserRuleContext(), p.GetState())
-	p.EnterRule(localctx, 224, CqlParserRULE_assignmentElement)
+	p.EnterRule(localctx, 224, CQLParserRULE_assignmentElement)
 	var _la int
 
 	p.SetState(1668)
@@ -26043,7 +26043,7 @@ func (p *CqlParser) AssignmentElement() (localctx IAssignmentElementContext) {
 		p.EnterOuterAlt(localctx, 1)
 		{
 			p.SetState(1615)
-			p.Match(CqlParserOBJECT_NAME)
+			p.Match(CQLParserOBJECT_NAME)
 			if p.HasError() {
 				// Recognition error - abort rule
 				goto errorExit
@@ -26051,7 +26051,7 @@ func (p *CqlParser) AssignmentElement() (localctx IAssignmentElementContext) {
 		}
 		{
 			p.SetState(1616)
-			p.Match(CqlParserOPERATOR_EQ)
+			p.Match(CQLParserOPERATOR_EQ)
 			if p.HasError() {
 				// Recognition error - abort rule
 				goto errorExit
@@ -26096,7 +26096,7 @@ func (p *CqlParser) AssignmentElement() (localctx IAssignmentElementContext) {
 		p.EnterOuterAlt(localctx, 2)
 		{
 			p.SetState(1623)
-			p.Match(CqlParserOBJECT_NAME)
+			p.Match(CQLParserOBJECT_NAME)
 			if p.HasError() {
 				// Recognition error - abort rule
 				goto errorExit
@@ -26104,7 +26104,7 @@ func (p *CqlParser) AssignmentElement() (localctx IAssignmentElementContext) {
 		}
 		{
 			p.SetState(1624)
-			p.Match(CqlParserOPERATOR_EQ)
+			p.Match(CQLParserOPERATOR_EQ)
 			if p.HasError() {
 				// Recognition error - abort rule
 				goto errorExit
@@ -26112,7 +26112,7 @@ func (p *CqlParser) AssignmentElement() (localctx IAssignmentElementContext) {
 		}
 		{
 			p.SetState(1625)
-			p.Match(CqlParserOBJECT_NAME)
+			p.Match(CQLParserOBJECT_NAME)
 			if p.HasError() {
 				// Recognition error - abort rule
 				goto errorExit
@@ -26122,7 +26122,7 @@ func (p *CqlParser) AssignmentElement() (localctx IAssignmentElementContext) {
 			p.SetState(1626)
 			_la = p.GetTokenStream().LA(1)
 
-			if !(_la == CqlParserPLUS || _la == CqlParserMINUS) {
+			if !(_la == CQLParserPLUS || _la == CQLParserMINUS) {
 				p.GetErrorHandler().RecoverInline(p)
 			} else {
 				p.GetErrorHandler().ReportMatch(p)
@@ -26138,7 +26138,7 @@ func (p *CqlParser) AssignmentElement() (localctx IAssignmentElementContext) {
 		p.EnterOuterAlt(localctx, 3)
 		{
 			p.SetState(1628)
-			p.Match(CqlParserOBJECT_NAME)
+			p.Match(CQLParserOBJECT_NAME)
 			if p.HasError() {
 				// Recognition error - abort rule
 				goto errorExit
@@ -26146,7 +26146,7 @@ func (p *CqlParser) AssignmentElement() (localctx IAssignmentElementContext) {
 		}
 		{
 			p.SetState(1629)
-			p.Match(CqlParserOPERATOR_EQ)
+			p.Match(CQLParserOPERATOR_EQ)
 			if p.HasError() {
 				// Recognition error - abort rule
 				goto errorExit
@@ -26154,7 +26154,7 @@ func (p *CqlParser) AssignmentElement() (localctx IAssignmentElementContext) {
 		}
 		{
 			p.SetState(1630)
-			p.Match(CqlParserOBJECT_NAME)
+			p.Match(CQLParserOBJECT_NAME)
 			if p.HasError() {
 				// Recognition error - abort rule
 				goto errorExit
@@ -26164,7 +26164,7 @@ func (p *CqlParser) AssignmentElement() (localctx IAssignmentElementContext) {
 			p.SetState(1631)
 			_la = p.GetTokenStream().LA(1)
 
-			if !(_la == CqlParserPLUS || _la == CqlParserMINUS) {
+			if !(_la == CQLParserPLUS || _la == CQLParserMINUS) {
 				p.GetErrorHandler().RecoverInline(p)
 			} else {
 				p.GetErrorHandler().ReportMatch(p)
@@ -26180,7 +26180,7 @@ func (p *CqlParser) AssignmentElement() (localctx IAssignmentElementContext) {
 		p.EnterOuterAlt(localctx, 4)
 		{
 			p.SetState(1633)
-			p.Match(CqlParserOBJECT_NAME)
+			p.Match(CQLParserOBJECT_NAME)
 			if p.HasError() {
 				// Recognition error - abort rule
 				goto errorExit
@@ -26188,7 +26188,7 @@ func (p *CqlParser) AssignmentElement() (localctx IAssignmentElementContext) {
 		}
 		{
 			p.SetState(1634)
-			p.Match(CqlParserOPERATOR_EQ)
+			p.Match(CQLParserOPERATOR_EQ)
 			if p.HasError() {
 				// Recognition error - abort rule
 				goto errorExit
@@ -26202,7 +26202,7 @@ func (p *CqlParser) AssignmentElement() (localctx IAssignmentElementContext) {
 			p.SetState(1636)
 			_la = p.GetTokenStream().LA(1)
 
-			if !(_la == CqlParserPLUS || _la == CqlParserMINUS) {
+			if !(_la == CQLParserPLUS || _la == CQLParserMINUS) {
 				p.GetErrorHandler().RecoverInline(p)
 			} else {
 				p.GetErrorHandler().ReportMatch(p)
@@ -26211,7 +26211,7 @@ func (p *CqlParser) AssignmentElement() (localctx IAssignmentElementContext) {
 		}
 		{
 			p.SetState(1637)
-			p.Match(CqlParserOBJECT_NAME)
+			p.Match(CQLParserOBJECT_NAME)
 			if p.HasError() {
 				// Recognition error - abort rule
 				goto errorExit
@@ -26222,7 +26222,7 @@ func (p *CqlParser) AssignmentElement() (localctx IAssignmentElementContext) {
 		p.EnterOuterAlt(localctx, 5)
 		{
 			p.SetState(1639)
-			p.Match(CqlParserOBJECT_NAME)
+			p.Match(CQLParserOBJECT_NAME)
 			if p.HasError() {
 				// Recognition error - abort rule
 				goto errorExit
@@ -26230,7 +26230,7 @@ func (p *CqlParser) AssignmentElement() (localctx IAssignmentElementContext) {
 		}
 		{
 			p.SetState(1640)
-			p.Match(CqlParserOPERATOR_EQ)
+			p.Match(CQLParserOPERATOR_EQ)
 			if p.HasError() {
 				// Recognition error - abort rule
 				goto errorExit
@@ -26238,7 +26238,7 @@ func (p *CqlParser) AssignmentElement() (localctx IAssignmentElementContext) {
 		}
 		{
 			p.SetState(1641)
-			p.Match(CqlParserOBJECT_NAME)
+			p.Match(CQLParserOBJECT_NAME)
 			if p.HasError() {
 				// Recognition error - abort rule
 				goto errorExit
@@ -26248,7 +26248,7 @@ func (p *CqlParser) AssignmentElement() (localctx IAssignmentElementContext) {
 			p.SetState(1642)
 			_la = p.GetTokenStream().LA(1)
 
-			if !(_la == CqlParserPLUS || _la == CqlParserMINUS) {
+			if !(_la == CQLParserPLUS || _la == CQLParserMINUS) {
 				p.GetErrorHandler().RecoverInline(p)
 			} else {
 				p.GetErrorHandler().ReportMatch(p)
@@ -26264,7 +26264,7 @@ func (p *CqlParser) AssignmentElement() (localctx IAssignmentElementContext) {
 		p.EnterOuterAlt(localctx, 6)
 		{
 			p.SetState(1644)
-			p.Match(CqlParserOBJECT_NAME)
+			p.Match(CQLParserOBJECT_NAME)
 			if p.HasError() {
 				// Recognition error - abort rule
 				goto errorExit
@@ -26272,7 +26272,7 @@ func (p *CqlParser) AssignmentElement() (localctx IAssignmentElementContext) {
 		}
 		{
 			p.SetState(1645)
-			p.Match(CqlParserOPERATOR_EQ)
+			p.Match(CQLParserOPERATOR_EQ)
 			if p.HasError() {
 				// Recognition error - abort rule
 				goto errorExit
@@ -26286,7 +26286,7 @@ func (p *CqlParser) AssignmentElement() (localctx IAssignmentElementContext) {
 			p.SetState(1647)
 			_la = p.GetTokenStream().LA(1)
 
-			if !(_la == CqlParserPLUS || _la == CqlParserMINUS) {
+			if !(_la == CQLParserPLUS || _la == CQLParserMINUS) {
 				p.GetErrorHandler().RecoverInline(p)
 			} else {
 				p.GetErrorHandler().ReportMatch(p)
@@ -26295,7 +26295,7 @@ func (p *CqlParser) AssignmentElement() (localctx IAssignmentElementContext) {
 		}
 		{
 			p.SetState(1648)
-			p.Match(CqlParserOBJECT_NAME)
+			p.Match(CQLParserOBJECT_NAME)
 			if p.HasError() {
 				// Recognition error - abort rule
 				goto errorExit
@@ -26306,7 +26306,7 @@ func (p *CqlParser) AssignmentElement() (localctx IAssignmentElementContext) {
 		p.EnterOuterAlt(localctx, 7)
 		{
 			p.SetState(1650)
-			p.Match(CqlParserOBJECT_NAME)
+			p.Match(CQLParserOBJECT_NAME)
 			if p.HasError() {
 				// Recognition error - abort rule
 				goto errorExit
@@ -26314,7 +26314,7 @@ func (p *CqlParser) AssignmentElement() (localctx IAssignmentElementContext) {
 		}
 		{
 			p.SetState(1651)
-			p.Match(CqlParserOPERATOR_EQ)
+			p.Match(CQLParserOPERATOR_EQ)
 			if p.HasError() {
 				// Recognition error - abort rule
 				goto errorExit
@@ -26322,7 +26322,7 @@ func (p *CqlParser) AssignmentElement() (localctx IAssignmentElementContext) {
 		}
 		{
 			p.SetState(1652)
-			p.Match(CqlParserOBJECT_NAME)
+			p.Match(CQLParserOBJECT_NAME)
 			if p.HasError() {
 				// Recognition error - abort rule
 				goto errorExit
@@ -26332,7 +26332,7 @@ func (p *CqlParser) AssignmentElement() (localctx IAssignmentElementContext) {
 			p.SetState(1653)
 			_la = p.GetTokenStream().LA(1)
 
-			if !(_la == CqlParserPLUS || _la == CqlParserMINUS) {
+			if !(_la == CQLParserPLUS || _la == CQLParserMINUS) {
 				p.GetErrorHandler().RecoverInline(p)
 			} else {
 				p.GetErrorHandler().ReportMatch(p)
@@ -26348,7 +26348,7 @@ func (p *CqlParser) AssignmentElement() (localctx IAssignmentElementContext) {
 		p.EnterOuterAlt(localctx, 8)
 		{
 			p.SetState(1655)
-			p.Match(CqlParserOBJECT_NAME)
+			p.Match(CQLParserOBJECT_NAME)
 			if p.HasError() {
 				// Recognition error - abort rule
 				goto errorExit
@@ -26356,7 +26356,7 @@ func (p *CqlParser) AssignmentElement() (localctx IAssignmentElementContext) {
 		}
 		{
 			p.SetState(1656)
-			p.Match(CqlParserOPERATOR_EQ)
+			p.Match(CQLParserOPERATOR_EQ)
 			if p.HasError() {
 				// Recognition error - abort rule
 				goto errorExit
@@ -26370,7 +26370,7 @@ func (p *CqlParser) AssignmentElement() (localctx IAssignmentElementContext) {
 			p.SetState(1658)
 			_la = p.GetTokenStream().LA(1)
 
-			if !(_la == CqlParserPLUS || _la == CqlParserMINUS) {
+			if !(_la == CQLParserPLUS || _la == CQLParserMINUS) {
 				p.GetErrorHandler().RecoverInline(p)
 			} else {
 				p.GetErrorHandler().ReportMatch(p)
@@ -26379,7 +26379,7 @@ func (p *CqlParser) AssignmentElement() (localctx IAssignmentElementContext) {
 		}
 		{
 			p.SetState(1659)
-			p.Match(CqlParserOBJECT_NAME)
+			p.Match(CQLParserOBJECT_NAME)
 			if p.HasError() {
 				// Recognition error - abort rule
 				goto errorExit
@@ -26390,7 +26390,7 @@ func (p *CqlParser) AssignmentElement() (localctx IAssignmentElementContext) {
 		p.EnterOuterAlt(localctx, 9)
 		{
 			p.SetState(1661)
-			p.Match(CqlParserOBJECT_NAME)
+			p.Match(CQLParserOBJECT_NAME)
 			if p.HasError() {
 				// Recognition error - abort rule
 				goto errorExit
@@ -26410,7 +26410,7 @@ func (p *CqlParser) AssignmentElement() (localctx IAssignmentElementContext) {
 		}
 		{
 			p.SetState(1665)
-			p.Match(CqlParserOPERATOR_EQ)
+			p.Match(CQLParserOPERATOR_EQ)
 			if p.HasError() {
 				// Recognition error - abort rule
 				goto errorExit
@@ -26465,13 +26465,13 @@ type AssignmentSetContext struct {
 func NewEmptyAssignmentSetContext() *AssignmentSetContext {
 	var p = new(AssignmentSetContext)
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
-	p.RuleIndex = CqlParserRULE_assignmentSet
+	p.RuleIndex = CQLParserRULE_assignmentSet
 	return p
 }
 
 func InitEmptyAssignmentSetContext(p *AssignmentSetContext) {
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
-	p.RuleIndex = CqlParserRULE_assignmentSet
+	p.RuleIndex = CQLParserRULE_assignmentSet
 }
 
 func (*AssignmentSetContext) IsAssignmentSetContext() {}
@@ -26482,7 +26482,7 @@ func NewAssignmentSetContext(parser antlr.Parser, parent antlr.ParserRuleContext
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, parent, invokingState)
 
 	p.parser = parser
-	p.RuleIndex = CqlParserRULE_assignmentSet
+	p.RuleIndex = CQLParserRULE_assignmentSet
 
 	return p
 }
@@ -26612,20 +26612,20 @@ func (s *AssignmentSetContext) ToStringTree(ruleNames []string, recog antlr.Reco
 }
 
 func (s *AssignmentSetContext) EnterRule(listener antlr.ParseTreeListener) {
-	if listenerT, ok := listener.(CqlParserListener); ok {
+	if listenerT, ok := listener.(CQLParserListener); ok {
 		listenerT.EnterAssignmentSet(s)
 	}
 }
 
 func (s *AssignmentSetContext) ExitRule(listener antlr.ParseTreeListener) {
-	if listenerT, ok := listener.(CqlParserListener); ok {
+	if listenerT, ok := listener.(CQLParserListener); ok {
 		listenerT.ExitAssignmentSet(s)
 	}
 }
 
-func (p *CqlParser) AssignmentSet() (localctx IAssignmentSetContext) {
+func (p *CQLParser) AssignmentSet() (localctx IAssignmentSetContext) {
 	localctx = NewAssignmentSetContext(p, p.GetParserRuleContext(), p.GetState())
-	p.EnterRule(localctx, 226, CqlParserRULE_assignmentSet)
+	p.EnterRule(localctx, 226, CQLParserRULE_assignmentSet)
 	var _la int
 
 	p.EnterOuterAlt(localctx, 1)
@@ -26640,7 +26640,7 @@ func (p *CqlParser) AssignmentSet() (localctx IAssignmentSetContext) {
 	}
 	_la = p.GetTokenStream().LA(1)
 
-	if _la == CqlParserK_FALSE || _la == CqlParserK_NULL || ((int64((_la-126)) & ^0x3f) == 0 && ((int64(1)<<(_la-126))&43705587204097) != 0) {
+	if _la == CQLParserK_FALSE || _la == CQLParserK_NULL || ((int64((_la-126)) & ^0x3f) == 0 && ((int64(1)<<(_la-126))&43705587204097) != 0) {
 		{
 			p.SetState(1671)
 			p.Constant()
@@ -26652,7 +26652,7 @@ func (p *CqlParser) AssignmentSet() (localctx IAssignmentSetContext) {
 		}
 		_la = p.GetTokenStream().LA(1)
 
-		for _la == CqlParserCOMMA {
+		for _la == CQLParserCOMMA {
 			{
 				p.SetState(1672)
 				p.SyntaxComma()
@@ -26718,13 +26718,13 @@ type AssignmentMapContext struct {
 func NewEmptyAssignmentMapContext() *AssignmentMapContext {
 	var p = new(AssignmentMapContext)
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
-	p.RuleIndex = CqlParserRULE_assignmentMap
+	p.RuleIndex = CQLParserRULE_assignmentMap
 	return p
 }
 
 func InitEmptyAssignmentMapContext(p *AssignmentMapContext) {
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
-	p.RuleIndex = CqlParserRULE_assignmentMap
+	p.RuleIndex = CQLParserRULE_assignmentMap
 }
 
 func (*AssignmentMapContext) IsAssignmentMapContext() {}
@@ -26735,7 +26735,7 @@ func NewAssignmentMapContext(parser antlr.Parser, parent antlr.ParserRuleContext
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, parent, invokingState)
 
 	p.parser = parser
-	p.RuleIndex = CqlParserRULE_assignmentMap
+	p.RuleIndex = CQLParserRULE_assignmentMap
 
 	return p
 }
@@ -26906,20 +26906,20 @@ func (s *AssignmentMapContext) ToStringTree(ruleNames []string, recog antlr.Reco
 }
 
 func (s *AssignmentMapContext) EnterRule(listener antlr.ParseTreeListener) {
-	if listenerT, ok := listener.(CqlParserListener); ok {
+	if listenerT, ok := listener.(CQLParserListener); ok {
 		listenerT.EnterAssignmentMap(s)
 	}
 }
 
 func (s *AssignmentMapContext) ExitRule(listener antlr.ParseTreeListener) {
-	if listenerT, ok := listener.(CqlParserListener); ok {
+	if listenerT, ok := listener.(CQLParserListener); ok {
 		listenerT.ExitAssignmentMap(s)
 	}
 }
 
-func (p *CqlParser) AssignmentMap() (localctx IAssignmentMapContext) {
+func (p *CQLParser) AssignmentMap() (localctx IAssignmentMapContext) {
 	localctx = NewAssignmentMapContext(p, p.GetParserRuleContext(), p.GetState())
-	p.EnterRule(localctx, 228, CqlParserRULE_assignmentMap)
+	p.EnterRule(localctx, 228, CQLParserRULE_assignmentMap)
 	var _la int
 
 	p.EnterOuterAlt(localctx, 1)
@@ -26948,7 +26948,7 @@ func (p *CqlParser) AssignmentMap() (localctx IAssignmentMapContext) {
 	}
 	_la = p.GetTokenStream().LA(1)
 
-	for _la == CqlParserCOMMA {
+	for _la == CQLParserCOMMA {
 		{
 			p.SetState(1689)
 			p.SyntaxComma()
@@ -27018,13 +27018,13 @@ type AssignmentListContext struct {
 func NewEmptyAssignmentListContext() *AssignmentListContext {
 	var p = new(AssignmentListContext)
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
-	p.RuleIndex = CqlParserRULE_assignmentList
+	p.RuleIndex = CQLParserRULE_assignmentList
 	return p
 }
 
 func InitEmptyAssignmentListContext(p *AssignmentListContext) {
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
-	p.RuleIndex = CqlParserRULE_assignmentList
+	p.RuleIndex = CQLParserRULE_assignmentList
 }
 
 func (*AssignmentListContext) IsAssignmentListContext() {}
@@ -27035,7 +27035,7 @@ func NewAssignmentListContext(parser antlr.Parser, parent antlr.ParserRuleContex
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, parent, invokingState)
 
 	p.parser = parser
-	p.RuleIndex = CqlParserRULE_assignmentList
+	p.RuleIndex = CQLParserRULE_assignmentList
 
 	return p
 }
@@ -27165,20 +27165,20 @@ func (s *AssignmentListContext) ToStringTree(ruleNames []string, recog antlr.Rec
 }
 
 func (s *AssignmentListContext) EnterRule(listener antlr.ParseTreeListener) {
-	if listenerT, ok := listener.(CqlParserListener); ok {
+	if listenerT, ok := listener.(CQLParserListener); ok {
 		listenerT.EnterAssignmentList(s)
 	}
 }
 
 func (s *AssignmentListContext) ExitRule(listener antlr.ParseTreeListener) {
-	if listenerT, ok := listener.(CqlParserListener); ok {
+	if listenerT, ok := listener.(CQLParserListener); ok {
 		listenerT.ExitAssignmentList(s)
 	}
 }
 
-func (p *CqlParser) AssignmentList() (localctx IAssignmentListContext) {
+func (p *CQLParser) AssignmentList() (localctx IAssignmentListContext) {
 	localctx = NewAssignmentListContext(p, p.GetParserRuleContext(), p.GetState())
-	p.EnterRule(localctx, 230, CqlParserRULE_assignmentList)
+	p.EnterRule(localctx, 230, CQLParserRULE_assignmentList)
 	var _la int
 
 	p.EnterOuterAlt(localctx, 1)
@@ -27197,7 +27197,7 @@ func (p *CqlParser) AssignmentList() (localctx IAssignmentListContext) {
 	}
 	_la = p.GetTokenStream().LA(1)
 
-	for _la == CqlParserCOMMA {
+	for _la == CQLParserCOMMA {
 		{
 			p.SetState(1703)
 			p.SyntaxComma()
@@ -27259,13 +27259,13 @@ type AssignmentTupleContext struct {
 func NewEmptyAssignmentTupleContext() *AssignmentTupleContext {
 	var p = new(AssignmentTupleContext)
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
-	p.RuleIndex = CqlParserRULE_assignmentTuple
+	p.RuleIndex = CQLParserRULE_assignmentTuple
 	return p
 }
 
 func InitEmptyAssignmentTupleContext(p *AssignmentTupleContext) {
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
-	p.RuleIndex = CqlParserRULE_assignmentTuple
+	p.RuleIndex = CQLParserRULE_assignmentTuple
 }
 
 func (*AssignmentTupleContext) IsAssignmentTupleContext() {}
@@ -27276,7 +27276,7 @@ func NewAssignmentTupleContext(parser antlr.Parser, parent antlr.ParserRuleConte
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, parent, invokingState)
 
 	p.parser = parser
-	p.RuleIndex = CqlParserRULE_assignmentTuple
+	p.RuleIndex = CQLParserRULE_assignmentTuple
 
 	return p
 }
@@ -27406,20 +27406,20 @@ func (s *AssignmentTupleContext) ToStringTree(ruleNames []string, recog antlr.Re
 }
 
 func (s *AssignmentTupleContext) EnterRule(listener antlr.ParseTreeListener) {
-	if listenerT, ok := listener.(CqlParserListener); ok {
+	if listenerT, ok := listener.(CQLParserListener); ok {
 		listenerT.EnterAssignmentTuple(s)
 	}
 }
 
 func (s *AssignmentTupleContext) ExitRule(listener antlr.ParseTreeListener) {
-	if listenerT, ok := listener.(CqlParserListener); ok {
+	if listenerT, ok := listener.(CQLParserListener); ok {
 		listenerT.ExitAssignmentTuple(s)
 	}
 }
 
-func (p *CqlParser) AssignmentTuple() (localctx IAssignmentTupleContext) {
+func (p *CQLParser) AssignmentTuple() (localctx IAssignmentTupleContext) {
 	localctx = NewAssignmentTupleContext(p, p.GetParserRuleContext(), p.GetState())
-	p.EnterRule(localctx, 232, CqlParserRULE_assignmentTuple)
+	p.EnterRule(localctx, 232, CQLParserRULE_assignmentTuple)
 	var _la int
 
 	p.EnterOuterAlt(localctx, 1)
@@ -27439,7 +27439,7 @@ func (p *CqlParser) AssignmentTuple() (localctx IAssignmentTupleContext) {
 	}
 	_la = p.GetTokenStream().LA(1)
 
-	for _la == CqlParserCOMMA {
+	for _la == CQLParserCOMMA {
 		{
 			p.SetState(1715)
 			p.SyntaxComma()
@@ -27506,13 +27506,13 @@ type InsertContext struct {
 func NewEmptyInsertContext() *InsertContext {
 	var p = new(InsertContext)
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
-	p.RuleIndex = CqlParserRULE_insert
+	p.RuleIndex = CQLParserRULE_insert
 	return p
 }
 
 func InitEmptyInsertContext(p *InsertContext) {
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
-	p.RuleIndex = CqlParserRULE_insert
+	p.RuleIndex = CQLParserRULE_insert
 }
 
 func (*InsertContext) IsInsertContext() {}
@@ -27523,7 +27523,7 @@ func NewInsertContext(parser antlr.Parser, parent antlr.ParserRuleContext, invok
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, parent, invokingState)
 
 	p.parser = parser
-	p.RuleIndex = CqlParserRULE_insert
+	p.RuleIndex = CQLParserRULE_insert
 
 	return p
 }
@@ -27627,7 +27627,7 @@ func (s *InsertContext) Keyspace() IKeyspaceContext {
 }
 
 func (s *InsertContext) DOT() antlr.TerminalNode {
-	return s.GetToken(CqlParserDOT, 0)
+	return s.GetToken(CQLParserDOT, 0)
 }
 
 func (s *InsertContext) InsertColumnSpec() IInsertColumnSpecContext {
@@ -27687,20 +27687,20 @@ func (s *InsertContext) ToStringTree(ruleNames []string, recog antlr.Recognizer)
 }
 
 func (s *InsertContext) EnterRule(listener antlr.ParseTreeListener) {
-	if listenerT, ok := listener.(CqlParserListener); ok {
+	if listenerT, ok := listener.(CQLParserListener); ok {
 		listenerT.EnterInsert(s)
 	}
 }
 
 func (s *InsertContext) ExitRule(listener antlr.ParseTreeListener) {
-	if listenerT, ok := listener.(CqlParserListener); ok {
+	if listenerT, ok := listener.(CQLParserListener); ok {
 		listenerT.ExitInsert(s)
 	}
 }
 
-func (p *CqlParser) Insert() (localctx IInsertContext) {
+func (p *CQLParser) Insert() (localctx IInsertContext) {
 	localctx = NewInsertContext(p, p.GetParserRuleContext(), p.GetState())
-	p.EnterRule(localctx, 234, CqlParserRULE_insert)
+	p.EnterRule(localctx, 234, CQLParserRULE_insert)
 	var _la int
 
 	p.EnterOuterAlt(localctx, 1)
@@ -27711,7 +27711,7 @@ func (p *CqlParser) Insert() (localctx IInsertContext) {
 	}
 	_la = p.GetTokenStream().LA(1)
 
-	if _la == CqlParserK_BEGIN {
+	if _la == CQLParserK_BEGIN {
 		{
 			p.SetState(1725)
 			p.BeginBatch()
@@ -27736,7 +27736,7 @@ func (p *CqlParser) Insert() (localctx IInsertContext) {
 		}
 		{
 			p.SetState(1731)
-			p.Match(CqlParserDOT)
+			p.Match(CQLParserDOT)
 			if p.HasError() {
 				// Recognition error - abort rule
 				goto errorExit
@@ -27757,7 +27757,7 @@ func (p *CqlParser) Insert() (localctx IInsertContext) {
 	}
 	_la = p.GetTokenStream().LA(1)
 
-	if _la == CqlParserLR_BRACKET {
+	if _la == CQLParserLR_BRACKET {
 		{
 			p.SetState(1736)
 			p.InsertColumnSpec()
@@ -27775,7 +27775,7 @@ func (p *CqlParser) Insert() (localctx IInsertContext) {
 	}
 	_la = p.GetTokenStream().LA(1)
 
-	if _la == CqlParserK_IF {
+	if _la == CQLParserK_IF {
 		{
 			p.SetState(1740)
 			p.IfNotExist()
@@ -27789,7 +27789,7 @@ func (p *CqlParser) Insert() (localctx IInsertContext) {
 	}
 	_la = p.GetTokenStream().LA(1)
 
-	if _la == CqlParserK_USING {
+	if _la == CQLParserK_USING {
 		{
 			p.SetState(1743)
 			p.UsingTtlTimestamp()
@@ -27835,13 +27835,13 @@ type UsingTtlTimestampContext struct {
 func NewEmptyUsingTtlTimestampContext() *UsingTtlTimestampContext {
 	var p = new(UsingTtlTimestampContext)
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
-	p.RuleIndex = CqlParserRULE_usingTtlTimestamp
+	p.RuleIndex = CQLParserRULE_usingTtlTimestamp
 	return p
 }
 
 func InitEmptyUsingTtlTimestampContext(p *UsingTtlTimestampContext) {
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
-	p.RuleIndex = CqlParserRULE_usingTtlTimestamp
+	p.RuleIndex = CQLParserRULE_usingTtlTimestamp
 }
 
 func (*UsingTtlTimestampContext) IsUsingTtlTimestampContext() {}
@@ -27852,7 +27852,7 @@ func NewUsingTtlTimestampContext(parser antlr.Parser, parent antlr.ParserRuleCon
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, parent, invokingState)
 
 	p.parser = parser
-	p.RuleIndex = CqlParserRULE_usingTtlTimestamp
+	p.RuleIndex = CQLParserRULE_usingTtlTimestamp
 
 	return p
 }
@@ -27932,20 +27932,20 @@ func (s *UsingTtlTimestampContext) ToStringTree(ruleNames []string, recog antlr.
 }
 
 func (s *UsingTtlTimestampContext) EnterRule(listener antlr.ParseTreeListener) {
-	if listenerT, ok := listener.(CqlParserListener); ok {
+	if listenerT, ok := listener.(CQLParserListener); ok {
 		listenerT.EnterUsingTtlTimestamp(s)
 	}
 }
 
 func (s *UsingTtlTimestampContext) ExitRule(listener antlr.ParseTreeListener) {
-	if listenerT, ok := listener.(CqlParserListener); ok {
+	if listenerT, ok := listener.(CQLParserListener); ok {
 		listenerT.ExitUsingTtlTimestamp(s)
 	}
 }
 
-func (p *CqlParser) UsingTtlTimestamp() (localctx IUsingTtlTimestampContext) {
+func (p *CQLParser) UsingTtlTimestamp() (localctx IUsingTtlTimestampContext) {
 	localctx = NewUsingTtlTimestampContext(p, p.GetParserRuleContext(), p.GetState())
-	p.EnterRule(localctx, 236, CqlParserRULE_usingTtlTimestamp)
+	p.EnterRule(localctx, 236, CQLParserRULE_usingTtlTimestamp)
 	p.SetState(1762)
 	p.GetErrorHandler().Sync(p)
 	if p.HasError() {
@@ -28053,13 +28053,13 @@ type TimestampContext struct {
 func NewEmptyTimestampContext() *TimestampContext {
 	var p = new(TimestampContext)
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
-	p.RuleIndex = CqlParserRULE_timestamp
+	p.RuleIndex = CQLParserRULE_timestamp
 	return p
 }
 
 func InitEmptyTimestampContext(p *TimestampContext) {
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
-	p.RuleIndex = CqlParserRULE_timestamp
+	p.RuleIndex = CQLParserRULE_timestamp
 }
 
 func (*TimestampContext) IsTimestampContext() {}
@@ -28070,7 +28070,7 @@ func NewTimestampContext(parser antlr.Parser, parent antlr.ParserRuleContext, in
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, parent, invokingState)
 
 	p.parser = parser
-	p.RuleIndex = CqlParserRULE_timestamp
+	p.RuleIndex = CQLParserRULE_timestamp
 
 	return p
 }
@@ -28118,20 +28118,20 @@ func (s *TimestampContext) ToStringTree(ruleNames []string, recog antlr.Recogniz
 }
 
 func (s *TimestampContext) EnterRule(listener antlr.ParseTreeListener) {
-	if listenerT, ok := listener.(CqlParserListener); ok {
+	if listenerT, ok := listener.(CQLParserListener); ok {
 		listenerT.EnterTimestamp(s)
 	}
 }
 
 func (s *TimestampContext) ExitRule(listener antlr.ParseTreeListener) {
-	if listenerT, ok := listener.(CqlParserListener); ok {
+	if listenerT, ok := listener.(CQLParserListener); ok {
 		listenerT.ExitTimestamp(s)
 	}
 }
 
-func (p *CqlParser) Timestamp() (localctx ITimestampContext) {
+func (p *CQLParser) Timestamp() (localctx ITimestampContext) {
 	localctx = NewTimestampContext(p, p.GetParserRuleContext(), p.GetState())
-	p.EnterRule(localctx, 238, CqlParserRULE_timestamp)
+	p.EnterRule(localctx, 238, CQLParserRULE_timestamp)
 	p.EnterOuterAlt(localctx, 1)
 	{
 		p.SetState(1764)
@@ -28178,13 +28178,13 @@ type TtlContext struct {
 func NewEmptyTtlContext() *TtlContext {
 	var p = new(TtlContext)
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
-	p.RuleIndex = CqlParserRULE_ttl
+	p.RuleIndex = CQLParserRULE_ttl
 	return p
 }
 
 func InitEmptyTtlContext(p *TtlContext) {
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
-	p.RuleIndex = CqlParserRULE_ttl
+	p.RuleIndex = CQLParserRULE_ttl
 }
 
 func (*TtlContext) IsTtlContext() {}
@@ -28195,7 +28195,7 @@ func NewTtlContext(parser antlr.Parser, parent antlr.ParserRuleContext, invoking
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, parent, invokingState)
 
 	p.parser = parser
-	p.RuleIndex = CqlParserRULE_ttl
+	p.RuleIndex = CQLParserRULE_ttl
 
 	return p
 }
@@ -28243,20 +28243,20 @@ func (s *TtlContext) ToStringTree(ruleNames []string, recog antlr.Recognizer) st
 }
 
 func (s *TtlContext) EnterRule(listener antlr.ParseTreeListener) {
-	if listenerT, ok := listener.(CqlParserListener); ok {
+	if listenerT, ok := listener.(CQLParserListener); ok {
 		listenerT.EnterTtl(s)
 	}
 }
 
 func (s *TtlContext) ExitRule(listener antlr.ParseTreeListener) {
-	if listenerT, ok := listener.(CqlParserListener); ok {
+	if listenerT, ok := listener.(CQLParserListener); ok {
 		listenerT.ExitTtl(s)
 	}
 }
 
-func (p *CqlParser) Ttl() (localctx ITtlContext) {
+func (p *CQLParser) Ttl() (localctx ITtlContext) {
 	localctx = NewTtlContext(p, p.GetParserRuleContext(), p.GetState())
-	p.EnterRule(localctx, 240, CqlParserRULE_ttl)
+	p.EnterRule(localctx, 240, CQLParserRULE_ttl)
 	p.EnterOuterAlt(localctx, 1)
 	{
 		p.SetState(1767)
@@ -28303,13 +28303,13 @@ type UsingTimestampSpecContext struct {
 func NewEmptyUsingTimestampSpecContext() *UsingTimestampSpecContext {
 	var p = new(UsingTimestampSpecContext)
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
-	p.RuleIndex = CqlParserRULE_usingTimestampSpec
+	p.RuleIndex = CQLParserRULE_usingTimestampSpec
 	return p
 }
 
 func InitEmptyUsingTimestampSpecContext(p *UsingTimestampSpecContext) {
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
-	p.RuleIndex = CqlParserRULE_usingTimestampSpec
+	p.RuleIndex = CQLParserRULE_usingTimestampSpec
 }
 
 func (*UsingTimestampSpecContext) IsUsingTimestampSpecContext() {}
@@ -28320,7 +28320,7 @@ func NewUsingTimestampSpecContext(parser antlr.Parser, parent antlr.ParserRuleCo
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, parent, invokingState)
 
 	p.parser = parser
-	p.RuleIndex = CqlParserRULE_usingTimestampSpec
+	p.RuleIndex = CQLParserRULE_usingTimestampSpec
 
 	return p
 }
@@ -28368,20 +28368,20 @@ func (s *UsingTimestampSpecContext) ToStringTree(ruleNames []string, recog antlr
 }
 
 func (s *UsingTimestampSpecContext) EnterRule(listener antlr.ParseTreeListener) {
-	if listenerT, ok := listener.(CqlParserListener); ok {
+	if listenerT, ok := listener.(CQLParserListener); ok {
 		listenerT.EnterUsingTimestampSpec(s)
 	}
 }
 
 func (s *UsingTimestampSpecContext) ExitRule(listener antlr.ParseTreeListener) {
-	if listenerT, ok := listener.(CqlParserListener); ok {
+	if listenerT, ok := listener.(CQLParserListener); ok {
 		listenerT.ExitUsingTimestampSpec(s)
 	}
 }
 
-func (p *CqlParser) UsingTimestampSpec() (localctx IUsingTimestampSpecContext) {
+func (p *CQLParser) UsingTimestampSpec() (localctx IUsingTimestampSpecContext) {
 	localctx = NewUsingTimestampSpecContext(p, p.GetParserRuleContext(), p.GetState())
-	p.EnterRule(localctx, 242, CqlParserRULE_usingTimestampSpec)
+	p.EnterRule(localctx, 242, CQLParserRULE_usingTimestampSpec)
 	p.EnterOuterAlt(localctx, 1)
 	{
 		p.SetState(1770)
@@ -28429,13 +28429,13 @@ type IfNotExistContext struct {
 func NewEmptyIfNotExistContext() *IfNotExistContext {
 	var p = new(IfNotExistContext)
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
-	p.RuleIndex = CqlParserRULE_ifNotExist
+	p.RuleIndex = CQLParserRULE_ifNotExist
 	return p
 }
 
 func InitEmptyIfNotExistContext(p *IfNotExistContext) {
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
-	p.RuleIndex = CqlParserRULE_ifNotExist
+	p.RuleIndex = CQLParserRULE_ifNotExist
 }
 
 func (*IfNotExistContext) IsIfNotExistContext() {}
@@ -28446,7 +28446,7 @@ func NewIfNotExistContext(parser antlr.Parser, parent antlr.ParserRuleContext, i
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, parent, invokingState)
 
 	p.parser = parser
-	p.RuleIndex = CqlParserRULE_ifNotExist
+	p.RuleIndex = CQLParserRULE_ifNotExist
 
 	return p
 }
@@ -28510,20 +28510,20 @@ func (s *IfNotExistContext) ToStringTree(ruleNames []string, recog antlr.Recogni
 }
 
 func (s *IfNotExistContext) EnterRule(listener antlr.ParseTreeListener) {
-	if listenerT, ok := listener.(CqlParserListener); ok {
+	if listenerT, ok := listener.(CQLParserListener); ok {
 		listenerT.EnterIfNotExist(s)
 	}
 }
 
 func (s *IfNotExistContext) ExitRule(listener antlr.ParseTreeListener) {
-	if listenerT, ok := listener.(CqlParserListener); ok {
+	if listenerT, ok := listener.(CQLParserListener); ok {
 		listenerT.ExitIfNotExist(s)
 	}
 }
 
-func (p *CqlParser) IfNotExist() (localctx IIfNotExistContext) {
+func (p *CQLParser) IfNotExist() (localctx IIfNotExistContext) {
 	localctx = NewIfNotExistContext(p, p.GetParserRuleContext(), p.GetState())
-	p.EnterRule(localctx, 244, CqlParserRULE_ifNotExist)
+	p.EnterRule(localctx, 244, CQLParserRULE_ifNotExist)
 	p.EnterOuterAlt(localctx, 1)
 	{
 		p.SetState(1773)
@@ -28574,13 +28574,13 @@ type IfExistContext struct {
 func NewEmptyIfExistContext() *IfExistContext {
 	var p = new(IfExistContext)
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
-	p.RuleIndex = CqlParserRULE_ifExist
+	p.RuleIndex = CQLParserRULE_ifExist
 	return p
 }
 
 func InitEmptyIfExistContext(p *IfExistContext) {
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
-	p.RuleIndex = CqlParserRULE_ifExist
+	p.RuleIndex = CQLParserRULE_ifExist
 }
 
 func (*IfExistContext) IsIfExistContext() {}
@@ -28591,7 +28591,7 @@ func NewIfExistContext(parser antlr.Parser, parent antlr.ParserRuleContext, invo
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, parent, invokingState)
 
 	p.parser = parser
-	p.RuleIndex = CqlParserRULE_ifExist
+	p.RuleIndex = CQLParserRULE_ifExist
 
 	return p
 }
@@ -28639,20 +28639,20 @@ func (s *IfExistContext) ToStringTree(ruleNames []string, recog antlr.Recognizer
 }
 
 func (s *IfExistContext) EnterRule(listener antlr.ParseTreeListener) {
-	if listenerT, ok := listener.(CqlParserListener); ok {
+	if listenerT, ok := listener.(CQLParserListener); ok {
 		listenerT.EnterIfExist(s)
 	}
 }
 
 func (s *IfExistContext) ExitRule(listener antlr.ParseTreeListener) {
-	if listenerT, ok := listener.(CqlParserListener); ok {
+	if listenerT, ok := listener.(CQLParserListener); ok {
 		listenerT.ExitIfExist(s)
 	}
 }
 
-func (p *CqlParser) IfExist() (localctx IIfExistContext) {
+func (p *CQLParser) IfExist() (localctx IIfExistContext) {
 	localctx = NewIfExistContext(p, p.GetParserRuleContext(), p.GetState())
-	p.EnterRule(localctx, 246, CqlParserRULE_ifExist)
+	p.EnterRule(localctx, 246, CQLParserRULE_ifExist)
 	p.EnterOuterAlt(localctx, 1)
 	{
 		p.SetState(1777)
@@ -28703,13 +28703,13 @@ type InsertValuesSpecContext struct {
 func NewEmptyInsertValuesSpecContext() *InsertValuesSpecContext {
 	var p = new(InsertValuesSpecContext)
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
-	p.RuleIndex = CqlParserRULE_insertValuesSpec
+	p.RuleIndex = CQLParserRULE_insertValuesSpec
 	return p
 }
 
 func InitEmptyInsertValuesSpecContext(p *InsertValuesSpecContext) {
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
-	p.RuleIndex = CqlParserRULE_insertValuesSpec
+	p.RuleIndex = CQLParserRULE_insertValuesSpec
 }
 
 func (*InsertValuesSpecContext) IsInsertValuesSpecContext() {}
@@ -28720,7 +28720,7 @@ func NewInsertValuesSpecContext(parser antlr.Parser, parent antlr.ParserRuleCont
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, parent, invokingState)
 
 	p.parser = parser
-	p.RuleIndex = CqlParserRULE_insertValuesSpec
+	p.RuleIndex = CQLParserRULE_insertValuesSpec
 
 	return p
 }
@@ -28744,7 +28744,7 @@ func (s *InsertValuesSpecContext) KwValues() IKwValuesContext {
 }
 
 func (s *InsertValuesSpecContext) LR_BRACKET() antlr.TerminalNode {
-	return s.GetToken(CqlParserLR_BRACKET, 0)
+	return s.GetToken(CQLParserLR_BRACKET, 0)
 }
 
 func (s *InsertValuesSpecContext) ExpressionList() IExpressionListContext {
@@ -28764,7 +28764,7 @@ func (s *InsertValuesSpecContext) ExpressionList() IExpressionListContext {
 }
 
 func (s *InsertValuesSpecContext) RR_BRACKET() antlr.TerminalNode {
-	return s.GetToken(CqlParserRR_BRACKET, 0)
+	return s.GetToken(CQLParserRR_BRACKET, 0)
 }
 
 func (s *InsertValuesSpecContext) KwJson() IKwJsonContext {
@@ -28808,20 +28808,20 @@ func (s *InsertValuesSpecContext) ToStringTree(ruleNames []string, recog antlr.R
 }
 
 func (s *InsertValuesSpecContext) EnterRule(listener antlr.ParseTreeListener) {
-	if listenerT, ok := listener.(CqlParserListener); ok {
+	if listenerT, ok := listener.(CQLParserListener); ok {
 		listenerT.EnterInsertValuesSpec(s)
 	}
 }
 
 func (s *InsertValuesSpecContext) ExitRule(listener antlr.ParseTreeListener) {
-	if listenerT, ok := listener.(CqlParserListener); ok {
+	if listenerT, ok := listener.(CQLParserListener); ok {
 		listenerT.ExitInsertValuesSpec(s)
 	}
 }
 
-func (p *CqlParser) InsertValuesSpec() (localctx IInsertValuesSpecContext) {
+func (p *CQLParser) InsertValuesSpec() (localctx IInsertValuesSpecContext) {
 	localctx = NewInsertValuesSpecContext(p, p.GetParserRuleContext(), p.GetState())
-	p.EnterRule(localctx, 248, CqlParserRULE_insertValuesSpec)
+	p.EnterRule(localctx, 248, CQLParserRULE_insertValuesSpec)
 	p.SetState(1788)
 	p.GetErrorHandler().Sync(p)
 	if p.HasError() {
@@ -28829,7 +28829,7 @@ func (p *CqlParser) InsertValuesSpec() (localctx IInsertValuesSpecContext) {
 	}
 
 	switch p.GetTokenStream().LA(1) {
-	case CqlParserK_VALUES:
+	case CQLParserK_VALUES:
 		p.EnterOuterAlt(localctx, 1)
 		{
 			p.SetState(1780)
@@ -28837,7 +28837,7 @@ func (p *CqlParser) InsertValuesSpec() (localctx IInsertValuesSpecContext) {
 		}
 		{
 			p.SetState(1781)
-			p.Match(CqlParserLR_BRACKET)
+			p.Match(CQLParserLR_BRACKET)
 			if p.HasError() {
 				// Recognition error - abort rule
 				goto errorExit
@@ -28849,14 +28849,14 @@ func (p *CqlParser) InsertValuesSpec() (localctx IInsertValuesSpecContext) {
 		}
 		{
 			p.SetState(1783)
-			p.Match(CqlParserRR_BRACKET)
+			p.Match(CQLParserRR_BRACKET)
 			if p.HasError() {
 				// Recognition error - abort rule
 				goto errorExit
 			}
 		}
 
-	case CqlParserK_JSON:
+	case CQLParserK_JSON:
 		p.EnterOuterAlt(localctx, 2)
 		{
 			p.SetState(1785)
@@ -28909,13 +28909,13 @@ type InsertColumnSpecContext struct {
 func NewEmptyInsertColumnSpecContext() *InsertColumnSpecContext {
 	var p = new(InsertColumnSpecContext)
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
-	p.RuleIndex = CqlParserRULE_insertColumnSpec
+	p.RuleIndex = CQLParserRULE_insertColumnSpec
 	return p
 }
 
 func InitEmptyInsertColumnSpecContext(p *InsertColumnSpecContext) {
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
-	p.RuleIndex = CqlParserRULE_insertColumnSpec
+	p.RuleIndex = CQLParserRULE_insertColumnSpec
 }
 
 func (*InsertColumnSpecContext) IsInsertColumnSpecContext() {}
@@ -28926,7 +28926,7 @@ func NewInsertColumnSpecContext(parser antlr.Parser, parent antlr.ParserRuleCont
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, parent, invokingState)
 
 	p.parser = parser
-	p.RuleIndex = CqlParserRULE_insertColumnSpec
+	p.RuleIndex = CQLParserRULE_insertColumnSpec
 
 	return p
 }
@@ -28934,7 +28934,7 @@ func NewInsertColumnSpecContext(parser antlr.Parser, parent antlr.ParserRuleCont
 func (s *InsertColumnSpecContext) GetParser() antlr.Parser { return s.parser }
 
 func (s *InsertColumnSpecContext) LR_BRACKET() antlr.TerminalNode {
-	return s.GetToken(CqlParserLR_BRACKET, 0)
+	return s.GetToken(CQLParserLR_BRACKET, 0)
 }
 
 func (s *InsertColumnSpecContext) ColumnList() IColumnListContext {
@@ -28954,7 +28954,7 @@ func (s *InsertColumnSpecContext) ColumnList() IColumnListContext {
 }
 
 func (s *InsertColumnSpecContext) RR_BRACKET() antlr.TerminalNode {
-	return s.GetToken(CqlParserRR_BRACKET, 0)
+	return s.GetToken(CQLParserRR_BRACKET, 0)
 }
 
 func (s *InsertColumnSpecContext) GetRuleContext() antlr.RuleContext {
@@ -28966,24 +28966,24 @@ func (s *InsertColumnSpecContext) ToStringTree(ruleNames []string, recog antlr.R
 }
 
 func (s *InsertColumnSpecContext) EnterRule(listener antlr.ParseTreeListener) {
-	if listenerT, ok := listener.(CqlParserListener); ok {
+	if listenerT, ok := listener.(CQLParserListener); ok {
 		listenerT.EnterInsertColumnSpec(s)
 	}
 }
 
 func (s *InsertColumnSpecContext) ExitRule(listener antlr.ParseTreeListener) {
-	if listenerT, ok := listener.(CqlParserListener); ok {
+	if listenerT, ok := listener.(CQLParserListener); ok {
 		listenerT.ExitInsertColumnSpec(s)
 	}
 }
 
-func (p *CqlParser) InsertColumnSpec() (localctx IInsertColumnSpecContext) {
+func (p *CQLParser) InsertColumnSpec() (localctx IInsertColumnSpecContext) {
 	localctx = NewInsertColumnSpecContext(p, p.GetParserRuleContext(), p.GetState())
-	p.EnterRule(localctx, 250, CqlParserRULE_insertColumnSpec)
+	p.EnterRule(localctx, 250, CQLParserRULE_insertColumnSpec)
 	p.EnterOuterAlt(localctx, 1)
 	{
 		p.SetState(1790)
-		p.Match(CqlParserLR_BRACKET)
+		p.Match(CQLParserLR_BRACKET)
 		if p.HasError() {
 			// Recognition error - abort rule
 			goto errorExit
@@ -28995,7 +28995,7 @@ func (p *CqlParser) InsertColumnSpec() (localctx IInsertColumnSpecContext) {
 	}
 	{
 		p.SetState(1792)
-		p.Match(CqlParserRR_BRACKET)
+		p.Match(CQLParserRR_BRACKET)
 		if p.HasError() {
 			// Recognition error - abort rule
 			goto errorExit
@@ -29040,13 +29040,13 @@ type ColumnListContext struct {
 func NewEmptyColumnListContext() *ColumnListContext {
 	var p = new(ColumnListContext)
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
-	p.RuleIndex = CqlParserRULE_columnList
+	p.RuleIndex = CQLParserRULE_columnList
 	return p
 }
 
 func InitEmptyColumnListContext(p *ColumnListContext) {
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
-	p.RuleIndex = CqlParserRULE_columnList
+	p.RuleIndex = CQLParserRULE_columnList
 }
 
 func (*ColumnListContext) IsColumnListContext() {}
@@ -29057,7 +29057,7 @@ func NewColumnListContext(parser antlr.Parser, parent antlr.ParserRuleContext, i
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, parent, invokingState)
 
 	p.parser = parser
-	p.RuleIndex = CqlParserRULE_columnList
+	p.RuleIndex = CQLParserRULE_columnList
 
 	return p
 }
@@ -29155,20 +29155,20 @@ func (s *ColumnListContext) ToStringTree(ruleNames []string, recog antlr.Recogni
 }
 
 func (s *ColumnListContext) EnterRule(listener antlr.ParseTreeListener) {
-	if listenerT, ok := listener.(CqlParserListener); ok {
+	if listenerT, ok := listener.(CQLParserListener); ok {
 		listenerT.EnterColumnList(s)
 	}
 }
 
 func (s *ColumnListContext) ExitRule(listener antlr.ParseTreeListener) {
-	if listenerT, ok := listener.(CqlParserListener); ok {
+	if listenerT, ok := listener.(CQLParserListener); ok {
 		listenerT.ExitColumnList(s)
 	}
 }
 
-func (p *CqlParser) ColumnList() (localctx IColumnListContext) {
+func (p *CQLParser) ColumnList() (localctx IColumnListContext) {
 	localctx = NewColumnListContext(p, p.GetParserRuleContext(), p.GetState())
-	p.EnterRule(localctx, 252, CqlParserRULE_columnList)
+	p.EnterRule(localctx, 252, CQLParserRULE_columnList)
 	var _la int
 
 	p.EnterOuterAlt(localctx, 1)
@@ -29183,7 +29183,7 @@ func (p *CqlParser) ColumnList() (localctx IColumnListContext) {
 	}
 	_la = p.GetTokenStream().LA(1)
 
-	for _la == CqlParserCOMMA {
+	for _la == CQLParserCOMMA {
 		{
 			p.SetState(1795)
 			p.SyntaxComma()
@@ -29239,13 +29239,13 @@ type ExpressionListContext struct {
 func NewEmptyExpressionListContext() *ExpressionListContext {
 	var p = new(ExpressionListContext)
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
-	p.RuleIndex = CqlParserRULE_expressionList
+	p.RuleIndex = CQLParserRULE_expressionList
 	return p
 }
 
 func InitEmptyExpressionListContext(p *ExpressionListContext) {
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
-	p.RuleIndex = CqlParserRULE_expressionList
+	p.RuleIndex = CQLParserRULE_expressionList
 }
 
 func (*ExpressionListContext) IsExpressionListContext() {}
@@ -29256,7 +29256,7 @@ func NewExpressionListContext(parser antlr.Parser, parent antlr.ParserRuleContex
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, parent, invokingState)
 
 	p.parser = parser
-	p.RuleIndex = CqlParserRULE_expressionList
+	p.RuleIndex = CQLParserRULE_expressionList
 
 	return p
 }
@@ -29354,20 +29354,20 @@ func (s *ExpressionListContext) ToStringTree(ruleNames []string, recog antlr.Rec
 }
 
 func (s *ExpressionListContext) EnterRule(listener antlr.ParseTreeListener) {
-	if listenerT, ok := listener.(CqlParserListener); ok {
+	if listenerT, ok := listener.(CQLParserListener); ok {
 		listenerT.EnterExpressionList(s)
 	}
 }
 
 func (s *ExpressionListContext) ExitRule(listener antlr.ParseTreeListener) {
-	if listenerT, ok := listener.(CqlParserListener); ok {
+	if listenerT, ok := listener.(CQLParserListener); ok {
 		listenerT.ExitExpressionList(s)
 	}
 }
 
-func (p *CqlParser) ExpressionList() (localctx IExpressionListContext) {
+func (p *CQLParser) ExpressionList() (localctx IExpressionListContext) {
 	localctx = NewExpressionListContext(p, p.GetParserRuleContext(), p.GetState())
-	p.EnterRule(localctx, 254, CqlParserRULE_expressionList)
+	p.EnterRule(localctx, 254, CQLParserRULE_expressionList)
 	var _la int
 
 	p.EnterOuterAlt(localctx, 1)
@@ -29382,7 +29382,7 @@ func (p *CqlParser) ExpressionList() (localctx IExpressionListContext) {
 	}
 	_la = p.GetTokenStream().LA(1)
 
-	for _la == CqlParserCOMMA {
+	for _la == CQLParserCOMMA {
 		{
 			p.SetState(1804)
 			p.SyntaxComma()
@@ -29440,13 +29440,13 @@ type ExpressionContext struct {
 func NewEmptyExpressionContext() *ExpressionContext {
 	var p = new(ExpressionContext)
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
-	p.RuleIndex = CqlParserRULE_expression
+	p.RuleIndex = CQLParserRULE_expression
 	return p
 }
 
 func InitEmptyExpressionContext(p *ExpressionContext) {
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
-	p.RuleIndex = CqlParserRULE_expression
+	p.RuleIndex = CQLParserRULE_expression
 }
 
 func (*ExpressionContext) IsExpressionContext() {}
@@ -29457,7 +29457,7 @@ func NewExpressionContext(parser antlr.Parser, parent antlr.ParserRuleContext, i
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, parent, invokingState)
 
 	p.parser = parser
-	p.RuleIndex = CqlParserRULE_expression
+	p.RuleIndex = CQLParserRULE_expression
 
 	return p
 }
@@ -29569,20 +29569,20 @@ func (s *ExpressionContext) ToStringTree(ruleNames []string, recog antlr.Recogni
 }
 
 func (s *ExpressionContext) EnterRule(listener antlr.ParseTreeListener) {
-	if listenerT, ok := listener.(CqlParserListener); ok {
+	if listenerT, ok := listener.(CQLParserListener); ok {
 		listenerT.EnterExpression(s)
 	}
 }
 
 func (s *ExpressionContext) ExitRule(listener antlr.ParseTreeListener) {
-	if listenerT, ok := listener.(CqlParserListener); ok {
+	if listenerT, ok := listener.(CQLParserListener); ok {
 		listenerT.ExitExpression(s)
 	}
 }
 
-func (p *CqlParser) Expression() (localctx IExpressionContext) {
+func (p *CQLParser) Expression() (localctx IExpressionContext) {
 	localctx = NewExpressionContext(p, p.GetParserRuleContext(), p.GetState())
-	p.EnterRule(localctx, 256, CqlParserRULE_expression)
+	p.EnterRule(localctx, 256, CQLParserRULE_expression)
 	p.SetState(1818)
 	p.GetErrorHandler().Sync(p)
 	if p.HasError() {
@@ -29679,13 +29679,13 @@ type Select_Context struct {
 func NewEmptySelect_Context() *Select_Context {
 	var p = new(Select_Context)
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
-	p.RuleIndex = CqlParserRULE_select_
+	p.RuleIndex = CQLParserRULE_select_
 	return p
 }
 
 func InitEmptySelect_Context(p *Select_Context) {
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
-	p.RuleIndex = CqlParserRULE_select_
+	p.RuleIndex = CQLParserRULE_select_
 }
 
 func (*Select_Context) IsSelect_Context() {}
@@ -29696,7 +29696,7 @@ func NewSelect_Context(parser antlr.Parser, parent antlr.ParserRuleContext, invo
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, parent, invokingState)
 
 	p.parser = parser
-	p.RuleIndex = CqlParserRULE_select_
+	p.RuleIndex = CQLParserRULE_select_
 
 	return p
 }
@@ -29856,20 +29856,20 @@ func (s *Select_Context) ToStringTree(ruleNames []string, recog antlr.Recognizer
 }
 
 func (s *Select_Context) EnterRule(listener antlr.ParseTreeListener) {
-	if listenerT, ok := listener.(CqlParserListener); ok {
+	if listenerT, ok := listener.(CQLParserListener); ok {
 		listenerT.EnterSelect_(s)
 	}
 }
 
 func (s *Select_Context) ExitRule(listener antlr.ParseTreeListener) {
-	if listenerT, ok := listener.(CqlParserListener); ok {
+	if listenerT, ok := listener.(CQLParserListener); ok {
 		listenerT.ExitSelect_(s)
 	}
 }
 
-func (p *CqlParser) Select_() (localctx ISelect_Context) {
+func (p *CQLParser) Select_() (localctx ISelect_Context) {
 	localctx = NewSelect_Context(p, p.GetParserRuleContext(), p.GetState())
-	p.EnterRule(localctx, 258, CqlParserRULE_select_)
+	p.EnterRule(localctx, 258, CQLParserRULE_select_)
 	var _la int
 
 	p.EnterOuterAlt(localctx, 1)
@@ -29884,7 +29884,7 @@ func (p *CqlParser) Select_() (localctx ISelect_Context) {
 	}
 	_la = p.GetTokenStream().LA(1)
 
-	if _la == CqlParserK_DISTINCT {
+	if _la == CQLParserK_DISTINCT {
 		{
 			p.SetState(1821)
 			p.DistinctSpec()
@@ -29898,7 +29898,7 @@ func (p *CqlParser) Select_() (localctx ISelect_Context) {
 	}
 	_la = p.GetTokenStream().LA(1)
 
-	if _la == CqlParserK_JSON {
+	if _la == CQLParserK_JSON {
 		{
 			p.SetState(1824)
 			p.KwJson()
@@ -29920,7 +29920,7 @@ func (p *CqlParser) Select_() (localctx ISelect_Context) {
 	}
 	_la = p.GetTokenStream().LA(1)
 
-	if _la == CqlParserK_WHERE {
+	if _la == CQLParserK_WHERE {
 		{
 			p.SetState(1829)
 			p.WhereSpec()
@@ -29934,7 +29934,7 @@ func (p *CqlParser) Select_() (localctx ISelect_Context) {
 	}
 	_la = p.GetTokenStream().LA(1)
 
-	if _la == CqlParserK_ORDER {
+	if _la == CQLParserK_ORDER {
 		{
 			p.SetState(1832)
 			p.OrderSpec()
@@ -29948,7 +29948,7 @@ func (p *CqlParser) Select_() (localctx ISelect_Context) {
 	}
 	_la = p.GetTokenStream().LA(1)
 
-	if _la == CqlParserK_LIMIT {
+	if _la == CQLParserK_LIMIT {
 		{
 			p.SetState(1835)
 			p.LimitSpec()
@@ -29962,7 +29962,7 @@ func (p *CqlParser) Select_() (localctx ISelect_Context) {
 	}
 	_la = p.GetTokenStream().LA(1)
 
-	if _la == CqlParserK_ALLOW {
+	if _la == CQLParserK_ALLOW {
 		{
 			p.SetState(1838)
 			p.AllowFilteringSpec()
@@ -30006,13 +30006,13 @@ type AllowFilteringSpecContext struct {
 func NewEmptyAllowFilteringSpecContext() *AllowFilteringSpecContext {
 	var p = new(AllowFilteringSpecContext)
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
-	p.RuleIndex = CqlParserRULE_allowFilteringSpec
+	p.RuleIndex = CQLParserRULE_allowFilteringSpec
 	return p
 }
 
 func InitEmptyAllowFilteringSpecContext(p *AllowFilteringSpecContext) {
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
-	p.RuleIndex = CqlParserRULE_allowFilteringSpec
+	p.RuleIndex = CQLParserRULE_allowFilteringSpec
 }
 
 func (*AllowFilteringSpecContext) IsAllowFilteringSpecContext() {}
@@ -30023,7 +30023,7 @@ func NewAllowFilteringSpecContext(parser antlr.Parser, parent antlr.ParserRuleCo
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, parent, invokingState)
 
 	p.parser = parser
-	p.RuleIndex = CqlParserRULE_allowFilteringSpec
+	p.RuleIndex = CQLParserRULE_allowFilteringSpec
 
 	return p
 }
@@ -30071,20 +30071,20 @@ func (s *AllowFilteringSpecContext) ToStringTree(ruleNames []string, recog antlr
 }
 
 func (s *AllowFilteringSpecContext) EnterRule(listener antlr.ParseTreeListener) {
-	if listenerT, ok := listener.(CqlParserListener); ok {
+	if listenerT, ok := listener.(CQLParserListener); ok {
 		listenerT.EnterAllowFilteringSpec(s)
 	}
 }
 
 func (s *AllowFilteringSpecContext) ExitRule(listener antlr.ParseTreeListener) {
-	if listenerT, ok := listener.(CqlParserListener); ok {
+	if listenerT, ok := listener.(CQLParserListener); ok {
 		listenerT.ExitAllowFilteringSpec(s)
 	}
 }
 
-func (p *CqlParser) AllowFilteringSpec() (localctx IAllowFilteringSpecContext) {
+func (p *CQLParser) AllowFilteringSpec() (localctx IAllowFilteringSpecContext) {
 	localctx = NewAllowFilteringSpecContext(p, p.GetParserRuleContext(), p.GetState())
-	p.EnterRule(localctx, 260, CqlParserRULE_allowFilteringSpec)
+	p.EnterRule(localctx, 260, CQLParserRULE_allowFilteringSpec)
 	p.EnterOuterAlt(localctx, 1)
 	{
 		p.SetState(1841)
@@ -30131,13 +30131,13 @@ type LimitSpecContext struct {
 func NewEmptyLimitSpecContext() *LimitSpecContext {
 	var p = new(LimitSpecContext)
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
-	p.RuleIndex = CqlParserRULE_limitSpec
+	p.RuleIndex = CQLParserRULE_limitSpec
 	return p
 }
 
 func InitEmptyLimitSpecContext(p *LimitSpecContext) {
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
-	p.RuleIndex = CqlParserRULE_limitSpec
+	p.RuleIndex = CQLParserRULE_limitSpec
 }
 
 func (*LimitSpecContext) IsLimitSpecContext() {}
@@ -30148,7 +30148,7 @@ func NewLimitSpecContext(parser antlr.Parser, parent antlr.ParserRuleContext, in
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, parent, invokingState)
 
 	p.parser = parser
-	p.RuleIndex = CqlParserRULE_limitSpec
+	p.RuleIndex = CQLParserRULE_limitSpec
 
 	return p
 }
@@ -30196,20 +30196,20 @@ func (s *LimitSpecContext) ToStringTree(ruleNames []string, recog antlr.Recogniz
 }
 
 func (s *LimitSpecContext) EnterRule(listener antlr.ParseTreeListener) {
-	if listenerT, ok := listener.(CqlParserListener); ok {
+	if listenerT, ok := listener.(CQLParserListener); ok {
 		listenerT.EnterLimitSpec(s)
 	}
 }
 
 func (s *LimitSpecContext) ExitRule(listener antlr.ParseTreeListener) {
-	if listenerT, ok := listener.(CqlParserListener); ok {
+	if listenerT, ok := listener.(CQLParserListener); ok {
 		listenerT.ExitLimitSpec(s)
 	}
 }
 
-func (p *CqlParser) LimitSpec() (localctx ILimitSpecContext) {
+func (p *CQLParser) LimitSpec() (localctx ILimitSpecContext) {
 	localctx = NewLimitSpecContext(p, p.GetParserRuleContext(), p.GetState())
-	p.EnterRule(localctx, 262, CqlParserRULE_limitSpec)
+	p.EnterRule(localctx, 262, CQLParserRULE_limitSpec)
 	p.EnterOuterAlt(localctx, 1)
 	{
 		p.SetState(1844)
@@ -30256,13 +30256,13 @@ type FromSpecContext struct {
 func NewEmptyFromSpecContext() *FromSpecContext {
 	var p = new(FromSpecContext)
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
-	p.RuleIndex = CqlParserRULE_fromSpec
+	p.RuleIndex = CQLParserRULE_fromSpec
 	return p
 }
 
 func InitEmptyFromSpecContext(p *FromSpecContext) {
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
-	p.RuleIndex = CqlParserRULE_fromSpec
+	p.RuleIndex = CQLParserRULE_fromSpec
 }
 
 func (*FromSpecContext) IsFromSpecContext() {}
@@ -30273,7 +30273,7 @@ func NewFromSpecContext(parser antlr.Parser, parent antlr.ParserRuleContext, inv
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, parent, invokingState)
 
 	p.parser = parser
-	p.RuleIndex = CqlParserRULE_fromSpec
+	p.RuleIndex = CQLParserRULE_fromSpec
 
 	return p
 }
@@ -30321,20 +30321,20 @@ func (s *FromSpecContext) ToStringTree(ruleNames []string, recog antlr.Recognize
 }
 
 func (s *FromSpecContext) EnterRule(listener antlr.ParseTreeListener) {
-	if listenerT, ok := listener.(CqlParserListener); ok {
+	if listenerT, ok := listener.(CQLParserListener); ok {
 		listenerT.EnterFromSpec(s)
 	}
 }
 
 func (s *FromSpecContext) ExitRule(listener antlr.ParseTreeListener) {
-	if listenerT, ok := listener.(CqlParserListener); ok {
+	if listenerT, ok := listener.(CQLParserListener); ok {
 		listenerT.ExitFromSpec(s)
 	}
 }
 
-func (p *CqlParser) FromSpec() (localctx IFromSpecContext) {
+func (p *CQLParser) FromSpec() (localctx IFromSpecContext) {
 	localctx = NewFromSpecContext(p, p.GetParserRuleContext(), p.GetState())
-	p.EnterRule(localctx, 264, CqlParserRULE_fromSpec)
+	p.EnterRule(localctx, 264, CQLParserRULE_fromSpec)
 	p.EnterOuterAlt(localctx, 1)
 	{
 		p.SetState(1847)
@@ -30382,13 +30382,13 @@ type FromSpecElementContext struct {
 func NewEmptyFromSpecElementContext() *FromSpecElementContext {
 	var p = new(FromSpecElementContext)
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
-	p.RuleIndex = CqlParserRULE_fromSpecElement
+	p.RuleIndex = CQLParserRULE_fromSpecElement
 	return p
 }
 
 func InitEmptyFromSpecElementContext(p *FromSpecElementContext) {
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
-	p.RuleIndex = CqlParserRULE_fromSpecElement
+	p.RuleIndex = CQLParserRULE_fromSpecElement
 }
 
 func (*FromSpecElementContext) IsFromSpecElementContext() {}
@@ -30399,7 +30399,7 @@ func NewFromSpecElementContext(parser antlr.Parser, parent antlr.ParserRuleConte
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, parent, invokingState)
 
 	p.parser = parser
-	p.RuleIndex = CqlParserRULE_fromSpecElement
+	p.RuleIndex = CQLParserRULE_fromSpecElement
 
 	return p
 }
@@ -30407,15 +30407,15 @@ func NewFromSpecElementContext(parser antlr.Parser, parent antlr.ParserRuleConte
 func (s *FromSpecElementContext) GetParser() antlr.Parser { return s.parser }
 
 func (s *FromSpecElementContext) AllOBJECT_NAME() []antlr.TerminalNode {
-	return s.GetTokens(CqlParserOBJECT_NAME)
+	return s.GetTokens(CQLParserOBJECT_NAME)
 }
 
 func (s *FromSpecElementContext) OBJECT_NAME(i int) antlr.TerminalNode {
-	return s.GetToken(CqlParserOBJECT_NAME, i)
+	return s.GetToken(CQLParserOBJECT_NAME, i)
 }
 
 func (s *FromSpecElementContext) DOT() antlr.TerminalNode {
-	return s.GetToken(CqlParserDOT, 0)
+	return s.GetToken(CQLParserDOT, 0)
 }
 
 func (s *FromSpecElementContext) GetRuleContext() antlr.RuleContext {
@@ -30427,20 +30427,20 @@ func (s *FromSpecElementContext) ToStringTree(ruleNames []string, recog antlr.Re
 }
 
 func (s *FromSpecElementContext) EnterRule(listener antlr.ParseTreeListener) {
-	if listenerT, ok := listener.(CqlParserListener); ok {
+	if listenerT, ok := listener.(CQLParserListener); ok {
 		listenerT.EnterFromSpecElement(s)
 	}
 }
 
 func (s *FromSpecElementContext) ExitRule(listener antlr.ParseTreeListener) {
-	if listenerT, ok := listener.(CqlParserListener); ok {
+	if listenerT, ok := listener.(CQLParserListener); ok {
 		listenerT.ExitFromSpecElement(s)
 	}
 }
 
-func (p *CqlParser) FromSpecElement() (localctx IFromSpecElementContext) {
+func (p *CQLParser) FromSpecElement() (localctx IFromSpecElementContext) {
 	localctx = NewFromSpecElementContext(p, p.GetParserRuleContext(), p.GetState())
-	p.EnterRule(localctx, 266, CqlParserRULE_fromSpecElement)
+	p.EnterRule(localctx, 266, CQLParserRULE_fromSpecElement)
 	p.SetState(1854)
 	p.GetErrorHandler().Sync(p)
 	if p.HasError() {
@@ -30452,7 +30452,7 @@ func (p *CqlParser) FromSpecElement() (localctx IFromSpecElementContext) {
 		p.EnterOuterAlt(localctx, 1)
 		{
 			p.SetState(1850)
-			p.Match(CqlParserOBJECT_NAME)
+			p.Match(CQLParserOBJECT_NAME)
 			if p.HasError() {
 				// Recognition error - abort rule
 				goto errorExit
@@ -30463,7 +30463,7 @@ func (p *CqlParser) FromSpecElement() (localctx IFromSpecElementContext) {
 		p.EnterOuterAlt(localctx, 2)
 		{
 			p.SetState(1851)
-			p.Match(CqlParserOBJECT_NAME)
+			p.Match(CQLParserOBJECT_NAME)
 			if p.HasError() {
 				// Recognition error - abort rule
 				goto errorExit
@@ -30471,7 +30471,7 @@ func (p *CqlParser) FromSpecElement() (localctx IFromSpecElementContext) {
 		}
 		{
 			p.SetState(1852)
-			p.Match(CqlParserDOT)
+			p.Match(CQLParserDOT)
 			if p.HasError() {
 				// Recognition error - abort rule
 				goto errorExit
@@ -30479,7 +30479,7 @@ func (p *CqlParser) FromSpecElement() (localctx IFromSpecElementContext) {
 		}
 		{
 			p.SetState(1853)
-			p.Match(CqlParserOBJECT_NAME)
+			p.Match(CQLParserOBJECT_NAME)
 			if p.HasError() {
 				// Recognition error - abort rule
 				goto errorExit
@@ -30527,13 +30527,13 @@ type OrderSpecContext struct {
 func NewEmptyOrderSpecContext() *OrderSpecContext {
 	var p = new(OrderSpecContext)
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
-	p.RuleIndex = CqlParserRULE_orderSpec
+	p.RuleIndex = CQLParserRULE_orderSpec
 	return p
 }
 
 func InitEmptyOrderSpecContext(p *OrderSpecContext) {
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
-	p.RuleIndex = CqlParserRULE_orderSpec
+	p.RuleIndex = CQLParserRULE_orderSpec
 }
 
 func (*OrderSpecContext) IsOrderSpecContext() {}
@@ -30544,7 +30544,7 @@ func NewOrderSpecContext(parser antlr.Parser, parent antlr.ParserRuleContext, in
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, parent, invokingState)
 
 	p.parser = parser
-	p.RuleIndex = CqlParserRULE_orderSpec
+	p.RuleIndex = CQLParserRULE_orderSpec
 
 	return p
 }
@@ -30608,20 +30608,20 @@ func (s *OrderSpecContext) ToStringTree(ruleNames []string, recog antlr.Recogniz
 }
 
 func (s *OrderSpecContext) EnterRule(listener antlr.ParseTreeListener) {
-	if listenerT, ok := listener.(CqlParserListener); ok {
+	if listenerT, ok := listener.(CQLParserListener); ok {
 		listenerT.EnterOrderSpec(s)
 	}
 }
 
 func (s *OrderSpecContext) ExitRule(listener antlr.ParseTreeListener) {
-	if listenerT, ok := listener.(CqlParserListener); ok {
+	if listenerT, ok := listener.(CQLParserListener); ok {
 		listenerT.ExitOrderSpec(s)
 	}
 }
 
-func (p *CqlParser) OrderSpec() (localctx IOrderSpecContext) {
+func (p *CQLParser) OrderSpec() (localctx IOrderSpecContext) {
 	localctx = NewOrderSpecContext(p, p.GetParserRuleContext(), p.GetState())
-	p.EnterRule(localctx, 268, CqlParserRULE_orderSpec)
+	p.EnterRule(localctx, 268, CQLParserRULE_orderSpec)
 	p.EnterOuterAlt(localctx, 1)
 	{
 		p.SetState(1856)
@@ -30673,13 +30673,13 @@ type OrderSpecElementContext struct {
 func NewEmptyOrderSpecElementContext() *OrderSpecElementContext {
 	var p = new(OrderSpecElementContext)
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
-	p.RuleIndex = CqlParserRULE_orderSpecElement
+	p.RuleIndex = CQLParserRULE_orderSpecElement
 	return p
 }
 
 func InitEmptyOrderSpecElementContext(p *OrderSpecElementContext) {
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
-	p.RuleIndex = CqlParserRULE_orderSpecElement
+	p.RuleIndex = CQLParserRULE_orderSpecElement
 }
 
 func (*OrderSpecElementContext) IsOrderSpecElementContext() {}
@@ -30690,7 +30690,7 @@ func NewOrderSpecElementContext(parser antlr.Parser, parent antlr.ParserRuleCont
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, parent, invokingState)
 
 	p.parser = parser
-	p.RuleIndex = CqlParserRULE_orderSpecElement
+	p.RuleIndex = CQLParserRULE_orderSpecElement
 
 	return p
 }
@@ -30698,7 +30698,7 @@ func NewOrderSpecElementContext(parser antlr.Parser, parent antlr.ParserRuleCont
 func (s *OrderSpecElementContext) GetParser() antlr.Parser { return s.parser }
 
 func (s *OrderSpecElementContext) OBJECT_NAME() antlr.TerminalNode {
-	return s.GetToken(CqlParserOBJECT_NAME, 0)
+	return s.GetToken(CQLParserOBJECT_NAME, 0)
 }
 
 func (s *OrderSpecElementContext) KwAsc() IKwAscContext {
@@ -30742,24 +30742,24 @@ func (s *OrderSpecElementContext) ToStringTree(ruleNames []string, recog antlr.R
 }
 
 func (s *OrderSpecElementContext) EnterRule(listener antlr.ParseTreeListener) {
-	if listenerT, ok := listener.(CqlParserListener); ok {
+	if listenerT, ok := listener.(CQLParserListener); ok {
 		listenerT.EnterOrderSpecElement(s)
 	}
 }
 
 func (s *OrderSpecElementContext) ExitRule(listener antlr.ParseTreeListener) {
-	if listenerT, ok := listener.(CqlParserListener); ok {
+	if listenerT, ok := listener.(CQLParserListener); ok {
 		listenerT.ExitOrderSpecElement(s)
 	}
 }
 
-func (p *CqlParser) OrderSpecElement() (localctx IOrderSpecElementContext) {
+func (p *CQLParser) OrderSpecElement() (localctx IOrderSpecElementContext) {
 	localctx = NewOrderSpecElementContext(p, p.GetParserRuleContext(), p.GetState())
-	p.EnterRule(localctx, 270, CqlParserRULE_orderSpecElement)
+	p.EnterRule(localctx, 270, CQLParserRULE_orderSpecElement)
 	p.EnterOuterAlt(localctx, 1)
 	{
 		p.SetState(1860)
-		p.Match(CqlParserOBJECT_NAME)
+		p.Match(CQLParserOBJECT_NAME)
 		if p.HasError() {
 			// Recognition error - abort rule
 			goto errorExit
@@ -30771,19 +30771,19 @@ func (p *CqlParser) OrderSpecElement() (localctx IOrderSpecElementContext) {
 		goto errorExit
 	}
 	switch p.GetTokenStream().LA(1) {
-	case CqlParserK_ASC:
+	case CQLParserK_ASC:
 		{
 			p.SetState(1861)
 			p.KwAsc()
 		}
 
-	case CqlParserK_DESC:
+	case CQLParserK_DESC:
 		{
 			p.SetState(1862)
 			p.KwDesc()
 		}
 
-	case CqlParserEOF, CqlParserSEMI, CqlParserMINUSMINUS, CqlParserK_ALLOW, CqlParserK_LIMIT:
+	case CQLParserEOF, CQLParserSEMI, CQLParserMINUSMINUS, CQLParserK_ALLOW, CQLParserK_LIMIT:
 
 	default:
 	}
@@ -30824,13 +30824,13 @@ type WhereSpecContext struct {
 func NewEmptyWhereSpecContext() *WhereSpecContext {
 	var p = new(WhereSpecContext)
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
-	p.RuleIndex = CqlParserRULE_whereSpec
+	p.RuleIndex = CQLParserRULE_whereSpec
 	return p
 }
 
 func InitEmptyWhereSpecContext(p *WhereSpecContext) {
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
-	p.RuleIndex = CqlParserRULE_whereSpec
+	p.RuleIndex = CQLParserRULE_whereSpec
 }
 
 func (*WhereSpecContext) IsWhereSpecContext() {}
@@ -30841,7 +30841,7 @@ func NewWhereSpecContext(parser antlr.Parser, parent antlr.ParserRuleContext, in
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, parent, invokingState)
 
 	p.parser = parser
-	p.RuleIndex = CqlParserRULE_whereSpec
+	p.RuleIndex = CQLParserRULE_whereSpec
 
 	return p
 }
@@ -30889,20 +30889,20 @@ func (s *WhereSpecContext) ToStringTree(ruleNames []string, recog antlr.Recogniz
 }
 
 func (s *WhereSpecContext) EnterRule(listener antlr.ParseTreeListener) {
-	if listenerT, ok := listener.(CqlParserListener); ok {
+	if listenerT, ok := listener.(CQLParserListener); ok {
 		listenerT.EnterWhereSpec(s)
 	}
 }
 
 func (s *WhereSpecContext) ExitRule(listener antlr.ParseTreeListener) {
-	if listenerT, ok := listener.(CqlParserListener); ok {
+	if listenerT, ok := listener.(CQLParserListener); ok {
 		listenerT.ExitWhereSpec(s)
 	}
 }
 
-func (p *CqlParser) WhereSpec() (localctx IWhereSpecContext) {
+func (p *CQLParser) WhereSpec() (localctx IWhereSpecContext) {
 	localctx = NewWhereSpecContext(p, p.GetParserRuleContext(), p.GetState())
-	p.EnterRule(localctx, 272, CqlParserRULE_whereSpec)
+	p.EnterRule(localctx, 272, CQLParserRULE_whereSpec)
 	p.EnterOuterAlt(localctx, 1)
 	{
 		p.SetState(1865)
@@ -30948,13 +30948,13 @@ type DistinctSpecContext struct {
 func NewEmptyDistinctSpecContext() *DistinctSpecContext {
 	var p = new(DistinctSpecContext)
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
-	p.RuleIndex = CqlParserRULE_distinctSpec
+	p.RuleIndex = CQLParserRULE_distinctSpec
 	return p
 }
 
 func InitEmptyDistinctSpecContext(p *DistinctSpecContext) {
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
-	p.RuleIndex = CqlParserRULE_distinctSpec
+	p.RuleIndex = CQLParserRULE_distinctSpec
 }
 
 func (*DistinctSpecContext) IsDistinctSpecContext() {}
@@ -30965,7 +30965,7 @@ func NewDistinctSpecContext(parser antlr.Parser, parent antlr.ParserRuleContext,
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, parent, invokingState)
 
 	p.parser = parser
-	p.RuleIndex = CqlParserRULE_distinctSpec
+	p.RuleIndex = CQLParserRULE_distinctSpec
 
 	return p
 }
@@ -30997,20 +30997,20 @@ func (s *DistinctSpecContext) ToStringTree(ruleNames []string, recog antlr.Recog
 }
 
 func (s *DistinctSpecContext) EnterRule(listener antlr.ParseTreeListener) {
-	if listenerT, ok := listener.(CqlParserListener); ok {
+	if listenerT, ok := listener.(CQLParserListener); ok {
 		listenerT.EnterDistinctSpec(s)
 	}
 }
 
 func (s *DistinctSpecContext) ExitRule(listener antlr.ParseTreeListener) {
-	if listenerT, ok := listener.(CqlParserListener); ok {
+	if listenerT, ok := listener.(CQLParserListener); ok {
 		listenerT.ExitDistinctSpec(s)
 	}
 }
 
-func (p *CqlParser) DistinctSpec() (localctx IDistinctSpecContext) {
+func (p *CQLParser) DistinctSpec() (localctx IDistinctSpecContext) {
 	localctx = NewDistinctSpecContext(p, p.GetParserRuleContext(), p.GetState())
-	p.EnterRule(localctx, 274, CqlParserRULE_distinctSpec)
+	p.EnterRule(localctx, 274, CQLParserRULE_distinctSpec)
 	p.EnterOuterAlt(localctx, 1)
 	{
 		p.SetState(1868)
@@ -31063,13 +31063,13 @@ type SelectElementsContext struct {
 func NewEmptySelectElementsContext() *SelectElementsContext {
 	var p = new(SelectElementsContext)
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
-	p.RuleIndex = CqlParserRULE_selectElements
+	p.RuleIndex = CQLParserRULE_selectElements
 	return p
 }
 
 func InitEmptySelectElementsContext(p *SelectElementsContext) {
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
-	p.RuleIndex = CqlParserRULE_selectElements
+	p.RuleIndex = CQLParserRULE_selectElements
 }
 
 func (*SelectElementsContext) IsSelectElementsContext() {}
@@ -31080,7 +31080,7 @@ func NewSelectElementsContext(parser antlr.Parser, parent antlr.ParserRuleContex
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, parent, invokingState)
 
 	p.parser = parser
-	p.RuleIndex = CqlParserRULE_selectElements
+	p.RuleIndex = CQLParserRULE_selectElements
 
 	return p
 }
@@ -31133,7 +31133,7 @@ func (s *SelectElementsContext) SelectElement(i int) ISelectElementContext {
 }
 
 func (s *SelectElementsContext) STAR() antlr.TerminalNode {
-	return s.GetToken(CqlParserSTAR, 0)
+	return s.GetToken(CQLParserSTAR, 0)
 }
 
 func (s *SelectElementsContext) AllSyntaxComma() []ISyntaxCommaContext {
@@ -31186,20 +31186,20 @@ func (s *SelectElementsContext) ToStringTree(ruleNames []string, recog antlr.Rec
 }
 
 func (s *SelectElementsContext) EnterRule(listener antlr.ParseTreeListener) {
-	if listenerT, ok := listener.(CqlParserListener); ok {
+	if listenerT, ok := listener.(CQLParserListener); ok {
 		listenerT.EnterSelectElements(s)
 	}
 }
 
 func (s *SelectElementsContext) ExitRule(listener antlr.ParseTreeListener) {
-	if listenerT, ok := listener.(CqlParserListener); ok {
+	if listenerT, ok := listener.(CQLParserListener); ok {
 		listenerT.ExitSelectElements(s)
 	}
 }
 
-func (p *CqlParser) SelectElements() (localctx ISelectElementsContext) {
+func (p *CQLParser) SelectElements() (localctx ISelectElementsContext) {
 	localctx = NewSelectElementsContext(p, p.GetParserRuleContext(), p.GetState())
-	p.EnterRule(localctx, 276, CqlParserRULE_selectElements)
+	p.EnterRule(localctx, 276, CQLParserRULE_selectElements)
 	var _la int
 
 	p.EnterOuterAlt(localctx, 1)
@@ -31210,11 +31210,11 @@ func (p *CqlParser) SelectElements() (localctx ISelectElementsContext) {
 	}
 
 	switch p.GetTokenStream().LA(1) {
-	case CqlParserSTAR:
+	case CQLParserSTAR:
 		{
 			p.SetState(1870)
 
-			var _m = p.Match(CqlParserSTAR)
+			var _m = p.Match(CQLParserSTAR)
 
 			localctx.(*SelectElementsContext).star = _m
 			if p.HasError() {
@@ -31223,7 +31223,7 @@ func (p *CqlParser) SelectElements() (localctx ISelectElementsContext) {
 			}
 		}
 
-	case CqlParserK_UUID, CqlParserOBJECT_NAME:
+	case CQLParserK_UUID, CQLParserOBJECT_NAME:
 		{
 			p.SetState(1871)
 			p.SelectElement()
@@ -31240,7 +31240,7 @@ func (p *CqlParser) SelectElements() (localctx ISelectElementsContext) {
 	}
 	_la = p.GetTokenStream().LA(1)
 
-	for _la == CqlParserCOMMA {
+	for _la == CQLParserCOMMA {
 		{
 			p.SetState(1874)
 			p.SyntaxComma()
@@ -31298,13 +31298,13 @@ type SelectElementContext struct {
 func NewEmptySelectElementContext() *SelectElementContext {
 	var p = new(SelectElementContext)
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
-	p.RuleIndex = CqlParserRULE_selectElement
+	p.RuleIndex = CQLParserRULE_selectElement
 	return p
 }
 
 func InitEmptySelectElementContext(p *SelectElementContext) {
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
-	p.RuleIndex = CqlParserRULE_selectElement
+	p.RuleIndex = CQLParserRULE_selectElement
 }
 
 func (*SelectElementContext) IsSelectElementContext() {}
@@ -31315,7 +31315,7 @@ func NewSelectElementContext(parser antlr.Parser, parent antlr.ParserRuleContext
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, parent, invokingState)
 
 	p.parser = parser
-	p.RuleIndex = CqlParserRULE_selectElement
+	p.RuleIndex = CQLParserRULE_selectElement
 
 	return p
 }
@@ -31323,19 +31323,19 @@ func NewSelectElementContext(parser antlr.Parser, parent antlr.ParserRuleContext
 func (s *SelectElementContext) GetParser() antlr.Parser { return s.parser }
 
 func (s *SelectElementContext) AllOBJECT_NAME() []antlr.TerminalNode {
-	return s.GetTokens(CqlParserOBJECT_NAME)
+	return s.GetTokens(CQLParserOBJECT_NAME)
 }
 
 func (s *SelectElementContext) OBJECT_NAME(i int) antlr.TerminalNode {
-	return s.GetToken(CqlParserOBJECT_NAME, i)
+	return s.GetToken(CQLParserOBJECT_NAME, i)
 }
 
 func (s *SelectElementContext) DOT() antlr.TerminalNode {
-	return s.GetToken(CqlParserDOT, 0)
+	return s.GetToken(CQLParserDOT, 0)
 }
 
 func (s *SelectElementContext) STAR() antlr.TerminalNode {
-	return s.GetToken(CqlParserSTAR, 0)
+	return s.GetToken(CQLParserSTAR, 0)
 }
 
 func (s *SelectElementContext) KwAs() IKwAsContext {
@@ -31379,20 +31379,20 @@ func (s *SelectElementContext) ToStringTree(ruleNames []string, recog antlr.Reco
 }
 
 func (s *SelectElementContext) EnterRule(listener antlr.ParseTreeListener) {
-	if listenerT, ok := listener.(CqlParserListener); ok {
+	if listenerT, ok := listener.(CQLParserListener); ok {
 		listenerT.EnterSelectElement(s)
 	}
 }
 
 func (s *SelectElementContext) ExitRule(listener antlr.ParseTreeListener) {
-	if listenerT, ok := listener.(CqlParserListener); ok {
+	if listenerT, ok := listener.(CQLParserListener); ok {
 		listenerT.ExitSelectElement(s)
 	}
 }
 
-func (p *CqlParser) SelectElement() (localctx ISelectElementContext) {
+func (p *CQLParser) SelectElement() (localctx ISelectElementContext) {
 	localctx = NewSelectElementContext(p, p.GetParserRuleContext(), p.GetState())
-	p.EnterRule(localctx, 278, CqlParserRULE_selectElement)
+	p.EnterRule(localctx, 278, CQLParserRULE_selectElement)
 	var _la int
 
 	p.SetState(1897)
@@ -31406,7 +31406,7 @@ func (p *CqlParser) SelectElement() (localctx ISelectElementContext) {
 		p.EnterOuterAlt(localctx, 1)
 		{
 			p.SetState(1882)
-			p.Match(CqlParserOBJECT_NAME)
+			p.Match(CQLParserOBJECT_NAME)
 			if p.HasError() {
 				// Recognition error - abort rule
 				goto errorExit
@@ -31414,7 +31414,7 @@ func (p *CqlParser) SelectElement() (localctx ISelectElementContext) {
 		}
 		{
 			p.SetState(1883)
-			p.Match(CqlParserDOT)
+			p.Match(CQLParserDOT)
 			if p.HasError() {
 				// Recognition error - abort rule
 				goto errorExit
@@ -31422,7 +31422,7 @@ func (p *CqlParser) SelectElement() (localctx ISelectElementContext) {
 		}
 		{
 			p.SetState(1884)
-			p.Match(CqlParserSTAR)
+			p.Match(CQLParserSTAR)
 			if p.HasError() {
 				// Recognition error - abort rule
 				goto errorExit
@@ -31433,7 +31433,7 @@ func (p *CqlParser) SelectElement() (localctx ISelectElementContext) {
 		p.EnterOuterAlt(localctx, 2)
 		{
 			p.SetState(1885)
-			p.Match(CqlParserOBJECT_NAME)
+			p.Match(CQLParserOBJECT_NAME)
 			if p.HasError() {
 				// Recognition error - abort rule
 				goto errorExit
@@ -31446,14 +31446,14 @@ func (p *CqlParser) SelectElement() (localctx ISelectElementContext) {
 		}
 		_la = p.GetTokenStream().LA(1)
 
-		if _la == CqlParserK_AS {
+		if _la == CQLParserK_AS {
 			{
 				p.SetState(1886)
 				p.KwAs()
 			}
 			{
 				p.SetState(1887)
-				p.Match(CqlParserOBJECT_NAME)
+				p.Match(CQLParserOBJECT_NAME)
 				if p.HasError() {
 					// Recognition error - abort rule
 					goto errorExit
@@ -31475,14 +31475,14 @@ func (p *CqlParser) SelectElement() (localctx ISelectElementContext) {
 		}
 		_la = p.GetTokenStream().LA(1)
 
-		if _la == CqlParserK_AS {
+		if _la == CQLParserK_AS {
 			{
 				p.SetState(1892)
 				p.KwAs()
 			}
 			{
 				p.SetState(1893)
-				p.Match(CqlParserOBJECT_NAME)
+				p.Match(CQLParserOBJECT_NAME)
 				if p.HasError() {
 					// Recognition error - abort rule
 					goto errorExit
@@ -31533,13 +31533,13 @@ type RelationElementsContext struct {
 func NewEmptyRelationElementsContext() *RelationElementsContext {
 	var p = new(RelationElementsContext)
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
-	p.RuleIndex = CqlParserRULE_relationElements
+	p.RuleIndex = CQLParserRULE_relationElements
 	return p
 }
 
 func InitEmptyRelationElementsContext(p *RelationElementsContext) {
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
-	p.RuleIndex = CqlParserRULE_relationElements
+	p.RuleIndex = CQLParserRULE_relationElements
 }
 
 func (*RelationElementsContext) IsRelationElementsContext() {}
@@ -31550,7 +31550,7 @@ func NewRelationElementsContext(parser antlr.Parser, parent antlr.ParserRuleCont
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, parent, invokingState)
 
 	p.parser = parser
-	p.RuleIndex = CqlParserRULE_relationElements
+	p.RuleIndex = CQLParserRULE_relationElements
 
 	return p
 }
@@ -31648,20 +31648,20 @@ func (s *RelationElementsContext) ToStringTree(ruleNames []string, recog antlr.R
 }
 
 func (s *RelationElementsContext) EnterRule(listener antlr.ParseTreeListener) {
-	if listenerT, ok := listener.(CqlParserListener); ok {
+	if listenerT, ok := listener.(CQLParserListener); ok {
 		listenerT.EnterRelationElements(s)
 	}
 }
 
 func (s *RelationElementsContext) ExitRule(listener antlr.ParseTreeListener) {
-	if listenerT, ok := listener.(CqlParserListener); ok {
+	if listenerT, ok := listener.(CQLParserListener); ok {
 		listenerT.ExitRelationElements(s)
 	}
 }
 
-func (p *CqlParser) RelationElements() (localctx IRelationElementsContext) {
+func (p *CQLParser) RelationElements() (localctx IRelationElementsContext) {
 	localctx = NewRelationElementsContext(p, p.GetParserRuleContext(), p.GetState())
-	p.EnterRule(localctx, 280, CqlParserRULE_relationElements)
+	p.EnterRule(localctx, 280, CQLParserRULE_relationElements)
 	var _la int
 
 	p.EnterOuterAlt(localctx, 1)
@@ -31677,7 +31677,7 @@ func (p *CqlParser) RelationElements() (localctx IRelationElementsContext) {
 	}
 	_la = p.GetTokenStream().LA(1)
 
-	for _la == CqlParserK_AND {
+	for _la == CQLParserK_AND {
 		{
 			p.SetState(1900)
 			p.KwAnd()
@@ -31752,13 +31752,13 @@ type RelationElementContext struct {
 func NewEmptyRelationElementContext() *RelationElementContext {
 	var p = new(RelationElementContext)
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
-	p.RuleIndex = CqlParserRULE_relationElement
+	p.RuleIndex = CQLParserRULE_relationElement
 	return p
 }
 
 func InitEmptyRelationElementContext(p *RelationElementContext) {
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
-	p.RuleIndex = CqlParserRULE_relationElement
+	p.RuleIndex = CQLParserRULE_relationElement
 }
 
 func (*RelationElementContext) IsRelationElementContext() {}
@@ -31769,7 +31769,7 @@ func NewRelationElementContext(parser antlr.Parser, parent antlr.ParserRuleConte
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, parent, invokingState)
 
 	p.parser = parser
-	p.RuleIndex = CqlParserRULE_relationElement
+	p.RuleIndex = CQLParserRULE_relationElement
 
 	return p
 }
@@ -31777,11 +31777,11 @@ func NewRelationElementContext(parser antlr.Parser, parent antlr.ParserRuleConte
 func (s *RelationElementContext) GetParser() antlr.Parser { return s.parser }
 
 func (s *RelationElementContext) AllOBJECT_NAME() []antlr.TerminalNode {
-	return s.GetTokens(CqlParserOBJECT_NAME)
+	return s.GetTokens(CQLParserOBJECT_NAME)
 }
 
 func (s *RelationElementContext) OBJECT_NAME(i int) antlr.TerminalNode {
-	return s.GetToken(CqlParserOBJECT_NAME, i)
+	return s.GetToken(CQLParserOBJECT_NAME, i)
 }
 
 func (s *RelationElementContext) Constant() IConstantContext {
@@ -31801,27 +31801,27 @@ func (s *RelationElementContext) Constant() IConstantContext {
 }
 
 func (s *RelationElementContext) OPERATOR_EQ() antlr.TerminalNode {
-	return s.GetToken(CqlParserOPERATOR_EQ, 0)
+	return s.GetToken(CQLParserOPERATOR_EQ, 0)
 }
 
 func (s *RelationElementContext) OPERATOR_LT() antlr.TerminalNode {
-	return s.GetToken(CqlParserOPERATOR_LT, 0)
+	return s.GetToken(CQLParserOPERATOR_LT, 0)
 }
 
 func (s *RelationElementContext) OPERATOR_GT() antlr.TerminalNode {
-	return s.GetToken(CqlParserOPERATOR_GT, 0)
+	return s.GetToken(CQLParserOPERATOR_GT, 0)
 }
 
 func (s *RelationElementContext) OPERATOR_LTE() antlr.TerminalNode {
-	return s.GetToken(CqlParserOPERATOR_LTE, 0)
+	return s.GetToken(CQLParserOPERATOR_LTE, 0)
 }
 
 func (s *RelationElementContext) OPERATOR_GTE() antlr.TerminalNode {
-	return s.GetToken(CqlParserOPERATOR_GTE, 0)
+	return s.GetToken(CQLParserOPERATOR_GTE, 0)
 }
 
 func (s *RelationElementContext) DOT() antlr.TerminalNode {
-	return s.GetToken(CqlParserDOT, 0)
+	return s.GetToken(CQLParserDOT, 0)
 }
 
 func (s *RelationElementContext) AllFunctionCall() []IFunctionCallContext {
@@ -31882,19 +31882,19 @@ func (s *RelationElementContext) KwIn() IKwInContext {
 }
 
 func (s *RelationElementContext) AllLR_BRACKET() []antlr.TerminalNode {
-	return s.GetTokens(CqlParserLR_BRACKET)
+	return s.GetTokens(CQLParserLR_BRACKET)
 }
 
 func (s *RelationElementContext) LR_BRACKET(i int) antlr.TerminalNode {
-	return s.GetToken(CqlParserLR_BRACKET, i)
+	return s.GetToken(CQLParserLR_BRACKET, i)
 }
 
 func (s *RelationElementContext) AllRR_BRACKET() []antlr.TerminalNode {
-	return s.GetTokens(CqlParserRR_BRACKET)
+	return s.GetTokens(CQLParserRR_BRACKET)
 }
 
 func (s *RelationElementContext) RR_BRACKET(i int) antlr.TerminalNode {
-	return s.GetToken(CqlParserRR_BRACKET, i)
+	return s.GetToken(CQLParserRR_BRACKET, i)
 }
 
 func (s *RelationElementContext) FunctionArgs() IFunctionArgsContext {
@@ -32036,20 +32036,20 @@ func (s *RelationElementContext) ToStringTree(ruleNames []string, recog antlr.Re
 }
 
 func (s *RelationElementContext) EnterRule(listener antlr.ParseTreeListener) {
-	if listenerT, ok := listener.(CqlParserListener); ok {
+	if listenerT, ok := listener.(CQLParserListener); ok {
 		listenerT.EnterRelationElement(s)
 	}
 }
 
 func (s *RelationElementContext) ExitRule(listener antlr.ParseTreeListener) {
-	if listenerT, ok := listener.(CqlParserListener); ok {
+	if listenerT, ok := listener.(CQLParserListener); ok {
 		listenerT.ExitRelationElement(s)
 	}
 }
 
-func (p *CqlParser) RelationElement() (localctx IRelationElementContext) {
+func (p *CQLParser) RelationElement() (localctx IRelationElementContext) {
 	localctx = NewRelationElementContext(p, p.GetParserRuleContext(), p.GetState())
-	p.EnterRule(localctx, 282, CqlParserRULE_relationElement)
+	p.EnterRule(localctx, 282, CQLParserRULE_relationElement)
 	var _la int
 
 	p.SetState(1979)
@@ -32063,7 +32063,7 @@ func (p *CqlParser) RelationElement() (localctx IRelationElementContext) {
 		p.EnterOuterAlt(localctx, 1)
 		{
 			p.SetState(1908)
-			p.Match(CqlParserOBJECT_NAME)
+			p.Match(CQLParserOBJECT_NAME)
 			if p.HasError() {
 				// Recognition error - abort rule
 				goto errorExit
@@ -32089,7 +32089,7 @@ func (p *CqlParser) RelationElement() (localctx IRelationElementContext) {
 		p.EnterOuterAlt(localctx, 2)
 		{
 			p.SetState(1911)
-			p.Match(CqlParserOBJECT_NAME)
+			p.Match(CQLParserOBJECT_NAME)
 			if p.HasError() {
 				// Recognition error - abort rule
 				goto errorExit
@@ -32097,7 +32097,7 @@ func (p *CqlParser) RelationElement() (localctx IRelationElementContext) {
 		}
 		{
 			p.SetState(1912)
-			p.Match(CqlParserDOT)
+			p.Match(CQLParserDOT)
 			if p.HasError() {
 				// Recognition error - abort rule
 				goto errorExit
@@ -32105,7 +32105,7 @@ func (p *CqlParser) RelationElement() (localctx IRelationElementContext) {
 		}
 		{
 			p.SetState(1913)
-			p.Match(CqlParserOBJECT_NAME)
+			p.Match(CQLParserOBJECT_NAME)
 			if p.HasError() {
 				// Recognition error - abort rule
 				goto errorExit
@@ -32175,7 +32175,7 @@ func (p *CqlParser) RelationElement() (localctx IRelationElementContext) {
 		p.EnterOuterAlt(localctx, 5)
 		{
 			p.SetState(1924)
-			p.Match(CqlParserOBJECT_NAME)
+			p.Match(CQLParserOBJECT_NAME)
 			if p.HasError() {
 				// Recognition error - abort rule
 				goto errorExit
@@ -32187,7 +32187,7 @@ func (p *CqlParser) RelationElement() (localctx IRelationElementContext) {
 		}
 		{
 			p.SetState(1926)
-			p.Match(CqlParserLR_BRACKET)
+			p.Match(CQLParserLR_BRACKET)
 			if p.HasError() {
 				// Recognition error - abort rule
 				goto errorExit
@@ -32200,7 +32200,7 @@ func (p *CqlParser) RelationElement() (localctx IRelationElementContext) {
 		}
 		_la = p.GetTokenStream().LA(1)
 
-		if _la == CqlParserK_FALSE || _la == CqlParserK_NULL || ((int64((_la-126)) & ^0x3f) == 0 && ((int64(1)<<(_la-126))&61297773249537) != 0) {
+		if _la == CQLParserK_FALSE || _la == CQLParserK_NULL || ((int64((_la-126)) & ^0x3f) == 0 && ((int64(1)<<(_la-126))&61297773249537) != 0) {
 			{
 				p.SetState(1927)
 				p.FunctionArgs()
@@ -32209,7 +32209,7 @@ func (p *CqlParser) RelationElement() (localctx IRelationElementContext) {
 		}
 		{
 			p.SetState(1930)
-			p.Match(CqlParserRR_BRACKET)
+			p.Match(CQLParserRR_BRACKET)
 			if p.HasError() {
 				// Recognition error - abort rule
 				goto errorExit
@@ -32220,7 +32220,7 @@ func (p *CqlParser) RelationElement() (localctx IRelationElementContext) {
 		p.EnterOuterAlt(localctx, 6)
 		{
 			p.SetState(1932)
-			p.Match(CqlParserLR_BRACKET)
+			p.Match(CQLParserLR_BRACKET)
 			if p.HasError() {
 				// Recognition error - abort rule
 				goto errorExit
@@ -32228,7 +32228,7 @@ func (p *CqlParser) RelationElement() (localctx IRelationElementContext) {
 		}
 		{
 			p.SetState(1933)
-			p.Match(CqlParserOBJECT_NAME)
+			p.Match(CQLParserOBJECT_NAME)
 			if p.HasError() {
 				// Recognition error - abort rule
 				goto errorExit
@@ -32241,14 +32241,14 @@ func (p *CqlParser) RelationElement() (localctx IRelationElementContext) {
 		}
 		_la = p.GetTokenStream().LA(1)
 
-		for _la == CqlParserCOMMA {
+		for _la == CQLParserCOMMA {
 			{
 				p.SetState(1934)
 				p.SyntaxComma()
 			}
 			{
 				p.SetState(1935)
-				p.Match(CqlParserOBJECT_NAME)
+				p.Match(CQLParserOBJECT_NAME)
 				if p.HasError() {
 					// Recognition error - abort rule
 					goto errorExit
@@ -32264,7 +32264,7 @@ func (p *CqlParser) RelationElement() (localctx IRelationElementContext) {
 		}
 		{
 			p.SetState(1942)
-			p.Match(CqlParserRR_BRACKET)
+			p.Match(CQLParserRR_BRACKET)
 			if p.HasError() {
 				// Recognition error - abort rule
 				goto errorExit
@@ -32276,7 +32276,7 @@ func (p *CqlParser) RelationElement() (localctx IRelationElementContext) {
 		}
 		{
 			p.SetState(1944)
-			p.Match(CqlParserLR_BRACKET)
+			p.Match(CQLParserLR_BRACKET)
 			if p.HasError() {
 				// Recognition error - abort rule
 				goto errorExit
@@ -32293,7 +32293,7 @@ func (p *CqlParser) RelationElement() (localctx IRelationElementContext) {
 		}
 		_la = p.GetTokenStream().LA(1)
 
-		for _la == CqlParserCOMMA {
+		for _la == CQLParserCOMMA {
 			{
 				p.SetState(1946)
 				p.SyntaxComma()
@@ -32312,7 +32312,7 @@ func (p *CqlParser) RelationElement() (localctx IRelationElementContext) {
 		}
 		{
 			p.SetState(1954)
-			p.Match(CqlParserRR_BRACKET)
+			p.Match(CQLParserRR_BRACKET)
 			if p.HasError() {
 				// Recognition error - abort rule
 				goto errorExit
@@ -32323,7 +32323,7 @@ func (p *CqlParser) RelationElement() (localctx IRelationElementContext) {
 		p.EnterOuterAlt(localctx, 7)
 		{
 			p.SetState(1956)
-			p.Match(CqlParserLR_BRACKET)
+			p.Match(CQLParserLR_BRACKET)
 			if p.HasError() {
 				// Recognition error - abort rule
 				goto errorExit
@@ -32331,7 +32331,7 @@ func (p *CqlParser) RelationElement() (localctx IRelationElementContext) {
 		}
 		{
 			p.SetState(1957)
-			p.Match(CqlParserOBJECT_NAME)
+			p.Match(CQLParserOBJECT_NAME)
 			if p.HasError() {
 				// Recognition error - abort rule
 				goto errorExit
@@ -32344,14 +32344,14 @@ func (p *CqlParser) RelationElement() (localctx IRelationElementContext) {
 		}
 		_la = p.GetTokenStream().LA(1)
 
-		for _la == CqlParserCOMMA {
+		for _la == CQLParserCOMMA {
 			{
 				p.SetState(1958)
 				p.SyntaxComma()
 			}
 			{
 				p.SetState(1959)
-				p.Match(CqlParserOBJECT_NAME)
+				p.Match(CQLParserOBJECT_NAME)
 				if p.HasError() {
 					// Recognition error - abort rule
 					goto errorExit
@@ -32367,7 +32367,7 @@ func (p *CqlParser) RelationElement() (localctx IRelationElementContext) {
 		}
 		{
 			p.SetState(1966)
-			p.Match(CqlParserRR_BRACKET)
+			p.Match(CQLParserRR_BRACKET)
 			if p.HasError() {
 				// Recognition error - abort rule
 				goto errorExit
@@ -32396,7 +32396,7 @@ func (p *CqlParser) RelationElement() (localctx IRelationElementContext) {
 		}
 		_la = p.GetTokenStream().LA(1)
 
-		for _la == CqlParserCOMMA {
+		for _la == CQLParserCOMMA {
 			{
 				p.SetState(1969)
 				p.SyntaxComma()
@@ -32469,13 +32469,13 @@ type RelalationContainsContext struct {
 func NewEmptyRelalationContainsContext() *RelalationContainsContext {
 	var p = new(RelalationContainsContext)
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
-	p.RuleIndex = CqlParserRULE_relalationContains
+	p.RuleIndex = CQLParserRULE_relalationContains
 	return p
 }
 
 func InitEmptyRelalationContainsContext(p *RelalationContainsContext) {
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
-	p.RuleIndex = CqlParserRULE_relalationContains
+	p.RuleIndex = CQLParserRULE_relalationContains
 }
 
 func (*RelalationContainsContext) IsRelalationContainsContext() {}
@@ -32486,7 +32486,7 @@ func NewRelalationContainsContext(parser antlr.Parser, parent antlr.ParserRuleCo
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, parent, invokingState)
 
 	p.parser = parser
-	p.RuleIndex = CqlParserRULE_relalationContains
+	p.RuleIndex = CQLParserRULE_relalationContains
 
 	return p
 }
@@ -32494,7 +32494,7 @@ func NewRelalationContainsContext(parser antlr.Parser, parent antlr.ParserRuleCo
 func (s *RelalationContainsContext) GetParser() antlr.Parser { return s.parser }
 
 func (s *RelalationContainsContext) OBJECT_NAME() antlr.TerminalNode {
-	return s.GetToken(CqlParserOBJECT_NAME, 0)
+	return s.GetToken(CQLParserOBJECT_NAME, 0)
 }
 
 func (s *RelalationContainsContext) KwContains() IKwContainsContext {
@@ -32538,24 +32538,24 @@ func (s *RelalationContainsContext) ToStringTree(ruleNames []string, recog antlr
 }
 
 func (s *RelalationContainsContext) EnterRule(listener antlr.ParseTreeListener) {
-	if listenerT, ok := listener.(CqlParserListener); ok {
+	if listenerT, ok := listener.(CQLParserListener); ok {
 		listenerT.EnterRelalationContains(s)
 	}
 }
 
 func (s *RelalationContainsContext) ExitRule(listener antlr.ParseTreeListener) {
-	if listenerT, ok := listener.(CqlParserListener); ok {
+	if listenerT, ok := listener.(CQLParserListener); ok {
 		listenerT.ExitRelalationContains(s)
 	}
 }
 
-func (p *CqlParser) RelalationContains() (localctx IRelalationContainsContext) {
+func (p *CQLParser) RelalationContains() (localctx IRelalationContainsContext) {
 	localctx = NewRelalationContainsContext(p, p.GetParserRuleContext(), p.GetState())
-	p.EnterRule(localctx, 284, CqlParserRULE_relalationContains)
+	p.EnterRule(localctx, 284, CQLParserRULE_relalationContains)
 	p.EnterOuterAlt(localctx, 1)
 	{
 		p.SetState(1981)
-		p.Match(CqlParserOBJECT_NAME)
+		p.Match(CQLParserOBJECT_NAME)
 		if p.HasError() {
 			// Recognition error - abort rule
 			goto errorExit
@@ -32608,13 +32608,13 @@ type RelalationContainsKeyContext struct {
 func NewEmptyRelalationContainsKeyContext() *RelalationContainsKeyContext {
 	var p = new(RelalationContainsKeyContext)
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
-	p.RuleIndex = CqlParserRULE_relalationContainsKey
+	p.RuleIndex = CQLParserRULE_relalationContainsKey
 	return p
 }
 
 func InitEmptyRelalationContainsKeyContext(p *RelalationContainsKeyContext) {
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
-	p.RuleIndex = CqlParserRULE_relalationContainsKey
+	p.RuleIndex = CQLParserRULE_relalationContainsKey
 }
 
 func (*RelalationContainsKeyContext) IsRelalationContainsKeyContext() {}
@@ -32625,7 +32625,7 @@ func NewRelalationContainsKeyContext(parser antlr.Parser, parent antlr.ParserRul
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, parent, invokingState)
 
 	p.parser = parser
-	p.RuleIndex = CqlParserRULE_relalationContainsKey
+	p.RuleIndex = CQLParserRULE_relalationContainsKey
 
 	return p
 }
@@ -32633,7 +32633,7 @@ func NewRelalationContainsKeyContext(parser antlr.Parser, parent antlr.ParserRul
 func (s *RelalationContainsKeyContext) GetParser() antlr.Parser { return s.parser }
 
 func (s *RelalationContainsKeyContext) OBJECT_NAME() antlr.TerminalNode {
-	return s.GetToken(CqlParserOBJECT_NAME, 0)
+	return s.GetToken(CQLParserOBJECT_NAME, 0)
 }
 
 func (s *RelalationContainsKeyContext) Constant() IConstantContext {
@@ -32693,24 +32693,24 @@ func (s *RelalationContainsKeyContext) ToStringTree(ruleNames []string, recog an
 }
 
 func (s *RelalationContainsKeyContext) EnterRule(listener antlr.ParseTreeListener) {
-	if listenerT, ok := listener.(CqlParserListener); ok {
+	if listenerT, ok := listener.(CQLParserListener); ok {
 		listenerT.EnterRelalationContainsKey(s)
 	}
 }
 
 func (s *RelalationContainsKeyContext) ExitRule(listener antlr.ParseTreeListener) {
-	if listenerT, ok := listener.(CqlParserListener); ok {
+	if listenerT, ok := listener.(CQLParserListener); ok {
 		listenerT.ExitRelalationContainsKey(s)
 	}
 }
 
-func (p *CqlParser) RelalationContainsKey() (localctx IRelalationContainsKeyContext) {
+func (p *CQLParser) RelalationContainsKey() (localctx IRelalationContainsKeyContext) {
 	localctx = NewRelalationContainsKeyContext(p, p.GetParserRuleContext(), p.GetState())
-	p.EnterRule(localctx, 286, CqlParserRULE_relalationContainsKey)
+	p.EnterRule(localctx, 286, CQLParserRULE_relalationContainsKey)
 	p.EnterOuterAlt(localctx, 1)
 	{
 		p.SetState(1985)
-		p.Match(CqlParserOBJECT_NAME)
+		p.Match(CQLParserOBJECT_NAME)
 		if p.HasError() {
 			// Recognition error - abort rule
 			goto errorExit
@@ -32771,13 +32771,13 @@ type FunctionCallContext struct {
 func NewEmptyFunctionCallContext() *FunctionCallContext {
 	var p = new(FunctionCallContext)
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
-	p.RuleIndex = CqlParserRULE_functionCall
+	p.RuleIndex = CQLParserRULE_functionCall
 	return p
 }
 
 func InitEmptyFunctionCallContext(p *FunctionCallContext) {
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
-	p.RuleIndex = CqlParserRULE_functionCall
+	p.RuleIndex = CQLParserRULE_functionCall
 }
 
 func (*FunctionCallContext) IsFunctionCallContext() {}
@@ -32788,7 +32788,7 @@ func NewFunctionCallContext(parser antlr.Parser, parent antlr.ParserRuleContext,
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, parent, invokingState)
 
 	p.parser = parser
-	p.RuleIndex = CqlParserRULE_functionCall
+	p.RuleIndex = CQLParserRULE_functionCall
 
 	return p
 }
@@ -32796,19 +32796,19 @@ func NewFunctionCallContext(parser antlr.Parser, parent antlr.ParserRuleContext,
 func (s *FunctionCallContext) GetParser() antlr.Parser { return s.parser }
 
 func (s *FunctionCallContext) OBJECT_NAME() antlr.TerminalNode {
-	return s.GetToken(CqlParserOBJECT_NAME, 0)
+	return s.GetToken(CQLParserOBJECT_NAME, 0)
 }
 
 func (s *FunctionCallContext) LR_BRACKET() antlr.TerminalNode {
-	return s.GetToken(CqlParserLR_BRACKET, 0)
+	return s.GetToken(CQLParserLR_BRACKET, 0)
 }
 
 func (s *FunctionCallContext) STAR() antlr.TerminalNode {
-	return s.GetToken(CqlParserSTAR, 0)
+	return s.GetToken(CQLParserSTAR, 0)
 }
 
 func (s *FunctionCallContext) RR_BRACKET() antlr.TerminalNode {
-	return s.GetToken(CqlParserRR_BRACKET, 0)
+	return s.GetToken(CQLParserRR_BRACKET, 0)
 }
 
 func (s *FunctionCallContext) FunctionArgs() IFunctionArgsContext {
@@ -32828,7 +32828,7 @@ func (s *FunctionCallContext) FunctionArgs() IFunctionArgsContext {
 }
 
 func (s *FunctionCallContext) K_UUID() antlr.TerminalNode {
-	return s.GetToken(CqlParserK_UUID, 0)
+	return s.GetToken(CQLParserK_UUID, 0)
 }
 
 func (s *FunctionCallContext) GetRuleContext() antlr.RuleContext {
@@ -32840,20 +32840,20 @@ func (s *FunctionCallContext) ToStringTree(ruleNames []string, recog antlr.Recog
 }
 
 func (s *FunctionCallContext) EnterRule(listener antlr.ParseTreeListener) {
-	if listenerT, ok := listener.(CqlParserListener); ok {
+	if listenerT, ok := listener.(CQLParserListener); ok {
 		listenerT.EnterFunctionCall(s)
 	}
 }
 
 func (s *FunctionCallContext) ExitRule(listener antlr.ParseTreeListener) {
-	if listenerT, ok := listener.(CqlParserListener); ok {
+	if listenerT, ok := listener.(CQLParserListener); ok {
 		listenerT.ExitFunctionCall(s)
 	}
 }
 
-func (p *CqlParser) FunctionCall() (localctx IFunctionCallContext) {
+func (p *CQLParser) FunctionCall() (localctx IFunctionCallContext) {
 	localctx = NewFunctionCallContext(p, p.GetParserRuleContext(), p.GetState())
-	p.EnterRule(localctx, 288, CqlParserRULE_functionCall)
+	p.EnterRule(localctx, 288, CQLParserRULE_functionCall)
 	var _la int
 
 	p.SetState(2004)
@@ -32867,7 +32867,7 @@ func (p *CqlParser) FunctionCall() (localctx IFunctionCallContext) {
 		p.EnterOuterAlt(localctx, 1)
 		{
 			p.SetState(1991)
-			p.Match(CqlParserOBJECT_NAME)
+			p.Match(CQLParserOBJECT_NAME)
 			if p.HasError() {
 				// Recognition error - abort rule
 				goto errorExit
@@ -32875,7 +32875,7 @@ func (p *CqlParser) FunctionCall() (localctx IFunctionCallContext) {
 		}
 		{
 			p.SetState(1992)
-			p.Match(CqlParserLR_BRACKET)
+			p.Match(CQLParserLR_BRACKET)
 			if p.HasError() {
 				// Recognition error - abort rule
 				goto errorExit
@@ -32883,7 +32883,7 @@ func (p *CqlParser) FunctionCall() (localctx IFunctionCallContext) {
 		}
 		{
 			p.SetState(1993)
-			p.Match(CqlParserSTAR)
+			p.Match(CQLParserSTAR)
 			if p.HasError() {
 				// Recognition error - abort rule
 				goto errorExit
@@ -32891,7 +32891,7 @@ func (p *CqlParser) FunctionCall() (localctx IFunctionCallContext) {
 		}
 		{
 			p.SetState(1994)
-			p.Match(CqlParserRR_BRACKET)
+			p.Match(CQLParserRR_BRACKET)
 			if p.HasError() {
 				// Recognition error - abort rule
 				goto errorExit
@@ -32902,7 +32902,7 @@ func (p *CqlParser) FunctionCall() (localctx IFunctionCallContext) {
 		p.EnterOuterAlt(localctx, 2)
 		{
 			p.SetState(1995)
-			p.Match(CqlParserOBJECT_NAME)
+			p.Match(CQLParserOBJECT_NAME)
 			if p.HasError() {
 				// Recognition error - abort rule
 				goto errorExit
@@ -32910,7 +32910,7 @@ func (p *CqlParser) FunctionCall() (localctx IFunctionCallContext) {
 		}
 		{
 			p.SetState(1996)
-			p.Match(CqlParserLR_BRACKET)
+			p.Match(CQLParserLR_BRACKET)
 			if p.HasError() {
 				// Recognition error - abort rule
 				goto errorExit
@@ -32923,7 +32923,7 @@ func (p *CqlParser) FunctionCall() (localctx IFunctionCallContext) {
 		}
 		_la = p.GetTokenStream().LA(1)
 
-		if _la == CqlParserK_FALSE || _la == CqlParserK_NULL || ((int64((_la-126)) & ^0x3f) == 0 && ((int64(1)<<(_la-126))&61297773249537) != 0) {
+		if _la == CQLParserK_FALSE || _la == CQLParserK_NULL || ((int64((_la-126)) & ^0x3f) == 0 && ((int64(1)<<(_la-126))&61297773249537) != 0) {
 			{
 				p.SetState(1997)
 				p.FunctionArgs()
@@ -32932,7 +32932,7 @@ func (p *CqlParser) FunctionCall() (localctx IFunctionCallContext) {
 		}
 		{
 			p.SetState(2000)
-			p.Match(CqlParserRR_BRACKET)
+			p.Match(CQLParserRR_BRACKET)
 			if p.HasError() {
 				// Recognition error - abort rule
 				goto errorExit
@@ -32943,7 +32943,7 @@ func (p *CqlParser) FunctionCall() (localctx IFunctionCallContext) {
 		p.EnterOuterAlt(localctx, 3)
 		{
 			p.SetState(2001)
-			p.Match(CqlParserK_UUID)
+			p.Match(CQLParserK_UUID)
 			if p.HasError() {
 				// Recognition error - abort rule
 				goto errorExit
@@ -32951,7 +32951,7 @@ func (p *CqlParser) FunctionCall() (localctx IFunctionCallContext) {
 		}
 		{
 			p.SetState(2002)
-			p.Match(CqlParserLR_BRACKET)
+			p.Match(CQLParserLR_BRACKET)
 			if p.HasError() {
 				// Recognition error - abort rule
 				goto errorExit
@@ -32959,7 +32959,7 @@ func (p *CqlParser) FunctionCall() (localctx IFunctionCallContext) {
 		}
 		{
 			p.SetState(2003)
-			p.Match(CqlParserRR_BRACKET)
+			p.Match(CQLParserRR_BRACKET)
 			if p.HasError() {
 				// Recognition error - abort rule
 				goto errorExit
@@ -33012,13 +33012,13 @@ type FunctionArgsContext struct {
 func NewEmptyFunctionArgsContext() *FunctionArgsContext {
 	var p = new(FunctionArgsContext)
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
-	p.RuleIndex = CqlParserRULE_functionArgs
+	p.RuleIndex = CQLParserRULE_functionArgs
 	return p
 }
 
 func InitEmptyFunctionArgsContext(p *FunctionArgsContext) {
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
-	p.RuleIndex = CqlParserRULE_functionArgs
+	p.RuleIndex = CQLParserRULE_functionArgs
 }
 
 func (*FunctionArgsContext) IsFunctionArgsContext() {}
@@ -33029,7 +33029,7 @@ func NewFunctionArgsContext(parser antlr.Parser, parent antlr.ParserRuleContext,
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, parent, invokingState)
 
 	p.parser = parser
-	p.RuleIndex = CqlParserRULE_functionArgs
+	p.RuleIndex = CQLParserRULE_functionArgs
 
 	return p
 }
@@ -33078,11 +33078,11 @@ func (s *FunctionArgsContext) Constant(i int) IConstantContext {
 }
 
 func (s *FunctionArgsContext) AllOBJECT_NAME() []antlr.TerminalNode {
-	return s.GetTokens(CqlParserOBJECT_NAME)
+	return s.GetTokens(CQLParserOBJECT_NAME)
 }
 
 func (s *FunctionArgsContext) OBJECT_NAME(i int) antlr.TerminalNode {
-	return s.GetToken(CqlParserOBJECT_NAME, i)
+	return s.GetToken(CQLParserOBJECT_NAME, i)
 }
 
 func (s *FunctionArgsContext) AllFunctionCall() []IFunctionCallContext {
@@ -33176,20 +33176,20 @@ func (s *FunctionArgsContext) ToStringTree(ruleNames []string, recog antlr.Recog
 }
 
 func (s *FunctionArgsContext) EnterRule(listener antlr.ParseTreeListener) {
-	if listenerT, ok := listener.(CqlParserListener); ok {
+	if listenerT, ok := listener.(CQLParserListener); ok {
 		listenerT.EnterFunctionArgs(s)
 	}
 }
 
 func (s *FunctionArgsContext) ExitRule(listener antlr.ParseTreeListener) {
-	if listenerT, ok := listener.(CqlParserListener); ok {
+	if listenerT, ok := listener.(CQLParserListener); ok {
 		listenerT.ExitFunctionArgs(s)
 	}
 }
 
-func (p *CqlParser) FunctionArgs() (localctx IFunctionArgsContext) {
+func (p *CQLParser) FunctionArgs() (localctx IFunctionArgsContext) {
 	localctx = NewFunctionArgsContext(p, p.GetParserRuleContext(), p.GetState())
-	p.EnterRule(localctx, 290, CqlParserRULE_functionArgs)
+	p.EnterRule(localctx, 290, CQLParserRULE_functionArgs)
 	var _la int
 
 	p.EnterOuterAlt(localctx, 1)
@@ -33209,7 +33209,7 @@ func (p *CqlParser) FunctionArgs() (localctx IFunctionArgsContext) {
 	case 2:
 		{
 			p.SetState(2007)
-			p.Match(CqlParserOBJECT_NAME)
+			p.Match(CQLParserOBJECT_NAME)
 			if p.HasError() {
 				// Recognition error - abort rule
 				goto errorExit
@@ -33232,7 +33232,7 @@ func (p *CqlParser) FunctionArgs() (localctx IFunctionArgsContext) {
 	}
 	_la = p.GetTokenStream().LA(1)
 
-	for _la == CqlParserCOMMA {
+	for _la == CQLParserCOMMA {
 		{
 			p.SetState(2011)
 			p.SyntaxComma()
@@ -33253,7 +33253,7 @@ func (p *CqlParser) FunctionArgs() (localctx IFunctionArgsContext) {
 		case 2:
 			{
 				p.SetState(2013)
-				p.Match(CqlParserOBJECT_NAME)
+				p.Match(CQLParserOBJECT_NAME)
 				if p.HasError() {
 					// Recognition error - abort rule
 					goto errorExit
@@ -33320,13 +33320,13 @@ type ConstantContext struct {
 func NewEmptyConstantContext() *ConstantContext {
 	var p = new(ConstantContext)
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
-	p.RuleIndex = CqlParserRULE_constant
+	p.RuleIndex = CQLParserRULE_constant
 	return p
 }
 
 func InitEmptyConstantContext(p *ConstantContext) {
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
-	p.RuleIndex = CqlParserRULE_constant
+	p.RuleIndex = CQLParserRULE_constant
 }
 
 func (*ConstantContext) IsConstantContext() {}
@@ -33337,7 +33337,7 @@ func NewConstantContext(parser antlr.Parser, parent antlr.ParserRuleContext, inv
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, parent, invokingState)
 
 	p.parser = parser
-	p.RuleIndex = CqlParserRULE_constant
+	p.RuleIndex = CQLParserRULE_constant
 
 	return p
 }
@@ -33345,7 +33345,7 @@ func NewConstantContext(parser antlr.Parser, parent antlr.ParserRuleContext, inv
 func (s *ConstantContext) GetParser() antlr.Parser { return s.parser }
 
 func (s *ConstantContext) UUID() antlr.TerminalNode {
-	return s.GetToken(CqlParserUUID, 0)
+	return s.GetToken(CQLParserUUID, 0)
 }
 
 func (s *ConstantContext) StringLiteral() IStringLiteralContext {
@@ -33469,20 +33469,20 @@ func (s *ConstantContext) ToStringTree(ruleNames []string, recog antlr.Recognize
 }
 
 func (s *ConstantContext) EnterRule(listener antlr.ParseTreeListener) {
-	if listenerT, ok := listener.(CqlParserListener); ok {
+	if listenerT, ok := listener.(CQLParserListener); ok {
 		listenerT.EnterConstant(s)
 	}
 }
 
 func (s *ConstantContext) ExitRule(listener antlr.ParseTreeListener) {
-	if listenerT, ok := listener.(CqlParserListener); ok {
+	if listenerT, ok := listener.(CQLParserListener); ok {
 		listenerT.ExitConstant(s)
 	}
 }
 
-func (p *CqlParser) Constant() (localctx IConstantContext) {
+func (p *CQLParser) Constant() (localctx IConstantContext) {
 	localctx = NewConstantContext(p, p.GetParserRuleContext(), p.GetState())
-	p.EnterRule(localctx, 292, CqlParserRULE_constant)
+	p.EnterRule(localctx, 292, CQLParserRULE_constant)
 	p.SetState(2030)
 	p.GetErrorHandler().Sync(p)
 	if p.HasError() {
@@ -33494,7 +33494,7 @@ func (p *CqlParser) Constant() (localctx IConstantContext) {
 		p.EnterOuterAlt(localctx, 1)
 		{
 			p.SetState(2022)
-			p.Match(CqlParserUUID)
+			p.Match(CQLParserUUID)
 			if p.HasError() {
 				// Recognition error - abort rule
 				goto errorExit
@@ -33589,13 +33589,13 @@ type DecimalLiteralContext struct {
 func NewEmptyDecimalLiteralContext() *DecimalLiteralContext {
 	var p = new(DecimalLiteralContext)
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
-	p.RuleIndex = CqlParserRULE_decimalLiteral
+	p.RuleIndex = CQLParserRULE_decimalLiteral
 	return p
 }
 
 func InitEmptyDecimalLiteralContext(p *DecimalLiteralContext) {
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
-	p.RuleIndex = CqlParserRULE_decimalLiteral
+	p.RuleIndex = CQLParserRULE_decimalLiteral
 }
 
 func (*DecimalLiteralContext) IsDecimalLiteralContext() {}
@@ -33606,7 +33606,7 @@ func NewDecimalLiteralContext(parser antlr.Parser, parent antlr.ParserRuleContex
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, parent, invokingState)
 
 	p.parser = parser
-	p.RuleIndex = CqlParserRULE_decimalLiteral
+	p.RuleIndex = CQLParserRULE_decimalLiteral
 
 	return p
 }
@@ -33614,7 +33614,7 @@ func NewDecimalLiteralContext(parser antlr.Parser, parent antlr.ParserRuleContex
 func (s *DecimalLiteralContext) GetParser() antlr.Parser { return s.parser }
 
 func (s *DecimalLiteralContext) DECIMAL_LITERAL() antlr.TerminalNode {
-	return s.GetToken(CqlParserDECIMAL_LITERAL, 0)
+	return s.GetToken(CQLParserDECIMAL_LITERAL, 0)
 }
 
 func (s *DecimalLiteralContext) GetRuleContext() antlr.RuleContext {
@@ -33626,24 +33626,24 @@ func (s *DecimalLiteralContext) ToStringTree(ruleNames []string, recog antlr.Rec
 }
 
 func (s *DecimalLiteralContext) EnterRule(listener antlr.ParseTreeListener) {
-	if listenerT, ok := listener.(CqlParserListener); ok {
+	if listenerT, ok := listener.(CQLParserListener); ok {
 		listenerT.EnterDecimalLiteral(s)
 	}
 }
 
 func (s *DecimalLiteralContext) ExitRule(listener antlr.ParseTreeListener) {
-	if listenerT, ok := listener.(CqlParserListener); ok {
+	if listenerT, ok := listener.(CQLParserListener); ok {
 		listenerT.ExitDecimalLiteral(s)
 	}
 }
 
-func (p *CqlParser) DecimalLiteral() (localctx IDecimalLiteralContext) {
+func (p *CQLParser) DecimalLiteral() (localctx IDecimalLiteralContext) {
 	localctx = NewDecimalLiteralContext(p, p.GetParserRuleContext(), p.GetState())
-	p.EnterRule(localctx, 294, CqlParserRULE_decimalLiteral)
+	p.EnterRule(localctx, 294, CQLParserRULE_decimalLiteral)
 	p.EnterOuterAlt(localctx, 1)
 	{
 		p.SetState(2032)
-		p.Match(CqlParserDECIMAL_LITERAL)
+		p.Match(CQLParserDECIMAL_LITERAL)
 		if p.HasError() {
 			// Recognition error - abort rule
 			goto errorExit
@@ -33686,13 +33686,13 @@ type FloatLiteralContext struct {
 func NewEmptyFloatLiteralContext() *FloatLiteralContext {
 	var p = new(FloatLiteralContext)
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
-	p.RuleIndex = CqlParserRULE_floatLiteral
+	p.RuleIndex = CQLParserRULE_floatLiteral
 	return p
 }
 
 func InitEmptyFloatLiteralContext(p *FloatLiteralContext) {
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
-	p.RuleIndex = CqlParserRULE_floatLiteral
+	p.RuleIndex = CQLParserRULE_floatLiteral
 }
 
 func (*FloatLiteralContext) IsFloatLiteralContext() {}
@@ -33703,7 +33703,7 @@ func NewFloatLiteralContext(parser antlr.Parser, parent antlr.ParserRuleContext,
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, parent, invokingState)
 
 	p.parser = parser
-	p.RuleIndex = CqlParserRULE_floatLiteral
+	p.RuleIndex = CQLParserRULE_floatLiteral
 
 	return p
 }
@@ -33711,11 +33711,11 @@ func NewFloatLiteralContext(parser antlr.Parser, parent antlr.ParserRuleContext,
 func (s *FloatLiteralContext) GetParser() antlr.Parser { return s.parser }
 
 func (s *FloatLiteralContext) DECIMAL_LITERAL() antlr.TerminalNode {
-	return s.GetToken(CqlParserDECIMAL_LITERAL, 0)
+	return s.GetToken(CQLParserDECIMAL_LITERAL, 0)
 }
 
 func (s *FloatLiteralContext) FLOAT_LITERAL() antlr.TerminalNode {
-	return s.GetToken(CqlParserFLOAT_LITERAL, 0)
+	return s.GetToken(CQLParserFLOAT_LITERAL, 0)
 }
 
 func (s *FloatLiteralContext) GetRuleContext() antlr.RuleContext {
@@ -33727,20 +33727,20 @@ func (s *FloatLiteralContext) ToStringTree(ruleNames []string, recog antlr.Recog
 }
 
 func (s *FloatLiteralContext) EnterRule(listener antlr.ParseTreeListener) {
-	if listenerT, ok := listener.(CqlParserListener); ok {
+	if listenerT, ok := listener.(CQLParserListener); ok {
 		listenerT.EnterFloatLiteral(s)
 	}
 }
 
 func (s *FloatLiteralContext) ExitRule(listener antlr.ParseTreeListener) {
-	if listenerT, ok := listener.(CqlParserListener); ok {
+	if listenerT, ok := listener.(CQLParserListener); ok {
 		listenerT.ExitFloatLiteral(s)
 	}
 }
 
-func (p *CqlParser) FloatLiteral() (localctx IFloatLiteralContext) {
+func (p *CQLParser) FloatLiteral() (localctx IFloatLiteralContext) {
 	localctx = NewFloatLiteralContext(p, p.GetParserRuleContext(), p.GetState())
-	p.EnterRule(localctx, 296, CqlParserRULE_floatLiteral)
+	p.EnterRule(localctx, 296, CQLParserRULE_floatLiteral)
 	var _la int
 
 	p.EnterOuterAlt(localctx, 1)
@@ -33748,7 +33748,7 @@ func (p *CqlParser) FloatLiteral() (localctx IFloatLiteralContext) {
 		p.SetState(2034)
 		_la = p.GetTokenStream().LA(1)
 
-		if !(_la == CqlParserDECIMAL_LITERAL || _la == CqlParserFLOAT_LITERAL) {
+		if !(_la == CQLParserDECIMAL_LITERAL || _la == CQLParserFLOAT_LITERAL) {
 			p.GetErrorHandler().RecoverInline(p)
 		} else {
 			p.GetErrorHandler().ReportMatch(p)
@@ -33791,13 +33791,13 @@ type StringLiteralContext struct {
 func NewEmptyStringLiteralContext() *StringLiteralContext {
 	var p = new(StringLiteralContext)
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
-	p.RuleIndex = CqlParserRULE_stringLiteral
+	p.RuleIndex = CQLParserRULE_stringLiteral
 	return p
 }
 
 func InitEmptyStringLiteralContext(p *StringLiteralContext) {
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
-	p.RuleIndex = CqlParserRULE_stringLiteral
+	p.RuleIndex = CQLParserRULE_stringLiteral
 }
 
 func (*StringLiteralContext) IsStringLiteralContext() {}
@@ -33808,7 +33808,7 @@ func NewStringLiteralContext(parser antlr.Parser, parent antlr.ParserRuleContext
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, parent, invokingState)
 
 	p.parser = parser
-	p.RuleIndex = CqlParserRULE_stringLiteral
+	p.RuleIndex = CQLParserRULE_stringLiteral
 
 	return p
 }
@@ -33816,7 +33816,7 @@ func NewStringLiteralContext(parser antlr.Parser, parent antlr.ParserRuleContext
 func (s *StringLiteralContext) GetParser() antlr.Parser { return s.parser }
 
 func (s *StringLiteralContext) STRING_LITERAL() antlr.TerminalNode {
-	return s.GetToken(CqlParserSTRING_LITERAL, 0)
+	return s.GetToken(CQLParserSTRING_LITERAL, 0)
 }
 
 func (s *StringLiteralContext) GetRuleContext() antlr.RuleContext {
@@ -33828,24 +33828,24 @@ func (s *StringLiteralContext) ToStringTree(ruleNames []string, recog antlr.Reco
 }
 
 func (s *StringLiteralContext) EnterRule(listener antlr.ParseTreeListener) {
-	if listenerT, ok := listener.(CqlParserListener); ok {
+	if listenerT, ok := listener.(CQLParserListener); ok {
 		listenerT.EnterStringLiteral(s)
 	}
 }
 
 func (s *StringLiteralContext) ExitRule(listener antlr.ParseTreeListener) {
-	if listenerT, ok := listener.(CqlParserListener); ok {
+	if listenerT, ok := listener.(CQLParserListener); ok {
 		listenerT.ExitStringLiteral(s)
 	}
 }
 
-func (p *CqlParser) StringLiteral() (localctx IStringLiteralContext) {
+func (p *CQLParser) StringLiteral() (localctx IStringLiteralContext) {
 	localctx = NewStringLiteralContext(p, p.GetParserRuleContext(), p.GetState())
-	p.EnterRule(localctx, 298, CqlParserRULE_stringLiteral)
+	p.EnterRule(localctx, 298, CQLParserRULE_stringLiteral)
 	p.EnterOuterAlt(localctx, 1)
 	{
 		p.SetState(2036)
-		p.Match(CqlParserSTRING_LITERAL)
+		p.Match(CQLParserSTRING_LITERAL)
 		if p.HasError() {
 			// Recognition error - abort rule
 			goto errorExit
@@ -33888,13 +33888,13 @@ type BooleanLiteralContext struct {
 func NewEmptyBooleanLiteralContext() *BooleanLiteralContext {
 	var p = new(BooleanLiteralContext)
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
-	p.RuleIndex = CqlParserRULE_booleanLiteral
+	p.RuleIndex = CQLParserRULE_booleanLiteral
 	return p
 }
 
 func InitEmptyBooleanLiteralContext(p *BooleanLiteralContext) {
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
-	p.RuleIndex = CqlParserRULE_booleanLiteral
+	p.RuleIndex = CQLParserRULE_booleanLiteral
 }
 
 func (*BooleanLiteralContext) IsBooleanLiteralContext() {}
@@ -33905,7 +33905,7 @@ func NewBooleanLiteralContext(parser antlr.Parser, parent antlr.ParserRuleContex
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, parent, invokingState)
 
 	p.parser = parser
-	p.RuleIndex = CqlParserRULE_booleanLiteral
+	p.RuleIndex = CQLParserRULE_booleanLiteral
 
 	return p
 }
@@ -33913,11 +33913,11 @@ func NewBooleanLiteralContext(parser antlr.Parser, parent antlr.ParserRuleContex
 func (s *BooleanLiteralContext) GetParser() antlr.Parser { return s.parser }
 
 func (s *BooleanLiteralContext) K_TRUE() antlr.TerminalNode {
-	return s.GetToken(CqlParserK_TRUE, 0)
+	return s.GetToken(CQLParserK_TRUE, 0)
 }
 
 func (s *BooleanLiteralContext) K_FALSE() antlr.TerminalNode {
-	return s.GetToken(CqlParserK_FALSE, 0)
+	return s.GetToken(CQLParserK_FALSE, 0)
 }
 
 func (s *BooleanLiteralContext) GetRuleContext() antlr.RuleContext {
@@ -33929,20 +33929,20 @@ func (s *BooleanLiteralContext) ToStringTree(ruleNames []string, recog antlr.Rec
 }
 
 func (s *BooleanLiteralContext) EnterRule(listener antlr.ParseTreeListener) {
-	if listenerT, ok := listener.(CqlParserListener); ok {
+	if listenerT, ok := listener.(CQLParserListener); ok {
 		listenerT.EnterBooleanLiteral(s)
 	}
 }
 
 func (s *BooleanLiteralContext) ExitRule(listener antlr.ParseTreeListener) {
-	if listenerT, ok := listener.(CqlParserListener); ok {
+	if listenerT, ok := listener.(CQLParserListener); ok {
 		listenerT.ExitBooleanLiteral(s)
 	}
 }
 
-func (p *CqlParser) BooleanLiteral() (localctx IBooleanLiteralContext) {
+func (p *CQLParser) BooleanLiteral() (localctx IBooleanLiteralContext) {
 	localctx = NewBooleanLiteralContext(p, p.GetParserRuleContext(), p.GetState())
-	p.EnterRule(localctx, 300, CqlParserRULE_booleanLiteral)
+	p.EnterRule(localctx, 300, CQLParserRULE_booleanLiteral)
 	var _la int
 
 	p.EnterOuterAlt(localctx, 1)
@@ -33950,7 +33950,7 @@ func (p *CqlParser) BooleanLiteral() (localctx IBooleanLiteralContext) {
 		p.SetState(2038)
 		_la = p.GetTokenStream().LA(1)
 
-		if !(_la == CqlParserK_FALSE || _la == CqlParserK_TRUE) {
+		if !(_la == CQLParserK_FALSE || _la == CQLParserK_TRUE) {
 			p.GetErrorHandler().RecoverInline(p)
 		} else {
 			p.GetErrorHandler().ReportMatch(p)
@@ -33993,13 +33993,13 @@ type HexadecimalLiteralContext struct {
 func NewEmptyHexadecimalLiteralContext() *HexadecimalLiteralContext {
 	var p = new(HexadecimalLiteralContext)
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
-	p.RuleIndex = CqlParserRULE_hexadecimalLiteral
+	p.RuleIndex = CQLParserRULE_hexadecimalLiteral
 	return p
 }
 
 func InitEmptyHexadecimalLiteralContext(p *HexadecimalLiteralContext) {
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
-	p.RuleIndex = CqlParserRULE_hexadecimalLiteral
+	p.RuleIndex = CQLParserRULE_hexadecimalLiteral
 }
 
 func (*HexadecimalLiteralContext) IsHexadecimalLiteralContext() {}
@@ -34010,7 +34010,7 @@ func NewHexadecimalLiteralContext(parser antlr.Parser, parent antlr.ParserRuleCo
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, parent, invokingState)
 
 	p.parser = parser
-	p.RuleIndex = CqlParserRULE_hexadecimalLiteral
+	p.RuleIndex = CQLParserRULE_hexadecimalLiteral
 
 	return p
 }
@@ -34018,7 +34018,7 @@ func NewHexadecimalLiteralContext(parser antlr.Parser, parent antlr.ParserRuleCo
 func (s *HexadecimalLiteralContext) GetParser() antlr.Parser { return s.parser }
 
 func (s *HexadecimalLiteralContext) HEXADECIMAL_LITERAL() antlr.TerminalNode {
-	return s.GetToken(CqlParserHEXADECIMAL_LITERAL, 0)
+	return s.GetToken(CQLParserHEXADECIMAL_LITERAL, 0)
 }
 
 func (s *HexadecimalLiteralContext) GetRuleContext() antlr.RuleContext {
@@ -34030,24 +34030,24 @@ func (s *HexadecimalLiteralContext) ToStringTree(ruleNames []string, recog antlr
 }
 
 func (s *HexadecimalLiteralContext) EnterRule(listener antlr.ParseTreeListener) {
-	if listenerT, ok := listener.(CqlParserListener); ok {
+	if listenerT, ok := listener.(CQLParserListener); ok {
 		listenerT.EnterHexadecimalLiteral(s)
 	}
 }
 
 func (s *HexadecimalLiteralContext) ExitRule(listener antlr.ParseTreeListener) {
-	if listenerT, ok := listener.(CqlParserListener); ok {
+	if listenerT, ok := listener.(CQLParserListener); ok {
 		listenerT.ExitHexadecimalLiteral(s)
 	}
 }
 
-func (p *CqlParser) HexadecimalLiteral() (localctx IHexadecimalLiteralContext) {
+func (p *CQLParser) HexadecimalLiteral() (localctx IHexadecimalLiteralContext) {
 	localctx = NewHexadecimalLiteralContext(p, p.GetParserRuleContext(), p.GetState())
-	p.EnterRule(localctx, 302, CqlParserRULE_hexadecimalLiteral)
+	p.EnterRule(localctx, 302, CQLParserRULE_hexadecimalLiteral)
 	p.EnterOuterAlt(localctx, 1)
 	{
 		p.SetState(2040)
-		p.Match(CqlParserHEXADECIMAL_LITERAL)
+		p.Match(CQLParserHEXADECIMAL_LITERAL)
 		if p.HasError() {
 			// Recognition error - abort rule
 			goto errorExit
@@ -34091,13 +34091,13 @@ type KeyspaceContext struct {
 func NewEmptyKeyspaceContext() *KeyspaceContext {
 	var p = new(KeyspaceContext)
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
-	p.RuleIndex = CqlParserRULE_keyspace
+	p.RuleIndex = CQLParserRULE_keyspace
 	return p
 }
 
 func InitEmptyKeyspaceContext(p *KeyspaceContext) {
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
-	p.RuleIndex = CqlParserRULE_keyspace
+	p.RuleIndex = CQLParserRULE_keyspace
 }
 
 func (*KeyspaceContext) IsKeyspaceContext() {}
@@ -34108,7 +34108,7 @@ func NewKeyspaceContext(parser antlr.Parser, parent antlr.ParserRuleContext, inv
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, parent, invokingState)
 
 	p.parser = parser
-	p.RuleIndex = CqlParserRULE_keyspace
+	p.RuleIndex = CQLParserRULE_keyspace
 
 	return p
 }
@@ -34116,15 +34116,15 @@ func NewKeyspaceContext(parser antlr.Parser, parent antlr.ParserRuleContext, inv
 func (s *KeyspaceContext) GetParser() antlr.Parser { return s.parser }
 
 func (s *KeyspaceContext) OBJECT_NAME() antlr.TerminalNode {
-	return s.GetToken(CqlParserOBJECT_NAME, 0)
+	return s.GetToken(CQLParserOBJECT_NAME, 0)
 }
 
 func (s *KeyspaceContext) AllDQUOTE() []antlr.TerminalNode {
-	return s.GetTokens(CqlParserDQUOTE)
+	return s.GetTokens(CQLParserDQUOTE)
 }
 
 func (s *KeyspaceContext) DQUOTE(i int) antlr.TerminalNode {
-	return s.GetToken(CqlParserDQUOTE, i)
+	return s.GetToken(CQLParserDQUOTE, i)
 }
 
 func (s *KeyspaceContext) GetRuleContext() antlr.RuleContext {
@@ -34136,20 +34136,20 @@ func (s *KeyspaceContext) ToStringTree(ruleNames []string, recog antlr.Recognize
 }
 
 func (s *KeyspaceContext) EnterRule(listener antlr.ParseTreeListener) {
-	if listenerT, ok := listener.(CqlParserListener); ok {
+	if listenerT, ok := listener.(CQLParserListener); ok {
 		listenerT.EnterKeyspace(s)
 	}
 }
 
 func (s *KeyspaceContext) ExitRule(listener antlr.ParseTreeListener) {
-	if listenerT, ok := listener.(CqlParserListener); ok {
+	if listenerT, ok := listener.(CQLParserListener); ok {
 		listenerT.ExitKeyspace(s)
 	}
 }
 
-func (p *CqlParser) Keyspace() (localctx IKeyspaceContext) {
+func (p *CQLParser) Keyspace() (localctx IKeyspaceContext) {
 	localctx = NewKeyspaceContext(p, p.GetParserRuleContext(), p.GetState())
-	p.EnterRule(localctx, 304, CqlParserRULE_keyspace)
+	p.EnterRule(localctx, 304, CQLParserRULE_keyspace)
 	p.SetState(2046)
 	p.GetErrorHandler().Sync(p)
 	if p.HasError() {
@@ -34157,22 +34157,22 @@ func (p *CqlParser) Keyspace() (localctx IKeyspaceContext) {
 	}
 
 	switch p.GetTokenStream().LA(1) {
-	case CqlParserOBJECT_NAME:
+	case CQLParserOBJECT_NAME:
 		p.EnterOuterAlt(localctx, 1)
 		{
 			p.SetState(2042)
-			p.Match(CqlParserOBJECT_NAME)
+			p.Match(CQLParserOBJECT_NAME)
 			if p.HasError() {
 				// Recognition error - abort rule
 				goto errorExit
 			}
 		}
 
-	case CqlParserDQUOTE:
+	case CQLParserDQUOTE:
 		p.EnterOuterAlt(localctx, 2)
 		{
 			p.SetState(2043)
-			p.Match(CqlParserDQUOTE)
+			p.Match(CQLParserDQUOTE)
 			if p.HasError() {
 				// Recognition error - abort rule
 				goto errorExit
@@ -34180,7 +34180,7 @@ func (p *CqlParser) Keyspace() (localctx IKeyspaceContext) {
 		}
 		{
 			p.SetState(2044)
-			p.Match(CqlParserOBJECT_NAME)
+			p.Match(CQLParserOBJECT_NAME)
 			if p.HasError() {
 				// Recognition error - abort rule
 				goto errorExit
@@ -34188,7 +34188,7 @@ func (p *CqlParser) Keyspace() (localctx IKeyspaceContext) {
 		}
 		{
 			p.SetState(2045)
-			p.Match(CqlParserDQUOTE)
+			p.Match(CQLParserDQUOTE)
 			if p.HasError() {
 				// Recognition error - abort rule
 				goto errorExit
@@ -34237,13 +34237,13 @@ type TableContext struct {
 func NewEmptyTableContext() *TableContext {
 	var p = new(TableContext)
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
-	p.RuleIndex = CqlParserRULE_table
+	p.RuleIndex = CQLParserRULE_table
 	return p
 }
 
 func InitEmptyTableContext(p *TableContext) {
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
-	p.RuleIndex = CqlParserRULE_table
+	p.RuleIndex = CQLParserRULE_table
 }
 
 func (*TableContext) IsTableContext() {}
@@ -34254,7 +34254,7 @@ func NewTableContext(parser antlr.Parser, parent antlr.ParserRuleContext, invoki
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, parent, invokingState)
 
 	p.parser = parser
-	p.RuleIndex = CqlParserRULE_table
+	p.RuleIndex = CQLParserRULE_table
 
 	return p
 }
@@ -34262,15 +34262,15 @@ func NewTableContext(parser antlr.Parser, parent antlr.ParserRuleContext, invoki
 func (s *TableContext) GetParser() antlr.Parser { return s.parser }
 
 func (s *TableContext) OBJECT_NAME() antlr.TerminalNode {
-	return s.GetToken(CqlParserOBJECT_NAME, 0)
+	return s.GetToken(CQLParserOBJECT_NAME, 0)
 }
 
 func (s *TableContext) AllDQUOTE() []antlr.TerminalNode {
-	return s.GetTokens(CqlParserDQUOTE)
+	return s.GetTokens(CQLParserDQUOTE)
 }
 
 func (s *TableContext) DQUOTE(i int) antlr.TerminalNode {
-	return s.GetToken(CqlParserDQUOTE, i)
+	return s.GetToken(CQLParserDQUOTE, i)
 }
 
 func (s *TableContext) GetRuleContext() antlr.RuleContext {
@@ -34282,20 +34282,20 @@ func (s *TableContext) ToStringTree(ruleNames []string, recog antlr.Recognizer) 
 }
 
 func (s *TableContext) EnterRule(listener antlr.ParseTreeListener) {
-	if listenerT, ok := listener.(CqlParserListener); ok {
+	if listenerT, ok := listener.(CQLParserListener); ok {
 		listenerT.EnterTable(s)
 	}
 }
 
 func (s *TableContext) ExitRule(listener antlr.ParseTreeListener) {
-	if listenerT, ok := listener.(CqlParserListener); ok {
+	if listenerT, ok := listener.(CQLParserListener); ok {
 		listenerT.ExitTable(s)
 	}
 }
 
-func (p *CqlParser) Table() (localctx ITableContext) {
+func (p *CQLParser) Table() (localctx ITableContext) {
 	localctx = NewTableContext(p, p.GetParserRuleContext(), p.GetState())
-	p.EnterRule(localctx, 306, CqlParserRULE_table)
+	p.EnterRule(localctx, 306, CQLParserRULE_table)
 	p.SetState(2052)
 	p.GetErrorHandler().Sync(p)
 	if p.HasError() {
@@ -34303,22 +34303,22 @@ func (p *CqlParser) Table() (localctx ITableContext) {
 	}
 
 	switch p.GetTokenStream().LA(1) {
-	case CqlParserOBJECT_NAME:
+	case CQLParserOBJECT_NAME:
 		p.EnterOuterAlt(localctx, 1)
 		{
 			p.SetState(2048)
-			p.Match(CqlParserOBJECT_NAME)
+			p.Match(CQLParserOBJECT_NAME)
 			if p.HasError() {
 				// Recognition error - abort rule
 				goto errorExit
 			}
 		}
 
-	case CqlParserDQUOTE:
+	case CQLParserDQUOTE:
 		p.EnterOuterAlt(localctx, 2)
 		{
 			p.SetState(2049)
-			p.Match(CqlParserDQUOTE)
+			p.Match(CQLParserDQUOTE)
 			if p.HasError() {
 				// Recognition error - abort rule
 				goto errorExit
@@ -34326,7 +34326,7 @@ func (p *CqlParser) Table() (localctx ITableContext) {
 		}
 		{
 			p.SetState(2050)
-			p.Match(CqlParserOBJECT_NAME)
+			p.Match(CQLParserOBJECT_NAME)
 			if p.HasError() {
 				// Recognition error - abort rule
 				goto errorExit
@@ -34334,7 +34334,7 @@ func (p *CqlParser) Table() (localctx ITableContext) {
 		}
 		{
 			p.SetState(2051)
-			p.Match(CqlParserDQUOTE)
+			p.Match(CQLParserDQUOTE)
 			if p.HasError() {
 				// Recognition error - abort rule
 				goto errorExit
@@ -34383,13 +34383,13 @@ type ColumnContext struct {
 func NewEmptyColumnContext() *ColumnContext {
 	var p = new(ColumnContext)
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
-	p.RuleIndex = CqlParserRULE_column
+	p.RuleIndex = CQLParserRULE_column
 	return p
 }
 
 func InitEmptyColumnContext(p *ColumnContext) {
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
-	p.RuleIndex = CqlParserRULE_column
+	p.RuleIndex = CQLParserRULE_column
 }
 
 func (*ColumnContext) IsColumnContext() {}
@@ -34400,7 +34400,7 @@ func NewColumnContext(parser antlr.Parser, parent antlr.ParserRuleContext, invok
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, parent, invokingState)
 
 	p.parser = parser
-	p.RuleIndex = CqlParserRULE_column
+	p.RuleIndex = CQLParserRULE_column
 
 	return p
 }
@@ -34408,15 +34408,15 @@ func NewColumnContext(parser antlr.Parser, parent antlr.ParserRuleContext, invok
 func (s *ColumnContext) GetParser() antlr.Parser { return s.parser }
 
 func (s *ColumnContext) OBJECT_NAME() antlr.TerminalNode {
-	return s.GetToken(CqlParserOBJECT_NAME, 0)
+	return s.GetToken(CQLParserOBJECT_NAME, 0)
 }
 
 func (s *ColumnContext) AllDQUOTE() []antlr.TerminalNode {
-	return s.GetTokens(CqlParserDQUOTE)
+	return s.GetTokens(CQLParserDQUOTE)
 }
 
 func (s *ColumnContext) DQUOTE(i int) antlr.TerminalNode {
-	return s.GetToken(CqlParserDQUOTE, i)
+	return s.GetToken(CQLParserDQUOTE, i)
 }
 
 func (s *ColumnContext) GetRuleContext() antlr.RuleContext {
@@ -34428,20 +34428,20 @@ func (s *ColumnContext) ToStringTree(ruleNames []string, recog antlr.Recognizer)
 }
 
 func (s *ColumnContext) EnterRule(listener antlr.ParseTreeListener) {
-	if listenerT, ok := listener.(CqlParserListener); ok {
+	if listenerT, ok := listener.(CQLParserListener); ok {
 		listenerT.EnterColumn(s)
 	}
 }
 
 func (s *ColumnContext) ExitRule(listener antlr.ParseTreeListener) {
-	if listenerT, ok := listener.(CqlParserListener); ok {
+	if listenerT, ok := listener.(CQLParserListener); ok {
 		listenerT.ExitColumn(s)
 	}
 }
 
-func (p *CqlParser) Column() (localctx IColumnContext) {
+func (p *CQLParser) Column() (localctx IColumnContext) {
 	localctx = NewColumnContext(p, p.GetParserRuleContext(), p.GetState())
-	p.EnterRule(localctx, 308, CqlParserRULE_column)
+	p.EnterRule(localctx, 308, CQLParserRULE_column)
 	p.SetState(2058)
 	p.GetErrorHandler().Sync(p)
 	if p.HasError() {
@@ -34449,22 +34449,22 @@ func (p *CqlParser) Column() (localctx IColumnContext) {
 	}
 
 	switch p.GetTokenStream().LA(1) {
-	case CqlParserOBJECT_NAME:
+	case CQLParserOBJECT_NAME:
 		p.EnterOuterAlt(localctx, 1)
 		{
 			p.SetState(2054)
-			p.Match(CqlParserOBJECT_NAME)
+			p.Match(CQLParserOBJECT_NAME)
 			if p.HasError() {
 				// Recognition error - abort rule
 				goto errorExit
 			}
 		}
 
-	case CqlParserDQUOTE:
+	case CQLParserDQUOTE:
 		p.EnterOuterAlt(localctx, 2)
 		{
 			p.SetState(2055)
-			p.Match(CqlParserDQUOTE)
+			p.Match(CQLParserDQUOTE)
 			if p.HasError() {
 				// Recognition error - abort rule
 				goto errorExit
@@ -34472,7 +34472,7 @@ func (p *CqlParser) Column() (localctx IColumnContext) {
 		}
 		{
 			p.SetState(2056)
-			p.Match(CqlParserOBJECT_NAME)
+			p.Match(CQLParserOBJECT_NAME)
 			if p.HasError() {
 				// Recognition error - abort rule
 				goto errorExit
@@ -34480,7 +34480,7 @@ func (p *CqlParser) Column() (localctx IColumnContext) {
 		}
 		{
 			p.SetState(2057)
-			p.Match(CqlParserDQUOTE)
+			p.Match(CQLParserDQUOTE)
 			if p.HasError() {
 				// Recognition error - abort rule
 				goto errorExit
@@ -34528,13 +34528,13 @@ type DataTypeContext struct {
 func NewEmptyDataTypeContext() *DataTypeContext {
 	var p = new(DataTypeContext)
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
-	p.RuleIndex = CqlParserRULE_dataType
+	p.RuleIndex = CQLParserRULE_dataType
 	return p
 }
 
 func InitEmptyDataTypeContext(p *DataTypeContext) {
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
-	p.RuleIndex = CqlParserRULE_dataType
+	p.RuleIndex = CQLParserRULE_dataType
 }
 
 func (*DataTypeContext) IsDataTypeContext() {}
@@ -34545,7 +34545,7 @@ func NewDataTypeContext(parser antlr.Parser, parent antlr.ParserRuleContext, inv
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, parent, invokingState)
 
 	p.parser = parser
-	p.RuleIndex = CqlParserRULE_dataType
+	p.RuleIndex = CQLParserRULE_dataType
 
 	return p
 }
@@ -34593,20 +34593,20 @@ func (s *DataTypeContext) ToStringTree(ruleNames []string, recog antlr.Recognize
 }
 
 func (s *DataTypeContext) EnterRule(listener antlr.ParseTreeListener) {
-	if listenerT, ok := listener.(CqlParserListener); ok {
+	if listenerT, ok := listener.(CQLParserListener); ok {
 		listenerT.EnterDataType(s)
 	}
 }
 
 func (s *DataTypeContext) ExitRule(listener antlr.ParseTreeListener) {
-	if listenerT, ok := listener.(CqlParserListener); ok {
+	if listenerT, ok := listener.(CQLParserListener); ok {
 		listenerT.ExitDataType(s)
 	}
 }
 
-func (p *CqlParser) DataType() (localctx IDataTypeContext) {
+func (p *CQLParser) DataType() (localctx IDataTypeContext) {
 	localctx = NewDataTypeContext(p, p.GetParserRuleContext(), p.GetState())
-	p.EnterRule(localctx, 310, CqlParserRULE_dataType)
+	p.EnterRule(localctx, 310, CQLParserRULE_dataType)
 	var _la int
 
 	p.EnterOuterAlt(localctx, 1)
@@ -34621,7 +34621,7 @@ func (p *CqlParser) DataType() (localctx IDataTypeContext) {
 	}
 	_la = p.GetTokenStream().LA(1)
 
-	if _la == CqlParserOPERATOR_LT {
+	if _la == CQLParserOPERATOR_LT {
 		{
 			p.SetState(2061)
 			p.DataTypeDefinition()
@@ -34689,13 +34689,13 @@ type DataTypeNameContext struct {
 func NewEmptyDataTypeNameContext() *DataTypeNameContext {
 	var p = new(DataTypeNameContext)
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
-	p.RuleIndex = CqlParserRULE_dataTypeName
+	p.RuleIndex = CQLParserRULE_dataTypeName
 	return p
 }
 
 func InitEmptyDataTypeNameContext(p *DataTypeNameContext) {
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
-	p.RuleIndex = CqlParserRULE_dataTypeName
+	p.RuleIndex = CQLParserRULE_dataTypeName
 }
 
 func (*DataTypeNameContext) IsDataTypeNameContext() {}
@@ -34706,7 +34706,7 @@ func NewDataTypeNameContext(parser antlr.Parser, parent antlr.ParserRuleContext,
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, parent, invokingState)
 
 	p.parser = parser
-	p.RuleIndex = CqlParserRULE_dataTypeName
+	p.RuleIndex = CQLParserRULE_dataTypeName
 
 	return p
 }
@@ -34714,107 +34714,107 @@ func NewDataTypeNameContext(parser antlr.Parser, parent antlr.ParserRuleContext,
 func (s *DataTypeNameContext) GetParser() antlr.Parser { return s.parser }
 
 func (s *DataTypeNameContext) OBJECT_NAME() antlr.TerminalNode {
-	return s.GetToken(CqlParserOBJECT_NAME, 0)
+	return s.GetToken(CQLParserOBJECT_NAME, 0)
 }
 
 func (s *DataTypeNameContext) K_TIMESTAMP() antlr.TerminalNode {
-	return s.GetToken(CqlParserK_TIMESTAMP, 0)
+	return s.GetToken(CQLParserK_TIMESTAMP, 0)
 }
 
 func (s *DataTypeNameContext) K_SET() antlr.TerminalNode {
-	return s.GetToken(CqlParserK_SET, 0)
+	return s.GetToken(CQLParserK_SET, 0)
 }
 
 func (s *DataTypeNameContext) K_ASCII() antlr.TerminalNode {
-	return s.GetToken(CqlParserK_ASCII, 0)
+	return s.GetToken(CQLParserK_ASCII, 0)
 }
 
 func (s *DataTypeNameContext) K_BIGINT() antlr.TerminalNode {
-	return s.GetToken(CqlParserK_BIGINT, 0)
+	return s.GetToken(CQLParserK_BIGINT, 0)
 }
 
 func (s *DataTypeNameContext) K_BLOB() antlr.TerminalNode {
-	return s.GetToken(CqlParserK_BLOB, 0)
+	return s.GetToken(CQLParserK_BLOB, 0)
 }
 
 func (s *DataTypeNameContext) K_BOOLEAN() antlr.TerminalNode {
-	return s.GetToken(CqlParserK_BOOLEAN, 0)
+	return s.GetToken(CQLParserK_BOOLEAN, 0)
 }
 
 func (s *DataTypeNameContext) K_COUNTER() antlr.TerminalNode {
-	return s.GetToken(CqlParserK_COUNTER, 0)
+	return s.GetToken(CQLParserK_COUNTER, 0)
 }
 
 func (s *DataTypeNameContext) K_DATE() antlr.TerminalNode {
-	return s.GetToken(CqlParserK_DATE, 0)
+	return s.GetToken(CQLParserK_DATE, 0)
 }
 
 func (s *DataTypeNameContext) K_DECIMAL() antlr.TerminalNode {
-	return s.GetToken(CqlParserK_DECIMAL, 0)
+	return s.GetToken(CQLParserK_DECIMAL, 0)
 }
 
 func (s *DataTypeNameContext) K_DOUBLE() antlr.TerminalNode {
-	return s.GetToken(CqlParserK_DOUBLE, 0)
+	return s.GetToken(CQLParserK_DOUBLE, 0)
 }
 
 func (s *DataTypeNameContext) K_FLOAT() antlr.TerminalNode {
-	return s.GetToken(CqlParserK_FLOAT, 0)
+	return s.GetToken(CQLParserK_FLOAT, 0)
 }
 
 func (s *DataTypeNameContext) K_FROZEN() antlr.TerminalNode {
-	return s.GetToken(CqlParserK_FROZEN, 0)
+	return s.GetToken(CQLParserK_FROZEN, 0)
 }
 
 func (s *DataTypeNameContext) K_INET() antlr.TerminalNode {
-	return s.GetToken(CqlParserK_INET, 0)
+	return s.GetToken(CQLParserK_INET, 0)
 }
 
 func (s *DataTypeNameContext) K_INT() antlr.TerminalNode {
-	return s.GetToken(CqlParserK_INT, 0)
+	return s.GetToken(CQLParserK_INT, 0)
 }
 
 func (s *DataTypeNameContext) K_LIST() antlr.TerminalNode {
-	return s.GetToken(CqlParserK_LIST, 0)
+	return s.GetToken(CQLParserK_LIST, 0)
 }
 
 func (s *DataTypeNameContext) K_MAP() antlr.TerminalNode {
-	return s.GetToken(CqlParserK_MAP, 0)
+	return s.GetToken(CQLParserK_MAP, 0)
 }
 
 func (s *DataTypeNameContext) K_SMALLINT() antlr.TerminalNode {
-	return s.GetToken(CqlParserK_SMALLINT, 0)
+	return s.GetToken(CQLParserK_SMALLINT, 0)
 }
 
 func (s *DataTypeNameContext) K_TEXT() antlr.TerminalNode {
-	return s.GetToken(CqlParserK_TEXT, 0)
+	return s.GetToken(CQLParserK_TEXT, 0)
 }
 
 func (s *DataTypeNameContext) K_TIME() antlr.TerminalNode {
-	return s.GetToken(CqlParserK_TIME, 0)
+	return s.GetToken(CQLParserK_TIME, 0)
 }
 
 func (s *DataTypeNameContext) K_TIMEUUID() antlr.TerminalNode {
-	return s.GetToken(CqlParserK_TIMEUUID, 0)
+	return s.GetToken(CQLParserK_TIMEUUID, 0)
 }
 
 func (s *DataTypeNameContext) K_TINYINT() antlr.TerminalNode {
-	return s.GetToken(CqlParserK_TINYINT, 0)
+	return s.GetToken(CQLParserK_TINYINT, 0)
 }
 
 func (s *DataTypeNameContext) K_TUPLE() antlr.TerminalNode {
-	return s.GetToken(CqlParserK_TUPLE, 0)
+	return s.GetToken(CQLParserK_TUPLE, 0)
 }
 
 func (s *DataTypeNameContext) K_VARCHAR() antlr.TerminalNode {
-	return s.GetToken(CqlParserK_VARCHAR, 0)
+	return s.GetToken(CQLParserK_VARCHAR, 0)
 }
 
 func (s *DataTypeNameContext) K_VARINT() antlr.TerminalNode {
-	return s.GetToken(CqlParserK_VARINT, 0)
+	return s.GetToken(CQLParserK_VARINT, 0)
 }
 
 func (s *DataTypeNameContext) K_UUID() antlr.TerminalNode {
-	return s.GetToken(CqlParserK_UUID, 0)
+	return s.GetToken(CQLParserK_UUID, 0)
 }
 
 func (s *DataTypeNameContext) GetRuleContext() antlr.RuleContext {
@@ -34826,20 +34826,20 @@ func (s *DataTypeNameContext) ToStringTree(ruleNames []string, recog antlr.Recog
 }
 
 func (s *DataTypeNameContext) EnterRule(listener antlr.ParseTreeListener) {
-	if listenerT, ok := listener.(CqlParserListener); ok {
+	if listenerT, ok := listener.(CQLParserListener); ok {
 		listenerT.EnterDataTypeName(s)
 	}
 }
 
 func (s *DataTypeNameContext) ExitRule(listener antlr.ParseTreeListener) {
-	if listenerT, ok := listener.(CqlParserListener); ok {
+	if listenerT, ok := listener.(CQLParserListener); ok {
 		listenerT.ExitDataTypeName(s)
 	}
 }
 
-func (p *CqlParser) DataTypeName() (localctx IDataTypeNameContext) {
+func (p *CQLParser) DataTypeName() (localctx IDataTypeNameContext) {
 	localctx = NewDataTypeNameContext(p, p.GetParserRuleContext(), p.GetState())
-	p.EnterRule(localctx, 312, CqlParserRULE_dataTypeName)
+	p.EnterRule(localctx, 312, CQLParserRULE_dataTypeName)
 	var _la int
 
 	p.EnterOuterAlt(localctx, 1)
@@ -34895,13 +34895,13 @@ type DataTypeDefinitionContext struct {
 func NewEmptyDataTypeDefinitionContext() *DataTypeDefinitionContext {
 	var p = new(DataTypeDefinitionContext)
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
-	p.RuleIndex = CqlParserRULE_dataTypeDefinition
+	p.RuleIndex = CQLParserRULE_dataTypeDefinition
 	return p
 }
 
 func InitEmptyDataTypeDefinitionContext(p *DataTypeDefinitionContext) {
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
-	p.RuleIndex = CqlParserRULE_dataTypeDefinition
+	p.RuleIndex = CQLParserRULE_dataTypeDefinition
 }
 
 func (*DataTypeDefinitionContext) IsDataTypeDefinitionContext() {}
@@ -34912,7 +34912,7 @@ func NewDataTypeDefinitionContext(parser antlr.Parser, parent antlr.ParserRuleCo
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, parent, invokingState)
 
 	p.parser = parser
-	p.RuleIndex = CqlParserRULE_dataTypeDefinition
+	p.RuleIndex = CQLParserRULE_dataTypeDefinition
 
 	return p
 }
@@ -35042,20 +35042,20 @@ func (s *DataTypeDefinitionContext) ToStringTree(ruleNames []string, recog antlr
 }
 
 func (s *DataTypeDefinitionContext) EnterRule(listener antlr.ParseTreeListener) {
-	if listenerT, ok := listener.(CqlParserListener); ok {
+	if listenerT, ok := listener.(CQLParserListener); ok {
 		listenerT.EnterDataTypeDefinition(s)
 	}
 }
 
 func (s *DataTypeDefinitionContext) ExitRule(listener antlr.ParseTreeListener) {
-	if listenerT, ok := listener.(CqlParserListener); ok {
+	if listenerT, ok := listener.(CQLParserListener); ok {
 		listenerT.ExitDataTypeDefinition(s)
 	}
 }
 
-func (p *CqlParser) DataTypeDefinition() (localctx IDataTypeDefinitionContext) {
+func (p *CQLParser) DataTypeDefinition() (localctx IDataTypeDefinitionContext) {
 	localctx = NewDataTypeDefinitionContext(p, p.GetParserRuleContext(), p.GetState())
-	p.EnterRule(localctx, 314, CqlParserRULE_dataTypeDefinition)
+	p.EnterRule(localctx, 314, CQLParserRULE_dataTypeDefinition)
 	var _la int
 
 	p.EnterOuterAlt(localctx, 1)
@@ -35074,7 +35074,7 @@ func (p *CqlParser) DataTypeDefinition() (localctx IDataTypeDefinitionContext) {
 	}
 	_la = p.GetTokenStream().LA(1)
 
-	for _la == CqlParserCOMMA {
+	for _la == CQLParserCOMMA {
 		{
 			p.SetState(2068)
 			p.SyntaxComma()
@@ -35132,13 +35132,13 @@ type OrderDirectionContext struct {
 func NewEmptyOrderDirectionContext() *OrderDirectionContext {
 	var p = new(OrderDirectionContext)
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
-	p.RuleIndex = CqlParserRULE_orderDirection
+	p.RuleIndex = CQLParserRULE_orderDirection
 	return p
 }
 
 func InitEmptyOrderDirectionContext(p *OrderDirectionContext) {
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
-	p.RuleIndex = CqlParserRULE_orderDirection
+	p.RuleIndex = CQLParserRULE_orderDirection
 }
 
 func (*OrderDirectionContext) IsOrderDirectionContext() {}
@@ -35149,7 +35149,7 @@ func NewOrderDirectionContext(parser antlr.Parser, parent antlr.ParserRuleContex
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, parent, invokingState)
 
 	p.parser = parser
-	p.RuleIndex = CqlParserRULE_orderDirection
+	p.RuleIndex = CQLParserRULE_orderDirection
 
 	return p
 }
@@ -35197,20 +35197,20 @@ func (s *OrderDirectionContext) ToStringTree(ruleNames []string, recog antlr.Rec
 }
 
 func (s *OrderDirectionContext) EnterRule(listener antlr.ParseTreeListener) {
-	if listenerT, ok := listener.(CqlParserListener); ok {
+	if listenerT, ok := listener.(CQLParserListener); ok {
 		listenerT.EnterOrderDirection(s)
 	}
 }
 
 func (s *OrderDirectionContext) ExitRule(listener antlr.ParseTreeListener) {
-	if listenerT, ok := listener.(CqlParserListener); ok {
+	if listenerT, ok := listener.(CQLParserListener); ok {
 		listenerT.ExitOrderDirection(s)
 	}
 }
 
-func (p *CqlParser) OrderDirection() (localctx IOrderDirectionContext) {
+func (p *CQLParser) OrderDirection() (localctx IOrderDirectionContext) {
 	localctx = NewOrderDirectionContext(p, p.GetParserRuleContext(), p.GetState())
-	p.EnterRule(localctx, 316, CqlParserRULE_orderDirection)
+	p.EnterRule(localctx, 316, CQLParserRULE_orderDirection)
 	p.SetState(2080)
 	p.GetErrorHandler().Sync(p)
 	if p.HasError() {
@@ -35218,14 +35218,14 @@ func (p *CqlParser) OrderDirection() (localctx IOrderDirectionContext) {
 	}
 
 	switch p.GetTokenStream().LA(1) {
-	case CqlParserK_ASC:
+	case CQLParserK_ASC:
 		p.EnterOuterAlt(localctx, 1)
 		{
 			p.SetState(2078)
 			p.KwAsc()
 		}
 
-	case CqlParserK_DESC:
+	case CQLParserK_DESC:
 		p.EnterOuterAlt(localctx, 2)
 		{
 			p.SetState(2079)
@@ -35272,13 +35272,13 @@ type RoleContext struct {
 func NewEmptyRoleContext() *RoleContext {
 	var p = new(RoleContext)
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
-	p.RuleIndex = CqlParserRULE_role
+	p.RuleIndex = CQLParserRULE_role
 	return p
 }
 
 func InitEmptyRoleContext(p *RoleContext) {
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
-	p.RuleIndex = CqlParserRULE_role
+	p.RuleIndex = CQLParserRULE_role
 }
 
 func (*RoleContext) IsRoleContext() {}
@@ -35289,7 +35289,7 @@ func NewRoleContext(parser antlr.Parser, parent antlr.ParserRuleContext, invokin
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, parent, invokingState)
 
 	p.parser = parser
-	p.RuleIndex = CqlParserRULE_role
+	p.RuleIndex = CQLParserRULE_role
 
 	return p
 }
@@ -35297,7 +35297,7 @@ func NewRoleContext(parser antlr.Parser, parent antlr.ParserRuleContext, invokin
 func (s *RoleContext) GetParser() antlr.Parser { return s.parser }
 
 func (s *RoleContext) OBJECT_NAME() antlr.TerminalNode {
-	return s.GetToken(CqlParserOBJECT_NAME, 0)
+	return s.GetToken(CQLParserOBJECT_NAME, 0)
 }
 
 func (s *RoleContext) GetRuleContext() antlr.RuleContext {
@@ -35309,24 +35309,24 @@ func (s *RoleContext) ToStringTree(ruleNames []string, recog antlr.Recognizer) s
 }
 
 func (s *RoleContext) EnterRule(listener antlr.ParseTreeListener) {
-	if listenerT, ok := listener.(CqlParserListener); ok {
+	if listenerT, ok := listener.(CQLParserListener); ok {
 		listenerT.EnterRole(s)
 	}
 }
 
 func (s *RoleContext) ExitRule(listener antlr.ParseTreeListener) {
-	if listenerT, ok := listener.(CqlParserListener); ok {
+	if listenerT, ok := listener.(CQLParserListener); ok {
 		listenerT.ExitRole(s)
 	}
 }
 
-func (p *CqlParser) Role() (localctx IRoleContext) {
+func (p *CQLParser) Role() (localctx IRoleContext) {
 	localctx = NewRoleContext(p, p.GetParserRuleContext(), p.GetState())
-	p.EnterRule(localctx, 318, CqlParserRULE_role)
+	p.EnterRule(localctx, 318, CQLParserRULE_role)
 	p.EnterOuterAlt(localctx, 1)
 	{
 		p.SetState(2082)
-		p.Match(CqlParserOBJECT_NAME)
+		p.Match(CQLParserOBJECT_NAME)
 		if p.HasError() {
 			// Recognition error - abort rule
 			goto errorExit
@@ -35368,13 +35368,13 @@ type TriggerContext struct {
 func NewEmptyTriggerContext() *TriggerContext {
 	var p = new(TriggerContext)
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
-	p.RuleIndex = CqlParserRULE_trigger
+	p.RuleIndex = CQLParserRULE_trigger
 	return p
 }
 
 func InitEmptyTriggerContext(p *TriggerContext) {
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
-	p.RuleIndex = CqlParserRULE_trigger
+	p.RuleIndex = CQLParserRULE_trigger
 }
 
 func (*TriggerContext) IsTriggerContext() {}
@@ -35385,7 +35385,7 @@ func NewTriggerContext(parser antlr.Parser, parent antlr.ParserRuleContext, invo
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, parent, invokingState)
 
 	p.parser = parser
-	p.RuleIndex = CqlParserRULE_trigger
+	p.RuleIndex = CQLParserRULE_trigger
 
 	return p
 }
@@ -35393,7 +35393,7 @@ func NewTriggerContext(parser antlr.Parser, parent antlr.ParserRuleContext, invo
 func (s *TriggerContext) GetParser() antlr.Parser { return s.parser }
 
 func (s *TriggerContext) OBJECT_NAME() antlr.TerminalNode {
-	return s.GetToken(CqlParserOBJECT_NAME, 0)
+	return s.GetToken(CQLParserOBJECT_NAME, 0)
 }
 
 func (s *TriggerContext) GetRuleContext() antlr.RuleContext {
@@ -35405,24 +35405,24 @@ func (s *TriggerContext) ToStringTree(ruleNames []string, recog antlr.Recognizer
 }
 
 func (s *TriggerContext) EnterRule(listener antlr.ParseTreeListener) {
-	if listenerT, ok := listener.(CqlParserListener); ok {
+	if listenerT, ok := listener.(CQLParserListener); ok {
 		listenerT.EnterTrigger(s)
 	}
 }
 
 func (s *TriggerContext) ExitRule(listener antlr.ParseTreeListener) {
-	if listenerT, ok := listener.(CqlParserListener); ok {
+	if listenerT, ok := listener.(CQLParserListener); ok {
 		listenerT.ExitTrigger(s)
 	}
 }
 
-func (p *CqlParser) Trigger() (localctx ITriggerContext) {
+func (p *CQLParser) Trigger() (localctx ITriggerContext) {
 	localctx = NewTriggerContext(p, p.GetParserRuleContext(), p.GetState())
-	p.EnterRule(localctx, 320, CqlParserRULE_trigger)
+	p.EnterRule(localctx, 320, CQLParserRULE_trigger)
 	p.EnterOuterAlt(localctx, 1)
 	{
 		p.SetState(2084)
-		p.Match(CqlParserOBJECT_NAME)
+		p.Match(CQLParserOBJECT_NAME)
 		if p.HasError() {
 			// Recognition error - abort rule
 			goto errorExit
@@ -35464,13 +35464,13 @@ type TriggerClassContext struct {
 func NewEmptyTriggerClassContext() *TriggerClassContext {
 	var p = new(TriggerClassContext)
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
-	p.RuleIndex = CqlParserRULE_triggerClass
+	p.RuleIndex = CQLParserRULE_triggerClass
 	return p
 }
 
 func InitEmptyTriggerClassContext(p *TriggerClassContext) {
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
-	p.RuleIndex = CqlParserRULE_triggerClass
+	p.RuleIndex = CQLParserRULE_triggerClass
 }
 
 func (*TriggerClassContext) IsTriggerClassContext() {}
@@ -35481,7 +35481,7 @@ func NewTriggerClassContext(parser antlr.Parser, parent antlr.ParserRuleContext,
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, parent, invokingState)
 
 	p.parser = parser
-	p.RuleIndex = CqlParserRULE_triggerClass
+	p.RuleIndex = CQLParserRULE_triggerClass
 
 	return p
 }
@@ -35513,20 +35513,20 @@ func (s *TriggerClassContext) ToStringTree(ruleNames []string, recog antlr.Recog
 }
 
 func (s *TriggerClassContext) EnterRule(listener antlr.ParseTreeListener) {
-	if listenerT, ok := listener.(CqlParserListener); ok {
+	if listenerT, ok := listener.(CQLParserListener); ok {
 		listenerT.EnterTriggerClass(s)
 	}
 }
 
 func (s *TriggerClassContext) ExitRule(listener antlr.ParseTreeListener) {
-	if listenerT, ok := listener.(CqlParserListener); ok {
+	if listenerT, ok := listener.(CQLParserListener); ok {
 		listenerT.ExitTriggerClass(s)
 	}
 }
 
-func (p *CqlParser) TriggerClass() (localctx ITriggerClassContext) {
+func (p *CQLParser) TriggerClass() (localctx ITriggerClassContext) {
 	localctx = NewTriggerClassContext(p, p.GetParserRuleContext(), p.GetState())
-	p.EnterRule(localctx, 322, CqlParserRULE_triggerClass)
+	p.EnterRule(localctx, 322, CQLParserRULE_triggerClass)
 	p.EnterOuterAlt(localctx, 1)
 	{
 		p.SetState(2086)
@@ -35568,13 +35568,13 @@ type MaterializedViewContext struct {
 func NewEmptyMaterializedViewContext() *MaterializedViewContext {
 	var p = new(MaterializedViewContext)
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
-	p.RuleIndex = CqlParserRULE_materializedView
+	p.RuleIndex = CQLParserRULE_materializedView
 	return p
 }
 
 func InitEmptyMaterializedViewContext(p *MaterializedViewContext) {
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
-	p.RuleIndex = CqlParserRULE_materializedView
+	p.RuleIndex = CQLParserRULE_materializedView
 }
 
 func (*MaterializedViewContext) IsMaterializedViewContext() {}
@@ -35585,7 +35585,7 @@ func NewMaterializedViewContext(parser antlr.Parser, parent antlr.ParserRuleCont
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, parent, invokingState)
 
 	p.parser = parser
-	p.RuleIndex = CqlParserRULE_materializedView
+	p.RuleIndex = CQLParserRULE_materializedView
 
 	return p
 }
@@ -35593,7 +35593,7 @@ func NewMaterializedViewContext(parser antlr.Parser, parent antlr.ParserRuleCont
 func (s *MaterializedViewContext) GetParser() antlr.Parser { return s.parser }
 
 func (s *MaterializedViewContext) OBJECT_NAME() antlr.TerminalNode {
-	return s.GetToken(CqlParserOBJECT_NAME, 0)
+	return s.GetToken(CQLParserOBJECT_NAME, 0)
 }
 
 func (s *MaterializedViewContext) GetRuleContext() antlr.RuleContext {
@@ -35605,24 +35605,24 @@ func (s *MaterializedViewContext) ToStringTree(ruleNames []string, recog antlr.R
 }
 
 func (s *MaterializedViewContext) EnterRule(listener antlr.ParseTreeListener) {
-	if listenerT, ok := listener.(CqlParserListener); ok {
+	if listenerT, ok := listener.(CQLParserListener); ok {
 		listenerT.EnterMaterializedView(s)
 	}
 }
 
 func (s *MaterializedViewContext) ExitRule(listener antlr.ParseTreeListener) {
-	if listenerT, ok := listener.(CqlParserListener); ok {
+	if listenerT, ok := listener.(CQLParserListener); ok {
 		listenerT.ExitMaterializedView(s)
 	}
 }
 
-func (p *CqlParser) MaterializedView() (localctx IMaterializedViewContext) {
+func (p *CQLParser) MaterializedView() (localctx IMaterializedViewContext) {
 	localctx = NewMaterializedViewContext(p, p.GetParserRuleContext(), p.GetState())
-	p.EnterRule(localctx, 324, CqlParserRULE_materializedView)
+	p.EnterRule(localctx, 324, CQLParserRULE_materializedView)
 	p.EnterOuterAlt(localctx, 1)
 	{
 		p.SetState(2088)
-		p.Match(CqlParserOBJECT_NAME)
+		p.Match(CQLParserOBJECT_NAME)
 		if p.HasError() {
 			// Recognition error - abort rule
 			goto errorExit
@@ -35664,13 +35664,13 @@ type Type_Context struct {
 func NewEmptyType_Context() *Type_Context {
 	var p = new(Type_Context)
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
-	p.RuleIndex = CqlParserRULE_type_
+	p.RuleIndex = CQLParserRULE_type_
 	return p
 }
 
 func InitEmptyType_Context(p *Type_Context) {
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
-	p.RuleIndex = CqlParserRULE_type_
+	p.RuleIndex = CQLParserRULE_type_
 }
 
 func (*Type_Context) IsType_Context() {}
@@ -35681,7 +35681,7 @@ func NewType_Context(parser antlr.Parser, parent antlr.ParserRuleContext, invoki
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, parent, invokingState)
 
 	p.parser = parser
-	p.RuleIndex = CqlParserRULE_type_
+	p.RuleIndex = CQLParserRULE_type_
 
 	return p
 }
@@ -35689,7 +35689,7 @@ func NewType_Context(parser antlr.Parser, parent antlr.ParserRuleContext, invoki
 func (s *Type_Context) GetParser() antlr.Parser { return s.parser }
 
 func (s *Type_Context) OBJECT_NAME() antlr.TerminalNode {
-	return s.GetToken(CqlParserOBJECT_NAME, 0)
+	return s.GetToken(CQLParserOBJECT_NAME, 0)
 }
 
 func (s *Type_Context) GetRuleContext() antlr.RuleContext {
@@ -35701,24 +35701,24 @@ func (s *Type_Context) ToStringTree(ruleNames []string, recog antlr.Recognizer) 
 }
 
 func (s *Type_Context) EnterRule(listener antlr.ParseTreeListener) {
-	if listenerT, ok := listener.(CqlParserListener); ok {
+	if listenerT, ok := listener.(CQLParserListener); ok {
 		listenerT.EnterType_(s)
 	}
 }
 
 func (s *Type_Context) ExitRule(listener antlr.ParseTreeListener) {
-	if listenerT, ok := listener.(CqlParserListener); ok {
+	if listenerT, ok := listener.(CQLParserListener); ok {
 		listenerT.ExitType_(s)
 	}
 }
 
-func (p *CqlParser) Type_() (localctx IType_Context) {
+func (p *CQLParser) Type_() (localctx IType_Context) {
 	localctx = NewType_Context(p, p.GetParserRuleContext(), p.GetState())
-	p.EnterRule(localctx, 326, CqlParserRULE_type_)
+	p.EnterRule(localctx, 326, CQLParserRULE_type_)
 	p.EnterOuterAlt(localctx, 1)
 	{
 		p.SetState(2090)
-		p.Match(CqlParserOBJECT_NAME)
+		p.Match(CQLParserOBJECT_NAME)
 		if p.HasError() {
 			// Recognition error - abort rule
 			goto errorExit
@@ -35760,13 +35760,13 @@ type AggregateContext struct {
 func NewEmptyAggregateContext() *AggregateContext {
 	var p = new(AggregateContext)
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
-	p.RuleIndex = CqlParserRULE_aggregate
+	p.RuleIndex = CQLParserRULE_aggregate
 	return p
 }
 
 func InitEmptyAggregateContext(p *AggregateContext) {
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
-	p.RuleIndex = CqlParserRULE_aggregate
+	p.RuleIndex = CQLParserRULE_aggregate
 }
 
 func (*AggregateContext) IsAggregateContext() {}
@@ -35777,7 +35777,7 @@ func NewAggregateContext(parser antlr.Parser, parent antlr.ParserRuleContext, in
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, parent, invokingState)
 
 	p.parser = parser
-	p.RuleIndex = CqlParserRULE_aggregate
+	p.RuleIndex = CQLParserRULE_aggregate
 
 	return p
 }
@@ -35785,7 +35785,7 @@ func NewAggregateContext(parser antlr.Parser, parent antlr.ParserRuleContext, in
 func (s *AggregateContext) GetParser() antlr.Parser { return s.parser }
 
 func (s *AggregateContext) OBJECT_NAME() antlr.TerminalNode {
-	return s.GetToken(CqlParserOBJECT_NAME, 0)
+	return s.GetToken(CQLParserOBJECT_NAME, 0)
 }
 
 func (s *AggregateContext) GetRuleContext() antlr.RuleContext {
@@ -35797,24 +35797,24 @@ func (s *AggregateContext) ToStringTree(ruleNames []string, recog antlr.Recogniz
 }
 
 func (s *AggregateContext) EnterRule(listener antlr.ParseTreeListener) {
-	if listenerT, ok := listener.(CqlParserListener); ok {
+	if listenerT, ok := listener.(CQLParserListener); ok {
 		listenerT.EnterAggregate(s)
 	}
 }
 
 func (s *AggregateContext) ExitRule(listener antlr.ParseTreeListener) {
-	if listenerT, ok := listener.(CqlParserListener); ok {
+	if listenerT, ok := listener.(CQLParserListener); ok {
 		listenerT.ExitAggregate(s)
 	}
 }
 
-func (p *CqlParser) Aggregate() (localctx IAggregateContext) {
+func (p *CQLParser) Aggregate() (localctx IAggregateContext) {
 	localctx = NewAggregateContext(p, p.GetParserRuleContext(), p.GetState())
-	p.EnterRule(localctx, 328, CqlParserRULE_aggregate)
+	p.EnterRule(localctx, 328, CQLParserRULE_aggregate)
 	p.EnterOuterAlt(localctx, 1)
 	{
 		p.SetState(2092)
-		p.Match(CqlParserOBJECT_NAME)
+		p.Match(CQLParserOBJECT_NAME)
 		if p.HasError() {
 			// Recognition error - abort rule
 			goto errorExit
@@ -35856,13 +35856,13 @@ type Function_Context struct {
 func NewEmptyFunction_Context() *Function_Context {
 	var p = new(Function_Context)
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
-	p.RuleIndex = CqlParserRULE_function_
+	p.RuleIndex = CQLParserRULE_function_
 	return p
 }
 
 func InitEmptyFunction_Context(p *Function_Context) {
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
-	p.RuleIndex = CqlParserRULE_function_
+	p.RuleIndex = CQLParserRULE_function_
 }
 
 func (*Function_Context) IsFunction_Context() {}
@@ -35873,7 +35873,7 @@ func NewFunction_Context(parser antlr.Parser, parent antlr.ParserRuleContext, in
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, parent, invokingState)
 
 	p.parser = parser
-	p.RuleIndex = CqlParserRULE_function_
+	p.RuleIndex = CQLParserRULE_function_
 
 	return p
 }
@@ -35881,7 +35881,7 @@ func NewFunction_Context(parser antlr.Parser, parent antlr.ParserRuleContext, in
 func (s *Function_Context) GetParser() antlr.Parser { return s.parser }
 
 func (s *Function_Context) OBJECT_NAME() antlr.TerminalNode {
-	return s.GetToken(CqlParserOBJECT_NAME, 0)
+	return s.GetToken(CQLParserOBJECT_NAME, 0)
 }
 
 func (s *Function_Context) GetRuleContext() antlr.RuleContext {
@@ -35893,24 +35893,24 @@ func (s *Function_Context) ToStringTree(ruleNames []string, recog antlr.Recogniz
 }
 
 func (s *Function_Context) EnterRule(listener antlr.ParseTreeListener) {
-	if listenerT, ok := listener.(CqlParserListener); ok {
+	if listenerT, ok := listener.(CQLParserListener); ok {
 		listenerT.EnterFunction_(s)
 	}
 }
 
 func (s *Function_Context) ExitRule(listener antlr.ParseTreeListener) {
-	if listenerT, ok := listener.(CqlParserListener); ok {
+	if listenerT, ok := listener.(CQLParserListener); ok {
 		listenerT.ExitFunction_(s)
 	}
 }
 
-func (p *CqlParser) Function_() (localctx IFunction_Context) {
+func (p *CQLParser) Function_() (localctx IFunction_Context) {
 	localctx = NewFunction_Context(p, p.GetParserRuleContext(), p.GetState())
-	p.EnterRule(localctx, 330, CqlParserRULE_function_)
+	p.EnterRule(localctx, 330, CQLParserRULE_function_)
 	p.EnterOuterAlt(localctx, 1)
 	{
 		p.SetState(2094)
-		p.Match(CqlParserOBJECT_NAME)
+		p.Match(CQLParserOBJECT_NAME)
 		if p.HasError() {
 			// Recognition error - abort rule
 			goto errorExit
@@ -35952,13 +35952,13 @@ type LanguageContext struct {
 func NewEmptyLanguageContext() *LanguageContext {
 	var p = new(LanguageContext)
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
-	p.RuleIndex = CqlParserRULE_language
+	p.RuleIndex = CQLParserRULE_language
 	return p
 }
 
 func InitEmptyLanguageContext(p *LanguageContext) {
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
-	p.RuleIndex = CqlParserRULE_language
+	p.RuleIndex = CQLParserRULE_language
 }
 
 func (*LanguageContext) IsLanguageContext() {}
@@ -35969,7 +35969,7 @@ func NewLanguageContext(parser antlr.Parser, parent antlr.ParserRuleContext, inv
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, parent, invokingState)
 
 	p.parser = parser
-	p.RuleIndex = CqlParserRULE_language
+	p.RuleIndex = CQLParserRULE_language
 
 	return p
 }
@@ -35977,7 +35977,7 @@ func NewLanguageContext(parser antlr.Parser, parent antlr.ParserRuleContext, inv
 func (s *LanguageContext) GetParser() antlr.Parser { return s.parser }
 
 func (s *LanguageContext) OBJECT_NAME() antlr.TerminalNode {
-	return s.GetToken(CqlParserOBJECT_NAME, 0)
+	return s.GetToken(CQLParserOBJECT_NAME, 0)
 }
 
 func (s *LanguageContext) GetRuleContext() antlr.RuleContext {
@@ -35989,24 +35989,24 @@ func (s *LanguageContext) ToStringTree(ruleNames []string, recog antlr.Recognize
 }
 
 func (s *LanguageContext) EnterRule(listener antlr.ParseTreeListener) {
-	if listenerT, ok := listener.(CqlParserListener); ok {
+	if listenerT, ok := listener.(CQLParserListener); ok {
 		listenerT.EnterLanguage(s)
 	}
 }
 
 func (s *LanguageContext) ExitRule(listener antlr.ParseTreeListener) {
-	if listenerT, ok := listener.(CqlParserListener); ok {
+	if listenerT, ok := listener.(CQLParserListener); ok {
 		listenerT.ExitLanguage(s)
 	}
 }
 
-func (p *CqlParser) Language() (localctx ILanguageContext) {
+func (p *CQLParser) Language() (localctx ILanguageContext) {
 	localctx = NewLanguageContext(p, p.GetParserRuleContext(), p.GetState())
-	p.EnterRule(localctx, 332, CqlParserRULE_language)
+	p.EnterRule(localctx, 332, CQLParserRULE_language)
 	p.EnterOuterAlt(localctx, 1)
 	{
 		p.SetState(2096)
-		p.Match(CqlParserOBJECT_NAME)
+		p.Match(CQLParserOBJECT_NAME)
 		if p.HasError() {
 			// Recognition error - abort rule
 			goto errorExit
@@ -36048,13 +36048,13 @@ type UserContext struct {
 func NewEmptyUserContext() *UserContext {
 	var p = new(UserContext)
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
-	p.RuleIndex = CqlParserRULE_user
+	p.RuleIndex = CQLParserRULE_user
 	return p
 }
 
 func InitEmptyUserContext(p *UserContext) {
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
-	p.RuleIndex = CqlParserRULE_user
+	p.RuleIndex = CQLParserRULE_user
 }
 
 func (*UserContext) IsUserContext() {}
@@ -36065,7 +36065,7 @@ func NewUserContext(parser antlr.Parser, parent antlr.ParserRuleContext, invokin
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, parent, invokingState)
 
 	p.parser = parser
-	p.RuleIndex = CqlParserRULE_user
+	p.RuleIndex = CQLParserRULE_user
 
 	return p
 }
@@ -36073,7 +36073,7 @@ func NewUserContext(parser antlr.Parser, parent antlr.ParserRuleContext, invokin
 func (s *UserContext) GetParser() antlr.Parser { return s.parser }
 
 func (s *UserContext) OBJECT_NAME() antlr.TerminalNode {
-	return s.GetToken(CqlParserOBJECT_NAME, 0)
+	return s.GetToken(CQLParserOBJECT_NAME, 0)
 }
 
 func (s *UserContext) GetRuleContext() antlr.RuleContext {
@@ -36085,24 +36085,24 @@ func (s *UserContext) ToStringTree(ruleNames []string, recog antlr.Recognizer) s
 }
 
 func (s *UserContext) EnterRule(listener antlr.ParseTreeListener) {
-	if listenerT, ok := listener.(CqlParserListener); ok {
+	if listenerT, ok := listener.(CQLParserListener); ok {
 		listenerT.EnterUser(s)
 	}
 }
 
 func (s *UserContext) ExitRule(listener antlr.ParseTreeListener) {
-	if listenerT, ok := listener.(CqlParserListener); ok {
+	if listenerT, ok := listener.(CQLParserListener); ok {
 		listenerT.ExitUser(s)
 	}
 }
 
-func (p *CqlParser) User() (localctx IUserContext) {
+func (p *CQLParser) User() (localctx IUserContext) {
 	localctx = NewUserContext(p, p.GetParserRuleContext(), p.GetState())
-	p.EnterRule(localctx, 334, CqlParserRULE_user)
+	p.EnterRule(localctx, 334, CQLParserRULE_user)
 	p.EnterOuterAlt(localctx, 1)
 	{
 		p.SetState(2098)
-		p.Match(CqlParserOBJECT_NAME)
+		p.Match(CQLParserOBJECT_NAME)
 		if p.HasError() {
 			// Recognition error - abort rule
 			goto errorExit
@@ -36144,13 +36144,13 @@ type PasswordContext struct {
 func NewEmptyPasswordContext() *PasswordContext {
 	var p = new(PasswordContext)
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
-	p.RuleIndex = CqlParserRULE_password
+	p.RuleIndex = CQLParserRULE_password
 	return p
 }
 
 func InitEmptyPasswordContext(p *PasswordContext) {
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
-	p.RuleIndex = CqlParserRULE_password
+	p.RuleIndex = CQLParserRULE_password
 }
 
 func (*PasswordContext) IsPasswordContext() {}
@@ -36161,7 +36161,7 @@ func NewPasswordContext(parser antlr.Parser, parent antlr.ParserRuleContext, inv
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, parent, invokingState)
 
 	p.parser = parser
-	p.RuleIndex = CqlParserRULE_password
+	p.RuleIndex = CQLParserRULE_password
 
 	return p
 }
@@ -36193,20 +36193,20 @@ func (s *PasswordContext) ToStringTree(ruleNames []string, recog antlr.Recognize
 }
 
 func (s *PasswordContext) EnterRule(listener antlr.ParseTreeListener) {
-	if listenerT, ok := listener.(CqlParserListener); ok {
+	if listenerT, ok := listener.(CQLParserListener); ok {
 		listenerT.EnterPassword(s)
 	}
 }
 
 func (s *PasswordContext) ExitRule(listener antlr.ParseTreeListener) {
-	if listenerT, ok := listener.(CqlParserListener); ok {
+	if listenerT, ok := listener.(CQLParserListener); ok {
 		listenerT.ExitPassword(s)
 	}
 }
 
-func (p *CqlParser) Password() (localctx IPasswordContext) {
+func (p *CQLParser) Password() (localctx IPasswordContext) {
 	localctx = NewPasswordContext(p, p.GetParserRuleContext(), p.GetState())
-	p.EnterRule(localctx, 336, CqlParserRULE_password)
+	p.EnterRule(localctx, 336, CQLParserRULE_password)
 	p.EnterOuterAlt(localctx, 1)
 	{
 		p.SetState(2100)
@@ -36248,13 +36248,13 @@ type HashKeyContext struct {
 func NewEmptyHashKeyContext() *HashKeyContext {
 	var p = new(HashKeyContext)
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
-	p.RuleIndex = CqlParserRULE_hashKey
+	p.RuleIndex = CQLParserRULE_hashKey
 	return p
 }
 
 func InitEmptyHashKeyContext(p *HashKeyContext) {
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
-	p.RuleIndex = CqlParserRULE_hashKey
+	p.RuleIndex = CQLParserRULE_hashKey
 }
 
 func (*HashKeyContext) IsHashKeyContext() {}
@@ -36265,7 +36265,7 @@ func NewHashKeyContext(parser antlr.Parser, parent antlr.ParserRuleContext, invo
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, parent, invokingState)
 
 	p.parser = parser
-	p.RuleIndex = CqlParserRULE_hashKey
+	p.RuleIndex = CQLParserRULE_hashKey
 
 	return p
 }
@@ -36273,7 +36273,7 @@ func NewHashKeyContext(parser antlr.Parser, parent antlr.ParserRuleContext, invo
 func (s *HashKeyContext) GetParser() antlr.Parser { return s.parser }
 
 func (s *HashKeyContext) OBJECT_NAME() antlr.TerminalNode {
-	return s.GetToken(CqlParserOBJECT_NAME, 0)
+	return s.GetToken(CQLParserOBJECT_NAME, 0)
 }
 
 func (s *HashKeyContext) GetRuleContext() antlr.RuleContext {
@@ -36285,24 +36285,24 @@ func (s *HashKeyContext) ToStringTree(ruleNames []string, recog antlr.Recognizer
 }
 
 func (s *HashKeyContext) EnterRule(listener antlr.ParseTreeListener) {
-	if listenerT, ok := listener.(CqlParserListener); ok {
+	if listenerT, ok := listener.(CQLParserListener); ok {
 		listenerT.EnterHashKey(s)
 	}
 }
 
 func (s *HashKeyContext) ExitRule(listener antlr.ParseTreeListener) {
-	if listenerT, ok := listener.(CqlParserListener); ok {
+	if listenerT, ok := listener.(CQLParserListener); ok {
 		listenerT.ExitHashKey(s)
 	}
 }
 
-func (p *CqlParser) HashKey() (localctx IHashKeyContext) {
+func (p *CQLParser) HashKey() (localctx IHashKeyContext) {
 	localctx = NewHashKeyContext(p, p.GetParserRuleContext(), p.GetState())
-	p.EnterRule(localctx, 338, CqlParserRULE_hashKey)
+	p.EnterRule(localctx, 338, CQLParserRULE_hashKey)
 	p.EnterOuterAlt(localctx, 1)
 	{
 		p.SetState(2102)
-		p.Match(CqlParserOBJECT_NAME)
+		p.Match(CQLParserOBJECT_NAME)
 		if p.HasError() {
 			// Recognition error - abort rule
 			goto errorExit
@@ -36345,13 +36345,13 @@ type ParamContext struct {
 func NewEmptyParamContext() *ParamContext {
 	var p = new(ParamContext)
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
-	p.RuleIndex = CqlParserRULE_param
+	p.RuleIndex = CQLParserRULE_param
 	return p
 }
 
 func InitEmptyParamContext(p *ParamContext) {
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
-	p.RuleIndex = CqlParserRULE_param
+	p.RuleIndex = CQLParserRULE_param
 }
 
 func (*ParamContext) IsParamContext() {}
@@ -36362,7 +36362,7 @@ func NewParamContext(parser antlr.Parser, parent antlr.ParserRuleContext, invoki
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, parent, invokingState)
 
 	p.parser = parser
-	p.RuleIndex = CqlParserRULE_param
+	p.RuleIndex = CQLParserRULE_param
 
 	return p
 }
@@ -36410,20 +36410,20 @@ func (s *ParamContext) ToStringTree(ruleNames []string, recog antlr.Recognizer) 
 }
 
 func (s *ParamContext) EnterRule(listener antlr.ParseTreeListener) {
-	if listenerT, ok := listener.(CqlParserListener); ok {
+	if listenerT, ok := listener.(CQLParserListener); ok {
 		listenerT.EnterParam(s)
 	}
 }
 
 func (s *ParamContext) ExitRule(listener antlr.ParseTreeListener) {
-	if listenerT, ok := listener.(CqlParserListener); ok {
+	if listenerT, ok := listener.(CQLParserListener); ok {
 		listenerT.ExitParam(s)
 	}
 }
 
-func (p *CqlParser) Param() (localctx IParamContext) {
+func (p *CQLParser) Param() (localctx IParamContext) {
 	localctx = NewParamContext(p, p.GetParserRuleContext(), p.GetState())
-	p.EnterRule(localctx, 340, CqlParserRULE_param)
+	p.EnterRule(localctx, 340, CQLParserRULE_param)
 	p.EnterOuterAlt(localctx, 1)
 	{
 		p.SetState(2104)
@@ -36470,13 +36470,13 @@ type ParamNameContext struct {
 func NewEmptyParamNameContext() *ParamNameContext {
 	var p = new(ParamNameContext)
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
-	p.RuleIndex = CqlParserRULE_paramName
+	p.RuleIndex = CQLParserRULE_paramName
 	return p
 }
 
 func InitEmptyParamNameContext(p *ParamNameContext) {
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
-	p.RuleIndex = CqlParserRULE_paramName
+	p.RuleIndex = CQLParserRULE_paramName
 }
 
 func (*ParamNameContext) IsParamNameContext() {}
@@ -36487,7 +36487,7 @@ func NewParamNameContext(parser antlr.Parser, parent antlr.ParserRuleContext, in
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, parent, invokingState)
 
 	p.parser = parser
-	p.RuleIndex = CqlParserRULE_paramName
+	p.RuleIndex = CQLParserRULE_paramName
 
 	return p
 }
@@ -36495,11 +36495,11 @@ func NewParamNameContext(parser antlr.Parser, parent antlr.ParserRuleContext, in
 func (s *ParamNameContext) GetParser() antlr.Parser { return s.parser }
 
 func (s *ParamNameContext) OBJECT_NAME() antlr.TerminalNode {
-	return s.GetToken(CqlParserOBJECT_NAME, 0)
+	return s.GetToken(CQLParserOBJECT_NAME, 0)
 }
 
 func (s *ParamNameContext) K_INPUT() antlr.TerminalNode {
-	return s.GetToken(CqlParserK_INPUT, 0)
+	return s.GetToken(CQLParserK_INPUT, 0)
 }
 
 func (s *ParamNameContext) GetRuleContext() antlr.RuleContext {
@@ -36511,20 +36511,20 @@ func (s *ParamNameContext) ToStringTree(ruleNames []string, recog antlr.Recogniz
 }
 
 func (s *ParamNameContext) EnterRule(listener antlr.ParseTreeListener) {
-	if listenerT, ok := listener.(CqlParserListener); ok {
+	if listenerT, ok := listener.(CQLParserListener); ok {
 		listenerT.EnterParamName(s)
 	}
 }
 
 func (s *ParamNameContext) ExitRule(listener antlr.ParseTreeListener) {
-	if listenerT, ok := listener.(CqlParserListener); ok {
+	if listenerT, ok := listener.(CQLParserListener); ok {
 		listenerT.ExitParamName(s)
 	}
 }
 
-func (p *CqlParser) ParamName() (localctx IParamNameContext) {
+func (p *CQLParser) ParamName() (localctx IParamNameContext) {
 	localctx = NewParamNameContext(p, p.GetParserRuleContext(), p.GetState())
-	p.EnterRule(localctx, 342, CqlParserRULE_paramName)
+	p.EnterRule(localctx, 342, CQLParserRULE_paramName)
 	var _la int
 
 	p.EnterOuterAlt(localctx, 1)
@@ -36532,7 +36532,7 @@ func (p *CqlParser) ParamName() (localctx IParamNameContext) {
 		p.SetState(2107)
 		_la = p.GetTokenStream().LA(1)
 
-		if !(_la == CqlParserK_INPUT || _la == CqlParserOBJECT_NAME) {
+		if !(_la == CQLParserK_INPUT || _la == CQLParserOBJECT_NAME) {
 			p.GetErrorHandler().RecoverInline(p)
 		} else {
 			p.GetErrorHandler().ReportMatch(p)
@@ -36575,13 +36575,13 @@ type KwAddContext struct {
 func NewEmptyKwAddContext() *KwAddContext {
 	var p = new(KwAddContext)
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
-	p.RuleIndex = CqlParserRULE_kwAdd
+	p.RuleIndex = CQLParserRULE_kwAdd
 	return p
 }
 
 func InitEmptyKwAddContext(p *KwAddContext) {
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
-	p.RuleIndex = CqlParserRULE_kwAdd
+	p.RuleIndex = CQLParserRULE_kwAdd
 }
 
 func (*KwAddContext) IsKwAddContext() {}
@@ -36592,7 +36592,7 @@ func NewKwAddContext(parser antlr.Parser, parent antlr.ParserRuleContext, invoki
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, parent, invokingState)
 
 	p.parser = parser
-	p.RuleIndex = CqlParserRULE_kwAdd
+	p.RuleIndex = CQLParserRULE_kwAdd
 
 	return p
 }
@@ -36600,7 +36600,7 @@ func NewKwAddContext(parser antlr.Parser, parent antlr.ParserRuleContext, invoki
 func (s *KwAddContext) GetParser() antlr.Parser { return s.parser }
 
 func (s *KwAddContext) K_ADD() antlr.TerminalNode {
-	return s.GetToken(CqlParserK_ADD, 0)
+	return s.GetToken(CQLParserK_ADD, 0)
 }
 
 func (s *KwAddContext) GetRuleContext() antlr.RuleContext {
@@ -36612,24 +36612,24 @@ func (s *KwAddContext) ToStringTree(ruleNames []string, recog antlr.Recognizer) 
 }
 
 func (s *KwAddContext) EnterRule(listener antlr.ParseTreeListener) {
-	if listenerT, ok := listener.(CqlParserListener); ok {
+	if listenerT, ok := listener.(CQLParserListener); ok {
 		listenerT.EnterKwAdd(s)
 	}
 }
 
 func (s *KwAddContext) ExitRule(listener antlr.ParseTreeListener) {
-	if listenerT, ok := listener.(CqlParserListener); ok {
+	if listenerT, ok := listener.(CQLParserListener); ok {
 		listenerT.ExitKwAdd(s)
 	}
 }
 
-func (p *CqlParser) KwAdd() (localctx IKwAddContext) {
+func (p *CQLParser) KwAdd() (localctx IKwAddContext) {
 	localctx = NewKwAddContext(p, p.GetParserRuleContext(), p.GetState())
-	p.EnterRule(localctx, 344, CqlParserRULE_kwAdd)
+	p.EnterRule(localctx, 344, CQLParserRULE_kwAdd)
 	p.EnterOuterAlt(localctx, 1)
 	{
 		p.SetState(2109)
-		p.Match(CqlParserK_ADD)
+		p.Match(CQLParserK_ADD)
 		if p.HasError() {
 			// Recognition error - abort rule
 			goto errorExit
@@ -36671,13 +36671,13 @@ type KwAggregateContext struct {
 func NewEmptyKwAggregateContext() *KwAggregateContext {
 	var p = new(KwAggregateContext)
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
-	p.RuleIndex = CqlParserRULE_kwAggregate
+	p.RuleIndex = CQLParserRULE_kwAggregate
 	return p
 }
 
 func InitEmptyKwAggregateContext(p *KwAggregateContext) {
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
-	p.RuleIndex = CqlParserRULE_kwAggregate
+	p.RuleIndex = CQLParserRULE_kwAggregate
 }
 
 func (*KwAggregateContext) IsKwAggregateContext() {}
@@ -36688,7 +36688,7 @@ func NewKwAggregateContext(parser antlr.Parser, parent antlr.ParserRuleContext, 
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, parent, invokingState)
 
 	p.parser = parser
-	p.RuleIndex = CqlParserRULE_kwAggregate
+	p.RuleIndex = CQLParserRULE_kwAggregate
 
 	return p
 }
@@ -36696,7 +36696,7 @@ func NewKwAggregateContext(parser antlr.Parser, parent antlr.ParserRuleContext, 
 func (s *KwAggregateContext) GetParser() antlr.Parser { return s.parser }
 
 func (s *KwAggregateContext) K_AGGREGATE() antlr.TerminalNode {
-	return s.GetToken(CqlParserK_AGGREGATE, 0)
+	return s.GetToken(CQLParserK_AGGREGATE, 0)
 }
 
 func (s *KwAggregateContext) GetRuleContext() antlr.RuleContext {
@@ -36708,24 +36708,24 @@ func (s *KwAggregateContext) ToStringTree(ruleNames []string, recog antlr.Recogn
 }
 
 func (s *KwAggregateContext) EnterRule(listener antlr.ParseTreeListener) {
-	if listenerT, ok := listener.(CqlParserListener); ok {
+	if listenerT, ok := listener.(CQLParserListener); ok {
 		listenerT.EnterKwAggregate(s)
 	}
 }
 
 func (s *KwAggregateContext) ExitRule(listener antlr.ParseTreeListener) {
-	if listenerT, ok := listener.(CqlParserListener); ok {
+	if listenerT, ok := listener.(CQLParserListener); ok {
 		listenerT.ExitKwAggregate(s)
 	}
 }
 
-func (p *CqlParser) KwAggregate() (localctx IKwAggregateContext) {
+func (p *CQLParser) KwAggregate() (localctx IKwAggregateContext) {
 	localctx = NewKwAggregateContext(p, p.GetParserRuleContext(), p.GetState())
-	p.EnterRule(localctx, 346, CqlParserRULE_kwAggregate)
+	p.EnterRule(localctx, 346, CQLParserRULE_kwAggregate)
 	p.EnterOuterAlt(localctx, 1)
 	{
 		p.SetState(2111)
-		p.Match(CqlParserK_AGGREGATE)
+		p.Match(CQLParserK_AGGREGATE)
 		if p.HasError() {
 			// Recognition error - abort rule
 			goto errorExit
@@ -36767,13 +36767,13 @@ type KwAllContext struct {
 func NewEmptyKwAllContext() *KwAllContext {
 	var p = new(KwAllContext)
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
-	p.RuleIndex = CqlParserRULE_kwAll
+	p.RuleIndex = CQLParserRULE_kwAll
 	return p
 }
 
 func InitEmptyKwAllContext(p *KwAllContext) {
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
-	p.RuleIndex = CqlParserRULE_kwAll
+	p.RuleIndex = CQLParserRULE_kwAll
 }
 
 func (*KwAllContext) IsKwAllContext() {}
@@ -36784,7 +36784,7 @@ func NewKwAllContext(parser antlr.Parser, parent antlr.ParserRuleContext, invoki
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, parent, invokingState)
 
 	p.parser = parser
-	p.RuleIndex = CqlParserRULE_kwAll
+	p.RuleIndex = CQLParserRULE_kwAll
 
 	return p
 }
@@ -36792,7 +36792,7 @@ func NewKwAllContext(parser antlr.Parser, parent antlr.ParserRuleContext, invoki
 func (s *KwAllContext) GetParser() antlr.Parser { return s.parser }
 
 func (s *KwAllContext) K_ALL() antlr.TerminalNode {
-	return s.GetToken(CqlParserK_ALL, 0)
+	return s.GetToken(CQLParserK_ALL, 0)
 }
 
 func (s *KwAllContext) GetRuleContext() antlr.RuleContext {
@@ -36804,24 +36804,24 @@ func (s *KwAllContext) ToStringTree(ruleNames []string, recog antlr.Recognizer) 
 }
 
 func (s *KwAllContext) EnterRule(listener antlr.ParseTreeListener) {
-	if listenerT, ok := listener.(CqlParserListener); ok {
+	if listenerT, ok := listener.(CQLParserListener); ok {
 		listenerT.EnterKwAll(s)
 	}
 }
 
 func (s *KwAllContext) ExitRule(listener antlr.ParseTreeListener) {
-	if listenerT, ok := listener.(CqlParserListener); ok {
+	if listenerT, ok := listener.(CQLParserListener); ok {
 		listenerT.ExitKwAll(s)
 	}
 }
 
-func (p *CqlParser) KwAll() (localctx IKwAllContext) {
+func (p *CQLParser) KwAll() (localctx IKwAllContext) {
 	localctx = NewKwAllContext(p, p.GetParserRuleContext(), p.GetState())
-	p.EnterRule(localctx, 348, CqlParserRULE_kwAll)
+	p.EnterRule(localctx, 348, CQLParserRULE_kwAll)
 	p.EnterOuterAlt(localctx, 1)
 	{
 		p.SetState(2113)
-		p.Match(CqlParserK_ALL)
+		p.Match(CQLParserK_ALL)
 		if p.HasError() {
 			// Recognition error - abort rule
 			goto errorExit
@@ -36864,13 +36864,13 @@ type KwAllPermissionsContext struct {
 func NewEmptyKwAllPermissionsContext() *KwAllPermissionsContext {
 	var p = new(KwAllPermissionsContext)
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
-	p.RuleIndex = CqlParserRULE_kwAllPermissions
+	p.RuleIndex = CQLParserRULE_kwAllPermissions
 	return p
 }
 
 func InitEmptyKwAllPermissionsContext(p *KwAllPermissionsContext) {
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
-	p.RuleIndex = CqlParserRULE_kwAllPermissions
+	p.RuleIndex = CQLParserRULE_kwAllPermissions
 }
 
 func (*KwAllPermissionsContext) IsKwAllPermissionsContext() {}
@@ -36881,7 +36881,7 @@ func NewKwAllPermissionsContext(parser antlr.Parser, parent antlr.ParserRuleCont
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, parent, invokingState)
 
 	p.parser = parser
-	p.RuleIndex = CqlParserRULE_kwAllPermissions
+	p.RuleIndex = CQLParserRULE_kwAllPermissions
 
 	return p
 }
@@ -36889,11 +36889,11 @@ func NewKwAllPermissionsContext(parser antlr.Parser, parent antlr.ParserRuleCont
 func (s *KwAllPermissionsContext) GetParser() antlr.Parser { return s.parser }
 
 func (s *KwAllPermissionsContext) K_ALL() antlr.TerminalNode {
-	return s.GetToken(CqlParserK_ALL, 0)
+	return s.GetToken(CQLParserK_ALL, 0)
 }
 
 func (s *KwAllPermissionsContext) K_PERMISSIONS() antlr.TerminalNode {
-	return s.GetToken(CqlParserK_PERMISSIONS, 0)
+	return s.GetToken(CQLParserK_PERMISSIONS, 0)
 }
 
 func (s *KwAllPermissionsContext) GetRuleContext() antlr.RuleContext {
@@ -36905,24 +36905,24 @@ func (s *KwAllPermissionsContext) ToStringTree(ruleNames []string, recog antlr.R
 }
 
 func (s *KwAllPermissionsContext) EnterRule(listener antlr.ParseTreeListener) {
-	if listenerT, ok := listener.(CqlParserListener); ok {
+	if listenerT, ok := listener.(CQLParserListener); ok {
 		listenerT.EnterKwAllPermissions(s)
 	}
 }
 
 func (s *KwAllPermissionsContext) ExitRule(listener antlr.ParseTreeListener) {
-	if listenerT, ok := listener.(CqlParserListener); ok {
+	if listenerT, ok := listener.(CQLParserListener); ok {
 		listenerT.ExitKwAllPermissions(s)
 	}
 }
 
-func (p *CqlParser) KwAllPermissions() (localctx IKwAllPermissionsContext) {
+func (p *CQLParser) KwAllPermissions() (localctx IKwAllPermissionsContext) {
 	localctx = NewKwAllPermissionsContext(p, p.GetParserRuleContext(), p.GetState())
-	p.EnterRule(localctx, 350, CqlParserRULE_kwAllPermissions)
+	p.EnterRule(localctx, 350, CQLParserRULE_kwAllPermissions)
 	p.EnterOuterAlt(localctx, 1)
 	{
 		p.SetState(2115)
-		p.Match(CqlParserK_ALL)
+		p.Match(CQLParserK_ALL)
 		if p.HasError() {
 			// Recognition error - abort rule
 			goto errorExit
@@ -36930,7 +36930,7 @@ func (p *CqlParser) KwAllPermissions() (localctx IKwAllPermissionsContext) {
 	}
 	{
 		p.SetState(2116)
-		p.Match(CqlParserK_PERMISSIONS)
+		p.Match(CQLParserK_PERMISSIONS)
 		if p.HasError() {
 			// Recognition error - abort rule
 			goto errorExit
@@ -36972,13 +36972,13 @@ type KwAllowContext struct {
 func NewEmptyKwAllowContext() *KwAllowContext {
 	var p = new(KwAllowContext)
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
-	p.RuleIndex = CqlParserRULE_kwAllow
+	p.RuleIndex = CQLParserRULE_kwAllow
 	return p
 }
 
 func InitEmptyKwAllowContext(p *KwAllowContext) {
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
-	p.RuleIndex = CqlParserRULE_kwAllow
+	p.RuleIndex = CQLParserRULE_kwAllow
 }
 
 func (*KwAllowContext) IsKwAllowContext() {}
@@ -36989,7 +36989,7 @@ func NewKwAllowContext(parser antlr.Parser, parent antlr.ParserRuleContext, invo
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, parent, invokingState)
 
 	p.parser = parser
-	p.RuleIndex = CqlParserRULE_kwAllow
+	p.RuleIndex = CQLParserRULE_kwAllow
 
 	return p
 }
@@ -36997,7 +36997,7 @@ func NewKwAllowContext(parser antlr.Parser, parent antlr.ParserRuleContext, invo
 func (s *KwAllowContext) GetParser() antlr.Parser { return s.parser }
 
 func (s *KwAllowContext) K_ALLOW() antlr.TerminalNode {
-	return s.GetToken(CqlParserK_ALLOW, 0)
+	return s.GetToken(CQLParserK_ALLOW, 0)
 }
 
 func (s *KwAllowContext) GetRuleContext() antlr.RuleContext {
@@ -37009,24 +37009,24 @@ func (s *KwAllowContext) ToStringTree(ruleNames []string, recog antlr.Recognizer
 }
 
 func (s *KwAllowContext) EnterRule(listener antlr.ParseTreeListener) {
-	if listenerT, ok := listener.(CqlParserListener); ok {
+	if listenerT, ok := listener.(CQLParserListener); ok {
 		listenerT.EnterKwAllow(s)
 	}
 }
 
 func (s *KwAllowContext) ExitRule(listener antlr.ParseTreeListener) {
-	if listenerT, ok := listener.(CqlParserListener); ok {
+	if listenerT, ok := listener.(CQLParserListener); ok {
 		listenerT.ExitKwAllow(s)
 	}
 }
 
-func (p *CqlParser) KwAllow() (localctx IKwAllowContext) {
+func (p *CQLParser) KwAllow() (localctx IKwAllowContext) {
 	localctx = NewKwAllowContext(p, p.GetParserRuleContext(), p.GetState())
-	p.EnterRule(localctx, 352, CqlParserRULE_kwAllow)
+	p.EnterRule(localctx, 352, CQLParserRULE_kwAllow)
 	p.EnterOuterAlt(localctx, 1)
 	{
 		p.SetState(2118)
-		p.Match(CqlParserK_ALLOW)
+		p.Match(CQLParserK_ALLOW)
 		if p.HasError() {
 			// Recognition error - abort rule
 			goto errorExit
@@ -37068,13 +37068,13 @@ type KwAlterContext struct {
 func NewEmptyKwAlterContext() *KwAlterContext {
 	var p = new(KwAlterContext)
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
-	p.RuleIndex = CqlParserRULE_kwAlter
+	p.RuleIndex = CQLParserRULE_kwAlter
 	return p
 }
 
 func InitEmptyKwAlterContext(p *KwAlterContext) {
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
-	p.RuleIndex = CqlParserRULE_kwAlter
+	p.RuleIndex = CQLParserRULE_kwAlter
 }
 
 func (*KwAlterContext) IsKwAlterContext() {}
@@ -37085,7 +37085,7 @@ func NewKwAlterContext(parser antlr.Parser, parent antlr.ParserRuleContext, invo
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, parent, invokingState)
 
 	p.parser = parser
-	p.RuleIndex = CqlParserRULE_kwAlter
+	p.RuleIndex = CQLParserRULE_kwAlter
 
 	return p
 }
@@ -37093,7 +37093,7 @@ func NewKwAlterContext(parser antlr.Parser, parent antlr.ParserRuleContext, invo
 func (s *KwAlterContext) GetParser() antlr.Parser { return s.parser }
 
 func (s *KwAlterContext) K_ALTER() antlr.TerminalNode {
-	return s.GetToken(CqlParserK_ALTER, 0)
+	return s.GetToken(CQLParserK_ALTER, 0)
 }
 
 func (s *KwAlterContext) GetRuleContext() antlr.RuleContext {
@@ -37105,24 +37105,24 @@ func (s *KwAlterContext) ToStringTree(ruleNames []string, recog antlr.Recognizer
 }
 
 func (s *KwAlterContext) EnterRule(listener antlr.ParseTreeListener) {
-	if listenerT, ok := listener.(CqlParserListener); ok {
+	if listenerT, ok := listener.(CQLParserListener); ok {
 		listenerT.EnterKwAlter(s)
 	}
 }
 
 func (s *KwAlterContext) ExitRule(listener antlr.ParseTreeListener) {
-	if listenerT, ok := listener.(CqlParserListener); ok {
+	if listenerT, ok := listener.(CQLParserListener); ok {
 		listenerT.ExitKwAlter(s)
 	}
 }
 
-func (p *CqlParser) KwAlter() (localctx IKwAlterContext) {
+func (p *CQLParser) KwAlter() (localctx IKwAlterContext) {
 	localctx = NewKwAlterContext(p, p.GetParserRuleContext(), p.GetState())
-	p.EnterRule(localctx, 354, CqlParserRULE_kwAlter)
+	p.EnterRule(localctx, 354, CQLParserRULE_kwAlter)
 	p.EnterOuterAlt(localctx, 1)
 	{
 		p.SetState(2120)
-		p.Match(CqlParserK_ALTER)
+		p.Match(CQLParserK_ALTER)
 		if p.HasError() {
 			// Recognition error - abort rule
 			goto errorExit
@@ -37164,13 +37164,13 @@ type KwAndContext struct {
 func NewEmptyKwAndContext() *KwAndContext {
 	var p = new(KwAndContext)
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
-	p.RuleIndex = CqlParserRULE_kwAnd
+	p.RuleIndex = CQLParserRULE_kwAnd
 	return p
 }
 
 func InitEmptyKwAndContext(p *KwAndContext) {
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
-	p.RuleIndex = CqlParserRULE_kwAnd
+	p.RuleIndex = CQLParserRULE_kwAnd
 }
 
 func (*KwAndContext) IsKwAndContext() {}
@@ -37181,7 +37181,7 @@ func NewKwAndContext(parser antlr.Parser, parent antlr.ParserRuleContext, invoki
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, parent, invokingState)
 
 	p.parser = parser
-	p.RuleIndex = CqlParserRULE_kwAnd
+	p.RuleIndex = CQLParserRULE_kwAnd
 
 	return p
 }
@@ -37189,7 +37189,7 @@ func NewKwAndContext(parser antlr.Parser, parent antlr.ParserRuleContext, invoki
 func (s *KwAndContext) GetParser() antlr.Parser { return s.parser }
 
 func (s *KwAndContext) K_AND() antlr.TerminalNode {
-	return s.GetToken(CqlParserK_AND, 0)
+	return s.GetToken(CQLParserK_AND, 0)
 }
 
 func (s *KwAndContext) GetRuleContext() antlr.RuleContext {
@@ -37201,24 +37201,24 @@ func (s *KwAndContext) ToStringTree(ruleNames []string, recog antlr.Recognizer) 
 }
 
 func (s *KwAndContext) EnterRule(listener antlr.ParseTreeListener) {
-	if listenerT, ok := listener.(CqlParserListener); ok {
+	if listenerT, ok := listener.(CQLParserListener); ok {
 		listenerT.EnterKwAnd(s)
 	}
 }
 
 func (s *KwAndContext) ExitRule(listener antlr.ParseTreeListener) {
-	if listenerT, ok := listener.(CqlParserListener); ok {
+	if listenerT, ok := listener.(CQLParserListener); ok {
 		listenerT.ExitKwAnd(s)
 	}
 }
 
-func (p *CqlParser) KwAnd() (localctx IKwAndContext) {
+func (p *CQLParser) KwAnd() (localctx IKwAndContext) {
 	localctx = NewKwAndContext(p, p.GetParserRuleContext(), p.GetState())
-	p.EnterRule(localctx, 356, CqlParserRULE_kwAnd)
+	p.EnterRule(localctx, 356, CQLParserRULE_kwAnd)
 	p.EnterOuterAlt(localctx, 1)
 	{
 		p.SetState(2122)
-		p.Match(CqlParserK_AND)
+		p.Match(CQLParserK_AND)
 		if p.HasError() {
 			// Recognition error - abort rule
 			goto errorExit
@@ -37260,13 +37260,13 @@ type KwApplyContext struct {
 func NewEmptyKwApplyContext() *KwApplyContext {
 	var p = new(KwApplyContext)
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
-	p.RuleIndex = CqlParserRULE_kwApply
+	p.RuleIndex = CQLParserRULE_kwApply
 	return p
 }
 
 func InitEmptyKwApplyContext(p *KwApplyContext) {
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
-	p.RuleIndex = CqlParserRULE_kwApply
+	p.RuleIndex = CQLParserRULE_kwApply
 }
 
 func (*KwApplyContext) IsKwApplyContext() {}
@@ -37277,7 +37277,7 @@ func NewKwApplyContext(parser antlr.Parser, parent antlr.ParserRuleContext, invo
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, parent, invokingState)
 
 	p.parser = parser
-	p.RuleIndex = CqlParserRULE_kwApply
+	p.RuleIndex = CQLParserRULE_kwApply
 
 	return p
 }
@@ -37285,7 +37285,7 @@ func NewKwApplyContext(parser antlr.Parser, parent antlr.ParserRuleContext, invo
 func (s *KwApplyContext) GetParser() antlr.Parser { return s.parser }
 
 func (s *KwApplyContext) K_APPLY() antlr.TerminalNode {
-	return s.GetToken(CqlParserK_APPLY, 0)
+	return s.GetToken(CQLParserK_APPLY, 0)
 }
 
 func (s *KwApplyContext) GetRuleContext() antlr.RuleContext {
@@ -37297,24 +37297,24 @@ func (s *KwApplyContext) ToStringTree(ruleNames []string, recog antlr.Recognizer
 }
 
 func (s *KwApplyContext) EnterRule(listener antlr.ParseTreeListener) {
-	if listenerT, ok := listener.(CqlParserListener); ok {
+	if listenerT, ok := listener.(CQLParserListener); ok {
 		listenerT.EnterKwApply(s)
 	}
 }
 
 func (s *KwApplyContext) ExitRule(listener antlr.ParseTreeListener) {
-	if listenerT, ok := listener.(CqlParserListener); ok {
+	if listenerT, ok := listener.(CQLParserListener); ok {
 		listenerT.ExitKwApply(s)
 	}
 }
 
-func (p *CqlParser) KwApply() (localctx IKwApplyContext) {
+func (p *CQLParser) KwApply() (localctx IKwApplyContext) {
 	localctx = NewKwApplyContext(p, p.GetParserRuleContext(), p.GetState())
-	p.EnterRule(localctx, 358, CqlParserRULE_kwApply)
+	p.EnterRule(localctx, 358, CQLParserRULE_kwApply)
 	p.EnterOuterAlt(localctx, 1)
 	{
 		p.SetState(2124)
-		p.Match(CqlParserK_APPLY)
+		p.Match(CQLParserK_APPLY)
 		if p.HasError() {
 			// Recognition error - abort rule
 			goto errorExit
@@ -37356,13 +37356,13 @@ type KwAsContext struct {
 func NewEmptyKwAsContext() *KwAsContext {
 	var p = new(KwAsContext)
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
-	p.RuleIndex = CqlParserRULE_kwAs
+	p.RuleIndex = CQLParserRULE_kwAs
 	return p
 }
 
 func InitEmptyKwAsContext(p *KwAsContext) {
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
-	p.RuleIndex = CqlParserRULE_kwAs
+	p.RuleIndex = CQLParserRULE_kwAs
 }
 
 func (*KwAsContext) IsKwAsContext() {}
@@ -37373,7 +37373,7 @@ func NewKwAsContext(parser antlr.Parser, parent antlr.ParserRuleContext, invokin
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, parent, invokingState)
 
 	p.parser = parser
-	p.RuleIndex = CqlParserRULE_kwAs
+	p.RuleIndex = CQLParserRULE_kwAs
 
 	return p
 }
@@ -37381,7 +37381,7 @@ func NewKwAsContext(parser antlr.Parser, parent antlr.ParserRuleContext, invokin
 func (s *KwAsContext) GetParser() antlr.Parser { return s.parser }
 
 func (s *KwAsContext) K_AS() antlr.TerminalNode {
-	return s.GetToken(CqlParserK_AS, 0)
+	return s.GetToken(CQLParserK_AS, 0)
 }
 
 func (s *KwAsContext) GetRuleContext() antlr.RuleContext {
@@ -37393,24 +37393,24 @@ func (s *KwAsContext) ToStringTree(ruleNames []string, recog antlr.Recognizer) s
 }
 
 func (s *KwAsContext) EnterRule(listener antlr.ParseTreeListener) {
-	if listenerT, ok := listener.(CqlParserListener); ok {
+	if listenerT, ok := listener.(CQLParserListener); ok {
 		listenerT.EnterKwAs(s)
 	}
 }
 
 func (s *KwAsContext) ExitRule(listener antlr.ParseTreeListener) {
-	if listenerT, ok := listener.(CqlParserListener); ok {
+	if listenerT, ok := listener.(CQLParserListener); ok {
 		listenerT.ExitKwAs(s)
 	}
 }
 
-func (p *CqlParser) KwAs() (localctx IKwAsContext) {
+func (p *CQLParser) KwAs() (localctx IKwAsContext) {
 	localctx = NewKwAsContext(p, p.GetParserRuleContext(), p.GetState())
-	p.EnterRule(localctx, 360, CqlParserRULE_kwAs)
+	p.EnterRule(localctx, 360, CQLParserRULE_kwAs)
 	p.EnterOuterAlt(localctx, 1)
 	{
 		p.SetState(2126)
-		p.Match(CqlParserK_AS)
+		p.Match(CQLParserK_AS)
 		if p.HasError() {
 			// Recognition error - abort rule
 			goto errorExit
@@ -37452,13 +37452,13 @@ type KwAscContext struct {
 func NewEmptyKwAscContext() *KwAscContext {
 	var p = new(KwAscContext)
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
-	p.RuleIndex = CqlParserRULE_kwAsc
+	p.RuleIndex = CQLParserRULE_kwAsc
 	return p
 }
 
 func InitEmptyKwAscContext(p *KwAscContext) {
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
-	p.RuleIndex = CqlParserRULE_kwAsc
+	p.RuleIndex = CQLParserRULE_kwAsc
 }
 
 func (*KwAscContext) IsKwAscContext() {}
@@ -37469,7 +37469,7 @@ func NewKwAscContext(parser antlr.Parser, parent antlr.ParserRuleContext, invoki
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, parent, invokingState)
 
 	p.parser = parser
-	p.RuleIndex = CqlParserRULE_kwAsc
+	p.RuleIndex = CQLParserRULE_kwAsc
 
 	return p
 }
@@ -37477,7 +37477,7 @@ func NewKwAscContext(parser antlr.Parser, parent antlr.ParserRuleContext, invoki
 func (s *KwAscContext) GetParser() antlr.Parser { return s.parser }
 
 func (s *KwAscContext) K_ASC() antlr.TerminalNode {
-	return s.GetToken(CqlParserK_ASC, 0)
+	return s.GetToken(CQLParserK_ASC, 0)
 }
 
 func (s *KwAscContext) GetRuleContext() antlr.RuleContext {
@@ -37489,24 +37489,24 @@ func (s *KwAscContext) ToStringTree(ruleNames []string, recog antlr.Recognizer) 
 }
 
 func (s *KwAscContext) EnterRule(listener antlr.ParseTreeListener) {
-	if listenerT, ok := listener.(CqlParserListener); ok {
+	if listenerT, ok := listener.(CQLParserListener); ok {
 		listenerT.EnterKwAsc(s)
 	}
 }
 
 func (s *KwAscContext) ExitRule(listener antlr.ParseTreeListener) {
-	if listenerT, ok := listener.(CqlParserListener); ok {
+	if listenerT, ok := listener.(CQLParserListener); ok {
 		listenerT.ExitKwAsc(s)
 	}
 }
 
-func (p *CqlParser) KwAsc() (localctx IKwAscContext) {
+func (p *CQLParser) KwAsc() (localctx IKwAscContext) {
 	localctx = NewKwAscContext(p, p.GetParserRuleContext(), p.GetState())
-	p.EnterRule(localctx, 362, CqlParserRULE_kwAsc)
+	p.EnterRule(localctx, 362, CQLParserRULE_kwAsc)
 	p.EnterOuterAlt(localctx, 1)
 	{
 		p.SetState(2128)
-		p.Match(CqlParserK_ASC)
+		p.Match(CQLParserK_ASC)
 		if p.HasError() {
 			// Recognition error - abort rule
 			goto errorExit
@@ -37548,13 +37548,13 @@ type KwAuthorizeContext struct {
 func NewEmptyKwAuthorizeContext() *KwAuthorizeContext {
 	var p = new(KwAuthorizeContext)
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
-	p.RuleIndex = CqlParserRULE_kwAuthorize
+	p.RuleIndex = CQLParserRULE_kwAuthorize
 	return p
 }
 
 func InitEmptyKwAuthorizeContext(p *KwAuthorizeContext) {
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
-	p.RuleIndex = CqlParserRULE_kwAuthorize
+	p.RuleIndex = CQLParserRULE_kwAuthorize
 }
 
 func (*KwAuthorizeContext) IsKwAuthorizeContext() {}
@@ -37565,7 +37565,7 @@ func NewKwAuthorizeContext(parser antlr.Parser, parent antlr.ParserRuleContext, 
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, parent, invokingState)
 
 	p.parser = parser
-	p.RuleIndex = CqlParserRULE_kwAuthorize
+	p.RuleIndex = CQLParserRULE_kwAuthorize
 
 	return p
 }
@@ -37573,7 +37573,7 @@ func NewKwAuthorizeContext(parser antlr.Parser, parent antlr.ParserRuleContext, 
 func (s *KwAuthorizeContext) GetParser() antlr.Parser { return s.parser }
 
 func (s *KwAuthorizeContext) K_AUTHORIZE() antlr.TerminalNode {
-	return s.GetToken(CqlParserK_AUTHORIZE, 0)
+	return s.GetToken(CQLParserK_AUTHORIZE, 0)
 }
 
 func (s *KwAuthorizeContext) GetRuleContext() antlr.RuleContext {
@@ -37585,24 +37585,24 @@ func (s *KwAuthorizeContext) ToStringTree(ruleNames []string, recog antlr.Recogn
 }
 
 func (s *KwAuthorizeContext) EnterRule(listener antlr.ParseTreeListener) {
-	if listenerT, ok := listener.(CqlParserListener); ok {
+	if listenerT, ok := listener.(CQLParserListener); ok {
 		listenerT.EnterKwAuthorize(s)
 	}
 }
 
 func (s *KwAuthorizeContext) ExitRule(listener antlr.ParseTreeListener) {
-	if listenerT, ok := listener.(CqlParserListener); ok {
+	if listenerT, ok := listener.(CQLParserListener); ok {
 		listenerT.ExitKwAuthorize(s)
 	}
 }
 
-func (p *CqlParser) KwAuthorize() (localctx IKwAuthorizeContext) {
+func (p *CQLParser) KwAuthorize() (localctx IKwAuthorizeContext) {
 	localctx = NewKwAuthorizeContext(p, p.GetParserRuleContext(), p.GetState())
-	p.EnterRule(localctx, 364, CqlParserRULE_kwAuthorize)
+	p.EnterRule(localctx, 364, CQLParserRULE_kwAuthorize)
 	p.EnterOuterAlt(localctx, 1)
 	{
 		p.SetState(2130)
-		p.Match(CqlParserK_AUTHORIZE)
+		p.Match(CQLParserK_AUTHORIZE)
 		if p.HasError() {
 			// Recognition error - abort rule
 			goto errorExit
@@ -37644,13 +37644,13 @@ type KwBatchContext struct {
 func NewEmptyKwBatchContext() *KwBatchContext {
 	var p = new(KwBatchContext)
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
-	p.RuleIndex = CqlParserRULE_kwBatch
+	p.RuleIndex = CQLParserRULE_kwBatch
 	return p
 }
 
 func InitEmptyKwBatchContext(p *KwBatchContext) {
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
-	p.RuleIndex = CqlParserRULE_kwBatch
+	p.RuleIndex = CQLParserRULE_kwBatch
 }
 
 func (*KwBatchContext) IsKwBatchContext() {}
@@ -37661,7 +37661,7 @@ func NewKwBatchContext(parser antlr.Parser, parent antlr.ParserRuleContext, invo
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, parent, invokingState)
 
 	p.parser = parser
-	p.RuleIndex = CqlParserRULE_kwBatch
+	p.RuleIndex = CQLParserRULE_kwBatch
 
 	return p
 }
@@ -37669,7 +37669,7 @@ func NewKwBatchContext(parser antlr.Parser, parent antlr.ParserRuleContext, invo
 func (s *KwBatchContext) GetParser() antlr.Parser { return s.parser }
 
 func (s *KwBatchContext) K_BATCH() antlr.TerminalNode {
-	return s.GetToken(CqlParserK_BATCH, 0)
+	return s.GetToken(CQLParserK_BATCH, 0)
 }
 
 func (s *KwBatchContext) GetRuleContext() antlr.RuleContext {
@@ -37681,24 +37681,24 @@ func (s *KwBatchContext) ToStringTree(ruleNames []string, recog antlr.Recognizer
 }
 
 func (s *KwBatchContext) EnterRule(listener antlr.ParseTreeListener) {
-	if listenerT, ok := listener.(CqlParserListener); ok {
+	if listenerT, ok := listener.(CQLParserListener); ok {
 		listenerT.EnterKwBatch(s)
 	}
 }
 
 func (s *KwBatchContext) ExitRule(listener antlr.ParseTreeListener) {
-	if listenerT, ok := listener.(CqlParserListener); ok {
+	if listenerT, ok := listener.(CQLParserListener); ok {
 		listenerT.ExitKwBatch(s)
 	}
 }
 
-func (p *CqlParser) KwBatch() (localctx IKwBatchContext) {
+func (p *CQLParser) KwBatch() (localctx IKwBatchContext) {
 	localctx = NewKwBatchContext(p, p.GetParserRuleContext(), p.GetState())
-	p.EnterRule(localctx, 366, CqlParserRULE_kwBatch)
+	p.EnterRule(localctx, 366, CQLParserRULE_kwBatch)
 	p.EnterOuterAlt(localctx, 1)
 	{
 		p.SetState(2132)
-		p.Match(CqlParserK_BATCH)
+		p.Match(CQLParserK_BATCH)
 		if p.HasError() {
 			// Recognition error - abort rule
 			goto errorExit
@@ -37740,13 +37740,13 @@ type KwBeginContext struct {
 func NewEmptyKwBeginContext() *KwBeginContext {
 	var p = new(KwBeginContext)
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
-	p.RuleIndex = CqlParserRULE_kwBegin
+	p.RuleIndex = CQLParserRULE_kwBegin
 	return p
 }
 
 func InitEmptyKwBeginContext(p *KwBeginContext) {
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
-	p.RuleIndex = CqlParserRULE_kwBegin
+	p.RuleIndex = CQLParserRULE_kwBegin
 }
 
 func (*KwBeginContext) IsKwBeginContext() {}
@@ -37757,7 +37757,7 @@ func NewKwBeginContext(parser antlr.Parser, parent antlr.ParserRuleContext, invo
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, parent, invokingState)
 
 	p.parser = parser
-	p.RuleIndex = CqlParserRULE_kwBegin
+	p.RuleIndex = CQLParserRULE_kwBegin
 
 	return p
 }
@@ -37765,7 +37765,7 @@ func NewKwBeginContext(parser antlr.Parser, parent antlr.ParserRuleContext, invo
 func (s *KwBeginContext) GetParser() antlr.Parser { return s.parser }
 
 func (s *KwBeginContext) K_BEGIN() antlr.TerminalNode {
-	return s.GetToken(CqlParserK_BEGIN, 0)
+	return s.GetToken(CQLParserK_BEGIN, 0)
 }
 
 func (s *KwBeginContext) GetRuleContext() antlr.RuleContext {
@@ -37777,24 +37777,24 @@ func (s *KwBeginContext) ToStringTree(ruleNames []string, recog antlr.Recognizer
 }
 
 func (s *KwBeginContext) EnterRule(listener antlr.ParseTreeListener) {
-	if listenerT, ok := listener.(CqlParserListener); ok {
+	if listenerT, ok := listener.(CQLParserListener); ok {
 		listenerT.EnterKwBegin(s)
 	}
 }
 
 func (s *KwBeginContext) ExitRule(listener antlr.ParseTreeListener) {
-	if listenerT, ok := listener.(CqlParserListener); ok {
+	if listenerT, ok := listener.(CQLParserListener); ok {
 		listenerT.ExitKwBegin(s)
 	}
 }
 
-func (p *CqlParser) KwBegin() (localctx IKwBeginContext) {
+func (p *CQLParser) KwBegin() (localctx IKwBeginContext) {
 	localctx = NewKwBeginContext(p, p.GetParserRuleContext(), p.GetState())
-	p.EnterRule(localctx, 368, CqlParserRULE_kwBegin)
+	p.EnterRule(localctx, 368, CQLParserRULE_kwBegin)
 	p.EnterOuterAlt(localctx, 1)
 	{
 		p.SetState(2134)
-		p.Match(CqlParserK_BEGIN)
+		p.Match(CQLParserK_BEGIN)
 		if p.HasError() {
 			// Recognition error - abort rule
 			goto errorExit
@@ -37836,13 +37836,13 @@ type KwByContext struct {
 func NewEmptyKwByContext() *KwByContext {
 	var p = new(KwByContext)
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
-	p.RuleIndex = CqlParserRULE_kwBy
+	p.RuleIndex = CQLParserRULE_kwBy
 	return p
 }
 
 func InitEmptyKwByContext(p *KwByContext) {
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
-	p.RuleIndex = CqlParserRULE_kwBy
+	p.RuleIndex = CQLParserRULE_kwBy
 }
 
 func (*KwByContext) IsKwByContext() {}
@@ -37853,7 +37853,7 @@ func NewKwByContext(parser antlr.Parser, parent antlr.ParserRuleContext, invokin
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, parent, invokingState)
 
 	p.parser = parser
-	p.RuleIndex = CqlParserRULE_kwBy
+	p.RuleIndex = CQLParserRULE_kwBy
 
 	return p
 }
@@ -37861,7 +37861,7 @@ func NewKwByContext(parser antlr.Parser, parent antlr.ParserRuleContext, invokin
 func (s *KwByContext) GetParser() antlr.Parser { return s.parser }
 
 func (s *KwByContext) K_BY() antlr.TerminalNode {
-	return s.GetToken(CqlParserK_BY, 0)
+	return s.GetToken(CQLParserK_BY, 0)
 }
 
 func (s *KwByContext) GetRuleContext() antlr.RuleContext {
@@ -37873,24 +37873,24 @@ func (s *KwByContext) ToStringTree(ruleNames []string, recog antlr.Recognizer) s
 }
 
 func (s *KwByContext) EnterRule(listener antlr.ParseTreeListener) {
-	if listenerT, ok := listener.(CqlParserListener); ok {
+	if listenerT, ok := listener.(CQLParserListener); ok {
 		listenerT.EnterKwBy(s)
 	}
 }
 
 func (s *KwByContext) ExitRule(listener antlr.ParseTreeListener) {
-	if listenerT, ok := listener.(CqlParserListener); ok {
+	if listenerT, ok := listener.(CQLParserListener); ok {
 		listenerT.ExitKwBy(s)
 	}
 }
 
-func (p *CqlParser) KwBy() (localctx IKwByContext) {
+func (p *CQLParser) KwBy() (localctx IKwByContext) {
 	localctx = NewKwByContext(p, p.GetParserRuleContext(), p.GetState())
-	p.EnterRule(localctx, 370, CqlParserRULE_kwBy)
+	p.EnterRule(localctx, 370, CQLParserRULE_kwBy)
 	p.EnterOuterAlt(localctx, 1)
 	{
 		p.SetState(2136)
-		p.Match(CqlParserK_BY)
+		p.Match(CQLParserK_BY)
 		if p.HasError() {
 			// Recognition error - abort rule
 			goto errorExit
@@ -37932,13 +37932,13 @@ type KwCalledContext struct {
 func NewEmptyKwCalledContext() *KwCalledContext {
 	var p = new(KwCalledContext)
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
-	p.RuleIndex = CqlParserRULE_kwCalled
+	p.RuleIndex = CQLParserRULE_kwCalled
 	return p
 }
 
 func InitEmptyKwCalledContext(p *KwCalledContext) {
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
-	p.RuleIndex = CqlParserRULE_kwCalled
+	p.RuleIndex = CQLParserRULE_kwCalled
 }
 
 func (*KwCalledContext) IsKwCalledContext() {}
@@ -37949,7 +37949,7 @@ func NewKwCalledContext(parser antlr.Parser, parent antlr.ParserRuleContext, inv
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, parent, invokingState)
 
 	p.parser = parser
-	p.RuleIndex = CqlParserRULE_kwCalled
+	p.RuleIndex = CQLParserRULE_kwCalled
 
 	return p
 }
@@ -37957,7 +37957,7 @@ func NewKwCalledContext(parser antlr.Parser, parent antlr.ParserRuleContext, inv
 func (s *KwCalledContext) GetParser() antlr.Parser { return s.parser }
 
 func (s *KwCalledContext) K_CALLED() antlr.TerminalNode {
-	return s.GetToken(CqlParserK_CALLED, 0)
+	return s.GetToken(CQLParserK_CALLED, 0)
 }
 
 func (s *KwCalledContext) GetRuleContext() antlr.RuleContext {
@@ -37969,24 +37969,24 @@ func (s *KwCalledContext) ToStringTree(ruleNames []string, recog antlr.Recognize
 }
 
 func (s *KwCalledContext) EnterRule(listener antlr.ParseTreeListener) {
-	if listenerT, ok := listener.(CqlParserListener); ok {
+	if listenerT, ok := listener.(CQLParserListener); ok {
 		listenerT.EnterKwCalled(s)
 	}
 }
 
 func (s *KwCalledContext) ExitRule(listener antlr.ParseTreeListener) {
-	if listenerT, ok := listener.(CqlParserListener); ok {
+	if listenerT, ok := listener.(CQLParserListener); ok {
 		listenerT.ExitKwCalled(s)
 	}
 }
 
-func (p *CqlParser) KwCalled() (localctx IKwCalledContext) {
+func (p *CQLParser) KwCalled() (localctx IKwCalledContext) {
 	localctx = NewKwCalledContext(p, p.GetParserRuleContext(), p.GetState())
-	p.EnterRule(localctx, 372, CqlParserRULE_kwCalled)
+	p.EnterRule(localctx, 372, CQLParserRULE_kwCalled)
 	p.EnterOuterAlt(localctx, 1)
 	{
 		p.SetState(2138)
-		p.Match(CqlParserK_CALLED)
+		p.Match(CQLParserK_CALLED)
 		if p.HasError() {
 			// Recognition error - abort rule
 			goto errorExit
@@ -38028,13 +38028,13 @@ type KwClusteringContext struct {
 func NewEmptyKwClusteringContext() *KwClusteringContext {
 	var p = new(KwClusteringContext)
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
-	p.RuleIndex = CqlParserRULE_kwClustering
+	p.RuleIndex = CQLParserRULE_kwClustering
 	return p
 }
 
 func InitEmptyKwClusteringContext(p *KwClusteringContext) {
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
-	p.RuleIndex = CqlParserRULE_kwClustering
+	p.RuleIndex = CQLParserRULE_kwClustering
 }
 
 func (*KwClusteringContext) IsKwClusteringContext() {}
@@ -38045,7 +38045,7 @@ func NewKwClusteringContext(parser antlr.Parser, parent antlr.ParserRuleContext,
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, parent, invokingState)
 
 	p.parser = parser
-	p.RuleIndex = CqlParserRULE_kwClustering
+	p.RuleIndex = CQLParserRULE_kwClustering
 
 	return p
 }
@@ -38053,7 +38053,7 @@ func NewKwClusteringContext(parser antlr.Parser, parent antlr.ParserRuleContext,
 func (s *KwClusteringContext) GetParser() antlr.Parser { return s.parser }
 
 func (s *KwClusteringContext) K_CLUSTERING() antlr.TerminalNode {
-	return s.GetToken(CqlParserK_CLUSTERING, 0)
+	return s.GetToken(CQLParserK_CLUSTERING, 0)
 }
 
 func (s *KwClusteringContext) GetRuleContext() antlr.RuleContext {
@@ -38065,24 +38065,24 @@ func (s *KwClusteringContext) ToStringTree(ruleNames []string, recog antlr.Recog
 }
 
 func (s *KwClusteringContext) EnterRule(listener antlr.ParseTreeListener) {
-	if listenerT, ok := listener.(CqlParserListener); ok {
+	if listenerT, ok := listener.(CQLParserListener); ok {
 		listenerT.EnterKwClustering(s)
 	}
 }
 
 func (s *KwClusteringContext) ExitRule(listener antlr.ParseTreeListener) {
-	if listenerT, ok := listener.(CqlParserListener); ok {
+	if listenerT, ok := listener.(CQLParserListener); ok {
 		listenerT.ExitKwClustering(s)
 	}
 }
 
-func (p *CqlParser) KwClustering() (localctx IKwClusteringContext) {
+func (p *CQLParser) KwClustering() (localctx IKwClusteringContext) {
 	localctx = NewKwClusteringContext(p, p.GetParserRuleContext(), p.GetState())
-	p.EnterRule(localctx, 374, CqlParserRULE_kwClustering)
+	p.EnterRule(localctx, 374, CQLParserRULE_kwClustering)
 	p.EnterOuterAlt(localctx, 1)
 	{
 		p.SetState(2140)
-		p.Match(CqlParserK_CLUSTERING)
+		p.Match(CQLParserK_CLUSTERING)
 		if p.HasError() {
 			// Recognition error - abort rule
 			goto errorExit
@@ -38124,13 +38124,13 @@ type KwCompactContext struct {
 func NewEmptyKwCompactContext() *KwCompactContext {
 	var p = new(KwCompactContext)
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
-	p.RuleIndex = CqlParserRULE_kwCompact
+	p.RuleIndex = CQLParserRULE_kwCompact
 	return p
 }
 
 func InitEmptyKwCompactContext(p *KwCompactContext) {
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
-	p.RuleIndex = CqlParserRULE_kwCompact
+	p.RuleIndex = CQLParserRULE_kwCompact
 }
 
 func (*KwCompactContext) IsKwCompactContext() {}
@@ -38141,7 +38141,7 @@ func NewKwCompactContext(parser antlr.Parser, parent antlr.ParserRuleContext, in
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, parent, invokingState)
 
 	p.parser = parser
-	p.RuleIndex = CqlParserRULE_kwCompact
+	p.RuleIndex = CQLParserRULE_kwCompact
 
 	return p
 }
@@ -38149,7 +38149,7 @@ func NewKwCompactContext(parser antlr.Parser, parent antlr.ParserRuleContext, in
 func (s *KwCompactContext) GetParser() antlr.Parser { return s.parser }
 
 func (s *KwCompactContext) K_COMPACT() antlr.TerminalNode {
-	return s.GetToken(CqlParserK_COMPACT, 0)
+	return s.GetToken(CQLParserK_COMPACT, 0)
 }
 
 func (s *KwCompactContext) GetRuleContext() antlr.RuleContext {
@@ -38161,24 +38161,24 @@ func (s *KwCompactContext) ToStringTree(ruleNames []string, recog antlr.Recogniz
 }
 
 func (s *KwCompactContext) EnterRule(listener antlr.ParseTreeListener) {
-	if listenerT, ok := listener.(CqlParserListener); ok {
+	if listenerT, ok := listener.(CQLParserListener); ok {
 		listenerT.EnterKwCompact(s)
 	}
 }
 
 func (s *KwCompactContext) ExitRule(listener antlr.ParseTreeListener) {
-	if listenerT, ok := listener.(CqlParserListener); ok {
+	if listenerT, ok := listener.(CQLParserListener); ok {
 		listenerT.ExitKwCompact(s)
 	}
 }
 
-func (p *CqlParser) KwCompact() (localctx IKwCompactContext) {
+func (p *CQLParser) KwCompact() (localctx IKwCompactContext) {
 	localctx = NewKwCompactContext(p, p.GetParserRuleContext(), p.GetState())
-	p.EnterRule(localctx, 376, CqlParserRULE_kwCompact)
+	p.EnterRule(localctx, 376, CQLParserRULE_kwCompact)
 	p.EnterOuterAlt(localctx, 1)
 	{
 		p.SetState(2142)
-		p.Match(CqlParserK_COMPACT)
+		p.Match(CQLParserK_COMPACT)
 		if p.HasError() {
 			// Recognition error - abort rule
 			goto errorExit
@@ -38220,13 +38220,13 @@ type KwContainsContext struct {
 func NewEmptyKwContainsContext() *KwContainsContext {
 	var p = new(KwContainsContext)
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
-	p.RuleIndex = CqlParserRULE_kwContains
+	p.RuleIndex = CQLParserRULE_kwContains
 	return p
 }
 
 func InitEmptyKwContainsContext(p *KwContainsContext) {
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
-	p.RuleIndex = CqlParserRULE_kwContains
+	p.RuleIndex = CQLParserRULE_kwContains
 }
 
 func (*KwContainsContext) IsKwContainsContext() {}
@@ -38237,7 +38237,7 @@ func NewKwContainsContext(parser antlr.Parser, parent antlr.ParserRuleContext, i
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, parent, invokingState)
 
 	p.parser = parser
-	p.RuleIndex = CqlParserRULE_kwContains
+	p.RuleIndex = CQLParserRULE_kwContains
 
 	return p
 }
@@ -38245,7 +38245,7 @@ func NewKwContainsContext(parser antlr.Parser, parent antlr.ParserRuleContext, i
 func (s *KwContainsContext) GetParser() antlr.Parser { return s.parser }
 
 func (s *KwContainsContext) K_CONTAINS() antlr.TerminalNode {
-	return s.GetToken(CqlParserK_CONTAINS, 0)
+	return s.GetToken(CQLParserK_CONTAINS, 0)
 }
 
 func (s *KwContainsContext) GetRuleContext() antlr.RuleContext {
@@ -38257,24 +38257,24 @@ func (s *KwContainsContext) ToStringTree(ruleNames []string, recog antlr.Recogni
 }
 
 func (s *KwContainsContext) EnterRule(listener antlr.ParseTreeListener) {
-	if listenerT, ok := listener.(CqlParserListener); ok {
+	if listenerT, ok := listener.(CQLParserListener); ok {
 		listenerT.EnterKwContains(s)
 	}
 }
 
 func (s *KwContainsContext) ExitRule(listener antlr.ParseTreeListener) {
-	if listenerT, ok := listener.(CqlParserListener); ok {
+	if listenerT, ok := listener.(CQLParserListener); ok {
 		listenerT.ExitKwContains(s)
 	}
 }
 
-func (p *CqlParser) KwContains() (localctx IKwContainsContext) {
+func (p *CQLParser) KwContains() (localctx IKwContainsContext) {
 	localctx = NewKwContainsContext(p, p.GetParserRuleContext(), p.GetState())
-	p.EnterRule(localctx, 378, CqlParserRULE_kwContains)
+	p.EnterRule(localctx, 378, CQLParserRULE_kwContains)
 	p.EnterOuterAlt(localctx, 1)
 	{
 		p.SetState(2144)
-		p.Match(CqlParserK_CONTAINS)
+		p.Match(CQLParserK_CONTAINS)
 		if p.HasError() {
 			// Recognition error - abort rule
 			goto errorExit
@@ -38316,13 +38316,13 @@ type KwCreateContext struct {
 func NewEmptyKwCreateContext() *KwCreateContext {
 	var p = new(KwCreateContext)
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
-	p.RuleIndex = CqlParserRULE_kwCreate
+	p.RuleIndex = CQLParserRULE_kwCreate
 	return p
 }
 
 func InitEmptyKwCreateContext(p *KwCreateContext) {
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
-	p.RuleIndex = CqlParserRULE_kwCreate
+	p.RuleIndex = CQLParserRULE_kwCreate
 }
 
 func (*KwCreateContext) IsKwCreateContext() {}
@@ -38333,7 +38333,7 @@ func NewKwCreateContext(parser antlr.Parser, parent antlr.ParserRuleContext, inv
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, parent, invokingState)
 
 	p.parser = parser
-	p.RuleIndex = CqlParserRULE_kwCreate
+	p.RuleIndex = CQLParserRULE_kwCreate
 
 	return p
 }
@@ -38341,7 +38341,7 @@ func NewKwCreateContext(parser antlr.Parser, parent antlr.ParserRuleContext, inv
 func (s *KwCreateContext) GetParser() antlr.Parser { return s.parser }
 
 func (s *KwCreateContext) K_CREATE() antlr.TerminalNode {
-	return s.GetToken(CqlParserK_CREATE, 0)
+	return s.GetToken(CQLParserK_CREATE, 0)
 }
 
 func (s *KwCreateContext) GetRuleContext() antlr.RuleContext {
@@ -38353,24 +38353,24 @@ func (s *KwCreateContext) ToStringTree(ruleNames []string, recog antlr.Recognize
 }
 
 func (s *KwCreateContext) EnterRule(listener antlr.ParseTreeListener) {
-	if listenerT, ok := listener.(CqlParserListener); ok {
+	if listenerT, ok := listener.(CQLParserListener); ok {
 		listenerT.EnterKwCreate(s)
 	}
 }
 
 func (s *KwCreateContext) ExitRule(listener antlr.ParseTreeListener) {
-	if listenerT, ok := listener.(CqlParserListener); ok {
+	if listenerT, ok := listener.(CQLParserListener); ok {
 		listenerT.ExitKwCreate(s)
 	}
 }
 
-func (p *CqlParser) KwCreate() (localctx IKwCreateContext) {
+func (p *CQLParser) KwCreate() (localctx IKwCreateContext) {
 	localctx = NewKwCreateContext(p, p.GetParserRuleContext(), p.GetState())
-	p.EnterRule(localctx, 380, CqlParserRULE_kwCreate)
+	p.EnterRule(localctx, 380, CQLParserRULE_kwCreate)
 	p.EnterOuterAlt(localctx, 1)
 	{
 		p.SetState(2146)
-		p.Match(CqlParserK_CREATE)
+		p.Match(CQLParserK_CREATE)
 		if p.HasError() {
 			// Recognition error - abort rule
 			goto errorExit
@@ -38412,13 +38412,13 @@ type KwDeleteContext struct {
 func NewEmptyKwDeleteContext() *KwDeleteContext {
 	var p = new(KwDeleteContext)
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
-	p.RuleIndex = CqlParserRULE_kwDelete
+	p.RuleIndex = CQLParserRULE_kwDelete
 	return p
 }
 
 func InitEmptyKwDeleteContext(p *KwDeleteContext) {
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
-	p.RuleIndex = CqlParserRULE_kwDelete
+	p.RuleIndex = CQLParserRULE_kwDelete
 }
 
 func (*KwDeleteContext) IsKwDeleteContext() {}
@@ -38429,7 +38429,7 @@ func NewKwDeleteContext(parser antlr.Parser, parent antlr.ParserRuleContext, inv
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, parent, invokingState)
 
 	p.parser = parser
-	p.RuleIndex = CqlParserRULE_kwDelete
+	p.RuleIndex = CQLParserRULE_kwDelete
 
 	return p
 }
@@ -38437,7 +38437,7 @@ func NewKwDeleteContext(parser antlr.Parser, parent antlr.ParserRuleContext, inv
 func (s *KwDeleteContext) GetParser() antlr.Parser { return s.parser }
 
 func (s *KwDeleteContext) K_DELETE() antlr.TerminalNode {
-	return s.GetToken(CqlParserK_DELETE, 0)
+	return s.GetToken(CQLParserK_DELETE, 0)
 }
 
 func (s *KwDeleteContext) GetRuleContext() antlr.RuleContext {
@@ -38449,24 +38449,24 @@ func (s *KwDeleteContext) ToStringTree(ruleNames []string, recog antlr.Recognize
 }
 
 func (s *KwDeleteContext) EnterRule(listener antlr.ParseTreeListener) {
-	if listenerT, ok := listener.(CqlParserListener); ok {
+	if listenerT, ok := listener.(CQLParserListener); ok {
 		listenerT.EnterKwDelete(s)
 	}
 }
 
 func (s *KwDeleteContext) ExitRule(listener antlr.ParseTreeListener) {
-	if listenerT, ok := listener.(CqlParserListener); ok {
+	if listenerT, ok := listener.(CQLParserListener); ok {
 		listenerT.ExitKwDelete(s)
 	}
 }
 
-func (p *CqlParser) KwDelete() (localctx IKwDeleteContext) {
+func (p *CQLParser) KwDelete() (localctx IKwDeleteContext) {
 	localctx = NewKwDeleteContext(p, p.GetParserRuleContext(), p.GetState())
-	p.EnterRule(localctx, 382, CqlParserRULE_kwDelete)
+	p.EnterRule(localctx, 382, CQLParserRULE_kwDelete)
 	p.EnterOuterAlt(localctx, 1)
 	{
 		p.SetState(2148)
-		p.Match(CqlParserK_DELETE)
+		p.Match(CQLParserK_DELETE)
 		if p.HasError() {
 			// Recognition error - abort rule
 			goto errorExit
@@ -38508,13 +38508,13 @@ type KwDescContext struct {
 func NewEmptyKwDescContext() *KwDescContext {
 	var p = new(KwDescContext)
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
-	p.RuleIndex = CqlParserRULE_kwDesc
+	p.RuleIndex = CQLParserRULE_kwDesc
 	return p
 }
 
 func InitEmptyKwDescContext(p *KwDescContext) {
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
-	p.RuleIndex = CqlParserRULE_kwDesc
+	p.RuleIndex = CQLParserRULE_kwDesc
 }
 
 func (*KwDescContext) IsKwDescContext() {}
@@ -38525,7 +38525,7 @@ func NewKwDescContext(parser antlr.Parser, parent antlr.ParserRuleContext, invok
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, parent, invokingState)
 
 	p.parser = parser
-	p.RuleIndex = CqlParserRULE_kwDesc
+	p.RuleIndex = CQLParserRULE_kwDesc
 
 	return p
 }
@@ -38533,7 +38533,7 @@ func NewKwDescContext(parser antlr.Parser, parent antlr.ParserRuleContext, invok
 func (s *KwDescContext) GetParser() antlr.Parser { return s.parser }
 
 func (s *KwDescContext) K_DESC() antlr.TerminalNode {
-	return s.GetToken(CqlParserK_DESC, 0)
+	return s.GetToken(CQLParserK_DESC, 0)
 }
 
 func (s *KwDescContext) GetRuleContext() antlr.RuleContext {
@@ -38545,24 +38545,24 @@ func (s *KwDescContext) ToStringTree(ruleNames []string, recog antlr.Recognizer)
 }
 
 func (s *KwDescContext) EnterRule(listener antlr.ParseTreeListener) {
-	if listenerT, ok := listener.(CqlParserListener); ok {
+	if listenerT, ok := listener.(CQLParserListener); ok {
 		listenerT.EnterKwDesc(s)
 	}
 }
 
 func (s *KwDescContext) ExitRule(listener antlr.ParseTreeListener) {
-	if listenerT, ok := listener.(CqlParserListener); ok {
+	if listenerT, ok := listener.(CQLParserListener); ok {
 		listenerT.ExitKwDesc(s)
 	}
 }
 
-func (p *CqlParser) KwDesc() (localctx IKwDescContext) {
+func (p *CQLParser) KwDesc() (localctx IKwDescContext) {
 	localctx = NewKwDescContext(p, p.GetParserRuleContext(), p.GetState())
-	p.EnterRule(localctx, 384, CqlParserRULE_kwDesc)
+	p.EnterRule(localctx, 384, CQLParserRULE_kwDesc)
 	p.EnterOuterAlt(localctx, 1)
 	{
 		p.SetState(2150)
-		p.Match(CqlParserK_DESC)
+		p.Match(CQLParserK_DESC)
 		if p.HasError() {
 			// Recognition error - abort rule
 			goto errorExit
@@ -38604,13 +38604,13 @@ type KwDescibeContext struct {
 func NewEmptyKwDescibeContext() *KwDescibeContext {
 	var p = new(KwDescibeContext)
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
-	p.RuleIndex = CqlParserRULE_kwDescibe
+	p.RuleIndex = CQLParserRULE_kwDescibe
 	return p
 }
 
 func InitEmptyKwDescibeContext(p *KwDescibeContext) {
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
-	p.RuleIndex = CqlParserRULE_kwDescibe
+	p.RuleIndex = CQLParserRULE_kwDescibe
 }
 
 func (*KwDescibeContext) IsKwDescibeContext() {}
@@ -38621,7 +38621,7 @@ func NewKwDescibeContext(parser antlr.Parser, parent antlr.ParserRuleContext, in
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, parent, invokingState)
 
 	p.parser = parser
-	p.RuleIndex = CqlParserRULE_kwDescibe
+	p.RuleIndex = CQLParserRULE_kwDescibe
 
 	return p
 }
@@ -38629,7 +38629,7 @@ func NewKwDescibeContext(parser antlr.Parser, parent antlr.ParserRuleContext, in
 func (s *KwDescibeContext) GetParser() antlr.Parser { return s.parser }
 
 func (s *KwDescibeContext) K_DESCRIBE() antlr.TerminalNode {
-	return s.GetToken(CqlParserK_DESCRIBE, 0)
+	return s.GetToken(CQLParserK_DESCRIBE, 0)
 }
 
 func (s *KwDescibeContext) GetRuleContext() antlr.RuleContext {
@@ -38641,24 +38641,24 @@ func (s *KwDescibeContext) ToStringTree(ruleNames []string, recog antlr.Recogniz
 }
 
 func (s *KwDescibeContext) EnterRule(listener antlr.ParseTreeListener) {
-	if listenerT, ok := listener.(CqlParserListener); ok {
+	if listenerT, ok := listener.(CQLParserListener); ok {
 		listenerT.EnterKwDescibe(s)
 	}
 }
 
 func (s *KwDescibeContext) ExitRule(listener antlr.ParseTreeListener) {
-	if listenerT, ok := listener.(CqlParserListener); ok {
+	if listenerT, ok := listener.(CQLParserListener); ok {
 		listenerT.ExitKwDescibe(s)
 	}
 }
 
-func (p *CqlParser) KwDescibe() (localctx IKwDescibeContext) {
+func (p *CQLParser) KwDescibe() (localctx IKwDescibeContext) {
 	localctx = NewKwDescibeContext(p, p.GetParserRuleContext(), p.GetState())
-	p.EnterRule(localctx, 386, CqlParserRULE_kwDescibe)
+	p.EnterRule(localctx, 386, CQLParserRULE_kwDescibe)
 	p.EnterOuterAlt(localctx, 1)
 	{
 		p.SetState(2152)
-		p.Match(CqlParserK_DESCRIBE)
+		p.Match(CQLParserK_DESCRIBE)
 		if p.HasError() {
 			// Recognition error - abort rule
 			goto errorExit
@@ -38700,13 +38700,13 @@ type KwDistinctContext struct {
 func NewEmptyKwDistinctContext() *KwDistinctContext {
 	var p = new(KwDistinctContext)
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
-	p.RuleIndex = CqlParserRULE_kwDistinct
+	p.RuleIndex = CQLParserRULE_kwDistinct
 	return p
 }
 
 func InitEmptyKwDistinctContext(p *KwDistinctContext) {
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
-	p.RuleIndex = CqlParserRULE_kwDistinct
+	p.RuleIndex = CQLParserRULE_kwDistinct
 }
 
 func (*KwDistinctContext) IsKwDistinctContext() {}
@@ -38717,7 +38717,7 @@ func NewKwDistinctContext(parser antlr.Parser, parent antlr.ParserRuleContext, i
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, parent, invokingState)
 
 	p.parser = parser
-	p.RuleIndex = CqlParserRULE_kwDistinct
+	p.RuleIndex = CQLParserRULE_kwDistinct
 
 	return p
 }
@@ -38725,7 +38725,7 @@ func NewKwDistinctContext(parser antlr.Parser, parent antlr.ParserRuleContext, i
 func (s *KwDistinctContext) GetParser() antlr.Parser { return s.parser }
 
 func (s *KwDistinctContext) K_DISTINCT() antlr.TerminalNode {
-	return s.GetToken(CqlParserK_DISTINCT, 0)
+	return s.GetToken(CQLParserK_DISTINCT, 0)
 }
 
 func (s *KwDistinctContext) GetRuleContext() antlr.RuleContext {
@@ -38737,24 +38737,24 @@ func (s *KwDistinctContext) ToStringTree(ruleNames []string, recog antlr.Recogni
 }
 
 func (s *KwDistinctContext) EnterRule(listener antlr.ParseTreeListener) {
-	if listenerT, ok := listener.(CqlParserListener); ok {
+	if listenerT, ok := listener.(CQLParserListener); ok {
 		listenerT.EnterKwDistinct(s)
 	}
 }
 
 func (s *KwDistinctContext) ExitRule(listener antlr.ParseTreeListener) {
-	if listenerT, ok := listener.(CqlParserListener); ok {
+	if listenerT, ok := listener.(CQLParserListener); ok {
 		listenerT.ExitKwDistinct(s)
 	}
 }
 
-func (p *CqlParser) KwDistinct() (localctx IKwDistinctContext) {
+func (p *CQLParser) KwDistinct() (localctx IKwDistinctContext) {
 	localctx = NewKwDistinctContext(p, p.GetParserRuleContext(), p.GetState())
-	p.EnterRule(localctx, 388, CqlParserRULE_kwDistinct)
+	p.EnterRule(localctx, 388, CQLParserRULE_kwDistinct)
 	p.EnterOuterAlt(localctx, 1)
 	{
 		p.SetState(2154)
-		p.Match(CqlParserK_DISTINCT)
+		p.Match(CQLParserK_DISTINCT)
 		if p.HasError() {
 			// Recognition error - abort rule
 			goto errorExit
@@ -38796,13 +38796,13 @@ type KwDropContext struct {
 func NewEmptyKwDropContext() *KwDropContext {
 	var p = new(KwDropContext)
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
-	p.RuleIndex = CqlParserRULE_kwDrop
+	p.RuleIndex = CQLParserRULE_kwDrop
 	return p
 }
 
 func InitEmptyKwDropContext(p *KwDropContext) {
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
-	p.RuleIndex = CqlParserRULE_kwDrop
+	p.RuleIndex = CQLParserRULE_kwDrop
 }
 
 func (*KwDropContext) IsKwDropContext() {}
@@ -38813,7 +38813,7 @@ func NewKwDropContext(parser antlr.Parser, parent antlr.ParserRuleContext, invok
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, parent, invokingState)
 
 	p.parser = parser
-	p.RuleIndex = CqlParserRULE_kwDrop
+	p.RuleIndex = CQLParserRULE_kwDrop
 
 	return p
 }
@@ -38821,7 +38821,7 @@ func NewKwDropContext(parser antlr.Parser, parent antlr.ParserRuleContext, invok
 func (s *KwDropContext) GetParser() antlr.Parser { return s.parser }
 
 func (s *KwDropContext) K_DROP() antlr.TerminalNode {
-	return s.GetToken(CqlParserK_DROP, 0)
+	return s.GetToken(CQLParserK_DROP, 0)
 }
 
 func (s *KwDropContext) GetRuleContext() antlr.RuleContext {
@@ -38833,24 +38833,24 @@ func (s *KwDropContext) ToStringTree(ruleNames []string, recog antlr.Recognizer)
 }
 
 func (s *KwDropContext) EnterRule(listener antlr.ParseTreeListener) {
-	if listenerT, ok := listener.(CqlParserListener); ok {
+	if listenerT, ok := listener.(CQLParserListener); ok {
 		listenerT.EnterKwDrop(s)
 	}
 }
 
 func (s *KwDropContext) ExitRule(listener antlr.ParseTreeListener) {
-	if listenerT, ok := listener.(CqlParserListener); ok {
+	if listenerT, ok := listener.(CQLParserListener); ok {
 		listenerT.ExitKwDrop(s)
 	}
 }
 
-func (p *CqlParser) KwDrop() (localctx IKwDropContext) {
+func (p *CQLParser) KwDrop() (localctx IKwDropContext) {
 	localctx = NewKwDropContext(p, p.GetParserRuleContext(), p.GetState())
-	p.EnterRule(localctx, 390, CqlParserRULE_kwDrop)
+	p.EnterRule(localctx, 390, CQLParserRULE_kwDrop)
 	p.EnterOuterAlt(localctx, 1)
 	{
 		p.SetState(2156)
-		p.Match(CqlParserK_DROP)
+		p.Match(CQLParserK_DROP)
 		if p.HasError() {
 			// Recognition error - abort rule
 			goto errorExit
@@ -38892,13 +38892,13 @@ type KwDurableWritesContext struct {
 func NewEmptyKwDurableWritesContext() *KwDurableWritesContext {
 	var p = new(KwDurableWritesContext)
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
-	p.RuleIndex = CqlParserRULE_kwDurableWrites
+	p.RuleIndex = CQLParserRULE_kwDurableWrites
 	return p
 }
 
 func InitEmptyKwDurableWritesContext(p *KwDurableWritesContext) {
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
-	p.RuleIndex = CqlParserRULE_kwDurableWrites
+	p.RuleIndex = CQLParserRULE_kwDurableWrites
 }
 
 func (*KwDurableWritesContext) IsKwDurableWritesContext() {}
@@ -38909,7 +38909,7 @@ func NewKwDurableWritesContext(parser antlr.Parser, parent antlr.ParserRuleConte
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, parent, invokingState)
 
 	p.parser = parser
-	p.RuleIndex = CqlParserRULE_kwDurableWrites
+	p.RuleIndex = CQLParserRULE_kwDurableWrites
 
 	return p
 }
@@ -38917,7 +38917,7 @@ func NewKwDurableWritesContext(parser antlr.Parser, parent antlr.ParserRuleConte
 func (s *KwDurableWritesContext) GetParser() antlr.Parser { return s.parser }
 
 func (s *KwDurableWritesContext) K_DURABLE_WRITES() antlr.TerminalNode {
-	return s.GetToken(CqlParserK_DURABLE_WRITES, 0)
+	return s.GetToken(CQLParserK_DURABLE_WRITES, 0)
 }
 
 func (s *KwDurableWritesContext) GetRuleContext() antlr.RuleContext {
@@ -38929,24 +38929,24 @@ func (s *KwDurableWritesContext) ToStringTree(ruleNames []string, recog antlr.Re
 }
 
 func (s *KwDurableWritesContext) EnterRule(listener antlr.ParseTreeListener) {
-	if listenerT, ok := listener.(CqlParserListener); ok {
+	if listenerT, ok := listener.(CQLParserListener); ok {
 		listenerT.EnterKwDurableWrites(s)
 	}
 }
 
 func (s *KwDurableWritesContext) ExitRule(listener antlr.ParseTreeListener) {
-	if listenerT, ok := listener.(CqlParserListener); ok {
+	if listenerT, ok := listener.(CQLParserListener); ok {
 		listenerT.ExitKwDurableWrites(s)
 	}
 }
 
-func (p *CqlParser) KwDurableWrites() (localctx IKwDurableWritesContext) {
+func (p *CQLParser) KwDurableWrites() (localctx IKwDurableWritesContext) {
 	localctx = NewKwDurableWritesContext(p, p.GetParserRuleContext(), p.GetState())
-	p.EnterRule(localctx, 392, CqlParserRULE_kwDurableWrites)
+	p.EnterRule(localctx, 392, CQLParserRULE_kwDurableWrites)
 	p.EnterOuterAlt(localctx, 1)
 	{
 		p.SetState(2158)
-		p.Match(CqlParserK_DURABLE_WRITES)
+		p.Match(CQLParserK_DURABLE_WRITES)
 		if p.HasError() {
 			// Recognition error - abort rule
 			goto errorExit
@@ -38988,13 +38988,13 @@ type KwEntriesContext struct {
 func NewEmptyKwEntriesContext() *KwEntriesContext {
 	var p = new(KwEntriesContext)
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
-	p.RuleIndex = CqlParserRULE_kwEntries
+	p.RuleIndex = CQLParserRULE_kwEntries
 	return p
 }
 
 func InitEmptyKwEntriesContext(p *KwEntriesContext) {
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
-	p.RuleIndex = CqlParserRULE_kwEntries
+	p.RuleIndex = CQLParserRULE_kwEntries
 }
 
 func (*KwEntriesContext) IsKwEntriesContext() {}
@@ -39005,7 +39005,7 @@ func NewKwEntriesContext(parser antlr.Parser, parent antlr.ParserRuleContext, in
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, parent, invokingState)
 
 	p.parser = parser
-	p.RuleIndex = CqlParserRULE_kwEntries
+	p.RuleIndex = CQLParserRULE_kwEntries
 
 	return p
 }
@@ -39013,7 +39013,7 @@ func NewKwEntriesContext(parser antlr.Parser, parent antlr.ParserRuleContext, in
 func (s *KwEntriesContext) GetParser() antlr.Parser { return s.parser }
 
 func (s *KwEntriesContext) K_ENTRIES() antlr.TerminalNode {
-	return s.GetToken(CqlParserK_ENTRIES, 0)
+	return s.GetToken(CQLParserK_ENTRIES, 0)
 }
 
 func (s *KwEntriesContext) GetRuleContext() antlr.RuleContext {
@@ -39025,24 +39025,24 @@ func (s *KwEntriesContext) ToStringTree(ruleNames []string, recog antlr.Recogniz
 }
 
 func (s *KwEntriesContext) EnterRule(listener antlr.ParseTreeListener) {
-	if listenerT, ok := listener.(CqlParserListener); ok {
+	if listenerT, ok := listener.(CQLParserListener); ok {
 		listenerT.EnterKwEntries(s)
 	}
 }
 
 func (s *KwEntriesContext) ExitRule(listener antlr.ParseTreeListener) {
-	if listenerT, ok := listener.(CqlParserListener); ok {
+	if listenerT, ok := listener.(CQLParserListener); ok {
 		listenerT.ExitKwEntries(s)
 	}
 }
 
-func (p *CqlParser) KwEntries() (localctx IKwEntriesContext) {
+func (p *CQLParser) KwEntries() (localctx IKwEntriesContext) {
 	localctx = NewKwEntriesContext(p, p.GetParserRuleContext(), p.GetState())
-	p.EnterRule(localctx, 394, CqlParserRULE_kwEntries)
+	p.EnterRule(localctx, 394, CQLParserRULE_kwEntries)
 	p.EnterOuterAlt(localctx, 1)
 	{
 		p.SetState(2160)
-		p.Match(CqlParserK_ENTRIES)
+		p.Match(CQLParserK_ENTRIES)
 		if p.HasError() {
 			// Recognition error - abort rule
 			goto errorExit
@@ -39084,13 +39084,13 @@ type KwExecuteContext struct {
 func NewEmptyKwExecuteContext() *KwExecuteContext {
 	var p = new(KwExecuteContext)
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
-	p.RuleIndex = CqlParserRULE_kwExecute
+	p.RuleIndex = CQLParserRULE_kwExecute
 	return p
 }
 
 func InitEmptyKwExecuteContext(p *KwExecuteContext) {
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
-	p.RuleIndex = CqlParserRULE_kwExecute
+	p.RuleIndex = CQLParserRULE_kwExecute
 }
 
 func (*KwExecuteContext) IsKwExecuteContext() {}
@@ -39101,7 +39101,7 @@ func NewKwExecuteContext(parser antlr.Parser, parent antlr.ParserRuleContext, in
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, parent, invokingState)
 
 	p.parser = parser
-	p.RuleIndex = CqlParserRULE_kwExecute
+	p.RuleIndex = CQLParserRULE_kwExecute
 
 	return p
 }
@@ -39109,7 +39109,7 @@ func NewKwExecuteContext(parser antlr.Parser, parent antlr.ParserRuleContext, in
 func (s *KwExecuteContext) GetParser() antlr.Parser { return s.parser }
 
 func (s *KwExecuteContext) K_EXECUTE() antlr.TerminalNode {
-	return s.GetToken(CqlParserK_EXECUTE, 0)
+	return s.GetToken(CQLParserK_EXECUTE, 0)
 }
 
 func (s *KwExecuteContext) GetRuleContext() antlr.RuleContext {
@@ -39121,24 +39121,24 @@ func (s *KwExecuteContext) ToStringTree(ruleNames []string, recog antlr.Recogniz
 }
 
 func (s *KwExecuteContext) EnterRule(listener antlr.ParseTreeListener) {
-	if listenerT, ok := listener.(CqlParserListener); ok {
+	if listenerT, ok := listener.(CQLParserListener); ok {
 		listenerT.EnterKwExecute(s)
 	}
 }
 
 func (s *KwExecuteContext) ExitRule(listener antlr.ParseTreeListener) {
-	if listenerT, ok := listener.(CqlParserListener); ok {
+	if listenerT, ok := listener.(CQLParserListener); ok {
 		listenerT.ExitKwExecute(s)
 	}
 }
 
-func (p *CqlParser) KwExecute() (localctx IKwExecuteContext) {
+func (p *CQLParser) KwExecute() (localctx IKwExecuteContext) {
 	localctx = NewKwExecuteContext(p, p.GetParserRuleContext(), p.GetState())
-	p.EnterRule(localctx, 396, CqlParserRULE_kwExecute)
+	p.EnterRule(localctx, 396, CQLParserRULE_kwExecute)
 	p.EnterOuterAlt(localctx, 1)
 	{
 		p.SetState(2162)
-		p.Match(CqlParserK_EXECUTE)
+		p.Match(CQLParserK_EXECUTE)
 		if p.HasError() {
 			// Recognition error - abort rule
 			goto errorExit
@@ -39180,13 +39180,13 @@ type KwExistsContext struct {
 func NewEmptyKwExistsContext() *KwExistsContext {
 	var p = new(KwExistsContext)
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
-	p.RuleIndex = CqlParserRULE_kwExists
+	p.RuleIndex = CQLParserRULE_kwExists
 	return p
 }
 
 func InitEmptyKwExistsContext(p *KwExistsContext) {
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
-	p.RuleIndex = CqlParserRULE_kwExists
+	p.RuleIndex = CQLParserRULE_kwExists
 }
 
 func (*KwExistsContext) IsKwExistsContext() {}
@@ -39197,7 +39197,7 @@ func NewKwExistsContext(parser antlr.Parser, parent antlr.ParserRuleContext, inv
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, parent, invokingState)
 
 	p.parser = parser
-	p.RuleIndex = CqlParserRULE_kwExists
+	p.RuleIndex = CQLParserRULE_kwExists
 
 	return p
 }
@@ -39205,7 +39205,7 @@ func NewKwExistsContext(parser antlr.Parser, parent antlr.ParserRuleContext, inv
 func (s *KwExistsContext) GetParser() antlr.Parser { return s.parser }
 
 func (s *KwExistsContext) K_EXISTS() antlr.TerminalNode {
-	return s.GetToken(CqlParserK_EXISTS, 0)
+	return s.GetToken(CQLParserK_EXISTS, 0)
 }
 
 func (s *KwExistsContext) GetRuleContext() antlr.RuleContext {
@@ -39217,24 +39217,24 @@ func (s *KwExistsContext) ToStringTree(ruleNames []string, recog antlr.Recognize
 }
 
 func (s *KwExistsContext) EnterRule(listener antlr.ParseTreeListener) {
-	if listenerT, ok := listener.(CqlParserListener); ok {
+	if listenerT, ok := listener.(CQLParserListener); ok {
 		listenerT.EnterKwExists(s)
 	}
 }
 
 func (s *KwExistsContext) ExitRule(listener antlr.ParseTreeListener) {
-	if listenerT, ok := listener.(CqlParserListener); ok {
+	if listenerT, ok := listener.(CQLParserListener); ok {
 		listenerT.ExitKwExists(s)
 	}
 }
 
-func (p *CqlParser) KwExists() (localctx IKwExistsContext) {
+func (p *CQLParser) KwExists() (localctx IKwExistsContext) {
 	localctx = NewKwExistsContext(p, p.GetParserRuleContext(), p.GetState())
-	p.EnterRule(localctx, 398, CqlParserRULE_kwExists)
+	p.EnterRule(localctx, 398, CQLParserRULE_kwExists)
 	p.EnterOuterAlt(localctx, 1)
 	{
 		p.SetState(2164)
-		p.Match(CqlParserK_EXISTS)
+		p.Match(CQLParserK_EXISTS)
 		if p.HasError() {
 			// Recognition error - abort rule
 			goto errorExit
@@ -39276,13 +39276,13 @@ type KwFilteringContext struct {
 func NewEmptyKwFilteringContext() *KwFilteringContext {
 	var p = new(KwFilteringContext)
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
-	p.RuleIndex = CqlParserRULE_kwFiltering
+	p.RuleIndex = CQLParserRULE_kwFiltering
 	return p
 }
 
 func InitEmptyKwFilteringContext(p *KwFilteringContext) {
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
-	p.RuleIndex = CqlParserRULE_kwFiltering
+	p.RuleIndex = CQLParserRULE_kwFiltering
 }
 
 func (*KwFilteringContext) IsKwFilteringContext() {}
@@ -39293,7 +39293,7 @@ func NewKwFilteringContext(parser antlr.Parser, parent antlr.ParserRuleContext, 
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, parent, invokingState)
 
 	p.parser = parser
-	p.RuleIndex = CqlParserRULE_kwFiltering
+	p.RuleIndex = CQLParserRULE_kwFiltering
 
 	return p
 }
@@ -39301,7 +39301,7 @@ func NewKwFilteringContext(parser antlr.Parser, parent antlr.ParserRuleContext, 
 func (s *KwFilteringContext) GetParser() antlr.Parser { return s.parser }
 
 func (s *KwFilteringContext) K_FILTERING() antlr.TerminalNode {
-	return s.GetToken(CqlParserK_FILTERING, 0)
+	return s.GetToken(CQLParserK_FILTERING, 0)
 }
 
 func (s *KwFilteringContext) GetRuleContext() antlr.RuleContext {
@@ -39313,24 +39313,24 @@ func (s *KwFilteringContext) ToStringTree(ruleNames []string, recog antlr.Recogn
 }
 
 func (s *KwFilteringContext) EnterRule(listener antlr.ParseTreeListener) {
-	if listenerT, ok := listener.(CqlParserListener); ok {
+	if listenerT, ok := listener.(CQLParserListener); ok {
 		listenerT.EnterKwFiltering(s)
 	}
 }
 
 func (s *KwFilteringContext) ExitRule(listener antlr.ParseTreeListener) {
-	if listenerT, ok := listener.(CqlParserListener); ok {
+	if listenerT, ok := listener.(CQLParserListener); ok {
 		listenerT.ExitKwFiltering(s)
 	}
 }
 
-func (p *CqlParser) KwFiltering() (localctx IKwFilteringContext) {
+func (p *CQLParser) KwFiltering() (localctx IKwFilteringContext) {
 	localctx = NewKwFilteringContext(p, p.GetParserRuleContext(), p.GetState())
-	p.EnterRule(localctx, 400, CqlParserRULE_kwFiltering)
+	p.EnterRule(localctx, 400, CQLParserRULE_kwFiltering)
 	p.EnterOuterAlt(localctx, 1)
 	{
 		p.SetState(2166)
-		p.Match(CqlParserK_FILTERING)
+		p.Match(CQLParserK_FILTERING)
 		if p.HasError() {
 			// Recognition error - abort rule
 			goto errorExit
@@ -39372,13 +39372,13 @@ type KwFinalfuncContext struct {
 func NewEmptyKwFinalfuncContext() *KwFinalfuncContext {
 	var p = new(KwFinalfuncContext)
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
-	p.RuleIndex = CqlParserRULE_kwFinalfunc
+	p.RuleIndex = CQLParserRULE_kwFinalfunc
 	return p
 }
 
 func InitEmptyKwFinalfuncContext(p *KwFinalfuncContext) {
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
-	p.RuleIndex = CqlParserRULE_kwFinalfunc
+	p.RuleIndex = CQLParserRULE_kwFinalfunc
 }
 
 func (*KwFinalfuncContext) IsKwFinalfuncContext() {}
@@ -39389,7 +39389,7 @@ func NewKwFinalfuncContext(parser antlr.Parser, parent antlr.ParserRuleContext, 
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, parent, invokingState)
 
 	p.parser = parser
-	p.RuleIndex = CqlParserRULE_kwFinalfunc
+	p.RuleIndex = CQLParserRULE_kwFinalfunc
 
 	return p
 }
@@ -39397,7 +39397,7 @@ func NewKwFinalfuncContext(parser antlr.Parser, parent antlr.ParserRuleContext, 
 func (s *KwFinalfuncContext) GetParser() antlr.Parser { return s.parser }
 
 func (s *KwFinalfuncContext) K_FINALFUNC() antlr.TerminalNode {
-	return s.GetToken(CqlParserK_FINALFUNC, 0)
+	return s.GetToken(CQLParserK_FINALFUNC, 0)
 }
 
 func (s *KwFinalfuncContext) GetRuleContext() antlr.RuleContext {
@@ -39409,24 +39409,24 @@ func (s *KwFinalfuncContext) ToStringTree(ruleNames []string, recog antlr.Recogn
 }
 
 func (s *KwFinalfuncContext) EnterRule(listener antlr.ParseTreeListener) {
-	if listenerT, ok := listener.(CqlParserListener); ok {
+	if listenerT, ok := listener.(CQLParserListener); ok {
 		listenerT.EnterKwFinalfunc(s)
 	}
 }
 
 func (s *KwFinalfuncContext) ExitRule(listener antlr.ParseTreeListener) {
-	if listenerT, ok := listener.(CqlParserListener); ok {
+	if listenerT, ok := listener.(CQLParserListener); ok {
 		listenerT.ExitKwFinalfunc(s)
 	}
 }
 
-func (p *CqlParser) KwFinalfunc() (localctx IKwFinalfuncContext) {
+func (p *CQLParser) KwFinalfunc() (localctx IKwFinalfuncContext) {
 	localctx = NewKwFinalfuncContext(p, p.GetParserRuleContext(), p.GetState())
-	p.EnterRule(localctx, 402, CqlParserRULE_kwFinalfunc)
+	p.EnterRule(localctx, 402, CQLParserRULE_kwFinalfunc)
 	p.EnterOuterAlt(localctx, 1)
 	{
 		p.SetState(2168)
-		p.Match(CqlParserK_FINALFUNC)
+		p.Match(CQLParserK_FINALFUNC)
 		if p.HasError() {
 			// Recognition error - abort rule
 			goto errorExit
@@ -39468,13 +39468,13 @@ type KwFromContext struct {
 func NewEmptyKwFromContext() *KwFromContext {
 	var p = new(KwFromContext)
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
-	p.RuleIndex = CqlParserRULE_kwFrom
+	p.RuleIndex = CQLParserRULE_kwFrom
 	return p
 }
 
 func InitEmptyKwFromContext(p *KwFromContext) {
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
-	p.RuleIndex = CqlParserRULE_kwFrom
+	p.RuleIndex = CQLParserRULE_kwFrom
 }
 
 func (*KwFromContext) IsKwFromContext() {}
@@ -39485,7 +39485,7 @@ func NewKwFromContext(parser antlr.Parser, parent antlr.ParserRuleContext, invok
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, parent, invokingState)
 
 	p.parser = parser
-	p.RuleIndex = CqlParserRULE_kwFrom
+	p.RuleIndex = CQLParserRULE_kwFrom
 
 	return p
 }
@@ -39493,7 +39493,7 @@ func NewKwFromContext(parser antlr.Parser, parent antlr.ParserRuleContext, invok
 func (s *KwFromContext) GetParser() antlr.Parser { return s.parser }
 
 func (s *KwFromContext) K_FROM() antlr.TerminalNode {
-	return s.GetToken(CqlParserK_FROM, 0)
+	return s.GetToken(CQLParserK_FROM, 0)
 }
 
 func (s *KwFromContext) GetRuleContext() antlr.RuleContext {
@@ -39505,24 +39505,24 @@ func (s *KwFromContext) ToStringTree(ruleNames []string, recog antlr.Recognizer)
 }
 
 func (s *KwFromContext) EnterRule(listener antlr.ParseTreeListener) {
-	if listenerT, ok := listener.(CqlParserListener); ok {
+	if listenerT, ok := listener.(CQLParserListener); ok {
 		listenerT.EnterKwFrom(s)
 	}
 }
 
 func (s *KwFromContext) ExitRule(listener antlr.ParseTreeListener) {
-	if listenerT, ok := listener.(CqlParserListener); ok {
+	if listenerT, ok := listener.(CQLParserListener); ok {
 		listenerT.ExitKwFrom(s)
 	}
 }
 
-func (p *CqlParser) KwFrom() (localctx IKwFromContext) {
+func (p *CQLParser) KwFrom() (localctx IKwFromContext) {
 	localctx = NewKwFromContext(p, p.GetParserRuleContext(), p.GetState())
-	p.EnterRule(localctx, 404, CqlParserRULE_kwFrom)
+	p.EnterRule(localctx, 404, CQLParserRULE_kwFrom)
 	p.EnterOuterAlt(localctx, 1)
 	{
 		p.SetState(2170)
-		p.Match(CqlParserK_FROM)
+		p.Match(CQLParserK_FROM)
 		if p.HasError() {
 			// Recognition error - abort rule
 			goto errorExit
@@ -39564,13 +39564,13 @@ type KwFullContext struct {
 func NewEmptyKwFullContext() *KwFullContext {
 	var p = new(KwFullContext)
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
-	p.RuleIndex = CqlParserRULE_kwFull
+	p.RuleIndex = CQLParserRULE_kwFull
 	return p
 }
 
 func InitEmptyKwFullContext(p *KwFullContext) {
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
-	p.RuleIndex = CqlParserRULE_kwFull
+	p.RuleIndex = CQLParserRULE_kwFull
 }
 
 func (*KwFullContext) IsKwFullContext() {}
@@ -39581,7 +39581,7 @@ func NewKwFullContext(parser antlr.Parser, parent antlr.ParserRuleContext, invok
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, parent, invokingState)
 
 	p.parser = parser
-	p.RuleIndex = CqlParserRULE_kwFull
+	p.RuleIndex = CQLParserRULE_kwFull
 
 	return p
 }
@@ -39589,7 +39589,7 @@ func NewKwFullContext(parser antlr.Parser, parent antlr.ParserRuleContext, invok
 func (s *KwFullContext) GetParser() antlr.Parser { return s.parser }
 
 func (s *KwFullContext) K_FULL() antlr.TerminalNode {
-	return s.GetToken(CqlParserK_FULL, 0)
+	return s.GetToken(CQLParserK_FULL, 0)
 }
 
 func (s *KwFullContext) GetRuleContext() antlr.RuleContext {
@@ -39601,24 +39601,24 @@ func (s *KwFullContext) ToStringTree(ruleNames []string, recog antlr.Recognizer)
 }
 
 func (s *KwFullContext) EnterRule(listener antlr.ParseTreeListener) {
-	if listenerT, ok := listener.(CqlParserListener); ok {
+	if listenerT, ok := listener.(CQLParserListener); ok {
 		listenerT.EnterKwFull(s)
 	}
 }
 
 func (s *KwFullContext) ExitRule(listener antlr.ParseTreeListener) {
-	if listenerT, ok := listener.(CqlParserListener); ok {
+	if listenerT, ok := listener.(CQLParserListener); ok {
 		listenerT.ExitKwFull(s)
 	}
 }
 
-func (p *CqlParser) KwFull() (localctx IKwFullContext) {
+func (p *CQLParser) KwFull() (localctx IKwFullContext) {
 	localctx = NewKwFullContext(p, p.GetParserRuleContext(), p.GetState())
-	p.EnterRule(localctx, 406, CqlParserRULE_kwFull)
+	p.EnterRule(localctx, 406, CQLParserRULE_kwFull)
 	p.EnterOuterAlt(localctx, 1)
 	{
 		p.SetState(2172)
-		p.Match(CqlParserK_FULL)
+		p.Match(CQLParserK_FULL)
 		if p.HasError() {
 			// Recognition error - abort rule
 			goto errorExit
@@ -39660,13 +39660,13 @@ type KwFunctionContext struct {
 func NewEmptyKwFunctionContext() *KwFunctionContext {
 	var p = new(KwFunctionContext)
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
-	p.RuleIndex = CqlParserRULE_kwFunction
+	p.RuleIndex = CQLParserRULE_kwFunction
 	return p
 }
 
 func InitEmptyKwFunctionContext(p *KwFunctionContext) {
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
-	p.RuleIndex = CqlParserRULE_kwFunction
+	p.RuleIndex = CQLParserRULE_kwFunction
 }
 
 func (*KwFunctionContext) IsKwFunctionContext() {}
@@ -39677,7 +39677,7 @@ func NewKwFunctionContext(parser antlr.Parser, parent antlr.ParserRuleContext, i
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, parent, invokingState)
 
 	p.parser = parser
-	p.RuleIndex = CqlParserRULE_kwFunction
+	p.RuleIndex = CQLParserRULE_kwFunction
 
 	return p
 }
@@ -39685,7 +39685,7 @@ func NewKwFunctionContext(parser antlr.Parser, parent antlr.ParserRuleContext, i
 func (s *KwFunctionContext) GetParser() antlr.Parser { return s.parser }
 
 func (s *KwFunctionContext) K_FUNCTION() antlr.TerminalNode {
-	return s.GetToken(CqlParserK_FUNCTION, 0)
+	return s.GetToken(CQLParserK_FUNCTION, 0)
 }
 
 func (s *KwFunctionContext) GetRuleContext() antlr.RuleContext {
@@ -39697,24 +39697,24 @@ func (s *KwFunctionContext) ToStringTree(ruleNames []string, recog antlr.Recogni
 }
 
 func (s *KwFunctionContext) EnterRule(listener antlr.ParseTreeListener) {
-	if listenerT, ok := listener.(CqlParserListener); ok {
+	if listenerT, ok := listener.(CQLParserListener); ok {
 		listenerT.EnterKwFunction(s)
 	}
 }
 
 func (s *KwFunctionContext) ExitRule(listener antlr.ParseTreeListener) {
-	if listenerT, ok := listener.(CqlParserListener); ok {
+	if listenerT, ok := listener.(CQLParserListener); ok {
 		listenerT.ExitKwFunction(s)
 	}
 }
 
-func (p *CqlParser) KwFunction() (localctx IKwFunctionContext) {
+func (p *CQLParser) KwFunction() (localctx IKwFunctionContext) {
 	localctx = NewKwFunctionContext(p, p.GetParserRuleContext(), p.GetState())
-	p.EnterRule(localctx, 408, CqlParserRULE_kwFunction)
+	p.EnterRule(localctx, 408, CQLParserRULE_kwFunction)
 	p.EnterOuterAlt(localctx, 1)
 	{
 		p.SetState(2174)
-		p.Match(CqlParserK_FUNCTION)
+		p.Match(CQLParserK_FUNCTION)
 		if p.HasError() {
 			// Recognition error - abort rule
 			goto errorExit
@@ -39756,13 +39756,13 @@ type KwFunctionsContext struct {
 func NewEmptyKwFunctionsContext() *KwFunctionsContext {
 	var p = new(KwFunctionsContext)
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
-	p.RuleIndex = CqlParserRULE_kwFunctions
+	p.RuleIndex = CQLParserRULE_kwFunctions
 	return p
 }
 
 func InitEmptyKwFunctionsContext(p *KwFunctionsContext) {
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
-	p.RuleIndex = CqlParserRULE_kwFunctions
+	p.RuleIndex = CQLParserRULE_kwFunctions
 }
 
 func (*KwFunctionsContext) IsKwFunctionsContext() {}
@@ -39773,7 +39773,7 @@ func NewKwFunctionsContext(parser antlr.Parser, parent antlr.ParserRuleContext, 
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, parent, invokingState)
 
 	p.parser = parser
-	p.RuleIndex = CqlParserRULE_kwFunctions
+	p.RuleIndex = CQLParserRULE_kwFunctions
 
 	return p
 }
@@ -39781,7 +39781,7 @@ func NewKwFunctionsContext(parser antlr.Parser, parent antlr.ParserRuleContext, 
 func (s *KwFunctionsContext) GetParser() antlr.Parser { return s.parser }
 
 func (s *KwFunctionsContext) K_FUNCTIONS() antlr.TerminalNode {
-	return s.GetToken(CqlParserK_FUNCTIONS, 0)
+	return s.GetToken(CQLParserK_FUNCTIONS, 0)
 }
 
 func (s *KwFunctionsContext) GetRuleContext() antlr.RuleContext {
@@ -39793,24 +39793,24 @@ func (s *KwFunctionsContext) ToStringTree(ruleNames []string, recog antlr.Recogn
 }
 
 func (s *KwFunctionsContext) EnterRule(listener antlr.ParseTreeListener) {
-	if listenerT, ok := listener.(CqlParserListener); ok {
+	if listenerT, ok := listener.(CQLParserListener); ok {
 		listenerT.EnterKwFunctions(s)
 	}
 }
 
 func (s *KwFunctionsContext) ExitRule(listener antlr.ParseTreeListener) {
-	if listenerT, ok := listener.(CqlParserListener); ok {
+	if listenerT, ok := listener.(CQLParserListener); ok {
 		listenerT.ExitKwFunctions(s)
 	}
 }
 
-func (p *CqlParser) KwFunctions() (localctx IKwFunctionsContext) {
+func (p *CQLParser) KwFunctions() (localctx IKwFunctionsContext) {
 	localctx = NewKwFunctionsContext(p, p.GetParserRuleContext(), p.GetState())
-	p.EnterRule(localctx, 410, CqlParserRULE_kwFunctions)
+	p.EnterRule(localctx, 410, CQLParserRULE_kwFunctions)
 	p.EnterOuterAlt(localctx, 1)
 	{
 		p.SetState(2176)
-		p.Match(CqlParserK_FUNCTIONS)
+		p.Match(CQLParserK_FUNCTIONS)
 		if p.HasError() {
 			// Recognition error - abort rule
 			goto errorExit
@@ -39852,13 +39852,13 @@ type KwGrantContext struct {
 func NewEmptyKwGrantContext() *KwGrantContext {
 	var p = new(KwGrantContext)
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
-	p.RuleIndex = CqlParserRULE_kwGrant
+	p.RuleIndex = CQLParserRULE_kwGrant
 	return p
 }
 
 func InitEmptyKwGrantContext(p *KwGrantContext) {
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
-	p.RuleIndex = CqlParserRULE_kwGrant
+	p.RuleIndex = CQLParserRULE_kwGrant
 }
 
 func (*KwGrantContext) IsKwGrantContext() {}
@@ -39869,7 +39869,7 @@ func NewKwGrantContext(parser antlr.Parser, parent antlr.ParserRuleContext, invo
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, parent, invokingState)
 
 	p.parser = parser
-	p.RuleIndex = CqlParserRULE_kwGrant
+	p.RuleIndex = CQLParserRULE_kwGrant
 
 	return p
 }
@@ -39877,7 +39877,7 @@ func NewKwGrantContext(parser antlr.Parser, parent antlr.ParserRuleContext, invo
 func (s *KwGrantContext) GetParser() antlr.Parser { return s.parser }
 
 func (s *KwGrantContext) K_GRANT() antlr.TerminalNode {
-	return s.GetToken(CqlParserK_GRANT, 0)
+	return s.GetToken(CQLParserK_GRANT, 0)
 }
 
 func (s *KwGrantContext) GetRuleContext() antlr.RuleContext {
@@ -39889,24 +39889,24 @@ func (s *KwGrantContext) ToStringTree(ruleNames []string, recog antlr.Recognizer
 }
 
 func (s *KwGrantContext) EnterRule(listener antlr.ParseTreeListener) {
-	if listenerT, ok := listener.(CqlParserListener); ok {
+	if listenerT, ok := listener.(CQLParserListener); ok {
 		listenerT.EnterKwGrant(s)
 	}
 }
 
 func (s *KwGrantContext) ExitRule(listener antlr.ParseTreeListener) {
-	if listenerT, ok := listener.(CqlParserListener); ok {
+	if listenerT, ok := listener.(CQLParserListener); ok {
 		listenerT.ExitKwGrant(s)
 	}
 }
 
-func (p *CqlParser) KwGrant() (localctx IKwGrantContext) {
+func (p *CQLParser) KwGrant() (localctx IKwGrantContext) {
 	localctx = NewKwGrantContext(p, p.GetParserRuleContext(), p.GetState())
-	p.EnterRule(localctx, 412, CqlParserRULE_kwGrant)
+	p.EnterRule(localctx, 412, CQLParserRULE_kwGrant)
 	p.EnterOuterAlt(localctx, 1)
 	{
 		p.SetState(2178)
-		p.Match(CqlParserK_GRANT)
+		p.Match(CQLParserK_GRANT)
 		if p.HasError() {
 			// Recognition error - abort rule
 			goto errorExit
@@ -39948,13 +39948,13 @@ type KwIfContext struct {
 func NewEmptyKwIfContext() *KwIfContext {
 	var p = new(KwIfContext)
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
-	p.RuleIndex = CqlParserRULE_kwIf
+	p.RuleIndex = CQLParserRULE_kwIf
 	return p
 }
 
 func InitEmptyKwIfContext(p *KwIfContext) {
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
-	p.RuleIndex = CqlParserRULE_kwIf
+	p.RuleIndex = CQLParserRULE_kwIf
 }
 
 func (*KwIfContext) IsKwIfContext() {}
@@ -39965,7 +39965,7 @@ func NewKwIfContext(parser antlr.Parser, parent antlr.ParserRuleContext, invokin
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, parent, invokingState)
 
 	p.parser = parser
-	p.RuleIndex = CqlParserRULE_kwIf
+	p.RuleIndex = CQLParserRULE_kwIf
 
 	return p
 }
@@ -39973,7 +39973,7 @@ func NewKwIfContext(parser antlr.Parser, parent antlr.ParserRuleContext, invokin
 func (s *KwIfContext) GetParser() antlr.Parser { return s.parser }
 
 func (s *KwIfContext) K_IF() antlr.TerminalNode {
-	return s.GetToken(CqlParserK_IF, 0)
+	return s.GetToken(CQLParserK_IF, 0)
 }
 
 func (s *KwIfContext) GetRuleContext() antlr.RuleContext {
@@ -39985,24 +39985,24 @@ func (s *KwIfContext) ToStringTree(ruleNames []string, recog antlr.Recognizer) s
 }
 
 func (s *KwIfContext) EnterRule(listener antlr.ParseTreeListener) {
-	if listenerT, ok := listener.(CqlParserListener); ok {
+	if listenerT, ok := listener.(CQLParserListener); ok {
 		listenerT.EnterKwIf(s)
 	}
 }
 
 func (s *KwIfContext) ExitRule(listener antlr.ParseTreeListener) {
-	if listenerT, ok := listener.(CqlParserListener); ok {
+	if listenerT, ok := listener.(CQLParserListener); ok {
 		listenerT.ExitKwIf(s)
 	}
 }
 
-func (p *CqlParser) KwIf() (localctx IKwIfContext) {
+func (p *CQLParser) KwIf() (localctx IKwIfContext) {
 	localctx = NewKwIfContext(p, p.GetParserRuleContext(), p.GetState())
-	p.EnterRule(localctx, 414, CqlParserRULE_kwIf)
+	p.EnterRule(localctx, 414, CQLParserRULE_kwIf)
 	p.EnterOuterAlt(localctx, 1)
 	{
 		p.SetState(2180)
-		p.Match(CqlParserK_IF)
+		p.Match(CQLParserK_IF)
 		if p.HasError() {
 			// Recognition error - abort rule
 			goto errorExit
@@ -40044,13 +40044,13 @@ type KwInContext struct {
 func NewEmptyKwInContext() *KwInContext {
 	var p = new(KwInContext)
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
-	p.RuleIndex = CqlParserRULE_kwIn
+	p.RuleIndex = CQLParserRULE_kwIn
 	return p
 }
 
 func InitEmptyKwInContext(p *KwInContext) {
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
-	p.RuleIndex = CqlParserRULE_kwIn
+	p.RuleIndex = CQLParserRULE_kwIn
 }
 
 func (*KwInContext) IsKwInContext() {}
@@ -40061,7 +40061,7 @@ func NewKwInContext(parser antlr.Parser, parent antlr.ParserRuleContext, invokin
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, parent, invokingState)
 
 	p.parser = parser
-	p.RuleIndex = CqlParserRULE_kwIn
+	p.RuleIndex = CQLParserRULE_kwIn
 
 	return p
 }
@@ -40069,7 +40069,7 @@ func NewKwInContext(parser antlr.Parser, parent antlr.ParserRuleContext, invokin
 func (s *KwInContext) GetParser() antlr.Parser { return s.parser }
 
 func (s *KwInContext) K_IN() antlr.TerminalNode {
-	return s.GetToken(CqlParserK_IN, 0)
+	return s.GetToken(CQLParserK_IN, 0)
 }
 
 func (s *KwInContext) GetRuleContext() antlr.RuleContext {
@@ -40081,24 +40081,24 @@ func (s *KwInContext) ToStringTree(ruleNames []string, recog antlr.Recognizer) s
 }
 
 func (s *KwInContext) EnterRule(listener antlr.ParseTreeListener) {
-	if listenerT, ok := listener.(CqlParserListener); ok {
+	if listenerT, ok := listener.(CQLParserListener); ok {
 		listenerT.EnterKwIn(s)
 	}
 }
 
 func (s *KwInContext) ExitRule(listener antlr.ParseTreeListener) {
-	if listenerT, ok := listener.(CqlParserListener); ok {
+	if listenerT, ok := listener.(CQLParserListener); ok {
 		listenerT.ExitKwIn(s)
 	}
 }
 
-func (p *CqlParser) KwIn() (localctx IKwInContext) {
+func (p *CQLParser) KwIn() (localctx IKwInContext) {
 	localctx = NewKwInContext(p, p.GetParserRuleContext(), p.GetState())
-	p.EnterRule(localctx, 416, CqlParserRULE_kwIn)
+	p.EnterRule(localctx, 416, CQLParserRULE_kwIn)
 	p.EnterOuterAlt(localctx, 1)
 	{
 		p.SetState(2182)
-		p.Match(CqlParserK_IN)
+		p.Match(CQLParserK_IN)
 		if p.HasError() {
 			// Recognition error - abort rule
 			goto errorExit
@@ -40140,13 +40140,13 @@ type KwIndexContext struct {
 func NewEmptyKwIndexContext() *KwIndexContext {
 	var p = new(KwIndexContext)
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
-	p.RuleIndex = CqlParserRULE_kwIndex
+	p.RuleIndex = CQLParserRULE_kwIndex
 	return p
 }
 
 func InitEmptyKwIndexContext(p *KwIndexContext) {
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
-	p.RuleIndex = CqlParserRULE_kwIndex
+	p.RuleIndex = CQLParserRULE_kwIndex
 }
 
 func (*KwIndexContext) IsKwIndexContext() {}
@@ -40157,7 +40157,7 @@ func NewKwIndexContext(parser antlr.Parser, parent antlr.ParserRuleContext, invo
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, parent, invokingState)
 
 	p.parser = parser
-	p.RuleIndex = CqlParserRULE_kwIndex
+	p.RuleIndex = CQLParserRULE_kwIndex
 
 	return p
 }
@@ -40165,7 +40165,7 @@ func NewKwIndexContext(parser antlr.Parser, parent antlr.ParserRuleContext, invo
 func (s *KwIndexContext) GetParser() antlr.Parser { return s.parser }
 
 func (s *KwIndexContext) K_INDEX() antlr.TerminalNode {
-	return s.GetToken(CqlParserK_INDEX, 0)
+	return s.GetToken(CQLParserK_INDEX, 0)
 }
 
 func (s *KwIndexContext) GetRuleContext() antlr.RuleContext {
@@ -40177,24 +40177,24 @@ func (s *KwIndexContext) ToStringTree(ruleNames []string, recog antlr.Recognizer
 }
 
 func (s *KwIndexContext) EnterRule(listener antlr.ParseTreeListener) {
-	if listenerT, ok := listener.(CqlParserListener); ok {
+	if listenerT, ok := listener.(CQLParserListener); ok {
 		listenerT.EnterKwIndex(s)
 	}
 }
 
 func (s *KwIndexContext) ExitRule(listener antlr.ParseTreeListener) {
-	if listenerT, ok := listener.(CqlParserListener); ok {
+	if listenerT, ok := listener.(CQLParserListener); ok {
 		listenerT.ExitKwIndex(s)
 	}
 }
 
-func (p *CqlParser) KwIndex() (localctx IKwIndexContext) {
+func (p *CQLParser) KwIndex() (localctx IKwIndexContext) {
 	localctx = NewKwIndexContext(p, p.GetParserRuleContext(), p.GetState())
-	p.EnterRule(localctx, 418, CqlParserRULE_kwIndex)
+	p.EnterRule(localctx, 418, CQLParserRULE_kwIndex)
 	p.EnterOuterAlt(localctx, 1)
 	{
 		p.SetState(2184)
-		p.Match(CqlParserK_INDEX)
+		p.Match(CQLParserK_INDEX)
 		if p.HasError() {
 			// Recognition error - abort rule
 			goto errorExit
@@ -40236,13 +40236,13 @@ type KwInitcondContext struct {
 func NewEmptyKwInitcondContext() *KwInitcondContext {
 	var p = new(KwInitcondContext)
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
-	p.RuleIndex = CqlParserRULE_kwInitcond
+	p.RuleIndex = CQLParserRULE_kwInitcond
 	return p
 }
 
 func InitEmptyKwInitcondContext(p *KwInitcondContext) {
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
-	p.RuleIndex = CqlParserRULE_kwInitcond
+	p.RuleIndex = CQLParserRULE_kwInitcond
 }
 
 func (*KwInitcondContext) IsKwInitcondContext() {}
@@ -40253,7 +40253,7 @@ func NewKwInitcondContext(parser antlr.Parser, parent antlr.ParserRuleContext, i
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, parent, invokingState)
 
 	p.parser = parser
-	p.RuleIndex = CqlParserRULE_kwInitcond
+	p.RuleIndex = CQLParserRULE_kwInitcond
 
 	return p
 }
@@ -40261,7 +40261,7 @@ func NewKwInitcondContext(parser antlr.Parser, parent antlr.ParserRuleContext, i
 func (s *KwInitcondContext) GetParser() antlr.Parser { return s.parser }
 
 func (s *KwInitcondContext) K_INITCOND() antlr.TerminalNode {
-	return s.GetToken(CqlParserK_INITCOND, 0)
+	return s.GetToken(CQLParserK_INITCOND, 0)
 }
 
 func (s *KwInitcondContext) GetRuleContext() antlr.RuleContext {
@@ -40273,24 +40273,24 @@ func (s *KwInitcondContext) ToStringTree(ruleNames []string, recog antlr.Recogni
 }
 
 func (s *KwInitcondContext) EnterRule(listener antlr.ParseTreeListener) {
-	if listenerT, ok := listener.(CqlParserListener); ok {
+	if listenerT, ok := listener.(CQLParserListener); ok {
 		listenerT.EnterKwInitcond(s)
 	}
 }
 
 func (s *KwInitcondContext) ExitRule(listener antlr.ParseTreeListener) {
-	if listenerT, ok := listener.(CqlParserListener); ok {
+	if listenerT, ok := listener.(CQLParserListener); ok {
 		listenerT.ExitKwInitcond(s)
 	}
 }
 
-func (p *CqlParser) KwInitcond() (localctx IKwInitcondContext) {
+func (p *CQLParser) KwInitcond() (localctx IKwInitcondContext) {
 	localctx = NewKwInitcondContext(p, p.GetParserRuleContext(), p.GetState())
-	p.EnterRule(localctx, 420, CqlParserRULE_kwInitcond)
+	p.EnterRule(localctx, 420, CQLParserRULE_kwInitcond)
 	p.EnterOuterAlt(localctx, 1)
 	{
 		p.SetState(2186)
-		p.Match(CqlParserK_INITCOND)
+		p.Match(CQLParserK_INITCOND)
 		if p.HasError() {
 			// Recognition error - abort rule
 			goto errorExit
@@ -40332,13 +40332,13 @@ type KwInputContext struct {
 func NewEmptyKwInputContext() *KwInputContext {
 	var p = new(KwInputContext)
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
-	p.RuleIndex = CqlParserRULE_kwInput
+	p.RuleIndex = CQLParserRULE_kwInput
 	return p
 }
 
 func InitEmptyKwInputContext(p *KwInputContext) {
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
-	p.RuleIndex = CqlParserRULE_kwInput
+	p.RuleIndex = CQLParserRULE_kwInput
 }
 
 func (*KwInputContext) IsKwInputContext() {}
@@ -40349,7 +40349,7 @@ func NewKwInputContext(parser antlr.Parser, parent antlr.ParserRuleContext, invo
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, parent, invokingState)
 
 	p.parser = parser
-	p.RuleIndex = CqlParserRULE_kwInput
+	p.RuleIndex = CQLParserRULE_kwInput
 
 	return p
 }
@@ -40357,7 +40357,7 @@ func NewKwInputContext(parser antlr.Parser, parent antlr.ParserRuleContext, invo
 func (s *KwInputContext) GetParser() antlr.Parser { return s.parser }
 
 func (s *KwInputContext) K_INPUT() antlr.TerminalNode {
-	return s.GetToken(CqlParserK_INPUT, 0)
+	return s.GetToken(CQLParserK_INPUT, 0)
 }
 
 func (s *KwInputContext) GetRuleContext() antlr.RuleContext {
@@ -40369,24 +40369,24 @@ func (s *KwInputContext) ToStringTree(ruleNames []string, recog antlr.Recognizer
 }
 
 func (s *KwInputContext) EnterRule(listener antlr.ParseTreeListener) {
-	if listenerT, ok := listener.(CqlParserListener); ok {
+	if listenerT, ok := listener.(CQLParserListener); ok {
 		listenerT.EnterKwInput(s)
 	}
 }
 
 func (s *KwInputContext) ExitRule(listener antlr.ParseTreeListener) {
-	if listenerT, ok := listener.(CqlParserListener); ok {
+	if listenerT, ok := listener.(CQLParserListener); ok {
 		listenerT.ExitKwInput(s)
 	}
 }
 
-func (p *CqlParser) KwInput() (localctx IKwInputContext) {
+func (p *CQLParser) KwInput() (localctx IKwInputContext) {
 	localctx = NewKwInputContext(p, p.GetParserRuleContext(), p.GetState())
-	p.EnterRule(localctx, 422, CqlParserRULE_kwInput)
+	p.EnterRule(localctx, 422, CQLParserRULE_kwInput)
 	p.EnterOuterAlt(localctx, 1)
 	{
 		p.SetState(2188)
-		p.Match(CqlParserK_INPUT)
+		p.Match(CQLParserK_INPUT)
 		if p.HasError() {
 			// Recognition error - abort rule
 			goto errorExit
@@ -40428,13 +40428,13 @@ type KwInsertContext struct {
 func NewEmptyKwInsertContext() *KwInsertContext {
 	var p = new(KwInsertContext)
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
-	p.RuleIndex = CqlParserRULE_kwInsert
+	p.RuleIndex = CQLParserRULE_kwInsert
 	return p
 }
 
 func InitEmptyKwInsertContext(p *KwInsertContext) {
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
-	p.RuleIndex = CqlParserRULE_kwInsert
+	p.RuleIndex = CQLParserRULE_kwInsert
 }
 
 func (*KwInsertContext) IsKwInsertContext() {}
@@ -40445,7 +40445,7 @@ func NewKwInsertContext(parser antlr.Parser, parent antlr.ParserRuleContext, inv
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, parent, invokingState)
 
 	p.parser = parser
-	p.RuleIndex = CqlParserRULE_kwInsert
+	p.RuleIndex = CQLParserRULE_kwInsert
 
 	return p
 }
@@ -40453,7 +40453,7 @@ func NewKwInsertContext(parser antlr.Parser, parent antlr.ParserRuleContext, inv
 func (s *KwInsertContext) GetParser() antlr.Parser { return s.parser }
 
 func (s *KwInsertContext) K_INSERT() antlr.TerminalNode {
-	return s.GetToken(CqlParserK_INSERT, 0)
+	return s.GetToken(CQLParserK_INSERT, 0)
 }
 
 func (s *KwInsertContext) GetRuleContext() antlr.RuleContext {
@@ -40465,24 +40465,24 @@ func (s *KwInsertContext) ToStringTree(ruleNames []string, recog antlr.Recognize
 }
 
 func (s *KwInsertContext) EnterRule(listener antlr.ParseTreeListener) {
-	if listenerT, ok := listener.(CqlParserListener); ok {
+	if listenerT, ok := listener.(CQLParserListener); ok {
 		listenerT.EnterKwInsert(s)
 	}
 }
 
 func (s *KwInsertContext) ExitRule(listener antlr.ParseTreeListener) {
-	if listenerT, ok := listener.(CqlParserListener); ok {
+	if listenerT, ok := listener.(CQLParserListener); ok {
 		listenerT.ExitKwInsert(s)
 	}
 }
 
-func (p *CqlParser) KwInsert() (localctx IKwInsertContext) {
+func (p *CQLParser) KwInsert() (localctx IKwInsertContext) {
 	localctx = NewKwInsertContext(p, p.GetParserRuleContext(), p.GetState())
-	p.EnterRule(localctx, 424, CqlParserRULE_kwInsert)
+	p.EnterRule(localctx, 424, CQLParserRULE_kwInsert)
 	p.EnterOuterAlt(localctx, 1)
 	{
 		p.SetState(2190)
-		p.Match(CqlParserK_INSERT)
+		p.Match(CQLParserK_INSERT)
 		if p.HasError() {
 			// Recognition error - abort rule
 			goto errorExit
@@ -40524,13 +40524,13 @@ type KwIntoContext struct {
 func NewEmptyKwIntoContext() *KwIntoContext {
 	var p = new(KwIntoContext)
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
-	p.RuleIndex = CqlParserRULE_kwInto
+	p.RuleIndex = CQLParserRULE_kwInto
 	return p
 }
 
 func InitEmptyKwIntoContext(p *KwIntoContext) {
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
-	p.RuleIndex = CqlParserRULE_kwInto
+	p.RuleIndex = CQLParserRULE_kwInto
 }
 
 func (*KwIntoContext) IsKwIntoContext() {}
@@ -40541,7 +40541,7 @@ func NewKwIntoContext(parser antlr.Parser, parent antlr.ParserRuleContext, invok
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, parent, invokingState)
 
 	p.parser = parser
-	p.RuleIndex = CqlParserRULE_kwInto
+	p.RuleIndex = CQLParserRULE_kwInto
 
 	return p
 }
@@ -40549,7 +40549,7 @@ func NewKwIntoContext(parser antlr.Parser, parent antlr.ParserRuleContext, invok
 func (s *KwIntoContext) GetParser() antlr.Parser { return s.parser }
 
 func (s *KwIntoContext) K_INTO() antlr.TerminalNode {
-	return s.GetToken(CqlParserK_INTO, 0)
+	return s.GetToken(CQLParserK_INTO, 0)
 }
 
 func (s *KwIntoContext) GetRuleContext() antlr.RuleContext {
@@ -40561,24 +40561,24 @@ func (s *KwIntoContext) ToStringTree(ruleNames []string, recog antlr.Recognizer)
 }
 
 func (s *KwIntoContext) EnterRule(listener antlr.ParseTreeListener) {
-	if listenerT, ok := listener.(CqlParserListener); ok {
+	if listenerT, ok := listener.(CQLParserListener); ok {
 		listenerT.EnterKwInto(s)
 	}
 }
 
 func (s *KwIntoContext) ExitRule(listener antlr.ParseTreeListener) {
-	if listenerT, ok := listener.(CqlParserListener); ok {
+	if listenerT, ok := listener.(CQLParserListener); ok {
 		listenerT.ExitKwInto(s)
 	}
 }
 
-func (p *CqlParser) KwInto() (localctx IKwIntoContext) {
+func (p *CQLParser) KwInto() (localctx IKwIntoContext) {
 	localctx = NewKwIntoContext(p, p.GetParserRuleContext(), p.GetState())
-	p.EnterRule(localctx, 426, CqlParserRULE_kwInto)
+	p.EnterRule(localctx, 426, CQLParserRULE_kwInto)
 	p.EnterOuterAlt(localctx, 1)
 	{
 		p.SetState(2192)
-		p.Match(CqlParserK_INTO)
+		p.Match(CQLParserK_INTO)
 		if p.HasError() {
 			// Recognition error - abort rule
 			goto errorExit
@@ -40620,13 +40620,13 @@ type KwIsContext struct {
 func NewEmptyKwIsContext() *KwIsContext {
 	var p = new(KwIsContext)
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
-	p.RuleIndex = CqlParserRULE_kwIs
+	p.RuleIndex = CQLParserRULE_kwIs
 	return p
 }
 
 func InitEmptyKwIsContext(p *KwIsContext) {
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
-	p.RuleIndex = CqlParserRULE_kwIs
+	p.RuleIndex = CQLParserRULE_kwIs
 }
 
 func (*KwIsContext) IsKwIsContext() {}
@@ -40637,7 +40637,7 @@ func NewKwIsContext(parser antlr.Parser, parent antlr.ParserRuleContext, invokin
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, parent, invokingState)
 
 	p.parser = parser
-	p.RuleIndex = CqlParserRULE_kwIs
+	p.RuleIndex = CQLParserRULE_kwIs
 
 	return p
 }
@@ -40645,7 +40645,7 @@ func NewKwIsContext(parser antlr.Parser, parent antlr.ParserRuleContext, invokin
 func (s *KwIsContext) GetParser() antlr.Parser { return s.parser }
 
 func (s *KwIsContext) K_IS() antlr.TerminalNode {
-	return s.GetToken(CqlParserK_IS, 0)
+	return s.GetToken(CQLParserK_IS, 0)
 }
 
 func (s *KwIsContext) GetRuleContext() antlr.RuleContext {
@@ -40657,24 +40657,24 @@ func (s *KwIsContext) ToStringTree(ruleNames []string, recog antlr.Recognizer) s
 }
 
 func (s *KwIsContext) EnterRule(listener antlr.ParseTreeListener) {
-	if listenerT, ok := listener.(CqlParserListener); ok {
+	if listenerT, ok := listener.(CQLParserListener); ok {
 		listenerT.EnterKwIs(s)
 	}
 }
 
 func (s *KwIsContext) ExitRule(listener antlr.ParseTreeListener) {
-	if listenerT, ok := listener.(CqlParserListener); ok {
+	if listenerT, ok := listener.(CQLParserListener); ok {
 		listenerT.ExitKwIs(s)
 	}
 }
 
-func (p *CqlParser) KwIs() (localctx IKwIsContext) {
+func (p *CQLParser) KwIs() (localctx IKwIsContext) {
 	localctx = NewKwIsContext(p, p.GetParserRuleContext(), p.GetState())
-	p.EnterRule(localctx, 428, CqlParserRULE_kwIs)
+	p.EnterRule(localctx, 428, CQLParserRULE_kwIs)
 	p.EnterOuterAlt(localctx, 1)
 	{
 		p.SetState(2194)
-		p.Match(CqlParserK_IS)
+		p.Match(CQLParserK_IS)
 		if p.HasError() {
 			// Recognition error - abort rule
 			goto errorExit
@@ -40716,13 +40716,13 @@ type KwJsonContext struct {
 func NewEmptyKwJsonContext() *KwJsonContext {
 	var p = new(KwJsonContext)
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
-	p.RuleIndex = CqlParserRULE_kwJson
+	p.RuleIndex = CQLParserRULE_kwJson
 	return p
 }
 
 func InitEmptyKwJsonContext(p *KwJsonContext) {
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
-	p.RuleIndex = CqlParserRULE_kwJson
+	p.RuleIndex = CQLParserRULE_kwJson
 }
 
 func (*KwJsonContext) IsKwJsonContext() {}
@@ -40733,7 +40733,7 @@ func NewKwJsonContext(parser antlr.Parser, parent antlr.ParserRuleContext, invok
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, parent, invokingState)
 
 	p.parser = parser
-	p.RuleIndex = CqlParserRULE_kwJson
+	p.RuleIndex = CQLParserRULE_kwJson
 
 	return p
 }
@@ -40741,7 +40741,7 @@ func NewKwJsonContext(parser antlr.Parser, parent antlr.ParserRuleContext, invok
 func (s *KwJsonContext) GetParser() antlr.Parser { return s.parser }
 
 func (s *KwJsonContext) K_JSON() antlr.TerminalNode {
-	return s.GetToken(CqlParserK_JSON, 0)
+	return s.GetToken(CQLParserK_JSON, 0)
 }
 
 func (s *KwJsonContext) GetRuleContext() antlr.RuleContext {
@@ -40753,24 +40753,24 @@ func (s *KwJsonContext) ToStringTree(ruleNames []string, recog antlr.Recognizer)
 }
 
 func (s *KwJsonContext) EnterRule(listener antlr.ParseTreeListener) {
-	if listenerT, ok := listener.(CqlParserListener); ok {
+	if listenerT, ok := listener.(CQLParserListener); ok {
 		listenerT.EnterKwJson(s)
 	}
 }
 
 func (s *KwJsonContext) ExitRule(listener antlr.ParseTreeListener) {
-	if listenerT, ok := listener.(CqlParserListener); ok {
+	if listenerT, ok := listener.(CQLParserListener); ok {
 		listenerT.ExitKwJson(s)
 	}
 }
 
-func (p *CqlParser) KwJson() (localctx IKwJsonContext) {
+func (p *CQLParser) KwJson() (localctx IKwJsonContext) {
 	localctx = NewKwJsonContext(p, p.GetParserRuleContext(), p.GetState())
-	p.EnterRule(localctx, 430, CqlParserRULE_kwJson)
+	p.EnterRule(localctx, 430, CQLParserRULE_kwJson)
 	p.EnterOuterAlt(localctx, 1)
 	{
 		p.SetState(2196)
-		p.Match(CqlParserK_JSON)
+		p.Match(CQLParserK_JSON)
 		if p.HasError() {
 			// Recognition error - abort rule
 			goto errorExit
@@ -40812,13 +40812,13 @@ type KwKeyContext struct {
 func NewEmptyKwKeyContext() *KwKeyContext {
 	var p = new(KwKeyContext)
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
-	p.RuleIndex = CqlParserRULE_kwKey
+	p.RuleIndex = CQLParserRULE_kwKey
 	return p
 }
 
 func InitEmptyKwKeyContext(p *KwKeyContext) {
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
-	p.RuleIndex = CqlParserRULE_kwKey
+	p.RuleIndex = CQLParserRULE_kwKey
 }
 
 func (*KwKeyContext) IsKwKeyContext() {}
@@ -40829,7 +40829,7 @@ func NewKwKeyContext(parser antlr.Parser, parent antlr.ParserRuleContext, invoki
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, parent, invokingState)
 
 	p.parser = parser
-	p.RuleIndex = CqlParserRULE_kwKey
+	p.RuleIndex = CQLParserRULE_kwKey
 
 	return p
 }
@@ -40837,7 +40837,7 @@ func NewKwKeyContext(parser antlr.Parser, parent antlr.ParserRuleContext, invoki
 func (s *KwKeyContext) GetParser() antlr.Parser { return s.parser }
 
 func (s *KwKeyContext) K_KEY() antlr.TerminalNode {
-	return s.GetToken(CqlParserK_KEY, 0)
+	return s.GetToken(CQLParserK_KEY, 0)
 }
 
 func (s *KwKeyContext) GetRuleContext() antlr.RuleContext {
@@ -40849,24 +40849,24 @@ func (s *KwKeyContext) ToStringTree(ruleNames []string, recog antlr.Recognizer) 
 }
 
 func (s *KwKeyContext) EnterRule(listener antlr.ParseTreeListener) {
-	if listenerT, ok := listener.(CqlParserListener); ok {
+	if listenerT, ok := listener.(CQLParserListener); ok {
 		listenerT.EnterKwKey(s)
 	}
 }
 
 func (s *KwKeyContext) ExitRule(listener antlr.ParseTreeListener) {
-	if listenerT, ok := listener.(CqlParserListener); ok {
+	if listenerT, ok := listener.(CQLParserListener); ok {
 		listenerT.ExitKwKey(s)
 	}
 }
 
-func (p *CqlParser) KwKey() (localctx IKwKeyContext) {
+func (p *CQLParser) KwKey() (localctx IKwKeyContext) {
 	localctx = NewKwKeyContext(p, p.GetParserRuleContext(), p.GetState())
-	p.EnterRule(localctx, 432, CqlParserRULE_kwKey)
+	p.EnterRule(localctx, 432, CQLParserRULE_kwKey)
 	p.EnterOuterAlt(localctx, 1)
 	{
 		p.SetState(2198)
-		p.Match(CqlParserK_KEY)
+		p.Match(CQLParserK_KEY)
 		if p.HasError() {
 			// Recognition error - abort rule
 			goto errorExit
@@ -40908,13 +40908,13 @@ type KwKeysContext struct {
 func NewEmptyKwKeysContext() *KwKeysContext {
 	var p = new(KwKeysContext)
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
-	p.RuleIndex = CqlParserRULE_kwKeys
+	p.RuleIndex = CQLParserRULE_kwKeys
 	return p
 }
 
 func InitEmptyKwKeysContext(p *KwKeysContext) {
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
-	p.RuleIndex = CqlParserRULE_kwKeys
+	p.RuleIndex = CQLParserRULE_kwKeys
 }
 
 func (*KwKeysContext) IsKwKeysContext() {}
@@ -40925,7 +40925,7 @@ func NewKwKeysContext(parser antlr.Parser, parent antlr.ParserRuleContext, invok
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, parent, invokingState)
 
 	p.parser = parser
-	p.RuleIndex = CqlParserRULE_kwKeys
+	p.RuleIndex = CQLParserRULE_kwKeys
 
 	return p
 }
@@ -40933,7 +40933,7 @@ func NewKwKeysContext(parser antlr.Parser, parent antlr.ParserRuleContext, invok
 func (s *KwKeysContext) GetParser() antlr.Parser { return s.parser }
 
 func (s *KwKeysContext) K_KEYS() antlr.TerminalNode {
-	return s.GetToken(CqlParserK_KEYS, 0)
+	return s.GetToken(CQLParserK_KEYS, 0)
 }
 
 func (s *KwKeysContext) GetRuleContext() antlr.RuleContext {
@@ -40945,24 +40945,24 @@ func (s *KwKeysContext) ToStringTree(ruleNames []string, recog antlr.Recognizer)
 }
 
 func (s *KwKeysContext) EnterRule(listener antlr.ParseTreeListener) {
-	if listenerT, ok := listener.(CqlParserListener); ok {
+	if listenerT, ok := listener.(CQLParserListener); ok {
 		listenerT.EnterKwKeys(s)
 	}
 }
 
 func (s *KwKeysContext) ExitRule(listener antlr.ParseTreeListener) {
-	if listenerT, ok := listener.(CqlParserListener); ok {
+	if listenerT, ok := listener.(CQLParserListener); ok {
 		listenerT.ExitKwKeys(s)
 	}
 }
 
-func (p *CqlParser) KwKeys() (localctx IKwKeysContext) {
+func (p *CQLParser) KwKeys() (localctx IKwKeysContext) {
 	localctx = NewKwKeysContext(p, p.GetParserRuleContext(), p.GetState())
-	p.EnterRule(localctx, 434, CqlParserRULE_kwKeys)
+	p.EnterRule(localctx, 434, CQLParserRULE_kwKeys)
 	p.EnterOuterAlt(localctx, 1)
 	{
 		p.SetState(2200)
-		p.Match(CqlParserK_KEYS)
+		p.Match(CQLParserK_KEYS)
 		if p.HasError() {
 			// Recognition error - abort rule
 			goto errorExit
@@ -41004,13 +41004,13 @@ type KwKeyspaceContext struct {
 func NewEmptyKwKeyspaceContext() *KwKeyspaceContext {
 	var p = new(KwKeyspaceContext)
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
-	p.RuleIndex = CqlParserRULE_kwKeyspace
+	p.RuleIndex = CQLParserRULE_kwKeyspace
 	return p
 }
 
 func InitEmptyKwKeyspaceContext(p *KwKeyspaceContext) {
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
-	p.RuleIndex = CqlParserRULE_kwKeyspace
+	p.RuleIndex = CQLParserRULE_kwKeyspace
 }
 
 func (*KwKeyspaceContext) IsKwKeyspaceContext() {}
@@ -41021,7 +41021,7 @@ func NewKwKeyspaceContext(parser antlr.Parser, parent antlr.ParserRuleContext, i
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, parent, invokingState)
 
 	p.parser = parser
-	p.RuleIndex = CqlParserRULE_kwKeyspace
+	p.RuleIndex = CQLParserRULE_kwKeyspace
 
 	return p
 }
@@ -41029,7 +41029,7 @@ func NewKwKeyspaceContext(parser antlr.Parser, parent antlr.ParserRuleContext, i
 func (s *KwKeyspaceContext) GetParser() antlr.Parser { return s.parser }
 
 func (s *KwKeyspaceContext) K_KEYSPACE() antlr.TerminalNode {
-	return s.GetToken(CqlParserK_KEYSPACE, 0)
+	return s.GetToken(CQLParserK_KEYSPACE, 0)
 }
 
 func (s *KwKeyspaceContext) GetRuleContext() antlr.RuleContext {
@@ -41041,24 +41041,24 @@ func (s *KwKeyspaceContext) ToStringTree(ruleNames []string, recog antlr.Recogni
 }
 
 func (s *KwKeyspaceContext) EnterRule(listener antlr.ParseTreeListener) {
-	if listenerT, ok := listener.(CqlParserListener); ok {
+	if listenerT, ok := listener.(CQLParserListener); ok {
 		listenerT.EnterKwKeyspace(s)
 	}
 }
 
 func (s *KwKeyspaceContext) ExitRule(listener antlr.ParseTreeListener) {
-	if listenerT, ok := listener.(CqlParserListener); ok {
+	if listenerT, ok := listener.(CQLParserListener); ok {
 		listenerT.ExitKwKeyspace(s)
 	}
 }
 
-func (p *CqlParser) KwKeyspace() (localctx IKwKeyspaceContext) {
+func (p *CQLParser) KwKeyspace() (localctx IKwKeyspaceContext) {
 	localctx = NewKwKeyspaceContext(p, p.GetParserRuleContext(), p.GetState())
-	p.EnterRule(localctx, 436, CqlParserRULE_kwKeyspace)
+	p.EnterRule(localctx, 436, CQLParserRULE_kwKeyspace)
 	p.EnterOuterAlt(localctx, 1)
 	{
 		p.SetState(2202)
-		p.Match(CqlParserK_KEYSPACE)
+		p.Match(CQLParserK_KEYSPACE)
 		if p.HasError() {
 			// Recognition error - abort rule
 			goto errorExit
@@ -41100,13 +41100,13 @@ type KwKeyspacesContext struct {
 func NewEmptyKwKeyspacesContext() *KwKeyspacesContext {
 	var p = new(KwKeyspacesContext)
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
-	p.RuleIndex = CqlParserRULE_kwKeyspaces
+	p.RuleIndex = CQLParserRULE_kwKeyspaces
 	return p
 }
 
 func InitEmptyKwKeyspacesContext(p *KwKeyspacesContext) {
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
-	p.RuleIndex = CqlParserRULE_kwKeyspaces
+	p.RuleIndex = CQLParserRULE_kwKeyspaces
 }
 
 func (*KwKeyspacesContext) IsKwKeyspacesContext() {}
@@ -41117,7 +41117,7 @@ func NewKwKeyspacesContext(parser antlr.Parser, parent antlr.ParserRuleContext, 
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, parent, invokingState)
 
 	p.parser = parser
-	p.RuleIndex = CqlParserRULE_kwKeyspaces
+	p.RuleIndex = CQLParserRULE_kwKeyspaces
 
 	return p
 }
@@ -41125,7 +41125,7 @@ func NewKwKeyspacesContext(parser antlr.Parser, parent antlr.ParserRuleContext, 
 func (s *KwKeyspacesContext) GetParser() antlr.Parser { return s.parser }
 
 func (s *KwKeyspacesContext) K_KEYSPACES() antlr.TerminalNode {
-	return s.GetToken(CqlParserK_KEYSPACES, 0)
+	return s.GetToken(CQLParserK_KEYSPACES, 0)
 }
 
 func (s *KwKeyspacesContext) GetRuleContext() antlr.RuleContext {
@@ -41137,24 +41137,24 @@ func (s *KwKeyspacesContext) ToStringTree(ruleNames []string, recog antlr.Recogn
 }
 
 func (s *KwKeyspacesContext) EnterRule(listener antlr.ParseTreeListener) {
-	if listenerT, ok := listener.(CqlParserListener); ok {
+	if listenerT, ok := listener.(CQLParserListener); ok {
 		listenerT.EnterKwKeyspaces(s)
 	}
 }
 
 func (s *KwKeyspacesContext) ExitRule(listener antlr.ParseTreeListener) {
-	if listenerT, ok := listener.(CqlParserListener); ok {
+	if listenerT, ok := listener.(CQLParserListener); ok {
 		listenerT.ExitKwKeyspaces(s)
 	}
 }
 
-func (p *CqlParser) KwKeyspaces() (localctx IKwKeyspacesContext) {
+func (p *CQLParser) KwKeyspaces() (localctx IKwKeyspacesContext) {
 	localctx = NewKwKeyspacesContext(p, p.GetParserRuleContext(), p.GetState())
-	p.EnterRule(localctx, 438, CqlParserRULE_kwKeyspaces)
+	p.EnterRule(localctx, 438, CQLParserRULE_kwKeyspaces)
 	p.EnterOuterAlt(localctx, 1)
 	{
 		p.SetState(2204)
-		p.Match(CqlParserK_KEYSPACES)
+		p.Match(CQLParserK_KEYSPACES)
 		if p.HasError() {
 			// Recognition error - abort rule
 			goto errorExit
@@ -41196,13 +41196,13 @@ type KwLanguageContext struct {
 func NewEmptyKwLanguageContext() *KwLanguageContext {
 	var p = new(KwLanguageContext)
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
-	p.RuleIndex = CqlParserRULE_kwLanguage
+	p.RuleIndex = CQLParserRULE_kwLanguage
 	return p
 }
 
 func InitEmptyKwLanguageContext(p *KwLanguageContext) {
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
-	p.RuleIndex = CqlParserRULE_kwLanguage
+	p.RuleIndex = CQLParserRULE_kwLanguage
 }
 
 func (*KwLanguageContext) IsKwLanguageContext() {}
@@ -41213,7 +41213,7 @@ func NewKwLanguageContext(parser antlr.Parser, parent antlr.ParserRuleContext, i
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, parent, invokingState)
 
 	p.parser = parser
-	p.RuleIndex = CqlParserRULE_kwLanguage
+	p.RuleIndex = CQLParserRULE_kwLanguage
 
 	return p
 }
@@ -41221,7 +41221,7 @@ func NewKwLanguageContext(parser antlr.Parser, parent antlr.ParserRuleContext, i
 func (s *KwLanguageContext) GetParser() antlr.Parser { return s.parser }
 
 func (s *KwLanguageContext) K_LANGUAGE() antlr.TerminalNode {
-	return s.GetToken(CqlParserK_LANGUAGE, 0)
+	return s.GetToken(CQLParserK_LANGUAGE, 0)
 }
 
 func (s *KwLanguageContext) GetRuleContext() antlr.RuleContext {
@@ -41233,24 +41233,24 @@ func (s *KwLanguageContext) ToStringTree(ruleNames []string, recog antlr.Recogni
 }
 
 func (s *KwLanguageContext) EnterRule(listener antlr.ParseTreeListener) {
-	if listenerT, ok := listener.(CqlParserListener); ok {
+	if listenerT, ok := listener.(CQLParserListener); ok {
 		listenerT.EnterKwLanguage(s)
 	}
 }
 
 func (s *KwLanguageContext) ExitRule(listener antlr.ParseTreeListener) {
-	if listenerT, ok := listener.(CqlParserListener); ok {
+	if listenerT, ok := listener.(CQLParserListener); ok {
 		listenerT.ExitKwLanguage(s)
 	}
 }
 
-func (p *CqlParser) KwLanguage() (localctx IKwLanguageContext) {
+func (p *CQLParser) KwLanguage() (localctx IKwLanguageContext) {
 	localctx = NewKwLanguageContext(p, p.GetParserRuleContext(), p.GetState())
-	p.EnterRule(localctx, 440, CqlParserRULE_kwLanguage)
+	p.EnterRule(localctx, 440, CQLParserRULE_kwLanguage)
 	p.EnterOuterAlt(localctx, 1)
 	{
 		p.SetState(2206)
-		p.Match(CqlParserK_LANGUAGE)
+		p.Match(CQLParserK_LANGUAGE)
 		if p.HasError() {
 			// Recognition error - abort rule
 			goto errorExit
@@ -41292,13 +41292,13 @@ type KwLimitContext struct {
 func NewEmptyKwLimitContext() *KwLimitContext {
 	var p = new(KwLimitContext)
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
-	p.RuleIndex = CqlParserRULE_kwLimit
+	p.RuleIndex = CQLParserRULE_kwLimit
 	return p
 }
 
 func InitEmptyKwLimitContext(p *KwLimitContext) {
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
-	p.RuleIndex = CqlParserRULE_kwLimit
+	p.RuleIndex = CQLParserRULE_kwLimit
 }
 
 func (*KwLimitContext) IsKwLimitContext() {}
@@ -41309,7 +41309,7 @@ func NewKwLimitContext(parser antlr.Parser, parent antlr.ParserRuleContext, invo
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, parent, invokingState)
 
 	p.parser = parser
-	p.RuleIndex = CqlParserRULE_kwLimit
+	p.RuleIndex = CQLParserRULE_kwLimit
 
 	return p
 }
@@ -41317,7 +41317,7 @@ func NewKwLimitContext(parser antlr.Parser, parent antlr.ParserRuleContext, invo
 func (s *KwLimitContext) GetParser() antlr.Parser { return s.parser }
 
 func (s *KwLimitContext) K_LIMIT() antlr.TerminalNode {
-	return s.GetToken(CqlParserK_LIMIT, 0)
+	return s.GetToken(CQLParserK_LIMIT, 0)
 }
 
 func (s *KwLimitContext) GetRuleContext() antlr.RuleContext {
@@ -41329,24 +41329,24 @@ func (s *KwLimitContext) ToStringTree(ruleNames []string, recog antlr.Recognizer
 }
 
 func (s *KwLimitContext) EnterRule(listener antlr.ParseTreeListener) {
-	if listenerT, ok := listener.(CqlParserListener); ok {
+	if listenerT, ok := listener.(CQLParserListener); ok {
 		listenerT.EnterKwLimit(s)
 	}
 }
 
 func (s *KwLimitContext) ExitRule(listener antlr.ParseTreeListener) {
-	if listenerT, ok := listener.(CqlParserListener); ok {
+	if listenerT, ok := listener.(CQLParserListener); ok {
 		listenerT.ExitKwLimit(s)
 	}
 }
 
-func (p *CqlParser) KwLimit() (localctx IKwLimitContext) {
+func (p *CQLParser) KwLimit() (localctx IKwLimitContext) {
 	localctx = NewKwLimitContext(p, p.GetParserRuleContext(), p.GetState())
-	p.EnterRule(localctx, 442, CqlParserRULE_kwLimit)
+	p.EnterRule(localctx, 442, CQLParserRULE_kwLimit)
 	p.EnterOuterAlt(localctx, 1)
 	{
 		p.SetState(2208)
-		p.Match(CqlParserK_LIMIT)
+		p.Match(CQLParserK_LIMIT)
 		if p.HasError() {
 			// Recognition error - abort rule
 			goto errorExit
@@ -41388,13 +41388,13 @@ type KwListContext struct {
 func NewEmptyKwListContext() *KwListContext {
 	var p = new(KwListContext)
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
-	p.RuleIndex = CqlParserRULE_kwList
+	p.RuleIndex = CQLParserRULE_kwList
 	return p
 }
 
 func InitEmptyKwListContext(p *KwListContext) {
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
-	p.RuleIndex = CqlParserRULE_kwList
+	p.RuleIndex = CQLParserRULE_kwList
 }
 
 func (*KwListContext) IsKwListContext() {}
@@ -41405,7 +41405,7 @@ func NewKwListContext(parser antlr.Parser, parent antlr.ParserRuleContext, invok
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, parent, invokingState)
 
 	p.parser = parser
-	p.RuleIndex = CqlParserRULE_kwList
+	p.RuleIndex = CQLParserRULE_kwList
 
 	return p
 }
@@ -41413,7 +41413,7 @@ func NewKwListContext(parser antlr.Parser, parent antlr.ParserRuleContext, invok
 func (s *KwListContext) GetParser() antlr.Parser { return s.parser }
 
 func (s *KwListContext) K_LIST() antlr.TerminalNode {
-	return s.GetToken(CqlParserK_LIST, 0)
+	return s.GetToken(CQLParserK_LIST, 0)
 }
 
 func (s *KwListContext) GetRuleContext() antlr.RuleContext {
@@ -41425,24 +41425,24 @@ func (s *KwListContext) ToStringTree(ruleNames []string, recog antlr.Recognizer)
 }
 
 func (s *KwListContext) EnterRule(listener antlr.ParseTreeListener) {
-	if listenerT, ok := listener.(CqlParserListener); ok {
+	if listenerT, ok := listener.(CQLParserListener); ok {
 		listenerT.EnterKwList(s)
 	}
 }
 
 func (s *KwListContext) ExitRule(listener antlr.ParseTreeListener) {
-	if listenerT, ok := listener.(CqlParserListener); ok {
+	if listenerT, ok := listener.(CQLParserListener); ok {
 		listenerT.ExitKwList(s)
 	}
 }
 
-func (p *CqlParser) KwList() (localctx IKwListContext) {
+func (p *CQLParser) KwList() (localctx IKwListContext) {
 	localctx = NewKwListContext(p, p.GetParserRuleContext(), p.GetState())
-	p.EnterRule(localctx, 444, CqlParserRULE_kwList)
+	p.EnterRule(localctx, 444, CQLParserRULE_kwList)
 	p.EnterOuterAlt(localctx, 1)
 	{
 		p.SetState(2210)
-		p.Match(CqlParserK_LIST)
+		p.Match(CQLParserK_LIST)
 		if p.HasError() {
 			// Recognition error - abort rule
 			goto errorExit
@@ -41484,13 +41484,13 @@ type KwLoggedContext struct {
 func NewEmptyKwLoggedContext() *KwLoggedContext {
 	var p = new(KwLoggedContext)
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
-	p.RuleIndex = CqlParserRULE_kwLogged
+	p.RuleIndex = CQLParserRULE_kwLogged
 	return p
 }
 
 func InitEmptyKwLoggedContext(p *KwLoggedContext) {
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
-	p.RuleIndex = CqlParserRULE_kwLogged
+	p.RuleIndex = CQLParserRULE_kwLogged
 }
 
 func (*KwLoggedContext) IsKwLoggedContext() {}
@@ -41501,7 +41501,7 @@ func NewKwLoggedContext(parser antlr.Parser, parent antlr.ParserRuleContext, inv
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, parent, invokingState)
 
 	p.parser = parser
-	p.RuleIndex = CqlParserRULE_kwLogged
+	p.RuleIndex = CQLParserRULE_kwLogged
 
 	return p
 }
@@ -41509,7 +41509,7 @@ func NewKwLoggedContext(parser antlr.Parser, parent antlr.ParserRuleContext, inv
 func (s *KwLoggedContext) GetParser() antlr.Parser { return s.parser }
 
 func (s *KwLoggedContext) K_LOGGED() antlr.TerminalNode {
-	return s.GetToken(CqlParserK_LOGGED, 0)
+	return s.GetToken(CQLParserK_LOGGED, 0)
 }
 
 func (s *KwLoggedContext) GetRuleContext() antlr.RuleContext {
@@ -41521,24 +41521,24 @@ func (s *KwLoggedContext) ToStringTree(ruleNames []string, recog antlr.Recognize
 }
 
 func (s *KwLoggedContext) EnterRule(listener antlr.ParseTreeListener) {
-	if listenerT, ok := listener.(CqlParserListener); ok {
+	if listenerT, ok := listener.(CQLParserListener); ok {
 		listenerT.EnterKwLogged(s)
 	}
 }
 
 func (s *KwLoggedContext) ExitRule(listener antlr.ParseTreeListener) {
-	if listenerT, ok := listener.(CqlParserListener); ok {
+	if listenerT, ok := listener.(CQLParserListener); ok {
 		listenerT.ExitKwLogged(s)
 	}
 }
 
-func (p *CqlParser) KwLogged() (localctx IKwLoggedContext) {
+func (p *CQLParser) KwLogged() (localctx IKwLoggedContext) {
 	localctx = NewKwLoggedContext(p, p.GetParserRuleContext(), p.GetState())
-	p.EnterRule(localctx, 446, CqlParserRULE_kwLogged)
+	p.EnterRule(localctx, 446, CQLParserRULE_kwLogged)
 	p.EnterOuterAlt(localctx, 1)
 	{
 		p.SetState(2212)
-		p.Match(CqlParserK_LOGGED)
+		p.Match(CQLParserK_LOGGED)
 		if p.HasError() {
 			// Recognition error - abort rule
 			goto errorExit
@@ -41580,13 +41580,13 @@ type KwLoginContext struct {
 func NewEmptyKwLoginContext() *KwLoginContext {
 	var p = new(KwLoginContext)
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
-	p.RuleIndex = CqlParserRULE_kwLogin
+	p.RuleIndex = CQLParserRULE_kwLogin
 	return p
 }
 
 func InitEmptyKwLoginContext(p *KwLoginContext) {
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
-	p.RuleIndex = CqlParserRULE_kwLogin
+	p.RuleIndex = CQLParserRULE_kwLogin
 }
 
 func (*KwLoginContext) IsKwLoginContext() {}
@@ -41597,7 +41597,7 @@ func NewKwLoginContext(parser antlr.Parser, parent antlr.ParserRuleContext, invo
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, parent, invokingState)
 
 	p.parser = parser
-	p.RuleIndex = CqlParserRULE_kwLogin
+	p.RuleIndex = CQLParserRULE_kwLogin
 
 	return p
 }
@@ -41605,7 +41605,7 @@ func NewKwLoginContext(parser antlr.Parser, parent antlr.ParserRuleContext, invo
 func (s *KwLoginContext) GetParser() antlr.Parser { return s.parser }
 
 func (s *KwLoginContext) K_LOGIN() antlr.TerminalNode {
-	return s.GetToken(CqlParserK_LOGIN, 0)
+	return s.GetToken(CQLParserK_LOGIN, 0)
 }
 
 func (s *KwLoginContext) GetRuleContext() antlr.RuleContext {
@@ -41617,24 +41617,24 @@ func (s *KwLoginContext) ToStringTree(ruleNames []string, recog antlr.Recognizer
 }
 
 func (s *KwLoginContext) EnterRule(listener antlr.ParseTreeListener) {
-	if listenerT, ok := listener.(CqlParserListener); ok {
+	if listenerT, ok := listener.(CQLParserListener); ok {
 		listenerT.EnterKwLogin(s)
 	}
 }
 
 func (s *KwLoginContext) ExitRule(listener antlr.ParseTreeListener) {
-	if listenerT, ok := listener.(CqlParserListener); ok {
+	if listenerT, ok := listener.(CQLParserListener); ok {
 		listenerT.ExitKwLogin(s)
 	}
 }
 
-func (p *CqlParser) KwLogin() (localctx IKwLoginContext) {
+func (p *CQLParser) KwLogin() (localctx IKwLoginContext) {
 	localctx = NewKwLoginContext(p, p.GetParserRuleContext(), p.GetState())
-	p.EnterRule(localctx, 448, CqlParserRULE_kwLogin)
+	p.EnterRule(localctx, 448, CQLParserRULE_kwLogin)
 	p.EnterOuterAlt(localctx, 1)
 	{
 		p.SetState(2214)
-		p.Match(CqlParserK_LOGIN)
+		p.Match(CQLParserK_LOGIN)
 		if p.HasError() {
 			// Recognition error - abort rule
 			goto errorExit
@@ -41676,13 +41676,13 @@ type KwMaterializedContext struct {
 func NewEmptyKwMaterializedContext() *KwMaterializedContext {
 	var p = new(KwMaterializedContext)
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
-	p.RuleIndex = CqlParserRULE_kwMaterialized
+	p.RuleIndex = CQLParserRULE_kwMaterialized
 	return p
 }
 
 func InitEmptyKwMaterializedContext(p *KwMaterializedContext) {
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
-	p.RuleIndex = CqlParserRULE_kwMaterialized
+	p.RuleIndex = CQLParserRULE_kwMaterialized
 }
 
 func (*KwMaterializedContext) IsKwMaterializedContext() {}
@@ -41693,7 +41693,7 @@ func NewKwMaterializedContext(parser antlr.Parser, parent antlr.ParserRuleContex
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, parent, invokingState)
 
 	p.parser = parser
-	p.RuleIndex = CqlParserRULE_kwMaterialized
+	p.RuleIndex = CQLParserRULE_kwMaterialized
 
 	return p
 }
@@ -41701,7 +41701,7 @@ func NewKwMaterializedContext(parser antlr.Parser, parent antlr.ParserRuleContex
 func (s *KwMaterializedContext) GetParser() antlr.Parser { return s.parser }
 
 func (s *KwMaterializedContext) K_MATERIALIZED() antlr.TerminalNode {
-	return s.GetToken(CqlParserK_MATERIALIZED, 0)
+	return s.GetToken(CQLParserK_MATERIALIZED, 0)
 }
 
 func (s *KwMaterializedContext) GetRuleContext() antlr.RuleContext {
@@ -41713,24 +41713,24 @@ func (s *KwMaterializedContext) ToStringTree(ruleNames []string, recog antlr.Rec
 }
 
 func (s *KwMaterializedContext) EnterRule(listener antlr.ParseTreeListener) {
-	if listenerT, ok := listener.(CqlParserListener); ok {
+	if listenerT, ok := listener.(CQLParserListener); ok {
 		listenerT.EnterKwMaterialized(s)
 	}
 }
 
 func (s *KwMaterializedContext) ExitRule(listener antlr.ParseTreeListener) {
-	if listenerT, ok := listener.(CqlParserListener); ok {
+	if listenerT, ok := listener.(CQLParserListener); ok {
 		listenerT.ExitKwMaterialized(s)
 	}
 }
 
-func (p *CqlParser) KwMaterialized() (localctx IKwMaterializedContext) {
+func (p *CQLParser) KwMaterialized() (localctx IKwMaterializedContext) {
 	localctx = NewKwMaterializedContext(p, p.GetParserRuleContext(), p.GetState())
-	p.EnterRule(localctx, 450, CqlParserRULE_kwMaterialized)
+	p.EnterRule(localctx, 450, CQLParserRULE_kwMaterialized)
 	p.EnterOuterAlt(localctx, 1)
 	{
 		p.SetState(2216)
-		p.Match(CqlParserK_MATERIALIZED)
+		p.Match(CQLParserK_MATERIALIZED)
 		if p.HasError() {
 			// Recognition error - abort rule
 			goto errorExit
@@ -41772,13 +41772,13 @@ type KwModifyContext struct {
 func NewEmptyKwModifyContext() *KwModifyContext {
 	var p = new(KwModifyContext)
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
-	p.RuleIndex = CqlParserRULE_kwModify
+	p.RuleIndex = CQLParserRULE_kwModify
 	return p
 }
 
 func InitEmptyKwModifyContext(p *KwModifyContext) {
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
-	p.RuleIndex = CqlParserRULE_kwModify
+	p.RuleIndex = CQLParserRULE_kwModify
 }
 
 func (*KwModifyContext) IsKwModifyContext() {}
@@ -41789,7 +41789,7 @@ func NewKwModifyContext(parser antlr.Parser, parent antlr.ParserRuleContext, inv
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, parent, invokingState)
 
 	p.parser = parser
-	p.RuleIndex = CqlParserRULE_kwModify
+	p.RuleIndex = CQLParserRULE_kwModify
 
 	return p
 }
@@ -41797,7 +41797,7 @@ func NewKwModifyContext(parser antlr.Parser, parent antlr.ParserRuleContext, inv
 func (s *KwModifyContext) GetParser() antlr.Parser { return s.parser }
 
 func (s *KwModifyContext) K_MODIFY() antlr.TerminalNode {
-	return s.GetToken(CqlParserK_MODIFY, 0)
+	return s.GetToken(CQLParserK_MODIFY, 0)
 }
 
 func (s *KwModifyContext) GetRuleContext() antlr.RuleContext {
@@ -41809,24 +41809,24 @@ func (s *KwModifyContext) ToStringTree(ruleNames []string, recog antlr.Recognize
 }
 
 func (s *KwModifyContext) EnterRule(listener antlr.ParseTreeListener) {
-	if listenerT, ok := listener.(CqlParserListener); ok {
+	if listenerT, ok := listener.(CQLParserListener); ok {
 		listenerT.EnterKwModify(s)
 	}
 }
 
 func (s *KwModifyContext) ExitRule(listener antlr.ParseTreeListener) {
-	if listenerT, ok := listener.(CqlParserListener); ok {
+	if listenerT, ok := listener.(CQLParserListener); ok {
 		listenerT.ExitKwModify(s)
 	}
 }
 
-func (p *CqlParser) KwModify() (localctx IKwModifyContext) {
+func (p *CQLParser) KwModify() (localctx IKwModifyContext) {
 	localctx = NewKwModifyContext(p, p.GetParserRuleContext(), p.GetState())
-	p.EnterRule(localctx, 452, CqlParserRULE_kwModify)
+	p.EnterRule(localctx, 452, CQLParserRULE_kwModify)
 	p.EnterOuterAlt(localctx, 1)
 	{
 		p.SetState(2218)
-		p.Match(CqlParserK_MODIFY)
+		p.Match(CQLParserK_MODIFY)
 		if p.HasError() {
 			// Recognition error - abort rule
 			goto errorExit
@@ -41868,13 +41868,13 @@ type KwNosuperuserContext struct {
 func NewEmptyKwNosuperuserContext() *KwNosuperuserContext {
 	var p = new(KwNosuperuserContext)
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
-	p.RuleIndex = CqlParserRULE_kwNosuperuser
+	p.RuleIndex = CQLParserRULE_kwNosuperuser
 	return p
 }
 
 func InitEmptyKwNosuperuserContext(p *KwNosuperuserContext) {
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
-	p.RuleIndex = CqlParserRULE_kwNosuperuser
+	p.RuleIndex = CQLParserRULE_kwNosuperuser
 }
 
 func (*KwNosuperuserContext) IsKwNosuperuserContext() {}
@@ -41885,7 +41885,7 @@ func NewKwNosuperuserContext(parser antlr.Parser, parent antlr.ParserRuleContext
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, parent, invokingState)
 
 	p.parser = parser
-	p.RuleIndex = CqlParserRULE_kwNosuperuser
+	p.RuleIndex = CQLParserRULE_kwNosuperuser
 
 	return p
 }
@@ -41893,7 +41893,7 @@ func NewKwNosuperuserContext(parser antlr.Parser, parent antlr.ParserRuleContext
 func (s *KwNosuperuserContext) GetParser() antlr.Parser { return s.parser }
 
 func (s *KwNosuperuserContext) K_NOSUPERUSER() antlr.TerminalNode {
-	return s.GetToken(CqlParserK_NOSUPERUSER, 0)
+	return s.GetToken(CQLParserK_NOSUPERUSER, 0)
 }
 
 func (s *KwNosuperuserContext) GetRuleContext() antlr.RuleContext {
@@ -41905,24 +41905,24 @@ func (s *KwNosuperuserContext) ToStringTree(ruleNames []string, recog antlr.Reco
 }
 
 func (s *KwNosuperuserContext) EnterRule(listener antlr.ParseTreeListener) {
-	if listenerT, ok := listener.(CqlParserListener); ok {
+	if listenerT, ok := listener.(CQLParserListener); ok {
 		listenerT.EnterKwNosuperuser(s)
 	}
 }
 
 func (s *KwNosuperuserContext) ExitRule(listener antlr.ParseTreeListener) {
-	if listenerT, ok := listener.(CqlParserListener); ok {
+	if listenerT, ok := listener.(CQLParserListener); ok {
 		listenerT.ExitKwNosuperuser(s)
 	}
 }
 
-func (p *CqlParser) KwNosuperuser() (localctx IKwNosuperuserContext) {
+func (p *CQLParser) KwNosuperuser() (localctx IKwNosuperuserContext) {
 	localctx = NewKwNosuperuserContext(p, p.GetParserRuleContext(), p.GetState())
-	p.EnterRule(localctx, 454, CqlParserRULE_kwNosuperuser)
+	p.EnterRule(localctx, 454, CQLParserRULE_kwNosuperuser)
 	p.EnterOuterAlt(localctx, 1)
 	{
 		p.SetState(2220)
-		p.Match(CqlParserK_NOSUPERUSER)
+		p.Match(CQLParserK_NOSUPERUSER)
 		if p.HasError() {
 			// Recognition error - abort rule
 			goto errorExit
@@ -41964,13 +41964,13 @@ type KwNorecursiveContext struct {
 func NewEmptyKwNorecursiveContext() *KwNorecursiveContext {
 	var p = new(KwNorecursiveContext)
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
-	p.RuleIndex = CqlParserRULE_kwNorecursive
+	p.RuleIndex = CQLParserRULE_kwNorecursive
 	return p
 }
 
 func InitEmptyKwNorecursiveContext(p *KwNorecursiveContext) {
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
-	p.RuleIndex = CqlParserRULE_kwNorecursive
+	p.RuleIndex = CQLParserRULE_kwNorecursive
 }
 
 func (*KwNorecursiveContext) IsKwNorecursiveContext() {}
@@ -41981,7 +41981,7 @@ func NewKwNorecursiveContext(parser antlr.Parser, parent antlr.ParserRuleContext
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, parent, invokingState)
 
 	p.parser = parser
-	p.RuleIndex = CqlParserRULE_kwNorecursive
+	p.RuleIndex = CQLParserRULE_kwNorecursive
 
 	return p
 }
@@ -41989,7 +41989,7 @@ func NewKwNorecursiveContext(parser antlr.Parser, parent antlr.ParserRuleContext
 func (s *KwNorecursiveContext) GetParser() antlr.Parser { return s.parser }
 
 func (s *KwNorecursiveContext) K_NORECURSIVE() antlr.TerminalNode {
-	return s.GetToken(CqlParserK_NORECURSIVE, 0)
+	return s.GetToken(CQLParserK_NORECURSIVE, 0)
 }
 
 func (s *KwNorecursiveContext) GetRuleContext() antlr.RuleContext {
@@ -42001,24 +42001,24 @@ func (s *KwNorecursiveContext) ToStringTree(ruleNames []string, recog antlr.Reco
 }
 
 func (s *KwNorecursiveContext) EnterRule(listener antlr.ParseTreeListener) {
-	if listenerT, ok := listener.(CqlParserListener); ok {
+	if listenerT, ok := listener.(CQLParserListener); ok {
 		listenerT.EnterKwNorecursive(s)
 	}
 }
 
 func (s *KwNorecursiveContext) ExitRule(listener antlr.ParseTreeListener) {
-	if listenerT, ok := listener.(CqlParserListener); ok {
+	if listenerT, ok := listener.(CQLParserListener); ok {
 		listenerT.ExitKwNorecursive(s)
 	}
 }
 
-func (p *CqlParser) KwNorecursive() (localctx IKwNorecursiveContext) {
+func (p *CQLParser) KwNorecursive() (localctx IKwNorecursiveContext) {
 	localctx = NewKwNorecursiveContext(p, p.GetParserRuleContext(), p.GetState())
-	p.EnterRule(localctx, 456, CqlParserRULE_kwNorecursive)
+	p.EnterRule(localctx, 456, CQLParserRULE_kwNorecursive)
 	p.EnterOuterAlt(localctx, 1)
 	{
 		p.SetState(2222)
-		p.Match(CqlParserK_NORECURSIVE)
+		p.Match(CQLParserK_NORECURSIVE)
 		if p.HasError() {
 			// Recognition error - abort rule
 			goto errorExit
@@ -42060,13 +42060,13 @@ type KwNotContext struct {
 func NewEmptyKwNotContext() *KwNotContext {
 	var p = new(KwNotContext)
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
-	p.RuleIndex = CqlParserRULE_kwNot
+	p.RuleIndex = CQLParserRULE_kwNot
 	return p
 }
 
 func InitEmptyKwNotContext(p *KwNotContext) {
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
-	p.RuleIndex = CqlParserRULE_kwNot
+	p.RuleIndex = CQLParserRULE_kwNot
 }
 
 func (*KwNotContext) IsKwNotContext() {}
@@ -42077,7 +42077,7 @@ func NewKwNotContext(parser antlr.Parser, parent antlr.ParserRuleContext, invoki
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, parent, invokingState)
 
 	p.parser = parser
-	p.RuleIndex = CqlParserRULE_kwNot
+	p.RuleIndex = CQLParserRULE_kwNot
 
 	return p
 }
@@ -42085,7 +42085,7 @@ func NewKwNotContext(parser antlr.Parser, parent antlr.ParserRuleContext, invoki
 func (s *KwNotContext) GetParser() antlr.Parser { return s.parser }
 
 func (s *KwNotContext) K_NOT() antlr.TerminalNode {
-	return s.GetToken(CqlParserK_NOT, 0)
+	return s.GetToken(CQLParserK_NOT, 0)
 }
 
 func (s *KwNotContext) GetRuleContext() antlr.RuleContext {
@@ -42097,24 +42097,24 @@ func (s *KwNotContext) ToStringTree(ruleNames []string, recog antlr.Recognizer) 
 }
 
 func (s *KwNotContext) EnterRule(listener antlr.ParseTreeListener) {
-	if listenerT, ok := listener.(CqlParserListener); ok {
+	if listenerT, ok := listener.(CQLParserListener); ok {
 		listenerT.EnterKwNot(s)
 	}
 }
 
 func (s *KwNotContext) ExitRule(listener antlr.ParseTreeListener) {
-	if listenerT, ok := listener.(CqlParserListener); ok {
+	if listenerT, ok := listener.(CQLParserListener); ok {
 		listenerT.ExitKwNot(s)
 	}
 }
 
-func (p *CqlParser) KwNot() (localctx IKwNotContext) {
+func (p *CQLParser) KwNot() (localctx IKwNotContext) {
 	localctx = NewKwNotContext(p, p.GetParserRuleContext(), p.GetState())
-	p.EnterRule(localctx, 458, CqlParserRULE_kwNot)
+	p.EnterRule(localctx, 458, CQLParserRULE_kwNot)
 	p.EnterOuterAlt(localctx, 1)
 	{
 		p.SetState(2224)
-		p.Match(CqlParserK_NOT)
+		p.Match(CQLParserK_NOT)
 		if p.HasError() {
 			// Recognition error - abort rule
 			goto errorExit
@@ -42156,13 +42156,13 @@ type KwNullContext struct {
 func NewEmptyKwNullContext() *KwNullContext {
 	var p = new(KwNullContext)
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
-	p.RuleIndex = CqlParserRULE_kwNull
+	p.RuleIndex = CQLParserRULE_kwNull
 	return p
 }
 
 func InitEmptyKwNullContext(p *KwNullContext) {
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
-	p.RuleIndex = CqlParserRULE_kwNull
+	p.RuleIndex = CQLParserRULE_kwNull
 }
 
 func (*KwNullContext) IsKwNullContext() {}
@@ -42173,7 +42173,7 @@ func NewKwNullContext(parser antlr.Parser, parent antlr.ParserRuleContext, invok
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, parent, invokingState)
 
 	p.parser = parser
-	p.RuleIndex = CqlParserRULE_kwNull
+	p.RuleIndex = CQLParserRULE_kwNull
 
 	return p
 }
@@ -42181,7 +42181,7 @@ func NewKwNullContext(parser antlr.Parser, parent antlr.ParserRuleContext, invok
 func (s *KwNullContext) GetParser() antlr.Parser { return s.parser }
 
 func (s *KwNullContext) K_NULL() antlr.TerminalNode {
-	return s.GetToken(CqlParserK_NULL, 0)
+	return s.GetToken(CQLParserK_NULL, 0)
 }
 
 func (s *KwNullContext) GetRuleContext() antlr.RuleContext {
@@ -42193,24 +42193,24 @@ func (s *KwNullContext) ToStringTree(ruleNames []string, recog antlr.Recognizer)
 }
 
 func (s *KwNullContext) EnterRule(listener antlr.ParseTreeListener) {
-	if listenerT, ok := listener.(CqlParserListener); ok {
+	if listenerT, ok := listener.(CQLParserListener); ok {
 		listenerT.EnterKwNull(s)
 	}
 }
 
 func (s *KwNullContext) ExitRule(listener antlr.ParseTreeListener) {
-	if listenerT, ok := listener.(CqlParserListener); ok {
+	if listenerT, ok := listener.(CQLParserListener); ok {
 		listenerT.ExitKwNull(s)
 	}
 }
 
-func (p *CqlParser) KwNull() (localctx IKwNullContext) {
+func (p *CQLParser) KwNull() (localctx IKwNullContext) {
 	localctx = NewKwNullContext(p, p.GetParserRuleContext(), p.GetState())
-	p.EnterRule(localctx, 460, CqlParserRULE_kwNull)
+	p.EnterRule(localctx, 460, CQLParserRULE_kwNull)
 	p.EnterOuterAlt(localctx, 1)
 	{
 		p.SetState(2226)
-		p.Match(CqlParserK_NULL)
+		p.Match(CQLParserK_NULL)
 		if p.HasError() {
 			// Recognition error - abort rule
 			goto errorExit
@@ -42252,13 +42252,13 @@ type KwOfContext struct {
 func NewEmptyKwOfContext() *KwOfContext {
 	var p = new(KwOfContext)
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
-	p.RuleIndex = CqlParserRULE_kwOf
+	p.RuleIndex = CQLParserRULE_kwOf
 	return p
 }
 
 func InitEmptyKwOfContext(p *KwOfContext) {
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
-	p.RuleIndex = CqlParserRULE_kwOf
+	p.RuleIndex = CQLParserRULE_kwOf
 }
 
 func (*KwOfContext) IsKwOfContext() {}
@@ -42269,7 +42269,7 @@ func NewKwOfContext(parser antlr.Parser, parent antlr.ParserRuleContext, invokin
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, parent, invokingState)
 
 	p.parser = parser
-	p.RuleIndex = CqlParserRULE_kwOf
+	p.RuleIndex = CQLParserRULE_kwOf
 
 	return p
 }
@@ -42277,7 +42277,7 @@ func NewKwOfContext(parser antlr.Parser, parent antlr.ParserRuleContext, invokin
 func (s *KwOfContext) GetParser() antlr.Parser { return s.parser }
 
 func (s *KwOfContext) K_OF() antlr.TerminalNode {
-	return s.GetToken(CqlParserK_OF, 0)
+	return s.GetToken(CQLParserK_OF, 0)
 }
 
 func (s *KwOfContext) GetRuleContext() antlr.RuleContext {
@@ -42289,24 +42289,24 @@ func (s *KwOfContext) ToStringTree(ruleNames []string, recog antlr.Recognizer) s
 }
 
 func (s *KwOfContext) EnterRule(listener antlr.ParseTreeListener) {
-	if listenerT, ok := listener.(CqlParserListener); ok {
+	if listenerT, ok := listener.(CQLParserListener); ok {
 		listenerT.EnterKwOf(s)
 	}
 }
 
 func (s *KwOfContext) ExitRule(listener antlr.ParseTreeListener) {
-	if listenerT, ok := listener.(CqlParserListener); ok {
+	if listenerT, ok := listener.(CQLParserListener); ok {
 		listenerT.ExitKwOf(s)
 	}
 }
 
-func (p *CqlParser) KwOf() (localctx IKwOfContext) {
+func (p *CQLParser) KwOf() (localctx IKwOfContext) {
 	localctx = NewKwOfContext(p, p.GetParserRuleContext(), p.GetState())
-	p.EnterRule(localctx, 462, CqlParserRULE_kwOf)
+	p.EnterRule(localctx, 462, CQLParserRULE_kwOf)
 	p.EnterOuterAlt(localctx, 1)
 	{
 		p.SetState(2228)
-		p.Match(CqlParserK_OF)
+		p.Match(CQLParserK_OF)
 		if p.HasError() {
 			// Recognition error - abort rule
 			goto errorExit
@@ -42348,13 +42348,13 @@ type KwOnContext struct {
 func NewEmptyKwOnContext() *KwOnContext {
 	var p = new(KwOnContext)
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
-	p.RuleIndex = CqlParserRULE_kwOn
+	p.RuleIndex = CQLParserRULE_kwOn
 	return p
 }
 
 func InitEmptyKwOnContext(p *KwOnContext) {
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
-	p.RuleIndex = CqlParserRULE_kwOn
+	p.RuleIndex = CQLParserRULE_kwOn
 }
 
 func (*KwOnContext) IsKwOnContext() {}
@@ -42365,7 +42365,7 @@ func NewKwOnContext(parser antlr.Parser, parent antlr.ParserRuleContext, invokin
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, parent, invokingState)
 
 	p.parser = parser
-	p.RuleIndex = CqlParserRULE_kwOn
+	p.RuleIndex = CQLParserRULE_kwOn
 
 	return p
 }
@@ -42373,7 +42373,7 @@ func NewKwOnContext(parser antlr.Parser, parent antlr.ParserRuleContext, invokin
 func (s *KwOnContext) GetParser() antlr.Parser { return s.parser }
 
 func (s *KwOnContext) K_ON() antlr.TerminalNode {
-	return s.GetToken(CqlParserK_ON, 0)
+	return s.GetToken(CQLParserK_ON, 0)
 }
 
 func (s *KwOnContext) GetRuleContext() antlr.RuleContext {
@@ -42385,24 +42385,24 @@ func (s *KwOnContext) ToStringTree(ruleNames []string, recog antlr.Recognizer) s
 }
 
 func (s *KwOnContext) EnterRule(listener antlr.ParseTreeListener) {
-	if listenerT, ok := listener.(CqlParserListener); ok {
+	if listenerT, ok := listener.(CQLParserListener); ok {
 		listenerT.EnterKwOn(s)
 	}
 }
 
 func (s *KwOnContext) ExitRule(listener antlr.ParseTreeListener) {
-	if listenerT, ok := listener.(CqlParserListener); ok {
+	if listenerT, ok := listener.(CQLParserListener); ok {
 		listenerT.ExitKwOn(s)
 	}
 }
 
-func (p *CqlParser) KwOn() (localctx IKwOnContext) {
+func (p *CQLParser) KwOn() (localctx IKwOnContext) {
 	localctx = NewKwOnContext(p, p.GetParserRuleContext(), p.GetState())
-	p.EnterRule(localctx, 464, CqlParserRULE_kwOn)
+	p.EnterRule(localctx, 464, CQLParserRULE_kwOn)
 	p.EnterOuterAlt(localctx, 1)
 	{
 		p.SetState(2230)
-		p.Match(CqlParserK_ON)
+		p.Match(CQLParserK_ON)
 		if p.HasError() {
 			// Recognition error - abort rule
 			goto errorExit
@@ -42444,13 +42444,13 @@ type KwOptionsContext struct {
 func NewEmptyKwOptionsContext() *KwOptionsContext {
 	var p = new(KwOptionsContext)
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
-	p.RuleIndex = CqlParserRULE_kwOptions
+	p.RuleIndex = CQLParserRULE_kwOptions
 	return p
 }
 
 func InitEmptyKwOptionsContext(p *KwOptionsContext) {
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
-	p.RuleIndex = CqlParserRULE_kwOptions
+	p.RuleIndex = CQLParserRULE_kwOptions
 }
 
 func (*KwOptionsContext) IsKwOptionsContext() {}
@@ -42461,7 +42461,7 @@ func NewKwOptionsContext(parser antlr.Parser, parent antlr.ParserRuleContext, in
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, parent, invokingState)
 
 	p.parser = parser
-	p.RuleIndex = CqlParserRULE_kwOptions
+	p.RuleIndex = CQLParserRULE_kwOptions
 
 	return p
 }
@@ -42469,7 +42469,7 @@ func NewKwOptionsContext(parser antlr.Parser, parent antlr.ParserRuleContext, in
 func (s *KwOptionsContext) GetParser() antlr.Parser { return s.parser }
 
 func (s *KwOptionsContext) K_OPTIONS() antlr.TerminalNode {
-	return s.GetToken(CqlParserK_OPTIONS, 0)
+	return s.GetToken(CQLParserK_OPTIONS, 0)
 }
 
 func (s *KwOptionsContext) GetRuleContext() antlr.RuleContext {
@@ -42481,24 +42481,24 @@ func (s *KwOptionsContext) ToStringTree(ruleNames []string, recog antlr.Recogniz
 }
 
 func (s *KwOptionsContext) EnterRule(listener antlr.ParseTreeListener) {
-	if listenerT, ok := listener.(CqlParserListener); ok {
+	if listenerT, ok := listener.(CQLParserListener); ok {
 		listenerT.EnterKwOptions(s)
 	}
 }
 
 func (s *KwOptionsContext) ExitRule(listener antlr.ParseTreeListener) {
-	if listenerT, ok := listener.(CqlParserListener); ok {
+	if listenerT, ok := listener.(CQLParserListener); ok {
 		listenerT.ExitKwOptions(s)
 	}
 }
 
-func (p *CqlParser) KwOptions() (localctx IKwOptionsContext) {
+func (p *CQLParser) KwOptions() (localctx IKwOptionsContext) {
 	localctx = NewKwOptionsContext(p, p.GetParserRuleContext(), p.GetState())
-	p.EnterRule(localctx, 466, CqlParserRULE_kwOptions)
+	p.EnterRule(localctx, 466, CQLParserRULE_kwOptions)
 	p.EnterOuterAlt(localctx, 1)
 	{
 		p.SetState(2232)
-		p.Match(CqlParserK_OPTIONS)
+		p.Match(CQLParserK_OPTIONS)
 		if p.HasError() {
 			// Recognition error - abort rule
 			goto errorExit
@@ -42540,13 +42540,13 @@ type KwOrContext struct {
 func NewEmptyKwOrContext() *KwOrContext {
 	var p = new(KwOrContext)
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
-	p.RuleIndex = CqlParserRULE_kwOr
+	p.RuleIndex = CQLParserRULE_kwOr
 	return p
 }
 
 func InitEmptyKwOrContext(p *KwOrContext) {
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
-	p.RuleIndex = CqlParserRULE_kwOr
+	p.RuleIndex = CQLParserRULE_kwOr
 }
 
 func (*KwOrContext) IsKwOrContext() {}
@@ -42557,7 +42557,7 @@ func NewKwOrContext(parser antlr.Parser, parent antlr.ParserRuleContext, invokin
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, parent, invokingState)
 
 	p.parser = parser
-	p.RuleIndex = CqlParserRULE_kwOr
+	p.RuleIndex = CQLParserRULE_kwOr
 
 	return p
 }
@@ -42565,7 +42565,7 @@ func NewKwOrContext(parser antlr.Parser, parent antlr.ParserRuleContext, invokin
 func (s *KwOrContext) GetParser() antlr.Parser { return s.parser }
 
 func (s *KwOrContext) K_OR() antlr.TerminalNode {
-	return s.GetToken(CqlParserK_OR, 0)
+	return s.GetToken(CQLParserK_OR, 0)
 }
 
 func (s *KwOrContext) GetRuleContext() antlr.RuleContext {
@@ -42577,24 +42577,24 @@ func (s *KwOrContext) ToStringTree(ruleNames []string, recog antlr.Recognizer) s
 }
 
 func (s *KwOrContext) EnterRule(listener antlr.ParseTreeListener) {
-	if listenerT, ok := listener.(CqlParserListener); ok {
+	if listenerT, ok := listener.(CQLParserListener); ok {
 		listenerT.EnterKwOr(s)
 	}
 }
 
 func (s *KwOrContext) ExitRule(listener antlr.ParseTreeListener) {
-	if listenerT, ok := listener.(CqlParserListener); ok {
+	if listenerT, ok := listener.(CQLParserListener); ok {
 		listenerT.ExitKwOr(s)
 	}
 }
 
-func (p *CqlParser) KwOr() (localctx IKwOrContext) {
+func (p *CQLParser) KwOr() (localctx IKwOrContext) {
 	localctx = NewKwOrContext(p, p.GetParserRuleContext(), p.GetState())
-	p.EnterRule(localctx, 468, CqlParserRULE_kwOr)
+	p.EnterRule(localctx, 468, CQLParserRULE_kwOr)
 	p.EnterOuterAlt(localctx, 1)
 	{
 		p.SetState(2234)
-		p.Match(CqlParserK_OR)
+		p.Match(CQLParserK_OR)
 		if p.HasError() {
 			// Recognition error - abort rule
 			goto errorExit
@@ -42636,13 +42636,13 @@ type KwOrderContext struct {
 func NewEmptyKwOrderContext() *KwOrderContext {
 	var p = new(KwOrderContext)
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
-	p.RuleIndex = CqlParserRULE_kwOrder
+	p.RuleIndex = CQLParserRULE_kwOrder
 	return p
 }
 
 func InitEmptyKwOrderContext(p *KwOrderContext) {
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
-	p.RuleIndex = CqlParserRULE_kwOrder
+	p.RuleIndex = CQLParserRULE_kwOrder
 }
 
 func (*KwOrderContext) IsKwOrderContext() {}
@@ -42653,7 +42653,7 @@ func NewKwOrderContext(parser antlr.Parser, parent antlr.ParserRuleContext, invo
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, parent, invokingState)
 
 	p.parser = parser
-	p.RuleIndex = CqlParserRULE_kwOrder
+	p.RuleIndex = CQLParserRULE_kwOrder
 
 	return p
 }
@@ -42661,7 +42661,7 @@ func NewKwOrderContext(parser antlr.Parser, parent antlr.ParserRuleContext, invo
 func (s *KwOrderContext) GetParser() antlr.Parser { return s.parser }
 
 func (s *KwOrderContext) K_ORDER() antlr.TerminalNode {
-	return s.GetToken(CqlParserK_ORDER, 0)
+	return s.GetToken(CQLParserK_ORDER, 0)
 }
 
 func (s *KwOrderContext) GetRuleContext() antlr.RuleContext {
@@ -42673,24 +42673,24 @@ func (s *KwOrderContext) ToStringTree(ruleNames []string, recog antlr.Recognizer
 }
 
 func (s *KwOrderContext) EnterRule(listener antlr.ParseTreeListener) {
-	if listenerT, ok := listener.(CqlParserListener); ok {
+	if listenerT, ok := listener.(CQLParserListener); ok {
 		listenerT.EnterKwOrder(s)
 	}
 }
 
 func (s *KwOrderContext) ExitRule(listener antlr.ParseTreeListener) {
-	if listenerT, ok := listener.(CqlParserListener); ok {
+	if listenerT, ok := listener.(CQLParserListener); ok {
 		listenerT.ExitKwOrder(s)
 	}
 }
 
-func (p *CqlParser) KwOrder() (localctx IKwOrderContext) {
+func (p *CQLParser) KwOrder() (localctx IKwOrderContext) {
 	localctx = NewKwOrderContext(p, p.GetParserRuleContext(), p.GetState())
-	p.EnterRule(localctx, 470, CqlParserRULE_kwOrder)
+	p.EnterRule(localctx, 470, CQLParserRULE_kwOrder)
 	p.EnterOuterAlt(localctx, 1)
 	{
 		p.SetState(2236)
-		p.Match(CqlParserK_ORDER)
+		p.Match(CQLParserK_ORDER)
 		if p.HasError() {
 			// Recognition error - abort rule
 			goto errorExit
@@ -42732,13 +42732,13 @@ type KwPasswordContext struct {
 func NewEmptyKwPasswordContext() *KwPasswordContext {
 	var p = new(KwPasswordContext)
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
-	p.RuleIndex = CqlParserRULE_kwPassword
+	p.RuleIndex = CQLParserRULE_kwPassword
 	return p
 }
 
 func InitEmptyKwPasswordContext(p *KwPasswordContext) {
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
-	p.RuleIndex = CqlParserRULE_kwPassword
+	p.RuleIndex = CQLParserRULE_kwPassword
 }
 
 func (*KwPasswordContext) IsKwPasswordContext() {}
@@ -42749,7 +42749,7 @@ func NewKwPasswordContext(parser antlr.Parser, parent antlr.ParserRuleContext, i
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, parent, invokingState)
 
 	p.parser = parser
-	p.RuleIndex = CqlParserRULE_kwPassword
+	p.RuleIndex = CQLParserRULE_kwPassword
 
 	return p
 }
@@ -42757,7 +42757,7 @@ func NewKwPasswordContext(parser antlr.Parser, parent antlr.ParserRuleContext, i
 func (s *KwPasswordContext) GetParser() antlr.Parser { return s.parser }
 
 func (s *KwPasswordContext) K_PASSWORD() antlr.TerminalNode {
-	return s.GetToken(CqlParserK_PASSWORD, 0)
+	return s.GetToken(CQLParserK_PASSWORD, 0)
 }
 
 func (s *KwPasswordContext) GetRuleContext() antlr.RuleContext {
@@ -42769,24 +42769,24 @@ func (s *KwPasswordContext) ToStringTree(ruleNames []string, recog antlr.Recogni
 }
 
 func (s *KwPasswordContext) EnterRule(listener antlr.ParseTreeListener) {
-	if listenerT, ok := listener.(CqlParserListener); ok {
+	if listenerT, ok := listener.(CQLParserListener); ok {
 		listenerT.EnterKwPassword(s)
 	}
 }
 
 func (s *KwPasswordContext) ExitRule(listener antlr.ParseTreeListener) {
-	if listenerT, ok := listener.(CqlParserListener); ok {
+	if listenerT, ok := listener.(CQLParserListener); ok {
 		listenerT.ExitKwPassword(s)
 	}
 }
 
-func (p *CqlParser) KwPassword() (localctx IKwPasswordContext) {
+func (p *CQLParser) KwPassword() (localctx IKwPasswordContext) {
 	localctx = NewKwPasswordContext(p, p.GetParserRuleContext(), p.GetState())
-	p.EnterRule(localctx, 472, CqlParserRULE_kwPassword)
+	p.EnterRule(localctx, 472, CQLParserRULE_kwPassword)
 	p.EnterOuterAlt(localctx, 1)
 	{
 		p.SetState(2238)
-		p.Match(CqlParserK_PASSWORD)
+		p.Match(CQLParserK_PASSWORD)
 		if p.HasError() {
 			// Recognition error - abort rule
 			goto errorExit
@@ -42828,13 +42828,13 @@ type KwPrimaryContext struct {
 func NewEmptyKwPrimaryContext() *KwPrimaryContext {
 	var p = new(KwPrimaryContext)
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
-	p.RuleIndex = CqlParserRULE_kwPrimary
+	p.RuleIndex = CQLParserRULE_kwPrimary
 	return p
 }
 
 func InitEmptyKwPrimaryContext(p *KwPrimaryContext) {
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
-	p.RuleIndex = CqlParserRULE_kwPrimary
+	p.RuleIndex = CQLParserRULE_kwPrimary
 }
 
 func (*KwPrimaryContext) IsKwPrimaryContext() {}
@@ -42845,7 +42845,7 @@ func NewKwPrimaryContext(parser antlr.Parser, parent antlr.ParserRuleContext, in
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, parent, invokingState)
 
 	p.parser = parser
-	p.RuleIndex = CqlParserRULE_kwPrimary
+	p.RuleIndex = CQLParserRULE_kwPrimary
 
 	return p
 }
@@ -42853,7 +42853,7 @@ func NewKwPrimaryContext(parser antlr.Parser, parent antlr.ParserRuleContext, in
 func (s *KwPrimaryContext) GetParser() antlr.Parser { return s.parser }
 
 func (s *KwPrimaryContext) K_PRIMARY() antlr.TerminalNode {
-	return s.GetToken(CqlParserK_PRIMARY, 0)
+	return s.GetToken(CQLParserK_PRIMARY, 0)
 }
 
 func (s *KwPrimaryContext) GetRuleContext() antlr.RuleContext {
@@ -42865,24 +42865,24 @@ func (s *KwPrimaryContext) ToStringTree(ruleNames []string, recog antlr.Recogniz
 }
 
 func (s *KwPrimaryContext) EnterRule(listener antlr.ParseTreeListener) {
-	if listenerT, ok := listener.(CqlParserListener); ok {
+	if listenerT, ok := listener.(CQLParserListener); ok {
 		listenerT.EnterKwPrimary(s)
 	}
 }
 
 func (s *KwPrimaryContext) ExitRule(listener antlr.ParseTreeListener) {
-	if listenerT, ok := listener.(CqlParserListener); ok {
+	if listenerT, ok := listener.(CQLParserListener); ok {
 		listenerT.ExitKwPrimary(s)
 	}
 }
 
-func (p *CqlParser) KwPrimary() (localctx IKwPrimaryContext) {
+func (p *CQLParser) KwPrimary() (localctx IKwPrimaryContext) {
 	localctx = NewKwPrimaryContext(p, p.GetParserRuleContext(), p.GetState())
-	p.EnterRule(localctx, 474, CqlParserRULE_kwPrimary)
+	p.EnterRule(localctx, 474, CQLParserRULE_kwPrimary)
 	p.EnterOuterAlt(localctx, 1)
 	{
 		p.SetState(2240)
-		p.Match(CqlParserK_PRIMARY)
+		p.Match(CQLParserK_PRIMARY)
 		if p.HasError() {
 			// Recognition error - abort rule
 			goto errorExit
@@ -42924,13 +42924,13 @@ type KwRenameContext struct {
 func NewEmptyKwRenameContext() *KwRenameContext {
 	var p = new(KwRenameContext)
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
-	p.RuleIndex = CqlParserRULE_kwRename
+	p.RuleIndex = CQLParserRULE_kwRename
 	return p
 }
 
 func InitEmptyKwRenameContext(p *KwRenameContext) {
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
-	p.RuleIndex = CqlParserRULE_kwRename
+	p.RuleIndex = CQLParserRULE_kwRename
 }
 
 func (*KwRenameContext) IsKwRenameContext() {}
@@ -42941,7 +42941,7 @@ func NewKwRenameContext(parser antlr.Parser, parent antlr.ParserRuleContext, inv
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, parent, invokingState)
 
 	p.parser = parser
-	p.RuleIndex = CqlParserRULE_kwRename
+	p.RuleIndex = CQLParserRULE_kwRename
 
 	return p
 }
@@ -42949,7 +42949,7 @@ func NewKwRenameContext(parser antlr.Parser, parent antlr.ParserRuleContext, inv
 func (s *KwRenameContext) GetParser() antlr.Parser { return s.parser }
 
 func (s *KwRenameContext) K_RENAME() antlr.TerminalNode {
-	return s.GetToken(CqlParserK_RENAME, 0)
+	return s.GetToken(CQLParserK_RENAME, 0)
 }
 
 func (s *KwRenameContext) GetRuleContext() antlr.RuleContext {
@@ -42961,24 +42961,24 @@ func (s *KwRenameContext) ToStringTree(ruleNames []string, recog antlr.Recognize
 }
 
 func (s *KwRenameContext) EnterRule(listener antlr.ParseTreeListener) {
-	if listenerT, ok := listener.(CqlParserListener); ok {
+	if listenerT, ok := listener.(CQLParserListener); ok {
 		listenerT.EnterKwRename(s)
 	}
 }
 
 func (s *KwRenameContext) ExitRule(listener antlr.ParseTreeListener) {
-	if listenerT, ok := listener.(CqlParserListener); ok {
+	if listenerT, ok := listener.(CQLParserListener); ok {
 		listenerT.ExitKwRename(s)
 	}
 }
 
-func (p *CqlParser) KwRename() (localctx IKwRenameContext) {
+func (p *CQLParser) KwRename() (localctx IKwRenameContext) {
 	localctx = NewKwRenameContext(p, p.GetParserRuleContext(), p.GetState())
-	p.EnterRule(localctx, 476, CqlParserRULE_kwRename)
+	p.EnterRule(localctx, 476, CQLParserRULE_kwRename)
 	p.EnterOuterAlt(localctx, 1)
 	{
 		p.SetState(2242)
-		p.Match(CqlParserK_RENAME)
+		p.Match(CQLParserK_RENAME)
 		if p.HasError() {
 			// Recognition error - abort rule
 			goto errorExit
@@ -43020,13 +43020,13 @@ type KwReplaceContext struct {
 func NewEmptyKwReplaceContext() *KwReplaceContext {
 	var p = new(KwReplaceContext)
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
-	p.RuleIndex = CqlParserRULE_kwReplace
+	p.RuleIndex = CQLParserRULE_kwReplace
 	return p
 }
 
 func InitEmptyKwReplaceContext(p *KwReplaceContext) {
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
-	p.RuleIndex = CqlParserRULE_kwReplace
+	p.RuleIndex = CQLParserRULE_kwReplace
 }
 
 func (*KwReplaceContext) IsKwReplaceContext() {}
@@ -43037,7 +43037,7 @@ func NewKwReplaceContext(parser antlr.Parser, parent antlr.ParserRuleContext, in
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, parent, invokingState)
 
 	p.parser = parser
-	p.RuleIndex = CqlParserRULE_kwReplace
+	p.RuleIndex = CQLParserRULE_kwReplace
 
 	return p
 }
@@ -43045,7 +43045,7 @@ func NewKwReplaceContext(parser antlr.Parser, parent antlr.ParserRuleContext, in
 func (s *KwReplaceContext) GetParser() antlr.Parser { return s.parser }
 
 func (s *KwReplaceContext) K_REPLACE() antlr.TerminalNode {
-	return s.GetToken(CqlParserK_REPLACE, 0)
+	return s.GetToken(CQLParserK_REPLACE, 0)
 }
 
 func (s *KwReplaceContext) GetRuleContext() antlr.RuleContext {
@@ -43057,24 +43057,24 @@ func (s *KwReplaceContext) ToStringTree(ruleNames []string, recog antlr.Recogniz
 }
 
 func (s *KwReplaceContext) EnterRule(listener antlr.ParseTreeListener) {
-	if listenerT, ok := listener.(CqlParserListener); ok {
+	if listenerT, ok := listener.(CQLParserListener); ok {
 		listenerT.EnterKwReplace(s)
 	}
 }
 
 func (s *KwReplaceContext) ExitRule(listener antlr.ParseTreeListener) {
-	if listenerT, ok := listener.(CqlParserListener); ok {
+	if listenerT, ok := listener.(CQLParserListener); ok {
 		listenerT.ExitKwReplace(s)
 	}
 }
 
-func (p *CqlParser) KwReplace() (localctx IKwReplaceContext) {
+func (p *CQLParser) KwReplace() (localctx IKwReplaceContext) {
 	localctx = NewKwReplaceContext(p, p.GetParserRuleContext(), p.GetState())
-	p.EnterRule(localctx, 478, CqlParserRULE_kwReplace)
+	p.EnterRule(localctx, 478, CQLParserRULE_kwReplace)
 	p.EnterOuterAlt(localctx, 1)
 	{
 		p.SetState(2244)
-		p.Match(CqlParserK_REPLACE)
+		p.Match(CQLParserK_REPLACE)
 		if p.HasError() {
 			// Recognition error - abort rule
 			goto errorExit
@@ -43116,13 +43116,13 @@ type KwReplicationContext struct {
 func NewEmptyKwReplicationContext() *KwReplicationContext {
 	var p = new(KwReplicationContext)
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
-	p.RuleIndex = CqlParserRULE_kwReplication
+	p.RuleIndex = CQLParserRULE_kwReplication
 	return p
 }
 
 func InitEmptyKwReplicationContext(p *KwReplicationContext) {
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
-	p.RuleIndex = CqlParserRULE_kwReplication
+	p.RuleIndex = CQLParserRULE_kwReplication
 }
 
 func (*KwReplicationContext) IsKwReplicationContext() {}
@@ -43133,7 +43133,7 @@ func NewKwReplicationContext(parser antlr.Parser, parent antlr.ParserRuleContext
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, parent, invokingState)
 
 	p.parser = parser
-	p.RuleIndex = CqlParserRULE_kwReplication
+	p.RuleIndex = CQLParserRULE_kwReplication
 
 	return p
 }
@@ -43141,7 +43141,7 @@ func NewKwReplicationContext(parser antlr.Parser, parent antlr.ParserRuleContext
 func (s *KwReplicationContext) GetParser() antlr.Parser { return s.parser }
 
 func (s *KwReplicationContext) K_REPLICATION() antlr.TerminalNode {
-	return s.GetToken(CqlParserK_REPLICATION, 0)
+	return s.GetToken(CQLParserK_REPLICATION, 0)
 }
 
 func (s *KwReplicationContext) GetRuleContext() antlr.RuleContext {
@@ -43153,24 +43153,24 @@ func (s *KwReplicationContext) ToStringTree(ruleNames []string, recog antlr.Reco
 }
 
 func (s *KwReplicationContext) EnterRule(listener antlr.ParseTreeListener) {
-	if listenerT, ok := listener.(CqlParserListener); ok {
+	if listenerT, ok := listener.(CQLParserListener); ok {
 		listenerT.EnterKwReplication(s)
 	}
 }
 
 func (s *KwReplicationContext) ExitRule(listener antlr.ParseTreeListener) {
-	if listenerT, ok := listener.(CqlParserListener); ok {
+	if listenerT, ok := listener.(CQLParserListener); ok {
 		listenerT.ExitKwReplication(s)
 	}
 }
 
-func (p *CqlParser) KwReplication() (localctx IKwReplicationContext) {
+func (p *CQLParser) KwReplication() (localctx IKwReplicationContext) {
 	localctx = NewKwReplicationContext(p, p.GetParserRuleContext(), p.GetState())
-	p.EnterRule(localctx, 480, CqlParserRULE_kwReplication)
+	p.EnterRule(localctx, 480, CQLParserRULE_kwReplication)
 	p.EnterOuterAlt(localctx, 1)
 	{
 		p.SetState(2246)
-		p.Match(CqlParserK_REPLICATION)
+		p.Match(CQLParserK_REPLICATION)
 		if p.HasError() {
 			// Recognition error - abort rule
 			goto errorExit
@@ -43212,13 +43212,13 @@ type KwReturnsContext struct {
 func NewEmptyKwReturnsContext() *KwReturnsContext {
 	var p = new(KwReturnsContext)
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
-	p.RuleIndex = CqlParserRULE_kwReturns
+	p.RuleIndex = CQLParserRULE_kwReturns
 	return p
 }
 
 func InitEmptyKwReturnsContext(p *KwReturnsContext) {
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
-	p.RuleIndex = CqlParserRULE_kwReturns
+	p.RuleIndex = CQLParserRULE_kwReturns
 }
 
 func (*KwReturnsContext) IsKwReturnsContext() {}
@@ -43229,7 +43229,7 @@ func NewKwReturnsContext(parser antlr.Parser, parent antlr.ParserRuleContext, in
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, parent, invokingState)
 
 	p.parser = parser
-	p.RuleIndex = CqlParserRULE_kwReturns
+	p.RuleIndex = CQLParserRULE_kwReturns
 
 	return p
 }
@@ -43237,7 +43237,7 @@ func NewKwReturnsContext(parser antlr.Parser, parent antlr.ParserRuleContext, in
 func (s *KwReturnsContext) GetParser() antlr.Parser { return s.parser }
 
 func (s *KwReturnsContext) K_RETURNS() antlr.TerminalNode {
-	return s.GetToken(CqlParserK_RETURNS, 0)
+	return s.GetToken(CQLParserK_RETURNS, 0)
 }
 
 func (s *KwReturnsContext) GetRuleContext() antlr.RuleContext {
@@ -43249,24 +43249,24 @@ func (s *KwReturnsContext) ToStringTree(ruleNames []string, recog antlr.Recogniz
 }
 
 func (s *KwReturnsContext) EnterRule(listener antlr.ParseTreeListener) {
-	if listenerT, ok := listener.(CqlParserListener); ok {
+	if listenerT, ok := listener.(CQLParserListener); ok {
 		listenerT.EnterKwReturns(s)
 	}
 }
 
 func (s *KwReturnsContext) ExitRule(listener antlr.ParseTreeListener) {
-	if listenerT, ok := listener.(CqlParserListener); ok {
+	if listenerT, ok := listener.(CQLParserListener); ok {
 		listenerT.ExitKwReturns(s)
 	}
 }
 
-func (p *CqlParser) KwReturns() (localctx IKwReturnsContext) {
+func (p *CQLParser) KwReturns() (localctx IKwReturnsContext) {
 	localctx = NewKwReturnsContext(p, p.GetParserRuleContext(), p.GetState())
-	p.EnterRule(localctx, 482, CqlParserRULE_kwReturns)
+	p.EnterRule(localctx, 482, CQLParserRULE_kwReturns)
 	p.EnterOuterAlt(localctx, 1)
 	{
 		p.SetState(2248)
-		p.Match(CqlParserK_RETURNS)
+		p.Match(CQLParserK_RETURNS)
 		if p.HasError() {
 			// Recognition error - abort rule
 			goto errorExit
@@ -43308,13 +43308,13 @@ type KwRoleContext struct {
 func NewEmptyKwRoleContext() *KwRoleContext {
 	var p = new(KwRoleContext)
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
-	p.RuleIndex = CqlParserRULE_kwRole
+	p.RuleIndex = CQLParserRULE_kwRole
 	return p
 }
 
 func InitEmptyKwRoleContext(p *KwRoleContext) {
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
-	p.RuleIndex = CqlParserRULE_kwRole
+	p.RuleIndex = CQLParserRULE_kwRole
 }
 
 func (*KwRoleContext) IsKwRoleContext() {}
@@ -43325,7 +43325,7 @@ func NewKwRoleContext(parser antlr.Parser, parent antlr.ParserRuleContext, invok
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, parent, invokingState)
 
 	p.parser = parser
-	p.RuleIndex = CqlParserRULE_kwRole
+	p.RuleIndex = CQLParserRULE_kwRole
 
 	return p
 }
@@ -43333,7 +43333,7 @@ func NewKwRoleContext(parser antlr.Parser, parent antlr.ParserRuleContext, invok
 func (s *KwRoleContext) GetParser() antlr.Parser { return s.parser }
 
 func (s *KwRoleContext) K_ROLE() antlr.TerminalNode {
-	return s.GetToken(CqlParserK_ROLE, 0)
+	return s.GetToken(CQLParserK_ROLE, 0)
 }
 
 func (s *KwRoleContext) GetRuleContext() antlr.RuleContext {
@@ -43345,24 +43345,24 @@ func (s *KwRoleContext) ToStringTree(ruleNames []string, recog antlr.Recognizer)
 }
 
 func (s *KwRoleContext) EnterRule(listener antlr.ParseTreeListener) {
-	if listenerT, ok := listener.(CqlParserListener); ok {
+	if listenerT, ok := listener.(CQLParserListener); ok {
 		listenerT.EnterKwRole(s)
 	}
 }
 
 func (s *KwRoleContext) ExitRule(listener antlr.ParseTreeListener) {
-	if listenerT, ok := listener.(CqlParserListener); ok {
+	if listenerT, ok := listener.(CQLParserListener); ok {
 		listenerT.ExitKwRole(s)
 	}
 }
 
-func (p *CqlParser) KwRole() (localctx IKwRoleContext) {
+func (p *CQLParser) KwRole() (localctx IKwRoleContext) {
 	localctx = NewKwRoleContext(p, p.GetParserRuleContext(), p.GetState())
-	p.EnterRule(localctx, 484, CqlParserRULE_kwRole)
+	p.EnterRule(localctx, 484, CQLParserRULE_kwRole)
 	p.EnterOuterAlt(localctx, 1)
 	{
 		p.SetState(2250)
-		p.Match(CqlParserK_ROLE)
+		p.Match(CQLParserK_ROLE)
 		if p.HasError() {
 			// Recognition error - abort rule
 			goto errorExit
@@ -43404,13 +43404,13 @@ type KwRolesContext struct {
 func NewEmptyKwRolesContext() *KwRolesContext {
 	var p = new(KwRolesContext)
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
-	p.RuleIndex = CqlParserRULE_kwRoles
+	p.RuleIndex = CQLParserRULE_kwRoles
 	return p
 }
 
 func InitEmptyKwRolesContext(p *KwRolesContext) {
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
-	p.RuleIndex = CqlParserRULE_kwRoles
+	p.RuleIndex = CQLParserRULE_kwRoles
 }
 
 func (*KwRolesContext) IsKwRolesContext() {}
@@ -43421,7 +43421,7 @@ func NewKwRolesContext(parser antlr.Parser, parent antlr.ParserRuleContext, invo
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, parent, invokingState)
 
 	p.parser = parser
-	p.RuleIndex = CqlParserRULE_kwRoles
+	p.RuleIndex = CQLParserRULE_kwRoles
 
 	return p
 }
@@ -43429,7 +43429,7 @@ func NewKwRolesContext(parser antlr.Parser, parent antlr.ParserRuleContext, invo
 func (s *KwRolesContext) GetParser() antlr.Parser { return s.parser }
 
 func (s *KwRolesContext) K_ROLES() antlr.TerminalNode {
-	return s.GetToken(CqlParserK_ROLES, 0)
+	return s.GetToken(CQLParserK_ROLES, 0)
 }
 
 func (s *KwRolesContext) GetRuleContext() antlr.RuleContext {
@@ -43441,24 +43441,24 @@ func (s *KwRolesContext) ToStringTree(ruleNames []string, recog antlr.Recognizer
 }
 
 func (s *KwRolesContext) EnterRule(listener antlr.ParseTreeListener) {
-	if listenerT, ok := listener.(CqlParserListener); ok {
+	if listenerT, ok := listener.(CQLParserListener); ok {
 		listenerT.EnterKwRoles(s)
 	}
 }
 
 func (s *KwRolesContext) ExitRule(listener antlr.ParseTreeListener) {
-	if listenerT, ok := listener.(CqlParserListener); ok {
+	if listenerT, ok := listener.(CQLParserListener); ok {
 		listenerT.ExitKwRoles(s)
 	}
 }
 
-func (p *CqlParser) KwRoles() (localctx IKwRolesContext) {
+func (p *CQLParser) KwRoles() (localctx IKwRolesContext) {
 	localctx = NewKwRolesContext(p, p.GetParserRuleContext(), p.GetState())
-	p.EnterRule(localctx, 486, CqlParserRULE_kwRoles)
+	p.EnterRule(localctx, 486, CQLParserRULE_kwRoles)
 	p.EnterOuterAlt(localctx, 1)
 	{
 		p.SetState(2252)
-		p.Match(CqlParserK_ROLES)
+		p.Match(CQLParserK_ROLES)
 		if p.HasError() {
 			// Recognition error - abort rule
 			goto errorExit
@@ -43500,13 +43500,13 @@ type KwSelectContext struct {
 func NewEmptyKwSelectContext() *KwSelectContext {
 	var p = new(KwSelectContext)
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
-	p.RuleIndex = CqlParserRULE_kwSelect
+	p.RuleIndex = CQLParserRULE_kwSelect
 	return p
 }
 
 func InitEmptyKwSelectContext(p *KwSelectContext) {
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
-	p.RuleIndex = CqlParserRULE_kwSelect
+	p.RuleIndex = CQLParserRULE_kwSelect
 }
 
 func (*KwSelectContext) IsKwSelectContext() {}
@@ -43517,7 +43517,7 @@ func NewKwSelectContext(parser antlr.Parser, parent antlr.ParserRuleContext, inv
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, parent, invokingState)
 
 	p.parser = parser
-	p.RuleIndex = CqlParserRULE_kwSelect
+	p.RuleIndex = CQLParserRULE_kwSelect
 
 	return p
 }
@@ -43525,7 +43525,7 @@ func NewKwSelectContext(parser antlr.Parser, parent antlr.ParserRuleContext, inv
 func (s *KwSelectContext) GetParser() antlr.Parser { return s.parser }
 
 func (s *KwSelectContext) K_SELECT() antlr.TerminalNode {
-	return s.GetToken(CqlParserK_SELECT, 0)
+	return s.GetToken(CQLParserK_SELECT, 0)
 }
 
 func (s *KwSelectContext) GetRuleContext() antlr.RuleContext {
@@ -43537,24 +43537,24 @@ func (s *KwSelectContext) ToStringTree(ruleNames []string, recog antlr.Recognize
 }
 
 func (s *KwSelectContext) EnterRule(listener antlr.ParseTreeListener) {
-	if listenerT, ok := listener.(CqlParserListener); ok {
+	if listenerT, ok := listener.(CQLParserListener); ok {
 		listenerT.EnterKwSelect(s)
 	}
 }
 
 func (s *KwSelectContext) ExitRule(listener antlr.ParseTreeListener) {
-	if listenerT, ok := listener.(CqlParserListener); ok {
+	if listenerT, ok := listener.(CQLParserListener); ok {
 		listenerT.ExitKwSelect(s)
 	}
 }
 
-func (p *CqlParser) KwSelect() (localctx IKwSelectContext) {
+func (p *CQLParser) KwSelect() (localctx IKwSelectContext) {
 	localctx = NewKwSelectContext(p, p.GetParserRuleContext(), p.GetState())
-	p.EnterRule(localctx, 488, CqlParserRULE_kwSelect)
+	p.EnterRule(localctx, 488, CQLParserRULE_kwSelect)
 	p.EnterOuterAlt(localctx, 1)
 	{
 		p.SetState(2254)
-		p.Match(CqlParserK_SELECT)
+		p.Match(CQLParserK_SELECT)
 		if p.HasError() {
 			// Recognition error - abort rule
 			goto errorExit
@@ -43596,13 +43596,13 @@ type KwSetContext struct {
 func NewEmptyKwSetContext() *KwSetContext {
 	var p = new(KwSetContext)
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
-	p.RuleIndex = CqlParserRULE_kwSet
+	p.RuleIndex = CQLParserRULE_kwSet
 	return p
 }
 
 func InitEmptyKwSetContext(p *KwSetContext) {
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
-	p.RuleIndex = CqlParserRULE_kwSet
+	p.RuleIndex = CQLParserRULE_kwSet
 }
 
 func (*KwSetContext) IsKwSetContext() {}
@@ -43613,7 +43613,7 @@ func NewKwSetContext(parser antlr.Parser, parent antlr.ParserRuleContext, invoki
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, parent, invokingState)
 
 	p.parser = parser
-	p.RuleIndex = CqlParserRULE_kwSet
+	p.RuleIndex = CQLParserRULE_kwSet
 
 	return p
 }
@@ -43621,7 +43621,7 @@ func NewKwSetContext(parser antlr.Parser, parent antlr.ParserRuleContext, invoki
 func (s *KwSetContext) GetParser() antlr.Parser { return s.parser }
 
 func (s *KwSetContext) K_SET() antlr.TerminalNode {
-	return s.GetToken(CqlParserK_SET, 0)
+	return s.GetToken(CQLParserK_SET, 0)
 }
 
 func (s *KwSetContext) GetRuleContext() antlr.RuleContext {
@@ -43633,24 +43633,24 @@ func (s *KwSetContext) ToStringTree(ruleNames []string, recog antlr.Recognizer) 
 }
 
 func (s *KwSetContext) EnterRule(listener antlr.ParseTreeListener) {
-	if listenerT, ok := listener.(CqlParserListener); ok {
+	if listenerT, ok := listener.(CQLParserListener); ok {
 		listenerT.EnterKwSet(s)
 	}
 }
 
 func (s *KwSetContext) ExitRule(listener antlr.ParseTreeListener) {
-	if listenerT, ok := listener.(CqlParserListener); ok {
+	if listenerT, ok := listener.(CQLParserListener); ok {
 		listenerT.ExitKwSet(s)
 	}
 }
 
-func (p *CqlParser) KwSet() (localctx IKwSetContext) {
+func (p *CQLParser) KwSet() (localctx IKwSetContext) {
 	localctx = NewKwSetContext(p, p.GetParserRuleContext(), p.GetState())
-	p.EnterRule(localctx, 490, CqlParserRULE_kwSet)
+	p.EnterRule(localctx, 490, CQLParserRULE_kwSet)
 	p.EnterOuterAlt(localctx, 1)
 	{
 		p.SetState(2256)
-		p.Match(CqlParserK_SET)
+		p.Match(CQLParserK_SET)
 		if p.HasError() {
 			// Recognition error - abort rule
 			goto errorExit
@@ -43692,13 +43692,13 @@ type KwSfuncContext struct {
 func NewEmptyKwSfuncContext() *KwSfuncContext {
 	var p = new(KwSfuncContext)
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
-	p.RuleIndex = CqlParserRULE_kwSfunc
+	p.RuleIndex = CQLParserRULE_kwSfunc
 	return p
 }
 
 func InitEmptyKwSfuncContext(p *KwSfuncContext) {
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
-	p.RuleIndex = CqlParserRULE_kwSfunc
+	p.RuleIndex = CQLParserRULE_kwSfunc
 }
 
 func (*KwSfuncContext) IsKwSfuncContext() {}
@@ -43709,7 +43709,7 @@ func NewKwSfuncContext(parser antlr.Parser, parent antlr.ParserRuleContext, invo
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, parent, invokingState)
 
 	p.parser = parser
-	p.RuleIndex = CqlParserRULE_kwSfunc
+	p.RuleIndex = CQLParserRULE_kwSfunc
 
 	return p
 }
@@ -43717,7 +43717,7 @@ func NewKwSfuncContext(parser antlr.Parser, parent antlr.ParserRuleContext, invo
 func (s *KwSfuncContext) GetParser() antlr.Parser { return s.parser }
 
 func (s *KwSfuncContext) K_SFUNC() antlr.TerminalNode {
-	return s.GetToken(CqlParserK_SFUNC, 0)
+	return s.GetToken(CQLParserK_SFUNC, 0)
 }
 
 func (s *KwSfuncContext) GetRuleContext() antlr.RuleContext {
@@ -43729,24 +43729,24 @@ func (s *KwSfuncContext) ToStringTree(ruleNames []string, recog antlr.Recognizer
 }
 
 func (s *KwSfuncContext) EnterRule(listener antlr.ParseTreeListener) {
-	if listenerT, ok := listener.(CqlParserListener); ok {
+	if listenerT, ok := listener.(CQLParserListener); ok {
 		listenerT.EnterKwSfunc(s)
 	}
 }
 
 func (s *KwSfuncContext) ExitRule(listener antlr.ParseTreeListener) {
-	if listenerT, ok := listener.(CqlParserListener); ok {
+	if listenerT, ok := listener.(CQLParserListener); ok {
 		listenerT.ExitKwSfunc(s)
 	}
 }
 
-func (p *CqlParser) KwSfunc() (localctx IKwSfuncContext) {
+func (p *CQLParser) KwSfunc() (localctx IKwSfuncContext) {
 	localctx = NewKwSfuncContext(p, p.GetParserRuleContext(), p.GetState())
-	p.EnterRule(localctx, 492, CqlParserRULE_kwSfunc)
+	p.EnterRule(localctx, 492, CQLParserRULE_kwSfunc)
 	p.EnterOuterAlt(localctx, 1)
 	{
 		p.SetState(2258)
-		p.Match(CqlParserK_SFUNC)
+		p.Match(CQLParserK_SFUNC)
 		if p.HasError() {
 			// Recognition error - abort rule
 			goto errorExit
@@ -43788,13 +43788,13 @@ type KwStorageContext struct {
 func NewEmptyKwStorageContext() *KwStorageContext {
 	var p = new(KwStorageContext)
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
-	p.RuleIndex = CqlParserRULE_kwStorage
+	p.RuleIndex = CQLParserRULE_kwStorage
 	return p
 }
 
 func InitEmptyKwStorageContext(p *KwStorageContext) {
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
-	p.RuleIndex = CqlParserRULE_kwStorage
+	p.RuleIndex = CQLParserRULE_kwStorage
 }
 
 func (*KwStorageContext) IsKwStorageContext() {}
@@ -43805,7 +43805,7 @@ func NewKwStorageContext(parser antlr.Parser, parent antlr.ParserRuleContext, in
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, parent, invokingState)
 
 	p.parser = parser
-	p.RuleIndex = CqlParserRULE_kwStorage
+	p.RuleIndex = CQLParserRULE_kwStorage
 
 	return p
 }
@@ -43813,7 +43813,7 @@ func NewKwStorageContext(parser antlr.Parser, parent antlr.ParserRuleContext, in
 func (s *KwStorageContext) GetParser() antlr.Parser { return s.parser }
 
 func (s *KwStorageContext) K_STORAGE() antlr.TerminalNode {
-	return s.GetToken(CqlParserK_STORAGE, 0)
+	return s.GetToken(CQLParserK_STORAGE, 0)
 }
 
 func (s *KwStorageContext) GetRuleContext() antlr.RuleContext {
@@ -43825,24 +43825,24 @@ func (s *KwStorageContext) ToStringTree(ruleNames []string, recog antlr.Recogniz
 }
 
 func (s *KwStorageContext) EnterRule(listener antlr.ParseTreeListener) {
-	if listenerT, ok := listener.(CqlParserListener); ok {
+	if listenerT, ok := listener.(CQLParserListener); ok {
 		listenerT.EnterKwStorage(s)
 	}
 }
 
 func (s *KwStorageContext) ExitRule(listener antlr.ParseTreeListener) {
-	if listenerT, ok := listener.(CqlParserListener); ok {
+	if listenerT, ok := listener.(CQLParserListener); ok {
 		listenerT.ExitKwStorage(s)
 	}
 }
 
-func (p *CqlParser) KwStorage() (localctx IKwStorageContext) {
+func (p *CQLParser) KwStorage() (localctx IKwStorageContext) {
 	localctx = NewKwStorageContext(p, p.GetParserRuleContext(), p.GetState())
-	p.EnterRule(localctx, 494, CqlParserRULE_kwStorage)
+	p.EnterRule(localctx, 494, CQLParserRULE_kwStorage)
 	p.EnterOuterAlt(localctx, 1)
 	{
 		p.SetState(2260)
-		p.Match(CqlParserK_STORAGE)
+		p.Match(CQLParserK_STORAGE)
 		if p.HasError() {
 			// Recognition error - abort rule
 			goto errorExit
@@ -43884,13 +43884,13 @@ type KwStypeContext struct {
 func NewEmptyKwStypeContext() *KwStypeContext {
 	var p = new(KwStypeContext)
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
-	p.RuleIndex = CqlParserRULE_kwStype
+	p.RuleIndex = CQLParserRULE_kwStype
 	return p
 }
 
 func InitEmptyKwStypeContext(p *KwStypeContext) {
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
-	p.RuleIndex = CqlParserRULE_kwStype
+	p.RuleIndex = CQLParserRULE_kwStype
 }
 
 func (*KwStypeContext) IsKwStypeContext() {}
@@ -43901,7 +43901,7 @@ func NewKwStypeContext(parser antlr.Parser, parent antlr.ParserRuleContext, invo
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, parent, invokingState)
 
 	p.parser = parser
-	p.RuleIndex = CqlParserRULE_kwStype
+	p.RuleIndex = CQLParserRULE_kwStype
 
 	return p
 }
@@ -43909,7 +43909,7 @@ func NewKwStypeContext(parser antlr.Parser, parent antlr.ParserRuleContext, invo
 func (s *KwStypeContext) GetParser() antlr.Parser { return s.parser }
 
 func (s *KwStypeContext) K_STYPE() antlr.TerminalNode {
-	return s.GetToken(CqlParserK_STYPE, 0)
+	return s.GetToken(CQLParserK_STYPE, 0)
 }
 
 func (s *KwStypeContext) GetRuleContext() antlr.RuleContext {
@@ -43921,24 +43921,24 @@ func (s *KwStypeContext) ToStringTree(ruleNames []string, recog antlr.Recognizer
 }
 
 func (s *KwStypeContext) EnterRule(listener antlr.ParseTreeListener) {
-	if listenerT, ok := listener.(CqlParserListener); ok {
+	if listenerT, ok := listener.(CQLParserListener); ok {
 		listenerT.EnterKwStype(s)
 	}
 }
 
 func (s *KwStypeContext) ExitRule(listener antlr.ParseTreeListener) {
-	if listenerT, ok := listener.(CqlParserListener); ok {
+	if listenerT, ok := listener.(CQLParserListener); ok {
 		listenerT.ExitKwStype(s)
 	}
 }
 
-func (p *CqlParser) KwStype() (localctx IKwStypeContext) {
+func (p *CQLParser) KwStype() (localctx IKwStypeContext) {
 	localctx = NewKwStypeContext(p, p.GetParserRuleContext(), p.GetState())
-	p.EnterRule(localctx, 496, CqlParserRULE_kwStype)
+	p.EnterRule(localctx, 496, CQLParserRULE_kwStype)
 	p.EnterOuterAlt(localctx, 1)
 	{
 		p.SetState(2262)
-		p.Match(CqlParserK_STYPE)
+		p.Match(CQLParserK_STYPE)
 		if p.HasError() {
 			// Recognition error - abort rule
 			goto errorExit
@@ -43980,13 +43980,13 @@ type KwSuperuserContext struct {
 func NewEmptyKwSuperuserContext() *KwSuperuserContext {
 	var p = new(KwSuperuserContext)
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
-	p.RuleIndex = CqlParserRULE_kwSuperuser
+	p.RuleIndex = CQLParserRULE_kwSuperuser
 	return p
 }
 
 func InitEmptyKwSuperuserContext(p *KwSuperuserContext) {
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
-	p.RuleIndex = CqlParserRULE_kwSuperuser
+	p.RuleIndex = CQLParserRULE_kwSuperuser
 }
 
 func (*KwSuperuserContext) IsKwSuperuserContext() {}
@@ -43997,7 +43997,7 @@ func NewKwSuperuserContext(parser antlr.Parser, parent antlr.ParserRuleContext, 
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, parent, invokingState)
 
 	p.parser = parser
-	p.RuleIndex = CqlParserRULE_kwSuperuser
+	p.RuleIndex = CQLParserRULE_kwSuperuser
 
 	return p
 }
@@ -44005,7 +44005,7 @@ func NewKwSuperuserContext(parser antlr.Parser, parent antlr.ParserRuleContext, 
 func (s *KwSuperuserContext) GetParser() antlr.Parser { return s.parser }
 
 func (s *KwSuperuserContext) K_SUPERUSER() antlr.TerminalNode {
-	return s.GetToken(CqlParserK_SUPERUSER, 0)
+	return s.GetToken(CQLParserK_SUPERUSER, 0)
 }
 
 func (s *KwSuperuserContext) GetRuleContext() antlr.RuleContext {
@@ -44017,24 +44017,24 @@ func (s *KwSuperuserContext) ToStringTree(ruleNames []string, recog antlr.Recogn
 }
 
 func (s *KwSuperuserContext) EnterRule(listener antlr.ParseTreeListener) {
-	if listenerT, ok := listener.(CqlParserListener); ok {
+	if listenerT, ok := listener.(CQLParserListener); ok {
 		listenerT.EnterKwSuperuser(s)
 	}
 }
 
 func (s *KwSuperuserContext) ExitRule(listener antlr.ParseTreeListener) {
-	if listenerT, ok := listener.(CqlParserListener); ok {
+	if listenerT, ok := listener.(CQLParserListener); ok {
 		listenerT.ExitKwSuperuser(s)
 	}
 }
 
-func (p *CqlParser) KwSuperuser() (localctx IKwSuperuserContext) {
+func (p *CQLParser) KwSuperuser() (localctx IKwSuperuserContext) {
 	localctx = NewKwSuperuserContext(p, p.GetParserRuleContext(), p.GetState())
-	p.EnterRule(localctx, 498, CqlParserRULE_kwSuperuser)
+	p.EnterRule(localctx, 498, CQLParserRULE_kwSuperuser)
 	p.EnterOuterAlt(localctx, 1)
 	{
 		p.SetState(2264)
-		p.Match(CqlParserK_SUPERUSER)
+		p.Match(CQLParserK_SUPERUSER)
 		if p.HasError() {
 			// Recognition error - abort rule
 			goto errorExit
@@ -44076,13 +44076,13 @@ type KwTableContext struct {
 func NewEmptyKwTableContext() *KwTableContext {
 	var p = new(KwTableContext)
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
-	p.RuleIndex = CqlParserRULE_kwTable
+	p.RuleIndex = CQLParserRULE_kwTable
 	return p
 }
 
 func InitEmptyKwTableContext(p *KwTableContext) {
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
-	p.RuleIndex = CqlParserRULE_kwTable
+	p.RuleIndex = CQLParserRULE_kwTable
 }
 
 func (*KwTableContext) IsKwTableContext() {}
@@ -44093,7 +44093,7 @@ func NewKwTableContext(parser antlr.Parser, parent antlr.ParserRuleContext, invo
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, parent, invokingState)
 
 	p.parser = parser
-	p.RuleIndex = CqlParserRULE_kwTable
+	p.RuleIndex = CQLParserRULE_kwTable
 
 	return p
 }
@@ -44101,7 +44101,7 @@ func NewKwTableContext(parser antlr.Parser, parent antlr.ParserRuleContext, invo
 func (s *KwTableContext) GetParser() antlr.Parser { return s.parser }
 
 func (s *KwTableContext) K_TABLE() antlr.TerminalNode {
-	return s.GetToken(CqlParserK_TABLE, 0)
+	return s.GetToken(CQLParserK_TABLE, 0)
 }
 
 func (s *KwTableContext) GetRuleContext() antlr.RuleContext {
@@ -44113,24 +44113,24 @@ func (s *KwTableContext) ToStringTree(ruleNames []string, recog antlr.Recognizer
 }
 
 func (s *KwTableContext) EnterRule(listener antlr.ParseTreeListener) {
-	if listenerT, ok := listener.(CqlParserListener); ok {
+	if listenerT, ok := listener.(CQLParserListener); ok {
 		listenerT.EnterKwTable(s)
 	}
 }
 
 func (s *KwTableContext) ExitRule(listener antlr.ParseTreeListener) {
-	if listenerT, ok := listener.(CqlParserListener); ok {
+	if listenerT, ok := listener.(CQLParserListener); ok {
 		listenerT.ExitKwTable(s)
 	}
 }
 
-func (p *CqlParser) KwTable() (localctx IKwTableContext) {
+func (p *CQLParser) KwTable() (localctx IKwTableContext) {
 	localctx = NewKwTableContext(p, p.GetParserRuleContext(), p.GetState())
-	p.EnterRule(localctx, 500, CqlParserRULE_kwTable)
+	p.EnterRule(localctx, 500, CQLParserRULE_kwTable)
 	p.EnterOuterAlt(localctx, 1)
 	{
 		p.SetState(2266)
-		p.Match(CqlParserK_TABLE)
+		p.Match(CQLParserK_TABLE)
 		if p.HasError() {
 			// Recognition error - abort rule
 			goto errorExit
@@ -44172,13 +44172,13 @@ type KwTimestampContext struct {
 func NewEmptyKwTimestampContext() *KwTimestampContext {
 	var p = new(KwTimestampContext)
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
-	p.RuleIndex = CqlParserRULE_kwTimestamp
+	p.RuleIndex = CQLParserRULE_kwTimestamp
 	return p
 }
 
 func InitEmptyKwTimestampContext(p *KwTimestampContext) {
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
-	p.RuleIndex = CqlParserRULE_kwTimestamp
+	p.RuleIndex = CQLParserRULE_kwTimestamp
 }
 
 func (*KwTimestampContext) IsKwTimestampContext() {}
@@ -44189,7 +44189,7 @@ func NewKwTimestampContext(parser antlr.Parser, parent antlr.ParserRuleContext, 
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, parent, invokingState)
 
 	p.parser = parser
-	p.RuleIndex = CqlParserRULE_kwTimestamp
+	p.RuleIndex = CQLParserRULE_kwTimestamp
 
 	return p
 }
@@ -44197,7 +44197,7 @@ func NewKwTimestampContext(parser antlr.Parser, parent antlr.ParserRuleContext, 
 func (s *KwTimestampContext) GetParser() antlr.Parser { return s.parser }
 
 func (s *KwTimestampContext) K_TIMESTAMP() antlr.TerminalNode {
-	return s.GetToken(CqlParserK_TIMESTAMP, 0)
+	return s.GetToken(CQLParserK_TIMESTAMP, 0)
 }
 
 func (s *KwTimestampContext) GetRuleContext() antlr.RuleContext {
@@ -44209,24 +44209,24 @@ func (s *KwTimestampContext) ToStringTree(ruleNames []string, recog antlr.Recogn
 }
 
 func (s *KwTimestampContext) EnterRule(listener antlr.ParseTreeListener) {
-	if listenerT, ok := listener.(CqlParserListener); ok {
+	if listenerT, ok := listener.(CQLParserListener); ok {
 		listenerT.EnterKwTimestamp(s)
 	}
 }
 
 func (s *KwTimestampContext) ExitRule(listener antlr.ParseTreeListener) {
-	if listenerT, ok := listener.(CqlParserListener); ok {
+	if listenerT, ok := listener.(CQLParserListener); ok {
 		listenerT.ExitKwTimestamp(s)
 	}
 }
 
-func (p *CqlParser) KwTimestamp() (localctx IKwTimestampContext) {
+func (p *CQLParser) KwTimestamp() (localctx IKwTimestampContext) {
 	localctx = NewKwTimestampContext(p, p.GetParserRuleContext(), p.GetState())
-	p.EnterRule(localctx, 502, CqlParserRULE_kwTimestamp)
+	p.EnterRule(localctx, 502, CQLParserRULE_kwTimestamp)
 	p.EnterOuterAlt(localctx, 1)
 	{
 		p.SetState(2268)
-		p.Match(CqlParserK_TIMESTAMP)
+		p.Match(CQLParserK_TIMESTAMP)
 		if p.HasError() {
 			// Recognition error - abort rule
 			goto errorExit
@@ -44268,13 +44268,13 @@ type KwToContext struct {
 func NewEmptyKwToContext() *KwToContext {
 	var p = new(KwToContext)
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
-	p.RuleIndex = CqlParserRULE_kwTo
+	p.RuleIndex = CQLParserRULE_kwTo
 	return p
 }
 
 func InitEmptyKwToContext(p *KwToContext) {
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
-	p.RuleIndex = CqlParserRULE_kwTo
+	p.RuleIndex = CQLParserRULE_kwTo
 }
 
 func (*KwToContext) IsKwToContext() {}
@@ -44285,7 +44285,7 @@ func NewKwToContext(parser antlr.Parser, parent antlr.ParserRuleContext, invokin
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, parent, invokingState)
 
 	p.parser = parser
-	p.RuleIndex = CqlParserRULE_kwTo
+	p.RuleIndex = CQLParserRULE_kwTo
 
 	return p
 }
@@ -44293,7 +44293,7 @@ func NewKwToContext(parser antlr.Parser, parent antlr.ParserRuleContext, invokin
 func (s *KwToContext) GetParser() antlr.Parser { return s.parser }
 
 func (s *KwToContext) K_TO() antlr.TerminalNode {
-	return s.GetToken(CqlParserK_TO, 0)
+	return s.GetToken(CQLParserK_TO, 0)
 }
 
 func (s *KwToContext) GetRuleContext() antlr.RuleContext {
@@ -44305,24 +44305,24 @@ func (s *KwToContext) ToStringTree(ruleNames []string, recog antlr.Recognizer) s
 }
 
 func (s *KwToContext) EnterRule(listener antlr.ParseTreeListener) {
-	if listenerT, ok := listener.(CqlParserListener); ok {
+	if listenerT, ok := listener.(CQLParserListener); ok {
 		listenerT.EnterKwTo(s)
 	}
 }
 
 func (s *KwToContext) ExitRule(listener antlr.ParseTreeListener) {
-	if listenerT, ok := listener.(CqlParserListener); ok {
+	if listenerT, ok := listener.(CQLParserListener); ok {
 		listenerT.ExitKwTo(s)
 	}
 }
 
-func (p *CqlParser) KwTo() (localctx IKwToContext) {
+func (p *CQLParser) KwTo() (localctx IKwToContext) {
 	localctx = NewKwToContext(p, p.GetParserRuleContext(), p.GetState())
-	p.EnterRule(localctx, 504, CqlParserRULE_kwTo)
+	p.EnterRule(localctx, 504, CQLParserRULE_kwTo)
 	p.EnterOuterAlt(localctx, 1)
 	{
 		p.SetState(2270)
-		p.Match(CqlParserK_TO)
+		p.Match(CQLParserK_TO)
 		if p.HasError() {
 			// Recognition error - abort rule
 			goto errorExit
@@ -44364,13 +44364,13 @@ type KwTriggerContext struct {
 func NewEmptyKwTriggerContext() *KwTriggerContext {
 	var p = new(KwTriggerContext)
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
-	p.RuleIndex = CqlParserRULE_kwTrigger
+	p.RuleIndex = CQLParserRULE_kwTrigger
 	return p
 }
 
 func InitEmptyKwTriggerContext(p *KwTriggerContext) {
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
-	p.RuleIndex = CqlParserRULE_kwTrigger
+	p.RuleIndex = CQLParserRULE_kwTrigger
 }
 
 func (*KwTriggerContext) IsKwTriggerContext() {}
@@ -44381,7 +44381,7 @@ func NewKwTriggerContext(parser antlr.Parser, parent antlr.ParserRuleContext, in
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, parent, invokingState)
 
 	p.parser = parser
-	p.RuleIndex = CqlParserRULE_kwTrigger
+	p.RuleIndex = CQLParserRULE_kwTrigger
 
 	return p
 }
@@ -44389,7 +44389,7 @@ func NewKwTriggerContext(parser antlr.Parser, parent antlr.ParserRuleContext, in
 func (s *KwTriggerContext) GetParser() antlr.Parser { return s.parser }
 
 func (s *KwTriggerContext) K_TRIGGER() antlr.TerminalNode {
-	return s.GetToken(CqlParserK_TRIGGER, 0)
+	return s.GetToken(CQLParserK_TRIGGER, 0)
 }
 
 func (s *KwTriggerContext) GetRuleContext() antlr.RuleContext {
@@ -44401,24 +44401,24 @@ func (s *KwTriggerContext) ToStringTree(ruleNames []string, recog antlr.Recogniz
 }
 
 func (s *KwTriggerContext) EnterRule(listener antlr.ParseTreeListener) {
-	if listenerT, ok := listener.(CqlParserListener); ok {
+	if listenerT, ok := listener.(CQLParserListener); ok {
 		listenerT.EnterKwTrigger(s)
 	}
 }
 
 func (s *KwTriggerContext) ExitRule(listener antlr.ParseTreeListener) {
-	if listenerT, ok := listener.(CqlParserListener); ok {
+	if listenerT, ok := listener.(CQLParserListener); ok {
 		listenerT.ExitKwTrigger(s)
 	}
 }
 
-func (p *CqlParser) KwTrigger() (localctx IKwTriggerContext) {
+func (p *CQLParser) KwTrigger() (localctx IKwTriggerContext) {
 	localctx = NewKwTriggerContext(p, p.GetParserRuleContext(), p.GetState())
-	p.EnterRule(localctx, 506, CqlParserRULE_kwTrigger)
+	p.EnterRule(localctx, 506, CQLParserRULE_kwTrigger)
 	p.EnterOuterAlt(localctx, 1)
 	{
 		p.SetState(2272)
-		p.Match(CqlParserK_TRIGGER)
+		p.Match(CQLParserK_TRIGGER)
 		if p.HasError() {
 			// Recognition error - abort rule
 			goto errorExit
@@ -44460,13 +44460,13 @@ type KwTruncateContext struct {
 func NewEmptyKwTruncateContext() *KwTruncateContext {
 	var p = new(KwTruncateContext)
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
-	p.RuleIndex = CqlParserRULE_kwTruncate
+	p.RuleIndex = CQLParserRULE_kwTruncate
 	return p
 }
 
 func InitEmptyKwTruncateContext(p *KwTruncateContext) {
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
-	p.RuleIndex = CqlParserRULE_kwTruncate
+	p.RuleIndex = CQLParserRULE_kwTruncate
 }
 
 func (*KwTruncateContext) IsKwTruncateContext() {}
@@ -44477,7 +44477,7 @@ func NewKwTruncateContext(parser antlr.Parser, parent antlr.ParserRuleContext, i
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, parent, invokingState)
 
 	p.parser = parser
-	p.RuleIndex = CqlParserRULE_kwTruncate
+	p.RuleIndex = CQLParserRULE_kwTruncate
 
 	return p
 }
@@ -44485,7 +44485,7 @@ func NewKwTruncateContext(parser antlr.Parser, parent antlr.ParserRuleContext, i
 func (s *KwTruncateContext) GetParser() antlr.Parser { return s.parser }
 
 func (s *KwTruncateContext) K_TRUNCATE() antlr.TerminalNode {
-	return s.GetToken(CqlParserK_TRUNCATE, 0)
+	return s.GetToken(CQLParserK_TRUNCATE, 0)
 }
 
 func (s *KwTruncateContext) GetRuleContext() antlr.RuleContext {
@@ -44497,24 +44497,24 @@ func (s *KwTruncateContext) ToStringTree(ruleNames []string, recog antlr.Recogni
 }
 
 func (s *KwTruncateContext) EnterRule(listener antlr.ParseTreeListener) {
-	if listenerT, ok := listener.(CqlParserListener); ok {
+	if listenerT, ok := listener.(CQLParserListener); ok {
 		listenerT.EnterKwTruncate(s)
 	}
 }
 
 func (s *KwTruncateContext) ExitRule(listener antlr.ParseTreeListener) {
-	if listenerT, ok := listener.(CqlParserListener); ok {
+	if listenerT, ok := listener.(CQLParserListener); ok {
 		listenerT.ExitKwTruncate(s)
 	}
 }
 
-func (p *CqlParser) KwTruncate() (localctx IKwTruncateContext) {
+func (p *CQLParser) KwTruncate() (localctx IKwTruncateContext) {
 	localctx = NewKwTruncateContext(p, p.GetParserRuleContext(), p.GetState())
-	p.EnterRule(localctx, 508, CqlParserRULE_kwTruncate)
+	p.EnterRule(localctx, 508, CQLParserRULE_kwTruncate)
 	p.EnterOuterAlt(localctx, 1)
 	{
 		p.SetState(2274)
-		p.Match(CqlParserK_TRUNCATE)
+		p.Match(CQLParserK_TRUNCATE)
 		if p.HasError() {
 			// Recognition error - abort rule
 			goto errorExit
@@ -44556,13 +44556,13 @@ type KwTtlContext struct {
 func NewEmptyKwTtlContext() *KwTtlContext {
 	var p = new(KwTtlContext)
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
-	p.RuleIndex = CqlParserRULE_kwTtl
+	p.RuleIndex = CQLParserRULE_kwTtl
 	return p
 }
 
 func InitEmptyKwTtlContext(p *KwTtlContext) {
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
-	p.RuleIndex = CqlParserRULE_kwTtl
+	p.RuleIndex = CQLParserRULE_kwTtl
 }
 
 func (*KwTtlContext) IsKwTtlContext() {}
@@ -44573,7 +44573,7 @@ func NewKwTtlContext(parser antlr.Parser, parent antlr.ParserRuleContext, invoki
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, parent, invokingState)
 
 	p.parser = parser
-	p.RuleIndex = CqlParserRULE_kwTtl
+	p.RuleIndex = CQLParserRULE_kwTtl
 
 	return p
 }
@@ -44581,7 +44581,7 @@ func NewKwTtlContext(parser antlr.Parser, parent antlr.ParserRuleContext, invoki
 func (s *KwTtlContext) GetParser() antlr.Parser { return s.parser }
 
 func (s *KwTtlContext) K_TTL() antlr.TerminalNode {
-	return s.GetToken(CqlParserK_TTL, 0)
+	return s.GetToken(CQLParserK_TTL, 0)
 }
 
 func (s *KwTtlContext) GetRuleContext() antlr.RuleContext {
@@ -44593,24 +44593,24 @@ func (s *KwTtlContext) ToStringTree(ruleNames []string, recog antlr.Recognizer) 
 }
 
 func (s *KwTtlContext) EnterRule(listener antlr.ParseTreeListener) {
-	if listenerT, ok := listener.(CqlParserListener); ok {
+	if listenerT, ok := listener.(CQLParserListener); ok {
 		listenerT.EnterKwTtl(s)
 	}
 }
 
 func (s *KwTtlContext) ExitRule(listener antlr.ParseTreeListener) {
-	if listenerT, ok := listener.(CqlParserListener); ok {
+	if listenerT, ok := listener.(CQLParserListener); ok {
 		listenerT.ExitKwTtl(s)
 	}
 }
 
-func (p *CqlParser) KwTtl() (localctx IKwTtlContext) {
+func (p *CQLParser) KwTtl() (localctx IKwTtlContext) {
 	localctx = NewKwTtlContext(p, p.GetParserRuleContext(), p.GetState())
-	p.EnterRule(localctx, 510, CqlParserRULE_kwTtl)
+	p.EnterRule(localctx, 510, CQLParserRULE_kwTtl)
 	p.EnterOuterAlt(localctx, 1)
 	{
 		p.SetState(2276)
-		p.Match(CqlParserK_TTL)
+		p.Match(CQLParserK_TTL)
 		if p.HasError() {
 			// Recognition error - abort rule
 			goto errorExit
@@ -44652,13 +44652,13 @@ type KwTypeContext struct {
 func NewEmptyKwTypeContext() *KwTypeContext {
 	var p = new(KwTypeContext)
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
-	p.RuleIndex = CqlParserRULE_kwType
+	p.RuleIndex = CQLParserRULE_kwType
 	return p
 }
 
 func InitEmptyKwTypeContext(p *KwTypeContext) {
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
-	p.RuleIndex = CqlParserRULE_kwType
+	p.RuleIndex = CQLParserRULE_kwType
 }
 
 func (*KwTypeContext) IsKwTypeContext() {}
@@ -44669,7 +44669,7 @@ func NewKwTypeContext(parser antlr.Parser, parent antlr.ParserRuleContext, invok
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, parent, invokingState)
 
 	p.parser = parser
-	p.RuleIndex = CqlParserRULE_kwType
+	p.RuleIndex = CQLParserRULE_kwType
 
 	return p
 }
@@ -44677,7 +44677,7 @@ func NewKwTypeContext(parser antlr.Parser, parent antlr.ParserRuleContext, invok
 func (s *KwTypeContext) GetParser() antlr.Parser { return s.parser }
 
 func (s *KwTypeContext) K_TYPE() antlr.TerminalNode {
-	return s.GetToken(CqlParserK_TYPE, 0)
+	return s.GetToken(CQLParserK_TYPE, 0)
 }
 
 func (s *KwTypeContext) GetRuleContext() antlr.RuleContext {
@@ -44689,24 +44689,24 @@ func (s *KwTypeContext) ToStringTree(ruleNames []string, recog antlr.Recognizer)
 }
 
 func (s *KwTypeContext) EnterRule(listener antlr.ParseTreeListener) {
-	if listenerT, ok := listener.(CqlParserListener); ok {
+	if listenerT, ok := listener.(CQLParserListener); ok {
 		listenerT.EnterKwType(s)
 	}
 }
 
 func (s *KwTypeContext) ExitRule(listener antlr.ParseTreeListener) {
-	if listenerT, ok := listener.(CqlParserListener); ok {
+	if listenerT, ok := listener.(CQLParserListener); ok {
 		listenerT.ExitKwType(s)
 	}
 }
 
-func (p *CqlParser) KwType() (localctx IKwTypeContext) {
+func (p *CQLParser) KwType() (localctx IKwTypeContext) {
 	localctx = NewKwTypeContext(p, p.GetParserRuleContext(), p.GetState())
-	p.EnterRule(localctx, 512, CqlParserRULE_kwType)
+	p.EnterRule(localctx, 512, CQLParserRULE_kwType)
 	p.EnterOuterAlt(localctx, 1)
 	{
 		p.SetState(2278)
-		p.Match(CqlParserK_TYPE)
+		p.Match(CQLParserK_TYPE)
 		if p.HasError() {
 			// Recognition error - abort rule
 			goto errorExit
@@ -44748,13 +44748,13 @@ type KwUnloggedContext struct {
 func NewEmptyKwUnloggedContext() *KwUnloggedContext {
 	var p = new(KwUnloggedContext)
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
-	p.RuleIndex = CqlParserRULE_kwUnlogged
+	p.RuleIndex = CQLParserRULE_kwUnlogged
 	return p
 }
 
 func InitEmptyKwUnloggedContext(p *KwUnloggedContext) {
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
-	p.RuleIndex = CqlParserRULE_kwUnlogged
+	p.RuleIndex = CQLParserRULE_kwUnlogged
 }
 
 func (*KwUnloggedContext) IsKwUnloggedContext() {}
@@ -44765,7 +44765,7 @@ func NewKwUnloggedContext(parser antlr.Parser, parent antlr.ParserRuleContext, i
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, parent, invokingState)
 
 	p.parser = parser
-	p.RuleIndex = CqlParserRULE_kwUnlogged
+	p.RuleIndex = CQLParserRULE_kwUnlogged
 
 	return p
 }
@@ -44773,7 +44773,7 @@ func NewKwUnloggedContext(parser antlr.Parser, parent antlr.ParserRuleContext, i
 func (s *KwUnloggedContext) GetParser() antlr.Parser { return s.parser }
 
 func (s *KwUnloggedContext) K_UNLOGGED() antlr.TerminalNode {
-	return s.GetToken(CqlParserK_UNLOGGED, 0)
+	return s.GetToken(CQLParserK_UNLOGGED, 0)
 }
 
 func (s *KwUnloggedContext) GetRuleContext() antlr.RuleContext {
@@ -44785,24 +44785,24 @@ func (s *KwUnloggedContext) ToStringTree(ruleNames []string, recog antlr.Recogni
 }
 
 func (s *KwUnloggedContext) EnterRule(listener antlr.ParseTreeListener) {
-	if listenerT, ok := listener.(CqlParserListener); ok {
+	if listenerT, ok := listener.(CQLParserListener); ok {
 		listenerT.EnterKwUnlogged(s)
 	}
 }
 
 func (s *KwUnloggedContext) ExitRule(listener antlr.ParseTreeListener) {
-	if listenerT, ok := listener.(CqlParserListener); ok {
+	if listenerT, ok := listener.(CQLParserListener); ok {
 		listenerT.ExitKwUnlogged(s)
 	}
 }
 
-func (p *CqlParser) KwUnlogged() (localctx IKwUnloggedContext) {
+func (p *CQLParser) KwUnlogged() (localctx IKwUnloggedContext) {
 	localctx = NewKwUnloggedContext(p, p.GetParserRuleContext(), p.GetState())
-	p.EnterRule(localctx, 514, CqlParserRULE_kwUnlogged)
+	p.EnterRule(localctx, 514, CQLParserRULE_kwUnlogged)
 	p.EnterOuterAlt(localctx, 1)
 	{
 		p.SetState(2280)
-		p.Match(CqlParserK_UNLOGGED)
+		p.Match(CQLParserK_UNLOGGED)
 		if p.HasError() {
 			// Recognition error - abort rule
 			goto errorExit
@@ -44844,13 +44844,13 @@ type KwUpdateContext struct {
 func NewEmptyKwUpdateContext() *KwUpdateContext {
 	var p = new(KwUpdateContext)
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
-	p.RuleIndex = CqlParserRULE_kwUpdate
+	p.RuleIndex = CQLParserRULE_kwUpdate
 	return p
 }
 
 func InitEmptyKwUpdateContext(p *KwUpdateContext) {
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
-	p.RuleIndex = CqlParserRULE_kwUpdate
+	p.RuleIndex = CQLParserRULE_kwUpdate
 }
 
 func (*KwUpdateContext) IsKwUpdateContext() {}
@@ -44861,7 +44861,7 @@ func NewKwUpdateContext(parser antlr.Parser, parent antlr.ParserRuleContext, inv
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, parent, invokingState)
 
 	p.parser = parser
-	p.RuleIndex = CqlParserRULE_kwUpdate
+	p.RuleIndex = CQLParserRULE_kwUpdate
 
 	return p
 }
@@ -44869,7 +44869,7 @@ func NewKwUpdateContext(parser antlr.Parser, parent antlr.ParserRuleContext, inv
 func (s *KwUpdateContext) GetParser() antlr.Parser { return s.parser }
 
 func (s *KwUpdateContext) K_UPDATE() antlr.TerminalNode {
-	return s.GetToken(CqlParserK_UPDATE, 0)
+	return s.GetToken(CQLParserK_UPDATE, 0)
 }
 
 func (s *KwUpdateContext) GetRuleContext() antlr.RuleContext {
@@ -44881,24 +44881,24 @@ func (s *KwUpdateContext) ToStringTree(ruleNames []string, recog antlr.Recognize
 }
 
 func (s *KwUpdateContext) EnterRule(listener antlr.ParseTreeListener) {
-	if listenerT, ok := listener.(CqlParserListener); ok {
+	if listenerT, ok := listener.(CQLParserListener); ok {
 		listenerT.EnterKwUpdate(s)
 	}
 }
 
 func (s *KwUpdateContext) ExitRule(listener antlr.ParseTreeListener) {
-	if listenerT, ok := listener.(CqlParserListener); ok {
+	if listenerT, ok := listener.(CQLParserListener); ok {
 		listenerT.ExitKwUpdate(s)
 	}
 }
 
-func (p *CqlParser) KwUpdate() (localctx IKwUpdateContext) {
+func (p *CQLParser) KwUpdate() (localctx IKwUpdateContext) {
 	localctx = NewKwUpdateContext(p, p.GetParserRuleContext(), p.GetState())
-	p.EnterRule(localctx, 516, CqlParserRULE_kwUpdate)
+	p.EnterRule(localctx, 516, CQLParserRULE_kwUpdate)
 	p.EnterOuterAlt(localctx, 1)
 	{
 		p.SetState(2282)
-		p.Match(CqlParserK_UPDATE)
+		p.Match(CQLParserK_UPDATE)
 		if p.HasError() {
 			// Recognition error - abort rule
 			goto errorExit
@@ -44940,13 +44940,13 @@ type KwUseContext struct {
 func NewEmptyKwUseContext() *KwUseContext {
 	var p = new(KwUseContext)
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
-	p.RuleIndex = CqlParserRULE_kwUse
+	p.RuleIndex = CQLParserRULE_kwUse
 	return p
 }
 
 func InitEmptyKwUseContext(p *KwUseContext) {
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
-	p.RuleIndex = CqlParserRULE_kwUse
+	p.RuleIndex = CQLParserRULE_kwUse
 }
 
 func (*KwUseContext) IsKwUseContext() {}
@@ -44957,7 +44957,7 @@ func NewKwUseContext(parser antlr.Parser, parent antlr.ParserRuleContext, invoki
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, parent, invokingState)
 
 	p.parser = parser
-	p.RuleIndex = CqlParserRULE_kwUse
+	p.RuleIndex = CQLParserRULE_kwUse
 
 	return p
 }
@@ -44965,7 +44965,7 @@ func NewKwUseContext(parser antlr.Parser, parent antlr.ParserRuleContext, invoki
 func (s *KwUseContext) GetParser() antlr.Parser { return s.parser }
 
 func (s *KwUseContext) K_USE() antlr.TerminalNode {
-	return s.GetToken(CqlParserK_USE, 0)
+	return s.GetToken(CQLParserK_USE, 0)
 }
 
 func (s *KwUseContext) GetRuleContext() antlr.RuleContext {
@@ -44977,24 +44977,24 @@ func (s *KwUseContext) ToStringTree(ruleNames []string, recog antlr.Recognizer) 
 }
 
 func (s *KwUseContext) EnterRule(listener antlr.ParseTreeListener) {
-	if listenerT, ok := listener.(CqlParserListener); ok {
+	if listenerT, ok := listener.(CQLParserListener); ok {
 		listenerT.EnterKwUse(s)
 	}
 }
 
 func (s *KwUseContext) ExitRule(listener antlr.ParseTreeListener) {
-	if listenerT, ok := listener.(CqlParserListener); ok {
+	if listenerT, ok := listener.(CQLParserListener); ok {
 		listenerT.ExitKwUse(s)
 	}
 }
 
-func (p *CqlParser) KwUse() (localctx IKwUseContext) {
+func (p *CQLParser) KwUse() (localctx IKwUseContext) {
 	localctx = NewKwUseContext(p, p.GetParserRuleContext(), p.GetState())
-	p.EnterRule(localctx, 518, CqlParserRULE_kwUse)
+	p.EnterRule(localctx, 518, CQLParserRULE_kwUse)
 	p.EnterOuterAlt(localctx, 1)
 	{
 		p.SetState(2284)
-		p.Match(CqlParserK_USE)
+		p.Match(CQLParserK_USE)
 		if p.HasError() {
 			// Recognition error - abort rule
 			goto errorExit
@@ -45036,13 +45036,13 @@ type KwUserContext struct {
 func NewEmptyKwUserContext() *KwUserContext {
 	var p = new(KwUserContext)
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
-	p.RuleIndex = CqlParserRULE_kwUser
+	p.RuleIndex = CQLParserRULE_kwUser
 	return p
 }
 
 func InitEmptyKwUserContext(p *KwUserContext) {
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
-	p.RuleIndex = CqlParserRULE_kwUser
+	p.RuleIndex = CQLParserRULE_kwUser
 }
 
 func (*KwUserContext) IsKwUserContext() {}
@@ -45053,7 +45053,7 @@ func NewKwUserContext(parser antlr.Parser, parent antlr.ParserRuleContext, invok
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, parent, invokingState)
 
 	p.parser = parser
-	p.RuleIndex = CqlParserRULE_kwUser
+	p.RuleIndex = CQLParserRULE_kwUser
 
 	return p
 }
@@ -45061,7 +45061,7 @@ func NewKwUserContext(parser antlr.Parser, parent antlr.ParserRuleContext, invok
 func (s *KwUserContext) GetParser() antlr.Parser { return s.parser }
 
 func (s *KwUserContext) K_USER() antlr.TerminalNode {
-	return s.GetToken(CqlParserK_USER, 0)
+	return s.GetToken(CQLParserK_USER, 0)
 }
 
 func (s *KwUserContext) GetRuleContext() antlr.RuleContext {
@@ -45073,24 +45073,24 @@ func (s *KwUserContext) ToStringTree(ruleNames []string, recog antlr.Recognizer)
 }
 
 func (s *KwUserContext) EnterRule(listener antlr.ParseTreeListener) {
-	if listenerT, ok := listener.(CqlParserListener); ok {
+	if listenerT, ok := listener.(CQLParserListener); ok {
 		listenerT.EnterKwUser(s)
 	}
 }
 
 func (s *KwUserContext) ExitRule(listener antlr.ParseTreeListener) {
-	if listenerT, ok := listener.(CqlParserListener); ok {
+	if listenerT, ok := listener.(CQLParserListener); ok {
 		listenerT.ExitKwUser(s)
 	}
 }
 
-func (p *CqlParser) KwUser() (localctx IKwUserContext) {
+func (p *CQLParser) KwUser() (localctx IKwUserContext) {
 	localctx = NewKwUserContext(p, p.GetParserRuleContext(), p.GetState())
-	p.EnterRule(localctx, 520, CqlParserRULE_kwUser)
+	p.EnterRule(localctx, 520, CQLParserRULE_kwUser)
 	p.EnterOuterAlt(localctx, 1)
 	{
 		p.SetState(2286)
-		p.Match(CqlParserK_USER)
+		p.Match(CQLParserK_USER)
 		if p.HasError() {
 			// Recognition error - abort rule
 			goto errorExit
@@ -45132,13 +45132,13 @@ type KwUsingContext struct {
 func NewEmptyKwUsingContext() *KwUsingContext {
 	var p = new(KwUsingContext)
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
-	p.RuleIndex = CqlParserRULE_kwUsing
+	p.RuleIndex = CQLParserRULE_kwUsing
 	return p
 }
 
 func InitEmptyKwUsingContext(p *KwUsingContext) {
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
-	p.RuleIndex = CqlParserRULE_kwUsing
+	p.RuleIndex = CQLParserRULE_kwUsing
 }
 
 func (*KwUsingContext) IsKwUsingContext() {}
@@ -45149,7 +45149,7 @@ func NewKwUsingContext(parser antlr.Parser, parent antlr.ParserRuleContext, invo
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, parent, invokingState)
 
 	p.parser = parser
-	p.RuleIndex = CqlParserRULE_kwUsing
+	p.RuleIndex = CQLParserRULE_kwUsing
 
 	return p
 }
@@ -45157,7 +45157,7 @@ func NewKwUsingContext(parser antlr.Parser, parent antlr.ParserRuleContext, invo
 func (s *KwUsingContext) GetParser() antlr.Parser { return s.parser }
 
 func (s *KwUsingContext) K_USING() antlr.TerminalNode {
-	return s.GetToken(CqlParserK_USING, 0)
+	return s.GetToken(CQLParserK_USING, 0)
 }
 
 func (s *KwUsingContext) GetRuleContext() antlr.RuleContext {
@@ -45169,24 +45169,24 @@ func (s *KwUsingContext) ToStringTree(ruleNames []string, recog antlr.Recognizer
 }
 
 func (s *KwUsingContext) EnterRule(listener antlr.ParseTreeListener) {
-	if listenerT, ok := listener.(CqlParserListener); ok {
+	if listenerT, ok := listener.(CQLParserListener); ok {
 		listenerT.EnterKwUsing(s)
 	}
 }
 
 func (s *KwUsingContext) ExitRule(listener antlr.ParseTreeListener) {
-	if listenerT, ok := listener.(CqlParserListener); ok {
+	if listenerT, ok := listener.(CQLParserListener); ok {
 		listenerT.ExitKwUsing(s)
 	}
 }
 
-func (p *CqlParser) KwUsing() (localctx IKwUsingContext) {
+func (p *CQLParser) KwUsing() (localctx IKwUsingContext) {
 	localctx = NewKwUsingContext(p, p.GetParserRuleContext(), p.GetState())
-	p.EnterRule(localctx, 522, CqlParserRULE_kwUsing)
+	p.EnterRule(localctx, 522, CQLParserRULE_kwUsing)
 	p.EnterOuterAlt(localctx, 1)
 	{
 		p.SetState(2288)
-		p.Match(CqlParserK_USING)
+		p.Match(CQLParserK_USING)
 		if p.HasError() {
 			// Recognition error - abort rule
 			goto errorExit
@@ -45228,13 +45228,13 @@ type KwValuesContext struct {
 func NewEmptyKwValuesContext() *KwValuesContext {
 	var p = new(KwValuesContext)
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
-	p.RuleIndex = CqlParserRULE_kwValues
+	p.RuleIndex = CQLParserRULE_kwValues
 	return p
 }
 
 func InitEmptyKwValuesContext(p *KwValuesContext) {
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
-	p.RuleIndex = CqlParserRULE_kwValues
+	p.RuleIndex = CQLParserRULE_kwValues
 }
 
 func (*KwValuesContext) IsKwValuesContext() {}
@@ -45245,7 +45245,7 @@ func NewKwValuesContext(parser antlr.Parser, parent antlr.ParserRuleContext, inv
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, parent, invokingState)
 
 	p.parser = parser
-	p.RuleIndex = CqlParserRULE_kwValues
+	p.RuleIndex = CQLParserRULE_kwValues
 
 	return p
 }
@@ -45253,7 +45253,7 @@ func NewKwValuesContext(parser antlr.Parser, parent antlr.ParserRuleContext, inv
 func (s *KwValuesContext) GetParser() antlr.Parser { return s.parser }
 
 func (s *KwValuesContext) K_VALUES() antlr.TerminalNode {
-	return s.GetToken(CqlParserK_VALUES, 0)
+	return s.GetToken(CQLParserK_VALUES, 0)
 }
 
 func (s *KwValuesContext) GetRuleContext() antlr.RuleContext {
@@ -45265,24 +45265,24 @@ func (s *KwValuesContext) ToStringTree(ruleNames []string, recog antlr.Recognize
 }
 
 func (s *KwValuesContext) EnterRule(listener antlr.ParseTreeListener) {
-	if listenerT, ok := listener.(CqlParserListener); ok {
+	if listenerT, ok := listener.(CQLParserListener); ok {
 		listenerT.EnterKwValues(s)
 	}
 }
 
 func (s *KwValuesContext) ExitRule(listener antlr.ParseTreeListener) {
-	if listenerT, ok := listener.(CqlParserListener); ok {
+	if listenerT, ok := listener.(CQLParserListener); ok {
 		listenerT.ExitKwValues(s)
 	}
 }
 
-func (p *CqlParser) KwValues() (localctx IKwValuesContext) {
+func (p *CQLParser) KwValues() (localctx IKwValuesContext) {
 	localctx = NewKwValuesContext(p, p.GetParserRuleContext(), p.GetState())
-	p.EnterRule(localctx, 524, CqlParserRULE_kwValues)
+	p.EnterRule(localctx, 524, CQLParserRULE_kwValues)
 	p.EnterOuterAlt(localctx, 1)
 	{
 		p.SetState(2290)
-		p.Match(CqlParserK_VALUES)
+		p.Match(CQLParserK_VALUES)
 		if p.HasError() {
 			// Recognition error - abort rule
 			goto errorExit
@@ -45324,13 +45324,13 @@ type KwViewContext struct {
 func NewEmptyKwViewContext() *KwViewContext {
 	var p = new(KwViewContext)
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
-	p.RuleIndex = CqlParserRULE_kwView
+	p.RuleIndex = CQLParserRULE_kwView
 	return p
 }
 
 func InitEmptyKwViewContext(p *KwViewContext) {
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
-	p.RuleIndex = CqlParserRULE_kwView
+	p.RuleIndex = CQLParserRULE_kwView
 }
 
 func (*KwViewContext) IsKwViewContext() {}
@@ -45341,7 +45341,7 @@ func NewKwViewContext(parser antlr.Parser, parent antlr.ParserRuleContext, invok
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, parent, invokingState)
 
 	p.parser = parser
-	p.RuleIndex = CqlParserRULE_kwView
+	p.RuleIndex = CQLParserRULE_kwView
 
 	return p
 }
@@ -45349,7 +45349,7 @@ func NewKwViewContext(parser antlr.Parser, parent antlr.ParserRuleContext, invok
 func (s *KwViewContext) GetParser() antlr.Parser { return s.parser }
 
 func (s *KwViewContext) K_VIEW() antlr.TerminalNode {
-	return s.GetToken(CqlParserK_VIEW, 0)
+	return s.GetToken(CQLParserK_VIEW, 0)
 }
 
 func (s *KwViewContext) GetRuleContext() antlr.RuleContext {
@@ -45361,24 +45361,24 @@ func (s *KwViewContext) ToStringTree(ruleNames []string, recog antlr.Recognizer)
 }
 
 func (s *KwViewContext) EnterRule(listener antlr.ParseTreeListener) {
-	if listenerT, ok := listener.(CqlParserListener); ok {
+	if listenerT, ok := listener.(CQLParserListener); ok {
 		listenerT.EnterKwView(s)
 	}
 }
 
 func (s *KwViewContext) ExitRule(listener antlr.ParseTreeListener) {
-	if listenerT, ok := listener.(CqlParserListener); ok {
+	if listenerT, ok := listener.(CQLParserListener); ok {
 		listenerT.ExitKwView(s)
 	}
 }
 
-func (p *CqlParser) KwView() (localctx IKwViewContext) {
+func (p *CQLParser) KwView() (localctx IKwViewContext) {
 	localctx = NewKwViewContext(p, p.GetParserRuleContext(), p.GetState())
-	p.EnterRule(localctx, 526, CqlParserRULE_kwView)
+	p.EnterRule(localctx, 526, CQLParserRULE_kwView)
 	p.EnterOuterAlt(localctx, 1)
 	{
 		p.SetState(2292)
-		p.Match(CqlParserK_VIEW)
+		p.Match(CQLParserK_VIEW)
 		if p.HasError() {
 			// Recognition error - abort rule
 			goto errorExit
@@ -45420,13 +45420,13 @@ type KwWhereContext struct {
 func NewEmptyKwWhereContext() *KwWhereContext {
 	var p = new(KwWhereContext)
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
-	p.RuleIndex = CqlParserRULE_kwWhere
+	p.RuleIndex = CQLParserRULE_kwWhere
 	return p
 }
 
 func InitEmptyKwWhereContext(p *KwWhereContext) {
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
-	p.RuleIndex = CqlParserRULE_kwWhere
+	p.RuleIndex = CQLParserRULE_kwWhere
 }
 
 func (*KwWhereContext) IsKwWhereContext() {}
@@ -45437,7 +45437,7 @@ func NewKwWhereContext(parser antlr.Parser, parent antlr.ParserRuleContext, invo
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, parent, invokingState)
 
 	p.parser = parser
-	p.RuleIndex = CqlParserRULE_kwWhere
+	p.RuleIndex = CQLParserRULE_kwWhere
 
 	return p
 }
@@ -45445,7 +45445,7 @@ func NewKwWhereContext(parser antlr.Parser, parent antlr.ParserRuleContext, invo
 func (s *KwWhereContext) GetParser() antlr.Parser { return s.parser }
 
 func (s *KwWhereContext) K_WHERE() antlr.TerminalNode {
-	return s.GetToken(CqlParserK_WHERE, 0)
+	return s.GetToken(CQLParserK_WHERE, 0)
 }
 
 func (s *KwWhereContext) GetRuleContext() antlr.RuleContext {
@@ -45457,24 +45457,24 @@ func (s *KwWhereContext) ToStringTree(ruleNames []string, recog antlr.Recognizer
 }
 
 func (s *KwWhereContext) EnterRule(listener antlr.ParseTreeListener) {
-	if listenerT, ok := listener.(CqlParserListener); ok {
+	if listenerT, ok := listener.(CQLParserListener); ok {
 		listenerT.EnterKwWhere(s)
 	}
 }
 
 func (s *KwWhereContext) ExitRule(listener antlr.ParseTreeListener) {
-	if listenerT, ok := listener.(CqlParserListener); ok {
+	if listenerT, ok := listener.(CQLParserListener); ok {
 		listenerT.ExitKwWhere(s)
 	}
 }
 
-func (p *CqlParser) KwWhere() (localctx IKwWhereContext) {
+func (p *CQLParser) KwWhere() (localctx IKwWhereContext) {
 	localctx = NewKwWhereContext(p, p.GetParserRuleContext(), p.GetState())
-	p.EnterRule(localctx, 528, CqlParserRULE_kwWhere)
+	p.EnterRule(localctx, 528, CQLParserRULE_kwWhere)
 	p.EnterOuterAlt(localctx, 1)
 	{
 		p.SetState(2294)
-		p.Match(CqlParserK_WHERE)
+		p.Match(CQLParserK_WHERE)
 		if p.HasError() {
 			// Recognition error - abort rule
 			goto errorExit
@@ -45516,13 +45516,13 @@ type KwWithContext struct {
 func NewEmptyKwWithContext() *KwWithContext {
 	var p = new(KwWithContext)
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
-	p.RuleIndex = CqlParserRULE_kwWith
+	p.RuleIndex = CQLParserRULE_kwWith
 	return p
 }
 
 func InitEmptyKwWithContext(p *KwWithContext) {
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
-	p.RuleIndex = CqlParserRULE_kwWith
+	p.RuleIndex = CQLParserRULE_kwWith
 }
 
 func (*KwWithContext) IsKwWithContext() {}
@@ -45533,7 +45533,7 @@ func NewKwWithContext(parser antlr.Parser, parent antlr.ParserRuleContext, invok
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, parent, invokingState)
 
 	p.parser = parser
-	p.RuleIndex = CqlParserRULE_kwWith
+	p.RuleIndex = CQLParserRULE_kwWith
 
 	return p
 }
@@ -45541,7 +45541,7 @@ func NewKwWithContext(parser antlr.Parser, parent antlr.ParserRuleContext, invok
 func (s *KwWithContext) GetParser() antlr.Parser { return s.parser }
 
 func (s *KwWithContext) K_WITH() antlr.TerminalNode {
-	return s.GetToken(CqlParserK_WITH, 0)
+	return s.GetToken(CQLParserK_WITH, 0)
 }
 
 func (s *KwWithContext) GetRuleContext() antlr.RuleContext {
@@ -45553,24 +45553,24 @@ func (s *KwWithContext) ToStringTree(ruleNames []string, recog antlr.Recognizer)
 }
 
 func (s *KwWithContext) EnterRule(listener antlr.ParseTreeListener) {
-	if listenerT, ok := listener.(CqlParserListener); ok {
+	if listenerT, ok := listener.(CQLParserListener); ok {
 		listenerT.EnterKwWith(s)
 	}
 }
 
 func (s *KwWithContext) ExitRule(listener antlr.ParseTreeListener) {
-	if listenerT, ok := listener.(CqlParserListener); ok {
+	if listenerT, ok := listener.(CQLParserListener); ok {
 		listenerT.ExitKwWith(s)
 	}
 }
 
-func (p *CqlParser) KwWith() (localctx IKwWithContext) {
+func (p *CQLParser) KwWith() (localctx IKwWithContext) {
 	localctx = NewKwWithContext(p, p.GetParserRuleContext(), p.GetState())
-	p.EnterRule(localctx, 530, CqlParserRULE_kwWith)
+	p.EnterRule(localctx, 530, CQLParserRULE_kwWith)
 	p.EnterOuterAlt(localctx, 1)
 	{
 		p.SetState(2296)
-		p.Match(CqlParserK_WITH)
+		p.Match(CQLParserK_WITH)
 		if p.HasError() {
 			// Recognition error - abort rule
 			goto errorExit
@@ -45612,13 +45612,13 @@ type KwRevokeContext struct {
 func NewEmptyKwRevokeContext() *KwRevokeContext {
 	var p = new(KwRevokeContext)
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
-	p.RuleIndex = CqlParserRULE_kwRevoke
+	p.RuleIndex = CQLParserRULE_kwRevoke
 	return p
 }
 
 func InitEmptyKwRevokeContext(p *KwRevokeContext) {
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
-	p.RuleIndex = CqlParserRULE_kwRevoke
+	p.RuleIndex = CQLParserRULE_kwRevoke
 }
 
 func (*KwRevokeContext) IsKwRevokeContext() {}
@@ -45629,7 +45629,7 @@ func NewKwRevokeContext(parser antlr.Parser, parent antlr.ParserRuleContext, inv
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, parent, invokingState)
 
 	p.parser = parser
-	p.RuleIndex = CqlParserRULE_kwRevoke
+	p.RuleIndex = CQLParserRULE_kwRevoke
 
 	return p
 }
@@ -45637,7 +45637,7 @@ func NewKwRevokeContext(parser antlr.Parser, parent antlr.ParserRuleContext, inv
 func (s *KwRevokeContext) GetParser() antlr.Parser { return s.parser }
 
 func (s *KwRevokeContext) K_REVOKE() antlr.TerminalNode {
-	return s.GetToken(CqlParserK_REVOKE, 0)
+	return s.GetToken(CQLParserK_REVOKE, 0)
 }
 
 func (s *KwRevokeContext) GetRuleContext() antlr.RuleContext {
@@ -45649,24 +45649,24 @@ func (s *KwRevokeContext) ToStringTree(ruleNames []string, recog antlr.Recognize
 }
 
 func (s *KwRevokeContext) EnterRule(listener antlr.ParseTreeListener) {
-	if listenerT, ok := listener.(CqlParserListener); ok {
+	if listenerT, ok := listener.(CQLParserListener); ok {
 		listenerT.EnterKwRevoke(s)
 	}
 }
 
 func (s *KwRevokeContext) ExitRule(listener antlr.ParseTreeListener) {
-	if listenerT, ok := listener.(CqlParserListener); ok {
+	if listenerT, ok := listener.(CQLParserListener); ok {
 		listenerT.ExitKwRevoke(s)
 	}
 }
 
-func (p *CqlParser) KwRevoke() (localctx IKwRevokeContext) {
+func (p *CQLParser) KwRevoke() (localctx IKwRevokeContext) {
 	localctx = NewKwRevokeContext(p, p.GetParserRuleContext(), p.GetState())
-	p.EnterRule(localctx, 532, CqlParserRULE_kwRevoke)
+	p.EnterRule(localctx, 532, CQLParserRULE_kwRevoke)
 	p.EnterOuterAlt(localctx, 1)
 	{
 		p.SetState(2298)
-		p.Match(CqlParserK_REVOKE)
+		p.Match(CQLParserK_REVOKE)
 		if p.HasError() {
 			// Recognition error - abort rule
 			goto errorExit
@@ -45708,13 +45708,13 @@ type SyntaxBracketLrContext struct {
 func NewEmptySyntaxBracketLrContext() *SyntaxBracketLrContext {
 	var p = new(SyntaxBracketLrContext)
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
-	p.RuleIndex = CqlParserRULE_syntaxBracketLr
+	p.RuleIndex = CQLParserRULE_syntaxBracketLr
 	return p
 }
 
 func InitEmptySyntaxBracketLrContext(p *SyntaxBracketLrContext) {
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
-	p.RuleIndex = CqlParserRULE_syntaxBracketLr
+	p.RuleIndex = CQLParserRULE_syntaxBracketLr
 }
 
 func (*SyntaxBracketLrContext) IsSyntaxBracketLrContext() {}
@@ -45725,7 +45725,7 @@ func NewSyntaxBracketLrContext(parser antlr.Parser, parent antlr.ParserRuleConte
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, parent, invokingState)
 
 	p.parser = parser
-	p.RuleIndex = CqlParserRULE_syntaxBracketLr
+	p.RuleIndex = CQLParserRULE_syntaxBracketLr
 
 	return p
 }
@@ -45733,7 +45733,7 @@ func NewSyntaxBracketLrContext(parser antlr.Parser, parent antlr.ParserRuleConte
 func (s *SyntaxBracketLrContext) GetParser() antlr.Parser { return s.parser }
 
 func (s *SyntaxBracketLrContext) LR_BRACKET() antlr.TerminalNode {
-	return s.GetToken(CqlParserLR_BRACKET, 0)
+	return s.GetToken(CQLParserLR_BRACKET, 0)
 }
 
 func (s *SyntaxBracketLrContext) GetRuleContext() antlr.RuleContext {
@@ -45745,24 +45745,24 @@ func (s *SyntaxBracketLrContext) ToStringTree(ruleNames []string, recog antlr.Re
 }
 
 func (s *SyntaxBracketLrContext) EnterRule(listener antlr.ParseTreeListener) {
-	if listenerT, ok := listener.(CqlParserListener); ok {
+	if listenerT, ok := listener.(CQLParserListener); ok {
 		listenerT.EnterSyntaxBracketLr(s)
 	}
 }
 
 func (s *SyntaxBracketLrContext) ExitRule(listener antlr.ParseTreeListener) {
-	if listenerT, ok := listener.(CqlParserListener); ok {
+	if listenerT, ok := listener.(CQLParserListener); ok {
 		listenerT.ExitSyntaxBracketLr(s)
 	}
 }
 
-func (p *CqlParser) SyntaxBracketLr() (localctx ISyntaxBracketLrContext) {
+func (p *CQLParser) SyntaxBracketLr() (localctx ISyntaxBracketLrContext) {
 	localctx = NewSyntaxBracketLrContext(p, p.GetParserRuleContext(), p.GetState())
-	p.EnterRule(localctx, 534, CqlParserRULE_syntaxBracketLr)
+	p.EnterRule(localctx, 534, CQLParserRULE_syntaxBracketLr)
 	p.EnterOuterAlt(localctx, 1)
 	{
 		p.SetState(2300)
-		p.Match(CqlParserLR_BRACKET)
+		p.Match(CQLParserLR_BRACKET)
 		if p.HasError() {
 			// Recognition error - abort rule
 			goto errorExit
@@ -45804,13 +45804,13 @@ type SyntaxBracketRrContext struct {
 func NewEmptySyntaxBracketRrContext() *SyntaxBracketRrContext {
 	var p = new(SyntaxBracketRrContext)
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
-	p.RuleIndex = CqlParserRULE_syntaxBracketRr
+	p.RuleIndex = CQLParserRULE_syntaxBracketRr
 	return p
 }
 
 func InitEmptySyntaxBracketRrContext(p *SyntaxBracketRrContext) {
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
-	p.RuleIndex = CqlParserRULE_syntaxBracketRr
+	p.RuleIndex = CQLParserRULE_syntaxBracketRr
 }
 
 func (*SyntaxBracketRrContext) IsSyntaxBracketRrContext() {}
@@ -45821,7 +45821,7 @@ func NewSyntaxBracketRrContext(parser antlr.Parser, parent antlr.ParserRuleConte
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, parent, invokingState)
 
 	p.parser = parser
-	p.RuleIndex = CqlParserRULE_syntaxBracketRr
+	p.RuleIndex = CQLParserRULE_syntaxBracketRr
 
 	return p
 }
@@ -45829,7 +45829,7 @@ func NewSyntaxBracketRrContext(parser antlr.Parser, parent antlr.ParserRuleConte
 func (s *SyntaxBracketRrContext) GetParser() antlr.Parser { return s.parser }
 
 func (s *SyntaxBracketRrContext) RR_BRACKET() antlr.TerminalNode {
-	return s.GetToken(CqlParserRR_BRACKET, 0)
+	return s.GetToken(CQLParserRR_BRACKET, 0)
 }
 
 func (s *SyntaxBracketRrContext) GetRuleContext() antlr.RuleContext {
@@ -45841,24 +45841,24 @@ func (s *SyntaxBracketRrContext) ToStringTree(ruleNames []string, recog antlr.Re
 }
 
 func (s *SyntaxBracketRrContext) EnterRule(listener antlr.ParseTreeListener) {
-	if listenerT, ok := listener.(CqlParserListener); ok {
+	if listenerT, ok := listener.(CQLParserListener); ok {
 		listenerT.EnterSyntaxBracketRr(s)
 	}
 }
 
 func (s *SyntaxBracketRrContext) ExitRule(listener antlr.ParseTreeListener) {
-	if listenerT, ok := listener.(CqlParserListener); ok {
+	if listenerT, ok := listener.(CQLParserListener); ok {
 		listenerT.ExitSyntaxBracketRr(s)
 	}
 }
 
-func (p *CqlParser) SyntaxBracketRr() (localctx ISyntaxBracketRrContext) {
+func (p *CQLParser) SyntaxBracketRr() (localctx ISyntaxBracketRrContext) {
 	localctx = NewSyntaxBracketRrContext(p, p.GetParserRuleContext(), p.GetState())
-	p.EnterRule(localctx, 536, CqlParserRULE_syntaxBracketRr)
+	p.EnterRule(localctx, 536, CQLParserRULE_syntaxBracketRr)
 	p.EnterOuterAlt(localctx, 1)
 	{
 		p.SetState(2302)
-		p.Match(CqlParserRR_BRACKET)
+		p.Match(CQLParserRR_BRACKET)
 		if p.HasError() {
 			// Recognition error - abort rule
 			goto errorExit
@@ -45900,13 +45900,13 @@ type SyntaxBracketLcContext struct {
 func NewEmptySyntaxBracketLcContext() *SyntaxBracketLcContext {
 	var p = new(SyntaxBracketLcContext)
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
-	p.RuleIndex = CqlParserRULE_syntaxBracketLc
+	p.RuleIndex = CQLParserRULE_syntaxBracketLc
 	return p
 }
 
 func InitEmptySyntaxBracketLcContext(p *SyntaxBracketLcContext) {
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
-	p.RuleIndex = CqlParserRULE_syntaxBracketLc
+	p.RuleIndex = CQLParserRULE_syntaxBracketLc
 }
 
 func (*SyntaxBracketLcContext) IsSyntaxBracketLcContext() {}
@@ -45917,7 +45917,7 @@ func NewSyntaxBracketLcContext(parser antlr.Parser, parent antlr.ParserRuleConte
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, parent, invokingState)
 
 	p.parser = parser
-	p.RuleIndex = CqlParserRULE_syntaxBracketLc
+	p.RuleIndex = CQLParserRULE_syntaxBracketLc
 
 	return p
 }
@@ -45925,7 +45925,7 @@ func NewSyntaxBracketLcContext(parser antlr.Parser, parent antlr.ParserRuleConte
 func (s *SyntaxBracketLcContext) GetParser() antlr.Parser { return s.parser }
 
 func (s *SyntaxBracketLcContext) LC_BRACKET() antlr.TerminalNode {
-	return s.GetToken(CqlParserLC_BRACKET, 0)
+	return s.GetToken(CQLParserLC_BRACKET, 0)
 }
 
 func (s *SyntaxBracketLcContext) GetRuleContext() antlr.RuleContext {
@@ -45937,24 +45937,24 @@ func (s *SyntaxBracketLcContext) ToStringTree(ruleNames []string, recog antlr.Re
 }
 
 func (s *SyntaxBracketLcContext) EnterRule(listener antlr.ParseTreeListener) {
-	if listenerT, ok := listener.(CqlParserListener); ok {
+	if listenerT, ok := listener.(CQLParserListener); ok {
 		listenerT.EnterSyntaxBracketLc(s)
 	}
 }
 
 func (s *SyntaxBracketLcContext) ExitRule(listener antlr.ParseTreeListener) {
-	if listenerT, ok := listener.(CqlParserListener); ok {
+	if listenerT, ok := listener.(CQLParserListener); ok {
 		listenerT.ExitSyntaxBracketLc(s)
 	}
 }
 
-func (p *CqlParser) SyntaxBracketLc() (localctx ISyntaxBracketLcContext) {
+func (p *CQLParser) SyntaxBracketLc() (localctx ISyntaxBracketLcContext) {
 	localctx = NewSyntaxBracketLcContext(p, p.GetParserRuleContext(), p.GetState())
-	p.EnterRule(localctx, 538, CqlParserRULE_syntaxBracketLc)
+	p.EnterRule(localctx, 538, CQLParserRULE_syntaxBracketLc)
 	p.EnterOuterAlt(localctx, 1)
 	{
 		p.SetState(2304)
-		p.Match(CqlParserLC_BRACKET)
+		p.Match(CQLParserLC_BRACKET)
 		if p.HasError() {
 			// Recognition error - abort rule
 			goto errorExit
@@ -45996,13 +45996,13 @@ type SyntaxBracketRcContext struct {
 func NewEmptySyntaxBracketRcContext() *SyntaxBracketRcContext {
 	var p = new(SyntaxBracketRcContext)
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
-	p.RuleIndex = CqlParserRULE_syntaxBracketRc
+	p.RuleIndex = CQLParserRULE_syntaxBracketRc
 	return p
 }
 
 func InitEmptySyntaxBracketRcContext(p *SyntaxBracketRcContext) {
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
-	p.RuleIndex = CqlParserRULE_syntaxBracketRc
+	p.RuleIndex = CQLParserRULE_syntaxBracketRc
 }
 
 func (*SyntaxBracketRcContext) IsSyntaxBracketRcContext() {}
@@ -46013,7 +46013,7 @@ func NewSyntaxBracketRcContext(parser antlr.Parser, parent antlr.ParserRuleConte
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, parent, invokingState)
 
 	p.parser = parser
-	p.RuleIndex = CqlParserRULE_syntaxBracketRc
+	p.RuleIndex = CQLParserRULE_syntaxBracketRc
 
 	return p
 }
@@ -46021,7 +46021,7 @@ func NewSyntaxBracketRcContext(parser antlr.Parser, parent antlr.ParserRuleConte
 func (s *SyntaxBracketRcContext) GetParser() antlr.Parser { return s.parser }
 
 func (s *SyntaxBracketRcContext) RC_BRACKET() antlr.TerminalNode {
-	return s.GetToken(CqlParserRC_BRACKET, 0)
+	return s.GetToken(CQLParserRC_BRACKET, 0)
 }
 
 func (s *SyntaxBracketRcContext) GetRuleContext() antlr.RuleContext {
@@ -46033,24 +46033,24 @@ func (s *SyntaxBracketRcContext) ToStringTree(ruleNames []string, recog antlr.Re
 }
 
 func (s *SyntaxBracketRcContext) EnterRule(listener antlr.ParseTreeListener) {
-	if listenerT, ok := listener.(CqlParserListener); ok {
+	if listenerT, ok := listener.(CQLParserListener); ok {
 		listenerT.EnterSyntaxBracketRc(s)
 	}
 }
 
 func (s *SyntaxBracketRcContext) ExitRule(listener antlr.ParseTreeListener) {
-	if listenerT, ok := listener.(CqlParserListener); ok {
+	if listenerT, ok := listener.(CQLParserListener); ok {
 		listenerT.ExitSyntaxBracketRc(s)
 	}
 }
 
-func (p *CqlParser) SyntaxBracketRc() (localctx ISyntaxBracketRcContext) {
+func (p *CQLParser) SyntaxBracketRc() (localctx ISyntaxBracketRcContext) {
 	localctx = NewSyntaxBracketRcContext(p, p.GetParserRuleContext(), p.GetState())
-	p.EnterRule(localctx, 540, CqlParserRULE_syntaxBracketRc)
+	p.EnterRule(localctx, 540, CQLParserRULE_syntaxBracketRc)
 	p.EnterOuterAlt(localctx, 1)
 	{
 		p.SetState(2306)
-		p.Match(CqlParserRC_BRACKET)
+		p.Match(CQLParserRC_BRACKET)
 		if p.HasError() {
 			// Recognition error - abort rule
 			goto errorExit
@@ -46092,13 +46092,13 @@ type SyntaxBracketLaContext struct {
 func NewEmptySyntaxBracketLaContext() *SyntaxBracketLaContext {
 	var p = new(SyntaxBracketLaContext)
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
-	p.RuleIndex = CqlParserRULE_syntaxBracketLa
+	p.RuleIndex = CQLParserRULE_syntaxBracketLa
 	return p
 }
 
 func InitEmptySyntaxBracketLaContext(p *SyntaxBracketLaContext) {
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
-	p.RuleIndex = CqlParserRULE_syntaxBracketLa
+	p.RuleIndex = CQLParserRULE_syntaxBracketLa
 }
 
 func (*SyntaxBracketLaContext) IsSyntaxBracketLaContext() {}
@@ -46109,7 +46109,7 @@ func NewSyntaxBracketLaContext(parser antlr.Parser, parent antlr.ParserRuleConte
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, parent, invokingState)
 
 	p.parser = parser
-	p.RuleIndex = CqlParserRULE_syntaxBracketLa
+	p.RuleIndex = CQLParserRULE_syntaxBracketLa
 
 	return p
 }
@@ -46117,7 +46117,7 @@ func NewSyntaxBracketLaContext(parser antlr.Parser, parent antlr.ParserRuleConte
 func (s *SyntaxBracketLaContext) GetParser() antlr.Parser { return s.parser }
 
 func (s *SyntaxBracketLaContext) OPERATOR_LT() antlr.TerminalNode {
-	return s.GetToken(CqlParserOPERATOR_LT, 0)
+	return s.GetToken(CQLParserOPERATOR_LT, 0)
 }
 
 func (s *SyntaxBracketLaContext) GetRuleContext() antlr.RuleContext {
@@ -46129,24 +46129,24 @@ func (s *SyntaxBracketLaContext) ToStringTree(ruleNames []string, recog antlr.Re
 }
 
 func (s *SyntaxBracketLaContext) EnterRule(listener antlr.ParseTreeListener) {
-	if listenerT, ok := listener.(CqlParserListener); ok {
+	if listenerT, ok := listener.(CQLParserListener); ok {
 		listenerT.EnterSyntaxBracketLa(s)
 	}
 }
 
 func (s *SyntaxBracketLaContext) ExitRule(listener antlr.ParseTreeListener) {
-	if listenerT, ok := listener.(CqlParserListener); ok {
+	if listenerT, ok := listener.(CQLParserListener); ok {
 		listenerT.ExitSyntaxBracketLa(s)
 	}
 }
 
-func (p *CqlParser) SyntaxBracketLa() (localctx ISyntaxBracketLaContext) {
+func (p *CQLParser) SyntaxBracketLa() (localctx ISyntaxBracketLaContext) {
 	localctx = NewSyntaxBracketLaContext(p, p.GetParserRuleContext(), p.GetState())
-	p.EnterRule(localctx, 542, CqlParserRULE_syntaxBracketLa)
+	p.EnterRule(localctx, 542, CQLParserRULE_syntaxBracketLa)
 	p.EnterOuterAlt(localctx, 1)
 	{
 		p.SetState(2308)
-		p.Match(CqlParserOPERATOR_LT)
+		p.Match(CQLParserOPERATOR_LT)
 		if p.HasError() {
 			// Recognition error - abort rule
 			goto errorExit
@@ -46188,13 +46188,13 @@ type SyntaxBracketRaContext struct {
 func NewEmptySyntaxBracketRaContext() *SyntaxBracketRaContext {
 	var p = new(SyntaxBracketRaContext)
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
-	p.RuleIndex = CqlParserRULE_syntaxBracketRa
+	p.RuleIndex = CQLParserRULE_syntaxBracketRa
 	return p
 }
 
 func InitEmptySyntaxBracketRaContext(p *SyntaxBracketRaContext) {
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
-	p.RuleIndex = CqlParserRULE_syntaxBracketRa
+	p.RuleIndex = CQLParserRULE_syntaxBracketRa
 }
 
 func (*SyntaxBracketRaContext) IsSyntaxBracketRaContext() {}
@@ -46205,7 +46205,7 @@ func NewSyntaxBracketRaContext(parser antlr.Parser, parent antlr.ParserRuleConte
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, parent, invokingState)
 
 	p.parser = parser
-	p.RuleIndex = CqlParserRULE_syntaxBracketRa
+	p.RuleIndex = CQLParserRULE_syntaxBracketRa
 
 	return p
 }
@@ -46213,7 +46213,7 @@ func NewSyntaxBracketRaContext(parser antlr.Parser, parent antlr.ParserRuleConte
 func (s *SyntaxBracketRaContext) GetParser() antlr.Parser { return s.parser }
 
 func (s *SyntaxBracketRaContext) OPERATOR_GT() antlr.TerminalNode {
-	return s.GetToken(CqlParserOPERATOR_GT, 0)
+	return s.GetToken(CQLParserOPERATOR_GT, 0)
 }
 
 func (s *SyntaxBracketRaContext) GetRuleContext() antlr.RuleContext {
@@ -46225,24 +46225,24 @@ func (s *SyntaxBracketRaContext) ToStringTree(ruleNames []string, recog antlr.Re
 }
 
 func (s *SyntaxBracketRaContext) EnterRule(listener antlr.ParseTreeListener) {
-	if listenerT, ok := listener.(CqlParserListener); ok {
+	if listenerT, ok := listener.(CQLParserListener); ok {
 		listenerT.EnterSyntaxBracketRa(s)
 	}
 }
 
 func (s *SyntaxBracketRaContext) ExitRule(listener antlr.ParseTreeListener) {
-	if listenerT, ok := listener.(CqlParserListener); ok {
+	if listenerT, ok := listener.(CQLParserListener); ok {
 		listenerT.ExitSyntaxBracketRa(s)
 	}
 }
 
-func (p *CqlParser) SyntaxBracketRa() (localctx ISyntaxBracketRaContext) {
+func (p *CQLParser) SyntaxBracketRa() (localctx ISyntaxBracketRaContext) {
 	localctx = NewSyntaxBracketRaContext(p, p.GetParserRuleContext(), p.GetState())
-	p.EnterRule(localctx, 544, CqlParserRULE_syntaxBracketRa)
+	p.EnterRule(localctx, 544, CQLParserRULE_syntaxBracketRa)
 	p.EnterOuterAlt(localctx, 1)
 	{
 		p.SetState(2310)
-		p.Match(CqlParserOPERATOR_GT)
+		p.Match(CQLParserOPERATOR_GT)
 		if p.HasError() {
 			// Recognition error - abort rule
 			goto errorExit
@@ -46284,13 +46284,13 @@ type SyntaxBracketLsContext struct {
 func NewEmptySyntaxBracketLsContext() *SyntaxBracketLsContext {
 	var p = new(SyntaxBracketLsContext)
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
-	p.RuleIndex = CqlParserRULE_syntaxBracketLs
+	p.RuleIndex = CQLParserRULE_syntaxBracketLs
 	return p
 }
 
 func InitEmptySyntaxBracketLsContext(p *SyntaxBracketLsContext) {
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
-	p.RuleIndex = CqlParserRULE_syntaxBracketLs
+	p.RuleIndex = CQLParserRULE_syntaxBracketLs
 }
 
 func (*SyntaxBracketLsContext) IsSyntaxBracketLsContext() {}
@@ -46301,7 +46301,7 @@ func NewSyntaxBracketLsContext(parser antlr.Parser, parent antlr.ParserRuleConte
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, parent, invokingState)
 
 	p.parser = parser
-	p.RuleIndex = CqlParserRULE_syntaxBracketLs
+	p.RuleIndex = CQLParserRULE_syntaxBracketLs
 
 	return p
 }
@@ -46309,7 +46309,7 @@ func NewSyntaxBracketLsContext(parser antlr.Parser, parent antlr.ParserRuleConte
 func (s *SyntaxBracketLsContext) GetParser() antlr.Parser { return s.parser }
 
 func (s *SyntaxBracketLsContext) LS_BRACKET() antlr.TerminalNode {
-	return s.GetToken(CqlParserLS_BRACKET, 0)
+	return s.GetToken(CQLParserLS_BRACKET, 0)
 }
 
 func (s *SyntaxBracketLsContext) GetRuleContext() antlr.RuleContext {
@@ -46321,24 +46321,24 @@ func (s *SyntaxBracketLsContext) ToStringTree(ruleNames []string, recog antlr.Re
 }
 
 func (s *SyntaxBracketLsContext) EnterRule(listener antlr.ParseTreeListener) {
-	if listenerT, ok := listener.(CqlParserListener); ok {
+	if listenerT, ok := listener.(CQLParserListener); ok {
 		listenerT.EnterSyntaxBracketLs(s)
 	}
 }
 
 func (s *SyntaxBracketLsContext) ExitRule(listener antlr.ParseTreeListener) {
-	if listenerT, ok := listener.(CqlParserListener); ok {
+	if listenerT, ok := listener.(CQLParserListener); ok {
 		listenerT.ExitSyntaxBracketLs(s)
 	}
 }
 
-func (p *CqlParser) SyntaxBracketLs() (localctx ISyntaxBracketLsContext) {
+func (p *CQLParser) SyntaxBracketLs() (localctx ISyntaxBracketLsContext) {
 	localctx = NewSyntaxBracketLsContext(p, p.GetParserRuleContext(), p.GetState())
-	p.EnterRule(localctx, 546, CqlParserRULE_syntaxBracketLs)
+	p.EnterRule(localctx, 546, CQLParserRULE_syntaxBracketLs)
 	p.EnterOuterAlt(localctx, 1)
 	{
 		p.SetState(2312)
-		p.Match(CqlParserLS_BRACKET)
+		p.Match(CQLParserLS_BRACKET)
 		if p.HasError() {
 			// Recognition error - abort rule
 			goto errorExit
@@ -46380,13 +46380,13 @@ type SyntaxBracketRsContext struct {
 func NewEmptySyntaxBracketRsContext() *SyntaxBracketRsContext {
 	var p = new(SyntaxBracketRsContext)
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
-	p.RuleIndex = CqlParserRULE_syntaxBracketRs
+	p.RuleIndex = CQLParserRULE_syntaxBracketRs
 	return p
 }
 
 func InitEmptySyntaxBracketRsContext(p *SyntaxBracketRsContext) {
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
-	p.RuleIndex = CqlParserRULE_syntaxBracketRs
+	p.RuleIndex = CQLParserRULE_syntaxBracketRs
 }
 
 func (*SyntaxBracketRsContext) IsSyntaxBracketRsContext() {}
@@ -46397,7 +46397,7 @@ func NewSyntaxBracketRsContext(parser antlr.Parser, parent antlr.ParserRuleConte
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, parent, invokingState)
 
 	p.parser = parser
-	p.RuleIndex = CqlParserRULE_syntaxBracketRs
+	p.RuleIndex = CQLParserRULE_syntaxBracketRs
 
 	return p
 }
@@ -46405,7 +46405,7 @@ func NewSyntaxBracketRsContext(parser antlr.Parser, parent antlr.ParserRuleConte
 func (s *SyntaxBracketRsContext) GetParser() antlr.Parser { return s.parser }
 
 func (s *SyntaxBracketRsContext) RS_BRACKET() antlr.TerminalNode {
-	return s.GetToken(CqlParserRS_BRACKET, 0)
+	return s.GetToken(CQLParserRS_BRACKET, 0)
 }
 
 func (s *SyntaxBracketRsContext) GetRuleContext() antlr.RuleContext {
@@ -46417,24 +46417,24 @@ func (s *SyntaxBracketRsContext) ToStringTree(ruleNames []string, recog antlr.Re
 }
 
 func (s *SyntaxBracketRsContext) EnterRule(listener antlr.ParseTreeListener) {
-	if listenerT, ok := listener.(CqlParserListener); ok {
+	if listenerT, ok := listener.(CQLParserListener); ok {
 		listenerT.EnterSyntaxBracketRs(s)
 	}
 }
 
 func (s *SyntaxBracketRsContext) ExitRule(listener antlr.ParseTreeListener) {
-	if listenerT, ok := listener.(CqlParserListener); ok {
+	if listenerT, ok := listener.(CQLParserListener); ok {
 		listenerT.ExitSyntaxBracketRs(s)
 	}
 }
 
-func (p *CqlParser) SyntaxBracketRs() (localctx ISyntaxBracketRsContext) {
+func (p *CQLParser) SyntaxBracketRs() (localctx ISyntaxBracketRsContext) {
 	localctx = NewSyntaxBracketRsContext(p, p.GetParserRuleContext(), p.GetState())
-	p.EnterRule(localctx, 548, CqlParserRULE_syntaxBracketRs)
+	p.EnterRule(localctx, 548, CQLParserRULE_syntaxBracketRs)
 	p.EnterOuterAlt(localctx, 1)
 	{
 		p.SetState(2314)
-		p.Match(CqlParserRS_BRACKET)
+		p.Match(CQLParserRS_BRACKET)
 		if p.HasError() {
 			// Recognition error - abort rule
 			goto errorExit
@@ -46476,13 +46476,13 @@ type SyntaxCommaContext struct {
 func NewEmptySyntaxCommaContext() *SyntaxCommaContext {
 	var p = new(SyntaxCommaContext)
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
-	p.RuleIndex = CqlParserRULE_syntaxComma
+	p.RuleIndex = CQLParserRULE_syntaxComma
 	return p
 }
 
 func InitEmptySyntaxCommaContext(p *SyntaxCommaContext) {
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
-	p.RuleIndex = CqlParserRULE_syntaxComma
+	p.RuleIndex = CQLParserRULE_syntaxComma
 }
 
 func (*SyntaxCommaContext) IsSyntaxCommaContext() {}
@@ -46493,7 +46493,7 @@ func NewSyntaxCommaContext(parser antlr.Parser, parent antlr.ParserRuleContext, 
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, parent, invokingState)
 
 	p.parser = parser
-	p.RuleIndex = CqlParserRULE_syntaxComma
+	p.RuleIndex = CQLParserRULE_syntaxComma
 
 	return p
 }
@@ -46501,7 +46501,7 @@ func NewSyntaxCommaContext(parser antlr.Parser, parent antlr.ParserRuleContext, 
 func (s *SyntaxCommaContext) GetParser() antlr.Parser { return s.parser }
 
 func (s *SyntaxCommaContext) COMMA() antlr.TerminalNode {
-	return s.GetToken(CqlParserCOMMA, 0)
+	return s.GetToken(CQLParserCOMMA, 0)
 }
 
 func (s *SyntaxCommaContext) GetRuleContext() antlr.RuleContext {
@@ -46513,24 +46513,24 @@ func (s *SyntaxCommaContext) ToStringTree(ruleNames []string, recog antlr.Recogn
 }
 
 func (s *SyntaxCommaContext) EnterRule(listener antlr.ParseTreeListener) {
-	if listenerT, ok := listener.(CqlParserListener); ok {
+	if listenerT, ok := listener.(CQLParserListener); ok {
 		listenerT.EnterSyntaxComma(s)
 	}
 }
 
 func (s *SyntaxCommaContext) ExitRule(listener antlr.ParseTreeListener) {
-	if listenerT, ok := listener.(CqlParserListener); ok {
+	if listenerT, ok := listener.(CQLParserListener); ok {
 		listenerT.ExitSyntaxComma(s)
 	}
 }
 
-func (p *CqlParser) SyntaxComma() (localctx ISyntaxCommaContext) {
+func (p *CQLParser) SyntaxComma() (localctx ISyntaxCommaContext) {
 	localctx = NewSyntaxCommaContext(p, p.GetParserRuleContext(), p.GetState())
-	p.EnterRule(localctx, 550, CqlParserRULE_syntaxComma)
+	p.EnterRule(localctx, 550, CQLParserRULE_syntaxComma)
 	p.EnterOuterAlt(localctx, 1)
 	{
 		p.SetState(2316)
-		p.Match(CqlParserCOMMA)
+		p.Match(CQLParserCOMMA)
 		if p.HasError() {
 			// Recognition error - abort rule
 			goto errorExit
@@ -46572,13 +46572,13 @@ type SyntaxColonContext struct {
 func NewEmptySyntaxColonContext() *SyntaxColonContext {
 	var p = new(SyntaxColonContext)
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
-	p.RuleIndex = CqlParserRULE_syntaxColon
+	p.RuleIndex = CQLParserRULE_syntaxColon
 	return p
 }
 
 func InitEmptySyntaxColonContext(p *SyntaxColonContext) {
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
-	p.RuleIndex = CqlParserRULE_syntaxColon
+	p.RuleIndex = CQLParserRULE_syntaxColon
 }
 
 func (*SyntaxColonContext) IsSyntaxColonContext() {}
@@ -46589,7 +46589,7 @@ func NewSyntaxColonContext(parser antlr.Parser, parent antlr.ParserRuleContext, 
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, parent, invokingState)
 
 	p.parser = parser
-	p.RuleIndex = CqlParserRULE_syntaxColon
+	p.RuleIndex = CQLParserRULE_syntaxColon
 
 	return p
 }
@@ -46597,7 +46597,7 @@ func NewSyntaxColonContext(parser antlr.Parser, parent antlr.ParserRuleContext, 
 func (s *SyntaxColonContext) GetParser() antlr.Parser { return s.parser }
 
 func (s *SyntaxColonContext) COLON() antlr.TerminalNode {
-	return s.GetToken(CqlParserCOLON, 0)
+	return s.GetToken(CQLParserCOLON, 0)
 }
 
 func (s *SyntaxColonContext) GetRuleContext() antlr.RuleContext {
@@ -46609,24 +46609,24 @@ func (s *SyntaxColonContext) ToStringTree(ruleNames []string, recog antlr.Recogn
 }
 
 func (s *SyntaxColonContext) EnterRule(listener antlr.ParseTreeListener) {
-	if listenerT, ok := listener.(CqlParserListener); ok {
+	if listenerT, ok := listener.(CQLParserListener); ok {
 		listenerT.EnterSyntaxColon(s)
 	}
 }
 
 func (s *SyntaxColonContext) ExitRule(listener antlr.ParseTreeListener) {
-	if listenerT, ok := listener.(CqlParserListener); ok {
+	if listenerT, ok := listener.(CQLParserListener); ok {
 		listenerT.ExitSyntaxColon(s)
 	}
 }
 
-func (p *CqlParser) SyntaxColon() (localctx ISyntaxColonContext) {
+func (p *CQLParser) SyntaxColon() (localctx ISyntaxColonContext) {
 	localctx = NewSyntaxColonContext(p, p.GetParserRuleContext(), p.GetState())
-	p.EnterRule(localctx, 552, CqlParserRULE_syntaxColon)
+	p.EnterRule(localctx, 552, CQLParserRULE_syntaxColon)
 	p.EnterOuterAlt(localctx, 1)
 	{
 		p.SetState(2318)
-		p.Match(CqlParserCOLON)
+		p.Match(CQLParserCOLON)
 		if p.HasError() {
 			// Recognition error - abort rule
 			goto errorExit

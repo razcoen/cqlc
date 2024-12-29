@@ -20,11 +20,11 @@ func (sp *SchemaParser) Parse(cql string) (*Schema, error) {
 	el := newErrorListener()
 	for _, stmt := range strings.Split(cql, ";") {
 		stmt := strings.TrimSpace(stmt)
-		lexer := parser.NewCqlLexer(antlr.NewInputStream(stmt))
+		lexer := parser.NewCQLLexer(antlr.NewInputStream(stmt))
 		lexer.RemoveErrorListeners()
 		lexer.AddErrorListener(el)
 		stream := antlr.NewCommonTokenStream(lexer, antlr.TokenDefaultChannel)
-		p := parser.NewCqlParser(stream)
+		p := parser.NewCQLParser(stream)
 		p.RemoveErrorListeners()
 		p.AddErrorListener(el)
 		antlr.ParseTreeWalkerDefault.Walk(l, p.Cql())
@@ -69,7 +69,7 @@ func newErrorListener() *errorListener {
 }
 
 type schemaParserTreeListener struct {
-	*parser.BaseCqlParserListener
+	*parser.BaseCQLParserListener
 	schemaBuilder          *SchemaBuilder
 	defaultKeyspaceBuilder *KeyspaceBuilder
 	err                    error
@@ -77,7 +77,7 @@ type schemaParserTreeListener struct {
 
 func newSchemaParserTreeListener() *schemaParserTreeListener {
 	l := &schemaParserTreeListener{
-		BaseCqlParserListener: &parser.BaseCqlParserListener{},
+		BaseCQLParserListener: &parser.BaseCQLParserListener{},
 		// TODO: Do we even need to support more than one keyspace as part of the code generation?
 		schemaBuilder:          NewSchemaBuilder(),
 		defaultKeyspaceBuilder: NewDefaultKeyspaceBuilder(),

@@ -1,1688 +1,1688 @@
-// Code generated from CqlParser.g4 by ANTLR 4.13.2. DO NOT EDIT.
+// Code generated from CQLParser.g4 by ANTLR 4.13.2. DO NOT EDIT.
 
-package parser // CqlParser
+package parser // CQLParser
 
 import "github.com/antlr4-go/antlr/v4"
 
-// BaseCqlParserListener is a complete listener for a parse tree produced by CqlParser.
-type BaseCqlParserListener struct{}
+// BaseCQLParserListener is a complete listener for a parse tree produced by CQLParser.
+type BaseCQLParserListener struct{}
 
-var _ CqlParserListener = &BaseCqlParserListener{}
+var _ CQLParserListener = &BaseCQLParserListener{}
 
 // VisitTerminal is called when a terminal node is visited.
-func (s *BaseCqlParserListener) VisitTerminal(node antlr.TerminalNode) {}
+func (s *BaseCQLParserListener) VisitTerminal(node antlr.TerminalNode) {}
 
 // VisitErrorNode is called when an error node is visited.
-func (s *BaseCqlParserListener) VisitErrorNode(node antlr.ErrorNode) {}
+func (s *BaseCQLParserListener) VisitErrorNode(node antlr.ErrorNode) {}
 
 // EnterEveryRule is called when any rule is entered.
-func (s *BaseCqlParserListener) EnterEveryRule(ctx antlr.ParserRuleContext) {}
+func (s *BaseCQLParserListener) EnterEveryRule(ctx antlr.ParserRuleContext) {}
 
 // ExitEveryRule is called when any rule is exited.
-func (s *BaseCqlParserListener) ExitEveryRule(ctx antlr.ParserRuleContext) {}
+func (s *BaseCQLParserListener) ExitEveryRule(ctx antlr.ParserRuleContext) {}
 
 // EnterRoot is called when production root is entered.
-func (s *BaseCqlParserListener) EnterRoot(ctx *RootContext) {}
+func (s *BaseCQLParserListener) EnterRoot(ctx *RootContext) {}
 
 // ExitRoot is called when production root is exited.
-func (s *BaseCqlParserListener) ExitRoot(ctx *RootContext) {}
+func (s *BaseCQLParserListener) ExitRoot(ctx *RootContext) {}
 
 // EnterCqls is called when production cqls is entered.
-func (s *BaseCqlParserListener) EnterCqls(ctx *CqlsContext) {}
+func (s *BaseCQLParserListener) EnterCqls(ctx *CqlsContext) {}
 
 // ExitCqls is called when production cqls is exited.
-func (s *BaseCqlParserListener) ExitCqls(ctx *CqlsContext) {}
+func (s *BaseCQLParserListener) ExitCqls(ctx *CqlsContext) {}
 
 // EnterStatementSeparator is called when production statementSeparator is entered.
-func (s *BaseCqlParserListener) EnterStatementSeparator(ctx *StatementSeparatorContext) {}
+func (s *BaseCQLParserListener) EnterStatementSeparator(ctx *StatementSeparatorContext) {}
 
 // ExitStatementSeparator is called when production statementSeparator is exited.
-func (s *BaseCqlParserListener) ExitStatementSeparator(ctx *StatementSeparatorContext) {}
+func (s *BaseCQLParserListener) ExitStatementSeparator(ctx *StatementSeparatorContext) {}
 
 // EnterEmpty_ is called when production empty_ is entered.
-func (s *BaseCqlParserListener) EnterEmpty_(ctx *Empty_Context) {}
+func (s *BaseCQLParserListener) EnterEmpty_(ctx *Empty_Context) {}
 
 // ExitEmpty_ is called when production empty_ is exited.
-func (s *BaseCqlParserListener) ExitEmpty_(ctx *Empty_Context) {}
+func (s *BaseCQLParserListener) ExitEmpty_(ctx *Empty_Context) {}
 
 // EnterCql is called when production cql is entered.
-func (s *BaseCqlParserListener) EnterCql(ctx *CqlContext) {}
+func (s *BaseCQLParserListener) EnterCql(ctx *CqlContext) {}
 
 // ExitCql is called when production cql is exited.
-func (s *BaseCqlParserListener) ExitCql(ctx *CqlContext) {}
+func (s *BaseCQLParserListener) ExitCql(ctx *CqlContext) {}
 
 // EnterRevoke is called when production revoke is entered.
-func (s *BaseCqlParserListener) EnterRevoke(ctx *RevokeContext) {}
+func (s *BaseCQLParserListener) EnterRevoke(ctx *RevokeContext) {}
 
 // ExitRevoke is called when production revoke is exited.
-func (s *BaseCqlParserListener) ExitRevoke(ctx *RevokeContext) {}
+func (s *BaseCQLParserListener) ExitRevoke(ctx *RevokeContext) {}
 
 // EnterListRoles is called when production listRoles is entered.
-func (s *BaseCqlParserListener) EnterListRoles(ctx *ListRolesContext) {}
+func (s *BaseCQLParserListener) EnterListRoles(ctx *ListRolesContext) {}
 
 // ExitListRoles is called when production listRoles is exited.
-func (s *BaseCqlParserListener) ExitListRoles(ctx *ListRolesContext) {}
+func (s *BaseCQLParserListener) ExitListRoles(ctx *ListRolesContext) {}
 
 // EnterListPermissions is called when production listPermissions is entered.
-func (s *BaseCqlParserListener) EnterListPermissions(ctx *ListPermissionsContext) {}
+func (s *BaseCQLParserListener) EnterListPermissions(ctx *ListPermissionsContext) {}
 
 // ExitListPermissions is called when production listPermissions is exited.
-func (s *BaseCqlParserListener) ExitListPermissions(ctx *ListPermissionsContext) {}
+func (s *BaseCQLParserListener) ExitListPermissions(ctx *ListPermissionsContext) {}
 
 // EnterGrant is called when production grant is entered.
-func (s *BaseCqlParserListener) EnterGrant(ctx *GrantContext) {}
+func (s *BaseCQLParserListener) EnterGrant(ctx *GrantContext) {}
 
 // ExitGrant is called when production grant is exited.
-func (s *BaseCqlParserListener) ExitGrant(ctx *GrantContext) {}
+func (s *BaseCQLParserListener) ExitGrant(ctx *GrantContext) {}
 
 // EnterPriviledge is called when production priviledge is entered.
-func (s *BaseCqlParserListener) EnterPriviledge(ctx *PriviledgeContext) {}
+func (s *BaseCQLParserListener) EnterPriviledge(ctx *PriviledgeContext) {}
 
 // ExitPriviledge is called when production priviledge is exited.
-func (s *BaseCqlParserListener) ExitPriviledge(ctx *PriviledgeContext) {}
+func (s *BaseCQLParserListener) ExitPriviledge(ctx *PriviledgeContext) {}
 
 // EnterResource is called when production resource is entered.
-func (s *BaseCqlParserListener) EnterResource(ctx *ResourceContext) {}
+func (s *BaseCQLParserListener) EnterResource(ctx *ResourceContext) {}
 
 // ExitResource is called when production resource is exited.
-func (s *BaseCqlParserListener) ExitResource(ctx *ResourceContext) {}
+func (s *BaseCQLParserListener) ExitResource(ctx *ResourceContext) {}
 
 // EnterCreateUser is called when production createUser is entered.
-func (s *BaseCqlParserListener) EnterCreateUser(ctx *CreateUserContext) {}
+func (s *BaseCQLParserListener) EnterCreateUser(ctx *CreateUserContext) {}
 
 // ExitCreateUser is called when production createUser is exited.
-func (s *BaseCqlParserListener) ExitCreateUser(ctx *CreateUserContext) {}
+func (s *BaseCQLParserListener) ExitCreateUser(ctx *CreateUserContext) {}
 
 // EnterCreateRole is called when production createRole is entered.
-func (s *BaseCqlParserListener) EnterCreateRole(ctx *CreateRoleContext) {}
+func (s *BaseCQLParserListener) EnterCreateRole(ctx *CreateRoleContext) {}
 
 // ExitCreateRole is called when production createRole is exited.
-func (s *BaseCqlParserListener) ExitCreateRole(ctx *CreateRoleContext) {}
+func (s *BaseCQLParserListener) ExitCreateRole(ctx *CreateRoleContext) {}
 
 // EnterCreateType is called when production createType is entered.
-func (s *BaseCqlParserListener) EnterCreateType(ctx *CreateTypeContext) {}
+func (s *BaseCQLParserListener) EnterCreateType(ctx *CreateTypeContext) {}
 
 // ExitCreateType is called when production createType is exited.
-func (s *BaseCqlParserListener) ExitCreateType(ctx *CreateTypeContext) {}
+func (s *BaseCQLParserListener) ExitCreateType(ctx *CreateTypeContext) {}
 
 // EnterTypeMemberColumnList is called when production typeMemberColumnList is entered.
-func (s *BaseCqlParserListener) EnterTypeMemberColumnList(ctx *TypeMemberColumnListContext) {}
+func (s *BaseCQLParserListener) EnterTypeMemberColumnList(ctx *TypeMemberColumnListContext) {}
 
 // ExitTypeMemberColumnList is called when production typeMemberColumnList is exited.
-func (s *BaseCqlParserListener) ExitTypeMemberColumnList(ctx *TypeMemberColumnListContext) {}
+func (s *BaseCQLParserListener) ExitTypeMemberColumnList(ctx *TypeMemberColumnListContext) {}
 
 // EnterCreateTrigger is called when production createTrigger is entered.
-func (s *BaseCqlParserListener) EnterCreateTrigger(ctx *CreateTriggerContext) {}
+func (s *BaseCQLParserListener) EnterCreateTrigger(ctx *CreateTriggerContext) {}
 
 // ExitCreateTrigger is called when production createTrigger is exited.
-func (s *BaseCqlParserListener) ExitCreateTrigger(ctx *CreateTriggerContext) {}
+func (s *BaseCQLParserListener) ExitCreateTrigger(ctx *CreateTriggerContext) {}
 
 // EnterCreateMaterializedView is called when production createMaterializedView is entered.
-func (s *BaseCqlParserListener) EnterCreateMaterializedView(ctx *CreateMaterializedViewContext) {}
+func (s *BaseCQLParserListener) EnterCreateMaterializedView(ctx *CreateMaterializedViewContext) {}
 
 // ExitCreateMaterializedView is called when production createMaterializedView is exited.
-func (s *BaseCqlParserListener) ExitCreateMaterializedView(ctx *CreateMaterializedViewContext) {}
+func (s *BaseCQLParserListener) ExitCreateMaterializedView(ctx *CreateMaterializedViewContext) {}
 
 // EnterMaterializedViewWhere is called when production materializedViewWhere is entered.
-func (s *BaseCqlParserListener) EnterMaterializedViewWhere(ctx *MaterializedViewWhereContext) {}
+func (s *BaseCQLParserListener) EnterMaterializedViewWhere(ctx *MaterializedViewWhereContext) {}
 
 // ExitMaterializedViewWhere is called when production materializedViewWhere is exited.
-func (s *BaseCqlParserListener) ExitMaterializedViewWhere(ctx *MaterializedViewWhereContext) {}
+func (s *BaseCQLParserListener) ExitMaterializedViewWhere(ctx *MaterializedViewWhereContext) {}
 
 // EnterColumnNotNullList is called when production columnNotNullList is entered.
-func (s *BaseCqlParserListener) EnterColumnNotNullList(ctx *ColumnNotNullListContext) {}
+func (s *BaseCQLParserListener) EnterColumnNotNullList(ctx *ColumnNotNullListContext) {}
 
 // ExitColumnNotNullList is called when production columnNotNullList is exited.
-func (s *BaseCqlParserListener) ExitColumnNotNullList(ctx *ColumnNotNullListContext) {}
+func (s *BaseCQLParserListener) ExitColumnNotNullList(ctx *ColumnNotNullListContext) {}
 
 // EnterColumnNotNull is called when production columnNotNull is entered.
-func (s *BaseCqlParserListener) EnterColumnNotNull(ctx *ColumnNotNullContext) {}
+func (s *BaseCQLParserListener) EnterColumnNotNull(ctx *ColumnNotNullContext) {}
 
 // ExitColumnNotNull is called when production columnNotNull is exited.
-func (s *BaseCqlParserListener) ExitColumnNotNull(ctx *ColumnNotNullContext) {}
+func (s *BaseCQLParserListener) ExitColumnNotNull(ctx *ColumnNotNullContext) {}
 
 // EnterMaterializedViewOptions is called when production materializedViewOptions is entered.
-func (s *BaseCqlParserListener) EnterMaterializedViewOptions(ctx *MaterializedViewOptionsContext) {}
+func (s *BaseCQLParserListener) EnterMaterializedViewOptions(ctx *MaterializedViewOptionsContext) {}
 
 // ExitMaterializedViewOptions is called when production materializedViewOptions is exited.
-func (s *BaseCqlParserListener) ExitMaterializedViewOptions(ctx *MaterializedViewOptionsContext) {}
+func (s *BaseCQLParserListener) ExitMaterializedViewOptions(ctx *MaterializedViewOptionsContext) {}
 
 // EnterCreateKeyspace is called when production createKeyspace is entered.
-func (s *BaseCqlParserListener) EnterCreateKeyspace(ctx *CreateKeyspaceContext) {}
+func (s *BaseCQLParserListener) EnterCreateKeyspace(ctx *CreateKeyspaceContext) {}
 
 // ExitCreateKeyspace is called when production createKeyspace is exited.
-func (s *BaseCqlParserListener) ExitCreateKeyspace(ctx *CreateKeyspaceContext) {}
+func (s *BaseCQLParserListener) ExitCreateKeyspace(ctx *CreateKeyspaceContext) {}
 
 // EnterCreateFunction is called when production createFunction is entered.
-func (s *BaseCqlParserListener) EnterCreateFunction(ctx *CreateFunctionContext) {}
+func (s *BaseCQLParserListener) EnterCreateFunction(ctx *CreateFunctionContext) {}
 
 // ExitCreateFunction is called when production createFunction is exited.
-func (s *BaseCqlParserListener) ExitCreateFunction(ctx *CreateFunctionContext) {}
+func (s *BaseCQLParserListener) ExitCreateFunction(ctx *CreateFunctionContext) {}
 
 // EnterCodeBlock is called when production codeBlock is entered.
-func (s *BaseCqlParserListener) EnterCodeBlock(ctx *CodeBlockContext) {}
+func (s *BaseCQLParserListener) EnterCodeBlock(ctx *CodeBlockContext) {}
 
 // ExitCodeBlock is called when production codeBlock is exited.
-func (s *BaseCqlParserListener) ExitCodeBlock(ctx *CodeBlockContext) {}
+func (s *BaseCQLParserListener) ExitCodeBlock(ctx *CodeBlockContext) {}
 
 // EnterParamList is called when production paramList is entered.
-func (s *BaseCqlParserListener) EnterParamList(ctx *ParamListContext) {}
+func (s *BaseCQLParserListener) EnterParamList(ctx *ParamListContext) {}
 
 // ExitParamList is called when production paramList is exited.
-func (s *BaseCqlParserListener) ExitParamList(ctx *ParamListContext) {}
+func (s *BaseCQLParserListener) ExitParamList(ctx *ParamListContext) {}
 
 // EnterReturnMode is called when production returnMode is entered.
-func (s *BaseCqlParserListener) EnterReturnMode(ctx *ReturnModeContext) {}
+func (s *BaseCQLParserListener) EnterReturnMode(ctx *ReturnModeContext) {}
 
 // ExitReturnMode is called when production returnMode is exited.
-func (s *BaseCqlParserListener) ExitReturnMode(ctx *ReturnModeContext) {}
+func (s *BaseCQLParserListener) ExitReturnMode(ctx *ReturnModeContext) {}
 
 // EnterCreateAggregate is called when production createAggregate is entered.
-func (s *BaseCqlParserListener) EnterCreateAggregate(ctx *CreateAggregateContext) {}
+func (s *BaseCQLParserListener) EnterCreateAggregate(ctx *CreateAggregateContext) {}
 
 // ExitCreateAggregate is called when production createAggregate is exited.
-func (s *BaseCqlParserListener) ExitCreateAggregate(ctx *CreateAggregateContext) {}
+func (s *BaseCQLParserListener) ExitCreateAggregate(ctx *CreateAggregateContext) {}
 
 // EnterInitCondDefinition is called when production initCondDefinition is entered.
-func (s *BaseCqlParserListener) EnterInitCondDefinition(ctx *InitCondDefinitionContext) {}
+func (s *BaseCQLParserListener) EnterInitCondDefinition(ctx *InitCondDefinitionContext) {}
 
 // ExitInitCondDefinition is called when production initCondDefinition is exited.
-func (s *BaseCqlParserListener) ExitInitCondDefinition(ctx *InitCondDefinitionContext) {}
+func (s *BaseCQLParserListener) ExitInitCondDefinition(ctx *InitCondDefinitionContext) {}
 
 // EnterInitCondHash is called when production initCondHash is entered.
-func (s *BaseCqlParserListener) EnterInitCondHash(ctx *InitCondHashContext) {}
+func (s *BaseCQLParserListener) EnterInitCondHash(ctx *InitCondHashContext) {}
 
 // ExitInitCondHash is called when production initCondHash is exited.
-func (s *BaseCqlParserListener) ExitInitCondHash(ctx *InitCondHashContext) {}
+func (s *BaseCQLParserListener) ExitInitCondHash(ctx *InitCondHashContext) {}
 
 // EnterInitCondHashItem is called when production initCondHashItem is entered.
-func (s *BaseCqlParserListener) EnterInitCondHashItem(ctx *InitCondHashItemContext) {}
+func (s *BaseCQLParserListener) EnterInitCondHashItem(ctx *InitCondHashItemContext) {}
 
 // ExitInitCondHashItem is called when production initCondHashItem is exited.
-func (s *BaseCqlParserListener) ExitInitCondHashItem(ctx *InitCondHashItemContext) {}
+func (s *BaseCQLParserListener) ExitInitCondHashItem(ctx *InitCondHashItemContext) {}
 
 // EnterInitCondListNested is called when production initCondListNested is entered.
-func (s *BaseCqlParserListener) EnterInitCondListNested(ctx *InitCondListNestedContext) {}
+func (s *BaseCQLParserListener) EnterInitCondListNested(ctx *InitCondListNestedContext) {}
 
 // ExitInitCondListNested is called when production initCondListNested is exited.
-func (s *BaseCqlParserListener) ExitInitCondListNested(ctx *InitCondListNestedContext) {}
+func (s *BaseCQLParserListener) ExitInitCondListNested(ctx *InitCondListNestedContext) {}
 
 // EnterInitCondList is called when production initCondList is entered.
-func (s *BaseCqlParserListener) EnterInitCondList(ctx *InitCondListContext) {}
+func (s *BaseCQLParserListener) EnterInitCondList(ctx *InitCondListContext) {}
 
 // ExitInitCondList is called when production initCondList is exited.
-func (s *BaseCqlParserListener) ExitInitCondList(ctx *InitCondListContext) {}
+func (s *BaseCQLParserListener) ExitInitCondList(ctx *InitCondListContext) {}
 
 // EnterOrReplace is called when production orReplace is entered.
-func (s *BaseCqlParserListener) EnterOrReplace(ctx *OrReplaceContext) {}
+func (s *BaseCQLParserListener) EnterOrReplace(ctx *OrReplaceContext) {}
 
 // ExitOrReplace is called when production orReplace is exited.
-func (s *BaseCqlParserListener) ExitOrReplace(ctx *OrReplaceContext) {}
+func (s *BaseCQLParserListener) ExitOrReplace(ctx *OrReplaceContext) {}
 
 // EnterAlterUser is called when production alterUser is entered.
-func (s *BaseCqlParserListener) EnterAlterUser(ctx *AlterUserContext) {}
+func (s *BaseCQLParserListener) EnterAlterUser(ctx *AlterUserContext) {}
 
 // ExitAlterUser is called when production alterUser is exited.
-func (s *BaseCqlParserListener) ExitAlterUser(ctx *AlterUserContext) {}
+func (s *BaseCQLParserListener) ExitAlterUser(ctx *AlterUserContext) {}
 
 // EnterUserPassword is called when production userPassword is entered.
-func (s *BaseCqlParserListener) EnterUserPassword(ctx *UserPasswordContext) {}
+func (s *BaseCQLParserListener) EnterUserPassword(ctx *UserPasswordContext) {}
 
 // ExitUserPassword is called when production userPassword is exited.
-func (s *BaseCqlParserListener) ExitUserPassword(ctx *UserPasswordContext) {}
+func (s *BaseCQLParserListener) ExitUserPassword(ctx *UserPasswordContext) {}
 
 // EnterUserSuperUser is called when production userSuperUser is entered.
-func (s *BaseCqlParserListener) EnterUserSuperUser(ctx *UserSuperUserContext) {}
+func (s *BaseCQLParserListener) EnterUserSuperUser(ctx *UserSuperUserContext) {}
 
 // ExitUserSuperUser is called when production userSuperUser is exited.
-func (s *BaseCqlParserListener) ExitUserSuperUser(ctx *UserSuperUserContext) {}
+func (s *BaseCQLParserListener) ExitUserSuperUser(ctx *UserSuperUserContext) {}
 
 // EnterAlterType is called when production alterType is entered.
-func (s *BaseCqlParserListener) EnterAlterType(ctx *AlterTypeContext) {}
+func (s *BaseCQLParserListener) EnterAlterType(ctx *AlterTypeContext) {}
 
 // ExitAlterType is called when production alterType is exited.
-func (s *BaseCqlParserListener) ExitAlterType(ctx *AlterTypeContext) {}
+func (s *BaseCQLParserListener) ExitAlterType(ctx *AlterTypeContext) {}
 
 // EnterAlterTypeOperation is called when production alterTypeOperation is entered.
-func (s *BaseCqlParserListener) EnterAlterTypeOperation(ctx *AlterTypeOperationContext) {}
+func (s *BaseCQLParserListener) EnterAlterTypeOperation(ctx *AlterTypeOperationContext) {}
 
 // ExitAlterTypeOperation is called when production alterTypeOperation is exited.
-func (s *BaseCqlParserListener) ExitAlterTypeOperation(ctx *AlterTypeOperationContext) {}
+func (s *BaseCQLParserListener) ExitAlterTypeOperation(ctx *AlterTypeOperationContext) {}
 
 // EnterAlterTypeRename is called when production alterTypeRename is entered.
-func (s *BaseCqlParserListener) EnterAlterTypeRename(ctx *AlterTypeRenameContext) {}
+func (s *BaseCQLParserListener) EnterAlterTypeRename(ctx *AlterTypeRenameContext) {}
 
 // ExitAlterTypeRename is called when production alterTypeRename is exited.
-func (s *BaseCqlParserListener) ExitAlterTypeRename(ctx *AlterTypeRenameContext) {}
+func (s *BaseCQLParserListener) ExitAlterTypeRename(ctx *AlterTypeRenameContext) {}
 
 // EnterAlterTypeRenameList is called when production alterTypeRenameList is entered.
-func (s *BaseCqlParserListener) EnterAlterTypeRenameList(ctx *AlterTypeRenameListContext) {}
+func (s *BaseCQLParserListener) EnterAlterTypeRenameList(ctx *AlterTypeRenameListContext) {}
 
 // ExitAlterTypeRenameList is called when production alterTypeRenameList is exited.
-func (s *BaseCqlParserListener) ExitAlterTypeRenameList(ctx *AlterTypeRenameListContext) {}
+func (s *BaseCQLParserListener) ExitAlterTypeRenameList(ctx *AlterTypeRenameListContext) {}
 
 // EnterAlterTypeRenameItem is called when production alterTypeRenameItem is entered.
-func (s *BaseCqlParserListener) EnterAlterTypeRenameItem(ctx *AlterTypeRenameItemContext) {}
+func (s *BaseCQLParserListener) EnterAlterTypeRenameItem(ctx *AlterTypeRenameItemContext) {}
 
 // ExitAlterTypeRenameItem is called when production alterTypeRenameItem is exited.
-func (s *BaseCqlParserListener) ExitAlterTypeRenameItem(ctx *AlterTypeRenameItemContext) {}
+func (s *BaseCQLParserListener) ExitAlterTypeRenameItem(ctx *AlterTypeRenameItemContext) {}
 
 // EnterAlterTypeAdd is called when production alterTypeAdd is entered.
-func (s *BaseCqlParserListener) EnterAlterTypeAdd(ctx *AlterTypeAddContext) {}
+func (s *BaseCQLParserListener) EnterAlterTypeAdd(ctx *AlterTypeAddContext) {}
 
 // ExitAlterTypeAdd is called when production alterTypeAdd is exited.
-func (s *BaseCqlParserListener) ExitAlterTypeAdd(ctx *AlterTypeAddContext) {}
+func (s *BaseCQLParserListener) ExitAlterTypeAdd(ctx *AlterTypeAddContext) {}
 
 // EnterAlterTypeAlterType is called when production alterTypeAlterType is entered.
-func (s *BaseCqlParserListener) EnterAlterTypeAlterType(ctx *AlterTypeAlterTypeContext) {}
+func (s *BaseCQLParserListener) EnterAlterTypeAlterType(ctx *AlterTypeAlterTypeContext) {}
 
 // ExitAlterTypeAlterType is called when production alterTypeAlterType is exited.
-func (s *BaseCqlParserListener) ExitAlterTypeAlterType(ctx *AlterTypeAlterTypeContext) {}
+func (s *BaseCQLParserListener) ExitAlterTypeAlterType(ctx *AlterTypeAlterTypeContext) {}
 
 // EnterAlterTable is called when production alterTable is entered.
-func (s *BaseCqlParserListener) EnterAlterTable(ctx *AlterTableContext) {}
+func (s *BaseCQLParserListener) EnterAlterTable(ctx *AlterTableContext) {}
 
 // ExitAlterTable is called when production alterTable is exited.
-func (s *BaseCqlParserListener) ExitAlterTable(ctx *AlterTableContext) {}
+func (s *BaseCQLParserListener) ExitAlterTable(ctx *AlterTableContext) {}
 
 // EnterAlterTableOperation is called when production alterTableOperation is entered.
-func (s *BaseCqlParserListener) EnterAlterTableOperation(ctx *AlterTableOperationContext) {}
+func (s *BaseCQLParserListener) EnterAlterTableOperation(ctx *AlterTableOperationContext) {}
 
 // ExitAlterTableOperation is called when production alterTableOperation is exited.
-func (s *BaseCqlParserListener) ExitAlterTableOperation(ctx *AlterTableOperationContext) {}
+func (s *BaseCQLParserListener) ExitAlterTableOperation(ctx *AlterTableOperationContext) {}
 
 // EnterAlterTableWith is called when production alterTableWith is entered.
-func (s *BaseCqlParserListener) EnterAlterTableWith(ctx *AlterTableWithContext) {}
+func (s *BaseCQLParserListener) EnterAlterTableWith(ctx *AlterTableWithContext) {}
 
 // ExitAlterTableWith is called when production alterTableWith is exited.
-func (s *BaseCqlParserListener) ExitAlterTableWith(ctx *AlterTableWithContext) {}
+func (s *BaseCQLParserListener) ExitAlterTableWith(ctx *AlterTableWithContext) {}
 
 // EnterAlterTableRename is called when production alterTableRename is entered.
-func (s *BaseCqlParserListener) EnterAlterTableRename(ctx *AlterTableRenameContext) {}
+func (s *BaseCQLParserListener) EnterAlterTableRename(ctx *AlterTableRenameContext) {}
 
 // ExitAlterTableRename is called when production alterTableRename is exited.
-func (s *BaseCqlParserListener) ExitAlterTableRename(ctx *AlterTableRenameContext) {}
+func (s *BaseCQLParserListener) ExitAlterTableRename(ctx *AlterTableRenameContext) {}
 
 // EnterAlterTableDropCompactStorage is called when production alterTableDropCompactStorage is entered.
-func (s *BaseCqlParserListener) EnterAlterTableDropCompactStorage(ctx *AlterTableDropCompactStorageContext) {
+func (s *BaseCQLParserListener) EnterAlterTableDropCompactStorage(ctx *AlterTableDropCompactStorageContext) {
 }
 
 // ExitAlterTableDropCompactStorage is called when production alterTableDropCompactStorage is exited.
-func (s *BaseCqlParserListener) ExitAlterTableDropCompactStorage(ctx *AlterTableDropCompactStorageContext) {
+func (s *BaseCQLParserListener) ExitAlterTableDropCompactStorage(ctx *AlterTableDropCompactStorageContext) {
 }
 
 // EnterAlterTableDropColumns is called when production alterTableDropColumns is entered.
-func (s *BaseCqlParserListener) EnterAlterTableDropColumns(ctx *AlterTableDropColumnsContext) {}
+func (s *BaseCQLParserListener) EnterAlterTableDropColumns(ctx *AlterTableDropColumnsContext) {}
 
 // ExitAlterTableDropColumns is called when production alterTableDropColumns is exited.
-func (s *BaseCqlParserListener) ExitAlterTableDropColumns(ctx *AlterTableDropColumnsContext) {}
+func (s *BaseCQLParserListener) ExitAlterTableDropColumns(ctx *AlterTableDropColumnsContext) {}
 
 // EnterAlterTableDropColumnList is called when production alterTableDropColumnList is entered.
-func (s *BaseCqlParserListener) EnterAlterTableDropColumnList(ctx *AlterTableDropColumnListContext) {}
+func (s *BaseCQLParserListener) EnterAlterTableDropColumnList(ctx *AlterTableDropColumnListContext) {}
 
 // ExitAlterTableDropColumnList is called when production alterTableDropColumnList is exited.
-func (s *BaseCqlParserListener) ExitAlterTableDropColumnList(ctx *AlterTableDropColumnListContext) {}
+func (s *BaseCQLParserListener) ExitAlterTableDropColumnList(ctx *AlterTableDropColumnListContext) {}
 
 // EnterAlterTableAdd is called when production alterTableAdd is entered.
-func (s *BaseCqlParserListener) EnterAlterTableAdd(ctx *AlterTableAddContext) {}
+func (s *BaseCQLParserListener) EnterAlterTableAdd(ctx *AlterTableAddContext) {}
 
 // ExitAlterTableAdd is called when production alterTableAdd is exited.
-func (s *BaseCqlParserListener) ExitAlterTableAdd(ctx *AlterTableAddContext) {}
+func (s *BaseCQLParserListener) ExitAlterTableAdd(ctx *AlterTableAddContext) {}
 
 // EnterAlterTableColumnDefinition is called when production alterTableColumnDefinition is entered.
-func (s *BaseCqlParserListener) EnterAlterTableColumnDefinition(ctx *AlterTableColumnDefinitionContext) {
+func (s *BaseCQLParserListener) EnterAlterTableColumnDefinition(ctx *AlterTableColumnDefinitionContext) {
 }
 
 // ExitAlterTableColumnDefinition is called when production alterTableColumnDefinition is exited.
-func (s *BaseCqlParserListener) ExitAlterTableColumnDefinition(ctx *AlterTableColumnDefinitionContext) {
+func (s *BaseCQLParserListener) ExitAlterTableColumnDefinition(ctx *AlterTableColumnDefinitionContext) {
 }
 
 // EnterAlterRole is called when production alterRole is entered.
-func (s *BaseCqlParserListener) EnterAlterRole(ctx *AlterRoleContext) {}
+func (s *BaseCQLParserListener) EnterAlterRole(ctx *AlterRoleContext) {}
 
 // ExitAlterRole is called when production alterRole is exited.
-func (s *BaseCqlParserListener) ExitAlterRole(ctx *AlterRoleContext) {}
+func (s *BaseCQLParserListener) ExitAlterRole(ctx *AlterRoleContext) {}
 
 // EnterRoleWith is called when production roleWith is entered.
-func (s *BaseCqlParserListener) EnterRoleWith(ctx *RoleWithContext) {}
+func (s *BaseCQLParserListener) EnterRoleWith(ctx *RoleWithContext) {}
 
 // ExitRoleWith is called when production roleWith is exited.
-func (s *BaseCqlParserListener) ExitRoleWith(ctx *RoleWithContext) {}
+func (s *BaseCQLParserListener) ExitRoleWith(ctx *RoleWithContext) {}
 
 // EnterRoleWithOptions is called when production roleWithOptions is entered.
-func (s *BaseCqlParserListener) EnterRoleWithOptions(ctx *RoleWithOptionsContext) {}
+func (s *BaseCQLParserListener) EnterRoleWithOptions(ctx *RoleWithOptionsContext) {}
 
 // ExitRoleWithOptions is called when production roleWithOptions is exited.
-func (s *BaseCqlParserListener) ExitRoleWithOptions(ctx *RoleWithOptionsContext) {}
+func (s *BaseCQLParserListener) ExitRoleWithOptions(ctx *RoleWithOptionsContext) {}
 
 // EnterAlterMaterializedView is called when production alterMaterializedView is entered.
-func (s *BaseCqlParserListener) EnterAlterMaterializedView(ctx *AlterMaterializedViewContext) {}
+func (s *BaseCQLParserListener) EnterAlterMaterializedView(ctx *AlterMaterializedViewContext) {}
 
 // ExitAlterMaterializedView is called when production alterMaterializedView is exited.
-func (s *BaseCqlParserListener) ExitAlterMaterializedView(ctx *AlterMaterializedViewContext) {}
+func (s *BaseCQLParserListener) ExitAlterMaterializedView(ctx *AlterMaterializedViewContext) {}
 
 // EnterDropUser is called when production dropUser is entered.
-func (s *BaseCqlParserListener) EnterDropUser(ctx *DropUserContext) {}
+func (s *BaseCQLParserListener) EnterDropUser(ctx *DropUserContext) {}
 
 // ExitDropUser is called when production dropUser is exited.
-func (s *BaseCqlParserListener) ExitDropUser(ctx *DropUserContext) {}
+func (s *BaseCQLParserListener) ExitDropUser(ctx *DropUserContext) {}
 
 // EnterDropType is called when production dropType is entered.
-func (s *BaseCqlParserListener) EnterDropType(ctx *DropTypeContext) {}
+func (s *BaseCQLParserListener) EnterDropType(ctx *DropTypeContext) {}
 
 // ExitDropType is called when production dropType is exited.
-func (s *BaseCqlParserListener) ExitDropType(ctx *DropTypeContext) {}
+func (s *BaseCQLParserListener) ExitDropType(ctx *DropTypeContext) {}
 
 // EnterDropMaterializedView is called when production dropMaterializedView is entered.
-func (s *BaseCqlParserListener) EnterDropMaterializedView(ctx *DropMaterializedViewContext) {}
+func (s *BaseCQLParserListener) EnterDropMaterializedView(ctx *DropMaterializedViewContext) {}
 
 // ExitDropMaterializedView is called when production dropMaterializedView is exited.
-func (s *BaseCqlParserListener) ExitDropMaterializedView(ctx *DropMaterializedViewContext) {}
+func (s *BaseCQLParserListener) ExitDropMaterializedView(ctx *DropMaterializedViewContext) {}
 
 // EnterDropAggregate is called when production dropAggregate is entered.
-func (s *BaseCqlParserListener) EnterDropAggregate(ctx *DropAggregateContext) {}
+func (s *BaseCQLParserListener) EnterDropAggregate(ctx *DropAggregateContext) {}
 
 // ExitDropAggregate is called when production dropAggregate is exited.
-func (s *BaseCqlParserListener) ExitDropAggregate(ctx *DropAggregateContext) {}
+func (s *BaseCQLParserListener) ExitDropAggregate(ctx *DropAggregateContext) {}
 
 // EnterDropFunction is called when production dropFunction is entered.
-func (s *BaseCqlParserListener) EnterDropFunction(ctx *DropFunctionContext) {}
+func (s *BaseCQLParserListener) EnterDropFunction(ctx *DropFunctionContext) {}
 
 // ExitDropFunction is called when production dropFunction is exited.
-func (s *BaseCqlParserListener) ExitDropFunction(ctx *DropFunctionContext) {}
+func (s *BaseCQLParserListener) ExitDropFunction(ctx *DropFunctionContext) {}
 
 // EnterDropTrigger is called when production dropTrigger is entered.
-func (s *BaseCqlParserListener) EnterDropTrigger(ctx *DropTriggerContext) {}
+func (s *BaseCQLParserListener) EnterDropTrigger(ctx *DropTriggerContext) {}
 
 // ExitDropTrigger is called when production dropTrigger is exited.
-func (s *BaseCqlParserListener) ExitDropTrigger(ctx *DropTriggerContext) {}
+func (s *BaseCQLParserListener) ExitDropTrigger(ctx *DropTriggerContext) {}
 
 // EnterDropRole is called when production dropRole is entered.
-func (s *BaseCqlParserListener) EnterDropRole(ctx *DropRoleContext) {}
+func (s *BaseCQLParserListener) EnterDropRole(ctx *DropRoleContext) {}
 
 // ExitDropRole is called when production dropRole is exited.
-func (s *BaseCqlParserListener) ExitDropRole(ctx *DropRoleContext) {}
+func (s *BaseCQLParserListener) ExitDropRole(ctx *DropRoleContext) {}
 
 // EnterDropTable is called when production dropTable is entered.
-func (s *BaseCqlParserListener) EnterDropTable(ctx *DropTableContext) {}
+func (s *BaseCQLParserListener) EnterDropTable(ctx *DropTableContext) {}
 
 // ExitDropTable is called when production dropTable is exited.
-func (s *BaseCqlParserListener) ExitDropTable(ctx *DropTableContext) {}
+func (s *BaseCQLParserListener) ExitDropTable(ctx *DropTableContext) {}
 
 // EnterDropKeyspace is called when production dropKeyspace is entered.
-func (s *BaseCqlParserListener) EnterDropKeyspace(ctx *DropKeyspaceContext) {}
+func (s *BaseCQLParserListener) EnterDropKeyspace(ctx *DropKeyspaceContext) {}
 
 // ExitDropKeyspace is called when production dropKeyspace is exited.
-func (s *BaseCqlParserListener) ExitDropKeyspace(ctx *DropKeyspaceContext) {}
+func (s *BaseCQLParserListener) ExitDropKeyspace(ctx *DropKeyspaceContext) {}
 
 // EnterDropIndex is called when production dropIndex is entered.
-func (s *BaseCqlParserListener) EnterDropIndex(ctx *DropIndexContext) {}
+func (s *BaseCQLParserListener) EnterDropIndex(ctx *DropIndexContext) {}
 
 // ExitDropIndex is called when production dropIndex is exited.
-func (s *BaseCqlParserListener) ExitDropIndex(ctx *DropIndexContext) {}
+func (s *BaseCQLParserListener) ExitDropIndex(ctx *DropIndexContext) {}
 
 // EnterCreateTable is called when production createTable is entered.
-func (s *BaseCqlParserListener) EnterCreateTable(ctx *CreateTableContext) {}
+func (s *BaseCQLParserListener) EnterCreateTable(ctx *CreateTableContext) {}
 
 // ExitCreateTable is called when production createTable is exited.
-func (s *BaseCqlParserListener) ExitCreateTable(ctx *CreateTableContext) {}
+func (s *BaseCQLParserListener) ExitCreateTable(ctx *CreateTableContext) {}
 
 // EnterWithElement is called when production withElement is entered.
-func (s *BaseCqlParserListener) EnterWithElement(ctx *WithElementContext) {}
+func (s *BaseCQLParserListener) EnterWithElement(ctx *WithElementContext) {}
 
 // ExitWithElement is called when production withElement is exited.
-func (s *BaseCqlParserListener) ExitWithElement(ctx *WithElementContext) {}
+func (s *BaseCQLParserListener) ExitWithElement(ctx *WithElementContext) {}
 
 // EnterTableOptions is called when production tableOptions is entered.
-func (s *BaseCqlParserListener) EnterTableOptions(ctx *TableOptionsContext) {}
+func (s *BaseCQLParserListener) EnterTableOptions(ctx *TableOptionsContext) {}
 
 // ExitTableOptions is called when production tableOptions is exited.
-func (s *BaseCqlParserListener) ExitTableOptions(ctx *TableOptionsContext) {}
+func (s *BaseCQLParserListener) ExitTableOptions(ctx *TableOptionsContext) {}
 
 // EnterClusteringOrder is called when production clusteringOrder is entered.
-func (s *BaseCqlParserListener) EnterClusteringOrder(ctx *ClusteringOrderContext) {}
+func (s *BaseCQLParserListener) EnterClusteringOrder(ctx *ClusteringOrderContext) {}
 
 // ExitClusteringOrder is called when production clusteringOrder is exited.
-func (s *BaseCqlParserListener) ExitClusteringOrder(ctx *ClusteringOrderContext) {}
+func (s *BaseCQLParserListener) ExitClusteringOrder(ctx *ClusteringOrderContext) {}
 
 // EnterTableOptionItem is called when production tableOptionItem is entered.
-func (s *BaseCqlParserListener) EnterTableOptionItem(ctx *TableOptionItemContext) {}
+func (s *BaseCQLParserListener) EnterTableOptionItem(ctx *TableOptionItemContext) {}
 
 // ExitTableOptionItem is called when production tableOptionItem is exited.
-func (s *BaseCqlParserListener) ExitTableOptionItem(ctx *TableOptionItemContext) {}
+func (s *BaseCQLParserListener) ExitTableOptionItem(ctx *TableOptionItemContext) {}
 
 // EnterTableOptionName is called when production tableOptionName is entered.
-func (s *BaseCqlParserListener) EnterTableOptionName(ctx *TableOptionNameContext) {}
+func (s *BaseCQLParserListener) EnterTableOptionName(ctx *TableOptionNameContext) {}
 
 // ExitTableOptionName is called when production tableOptionName is exited.
-func (s *BaseCqlParserListener) ExitTableOptionName(ctx *TableOptionNameContext) {}
+func (s *BaseCQLParserListener) ExitTableOptionName(ctx *TableOptionNameContext) {}
 
 // EnterTableOptionValue is called when production tableOptionValue is entered.
-func (s *BaseCqlParserListener) EnterTableOptionValue(ctx *TableOptionValueContext) {}
+func (s *BaseCQLParserListener) EnterTableOptionValue(ctx *TableOptionValueContext) {}
 
 // ExitTableOptionValue is called when production tableOptionValue is exited.
-func (s *BaseCqlParserListener) ExitTableOptionValue(ctx *TableOptionValueContext) {}
+func (s *BaseCQLParserListener) ExitTableOptionValue(ctx *TableOptionValueContext) {}
 
 // EnterOptionHash is called when production optionHash is entered.
-func (s *BaseCqlParserListener) EnterOptionHash(ctx *OptionHashContext) {}
+func (s *BaseCQLParserListener) EnterOptionHash(ctx *OptionHashContext) {}
 
 // ExitOptionHash is called when production optionHash is exited.
-func (s *BaseCqlParserListener) ExitOptionHash(ctx *OptionHashContext) {}
+func (s *BaseCQLParserListener) ExitOptionHash(ctx *OptionHashContext) {}
 
 // EnterOptionHashItem is called when production optionHashItem is entered.
-func (s *BaseCqlParserListener) EnterOptionHashItem(ctx *OptionHashItemContext) {}
+func (s *BaseCQLParserListener) EnterOptionHashItem(ctx *OptionHashItemContext) {}
 
 // ExitOptionHashItem is called when production optionHashItem is exited.
-func (s *BaseCqlParserListener) ExitOptionHashItem(ctx *OptionHashItemContext) {}
+func (s *BaseCQLParserListener) ExitOptionHashItem(ctx *OptionHashItemContext) {}
 
 // EnterOptionHashKey is called when production optionHashKey is entered.
-func (s *BaseCqlParserListener) EnterOptionHashKey(ctx *OptionHashKeyContext) {}
+func (s *BaseCQLParserListener) EnterOptionHashKey(ctx *OptionHashKeyContext) {}
 
 // ExitOptionHashKey is called when production optionHashKey is exited.
-func (s *BaseCqlParserListener) ExitOptionHashKey(ctx *OptionHashKeyContext) {}
+func (s *BaseCQLParserListener) ExitOptionHashKey(ctx *OptionHashKeyContext) {}
 
 // EnterOptionHashValue is called when production optionHashValue is entered.
-func (s *BaseCqlParserListener) EnterOptionHashValue(ctx *OptionHashValueContext) {}
+func (s *BaseCQLParserListener) EnterOptionHashValue(ctx *OptionHashValueContext) {}
 
 // ExitOptionHashValue is called when production optionHashValue is exited.
-func (s *BaseCqlParserListener) ExitOptionHashValue(ctx *OptionHashValueContext) {}
+func (s *BaseCQLParserListener) ExitOptionHashValue(ctx *OptionHashValueContext) {}
 
 // EnterColumnDefinitionList is called when production columnDefinitionList is entered.
-func (s *BaseCqlParserListener) EnterColumnDefinitionList(ctx *ColumnDefinitionListContext) {}
+func (s *BaseCQLParserListener) EnterColumnDefinitionList(ctx *ColumnDefinitionListContext) {}
 
 // ExitColumnDefinitionList is called when production columnDefinitionList is exited.
-func (s *BaseCqlParserListener) ExitColumnDefinitionList(ctx *ColumnDefinitionListContext) {}
+func (s *BaseCQLParserListener) ExitColumnDefinitionList(ctx *ColumnDefinitionListContext) {}
 
 // EnterColumnDefinition is called when production columnDefinition is entered.
-func (s *BaseCqlParserListener) EnterColumnDefinition(ctx *ColumnDefinitionContext) {}
+func (s *BaseCQLParserListener) EnterColumnDefinition(ctx *ColumnDefinitionContext) {}
 
 // ExitColumnDefinition is called when production columnDefinition is exited.
-func (s *BaseCqlParserListener) ExitColumnDefinition(ctx *ColumnDefinitionContext) {}
+func (s *BaseCQLParserListener) ExitColumnDefinition(ctx *ColumnDefinitionContext) {}
 
 // EnterPrimaryKeyColumn is called when production primaryKeyColumn is entered.
-func (s *BaseCqlParserListener) EnterPrimaryKeyColumn(ctx *PrimaryKeyColumnContext) {}
+func (s *BaseCQLParserListener) EnterPrimaryKeyColumn(ctx *PrimaryKeyColumnContext) {}
 
 // ExitPrimaryKeyColumn is called when production primaryKeyColumn is exited.
-func (s *BaseCqlParserListener) ExitPrimaryKeyColumn(ctx *PrimaryKeyColumnContext) {}
+func (s *BaseCQLParserListener) ExitPrimaryKeyColumn(ctx *PrimaryKeyColumnContext) {}
 
 // EnterPrimaryKeyElement is called when production primaryKeyElement is entered.
-func (s *BaseCqlParserListener) EnterPrimaryKeyElement(ctx *PrimaryKeyElementContext) {}
+func (s *BaseCQLParserListener) EnterPrimaryKeyElement(ctx *PrimaryKeyElementContext) {}
 
 // ExitPrimaryKeyElement is called when production primaryKeyElement is exited.
-func (s *BaseCqlParserListener) ExitPrimaryKeyElement(ctx *PrimaryKeyElementContext) {}
+func (s *BaseCQLParserListener) ExitPrimaryKeyElement(ctx *PrimaryKeyElementContext) {}
 
 // EnterPrimaryKeyDefinition is called when production primaryKeyDefinition is entered.
-func (s *BaseCqlParserListener) EnterPrimaryKeyDefinition(ctx *PrimaryKeyDefinitionContext) {}
+func (s *BaseCQLParserListener) EnterPrimaryKeyDefinition(ctx *PrimaryKeyDefinitionContext) {}
 
 // ExitPrimaryKeyDefinition is called when production primaryKeyDefinition is exited.
-func (s *BaseCqlParserListener) ExitPrimaryKeyDefinition(ctx *PrimaryKeyDefinitionContext) {}
+func (s *BaseCQLParserListener) ExitPrimaryKeyDefinition(ctx *PrimaryKeyDefinitionContext) {}
 
 // EnterSinglePrimaryKey is called when production singlePrimaryKey is entered.
-func (s *BaseCqlParserListener) EnterSinglePrimaryKey(ctx *SinglePrimaryKeyContext) {}
+func (s *BaseCQLParserListener) EnterSinglePrimaryKey(ctx *SinglePrimaryKeyContext) {}
 
 // ExitSinglePrimaryKey is called when production singlePrimaryKey is exited.
-func (s *BaseCqlParserListener) ExitSinglePrimaryKey(ctx *SinglePrimaryKeyContext) {}
+func (s *BaseCQLParserListener) ExitSinglePrimaryKey(ctx *SinglePrimaryKeyContext) {}
 
 // EnterCompoundKey is called when production compoundKey is entered.
-func (s *BaseCqlParserListener) EnterCompoundKey(ctx *CompoundKeyContext) {}
+func (s *BaseCQLParserListener) EnterCompoundKey(ctx *CompoundKeyContext) {}
 
 // ExitCompoundKey is called when production compoundKey is exited.
-func (s *BaseCqlParserListener) ExitCompoundKey(ctx *CompoundKeyContext) {}
+func (s *BaseCQLParserListener) ExitCompoundKey(ctx *CompoundKeyContext) {}
 
 // EnterCompositeKey is called when production compositeKey is entered.
-func (s *BaseCqlParserListener) EnterCompositeKey(ctx *CompositeKeyContext) {}
+func (s *BaseCQLParserListener) EnterCompositeKey(ctx *CompositeKeyContext) {}
 
 // ExitCompositeKey is called when production compositeKey is exited.
-func (s *BaseCqlParserListener) ExitCompositeKey(ctx *CompositeKeyContext) {}
+func (s *BaseCQLParserListener) ExitCompositeKey(ctx *CompositeKeyContext) {}
 
 // EnterPartitionKeyList is called when production partitionKeyList is entered.
-func (s *BaseCqlParserListener) EnterPartitionKeyList(ctx *PartitionKeyListContext) {}
+func (s *BaseCQLParserListener) EnterPartitionKeyList(ctx *PartitionKeyListContext) {}
 
 // ExitPartitionKeyList is called when production partitionKeyList is exited.
-func (s *BaseCqlParserListener) ExitPartitionKeyList(ctx *PartitionKeyListContext) {}
+func (s *BaseCQLParserListener) ExitPartitionKeyList(ctx *PartitionKeyListContext) {}
 
 // EnterClusteringKeyList is called when production clusteringKeyList is entered.
-func (s *BaseCqlParserListener) EnterClusteringKeyList(ctx *ClusteringKeyListContext) {}
+func (s *BaseCQLParserListener) EnterClusteringKeyList(ctx *ClusteringKeyListContext) {}
 
 // ExitClusteringKeyList is called when production clusteringKeyList is exited.
-func (s *BaseCqlParserListener) ExitClusteringKeyList(ctx *ClusteringKeyListContext) {}
+func (s *BaseCQLParserListener) ExitClusteringKeyList(ctx *ClusteringKeyListContext) {}
 
 // EnterPartitionKey is called when production partitionKey is entered.
-func (s *BaseCqlParserListener) EnterPartitionKey(ctx *PartitionKeyContext) {}
+func (s *BaseCQLParserListener) EnterPartitionKey(ctx *PartitionKeyContext) {}
 
 // ExitPartitionKey is called when production partitionKey is exited.
-func (s *BaseCqlParserListener) ExitPartitionKey(ctx *PartitionKeyContext) {}
+func (s *BaseCQLParserListener) ExitPartitionKey(ctx *PartitionKeyContext) {}
 
 // EnterClusteringKey is called when production clusteringKey is entered.
-func (s *BaseCqlParserListener) EnterClusteringKey(ctx *ClusteringKeyContext) {}
+func (s *BaseCQLParserListener) EnterClusteringKey(ctx *ClusteringKeyContext) {}
 
 // ExitClusteringKey is called when production clusteringKey is exited.
-func (s *BaseCqlParserListener) ExitClusteringKey(ctx *ClusteringKeyContext) {}
+func (s *BaseCQLParserListener) ExitClusteringKey(ctx *ClusteringKeyContext) {}
 
 // EnterApplyBatch is called when production applyBatch is entered.
-func (s *BaseCqlParserListener) EnterApplyBatch(ctx *ApplyBatchContext) {}
+func (s *BaseCQLParserListener) EnterApplyBatch(ctx *ApplyBatchContext) {}
 
 // ExitApplyBatch is called when production applyBatch is exited.
-func (s *BaseCqlParserListener) ExitApplyBatch(ctx *ApplyBatchContext) {}
+func (s *BaseCQLParserListener) ExitApplyBatch(ctx *ApplyBatchContext) {}
 
 // EnterBeginBatch is called when production beginBatch is entered.
-func (s *BaseCqlParserListener) EnterBeginBatch(ctx *BeginBatchContext) {}
+func (s *BaseCQLParserListener) EnterBeginBatch(ctx *BeginBatchContext) {}
 
 // ExitBeginBatch is called when production beginBatch is exited.
-func (s *BaseCqlParserListener) ExitBeginBatch(ctx *BeginBatchContext) {}
+func (s *BaseCQLParserListener) ExitBeginBatch(ctx *BeginBatchContext) {}
 
 // EnterBatchType is called when production batchType is entered.
-func (s *BaseCqlParserListener) EnterBatchType(ctx *BatchTypeContext) {}
+func (s *BaseCQLParserListener) EnterBatchType(ctx *BatchTypeContext) {}
 
 // ExitBatchType is called when production batchType is exited.
-func (s *BaseCqlParserListener) ExitBatchType(ctx *BatchTypeContext) {}
+func (s *BaseCQLParserListener) ExitBatchType(ctx *BatchTypeContext) {}
 
 // EnterAlterKeyspace is called when production alterKeyspace is entered.
-func (s *BaseCqlParserListener) EnterAlterKeyspace(ctx *AlterKeyspaceContext) {}
+func (s *BaseCQLParserListener) EnterAlterKeyspace(ctx *AlterKeyspaceContext) {}
 
 // ExitAlterKeyspace is called when production alterKeyspace is exited.
-func (s *BaseCqlParserListener) ExitAlterKeyspace(ctx *AlterKeyspaceContext) {}
+func (s *BaseCQLParserListener) ExitAlterKeyspace(ctx *AlterKeyspaceContext) {}
 
 // EnterReplicationList is called when production replicationList is entered.
-func (s *BaseCqlParserListener) EnterReplicationList(ctx *ReplicationListContext) {}
+func (s *BaseCQLParserListener) EnterReplicationList(ctx *ReplicationListContext) {}
 
 // ExitReplicationList is called when production replicationList is exited.
-func (s *BaseCqlParserListener) ExitReplicationList(ctx *ReplicationListContext) {}
+func (s *BaseCQLParserListener) ExitReplicationList(ctx *ReplicationListContext) {}
 
 // EnterReplicationListItem is called when production replicationListItem is entered.
-func (s *BaseCqlParserListener) EnterReplicationListItem(ctx *ReplicationListItemContext) {}
+func (s *BaseCQLParserListener) EnterReplicationListItem(ctx *ReplicationListItemContext) {}
 
 // ExitReplicationListItem is called when production replicationListItem is exited.
-func (s *BaseCqlParserListener) ExitReplicationListItem(ctx *ReplicationListItemContext) {}
+func (s *BaseCQLParserListener) ExitReplicationListItem(ctx *ReplicationListItemContext) {}
 
 // EnterDurableWrites is called when production durableWrites is entered.
-func (s *BaseCqlParserListener) EnterDurableWrites(ctx *DurableWritesContext) {}
+func (s *BaseCQLParserListener) EnterDurableWrites(ctx *DurableWritesContext) {}
 
 // ExitDurableWrites is called when production durableWrites is exited.
-func (s *BaseCqlParserListener) ExitDurableWrites(ctx *DurableWritesContext) {}
+func (s *BaseCQLParserListener) ExitDurableWrites(ctx *DurableWritesContext) {}
 
 // EnterUse_ is called when production use_ is entered.
-func (s *BaseCqlParserListener) EnterUse_(ctx *Use_Context) {}
+func (s *BaseCQLParserListener) EnterUse_(ctx *Use_Context) {}
 
 // ExitUse_ is called when production use_ is exited.
-func (s *BaseCqlParserListener) ExitUse_(ctx *Use_Context) {}
+func (s *BaseCQLParserListener) ExitUse_(ctx *Use_Context) {}
 
 // EnterTruncate is called when production truncate is entered.
-func (s *BaseCqlParserListener) EnterTruncate(ctx *TruncateContext) {}
+func (s *BaseCQLParserListener) EnterTruncate(ctx *TruncateContext) {}
 
 // ExitTruncate is called when production truncate is exited.
-func (s *BaseCqlParserListener) ExitTruncate(ctx *TruncateContext) {}
+func (s *BaseCQLParserListener) ExitTruncate(ctx *TruncateContext) {}
 
 // EnterCreateIndex is called when production createIndex is entered.
-func (s *BaseCqlParserListener) EnterCreateIndex(ctx *CreateIndexContext) {}
+func (s *BaseCQLParserListener) EnterCreateIndex(ctx *CreateIndexContext) {}
 
 // ExitCreateIndex is called when production createIndex is exited.
-func (s *BaseCqlParserListener) ExitCreateIndex(ctx *CreateIndexContext) {}
+func (s *BaseCQLParserListener) ExitCreateIndex(ctx *CreateIndexContext) {}
 
 // EnterIndexName is called when production indexName is entered.
-func (s *BaseCqlParserListener) EnterIndexName(ctx *IndexNameContext) {}
+func (s *BaseCQLParserListener) EnterIndexName(ctx *IndexNameContext) {}
 
 // ExitIndexName is called when production indexName is exited.
-func (s *BaseCqlParserListener) ExitIndexName(ctx *IndexNameContext) {}
+func (s *BaseCQLParserListener) ExitIndexName(ctx *IndexNameContext) {}
 
 // EnterIndexColumnSpec is called when production indexColumnSpec is entered.
-func (s *BaseCqlParserListener) EnterIndexColumnSpec(ctx *IndexColumnSpecContext) {}
+func (s *BaseCQLParserListener) EnterIndexColumnSpec(ctx *IndexColumnSpecContext) {}
 
 // ExitIndexColumnSpec is called when production indexColumnSpec is exited.
-func (s *BaseCqlParserListener) ExitIndexColumnSpec(ctx *IndexColumnSpecContext) {}
+func (s *BaseCQLParserListener) ExitIndexColumnSpec(ctx *IndexColumnSpecContext) {}
 
 // EnterIndexKeysSpec is called when production indexKeysSpec is entered.
-func (s *BaseCqlParserListener) EnterIndexKeysSpec(ctx *IndexKeysSpecContext) {}
+func (s *BaseCQLParserListener) EnterIndexKeysSpec(ctx *IndexKeysSpecContext) {}
 
 // ExitIndexKeysSpec is called when production indexKeysSpec is exited.
-func (s *BaseCqlParserListener) ExitIndexKeysSpec(ctx *IndexKeysSpecContext) {}
+func (s *BaseCQLParserListener) ExitIndexKeysSpec(ctx *IndexKeysSpecContext) {}
 
 // EnterIndexEntriesSSpec is called when production indexEntriesSSpec is entered.
-func (s *BaseCqlParserListener) EnterIndexEntriesSSpec(ctx *IndexEntriesSSpecContext) {}
+func (s *BaseCQLParserListener) EnterIndexEntriesSSpec(ctx *IndexEntriesSSpecContext) {}
 
 // ExitIndexEntriesSSpec is called when production indexEntriesSSpec is exited.
-func (s *BaseCqlParserListener) ExitIndexEntriesSSpec(ctx *IndexEntriesSSpecContext) {}
+func (s *BaseCQLParserListener) ExitIndexEntriesSSpec(ctx *IndexEntriesSSpecContext) {}
 
 // EnterIndexFullSpec is called when production indexFullSpec is entered.
-func (s *BaseCqlParserListener) EnterIndexFullSpec(ctx *IndexFullSpecContext) {}
+func (s *BaseCQLParserListener) EnterIndexFullSpec(ctx *IndexFullSpecContext) {}
 
 // ExitIndexFullSpec is called when production indexFullSpec is exited.
-func (s *BaseCqlParserListener) ExitIndexFullSpec(ctx *IndexFullSpecContext) {}
+func (s *BaseCQLParserListener) ExitIndexFullSpec(ctx *IndexFullSpecContext) {}
 
 // EnterDelete_ is called when production delete_ is entered.
-func (s *BaseCqlParserListener) EnterDelete_(ctx *Delete_Context) {}
+func (s *BaseCQLParserListener) EnterDelete_(ctx *Delete_Context) {}
 
 // ExitDelete_ is called when production delete_ is exited.
-func (s *BaseCqlParserListener) ExitDelete_(ctx *Delete_Context) {}
+func (s *BaseCQLParserListener) ExitDelete_(ctx *Delete_Context) {}
 
 // EnterDeleteColumnList is called when production deleteColumnList is entered.
-func (s *BaseCqlParserListener) EnterDeleteColumnList(ctx *DeleteColumnListContext) {}
+func (s *BaseCQLParserListener) EnterDeleteColumnList(ctx *DeleteColumnListContext) {}
 
 // ExitDeleteColumnList is called when production deleteColumnList is exited.
-func (s *BaseCqlParserListener) ExitDeleteColumnList(ctx *DeleteColumnListContext) {}
+func (s *BaseCQLParserListener) ExitDeleteColumnList(ctx *DeleteColumnListContext) {}
 
 // EnterDeleteColumnItem is called when production deleteColumnItem is entered.
-func (s *BaseCqlParserListener) EnterDeleteColumnItem(ctx *DeleteColumnItemContext) {}
+func (s *BaseCQLParserListener) EnterDeleteColumnItem(ctx *DeleteColumnItemContext) {}
 
 // ExitDeleteColumnItem is called when production deleteColumnItem is exited.
-func (s *BaseCqlParserListener) ExitDeleteColumnItem(ctx *DeleteColumnItemContext) {}
+func (s *BaseCQLParserListener) ExitDeleteColumnItem(ctx *DeleteColumnItemContext) {}
 
 // EnterUpdate is called when production update is entered.
-func (s *BaseCqlParserListener) EnterUpdate(ctx *UpdateContext) {}
+func (s *BaseCQLParserListener) EnterUpdate(ctx *UpdateContext) {}
 
 // ExitUpdate is called when production update is exited.
-func (s *BaseCqlParserListener) ExitUpdate(ctx *UpdateContext) {}
+func (s *BaseCQLParserListener) ExitUpdate(ctx *UpdateContext) {}
 
 // EnterIfSpec is called when production ifSpec is entered.
-func (s *BaseCqlParserListener) EnterIfSpec(ctx *IfSpecContext) {}
+func (s *BaseCQLParserListener) EnterIfSpec(ctx *IfSpecContext) {}
 
 // ExitIfSpec is called when production ifSpec is exited.
-func (s *BaseCqlParserListener) ExitIfSpec(ctx *IfSpecContext) {}
+func (s *BaseCQLParserListener) ExitIfSpec(ctx *IfSpecContext) {}
 
 // EnterIfConditionList is called when production ifConditionList is entered.
-func (s *BaseCqlParserListener) EnterIfConditionList(ctx *IfConditionListContext) {}
+func (s *BaseCQLParserListener) EnterIfConditionList(ctx *IfConditionListContext) {}
 
 // ExitIfConditionList is called when production ifConditionList is exited.
-func (s *BaseCqlParserListener) ExitIfConditionList(ctx *IfConditionListContext) {}
+func (s *BaseCQLParserListener) ExitIfConditionList(ctx *IfConditionListContext) {}
 
 // EnterIfCondition is called when production ifCondition is entered.
-func (s *BaseCqlParserListener) EnterIfCondition(ctx *IfConditionContext) {}
+func (s *BaseCQLParserListener) EnterIfCondition(ctx *IfConditionContext) {}
 
 // ExitIfCondition is called when production ifCondition is exited.
-func (s *BaseCqlParserListener) ExitIfCondition(ctx *IfConditionContext) {}
+func (s *BaseCQLParserListener) ExitIfCondition(ctx *IfConditionContext) {}
 
 // EnterAssignments is called when production assignments is entered.
-func (s *BaseCqlParserListener) EnterAssignments(ctx *AssignmentsContext) {}
+func (s *BaseCQLParserListener) EnterAssignments(ctx *AssignmentsContext) {}
 
 // ExitAssignments is called when production assignments is exited.
-func (s *BaseCqlParserListener) ExitAssignments(ctx *AssignmentsContext) {}
+func (s *BaseCQLParserListener) ExitAssignments(ctx *AssignmentsContext) {}
 
 // EnterAssignmentElement is called when production assignmentElement is entered.
-func (s *BaseCqlParserListener) EnterAssignmentElement(ctx *AssignmentElementContext) {}
+func (s *BaseCQLParserListener) EnterAssignmentElement(ctx *AssignmentElementContext) {}
 
 // ExitAssignmentElement is called when production assignmentElement is exited.
-func (s *BaseCqlParserListener) ExitAssignmentElement(ctx *AssignmentElementContext) {}
+func (s *BaseCQLParserListener) ExitAssignmentElement(ctx *AssignmentElementContext) {}
 
 // EnterAssignmentSet is called when production assignmentSet is entered.
-func (s *BaseCqlParserListener) EnterAssignmentSet(ctx *AssignmentSetContext) {}
+func (s *BaseCQLParserListener) EnterAssignmentSet(ctx *AssignmentSetContext) {}
 
 // ExitAssignmentSet is called when production assignmentSet is exited.
-func (s *BaseCqlParserListener) ExitAssignmentSet(ctx *AssignmentSetContext) {}
+func (s *BaseCQLParserListener) ExitAssignmentSet(ctx *AssignmentSetContext) {}
 
 // EnterAssignmentMap is called when production assignmentMap is entered.
-func (s *BaseCqlParserListener) EnterAssignmentMap(ctx *AssignmentMapContext) {}
+func (s *BaseCQLParserListener) EnterAssignmentMap(ctx *AssignmentMapContext) {}
 
 // ExitAssignmentMap is called when production assignmentMap is exited.
-func (s *BaseCqlParserListener) ExitAssignmentMap(ctx *AssignmentMapContext) {}
+func (s *BaseCQLParserListener) ExitAssignmentMap(ctx *AssignmentMapContext) {}
 
 // EnterAssignmentList is called when production assignmentList is entered.
-func (s *BaseCqlParserListener) EnterAssignmentList(ctx *AssignmentListContext) {}
+func (s *BaseCQLParserListener) EnterAssignmentList(ctx *AssignmentListContext) {}
 
 // ExitAssignmentList is called when production assignmentList is exited.
-func (s *BaseCqlParserListener) ExitAssignmentList(ctx *AssignmentListContext) {}
+func (s *BaseCQLParserListener) ExitAssignmentList(ctx *AssignmentListContext) {}
 
 // EnterAssignmentTuple is called when production assignmentTuple is entered.
-func (s *BaseCqlParserListener) EnterAssignmentTuple(ctx *AssignmentTupleContext) {}
+func (s *BaseCQLParserListener) EnterAssignmentTuple(ctx *AssignmentTupleContext) {}
 
 // ExitAssignmentTuple is called when production assignmentTuple is exited.
-func (s *BaseCqlParserListener) ExitAssignmentTuple(ctx *AssignmentTupleContext) {}
+func (s *BaseCQLParserListener) ExitAssignmentTuple(ctx *AssignmentTupleContext) {}
 
 // EnterInsert is called when production insert is entered.
-func (s *BaseCqlParserListener) EnterInsert(ctx *InsertContext) {}
+func (s *BaseCQLParserListener) EnterInsert(ctx *InsertContext) {}
 
 // ExitInsert is called when production insert is exited.
-func (s *BaseCqlParserListener) ExitInsert(ctx *InsertContext) {}
+func (s *BaseCQLParserListener) ExitInsert(ctx *InsertContext) {}
 
 // EnterUsingTtlTimestamp is called when production usingTtlTimestamp is entered.
-func (s *BaseCqlParserListener) EnterUsingTtlTimestamp(ctx *UsingTtlTimestampContext) {}
+func (s *BaseCQLParserListener) EnterUsingTtlTimestamp(ctx *UsingTtlTimestampContext) {}
 
 // ExitUsingTtlTimestamp is called when production usingTtlTimestamp is exited.
-func (s *BaseCqlParserListener) ExitUsingTtlTimestamp(ctx *UsingTtlTimestampContext) {}
+func (s *BaseCQLParserListener) ExitUsingTtlTimestamp(ctx *UsingTtlTimestampContext) {}
 
 // EnterTimestamp is called when production timestamp is entered.
-func (s *BaseCqlParserListener) EnterTimestamp(ctx *TimestampContext) {}
+func (s *BaseCQLParserListener) EnterTimestamp(ctx *TimestampContext) {}
 
 // ExitTimestamp is called when production timestamp is exited.
-func (s *BaseCqlParserListener) ExitTimestamp(ctx *TimestampContext) {}
+func (s *BaseCQLParserListener) ExitTimestamp(ctx *TimestampContext) {}
 
 // EnterTtl is called when production ttl is entered.
-func (s *BaseCqlParserListener) EnterTtl(ctx *TtlContext) {}
+func (s *BaseCQLParserListener) EnterTtl(ctx *TtlContext) {}
 
 // ExitTtl is called when production ttl is exited.
-func (s *BaseCqlParserListener) ExitTtl(ctx *TtlContext) {}
+func (s *BaseCQLParserListener) ExitTtl(ctx *TtlContext) {}
 
 // EnterUsingTimestampSpec is called when production usingTimestampSpec is entered.
-func (s *BaseCqlParserListener) EnterUsingTimestampSpec(ctx *UsingTimestampSpecContext) {}
+func (s *BaseCQLParserListener) EnterUsingTimestampSpec(ctx *UsingTimestampSpecContext) {}
 
 // ExitUsingTimestampSpec is called when production usingTimestampSpec is exited.
-func (s *BaseCqlParserListener) ExitUsingTimestampSpec(ctx *UsingTimestampSpecContext) {}
+func (s *BaseCQLParserListener) ExitUsingTimestampSpec(ctx *UsingTimestampSpecContext) {}
 
 // EnterIfNotExist is called when production ifNotExist is entered.
-func (s *BaseCqlParserListener) EnterIfNotExist(ctx *IfNotExistContext) {}
+func (s *BaseCQLParserListener) EnterIfNotExist(ctx *IfNotExistContext) {}
 
 // ExitIfNotExist is called when production ifNotExist is exited.
-func (s *BaseCqlParserListener) ExitIfNotExist(ctx *IfNotExistContext) {}
+func (s *BaseCQLParserListener) ExitIfNotExist(ctx *IfNotExistContext) {}
 
 // EnterIfExist is called when production ifExist is entered.
-func (s *BaseCqlParserListener) EnterIfExist(ctx *IfExistContext) {}
+func (s *BaseCQLParserListener) EnterIfExist(ctx *IfExistContext) {}
 
 // ExitIfExist is called when production ifExist is exited.
-func (s *BaseCqlParserListener) ExitIfExist(ctx *IfExistContext) {}
+func (s *BaseCQLParserListener) ExitIfExist(ctx *IfExistContext) {}
 
 // EnterInsertValuesSpec is called when production insertValuesSpec is entered.
-func (s *BaseCqlParserListener) EnterInsertValuesSpec(ctx *InsertValuesSpecContext) {}
+func (s *BaseCQLParserListener) EnterInsertValuesSpec(ctx *InsertValuesSpecContext) {}
 
 // ExitInsertValuesSpec is called when production insertValuesSpec is exited.
-func (s *BaseCqlParserListener) ExitInsertValuesSpec(ctx *InsertValuesSpecContext) {}
+func (s *BaseCQLParserListener) ExitInsertValuesSpec(ctx *InsertValuesSpecContext) {}
 
 // EnterInsertColumnSpec is called when production insertColumnSpec is entered.
-func (s *BaseCqlParserListener) EnterInsertColumnSpec(ctx *InsertColumnSpecContext) {}
+func (s *BaseCQLParserListener) EnterInsertColumnSpec(ctx *InsertColumnSpecContext) {}
 
 // ExitInsertColumnSpec is called when production insertColumnSpec is exited.
-func (s *BaseCqlParserListener) ExitInsertColumnSpec(ctx *InsertColumnSpecContext) {}
+func (s *BaseCQLParserListener) ExitInsertColumnSpec(ctx *InsertColumnSpecContext) {}
 
 // EnterColumnList is called when production columnList is entered.
-func (s *BaseCqlParserListener) EnterColumnList(ctx *ColumnListContext) {}
+func (s *BaseCQLParserListener) EnterColumnList(ctx *ColumnListContext) {}
 
 // ExitColumnList is called when production columnList is exited.
-func (s *BaseCqlParserListener) ExitColumnList(ctx *ColumnListContext) {}
+func (s *BaseCQLParserListener) ExitColumnList(ctx *ColumnListContext) {}
 
 // EnterExpressionList is called when production expressionList is entered.
-func (s *BaseCqlParserListener) EnterExpressionList(ctx *ExpressionListContext) {}
+func (s *BaseCQLParserListener) EnterExpressionList(ctx *ExpressionListContext) {}
 
 // ExitExpressionList is called when production expressionList is exited.
-func (s *BaseCqlParserListener) ExitExpressionList(ctx *ExpressionListContext) {}
+func (s *BaseCQLParserListener) ExitExpressionList(ctx *ExpressionListContext) {}
 
 // EnterExpression is called when production expression is entered.
-func (s *BaseCqlParserListener) EnterExpression(ctx *ExpressionContext) {}
+func (s *BaseCQLParserListener) EnterExpression(ctx *ExpressionContext) {}
 
 // ExitExpression is called when production expression is exited.
-func (s *BaseCqlParserListener) ExitExpression(ctx *ExpressionContext) {}
+func (s *BaseCQLParserListener) ExitExpression(ctx *ExpressionContext) {}
 
 // EnterSelect_ is called when production select_ is entered.
-func (s *BaseCqlParserListener) EnterSelect_(ctx *Select_Context) {}
+func (s *BaseCQLParserListener) EnterSelect_(ctx *Select_Context) {}
 
 // ExitSelect_ is called when production select_ is exited.
-func (s *BaseCqlParserListener) ExitSelect_(ctx *Select_Context) {}
+func (s *BaseCQLParserListener) ExitSelect_(ctx *Select_Context) {}
 
 // EnterAllowFilteringSpec is called when production allowFilteringSpec is entered.
-func (s *BaseCqlParserListener) EnterAllowFilteringSpec(ctx *AllowFilteringSpecContext) {}
+func (s *BaseCQLParserListener) EnterAllowFilteringSpec(ctx *AllowFilteringSpecContext) {}
 
 // ExitAllowFilteringSpec is called when production allowFilteringSpec is exited.
-func (s *BaseCqlParserListener) ExitAllowFilteringSpec(ctx *AllowFilteringSpecContext) {}
+func (s *BaseCQLParserListener) ExitAllowFilteringSpec(ctx *AllowFilteringSpecContext) {}
 
 // EnterLimitSpec is called when production limitSpec is entered.
-func (s *BaseCqlParserListener) EnterLimitSpec(ctx *LimitSpecContext) {}
+func (s *BaseCQLParserListener) EnterLimitSpec(ctx *LimitSpecContext) {}
 
 // ExitLimitSpec is called when production limitSpec is exited.
-func (s *BaseCqlParserListener) ExitLimitSpec(ctx *LimitSpecContext) {}
+func (s *BaseCQLParserListener) ExitLimitSpec(ctx *LimitSpecContext) {}
 
 // EnterFromSpec is called when production fromSpec is entered.
-func (s *BaseCqlParserListener) EnterFromSpec(ctx *FromSpecContext) {}
+func (s *BaseCQLParserListener) EnterFromSpec(ctx *FromSpecContext) {}
 
 // ExitFromSpec is called when production fromSpec is exited.
-func (s *BaseCqlParserListener) ExitFromSpec(ctx *FromSpecContext) {}
+func (s *BaseCQLParserListener) ExitFromSpec(ctx *FromSpecContext) {}
 
 // EnterFromSpecElement is called when production fromSpecElement is entered.
-func (s *BaseCqlParserListener) EnterFromSpecElement(ctx *FromSpecElementContext) {}
+func (s *BaseCQLParserListener) EnterFromSpecElement(ctx *FromSpecElementContext) {}
 
 // ExitFromSpecElement is called when production fromSpecElement is exited.
-func (s *BaseCqlParserListener) ExitFromSpecElement(ctx *FromSpecElementContext) {}
+func (s *BaseCQLParserListener) ExitFromSpecElement(ctx *FromSpecElementContext) {}
 
 // EnterOrderSpec is called when production orderSpec is entered.
-func (s *BaseCqlParserListener) EnterOrderSpec(ctx *OrderSpecContext) {}
+func (s *BaseCQLParserListener) EnterOrderSpec(ctx *OrderSpecContext) {}
 
 // ExitOrderSpec is called when production orderSpec is exited.
-func (s *BaseCqlParserListener) ExitOrderSpec(ctx *OrderSpecContext) {}
+func (s *BaseCQLParserListener) ExitOrderSpec(ctx *OrderSpecContext) {}
 
 // EnterOrderSpecElement is called when production orderSpecElement is entered.
-func (s *BaseCqlParserListener) EnterOrderSpecElement(ctx *OrderSpecElementContext) {}
+func (s *BaseCQLParserListener) EnterOrderSpecElement(ctx *OrderSpecElementContext) {}
 
 // ExitOrderSpecElement is called when production orderSpecElement is exited.
-func (s *BaseCqlParserListener) ExitOrderSpecElement(ctx *OrderSpecElementContext) {}
+func (s *BaseCQLParserListener) ExitOrderSpecElement(ctx *OrderSpecElementContext) {}
 
 // EnterWhereSpec is called when production whereSpec is entered.
-func (s *BaseCqlParserListener) EnterWhereSpec(ctx *WhereSpecContext) {}
+func (s *BaseCQLParserListener) EnterWhereSpec(ctx *WhereSpecContext) {}
 
 // ExitWhereSpec is called when production whereSpec is exited.
-func (s *BaseCqlParserListener) ExitWhereSpec(ctx *WhereSpecContext) {}
+func (s *BaseCQLParserListener) ExitWhereSpec(ctx *WhereSpecContext) {}
 
 // EnterDistinctSpec is called when production distinctSpec is entered.
-func (s *BaseCqlParserListener) EnterDistinctSpec(ctx *DistinctSpecContext) {}
+func (s *BaseCQLParserListener) EnterDistinctSpec(ctx *DistinctSpecContext) {}
 
 // ExitDistinctSpec is called when production distinctSpec is exited.
-func (s *BaseCqlParserListener) ExitDistinctSpec(ctx *DistinctSpecContext) {}
+func (s *BaseCQLParserListener) ExitDistinctSpec(ctx *DistinctSpecContext) {}
 
 // EnterSelectElements is called when production selectElements is entered.
-func (s *BaseCqlParserListener) EnterSelectElements(ctx *SelectElementsContext) {}
+func (s *BaseCQLParserListener) EnterSelectElements(ctx *SelectElementsContext) {}
 
 // ExitSelectElements is called when production selectElements is exited.
-func (s *BaseCqlParserListener) ExitSelectElements(ctx *SelectElementsContext) {}
+func (s *BaseCQLParserListener) ExitSelectElements(ctx *SelectElementsContext) {}
 
 // EnterSelectElement is called when production selectElement is entered.
-func (s *BaseCqlParserListener) EnterSelectElement(ctx *SelectElementContext) {}
+func (s *BaseCQLParserListener) EnterSelectElement(ctx *SelectElementContext) {}
 
 // ExitSelectElement is called when production selectElement is exited.
-func (s *BaseCqlParserListener) ExitSelectElement(ctx *SelectElementContext) {}
+func (s *BaseCQLParserListener) ExitSelectElement(ctx *SelectElementContext) {}
 
 // EnterRelationElements is called when production relationElements is entered.
-func (s *BaseCqlParserListener) EnterRelationElements(ctx *RelationElementsContext) {}
+func (s *BaseCQLParserListener) EnterRelationElements(ctx *RelationElementsContext) {}
 
 // ExitRelationElements is called when production relationElements is exited.
-func (s *BaseCqlParserListener) ExitRelationElements(ctx *RelationElementsContext) {}
+func (s *BaseCQLParserListener) ExitRelationElements(ctx *RelationElementsContext) {}
 
 // EnterRelationElement is called when production relationElement is entered.
-func (s *BaseCqlParserListener) EnterRelationElement(ctx *RelationElementContext) {}
+func (s *BaseCQLParserListener) EnterRelationElement(ctx *RelationElementContext) {}
 
 // ExitRelationElement is called when production relationElement is exited.
-func (s *BaseCqlParserListener) ExitRelationElement(ctx *RelationElementContext) {}
+func (s *BaseCQLParserListener) ExitRelationElement(ctx *RelationElementContext) {}
 
 // EnterRelalationContains is called when production relalationContains is entered.
-func (s *BaseCqlParserListener) EnterRelalationContains(ctx *RelalationContainsContext) {}
+func (s *BaseCQLParserListener) EnterRelalationContains(ctx *RelalationContainsContext) {}
 
 // ExitRelalationContains is called when production relalationContains is exited.
-func (s *BaseCqlParserListener) ExitRelalationContains(ctx *RelalationContainsContext) {}
+func (s *BaseCQLParserListener) ExitRelalationContains(ctx *RelalationContainsContext) {}
 
 // EnterRelalationContainsKey is called when production relalationContainsKey is entered.
-func (s *BaseCqlParserListener) EnterRelalationContainsKey(ctx *RelalationContainsKeyContext) {}
+func (s *BaseCQLParserListener) EnterRelalationContainsKey(ctx *RelalationContainsKeyContext) {}
 
 // ExitRelalationContainsKey is called when production relalationContainsKey is exited.
-func (s *BaseCqlParserListener) ExitRelalationContainsKey(ctx *RelalationContainsKeyContext) {}
+func (s *BaseCQLParserListener) ExitRelalationContainsKey(ctx *RelalationContainsKeyContext) {}
 
 // EnterFunctionCall is called when production functionCall is entered.
-func (s *BaseCqlParserListener) EnterFunctionCall(ctx *FunctionCallContext) {}
+func (s *BaseCQLParserListener) EnterFunctionCall(ctx *FunctionCallContext) {}
 
 // ExitFunctionCall is called when production functionCall is exited.
-func (s *BaseCqlParserListener) ExitFunctionCall(ctx *FunctionCallContext) {}
+func (s *BaseCQLParserListener) ExitFunctionCall(ctx *FunctionCallContext) {}
 
 // EnterFunctionArgs is called when production functionArgs is entered.
-func (s *BaseCqlParserListener) EnterFunctionArgs(ctx *FunctionArgsContext) {}
+func (s *BaseCQLParserListener) EnterFunctionArgs(ctx *FunctionArgsContext) {}
 
 // ExitFunctionArgs is called when production functionArgs is exited.
-func (s *BaseCqlParserListener) ExitFunctionArgs(ctx *FunctionArgsContext) {}
+func (s *BaseCQLParserListener) ExitFunctionArgs(ctx *FunctionArgsContext) {}
 
 // EnterConstant is called when production constant is entered.
-func (s *BaseCqlParserListener) EnterConstant(ctx *ConstantContext) {}
+func (s *BaseCQLParserListener) EnterConstant(ctx *ConstantContext) {}
 
 // ExitConstant is called when production constant is exited.
-func (s *BaseCqlParserListener) ExitConstant(ctx *ConstantContext) {}
+func (s *BaseCQLParserListener) ExitConstant(ctx *ConstantContext) {}
 
 // EnterDecimalLiteral is called when production decimalLiteral is entered.
-func (s *BaseCqlParserListener) EnterDecimalLiteral(ctx *DecimalLiteralContext) {}
+func (s *BaseCQLParserListener) EnterDecimalLiteral(ctx *DecimalLiteralContext) {}
 
 // ExitDecimalLiteral is called when production decimalLiteral is exited.
-func (s *BaseCqlParserListener) ExitDecimalLiteral(ctx *DecimalLiteralContext) {}
+func (s *BaseCQLParserListener) ExitDecimalLiteral(ctx *DecimalLiteralContext) {}
 
 // EnterFloatLiteral is called when production floatLiteral is entered.
-func (s *BaseCqlParserListener) EnterFloatLiteral(ctx *FloatLiteralContext) {}
+func (s *BaseCQLParserListener) EnterFloatLiteral(ctx *FloatLiteralContext) {}
 
 // ExitFloatLiteral is called when production floatLiteral is exited.
-func (s *BaseCqlParserListener) ExitFloatLiteral(ctx *FloatLiteralContext) {}
+func (s *BaseCQLParserListener) ExitFloatLiteral(ctx *FloatLiteralContext) {}
 
 // EnterStringLiteral is called when production stringLiteral is entered.
-func (s *BaseCqlParserListener) EnterStringLiteral(ctx *StringLiteralContext) {}
+func (s *BaseCQLParserListener) EnterStringLiteral(ctx *StringLiteralContext) {}
 
 // ExitStringLiteral is called when production stringLiteral is exited.
-func (s *BaseCqlParserListener) ExitStringLiteral(ctx *StringLiteralContext) {}
+func (s *BaseCQLParserListener) ExitStringLiteral(ctx *StringLiteralContext) {}
 
 // EnterBooleanLiteral is called when production booleanLiteral is entered.
-func (s *BaseCqlParserListener) EnterBooleanLiteral(ctx *BooleanLiteralContext) {}
+func (s *BaseCQLParserListener) EnterBooleanLiteral(ctx *BooleanLiteralContext) {}
 
 // ExitBooleanLiteral is called when production booleanLiteral is exited.
-func (s *BaseCqlParserListener) ExitBooleanLiteral(ctx *BooleanLiteralContext) {}
+func (s *BaseCQLParserListener) ExitBooleanLiteral(ctx *BooleanLiteralContext) {}
 
 // EnterHexadecimalLiteral is called when production hexadecimalLiteral is entered.
-func (s *BaseCqlParserListener) EnterHexadecimalLiteral(ctx *HexadecimalLiteralContext) {}
+func (s *BaseCQLParserListener) EnterHexadecimalLiteral(ctx *HexadecimalLiteralContext) {}
 
 // ExitHexadecimalLiteral is called when production hexadecimalLiteral is exited.
-func (s *BaseCqlParserListener) ExitHexadecimalLiteral(ctx *HexadecimalLiteralContext) {}
+func (s *BaseCQLParserListener) ExitHexadecimalLiteral(ctx *HexadecimalLiteralContext) {}
 
 // EnterKeyspace is called when production keyspace is entered.
-func (s *BaseCqlParserListener) EnterKeyspace(ctx *KeyspaceContext) {}
+func (s *BaseCQLParserListener) EnterKeyspace(ctx *KeyspaceContext) {}
 
 // ExitKeyspace is called when production keyspace is exited.
-func (s *BaseCqlParserListener) ExitKeyspace(ctx *KeyspaceContext) {}
+func (s *BaseCQLParserListener) ExitKeyspace(ctx *KeyspaceContext) {}
 
 // EnterTable is called when production table is entered.
-func (s *BaseCqlParserListener) EnterTable(ctx *TableContext) {}
+func (s *BaseCQLParserListener) EnterTable(ctx *TableContext) {}
 
 // ExitTable is called when production table is exited.
-func (s *BaseCqlParserListener) ExitTable(ctx *TableContext) {}
+func (s *BaseCQLParserListener) ExitTable(ctx *TableContext) {}
 
 // EnterColumn is called when production column is entered.
-func (s *BaseCqlParserListener) EnterColumn(ctx *ColumnContext) {}
+func (s *BaseCQLParserListener) EnterColumn(ctx *ColumnContext) {}
 
 // ExitColumn is called when production column is exited.
-func (s *BaseCqlParserListener) ExitColumn(ctx *ColumnContext) {}
+func (s *BaseCQLParserListener) ExitColumn(ctx *ColumnContext) {}
 
 // EnterDataType is called when production dataType is entered.
-func (s *BaseCqlParserListener) EnterDataType(ctx *DataTypeContext) {}
+func (s *BaseCQLParserListener) EnterDataType(ctx *DataTypeContext) {}
 
 // ExitDataType is called when production dataType is exited.
-func (s *BaseCqlParserListener) ExitDataType(ctx *DataTypeContext) {}
+func (s *BaseCQLParserListener) ExitDataType(ctx *DataTypeContext) {}
 
 // EnterDataTypeName is called when production dataTypeName is entered.
-func (s *BaseCqlParserListener) EnterDataTypeName(ctx *DataTypeNameContext) {}
+func (s *BaseCQLParserListener) EnterDataTypeName(ctx *DataTypeNameContext) {}
 
 // ExitDataTypeName is called when production dataTypeName is exited.
-func (s *BaseCqlParserListener) ExitDataTypeName(ctx *DataTypeNameContext) {}
+func (s *BaseCQLParserListener) ExitDataTypeName(ctx *DataTypeNameContext) {}
 
 // EnterDataTypeDefinition is called when production dataTypeDefinition is entered.
-func (s *BaseCqlParserListener) EnterDataTypeDefinition(ctx *DataTypeDefinitionContext) {}
+func (s *BaseCQLParserListener) EnterDataTypeDefinition(ctx *DataTypeDefinitionContext) {}
 
 // ExitDataTypeDefinition is called when production dataTypeDefinition is exited.
-func (s *BaseCqlParserListener) ExitDataTypeDefinition(ctx *DataTypeDefinitionContext) {}
+func (s *BaseCQLParserListener) ExitDataTypeDefinition(ctx *DataTypeDefinitionContext) {}
 
 // EnterOrderDirection is called when production orderDirection is entered.
-func (s *BaseCqlParserListener) EnterOrderDirection(ctx *OrderDirectionContext) {}
+func (s *BaseCQLParserListener) EnterOrderDirection(ctx *OrderDirectionContext) {}
 
 // ExitOrderDirection is called when production orderDirection is exited.
-func (s *BaseCqlParserListener) ExitOrderDirection(ctx *OrderDirectionContext) {}
+func (s *BaseCQLParserListener) ExitOrderDirection(ctx *OrderDirectionContext) {}
 
 // EnterRole is called when production role is entered.
-func (s *BaseCqlParserListener) EnterRole(ctx *RoleContext) {}
+func (s *BaseCQLParserListener) EnterRole(ctx *RoleContext) {}
 
 // ExitRole is called when production role is exited.
-func (s *BaseCqlParserListener) ExitRole(ctx *RoleContext) {}
+func (s *BaseCQLParserListener) ExitRole(ctx *RoleContext) {}
 
 // EnterTrigger is called when production trigger is entered.
-func (s *BaseCqlParserListener) EnterTrigger(ctx *TriggerContext) {}
+func (s *BaseCQLParserListener) EnterTrigger(ctx *TriggerContext) {}
 
 // ExitTrigger is called when production trigger is exited.
-func (s *BaseCqlParserListener) ExitTrigger(ctx *TriggerContext) {}
+func (s *BaseCQLParserListener) ExitTrigger(ctx *TriggerContext) {}
 
 // EnterTriggerClass is called when production triggerClass is entered.
-func (s *BaseCqlParserListener) EnterTriggerClass(ctx *TriggerClassContext) {}
+func (s *BaseCQLParserListener) EnterTriggerClass(ctx *TriggerClassContext) {}
 
 // ExitTriggerClass is called when production triggerClass is exited.
-func (s *BaseCqlParserListener) ExitTriggerClass(ctx *TriggerClassContext) {}
+func (s *BaseCQLParserListener) ExitTriggerClass(ctx *TriggerClassContext) {}
 
 // EnterMaterializedView is called when production materializedView is entered.
-func (s *BaseCqlParserListener) EnterMaterializedView(ctx *MaterializedViewContext) {}
+func (s *BaseCQLParserListener) EnterMaterializedView(ctx *MaterializedViewContext) {}
 
 // ExitMaterializedView is called when production materializedView is exited.
-func (s *BaseCqlParserListener) ExitMaterializedView(ctx *MaterializedViewContext) {}
+func (s *BaseCQLParserListener) ExitMaterializedView(ctx *MaterializedViewContext) {}
 
 // EnterType_ is called when production type_ is entered.
-func (s *BaseCqlParserListener) EnterType_(ctx *Type_Context) {}
+func (s *BaseCQLParserListener) EnterType_(ctx *Type_Context) {}
 
 // ExitType_ is called when production type_ is exited.
-func (s *BaseCqlParserListener) ExitType_(ctx *Type_Context) {}
+func (s *BaseCQLParserListener) ExitType_(ctx *Type_Context) {}
 
 // EnterAggregate is called when production aggregate is entered.
-func (s *BaseCqlParserListener) EnterAggregate(ctx *AggregateContext) {}
+func (s *BaseCQLParserListener) EnterAggregate(ctx *AggregateContext) {}
 
 // ExitAggregate is called when production aggregate is exited.
-func (s *BaseCqlParserListener) ExitAggregate(ctx *AggregateContext) {}
+func (s *BaseCQLParserListener) ExitAggregate(ctx *AggregateContext) {}
 
 // EnterFunction_ is called when production function_ is entered.
-func (s *BaseCqlParserListener) EnterFunction_(ctx *Function_Context) {}
+func (s *BaseCQLParserListener) EnterFunction_(ctx *Function_Context) {}
 
 // ExitFunction_ is called when production function_ is exited.
-func (s *BaseCqlParserListener) ExitFunction_(ctx *Function_Context) {}
+func (s *BaseCQLParserListener) ExitFunction_(ctx *Function_Context) {}
 
 // EnterLanguage is called when production language is entered.
-func (s *BaseCqlParserListener) EnterLanguage(ctx *LanguageContext) {}
+func (s *BaseCQLParserListener) EnterLanguage(ctx *LanguageContext) {}
 
 // ExitLanguage is called when production language is exited.
-func (s *BaseCqlParserListener) ExitLanguage(ctx *LanguageContext) {}
+func (s *BaseCQLParserListener) ExitLanguage(ctx *LanguageContext) {}
 
 // EnterUser is called when production user is entered.
-func (s *BaseCqlParserListener) EnterUser(ctx *UserContext) {}
+func (s *BaseCQLParserListener) EnterUser(ctx *UserContext) {}
 
 // ExitUser is called when production user is exited.
-func (s *BaseCqlParserListener) ExitUser(ctx *UserContext) {}
+func (s *BaseCQLParserListener) ExitUser(ctx *UserContext) {}
 
 // EnterPassword is called when production password is entered.
-func (s *BaseCqlParserListener) EnterPassword(ctx *PasswordContext) {}
+func (s *BaseCQLParserListener) EnterPassword(ctx *PasswordContext) {}
 
 // ExitPassword is called when production password is exited.
-func (s *BaseCqlParserListener) ExitPassword(ctx *PasswordContext) {}
+func (s *BaseCQLParserListener) ExitPassword(ctx *PasswordContext) {}
 
 // EnterHashKey is called when production hashKey is entered.
-func (s *BaseCqlParserListener) EnterHashKey(ctx *HashKeyContext) {}
+func (s *BaseCQLParserListener) EnterHashKey(ctx *HashKeyContext) {}
 
 // ExitHashKey is called when production hashKey is exited.
-func (s *BaseCqlParserListener) ExitHashKey(ctx *HashKeyContext) {}
+func (s *BaseCQLParserListener) ExitHashKey(ctx *HashKeyContext) {}
 
 // EnterParam is called when production param is entered.
-func (s *BaseCqlParserListener) EnterParam(ctx *ParamContext) {}
+func (s *BaseCQLParserListener) EnterParam(ctx *ParamContext) {}
 
 // ExitParam is called when production param is exited.
-func (s *BaseCqlParserListener) ExitParam(ctx *ParamContext) {}
+func (s *BaseCQLParserListener) ExitParam(ctx *ParamContext) {}
 
 // EnterParamName is called when production paramName is entered.
-func (s *BaseCqlParserListener) EnterParamName(ctx *ParamNameContext) {}
+func (s *BaseCQLParserListener) EnterParamName(ctx *ParamNameContext) {}
 
 // ExitParamName is called when production paramName is exited.
-func (s *BaseCqlParserListener) ExitParamName(ctx *ParamNameContext) {}
+func (s *BaseCQLParserListener) ExitParamName(ctx *ParamNameContext) {}
 
 // EnterKwAdd is called when production kwAdd is entered.
-func (s *BaseCqlParserListener) EnterKwAdd(ctx *KwAddContext) {}
+func (s *BaseCQLParserListener) EnterKwAdd(ctx *KwAddContext) {}
 
 // ExitKwAdd is called when production kwAdd is exited.
-func (s *BaseCqlParserListener) ExitKwAdd(ctx *KwAddContext) {}
+func (s *BaseCQLParserListener) ExitKwAdd(ctx *KwAddContext) {}
 
 // EnterKwAggregate is called when production kwAggregate is entered.
-func (s *BaseCqlParserListener) EnterKwAggregate(ctx *KwAggregateContext) {}
+func (s *BaseCQLParserListener) EnterKwAggregate(ctx *KwAggregateContext) {}
 
 // ExitKwAggregate is called when production kwAggregate is exited.
-func (s *BaseCqlParserListener) ExitKwAggregate(ctx *KwAggregateContext) {}
+func (s *BaseCQLParserListener) ExitKwAggregate(ctx *KwAggregateContext) {}
 
 // EnterKwAll is called when production kwAll is entered.
-func (s *BaseCqlParserListener) EnterKwAll(ctx *KwAllContext) {}
+func (s *BaseCQLParserListener) EnterKwAll(ctx *KwAllContext) {}
 
 // ExitKwAll is called when production kwAll is exited.
-func (s *BaseCqlParserListener) ExitKwAll(ctx *KwAllContext) {}
+func (s *BaseCQLParserListener) ExitKwAll(ctx *KwAllContext) {}
 
 // EnterKwAllPermissions is called when production kwAllPermissions is entered.
-func (s *BaseCqlParserListener) EnterKwAllPermissions(ctx *KwAllPermissionsContext) {}
+func (s *BaseCQLParserListener) EnterKwAllPermissions(ctx *KwAllPermissionsContext) {}
 
 // ExitKwAllPermissions is called when production kwAllPermissions is exited.
-func (s *BaseCqlParserListener) ExitKwAllPermissions(ctx *KwAllPermissionsContext) {}
+func (s *BaseCQLParserListener) ExitKwAllPermissions(ctx *KwAllPermissionsContext) {}
 
 // EnterKwAllow is called when production kwAllow is entered.
-func (s *BaseCqlParserListener) EnterKwAllow(ctx *KwAllowContext) {}
+func (s *BaseCQLParserListener) EnterKwAllow(ctx *KwAllowContext) {}
 
 // ExitKwAllow is called when production kwAllow is exited.
-func (s *BaseCqlParserListener) ExitKwAllow(ctx *KwAllowContext) {}
+func (s *BaseCQLParserListener) ExitKwAllow(ctx *KwAllowContext) {}
 
 // EnterKwAlter is called when production kwAlter is entered.
-func (s *BaseCqlParserListener) EnterKwAlter(ctx *KwAlterContext) {}
+func (s *BaseCQLParserListener) EnterKwAlter(ctx *KwAlterContext) {}
 
 // ExitKwAlter is called when production kwAlter is exited.
-func (s *BaseCqlParserListener) ExitKwAlter(ctx *KwAlterContext) {}
+func (s *BaseCQLParserListener) ExitKwAlter(ctx *KwAlterContext) {}
 
 // EnterKwAnd is called when production kwAnd is entered.
-func (s *BaseCqlParserListener) EnterKwAnd(ctx *KwAndContext) {}
+func (s *BaseCQLParserListener) EnterKwAnd(ctx *KwAndContext) {}
 
 // ExitKwAnd is called when production kwAnd is exited.
-func (s *BaseCqlParserListener) ExitKwAnd(ctx *KwAndContext) {}
+func (s *BaseCQLParserListener) ExitKwAnd(ctx *KwAndContext) {}
 
 // EnterKwApply is called when production kwApply is entered.
-func (s *BaseCqlParserListener) EnterKwApply(ctx *KwApplyContext) {}
+func (s *BaseCQLParserListener) EnterKwApply(ctx *KwApplyContext) {}
 
 // ExitKwApply is called when production kwApply is exited.
-func (s *BaseCqlParserListener) ExitKwApply(ctx *KwApplyContext) {}
+func (s *BaseCQLParserListener) ExitKwApply(ctx *KwApplyContext) {}
 
 // EnterKwAs is called when production kwAs is entered.
-func (s *BaseCqlParserListener) EnterKwAs(ctx *KwAsContext) {}
+func (s *BaseCQLParserListener) EnterKwAs(ctx *KwAsContext) {}
 
 // ExitKwAs is called when production kwAs is exited.
-func (s *BaseCqlParserListener) ExitKwAs(ctx *KwAsContext) {}
+func (s *BaseCQLParserListener) ExitKwAs(ctx *KwAsContext) {}
 
 // EnterKwAsc is called when production kwAsc is entered.
-func (s *BaseCqlParserListener) EnterKwAsc(ctx *KwAscContext) {}
+func (s *BaseCQLParserListener) EnterKwAsc(ctx *KwAscContext) {}
 
 // ExitKwAsc is called when production kwAsc is exited.
-func (s *BaseCqlParserListener) ExitKwAsc(ctx *KwAscContext) {}
+func (s *BaseCQLParserListener) ExitKwAsc(ctx *KwAscContext) {}
 
 // EnterKwAuthorize is called when production kwAuthorize is entered.
-func (s *BaseCqlParserListener) EnterKwAuthorize(ctx *KwAuthorizeContext) {}
+func (s *BaseCQLParserListener) EnterKwAuthorize(ctx *KwAuthorizeContext) {}
 
 // ExitKwAuthorize is called when production kwAuthorize is exited.
-func (s *BaseCqlParserListener) ExitKwAuthorize(ctx *KwAuthorizeContext) {}
+func (s *BaseCQLParserListener) ExitKwAuthorize(ctx *KwAuthorizeContext) {}
 
 // EnterKwBatch is called when production kwBatch is entered.
-func (s *BaseCqlParserListener) EnterKwBatch(ctx *KwBatchContext) {}
+func (s *BaseCQLParserListener) EnterKwBatch(ctx *KwBatchContext) {}
 
 // ExitKwBatch is called when production kwBatch is exited.
-func (s *BaseCqlParserListener) ExitKwBatch(ctx *KwBatchContext) {}
+func (s *BaseCQLParserListener) ExitKwBatch(ctx *KwBatchContext) {}
 
 // EnterKwBegin is called when production kwBegin is entered.
-func (s *BaseCqlParserListener) EnterKwBegin(ctx *KwBeginContext) {}
+func (s *BaseCQLParserListener) EnterKwBegin(ctx *KwBeginContext) {}
 
 // ExitKwBegin is called when production kwBegin is exited.
-func (s *BaseCqlParserListener) ExitKwBegin(ctx *KwBeginContext) {}
+func (s *BaseCQLParserListener) ExitKwBegin(ctx *KwBeginContext) {}
 
 // EnterKwBy is called when production kwBy is entered.
-func (s *BaseCqlParserListener) EnterKwBy(ctx *KwByContext) {}
+func (s *BaseCQLParserListener) EnterKwBy(ctx *KwByContext) {}
 
 // ExitKwBy is called when production kwBy is exited.
-func (s *BaseCqlParserListener) ExitKwBy(ctx *KwByContext) {}
+func (s *BaseCQLParserListener) ExitKwBy(ctx *KwByContext) {}
 
 // EnterKwCalled is called when production kwCalled is entered.
-func (s *BaseCqlParserListener) EnterKwCalled(ctx *KwCalledContext) {}
+func (s *BaseCQLParserListener) EnterKwCalled(ctx *KwCalledContext) {}
 
 // ExitKwCalled is called when production kwCalled is exited.
-func (s *BaseCqlParserListener) ExitKwCalled(ctx *KwCalledContext) {}
+func (s *BaseCQLParserListener) ExitKwCalled(ctx *KwCalledContext) {}
 
 // EnterKwClustering is called when production kwClustering is entered.
-func (s *BaseCqlParserListener) EnterKwClustering(ctx *KwClusteringContext) {}
+func (s *BaseCQLParserListener) EnterKwClustering(ctx *KwClusteringContext) {}
 
 // ExitKwClustering is called when production kwClustering is exited.
-func (s *BaseCqlParserListener) ExitKwClustering(ctx *KwClusteringContext) {}
+func (s *BaseCQLParserListener) ExitKwClustering(ctx *KwClusteringContext) {}
 
 // EnterKwCompact is called when production kwCompact is entered.
-func (s *BaseCqlParserListener) EnterKwCompact(ctx *KwCompactContext) {}
+func (s *BaseCQLParserListener) EnterKwCompact(ctx *KwCompactContext) {}
 
 // ExitKwCompact is called when production kwCompact is exited.
-func (s *BaseCqlParserListener) ExitKwCompact(ctx *KwCompactContext) {}
+func (s *BaseCQLParserListener) ExitKwCompact(ctx *KwCompactContext) {}
 
 // EnterKwContains is called when production kwContains is entered.
-func (s *BaseCqlParserListener) EnterKwContains(ctx *KwContainsContext) {}
+func (s *BaseCQLParserListener) EnterKwContains(ctx *KwContainsContext) {}
 
 // ExitKwContains is called when production kwContains is exited.
-func (s *BaseCqlParserListener) ExitKwContains(ctx *KwContainsContext) {}
+func (s *BaseCQLParserListener) ExitKwContains(ctx *KwContainsContext) {}
 
 // EnterKwCreate is called when production kwCreate is entered.
-func (s *BaseCqlParserListener) EnterKwCreate(ctx *KwCreateContext) {}
+func (s *BaseCQLParserListener) EnterKwCreate(ctx *KwCreateContext) {}
 
 // ExitKwCreate is called when production kwCreate is exited.
-func (s *BaseCqlParserListener) ExitKwCreate(ctx *KwCreateContext) {}
+func (s *BaseCQLParserListener) ExitKwCreate(ctx *KwCreateContext) {}
 
 // EnterKwDelete is called when production kwDelete is entered.
-func (s *BaseCqlParserListener) EnterKwDelete(ctx *KwDeleteContext) {}
+func (s *BaseCQLParserListener) EnterKwDelete(ctx *KwDeleteContext) {}
 
 // ExitKwDelete is called when production kwDelete is exited.
-func (s *BaseCqlParserListener) ExitKwDelete(ctx *KwDeleteContext) {}
+func (s *BaseCQLParserListener) ExitKwDelete(ctx *KwDeleteContext) {}
 
 // EnterKwDesc is called when production kwDesc is entered.
-func (s *BaseCqlParserListener) EnterKwDesc(ctx *KwDescContext) {}
+func (s *BaseCQLParserListener) EnterKwDesc(ctx *KwDescContext) {}
 
 // ExitKwDesc is called when production kwDesc is exited.
-func (s *BaseCqlParserListener) ExitKwDesc(ctx *KwDescContext) {}
+func (s *BaseCQLParserListener) ExitKwDesc(ctx *KwDescContext) {}
 
 // EnterKwDescibe is called when production kwDescibe is entered.
-func (s *BaseCqlParserListener) EnterKwDescibe(ctx *KwDescibeContext) {}
+func (s *BaseCQLParserListener) EnterKwDescibe(ctx *KwDescibeContext) {}
 
 // ExitKwDescibe is called when production kwDescibe is exited.
-func (s *BaseCqlParserListener) ExitKwDescibe(ctx *KwDescibeContext) {}
+func (s *BaseCQLParserListener) ExitKwDescibe(ctx *KwDescibeContext) {}
 
 // EnterKwDistinct is called when production kwDistinct is entered.
-func (s *BaseCqlParserListener) EnterKwDistinct(ctx *KwDistinctContext) {}
+func (s *BaseCQLParserListener) EnterKwDistinct(ctx *KwDistinctContext) {}
 
 // ExitKwDistinct is called when production kwDistinct is exited.
-func (s *BaseCqlParserListener) ExitKwDistinct(ctx *KwDistinctContext) {}
+func (s *BaseCQLParserListener) ExitKwDistinct(ctx *KwDistinctContext) {}
 
 // EnterKwDrop is called when production kwDrop is entered.
-func (s *BaseCqlParserListener) EnterKwDrop(ctx *KwDropContext) {}
+func (s *BaseCQLParserListener) EnterKwDrop(ctx *KwDropContext) {}
 
 // ExitKwDrop is called when production kwDrop is exited.
-func (s *BaseCqlParserListener) ExitKwDrop(ctx *KwDropContext) {}
+func (s *BaseCQLParserListener) ExitKwDrop(ctx *KwDropContext) {}
 
 // EnterKwDurableWrites is called when production kwDurableWrites is entered.
-func (s *BaseCqlParserListener) EnterKwDurableWrites(ctx *KwDurableWritesContext) {}
+func (s *BaseCQLParserListener) EnterKwDurableWrites(ctx *KwDurableWritesContext) {}
 
 // ExitKwDurableWrites is called when production kwDurableWrites is exited.
-func (s *BaseCqlParserListener) ExitKwDurableWrites(ctx *KwDurableWritesContext) {}
+func (s *BaseCQLParserListener) ExitKwDurableWrites(ctx *KwDurableWritesContext) {}
 
 // EnterKwEntries is called when production kwEntries is entered.
-func (s *BaseCqlParserListener) EnterKwEntries(ctx *KwEntriesContext) {}
+func (s *BaseCQLParserListener) EnterKwEntries(ctx *KwEntriesContext) {}
 
 // ExitKwEntries is called when production kwEntries is exited.
-func (s *BaseCqlParserListener) ExitKwEntries(ctx *KwEntriesContext) {}
+func (s *BaseCQLParserListener) ExitKwEntries(ctx *KwEntriesContext) {}
 
 // EnterKwExecute is called when production kwExecute is entered.
-func (s *BaseCqlParserListener) EnterKwExecute(ctx *KwExecuteContext) {}
+func (s *BaseCQLParserListener) EnterKwExecute(ctx *KwExecuteContext) {}
 
 // ExitKwExecute is called when production kwExecute is exited.
-func (s *BaseCqlParserListener) ExitKwExecute(ctx *KwExecuteContext) {}
+func (s *BaseCQLParserListener) ExitKwExecute(ctx *KwExecuteContext) {}
 
 // EnterKwExists is called when production kwExists is entered.
-func (s *BaseCqlParserListener) EnterKwExists(ctx *KwExistsContext) {}
+func (s *BaseCQLParserListener) EnterKwExists(ctx *KwExistsContext) {}
 
 // ExitKwExists is called when production kwExists is exited.
-func (s *BaseCqlParserListener) ExitKwExists(ctx *KwExistsContext) {}
+func (s *BaseCQLParserListener) ExitKwExists(ctx *KwExistsContext) {}
 
 // EnterKwFiltering is called when production kwFiltering is entered.
-func (s *BaseCqlParserListener) EnterKwFiltering(ctx *KwFilteringContext) {}
+func (s *BaseCQLParserListener) EnterKwFiltering(ctx *KwFilteringContext) {}
 
 // ExitKwFiltering is called when production kwFiltering is exited.
-func (s *BaseCqlParserListener) ExitKwFiltering(ctx *KwFilteringContext) {}
+func (s *BaseCQLParserListener) ExitKwFiltering(ctx *KwFilteringContext) {}
 
 // EnterKwFinalfunc is called when production kwFinalfunc is entered.
-func (s *BaseCqlParserListener) EnterKwFinalfunc(ctx *KwFinalfuncContext) {}
+func (s *BaseCQLParserListener) EnterKwFinalfunc(ctx *KwFinalfuncContext) {}
 
 // ExitKwFinalfunc is called when production kwFinalfunc is exited.
-func (s *BaseCqlParserListener) ExitKwFinalfunc(ctx *KwFinalfuncContext) {}
+func (s *BaseCQLParserListener) ExitKwFinalfunc(ctx *KwFinalfuncContext) {}
 
 // EnterKwFrom is called when production kwFrom is entered.
-func (s *BaseCqlParserListener) EnterKwFrom(ctx *KwFromContext) {}
+func (s *BaseCQLParserListener) EnterKwFrom(ctx *KwFromContext) {}
 
 // ExitKwFrom is called when production kwFrom is exited.
-func (s *BaseCqlParserListener) ExitKwFrom(ctx *KwFromContext) {}
+func (s *BaseCQLParserListener) ExitKwFrom(ctx *KwFromContext) {}
 
 // EnterKwFull is called when production kwFull is entered.
-func (s *BaseCqlParserListener) EnterKwFull(ctx *KwFullContext) {}
+func (s *BaseCQLParserListener) EnterKwFull(ctx *KwFullContext) {}
 
 // ExitKwFull is called when production kwFull is exited.
-func (s *BaseCqlParserListener) ExitKwFull(ctx *KwFullContext) {}
+func (s *BaseCQLParserListener) ExitKwFull(ctx *KwFullContext) {}
 
 // EnterKwFunction is called when production kwFunction is entered.
-func (s *BaseCqlParserListener) EnterKwFunction(ctx *KwFunctionContext) {}
+func (s *BaseCQLParserListener) EnterKwFunction(ctx *KwFunctionContext) {}
 
 // ExitKwFunction is called when production kwFunction is exited.
-func (s *BaseCqlParserListener) ExitKwFunction(ctx *KwFunctionContext) {}
+func (s *BaseCQLParserListener) ExitKwFunction(ctx *KwFunctionContext) {}
 
 // EnterKwFunctions is called when production kwFunctions is entered.
-func (s *BaseCqlParserListener) EnterKwFunctions(ctx *KwFunctionsContext) {}
+func (s *BaseCQLParserListener) EnterKwFunctions(ctx *KwFunctionsContext) {}
 
 // ExitKwFunctions is called when production kwFunctions is exited.
-func (s *BaseCqlParserListener) ExitKwFunctions(ctx *KwFunctionsContext) {}
+func (s *BaseCQLParserListener) ExitKwFunctions(ctx *KwFunctionsContext) {}
 
 // EnterKwGrant is called when production kwGrant is entered.
-func (s *BaseCqlParserListener) EnterKwGrant(ctx *KwGrantContext) {}
+func (s *BaseCQLParserListener) EnterKwGrant(ctx *KwGrantContext) {}
 
 // ExitKwGrant is called when production kwGrant is exited.
-func (s *BaseCqlParserListener) ExitKwGrant(ctx *KwGrantContext) {}
+func (s *BaseCQLParserListener) ExitKwGrant(ctx *KwGrantContext) {}
 
 // EnterKwIf is called when production kwIf is entered.
-func (s *BaseCqlParserListener) EnterKwIf(ctx *KwIfContext) {}
+func (s *BaseCQLParserListener) EnterKwIf(ctx *KwIfContext) {}
 
 // ExitKwIf is called when production kwIf is exited.
-func (s *BaseCqlParserListener) ExitKwIf(ctx *KwIfContext) {}
+func (s *BaseCQLParserListener) ExitKwIf(ctx *KwIfContext) {}
 
 // EnterKwIn is called when production kwIn is entered.
-func (s *BaseCqlParserListener) EnterKwIn(ctx *KwInContext) {}
+func (s *BaseCQLParserListener) EnterKwIn(ctx *KwInContext) {}
 
 // ExitKwIn is called when production kwIn is exited.
-func (s *BaseCqlParserListener) ExitKwIn(ctx *KwInContext) {}
+func (s *BaseCQLParserListener) ExitKwIn(ctx *KwInContext) {}
 
 // EnterKwIndex is called when production kwIndex is entered.
-func (s *BaseCqlParserListener) EnterKwIndex(ctx *KwIndexContext) {}
+func (s *BaseCQLParserListener) EnterKwIndex(ctx *KwIndexContext) {}
 
 // ExitKwIndex is called when production kwIndex is exited.
-func (s *BaseCqlParserListener) ExitKwIndex(ctx *KwIndexContext) {}
+func (s *BaseCQLParserListener) ExitKwIndex(ctx *KwIndexContext) {}
 
 // EnterKwInitcond is called when production kwInitcond is entered.
-func (s *BaseCqlParserListener) EnterKwInitcond(ctx *KwInitcondContext) {}
+func (s *BaseCQLParserListener) EnterKwInitcond(ctx *KwInitcondContext) {}
 
 // ExitKwInitcond is called when production kwInitcond is exited.
-func (s *BaseCqlParserListener) ExitKwInitcond(ctx *KwInitcondContext) {}
+func (s *BaseCQLParserListener) ExitKwInitcond(ctx *KwInitcondContext) {}
 
 // EnterKwInput is called when production kwInput is entered.
-func (s *BaseCqlParserListener) EnterKwInput(ctx *KwInputContext) {}
+func (s *BaseCQLParserListener) EnterKwInput(ctx *KwInputContext) {}
 
 // ExitKwInput is called when production kwInput is exited.
-func (s *BaseCqlParserListener) ExitKwInput(ctx *KwInputContext) {}
+func (s *BaseCQLParserListener) ExitKwInput(ctx *KwInputContext) {}
 
 // EnterKwInsert is called when production kwInsert is entered.
-func (s *BaseCqlParserListener) EnterKwInsert(ctx *KwInsertContext) {}
+func (s *BaseCQLParserListener) EnterKwInsert(ctx *KwInsertContext) {}
 
 // ExitKwInsert is called when production kwInsert is exited.
-func (s *BaseCqlParserListener) ExitKwInsert(ctx *KwInsertContext) {}
+func (s *BaseCQLParserListener) ExitKwInsert(ctx *KwInsertContext) {}
 
 // EnterKwInto is called when production kwInto is entered.
-func (s *BaseCqlParserListener) EnterKwInto(ctx *KwIntoContext) {}
+func (s *BaseCQLParserListener) EnterKwInto(ctx *KwIntoContext) {}
 
 // ExitKwInto is called when production kwInto is exited.
-func (s *BaseCqlParserListener) ExitKwInto(ctx *KwIntoContext) {}
+func (s *BaseCQLParserListener) ExitKwInto(ctx *KwIntoContext) {}
 
 // EnterKwIs is called when production kwIs is entered.
-func (s *BaseCqlParserListener) EnterKwIs(ctx *KwIsContext) {}
+func (s *BaseCQLParserListener) EnterKwIs(ctx *KwIsContext) {}
 
 // ExitKwIs is called when production kwIs is exited.
-func (s *BaseCqlParserListener) ExitKwIs(ctx *KwIsContext) {}
+func (s *BaseCQLParserListener) ExitKwIs(ctx *KwIsContext) {}
 
 // EnterKwJson is called when production kwJson is entered.
-func (s *BaseCqlParserListener) EnterKwJson(ctx *KwJsonContext) {}
+func (s *BaseCQLParserListener) EnterKwJson(ctx *KwJsonContext) {}
 
 // ExitKwJson is called when production kwJson is exited.
-func (s *BaseCqlParserListener) ExitKwJson(ctx *KwJsonContext) {}
+func (s *BaseCQLParserListener) ExitKwJson(ctx *KwJsonContext) {}
 
 // EnterKwKey is called when production kwKey is entered.
-func (s *BaseCqlParserListener) EnterKwKey(ctx *KwKeyContext) {}
+func (s *BaseCQLParserListener) EnterKwKey(ctx *KwKeyContext) {}
 
 // ExitKwKey is called when production kwKey is exited.
-func (s *BaseCqlParserListener) ExitKwKey(ctx *KwKeyContext) {}
+func (s *BaseCQLParserListener) ExitKwKey(ctx *KwKeyContext) {}
 
 // EnterKwKeys is called when production kwKeys is entered.
-func (s *BaseCqlParserListener) EnterKwKeys(ctx *KwKeysContext) {}
+func (s *BaseCQLParserListener) EnterKwKeys(ctx *KwKeysContext) {}
 
 // ExitKwKeys is called when production kwKeys is exited.
-func (s *BaseCqlParserListener) ExitKwKeys(ctx *KwKeysContext) {}
+func (s *BaseCQLParserListener) ExitKwKeys(ctx *KwKeysContext) {}
 
 // EnterKwKeyspace is called when production kwKeyspace is entered.
-func (s *BaseCqlParserListener) EnterKwKeyspace(ctx *KwKeyspaceContext) {}
+func (s *BaseCQLParserListener) EnterKwKeyspace(ctx *KwKeyspaceContext) {}
 
 // ExitKwKeyspace is called when production kwKeyspace is exited.
-func (s *BaseCqlParserListener) ExitKwKeyspace(ctx *KwKeyspaceContext) {}
+func (s *BaseCQLParserListener) ExitKwKeyspace(ctx *KwKeyspaceContext) {}
 
 // EnterKwKeyspaces is called when production kwKeyspaces is entered.
-func (s *BaseCqlParserListener) EnterKwKeyspaces(ctx *KwKeyspacesContext) {}
+func (s *BaseCQLParserListener) EnterKwKeyspaces(ctx *KwKeyspacesContext) {}
 
 // ExitKwKeyspaces is called when production kwKeyspaces is exited.
-func (s *BaseCqlParserListener) ExitKwKeyspaces(ctx *KwKeyspacesContext) {}
+func (s *BaseCQLParserListener) ExitKwKeyspaces(ctx *KwKeyspacesContext) {}
 
 // EnterKwLanguage is called when production kwLanguage is entered.
-func (s *BaseCqlParserListener) EnterKwLanguage(ctx *KwLanguageContext) {}
+func (s *BaseCQLParserListener) EnterKwLanguage(ctx *KwLanguageContext) {}
 
 // ExitKwLanguage is called when production kwLanguage is exited.
-func (s *BaseCqlParserListener) ExitKwLanguage(ctx *KwLanguageContext) {}
+func (s *BaseCQLParserListener) ExitKwLanguage(ctx *KwLanguageContext) {}
 
 // EnterKwLimit is called when production kwLimit is entered.
-func (s *BaseCqlParserListener) EnterKwLimit(ctx *KwLimitContext) {}
+func (s *BaseCQLParserListener) EnterKwLimit(ctx *KwLimitContext) {}
 
 // ExitKwLimit is called when production kwLimit is exited.
-func (s *BaseCqlParserListener) ExitKwLimit(ctx *KwLimitContext) {}
+func (s *BaseCQLParserListener) ExitKwLimit(ctx *KwLimitContext) {}
 
 // EnterKwList is called when production kwList is entered.
-func (s *BaseCqlParserListener) EnterKwList(ctx *KwListContext) {}
+func (s *BaseCQLParserListener) EnterKwList(ctx *KwListContext) {}
 
 // ExitKwList is called when production kwList is exited.
-func (s *BaseCqlParserListener) ExitKwList(ctx *KwListContext) {}
+func (s *BaseCQLParserListener) ExitKwList(ctx *KwListContext) {}
 
 // EnterKwLogged is called when production kwLogged is entered.
-func (s *BaseCqlParserListener) EnterKwLogged(ctx *KwLoggedContext) {}
+func (s *BaseCQLParserListener) EnterKwLogged(ctx *KwLoggedContext) {}
 
 // ExitKwLogged is called when production kwLogged is exited.
-func (s *BaseCqlParserListener) ExitKwLogged(ctx *KwLoggedContext) {}
+func (s *BaseCQLParserListener) ExitKwLogged(ctx *KwLoggedContext) {}
 
 // EnterKwLogin is called when production kwLogin is entered.
-func (s *BaseCqlParserListener) EnterKwLogin(ctx *KwLoginContext) {}
+func (s *BaseCQLParserListener) EnterKwLogin(ctx *KwLoginContext) {}
 
 // ExitKwLogin is called when production kwLogin is exited.
-func (s *BaseCqlParserListener) ExitKwLogin(ctx *KwLoginContext) {}
+func (s *BaseCQLParserListener) ExitKwLogin(ctx *KwLoginContext) {}
 
 // EnterKwMaterialized is called when production kwMaterialized is entered.
-func (s *BaseCqlParserListener) EnterKwMaterialized(ctx *KwMaterializedContext) {}
+func (s *BaseCQLParserListener) EnterKwMaterialized(ctx *KwMaterializedContext) {}
 
 // ExitKwMaterialized is called when production kwMaterialized is exited.
-func (s *BaseCqlParserListener) ExitKwMaterialized(ctx *KwMaterializedContext) {}
+func (s *BaseCQLParserListener) ExitKwMaterialized(ctx *KwMaterializedContext) {}
 
 // EnterKwModify is called when production kwModify is entered.
-func (s *BaseCqlParserListener) EnterKwModify(ctx *KwModifyContext) {}
+func (s *BaseCQLParserListener) EnterKwModify(ctx *KwModifyContext) {}
 
 // ExitKwModify is called when production kwModify is exited.
-func (s *BaseCqlParserListener) ExitKwModify(ctx *KwModifyContext) {}
+func (s *BaseCQLParserListener) ExitKwModify(ctx *KwModifyContext) {}
 
 // EnterKwNosuperuser is called when production kwNosuperuser is entered.
-func (s *BaseCqlParserListener) EnterKwNosuperuser(ctx *KwNosuperuserContext) {}
+func (s *BaseCQLParserListener) EnterKwNosuperuser(ctx *KwNosuperuserContext) {}
 
 // ExitKwNosuperuser is called when production kwNosuperuser is exited.
-func (s *BaseCqlParserListener) ExitKwNosuperuser(ctx *KwNosuperuserContext) {}
+func (s *BaseCQLParserListener) ExitKwNosuperuser(ctx *KwNosuperuserContext) {}
 
 // EnterKwNorecursive is called when production kwNorecursive is entered.
-func (s *BaseCqlParserListener) EnterKwNorecursive(ctx *KwNorecursiveContext) {}
+func (s *BaseCQLParserListener) EnterKwNorecursive(ctx *KwNorecursiveContext) {}
 
 // ExitKwNorecursive is called when production kwNorecursive is exited.
-func (s *BaseCqlParserListener) ExitKwNorecursive(ctx *KwNorecursiveContext) {}
+func (s *BaseCQLParserListener) ExitKwNorecursive(ctx *KwNorecursiveContext) {}
 
 // EnterKwNot is called when production kwNot is entered.
-func (s *BaseCqlParserListener) EnterKwNot(ctx *KwNotContext) {}
+func (s *BaseCQLParserListener) EnterKwNot(ctx *KwNotContext) {}
 
 // ExitKwNot is called when production kwNot is exited.
-func (s *BaseCqlParserListener) ExitKwNot(ctx *KwNotContext) {}
+func (s *BaseCQLParserListener) ExitKwNot(ctx *KwNotContext) {}
 
 // EnterKwNull is called when production kwNull is entered.
-func (s *BaseCqlParserListener) EnterKwNull(ctx *KwNullContext) {}
+func (s *BaseCQLParserListener) EnterKwNull(ctx *KwNullContext) {}
 
 // ExitKwNull is called when production kwNull is exited.
-func (s *BaseCqlParserListener) ExitKwNull(ctx *KwNullContext) {}
+func (s *BaseCQLParserListener) ExitKwNull(ctx *KwNullContext) {}
 
 // EnterKwOf is called when production kwOf is entered.
-func (s *BaseCqlParserListener) EnterKwOf(ctx *KwOfContext) {}
+func (s *BaseCQLParserListener) EnterKwOf(ctx *KwOfContext) {}
 
 // ExitKwOf is called when production kwOf is exited.
-func (s *BaseCqlParserListener) ExitKwOf(ctx *KwOfContext) {}
+func (s *BaseCQLParserListener) ExitKwOf(ctx *KwOfContext) {}
 
 // EnterKwOn is called when production kwOn is entered.
-func (s *BaseCqlParserListener) EnterKwOn(ctx *KwOnContext) {}
+func (s *BaseCQLParserListener) EnterKwOn(ctx *KwOnContext) {}
 
 // ExitKwOn is called when production kwOn is exited.
-func (s *BaseCqlParserListener) ExitKwOn(ctx *KwOnContext) {}
+func (s *BaseCQLParserListener) ExitKwOn(ctx *KwOnContext) {}
 
 // EnterKwOptions is called when production kwOptions is entered.
-func (s *BaseCqlParserListener) EnterKwOptions(ctx *KwOptionsContext) {}
+func (s *BaseCQLParserListener) EnterKwOptions(ctx *KwOptionsContext) {}
 
 // ExitKwOptions is called when production kwOptions is exited.
-func (s *BaseCqlParserListener) ExitKwOptions(ctx *KwOptionsContext) {}
+func (s *BaseCQLParserListener) ExitKwOptions(ctx *KwOptionsContext) {}
 
 // EnterKwOr is called when production kwOr is entered.
-func (s *BaseCqlParserListener) EnterKwOr(ctx *KwOrContext) {}
+func (s *BaseCQLParserListener) EnterKwOr(ctx *KwOrContext) {}
 
 // ExitKwOr is called when production kwOr is exited.
-func (s *BaseCqlParserListener) ExitKwOr(ctx *KwOrContext) {}
+func (s *BaseCQLParserListener) ExitKwOr(ctx *KwOrContext) {}
 
 // EnterKwOrder is called when production kwOrder is entered.
-func (s *BaseCqlParserListener) EnterKwOrder(ctx *KwOrderContext) {}
+func (s *BaseCQLParserListener) EnterKwOrder(ctx *KwOrderContext) {}
 
 // ExitKwOrder is called when production kwOrder is exited.
-func (s *BaseCqlParserListener) ExitKwOrder(ctx *KwOrderContext) {}
+func (s *BaseCQLParserListener) ExitKwOrder(ctx *KwOrderContext) {}
 
 // EnterKwPassword is called when production kwPassword is entered.
-func (s *BaseCqlParserListener) EnterKwPassword(ctx *KwPasswordContext) {}
+func (s *BaseCQLParserListener) EnterKwPassword(ctx *KwPasswordContext) {}
 
 // ExitKwPassword is called when production kwPassword is exited.
-func (s *BaseCqlParserListener) ExitKwPassword(ctx *KwPasswordContext) {}
+func (s *BaseCQLParserListener) ExitKwPassword(ctx *KwPasswordContext) {}
 
 // EnterKwPrimary is called when production kwPrimary is entered.
-func (s *BaseCqlParserListener) EnterKwPrimary(ctx *KwPrimaryContext) {}
+func (s *BaseCQLParserListener) EnterKwPrimary(ctx *KwPrimaryContext) {}
 
 // ExitKwPrimary is called when production kwPrimary is exited.
-func (s *BaseCqlParserListener) ExitKwPrimary(ctx *KwPrimaryContext) {}
+func (s *BaseCQLParserListener) ExitKwPrimary(ctx *KwPrimaryContext) {}
 
 // EnterKwRename is called when production kwRename is entered.
-func (s *BaseCqlParserListener) EnterKwRename(ctx *KwRenameContext) {}
+func (s *BaseCQLParserListener) EnterKwRename(ctx *KwRenameContext) {}
 
 // ExitKwRename is called when production kwRename is exited.
-func (s *BaseCqlParserListener) ExitKwRename(ctx *KwRenameContext) {}
+func (s *BaseCQLParserListener) ExitKwRename(ctx *KwRenameContext) {}
 
 // EnterKwReplace is called when production kwReplace is entered.
-func (s *BaseCqlParserListener) EnterKwReplace(ctx *KwReplaceContext) {}
+func (s *BaseCQLParserListener) EnterKwReplace(ctx *KwReplaceContext) {}
 
 // ExitKwReplace is called when production kwReplace is exited.
-func (s *BaseCqlParserListener) ExitKwReplace(ctx *KwReplaceContext) {}
+func (s *BaseCQLParserListener) ExitKwReplace(ctx *KwReplaceContext) {}
 
 // EnterKwReplication is called when production kwReplication is entered.
-func (s *BaseCqlParserListener) EnterKwReplication(ctx *KwReplicationContext) {}
+func (s *BaseCQLParserListener) EnterKwReplication(ctx *KwReplicationContext) {}
 
 // ExitKwReplication is called when production kwReplication is exited.
-func (s *BaseCqlParserListener) ExitKwReplication(ctx *KwReplicationContext) {}
+func (s *BaseCQLParserListener) ExitKwReplication(ctx *KwReplicationContext) {}
 
 // EnterKwReturns is called when production kwReturns is entered.
-func (s *BaseCqlParserListener) EnterKwReturns(ctx *KwReturnsContext) {}
+func (s *BaseCQLParserListener) EnterKwReturns(ctx *KwReturnsContext) {}
 
 // ExitKwReturns is called when production kwReturns is exited.
-func (s *BaseCqlParserListener) ExitKwReturns(ctx *KwReturnsContext) {}
+func (s *BaseCQLParserListener) ExitKwReturns(ctx *KwReturnsContext) {}
 
 // EnterKwRole is called when production kwRole is entered.
-func (s *BaseCqlParserListener) EnterKwRole(ctx *KwRoleContext) {}
+func (s *BaseCQLParserListener) EnterKwRole(ctx *KwRoleContext) {}
 
 // ExitKwRole is called when production kwRole is exited.
-func (s *BaseCqlParserListener) ExitKwRole(ctx *KwRoleContext) {}
+func (s *BaseCQLParserListener) ExitKwRole(ctx *KwRoleContext) {}
 
 // EnterKwRoles is called when production kwRoles is entered.
-func (s *BaseCqlParserListener) EnterKwRoles(ctx *KwRolesContext) {}
+func (s *BaseCQLParserListener) EnterKwRoles(ctx *KwRolesContext) {}
 
 // ExitKwRoles is called when production kwRoles is exited.
-func (s *BaseCqlParserListener) ExitKwRoles(ctx *KwRolesContext) {}
+func (s *BaseCQLParserListener) ExitKwRoles(ctx *KwRolesContext) {}
 
 // EnterKwSelect is called when production kwSelect is entered.
-func (s *BaseCqlParserListener) EnterKwSelect(ctx *KwSelectContext) {}
+func (s *BaseCQLParserListener) EnterKwSelect(ctx *KwSelectContext) {}
 
 // ExitKwSelect is called when production kwSelect is exited.
-func (s *BaseCqlParserListener) ExitKwSelect(ctx *KwSelectContext) {}
+func (s *BaseCQLParserListener) ExitKwSelect(ctx *KwSelectContext) {}
 
 // EnterKwSet is called when production kwSet is entered.
-func (s *BaseCqlParserListener) EnterKwSet(ctx *KwSetContext) {}
+func (s *BaseCQLParserListener) EnterKwSet(ctx *KwSetContext) {}
 
 // ExitKwSet is called when production kwSet is exited.
-func (s *BaseCqlParserListener) ExitKwSet(ctx *KwSetContext) {}
+func (s *BaseCQLParserListener) ExitKwSet(ctx *KwSetContext) {}
 
 // EnterKwSfunc is called when production kwSfunc is entered.
-func (s *BaseCqlParserListener) EnterKwSfunc(ctx *KwSfuncContext) {}
+func (s *BaseCQLParserListener) EnterKwSfunc(ctx *KwSfuncContext) {}
 
 // ExitKwSfunc is called when production kwSfunc is exited.
-func (s *BaseCqlParserListener) ExitKwSfunc(ctx *KwSfuncContext) {}
+func (s *BaseCQLParserListener) ExitKwSfunc(ctx *KwSfuncContext) {}
 
 // EnterKwStorage is called when production kwStorage is entered.
-func (s *BaseCqlParserListener) EnterKwStorage(ctx *KwStorageContext) {}
+func (s *BaseCQLParserListener) EnterKwStorage(ctx *KwStorageContext) {}
 
 // ExitKwStorage is called when production kwStorage is exited.
-func (s *BaseCqlParserListener) ExitKwStorage(ctx *KwStorageContext) {}
+func (s *BaseCQLParserListener) ExitKwStorage(ctx *KwStorageContext) {}
 
 // EnterKwStype is called when production kwStype is entered.
-func (s *BaseCqlParserListener) EnterKwStype(ctx *KwStypeContext) {}
+func (s *BaseCQLParserListener) EnterKwStype(ctx *KwStypeContext) {}
 
 // ExitKwStype is called when production kwStype is exited.
-func (s *BaseCqlParserListener) ExitKwStype(ctx *KwStypeContext) {}
+func (s *BaseCQLParserListener) ExitKwStype(ctx *KwStypeContext) {}
 
 // EnterKwSuperuser is called when production kwSuperuser is entered.
-func (s *BaseCqlParserListener) EnterKwSuperuser(ctx *KwSuperuserContext) {}
+func (s *BaseCQLParserListener) EnterKwSuperuser(ctx *KwSuperuserContext) {}
 
 // ExitKwSuperuser is called when production kwSuperuser is exited.
-func (s *BaseCqlParserListener) ExitKwSuperuser(ctx *KwSuperuserContext) {}
+func (s *BaseCQLParserListener) ExitKwSuperuser(ctx *KwSuperuserContext) {}
 
 // EnterKwTable is called when production kwTable is entered.
-func (s *BaseCqlParserListener) EnterKwTable(ctx *KwTableContext) {}
+func (s *BaseCQLParserListener) EnterKwTable(ctx *KwTableContext) {}
 
 // ExitKwTable is called when production kwTable is exited.
-func (s *BaseCqlParserListener) ExitKwTable(ctx *KwTableContext) {}
+func (s *BaseCQLParserListener) ExitKwTable(ctx *KwTableContext) {}
 
 // EnterKwTimestamp is called when production kwTimestamp is entered.
-func (s *BaseCqlParserListener) EnterKwTimestamp(ctx *KwTimestampContext) {}
+func (s *BaseCQLParserListener) EnterKwTimestamp(ctx *KwTimestampContext) {}
 
 // ExitKwTimestamp is called when production kwTimestamp is exited.
-func (s *BaseCqlParserListener) ExitKwTimestamp(ctx *KwTimestampContext) {}
+func (s *BaseCQLParserListener) ExitKwTimestamp(ctx *KwTimestampContext) {}
 
 // EnterKwTo is called when production kwTo is entered.
-func (s *BaseCqlParserListener) EnterKwTo(ctx *KwToContext) {}
+func (s *BaseCQLParserListener) EnterKwTo(ctx *KwToContext) {}
 
 // ExitKwTo is called when production kwTo is exited.
-func (s *BaseCqlParserListener) ExitKwTo(ctx *KwToContext) {}
+func (s *BaseCQLParserListener) ExitKwTo(ctx *KwToContext) {}
 
 // EnterKwTrigger is called when production kwTrigger is entered.
-func (s *BaseCqlParserListener) EnterKwTrigger(ctx *KwTriggerContext) {}
+func (s *BaseCQLParserListener) EnterKwTrigger(ctx *KwTriggerContext) {}
 
 // ExitKwTrigger is called when production kwTrigger is exited.
-func (s *BaseCqlParserListener) ExitKwTrigger(ctx *KwTriggerContext) {}
+func (s *BaseCQLParserListener) ExitKwTrigger(ctx *KwTriggerContext) {}
 
 // EnterKwTruncate is called when production kwTruncate is entered.
-func (s *BaseCqlParserListener) EnterKwTruncate(ctx *KwTruncateContext) {}
+func (s *BaseCQLParserListener) EnterKwTruncate(ctx *KwTruncateContext) {}
 
 // ExitKwTruncate is called when production kwTruncate is exited.
-func (s *BaseCqlParserListener) ExitKwTruncate(ctx *KwTruncateContext) {}
+func (s *BaseCQLParserListener) ExitKwTruncate(ctx *KwTruncateContext) {}
 
 // EnterKwTtl is called when production kwTtl is entered.
-func (s *BaseCqlParserListener) EnterKwTtl(ctx *KwTtlContext) {}
+func (s *BaseCQLParserListener) EnterKwTtl(ctx *KwTtlContext) {}
 
 // ExitKwTtl is called when production kwTtl is exited.
-func (s *BaseCqlParserListener) ExitKwTtl(ctx *KwTtlContext) {}
+func (s *BaseCQLParserListener) ExitKwTtl(ctx *KwTtlContext) {}
 
 // EnterKwType is called when production kwType is entered.
-func (s *BaseCqlParserListener) EnterKwType(ctx *KwTypeContext) {}
+func (s *BaseCQLParserListener) EnterKwType(ctx *KwTypeContext) {}
 
 // ExitKwType is called when production kwType is exited.
-func (s *BaseCqlParserListener) ExitKwType(ctx *KwTypeContext) {}
+func (s *BaseCQLParserListener) ExitKwType(ctx *KwTypeContext) {}
 
 // EnterKwUnlogged is called when production kwUnlogged is entered.
-func (s *BaseCqlParserListener) EnterKwUnlogged(ctx *KwUnloggedContext) {}
+func (s *BaseCQLParserListener) EnterKwUnlogged(ctx *KwUnloggedContext) {}
 
 // ExitKwUnlogged is called when production kwUnlogged is exited.
-func (s *BaseCqlParserListener) ExitKwUnlogged(ctx *KwUnloggedContext) {}
+func (s *BaseCQLParserListener) ExitKwUnlogged(ctx *KwUnloggedContext) {}
 
 // EnterKwUpdate is called when production kwUpdate is entered.
-func (s *BaseCqlParserListener) EnterKwUpdate(ctx *KwUpdateContext) {}
+func (s *BaseCQLParserListener) EnterKwUpdate(ctx *KwUpdateContext) {}
 
 // ExitKwUpdate is called when production kwUpdate is exited.
-func (s *BaseCqlParserListener) ExitKwUpdate(ctx *KwUpdateContext) {}
+func (s *BaseCQLParserListener) ExitKwUpdate(ctx *KwUpdateContext) {}
 
 // EnterKwUse is called when production kwUse is entered.
-func (s *BaseCqlParserListener) EnterKwUse(ctx *KwUseContext) {}
+func (s *BaseCQLParserListener) EnterKwUse(ctx *KwUseContext) {}
 
 // ExitKwUse is called when production kwUse is exited.
-func (s *BaseCqlParserListener) ExitKwUse(ctx *KwUseContext) {}
+func (s *BaseCQLParserListener) ExitKwUse(ctx *KwUseContext) {}
 
 // EnterKwUser is called when production kwUser is entered.
-func (s *BaseCqlParserListener) EnterKwUser(ctx *KwUserContext) {}
+func (s *BaseCQLParserListener) EnterKwUser(ctx *KwUserContext) {}
 
 // ExitKwUser is called when production kwUser is exited.
-func (s *BaseCqlParserListener) ExitKwUser(ctx *KwUserContext) {}
+func (s *BaseCQLParserListener) ExitKwUser(ctx *KwUserContext) {}
 
 // EnterKwUsing is called when production kwUsing is entered.
-func (s *BaseCqlParserListener) EnterKwUsing(ctx *KwUsingContext) {}
+func (s *BaseCQLParserListener) EnterKwUsing(ctx *KwUsingContext) {}
 
 // ExitKwUsing is called when production kwUsing is exited.
-func (s *BaseCqlParserListener) ExitKwUsing(ctx *KwUsingContext) {}
+func (s *BaseCQLParserListener) ExitKwUsing(ctx *KwUsingContext) {}
 
 // EnterKwValues is called when production kwValues is entered.
-func (s *BaseCqlParserListener) EnterKwValues(ctx *KwValuesContext) {}
+func (s *BaseCQLParserListener) EnterKwValues(ctx *KwValuesContext) {}
 
 // ExitKwValues is called when production kwValues is exited.
-func (s *BaseCqlParserListener) ExitKwValues(ctx *KwValuesContext) {}
+func (s *BaseCQLParserListener) ExitKwValues(ctx *KwValuesContext) {}
 
 // EnterKwView is called when production kwView is entered.
-func (s *BaseCqlParserListener) EnterKwView(ctx *KwViewContext) {}
+func (s *BaseCQLParserListener) EnterKwView(ctx *KwViewContext) {}
 
 // ExitKwView is called when production kwView is exited.
-func (s *BaseCqlParserListener) ExitKwView(ctx *KwViewContext) {}
+func (s *BaseCQLParserListener) ExitKwView(ctx *KwViewContext) {}
 
 // EnterKwWhere is called when production kwWhere is entered.
-func (s *BaseCqlParserListener) EnterKwWhere(ctx *KwWhereContext) {}
+func (s *BaseCQLParserListener) EnterKwWhere(ctx *KwWhereContext) {}
 
 // ExitKwWhere is called when production kwWhere is exited.
-func (s *BaseCqlParserListener) ExitKwWhere(ctx *KwWhereContext) {}
+func (s *BaseCQLParserListener) ExitKwWhere(ctx *KwWhereContext) {}
 
 // EnterKwWith is called when production kwWith is entered.
-func (s *BaseCqlParserListener) EnterKwWith(ctx *KwWithContext) {}
+func (s *BaseCQLParserListener) EnterKwWith(ctx *KwWithContext) {}
 
 // ExitKwWith is called when production kwWith is exited.
-func (s *BaseCqlParserListener) ExitKwWith(ctx *KwWithContext) {}
+func (s *BaseCQLParserListener) ExitKwWith(ctx *KwWithContext) {}
 
 // EnterKwRevoke is called when production kwRevoke is entered.
-func (s *BaseCqlParserListener) EnterKwRevoke(ctx *KwRevokeContext) {}
+func (s *BaseCQLParserListener) EnterKwRevoke(ctx *KwRevokeContext) {}
 
 // ExitKwRevoke is called when production kwRevoke is exited.
-func (s *BaseCqlParserListener) ExitKwRevoke(ctx *KwRevokeContext) {}
+func (s *BaseCQLParserListener) ExitKwRevoke(ctx *KwRevokeContext) {}
 
 // EnterSyntaxBracketLr is called when production syntaxBracketLr is entered.
-func (s *BaseCqlParserListener) EnterSyntaxBracketLr(ctx *SyntaxBracketLrContext) {}
+func (s *BaseCQLParserListener) EnterSyntaxBracketLr(ctx *SyntaxBracketLrContext) {}
 
 // ExitSyntaxBracketLr is called when production syntaxBracketLr is exited.
-func (s *BaseCqlParserListener) ExitSyntaxBracketLr(ctx *SyntaxBracketLrContext) {}
+func (s *BaseCQLParserListener) ExitSyntaxBracketLr(ctx *SyntaxBracketLrContext) {}
 
 // EnterSyntaxBracketRr is called when production syntaxBracketRr is entered.
-func (s *BaseCqlParserListener) EnterSyntaxBracketRr(ctx *SyntaxBracketRrContext) {}
+func (s *BaseCQLParserListener) EnterSyntaxBracketRr(ctx *SyntaxBracketRrContext) {}
 
 // ExitSyntaxBracketRr is called when production syntaxBracketRr is exited.
-func (s *BaseCqlParserListener) ExitSyntaxBracketRr(ctx *SyntaxBracketRrContext) {}
+func (s *BaseCQLParserListener) ExitSyntaxBracketRr(ctx *SyntaxBracketRrContext) {}
 
 // EnterSyntaxBracketLc is called when production syntaxBracketLc is entered.
-func (s *BaseCqlParserListener) EnterSyntaxBracketLc(ctx *SyntaxBracketLcContext) {}
+func (s *BaseCQLParserListener) EnterSyntaxBracketLc(ctx *SyntaxBracketLcContext) {}
 
 // ExitSyntaxBracketLc is called when production syntaxBracketLc is exited.
-func (s *BaseCqlParserListener) ExitSyntaxBracketLc(ctx *SyntaxBracketLcContext) {}
+func (s *BaseCQLParserListener) ExitSyntaxBracketLc(ctx *SyntaxBracketLcContext) {}
 
 // EnterSyntaxBracketRc is called when production syntaxBracketRc is entered.
-func (s *BaseCqlParserListener) EnterSyntaxBracketRc(ctx *SyntaxBracketRcContext) {}
+func (s *BaseCQLParserListener) EnterSyntaxBracketRc(ctx *SyntaxBracketRcContext) {}
 
 // ExitSyntaxBracketRc is called when production syntaxBracketRc is exited.
-func (s *BaseCqlParserListener) ExitSyntaxBracketRc(ctx *SyntaxBracketRcContext) {}
+func (s *BaseCQLParserListener) ExitSyntaxBracketRc(ctx *SyntaxBracketRcContext) {}
 
 // EnterSyntaxBracketLa is called when production syntaxBracketLa is entered.
-func (s *BaseCqlParserListener) EnterSyntaxBracketLa(ctx *SyntaxBracketLaContext) {}
+func (s *BaseCQLParserListener) EnterSyntaxBracketLa(ctx *SyntaxBracketLaContext) {}
 
 // ExitSyntaxBracketLa is called when production syntaxBracketLa is exited.
-func (s *BaseCqlParserListener) ExitSyntaxBracketLa(ctx *SyntaxBracketLaContext) {}
+func (s *BaseCQLParserListener) ExitSyntaxBracketLa(ctx *SyntaxBracketLaContext) {}
 
 // EnterSyntaxBracketRa is called when production syntaxBracketRa is entered.
-func (s *BaseCqlParserListener) EnterSyntaxBracketRa(ctx *SyntaxBracketRaContext) {}
+func (s *BaseCQLParserListener) EnterSyntaxBracketRa(ctx *SyntaxBracketRaContext) {}
 
 // ExitSyntaxBracketRa is called when production syntaxBracketRa is exited.
-func (s *BaseCqlParserListener) ExitSyntaxBracketRa(ctx *SyntaxBracketRaContext) {}
+func (s *BaseCQLParserListener) ExitSyntaxBracketRa(ctx *SyntaxBracketRaContext) {}
 
 // EnterSyntaxBracketLs is called when production syntaxBracketLs is entered.
-func (s *BaseCqlParserListener) EnterSyntaxBracketLs(ctx *SyntaxBracketLsContext) {}
+func (s *BaseCQLParserListener) EnterSyntaxBracketLs(ctx *SyntaxBracketLsContext) {}
 
 // ExitSyntaxBracketLs is called when production syntaxBracketLs is exited.
-func (s *BaseCqlParserListener) ExitSyntaxBracketLs(ctx *SyntaxBracketLsContext) {}
+func (s *BaseCQLParserListener) ExitSyntaxBracketLs(ctx *SyntaxBracketLsContext) {}
 
 // EnterSyntaxBracketRs is called when production syntaxBracketRs is entered.
-func (s *BaseCqlParserListener) EnterSyntaxBracketRs(ctx *SyntaxBracketRsContext) {}
+func (s *BaseCQLParserListener) EnterSyntaxBracketRs(ctx *SyntaxBracketRsContext) {}
 
 // ExitSyntaxBracketRs is called when production syntaxBracketRs is exited.
-func (s *BaseCqlParserListener) ExitSyntaxBracketRs(ctx *SyntaxBracketRsContext) {}
+func (s *BaseCQLParserListener) ExitSyntaxBracketRs(ctx *SyntaxBracketRsContext) {}
 
 // EnterSyntaxComma is called when production syntaxComma is entered.
-func (s *BaseCqlParserListener) EnterSyntaxComma(ctx *SyntaxCommaContext) {}
+func (s *BaseCQLParserListener) EnterSyntaxComma(ctx *SyntaxCommaContext) {}
 
 // ExitSyntaxComma is called when production syntaxComma is exited.
-func (s *BaseCqlParserListener) ExitSyntaxComma(ctx *SyntaxCommaContext) {}
+func (s *BaseCQLParserListener) ExitSyntaxComma(ctx *SyntaxCommaContext) {}
 
 // EnterSyntaxColon is called when production syntaxColon is entered.
-func (s *BaseCqlParserListener) EnterSyntaxColon(ctx *SyntaxColonContext) {}
+func (s *BaseCQLParserListener) EnterSyntaxColon(ctx *SyntaxColonContext) {}
 
 // ExitSyntaxColon is called when production syntaxColon is exited.
-func (s *BaseCqlParserListener) ExitSyntaxColon(ctx *SyntaxColonContext) {}
+func (s *BaseCQLParserListener) ExitSyntaxColon(ctx *SyntaxColonContext) {}

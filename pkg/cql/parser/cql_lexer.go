@@ -1,4 +1,4 @@
-// Code generated from CqlLexer.g4 by ANTLR 4.13.2. DO NOT EDIT.
+// Code generated from CQLLexer.g4 by ANTLR 4.13.2. DO NOT EDIT.
 
 package parser
 
@@ -14,14 +14,14 @@ var _ = fmt.Printf
 var _ = sync.Once{}
 var _ = unicode.IsLetter
 
-type CqlLexer struct {
+type CQLLexer struct {
 	*antlr.BaseLexer
 	channelNames []string
 	modeNames    []string
 	// TODO: EOF string
 }
 
-var CqlLexerLexerStaticData struct {
+var CQLLexerLexerStaticData struct {
 	once                   sync.Once
 	serializedATN          []int32
 	ChannelNames           []string
@@ -35,7 +35,7 @@ var CqlLexerLexerStaticData struct {
 }
 
 func cqllexerLexerInit() {
-	staticData := &CqlLexerLexerStaticData
+	staticData := &CQLLexerLexerStaticData
 	staticData.ChannelNames = []string{
 		"DEFAULT_TOKEN_CHANNEL", "HIDDEN",
 	}
@@ -859,208 +859,208 @@ func cqllexerLexerInit() {
 	}
 }
 
-// CqlLexerInit initializes any static state used to implement CqlLexer. By default the
+// CQLLexerInit initializes any static state used to implement CQLLexer. By default the
 // static state used to implement the lexer is lazily initialized during the first call to
-// NewCqlLexer(). You can call this function if you wish to initialize the static state ahead
+// NewCQLLexer(). You can call this function if you wish to initialize the static state ahead
 // of time.
-func CqlLexerInit() {
-	staticData := &CqlLexerLexerStaticData
+func CQLLexerInit() {
+	staticData := &CQLLexerLexerStaticData
 	staticData.once.Do(cqllexerLexerInit)
 }
 
-// NewCqlLexer produces a new lexer instance for the optional input antlr.CharStream.
-func NewCqlLexer(input antlr.CharStream) *CqlLexer {
-	CqlLexerInit()
-	l := new(CqlLexer)
+// NewCQLLexer produces a new lexer instance for the optional input antlr.CharStream.
+func NewCQLLexer(input antlr.CharStream) *CQLLexer {
+	CQLLexerInit()
+	l := new(CQLLexer)
 	l.BaseLexer = antlr.NewBaseLexer(input)
-	staticData := &CqlLexerLexerStaticData
+	staticData := &CQLLexerLexerStaticData
 	l.Interpreter = antlr.NewLexerATNSimulator(l, staticData.atn, staticData.decisionToDFA, staticData.PredictionContextCache)
 	l.channelNames = staticData.ChannelNames
 	l.modeNames = staticData.ModeNames
 	l.RuleNames = staticData.RuleNames
 	l.LiteralNames = staticData.LiteralNames
 	l.SymbolicNames = staticData.SymbolicNames
-	l.GrammarFileName = "CqlLexer.g4"
+	l.GrammarFileName = "CQLLexer.g4"
 	// TODO: l.EOF = antlr.TokenEOF
 
 	return l
 }
 
-// CqlLexer tokens.
+// CQLLexer tokens.
 const (
-	CqlLexerLR_BRACKET          = 1
-	CqlLexerRR_BRACKET          = 2
-	CqlLexerLC_BRACKET          = 3
-	CqlLexerRC_BRACKET          = 4
-	CqlLexerLS_BRACKET          = 5
-	CqlLexerRS_BRACKET          = 6
-	CqlLexerCOMMA               = 7
-	CqlLexerSEMI                = 8
-	CqlLexerCOLON               = 9
-	CqlLexerDOT                 = 10
-	CqlLexerSTAR                = 11
-	CqlLexerDIVIDE              = 12
-	CqlLexerMODULE              = 13
-	CqlLexerPLUS                = 14
-	CqlLexerMINUSMINUS          = 15
-	CqlLexerMINUS               = 16
-	CqlLexerDQUOTE              = 17
-	CqlLexerSQUOTE              = 18
-	CqlLexerOPERATOR_EQ         = 19
-	CqlLexerOPERATOR_LT         = 20
-	CqlLexerOPERATOR_GT         = 21
-	CqlLexerOPERATOR_LTE        = 22
-	CqlLexerOPERATOR_GTE        = 23
-	CqlLexerK_ADD               = 24
-	CqlLexerK_AGGREGATE         = 25
-	CqlLexerK_ALL               = 26
-	CqlLexerK_ALLOW             = 27
-	CqlLexerK_ALTER             = 28
-	CqlLexerK_AND               = 29
-	CqlLexerK_ANY               = 30
-	CqlLexerK_APPLY             = 31
-	CqlLexerK_AS                = 32
-	CqlLexerK_ASC               = 33
-	CqlLexerK_AUTHORIZE         = 34
-	CqlLexerK_BATCH             = 35
-	CqlLexerK_BEGIN             = 36
-	CqlLexerK_BY                = 37
-	CqlLexerK_CALLED            = 38
-	CqlLexerK_CLUSTERING        = 39
-	CqlLexerK_COLUMNFAMILY      = 40
-	CqlLexerK_COMPACT           = 41
-	CqlLexerK_CONSISTENCY       = 42
-	CqlLexerK_CONTAINS          = 43
-	CqlLexerK_CREATE            = 44
-	CqlLexerK_CUSTOM            = 45
-	CqlLexerK_DELETE            = 46
-	CqlLexerK_DESC              = 47
-	CqlLexerK_DESCRIBE          = 48
-	CqlLexerK_DISTINCT          = 49
-	CqlLexerK_DROP              = 50
-	CqlLexerK_DURABLE_WRITES    = 51
-	CqlLexerK_EACH_QUORUM       = 52
-	CqlLexerK_ENTRIES           = 53
-	CqlLexerK_EXECUTE           = 54
-	CqlLexerK_EXISTS            = 55
-	CqlLexerK_FALSE             = 56
-	CqlLexerK_FILTERING         = 57
-	CqlLexerK_FINALFUNC         = 58
-	CqlLexerK_FROM              = 59
-	CqlLexerK_FULL              = 60
-	CqlLexerK_FUNCTION          = 61
-	CqlLexerK_FUNCTIONS         = 62
-	CqlLexerK_GRANT             = 63
-	CqlLexerK_IF                = 64
-	CqlLexerK_IN                = 65
-	CqlLexerK_INDEX             = 66
-	CqlLexerK_INFINITY          = 67
-	CqlLexerK_INITCOND          = 68
-	CqlLexerK_INPUT             = 69
-	CqlLexerK_INSERT            = 70
-	CqlLexerK_INTO              = 71
-	CqlLexerK_IS                = 72
-	CqlLexerK_JSON              = 73
-	CqlLexerK_KEY               = 74
-	CqlLexerK_KEYS              = 75
-	CqlLexerK_KEYSPACE          = 76
-	CqlLexerK_KEYSPACES         = 77
-	CqlLexerK_LANGUAGE          = 78
-	CqlLexerK_LEVEL             = 79
-	CqlLexerK_LIMIT             = 80
-	CqlLexerK_LOCAL_ONE         = 81
-	CqlLexerK_LOCAL_QUORUM      = 82
-	CqlLexerK_LOGGED            = 83
-	CqlLexerK_LOGIN             = 84
-	CqlLexerK_MATERIALIZED      = 85
-	CqlLexerK_MODIFY            = 86
-	CqlLexerK_NAN               = 87
-	CqlLexerK_NORECURSIVE       = 88
-	CqlLexerK_NOSUPERUSER       = 89
-	CqlLexerK_NOT               = 90
-	CqlLexerK_NULL              = 91
-	CqlLexerK_OF                = 92
-	CqlLexerK_ON                = 93
-	CqlLexerK_ONE               = 94
-	CqlLexerK_OPTIONS           = 95
-	CqlLexerK_OR                = 96
-	CqlLexerK_ORDER             = 97
-	CqlLexerK_PARTITION         = 98
-	CqlLexerK_PASSWORD          = 99
-	CqlLexerK_PER               = 100
-	CqlLexerK_PERMISSION        = 101
-	CqlLexerK_PERMISSIONS       = 102
-	CqlLexerK_PRIMARY           = 103
-	CqlLexerK_QUORUM            = 104
-	CqlLexerK_RENAME            = 105
-	CqlLexerK_REPLACE           = 106
-	CqlLexerK_REPLICATION       = 107
-	CqlLexerK_RETURNS           = 108
-	CqlLexerK_REVOKE            = 109
-	CqlLexerK_ROLE              = 110
-	CqlLexerK_ROLES             = 111
-	CqlLexerK_SCHEMA            = 112
-	CqlLexerK_SELECT            = 113
-	CqlLexerK_SET               = 114
-	CqlLexerK_SFUNC             = 115
-	CqlLexerK_STATIC            = 116
-	CqlLexerK_STORAGE           = 117
-	CqlLexerK_STYPE             = 118
-	CqlLexerK_SUPERUSER         = 119
-	CqlLexerK_TABLE             = 120
-	CqlLexerK_THREE             = 121
-	CqlLexerK_TIMESTAMP         = 122
-	CqlLexerK_TO                = 123
-	CqlLexerK_TOKEN             = 124
-	CqlLexerK_TRIGGER           = 125
-	CqlLexerK_TRUE              = 126
-	CqlLexerK_TRUNCATE          = 127
-	CqlLexerK_TTL               = 128
-	CqlLexerK_TWO               = 129
-	CqlLexerK_TYPE              = 130
-	CqlLexerK_UNLOGGED          = 131
-	CqlLexerK_UPDATE            = 132
-	CqlLexerK_USE               = 133
-	CqlLexerK_USER              = 134
-	CqlLexerK_USING             = 135
-	CqlLexerK_UUID              = 136
-	CqlLexerK_VALUES            = 137
-	CqlLexerK_VIEW              = 138
-	CqlLexerK_WHERE             = 139
-	CqlLexerK_WITH              = 140
-	CqlLexerK_WRITETIME         = 141
-	CqlLexerK_ASCII             = 142
-	CqlLexerK_BIGINT            = 143
-	CqlLexerK_BLOB              = 144
-	CqlLexerK_BOOLEAN           = 145
-	CqlLexerK_COUNTER           = 146
-	CqlLexerK_DATE              = 147
-	CqlLexerK_DECIMAL           = 148
-	CqlLexerK_DOUBLE            = 149
-	CqlLexerK_FLOAT             = 150
-	CqlLexerK_FROZEN            = 151
-	CqlLexerK_INET              = 152
-	CqlLexerK_INT               = 153
-	CqlLexerK_LIST              = 154
-	CqlLexerK_MAP               = 155
-	CqlLexerK_SMALLINT          = 156
-	CqlLexerK_TEXT              = 157
-	CqlLexerK_TIMEUUID          = 158
-	CqlLexerK_TIME              = 159
-	CqlLexerK_TINYINT           = 160
-	CqlLexerK_TUPLE             = 161
-	CqlLexerK_VARCHAR           = 162
-	CqlLexerK_VARINT            = 163
-	CqlLexerCODE_BLOCK          = 164
-	CqlLexerSTRING_LITERAL      = 165
-	CqlLexerDECIMAL_LITERAL     = 166
-	CqlLexerFLOAT_LITERAL       = 167
-	CqlLexerHEXADECIMAL_LITERAL = 168
-	CqlLexerREAL_LITERAL        = 169
-	CqlLexerOBJECT_NAME         = 170
-	CqlLexerUUID                = 171
-	CqlLexerSPACE               = 172
-	CqlLexerSPEC_MYSQL_COMMENT  = 173
-	CqlLexerCOMMENT_INPUT       = 174
-	CqlLexerLINE_COMMENT        = 175
+	CQLLexerLR_BRACKET          = 1
+	CQLLexerRR_BRACKET          = 2
+	CQLLexerLC_BRACKET          = 3
+	CQLLexerRC_BRACKET          = 4
+	CQLLexerLS_BRACKET          = 5
+	CQLLexerRS_BRACKET          = 6
+	CQLLexerCOMMA               = 7
+	CQLLexerSEMI                = 8
+	CQLLexerCOLON               = 9
+	CQLLexerDOT                 = 10
+	CQLLexerSTAR                = 11
+	CQLLexerDIVIDE              = 12
+	CQLLexerMODULE              = 13
+	CQLLexerPLUS                = 14
+	CQLLexerMINUSMINUS          = 15
+	CQLLexerMINUS               = 16
+	CQLLexerDQUOTE              = 17
+	CQLLexerSQUOTE              = 18
+	CQLLexerOPERATOR_EQ         = 19
+	CQLLexerOPERATOR_LT         = 20
+	CQLLexerOPERATOR_GT         = 21
+	CQLLexerOPERATOR_LTE        = 22
+	CQLLexerOPERATOR_GTE        = 23
+	CQLLexerK_ADD               = 24
+	CQLLexerK_AGGREGATE         = 25
+	CQLLexerK_ALL               = 26
+	CQLLexerK_ALLOW             = 27
+	CQLLexerK_ALTER             = 28
+	CQLLexerK_AND               = 29
+	CQLLexerK_ANY               = 30
+	CQLLexerK_APPLY             = 31
+	CQLLexerK_AS                = 32
+	CQLLexerK_ASC               = 33
+	CQLLexerK_AUTHORIZE         = 34
+	CQLLexerK_BATCH             = 35
+	CQLLexerK_BEGIN             = 36
+	CQLLexerK_BY                = 37
+	CQLLexerK_CALLED            = 38
+	CQLLexerK_CLUSTERING        = 39
+	CQLLexerK_COLUMNFAMILY      = 40
+	CQLLexerK_COMPACT           = 41
+	CQLLexerK_CONSISTENCY       = 42
+	CQLLexerK_CONTAINS          = 43
+	CQLLexerK_CREATE            = 44
+	CQLLexerK_CUSTOM            = 45
+	CQLLexerK_DELETE            = 46
+	CQLLexerK_DESC              = 47
+	CQLLexerK_DESCRIBE          = 48
+	CQLLexerK_DISTINCT          = 49
+	CQLLexerK_DROP              = 50
+	CQLLexerK_DURABLE_WRITES    = 51
+	CQLLexerK_EACH_QUORUM       = 52
+	CQLLexerK_ENTRIES           = 53
+	CQLLexerK_EXECUTE           = 54
+	CQLLexerK_EXISTS            = 55
+	CQLLexerK_FALSE             = 56
+	CQLLexerK_FILTERING         = 57
+	CQLLexerK_FINALFUNC         = 58
+	CQLLexerK_FROM              = 59
+	CQLLexerK_FULL              = 60
+	CQLLexerK_FUNCTION          = 61
+	CQLLexerK_FUNCTIONS         = 62
+	CQLLexerK_GRANT             = 63
+	CQLLexerK_IF                = 64
+	CQLLexerK_IN                = 65
+	CQLLexerK_INDEX             = 66
+	CQLLexerK_INFINITY          = 67
+	CQLLexerK_INITCOND          = 68
+	CQLLexerK_INPUT             = 69
+	CQLLexerK_INSERT            = 70
+	CQLLexerK_INTO              = 71
+	CQLLexerK_IS                = 72
+	CQLLexerK_JSON              = 73
+	CQLLexerK_KEY               = 74
+	CQLLexerK_KEYS              = 75
+	CQLLexerK_KEYSPACE          = 76
+	CQLLexerK_KEYSPACES         = 77
+	CQLLexerK_LANGUAGE          = 78
+	CQLLexerK_LEVEL             = 79
+	CQLLexerK_LIMIT             = 80
+	CQLLexerK_LOCAL_ONE         = 81
+	CQLLexerK_LOCAL_QUORUM      = 82
+	CQLLexerK_LOGGED            = 83
+	CQLLexerK_LOGIN             = 84
+	CQLLexerK_MATERIALIZED      = 85
+	CQLLexerK_MODIFY            = 86
+	CQLLexerK_NAN               = 87
+	CQLLexerK_NORECURSIVE       = 88
+	CQLLexerK_NOSUPERUSER       = 89
+	CQLLexerK_NOT               = 90
+	CQLLexerK_NULL              = 91
+	CQLLexerK_OF                = 92
+	CQLLexerK_ON                = 93
+	CQLLexerK_ONE               = 94
+	CQLLexerK_OPTIONS           = 95
+	CQLLexerK_OR                = 96
+	CQLLexerK_ORDER             = 97
+	CQLLexerK_PARTITION         = 98
+	CQLLexerK_PASSWORD          = 99
+	CQLLexerK_PER               = 100
+	CQLLexerK_PERMISSION        = 101
+	CQLLexerK_PERMISSIONS       = 102
+	CQLLexerK_PRIMARY           = 103
+	CQLLexerK_QUORUM            = 104
+	CQLLexerK_RENAME            = 105
+	CQLLexerK_REPLACE           = 106
+	CQLLexerK_REPLICATION       = 107
+	CQLLexerK_RETURNS           = 108
+	CQLLexerK_REVOKE            = 109
+	CQLLexerK_ROLE              = 110
+	CQLLexerK_ROLES             = 111
+	CQLLexerK_SCHEMA            = 112
+	CQLLexerK_SELECT            = 113
+	CQLLexerK_SET               = 114
+	CQLLexerK_SFUNC             = 115
+	CQLLexerK_STATIC            = 116
+	CQLLexerK_STORAGE           = 117
+	CQLLexerK_STYPE             = 118
+	CQLLexerK_SUPERUSER         = 119
+	CQLLexerK_TABLE             = 120
+	CQLLexerK_THREE             = 121
+	CQLLexerK_TIMESTAMP         = 122
+	CQLLexerK_TO                = 123
+	CQLLexerK_TOKEN             = 124
+	CQLLexerK_TRIGGER           = 125
+	CQLLexerK_TRUE              = 126
+	CQLLexerK_TRUNCATE          = 127
+	CQLLexerK_TTL               = 128
+	CQLLexerK_TWO               = 129
+	CQLLexerK_TYPE              = 130
+	CQLLexerK_UNLOGGED          = 131
+	CQLLexerK_UPDATE            = 132
+	CQLLexerK_USE               = 133
+	CQLLexerK_USER              = 134
+	CQLLexerK_USING             = 135
+	CQLLexerK_UUID              = 136
+	CQLLexerK_VALUES            = 137
+	CQLLexerK_VIEW              = 138
+	CQLLexerK_WHERE             = 139
+	CQLLexerK_WITH              = 140
+	CQLLexerK_WRITETIME         = 141
+	CQLLexerK_ASCII             = 142
+	CQLLexerK_BIGINT            = 143
+	CQLLexerK_BLOB              = 144
+	CQLLexerK_BOOLEAN           = 145
+	CQLLexerK_COUNTER           = 146
+	CQLLexerK_DATE              = 147
+	CQLLexerK_DECIMAL           = 148
+	CQLLexerK_DOUBLE            = 149
+	CQLLexerK_FLOAT             = 150
+	CQLLexerK_FROZEN            = 151
+	CQLLexerK_INET              = 152
+	CQLLexerK_INT               = 153
+	CQLLexerK_LIST              = 154
+	CQLLexerK_MAP               = 155
+	CQLLexerK_SMALLINT          = 156
+	CQLLexerK_TEXT              = 157
+	CQLLexerK_TIMEUUID          = 158
+	CQLLexerK_TIME              = 159
+	CQLLexerK_TINYINT           = 160
+	CQLLexerK_TUPLE             = 161
+	CQLLexerK_VARCHAR           = 162
+	CQLLexerK_VARINT            = 163
+	CQLLexerCODE_BLOCK          = 164
+	CQLLexerSTRING_LITERAL      = 165
+	CQLLexerDECIMAL_LITERAL     = 166
+	CQLLexerFLOAT_LITERAL       = 167
+	CQLLexerHEXADECIMAL_LITERAL = 168
+	CQLLexerREAL_LITERAL        = 169
+	CQLLexerOBJECT_NAME         = 170
+	CQLLexerUUID                = 171
+	CQLLexerSPACE               = 172
+	CQLLexerSPEC_MYSQL_COMMENT  = 173
+	CQLLexerCOMMENT_INPUT       = 174
+	CQLLexerLINE_COMMENT        = 175
 )

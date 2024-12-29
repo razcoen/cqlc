@@ -1,11 +1,11 @@
-// Code generated from CqlParser.g4 by ANTLR 4.13.2. DO NOT EDIT.
+// Code generated from CQLParser.g4 by ANTLR 4.13.2. DO NOT EDIT.
 
-package parser // CqlParser
+package parser // CQLParser
 
 import "github.com/antlr4-go/antlr/v4"
 
-// CqlParserListener is a complete listener for a parse tree produced by CqlParser.
-type CqlParserListener interface {
+// CQLParserListener is a complete listener for a parse tree produced by CQLParser.
+type CQLParserListener interface {
 	antlr.ParseTreeListener
 
 	// EnterRoot is called when entering the root production.
