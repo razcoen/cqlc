@@ -1,21 +1,19 @@
-package generate
+package cqlc
 
 import (
 	"bytes"
 	"fmt"
+	"github.com/razcoen/cqlc/pkg/cqlc/strfmt"
+	"github.com/razcoen/cqlc/pkg/gocqlhelpers"
 	"go/format"
 	"io"
 	"maps"
 	"slices"
-	"strings"
 	"text/template"
-	"unicode"
-
-	"github.com/razcoen/cqlc/pkg/cql"
 )
 
 type generateKeyspaceRequest struct {
-	keyspace    *cql.Keyspace
+	keyspace    *Keyspace
 	packageName string
 	out         io.Writer
 }
@@ -28,9 +26,9 @@ package {{.PackageName}}
 {{- if gt (len .Imports) 0}}
 import (
 {{- end}}
-{{range .Imports}}
+{{- range .Imports}}
   "{{.}}"
-{{end}}
+{{- end}}
 {{- if gt (len .Imports) 0}}
 )
 {{- end}}
@@ -84,7 +82,7 @@ func (gg *goGenerator) generateKeyspace(req *generateKeyspaceRequest) error {
 	}
 	imports := make(map[string]bool)
 	for _, t := range req.keyspace.Tables {
-		name := convertToSingularPascalCase(t.Name)
+		name := strfmt.ToSingularPascalCase(t.Name)
 		st := struct {
 			TableName string
 			Name      string
@@ -97,15 +95,19 @@ func (gg *goGenerator) generateKeyspace(req *generateKeyspaceRequest) error {
 			Name:      name,
 		}
 		for _, c := range t.Columns {
-			name := convertToSingularPascalCase(c.Name)
-			tp, imprt := convertToGoType(c.DataType)
-			if imprt != "" {
-				imports[imprt] = true
+			name := strfmt.ToSingularPascalCase(c.Name)
+			goType, err := gocqlhelpers.ParseGoType(c.DataType)
+			if err != nil {
+				// TODO
+				continue
+			}
+			if goType.ImportPath != "" {
+				imports[goType.ImportPath] = true
 			}
 			st.Fields = append(st.Fields, struct {
 				Name string
 				Type string
-			}{Name: name, Type: tp})
+			}{Name: name, Type: goType.Name})
 		}
 		v.Structs = append(v.Structs, st)
 	}
@@ -122,56 +124,4 @@ func (gg *goGenerator) generateKeyspace(req *generateKeyspaceRequest) error {
 		return fmt.Errorf("write out: %w", err)
 	}
 	return nil
-}
-
-var initialisms = map[string]bool{
-	"ID":   true,
-	"UUID": true,
-	"HTTP": true,
-	"JSON": true,
-	"SQL":  true,
-}
-
-func convertToSingularPascalCase(s string) string {
-	parts := strings.FieldsFunc(s, func(r rune) bool {
-		return r == '_' || r == '-' || unicode.IsSpace(r)
-	})
-	for i, part := range parts {
-		upper := strings.ToUpper(part)
-		if initialisms[upper] {
-			parts[i] = upper // Use the initialism as-is
-		} else {
-			parts[i] = strings.ToUpper(part[:1]) + strings.ToLower(part[1:])
-		}
-	}
-	pscl := strings.Join(parts, "")
-	if strings.HasSuffix(pscl, "s") {
-		return pscl[:len(pscl)-1]
-	}
-	return pscl
-}
-
-func convertToGoType(dataType *cql.DataType) (tp string, importPath string) {
-	if dataType.NativeType == nil {
-		// TODO: Unsupported
-		return "", ""
-	}
-	switch *dataType.NativeType {
-	case cql.NativeTypeAscii, cql.NativeTypeInet, cql.NativeTypeText, cql.NativeTypeTimeuuid, cql.NativeTypeUUID, cql.NativeTypeVarchar:
-		return "string", ""
-	case cql.NativeTypeBigint, cql.NativeTypeCounter, cql.NativeTypeInt, cql.NativeTypeSmallint, cql.NativeTypeTinyint, cql.NativeTypeVarint:
-		return "int64", ""
-	case cql.NativeTypeBlob:
-		return "[]byte", ""
-	case cql.NativeTypeBoolean:
-		return "bool", ""
-	case cql.NativeTypeDate, cql.NativeTypeTime, cql.NativeTypeTimestamp:
-		return "time.Time", "time"
-	case cql.NativeTypeFloat, cql.NativeTypeDecimal, cql.NativeTypeDouble:
-		return "float64", ""
-	case cql.NativeTypeDuration:
-		return "time.Duration", ""
-	}
-	// TODO: Unsupported
-	return "", ""
 }

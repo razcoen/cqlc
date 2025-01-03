@@ -1,10 +1,11 @@
-package cql
+package cqlc
 
 import (
-	"testing"
-
-	"github.com/google/go-cmp/cmp"
+	"fmt"
+	"github.com/razcoen/cqlc/pkg/gocqlhelpers"
 	"github.com/stretchr/testify/require"
+	"reflect"
+	"testing"
 )
 
 func TestSchemaParser(t *testing.T) {
@@ -21,9 +22,9 @@ func TestSchemaParser(t *testing.T) {
 			expectedSchema: &Schema{Keyspaces: []*Keyspace{
 				{Name: defaultKeyspaceName, Tables: []*Table{
 					{Name: "users", Columns: []*Column{
-						{Name: "id", DataType: NativeTypeUUID.IntoDataType()},
-						{Name: "name", DataType: NativeTypeText.IntoDataType()},
-						{Name: "age", DataType: NativeTypeInt.IntoDataType()},
+						{Name: "id", DataType: gocqlhelpers.NewTypeUUID()},
+						{Name: "name", DataType: gocqlhelpers.NewTypeText()},
+						{Name: "age", DataType: gocqlhelpers.NewTypeInt()},
 					}},
 				}},
 			}},
@@ -35,9 +36,9 @@ func TestSchemaParser(t *testing.T) {
 			expectedSchema: &Schema{Keyspaces: []*Keyspace{
 				{Name: defaultKeyspaceName, Tables: []*Table{
 					{Name: "orders", Columns: []*Column{
-						{Name: "order_id", DataType: NativeTypeUUID.IntoDataType()},
-						{Name: "customer_id", DataType: NativeTypeUUID.IntoDataType()},
-						{Name: "total", DataType: NativeTypeDecimal.IntoDataType()},
+						{Name: "order_id", DataType: gocqlhelpers.NewTypeUUID()},
+						{Name: "customer_id", DataType: gocqlhelpers.NewTypeUUID()},
+						{Name: "total", DataType: gocqlhelpers.NewTypeDecimal()},
 					}},
 				}},
 			}},
@@ -49,9 +50,9 @@ func TestSchemaParser(t *testing.T) {
 			expectedSchema: &Schema{Keyspaces: []*Keyspace{
 				{Name: defaultKeyspaceName, Tables: []*Table{
 					{Name: "blog_posts", Columns: []*Column{
-						{Name: "id", DataType: NativeTypeUUID.IntoDataType()},
-						{Name: "title", DataType: NativeTypeText.IntoDataType()},
-						{Name: "tags", DataType: CollectionTypeSet{T: NativeTypeText.IntoCollectableType()}.IntoDataType()},
+						{Name: "id", DataType: gocqlhelpers.NewTypeUUID()},
+						{Name: "title", DataType: gocqlhelpers.NewTypeText()},
+						{Name: "tags", DataType: gocqlhelpers.NewTypeSet(gocqlhelpers.NewTypeText())},
 					}},
 				}},
 			}},
@@ -63,8 +64,8 @@ func TestSchemaParser(t *testing.T) {
 			expectedSchema: &Schema{Keyspaces: []*Keyspace{
 				{Name: defaultKeyspaceName, Tables: []*Table{
 					{Name: "events", Columns: []*Column{
-						{Name: "id", DataType: NativeTypeUUID.IntoDataType()},
-						{Name: "event_dates", DataType: CollectionTypeList{T: NativeTypeTimestamp.IntoCollectableType()}.IntoDataType()},
+						{Name: "id", DataType: gocqlhelpers.NewTypeUUID()},
+						{Name: "event_dates", DataType: gocqlhelpers.NewTypeList(gocqlhelpers.NewTypeTimestamp())},
 					}},
 				}},
 			}},
@@ -76,8 +77,8 @@ func TestSchemaParser(t *testing.T) {
 			expectedSchema: &Schema{Keyspaces: []*Keyspace{
 				{Name: defaultKeyspaceName, Tables: []*Table{
 					{Name: "events", Columns: []*Column{
-						{Name: "id", DataType: NativeTypeUUID.IntoDataType()},
-						{Name: "participants", DataType: FrozenType{DataType: CollectionTypeSet{T: NativeTypeText.IntoCollectableType()}.IntoDataType()}.IntoDataType()},
+						{Name: "id", DataType: gocqlhelpers.NewTypeUUID()},
+						{Name: "participants", DataType: gocqlhelpers.NewTypeSet(gocqlhelpers.NewTypeText())},
 					}},
 				}},
 			}},
@@ -90,8 +91,8 @@ func TestSchemaParser(t *testing.T) {
 			expectedSchema: &Schema{Keyspaces: []*Keyspace{
 				{Name: defaultKeyspaceName, Tables: []*Table{
 					{Name: "orders", Columns: []*Column{
-						{Name: "id", DataType: NativeTypeUUID.IntoDataType()},
-						{Name: "products", DataType: FrozenType{DataType: CollectionTypeList{T: NativeTypeText.IntoCollectableType()}.IntoDataType()}.IntoDataType()},
+						{Name: "id", DataType: gocqlhelpers.NewTypeUUID()},
+						{Name: "products", DataType: gocqlhelpers.NewTypeList(gocqlhelpers.NewTypeText())},
 					}},
 				}},
 			}},
@@ -156,10 +157,10 @@ func TestSchemaParser(t *testing.T) {
 			expectedSchema: &Schema{Keyspaces: []*Keyspace{
 				{Name: defaultKeyspaceName, Tables: []*Table{
 					{Name: "articles", Columns: []*Column{
-						{Name: "author", DataType: NativeTypeText.IntoDataType()},
-						{Name: "category", DataType: NativeTypeText.IntoDataType()},
-						{Name: "published_at", DataType: NativeTypeTimestamp.IntoDataType()},
-						{Name: "title", DataType: NativeTypeText.IntoDataType()},
+						{Name: "author", DataType: gocqlhelpers.NewTypeText()},
+						{Name: "category", DataType: gocqlhelpers.NewTypeText()},
+						{Name: "published_at", DataType: gocqlhelpers.NewTypeTimestamp()},
+						{Name: "title", DataType: gocqlhelpers.NewTypeText()},
 					}},
 				}},
 			}},
@@ -173,8 +174,8 @@ func TestSchemaParser(t *testing.T) {
 			expectedSchema: &Schema{Keyspaces: []*Keyspace{
 				{Name: defaultKeyspaceName, Tables: []*Table{
 					{Name: "users", Columns: []*Column{
-						{Name: "id", DataType: NativeTypeUUID.IntoDataType()},
-						{Name: "name", DataType: NativeTypeText.IntoDataType()},
+						{Name: "id", DataType: gocqlhelpers.NewTypeUUID()},
+						{Name: "name", DataType: gocqlhelpers.NewTypeText()},
 					}},
 				}},
 			}},
@@ -188,8 +189,8 @@ func TestSchemaParser(t *testing.T) {
 			expectedSchema: &Schema{Keyspaces: []*Keyspace{
 				{Name: defaultKeyspaceName, Tables: []*Table{
 					{Name: "users", Columns: []*Column{
-						{Name: "id", DataType: NativeTypeUUID.IntoDataType()},
-						{Name: "name", DataType: NativeTypeText.IntoDataType()},
+						{Name: "id", DataType: gocqlhelpers.NewTypeUUID()},
+						{Name: "name", DataType: gocqlhelpers.NewTypeText()},
 					}},
 				}},
 			}},
@@ -226,10 +227,18 @@ func TestSchemaParser(t *testing.T) {
 			query:       "CREATE TABLE users id UUID PRIMARY KEY;",
 			expectedErr: true,
 		},
-		// Invalid CREATE TABLE with an invalid data type
+		// CREATE TABLE with custom data type
 		{
-			query:       "CREATE TABLE users (id UUID PRIMARY KEY, name INVALIDTYPE);",
-			expectedErr: true,
+			query:       `CREATE TABLE users (id UUID PRIMARY KEY, name CUSTOMTYPE);`,
+			expectedErr: false,
+			expectedSchema: &Schema{Keyspaces: []*Keyspace{
+				{Name: defaultKeyspaceName, Tables: []*Table{
+					{Name: "users", Columns: []*Column{
+						{Name: "id", DataType: gocqlhelpers.NewTypeUUID()},
+						{Name: "name", DataType: gocqlhelpers.NewTypeCustom("customtype")},
+					}},
+				}},
+			}},
 		},
 		// DROP INDEX
 		// TODO: Unsupported drop index
@@ -250,13 +259,19 @@ func TestSchemaParser(t *testing.T) {
 			expectedSchema: &Schema{Keyspaces: []*Keyspace{
 				{Name: defaultKeyspaceName, Tables: []*Table{
 					{Name: "customer_orders", Columns: []*Column{
-						{Name: "customer_id", DataType: NativeTypeUUID.IntoDataType()},
-						{Name: "order_id", DataType: NativeTypeUUID.IntoDataType()},
-						{Name: "product", DataType: NativeTypeText.IntoDataType()},
+						{Name: "customer_id", DataType: gocqlhelpers.NewTypeUUID()},
+						{Name: "order_id", DataType: gocqlhelpers.NewTypeUUID()},
+						{Name: "product", DataType: gocqlhelpers.NewTypeText()},
 					}},
 				}},
 			}},
 		},
+
+		// CREATE TABLE with static column
+		// TODO: Unsupported static columns
+		//{
+		//	query: "CREATE TABLE blog (blog_id UUID PRIMARY KEY, title TEXT, description TEXT STATIC, num_views COUNTER);",
+		//},
 
 		// CREATE TABLE with a complex column type (frozen set of tuples)
 		// TODO: Unsupported tuples
@@ -303,10 +318,10 @@ func TestSchemaParser(t *testing.T) {
 			expectedSchema: &Schema{Keyspaces: []*Keyspace{
 				{Name: defaultKeyspaceName, Tables: []*Table{
 					{Name: "articles", Columns: []*Column{
-						{Name: "author", DataType: NativeTypeText.IntoDataType()},
-						{Name: "category", DataType: NativeTypeText.IntoDataType()},
-						{Name: "published_at", DataType: NativeTypeTimestamp.IntoDataType()},
-						{Name: "title", DataType: NativeTypeText.IntoDataType()},
+						{Name: "author", DataType: gocqlhelpers.NewTypeText()},
+						{Name: "category", DataType: gocqlhelpers.NewTypeText()},
+						{Name: "published_at", DataType: gocqlhelpers.NewTypeTimestamp()},
+						{Name: "title", DataType: gocqlhelpers.NewTypeText()},
 					}},
 				}},
 			}},
@@ -326,8 +341,8 @@ func TestSchemaParser(t *testing.T) {
 			expectedSchema: &Schema{Keyspaces: []*Keyspace{
 				{Name: defaultKeyspaceName, Tables: []*Table{
 					{Name: "users", Columns: []*Column{
-						{Name: "id", DataType: NativeTypeUUID.IntoDataType()},
-						{Name: "name", DataType: NativeTypeText.IntoDataType()},
+						{Name: "id", DataType: gocqlhelpers.NewTypeUUID()},
+						{Name: "name", DataType: gocqlhelpers.NewTypeText()},
 					}},
 				}},
 			}},
@@ -343,18 +358,18 @@ func TestSchemaParser(t *testing.T) {
 			expectedSchema: &Schema{Keyspaces: []*Keyspace{
 				{Name: defaultKeyspaceName, Tables: []*Table{
 					{Name: "users", Columns: []*Column{
-						{Name: "id", DataType: NativeTypeUUID.IntoDataType()},
-						{Name: "name", DataType: NativeTypeText.IntoDataType()},
-						{Name: "age", DataType: NativeTypeInt.IntoDataType()},
+						{Name: "id", DataType: gocqlhelpers.NewTypeUUID()},
+						{Name: "name", DataType: gocqlhelpers.NewTypeText()},
+						{Name: "age", DataType: gocqlhelpers.NewTypeInt()},
 					}},
 					{Name: "orders", Columns: []*Column{
-						{Name: "order_id", DataType: NativeTypeUUID.IntoDataType()},
-						{Name: "customer_id", DataType: NativeTypeUUID.IntoDataType()},
-						{Name: "total", DataType: NativeTypeDecimal.IntoDataType()},
+						{Name: "order_id", DataType: gocqlhelpers.NewTypeUUID()},
+						{Name: "customer_id", DataType: gocqlhelpers.NewTypeUUID()},
+						{Name: "total", DataType: gocqlhelpers.NewTypeDecimal()},
 					}},
 					{Name: "logins", Columns: []*Column{
-						{Name: "id", DataType: NativeTypeUUID.IntoDataType()},
-						{Name: "last_seen", DataType: NativeTypeTimestamp.IntoDataType()},
+						{Name: "id", DataType: gocqlhelpers.NewTypeUUID()},
+						{Name: "last_seen", DataType: gocqlhelpers.NewTypeTimestamp()},
 					}},
 				}},
 			}},
@@ -366,14 +381,15 @@ func TestSchemaParser(t *testing.T) {
 			schema, err := parser.Parse(tt.query)
 			if (err != nil) != tt.expectedErr {
 				t.Errorf("expected error: %v, but got: %v for query: %s", tt.expectedErr, err, tt.query)
+				fmt.Println(schema.String())
 			}
-			if err != nil {
+			if err != nil || tt.expectedErr {
 				return
 			}
 			require.NotNil(t, schema)
-			diff := cmp.Diff(tt.expectedSchema, schema)
-			if diff != "" {
-				t.Errorf("returned schema different than expected: %s", diff)
+			if !reflect.DeepEqual(tt.expectedSchema, schema) {
+				t.Error("returned schema different than expected")
+				require.Equal(t, tt.expectedSchema.String(), schema.String())
 			}
 		})
 	}

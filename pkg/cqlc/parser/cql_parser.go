@@ -91,7 +91,7 @@ func cqlparserParserInit() {
 		"SPEC_MYSQL_COMMENT", "COMMENT_INPUT", "LINE_COMMENT",
 	}
 	staticData.RuleNames = []string{
-		"root", "cqls", "statementSeparator", "empty_", "cql", "revoke", "listRoles",
+		"root", "cqls", "statementSeparator", "empty_", "cqlc", "revoke", "listRoles",
 		"listPermissions", "grant", "priviledge", "resource", "createUser",
 		"createRole", "createType", "typeMemberColumnList", "createTrigger",
 		"createMaterializedView", "materializedViewWhere", "columnNotNullList",

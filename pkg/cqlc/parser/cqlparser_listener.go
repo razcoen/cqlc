@@ -20,7 +20,7 @@ type CQLParserListener interface {
 	// EnterEmpty_ is called when entering the empty_ production.
 	EnterEmpty_(c *Empty_Context)
 
-	// EnterCql is called when entering the cql production.
+	// EnterCql is called when entering the cqlc production.
 	EnterCql(c *CqlContext)
 
 	// EnterRevoke is called when entering the revoke production.
@@ -851,7 +851,7 @@ type CQLParserListener interface {
 	// ExitEmpty_ is called when exiting the empty_ production.
 	ExitEmpty_(c *Empty_Context)
 
-	// ExitCql is called when exiting the cql production.
+	// ExitCql is called when exiting the cqlc production.
 	ExitCql(c *CqlContext)
 
 	// ExitRevoke is called when exiting the revoke production.

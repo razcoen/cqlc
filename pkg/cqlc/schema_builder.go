@@ -1,8 +1,9 @@
-package cql
+package cqlc
 
 import (
 	"errors"
 	"fmt"
+	"github.com/gocql/gocql"
 )
 
 const defaultKeyspaceName = "system"
@@ -90,7 +91,7 @@ func NewTableBuilder(name string) *TableBuilder {
 		columnNames: make(map[string]bool),
 	}
 }
-func (tb *TableBuilder) WithColumn(columnName string, columnType *DataType) *TableBuilder {
+func (tb *TableBuilder) WithColumn(columnName string, columnType gocql.TypeInfo) *TableBuilder {
 	if _, ok := tb.columnNames[columnName]; ok {
 		tb.err = errors.Join(tb.err, fmt.Errorf(`column "%s" already exists`, columnName))
 		return tb

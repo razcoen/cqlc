@@ -45,10 +45,10 @@ func (s *BaseCQLParserListener) EnterEmpty_(ctx *Empty_Context) {}
 // ExitEmpty_ is called when production empty_ is exited.
 func (s *BaseCQLParserListener) ExitEmpty_(ctx *Empty_Context) {}
 
-// EnterCql is called when production cql is entered.
+// EnterCql is called when production cqlc is entered.
 func (s *BaseCQLParserListener) EnterCql(ctx *CqlContext) {}
 
-// ExitCql is called when production cql is exited.
+// ExitCql is called when production cqlc is exited.
 func (s *BaseCQLParserListener) ExitCql(ctx *CqlContext) {}
 
 // EnterRevoke is called when production revoke is entered.

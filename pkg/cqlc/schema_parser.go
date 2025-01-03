@@ -1,12 +1,15 @@
-package cql
+package cqlc
 
 import (
 	"errors"
 	"fmt"
+	"github.com/razcoen/cqlc/pkg/gocqlhelpers"
+	"log"
+	"os"
 	"strings"
 
 	"github.com/antlr4-go/antlr/v4"
-	"github.com/razcoen/cqlc/pkg/cql/parser"
+	"github.com/razcoen/cqlc/pkg/cqlc/parser"
 )
 
 type SchemaParser struct{}
@@ -41,7 +44,6 @@ func (sp *SchemaParser) Parse(cql string) (*Schema, error) {
 	}
 	return l.schemaBuilder.WithKeyspace(defaultKeyspace).Build()
 }
-
 
 type errorListener struct {
 	*antlr.DefaultErrorListener
@@ -116,12 +118,9 @@ func (l *schemaParserTreeListener) EnterCreateTable(ctx *parser.CreateTableConte
 			default:
 			}
 		}
-		dataType, err := ParseDataType(columnType)
-		if err != nil {
-			l.err = errors.Join(l.err, fmt.Errorf("parse data type: %w", err))
-			continue
-		}
-		tableBuilder = tableBuilder.WithColumn(columnName, dataType)
+		// TODO: Logger? Errors?
+		ti := gocqlhelpers.ParseCassandraType(columnType, log.New(os.Stdout, "", 0))
+		tableBuilder = tableBuilder.WithColumn(columnName, ti)
 	}
 	table, err := tableBuilder.Build()
 	if err != nil {

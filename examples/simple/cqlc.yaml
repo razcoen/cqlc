@@ -1,0 +1,8 @@
+version: "1"
+cql:
+  - queries: "./queries.cql"
+    schema: "./schema.cql"
+    gen:
+      go:
+        package: "example"
+        out: "./example"
