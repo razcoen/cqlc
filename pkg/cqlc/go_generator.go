@@ -3,8 +3,8 @@ package cqlc
 import (
 	"bytes"
 	"fmt"
-	"github.com/razcoen/cqlc/pkg/cqlc/strfmt"
 	"github.com/razcoen/cqlc/pkg/gocqlhelpers"
+	"github.com/razcoen/cqlc/pkg/strfmt"
 	"go/format"
 	"io"
 	"maps"

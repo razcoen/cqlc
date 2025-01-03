@@ -1,6 +1,6 @@
 // Code generated from CQLLexer.g4 by ANTLR 4.13.2. DO NOT EDIT.
 
-package parser
+package antlrcql
 
 import (
 	"fmt"

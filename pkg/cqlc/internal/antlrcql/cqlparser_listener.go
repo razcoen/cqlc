@@ -1,7 +1,6 @@
 // Code generated from CQLParser.g4 by ANTLR 4.13.2. DO NOT EDIT.
 
-package parser // CQLParser
-
+package antlrcql // CQLParser
 import "github.com/antlr4-go/antlr/v4"
 
 // CQLParserListener is a complete listener for a parse tree produced by CQLParser.
@@ -20,7 +19,7 @@ type CQLParserListener interface {
 	// EnterEmpty_ is called when entering the empty_ production.
 	EnterEmpty_(c *Empty_Context)
 
-	// EnterCql is called when entering the cqlc production.
+	// EnterCql is called when entering the cql production.
 	EnterCql(c *CqlContext)
 
 	// EnterRevoke is called when entering the revoke production.
@@ -851,7 +850,7 @@ type CQLParserListener interface {
 	// ExitEmpty_ is called when exiting the empty_ production.
 	ExitEmpty_(c *Empty_Context)
 
-	// ExitCql is called when exiting the cqlc production.
+	// ExitCql is called when exiting the cql production.
 	ExitCql(c *CqlContext)
 
 	// ExitRevoke is called when exiting the revoke production.

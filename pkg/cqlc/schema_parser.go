@@ -9,7 +9,7 @@ import (
 	"strings"
 
 	"github.com/antlr4-go/antlr/v4"
-	"github.com/razcoen/cqlc/pkg/cqlc/parser"
+	"github.com/razcoen/cqlc/pkg/cqlc/internal/antlrcql"
 )
 
 type SchemaParser struct{}
@@ -23,11 +23,11 @@ func (sp *SchemaParser) Parse(cql string) (*Schema, error) {
 	el := newErrorListener()
 	for _, stmt := range strings.Split(cql, ";") {
 		stmt := strings.TrimSpace(stmt)
-		lexer := parser.NewCQLLexer(antlr.NewInputStream(stmt))
+		lexer := antlrcql.NewCQLLexer(antlr.NewInputStream(stmt))
 		lexer.RemoveErrorListeners()
 		lexer.AddErrorListener(el)
 		stream := antlr.NewCommonTokenStream(lexer, antlr.TokenDefaultChannel)
-		p := parser.NewCQLParser(stream)
+		p := antlrcql.NewCQLParser(stream)
 		p.RemoveErrorListeners()
 		p.AddErrorListener(el)
 		antlr.ParseTreeWalkerDefault.Walk(l, p.Cql())
@@ -71,7 +71,7 @@ func newErrorListener() *errorListener {
 }
 
 type schemaParserTreeListener struct {
-	*parser.BaseCQLParserListener
+	*antlrcql.BaseCQLParserListener
 	schemaBuilder          *SchemaBuilder
 	defaultKeyspaceBuilder *KeyspaceBuilder
 	err                    error
@@ -79,7 +79,7 @@ type schemaParserTreeListener struct {
 
 func newSchemaParserTreeListener() *schemaParserTreeListener {
 	l := &schemaParserTreeListener{
-		BaseCQLParserListener: &parser.BaseCQLParserListener{},
+		BaseCQLParserListener: &antlrcql.BaseCQLParserListener{},
 		// TODO: Do we even need to support more than one keyspace as part of the code generation?
 		schemaBuilder:          NewSchemaBuilder(),
 		defaultKeyspaceBuilder: NewDefaultKeyspaceBuilder(),
@@ -87,10 +87,10 @@ func newSchemaParserTreeListener() *schemaParserTreeListener {
 	return l
 }
 
-func (l *schemaParserTreeListener) EnterCreateTable(ctx *parser.CreateTableContext) {
-	var columnDefinitionListContext *parser.ColumnDefinitionListContext
+func (l *schemaParserTreeListener) EnterCreateTable(ctx *antlrcql.CreateTableContext) {
+	var columnDefinitionListContext *antlrcql.ColumnDefinitionListContext
 	for _, child := range ctx.GetChildren() {
-		ctx, ok := child.(*parser.ColumnDefinitionListContext)
+		ctx, ok := child.(*antlrcql.ColumnDefinitionListContext)
 		if !ok {
 			continue
 		}
@@ -103,7 +103,7 @@ func (l *schemaParserTreeListener) EnterCreateTable(ctx *parser.CreateTableConte
 
 	tableBuilder := NewTableBuilder(ctx.Table().GetText())
 	for _, child := range columnDefinitionListContext.GetChildren() {
-		columnDefinitionContext, ok := child.(*parser.ColumnDefinitionContext)
+		columnDefinitionContext, ok := child.(*antlrcql.ColumnDefinitionContext)
 		if !ok {
 			continue
 		}
@@ -111,9 +111,9 @@ func (l *schemaParserTreeListener) EnterCreateTable(ctx *parser.CreateTableConte
 		var columnType string
 		for _, child := range columnDefinitionContext.GetChildren() {
 			switch child := child.(type) {
-			case *parser.ColumnContext:
+			case *antlrcql.ColumnContext:
 				columnName = child.GetText()
-			case *parser.DataTypeContext:
+			case *antlrcql.DataTypeContext:
 				columnType = child.GetText()
 			default:
 			}

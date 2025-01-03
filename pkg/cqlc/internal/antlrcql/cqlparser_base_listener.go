@@ -1,7 +1,6 @@
 // Code generated from CQLParser.g4 by ANTLR 4.13.2. DO NOT EDIT.
 
-package parser // CQLParser
-
+package antlrcql // CQLParser
 import "github.com/antlr4-go/antlr/v4"
 
 // BaseCQLParserListener is a complete listener for a parse tree produced by CQLParser.
@@ -45,10 +44,10 @@ func (s *BaseCQLParserListener) EnterEmpty_(ctx *Empty_Context) {}
 // ExitEmpty_ is called when production empty_ is exited.
 func (s *BaseCQLParserListener) ExitEmpty_(ctx *Empty_Context) {}
 
-// EnterCql is called when production cqlc is entered.
+// EnterCql is called when production cql is entered.
 func (s *BaseCQLParserListener) EnterCql(ctx *CqlContext) {}
 
-// ExitCql is called when production cqlc is exited.
+// ExitCql is called when production cql is exited.
 func (s *BaseCQLParserListener) ExitCql(ctx *CqlContext) {}
 
 // EnterRevoke is called when production revoke is entered.

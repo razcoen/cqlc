@@ -30,6 +30,7 @@ type UserProfile struct {
 	FirstName string
 	LastName  string
 	Interest  []string
+	Setting   map[string]string
 }
 
 // Table: orders

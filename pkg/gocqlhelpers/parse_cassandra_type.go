@@ -53,7 +53,7 @@ func ParseCassandraType(str string, logger gocql.StdLogger) gocql.TypeInfo {
 
 func splitCompositeTypes(name string) []string {
 	if !strings.Contains(name, "<") {
-		return strings.Split(name, ", ")
+		return strings.Split(name, ",")
 	}
 	var parts []string
 	lessCount := 0

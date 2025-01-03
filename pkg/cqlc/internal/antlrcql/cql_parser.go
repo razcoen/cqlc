@@ -1,7 +1,6 @@
 // Code generated from CQLParser.g4 by ANTLR 4.13.2. DO NOT EDIT.
 
-package parser // CQLParser
-
+package antlrcql // CQLParser
 import (
 	"fmt"
 	"strconv"
@@ -91,7 +90,7 @@ func cqlparserParserInit() {
 		"SPEC_MYSQL_COMMENT", "COMMENT_INPUT", "LINE_COMMENT",
 	}
 	staticData.RuleNames = []string{
-		"root", "cqls", "statementSeparator", "empty_", "cqlc", "revoke", "listRoles",
+		"root", "cqls", "statementSeparator", "empty_", "cql", "revoke", "listRoles",
 		"listPermissions", "grant", "priviledge", "resource", "createUser",
 		"createRole", "createType", "typeMemberColumnList", "createTrigger",
 		"createMaterializedView", "materializedViewWhere", "columnNotNullList",

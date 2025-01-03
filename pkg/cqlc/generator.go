@@ -2,7 +2,7 @@ package cqlc
 
 import (
 	"fmt"
-	"github.com/razcoen/cqlc/pkg/cqlc/strfmt"
+	"github.com/razcoen/cqlc/pkg/strfmt"
 	"os"
 	"path/filepath"
 )
