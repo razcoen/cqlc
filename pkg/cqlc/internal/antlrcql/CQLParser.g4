@@ -787,24 +787,29 @@ constant
 
 decimalLiteral
     : DECIMAL_LITERAL
+    | K_PLACEHOLDER
     ;
 
 floatLiteral
     : DECIMAL_LITERAL
     | FLOAT_LITERAL
+    | K_PLACEHOLDER
     ;
 
 stringLiteral
     : STRING_LITERAL
+    | K_PLACEHOLDER
     ;
 
 booleanLiteral
     : K_TRUE
     | K_FALSE
+    | K_PLACEHOLDER
     ;
 
 hexadecimalLiteral
     : HEXADECIMAL_LITERAL
+    | K_PLACEHOLDER
     ;
 
 keyspace

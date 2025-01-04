@@ -50,6 +50,12 @@ type errorListener struct {
 	errors []error
 }
 
+func newErrorListener() *errorListener {
+	return &errorListener{
+		DefaultErrorListener: antlr.NewDefaultErrorListener(),
+	}
+}
+
 func (l *errorListener) SyntaxError(recognizer antlr.Recognizer, offendingSymbol interface{}, line, column int, msg string, e antlr.RecognitionException) {
 	token, ok := offendingSymbol.(antlr.Token)
 	var tokenText string
@@ -62,12 +68,6 @@ func (l *errorListener) SyntaxError(recognizer antlr.Recognizer, offendingSymbol
 	}
 	err := fmt.Errorf(`syntax error "%s" in line %d:%d %s`, tokenText, line, column, msg)
 	l.errors = append(l.errors, err)
-}
-
-func newErrorListener() *errorListener {
-	return &errorListener{
-		DefaultErrorListener: antlr.NewDefaultErrorListener(),
-	}
 }
 
 type schemaParserTreeListener struct {

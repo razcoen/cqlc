@@ -115,6 +115,7 @@ K_PASSWORD       : 'PASSWORD';
 K_PER            : 'PER';
 K_PERMISSION     : 'PERMISSION';
 K_PERMISSIONS    : 'PERMISSIONS';
+K_PLACEHOLDER    : '?';
 K_PRIMARY        : 'PRIMARY';
 K_QUORUM         : 'QUORUM';
 K_RENAME         : 'RENAME';

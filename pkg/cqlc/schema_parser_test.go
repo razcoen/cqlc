@@ -375,7 +375,7 @@ func TestSchemaParser(t *testing.T) {
 			}},
 		},
 	}
-	parser := &SchemaParser{}
+	parser := NewSchemaParser()
 	for _, tt := range tests {
 		t.Run(tt.query, func(t *testing.T) {
 			schema, err := parser.Parse(tt.query)
