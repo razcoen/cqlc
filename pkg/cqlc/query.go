@@ -1,7 +1,9 @@
 package cqlc
 
 type Query struct {
-	Stmt    string
-	Params  []string
-	Selects []string
+	FuncName    string
+	Annotations []string
+	Stmt        string
+	Params      []string
+	Selects     []string
 }

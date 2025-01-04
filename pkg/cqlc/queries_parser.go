@@ -16,15 +16,24 @@ func NewQueriesParser() *QueriesParser {
 }
 
 func (qp *QueriesParser) Parse(cql string) ([]*Query, error) {
-	stmts := strings.Split(cql, ";")
-	queries := make([]*Query, 0, len(stmts))
-	for _, stmt := range stmts {
-		if strings.TrimSpace(stmt) == "" {
+	queryStmts := strings.Split(cql, ";")
+	queries := make([]*Query, 0, len(queryStmts))
+	for _, query := range queryStmts {
+		query = strings.TrimSpace(query)
+		if query == "" {
 			continue
+		}
+		items := strings.Split(query, "\n")
+		if len(items) != 2 {
+			return nil, fmt.Errorf("invalid query: %s", query)
+		}
+		comment := strings.TrimSpace(items[0])
+		stmt := strings.TrimSpace(items[1])
+		if !strings.HasPrefix(comment, "--") {
+			return nil, fmt.Errorf("invalid query expected a comment: %s", query)
 		}
 		el := newErrorListener()
 		l := newQueriesParserListener()
-		stmt := strings.TrimSpace(stmt)
 		lexer := antlrcql.NewCQLLexer(antlr.NewInputStream(stmt))
 		lexer.RemoveErrorListeners()
 		lexer.AddErrorListener(el)
@@ -39,10 +48,16 @@ func (qp *QueriesParser) Parse(cql string) ([]*Query, error) {
 		if el.errors != nil {
 			return nil, errors.Join(el.errors...)
 		}
+		funcName, annotations, err := parseComment(comment)
+		if err != nil {
+			return nil, fmt.Errorf("error parsing comment: %w", err)
+		}
 		queries = append(queries, &Query{
-			Stmt:    stmt,
-			Selects: l.selects,
-			Params:  l.params,
+			FuncName:    funcName,
+			Annotations: annotations,
+			Stmt:        stmt,
+			Params:      l.params,
+			Selects:     l.selects,
 		})
 	}
 	return queries, nil
@@ -137,4 +152,18 @@ func (l *queriesParserListener) EnterWhereSpec(c *antlrcql.WhereSpecContext) {
 		}
 	}
 	l.params = params
+}
+
+func parseComment(comment string) (string, []string, error) {
+	regex := regexp.MustCompile(`--\s*name:\s*(\w+)\s*(:\w+)*`)
+	matches := regex.FindStringSubmatch(comment)
+	if matches == nil || len(matches) < 2 {
+		return "", nil, fmt.Errorf("invalid comment structure")
+	}
+	funcName := matches[1]
+	annotations := strings.Fields(matches[2])
+	for i, ann := range annotations {
+		annotations[i] = strings.TrimPrefix(ann, ":")
+	}
+	return funcName, annotations, nil
 }

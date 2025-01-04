@@ -14,9 +14,12 @@ func TestQueriesParser(t *testing.T) {
 	}{
 		// Valid SELECT Queries
 		{
-			query:           "SELECT * FROM users;",
+			query: `
+-- name: ListUsers :many
+SELECT * FROM users;
+`,
 			expectedErr:     false,
-			expectedQueries: []*Query{{Stmt: "SELECT * FROM users", Selects: []string{"*"}}},
+			expectedQueries: []*Query{{Stmt: "SELECT * FROM users", Selects: []string{"*"}, FuncName: "ListUsers", Annotations: []string{"many"}}},
 		},
 		{
 			query:           "SELECT id, name FROM users WHERE age > ?;",
