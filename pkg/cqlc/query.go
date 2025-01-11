@@ -6,4 +6,5 @@ type Query struct {
 	Stmt        string
 	Params      []string
 	Selects     []string
+	Table       string
 }
