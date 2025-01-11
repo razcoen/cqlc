@@ -1,11 +1,13 @@
 
-Support
+## Support Matrix
 
-From queries only
--> Inserts 
--> Queries with selection
--> Updates
+### Features
 
+#### Queries
+- [x] `SELECT x FROM y WHERE z`
+- [x] `INSERT INTO x (y) VALUES (z)`
+- [x] `DELETE FROM x WHERE y`
 
-From queries and schema
--> Queries without selection
+#### Schema
+- [x] `CREATE TABLE x (y)`
+- [] `ALTER TABLE`
