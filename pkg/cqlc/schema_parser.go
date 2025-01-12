@@ -38,11 +38,14 @@ func (sp *SchemaParser) Parse(cql string) (*Schema, error) {
 	if l.err != nil {
 		return nil, fmt.Errorf("error during traversal: %w", l.err)
 	}
-	defaultKeyspace, err := l.defaultKeyspaceBuilder.Build()
-	if err != nil {
-		return nil, fmt.Errorf("build default keyspace: %w", err)
+	for _, kb := range l.keyspaceBuilders {
+		ks, err := kb.Build()
+		if err != nil {
+			return nil, fmt.Errorf("build keyspace: %w", err)
+		}
+		l.schemaBuilder = l.schemaBuilder.WithKeyspace(ks)
 	}
-	return l.schemaBuilder.WithKeyspace(defaultKeyspace).Build()
+	return l.schemaBuilder.Build()
 }
 
 type errorListener struct {
@@ -73,6 +76,7 @@ func (l *errorListener) SyntaxError(recognizer antlr.Recognizer, offendingSymbol
 type schemaParserTreeListener struct {
 	*antlrcql.BaseCQLParserListener
 	schemaBuilder          *SchemaBuilder
+	keyspaceBuilders       map[string]*KeyspaceBuilder
 	defaultKeyspaceBuilder *KeyspaceBuilder
 	err                    error
 }
@@ -128,6 +132,17 @@ func (l *schemaParserTreeListener) EnterCreateTable(ctx *antlrcql.CreateTableCon
 		return
 	}
 
-	// TODO: Extend support to many keyspaces
-	l.defaultKeyspaceBuilder = l.defaultKeyspaceBuilder.WithTable(table)
+	keyspace := defaultKeyspaceName
+	if ctx.Keyspace() != nil && ctx.Keyspace().GetText() != "" {
+		keyspace = ctx.Keyspace().GetText()
+	}
+	if l.keyspaceBuilders == nil {
+		l.keyspaceBuilders = make(map[string]*KeyspaceBuilder, 1)
+	}
+	kb, ok := l.keyspaceBuilders[keyspace]
+	if !ok {
+		kb = NewKeyspaceBuilder(keyspace)
+	}
+	kb = kb.WithTable(table)
+	l.keyspaceBuilders[keyspace] = kb
 }

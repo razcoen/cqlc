@@ -2,10 +2,10 @@ package cqlc
 
 import (
 	"fmt"
+	"testing"
+
 	"github.com/razcoen/cqlc/pkg/gocqlhelpers"
 	"github.com/stretchr/testify/require"
-	"reflect"
-	"testing"
 )
 
 func TestSchemaParser(t *testing.T) {
@@ -348,6 +348,22 @@ func TestSchemaParser(t *testing.T) {
 			}},
 		},
 
+		// CREATE TABLE with keyspace specifier
+		// TODO: Unsupported keyspace specifier
+		{
+			query:       "CREATE TABLE auth.users (id UUID PRIMARY KEY, name TEXT);",
+			expectedErr: false,
+			expectedSchema: &Schema{Keyspaces: []*Keyspace{
+				{Name: "auth", Tables: []*Table{
+					{Name: "users", Columns: []*Column{
+						{Name: "id", DataType: gocqlhelpers.NewTypeUUID()},
+						{Name: "name", DataType: gocqlhelpers.NewTypeText()},
+					}},
+				}},
+				{Name: defaultKeyspaceName, Tables: []*Table{}},
+			}},
+		},
+
 		{
 			query: `
 		CREATE TABLE users (id UUID PRIMARY KEY, name TEXT, age INT);
@@ -387,10 +403,7 @@ func TestSchemaParser(t *testing.T) {
 				return
 			}
 			require.NotNil(t, schema)
-			if !reflect.DeepEqual(tt.expectedSchema, schema) {
-				t.Error("returned schema different than expected")
-				require.Equal(t, tt.expectedSchema.String(), schema.String())
-			}
+			require.Equal(t, tt.expectedSchema.String(), schema.String())
 		})
 	}
 }
