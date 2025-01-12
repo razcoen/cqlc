@@ -3,12 +3,11 @@ package cqlc
 import (
 	"errors"
 	"fmt"
-	"github.com/antlr4-go/antlr/v4"
-	"github.com/razcoen/cqlc/pkg/cqlc/internal/antlrcql"
-	"github.com/xlab/treeprint"
-	"reflect"
 	"regexp"
 	"strings"
+
+	"github.com/antlr4-go/antlr/v4"
+	"github.com/razcoen/cqlc/pkg/cqlc/internal/antlrcql"
 )
 
 type QueriesParser struct{}
@@ -73,26 +72,6 @@ func (qp *QueriesParser) Parse(cql string) ([]*Query, error) {
 		})
 	}
 	return queries, nil
-}
-
-func printTree(t antlr.Tree) {
-	p := treeprint.New()
-	visit(p, t)
-	fmt.Println(p.String())
-}
-
-func visit(p treeprint.Tree, t antlr.Tree) {
-	type GetTexter interface {
-		GetText() string
-	}
-	getTexter, ok := t.(GetTexter)
-	if !ok {
-		return
-	}
-	p1 := p.AddBranch(strings.Join([]string{reflect.TypeOf(t).String(), " :: ", getTexter.GetText()}, ""))
-	for _, c := range t.GetChildren() {
-		visit(p1, c)
-	}
 }
 
 type queriesParserListener struct {
