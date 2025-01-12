@@ -20,32 +20,48 @@ func NewGenerator() (*Generator, error) {
 }
 
 func (g *Generator) Generate(config *CQLConfig) error {
-	b, err := os.ReadFile(config.Schema)
+	sb, err := os.ReadFile(config.Schema)
 	if err != nil {
 		return fmt.Errorf("read schema file: %w", err)
 	}
+	qb, err := os.ReadFile(config.Queries)
+	if err != nil {
+		return fmt.Errorf("read queries file: %w", err)
+	}
 	sp := NewSchemaParser()
-	schema, err := sp.Parse(string(b))
+	qp := NewQueriesParser()
+	schema, err := sp.Parse(string(sb))
 	if err != nil {
 		return fmt.Errorf("parse schema: %w", err)
+	}
+	queries, err := qp.Parse(string(qb))
+	if err != nil {
+		return fmt.Errorf("parse queries: %w", err)
 	}
 	out := config.Gen.Go.Out
 	if err := os.Mkdir(out, 0777); err != nil && !os.IsExist(err) {
 		return fmt.Errorf("create output directory: %w", err)
 	}
 	for _, k := range schema.Keyspaces {
-		fn := filepath.Join(out, "keyspace_"+strfmt.ToSingularSnakeCase(k.Name)+".go")
+		fn := filepath.Join(out, "keyspace_structs_"+strfmt.ToSingularSnakeCase(k.Name)+".go")
 		f, err := os.OpenFile(fn, os.O_CREATE|os.O_TRUNC|os.O_WRONLY, 0777)
 		if err != nil {
 			return fmt.Errorf("open keyspace file: %w", err)
 		}
-		if err := g.goGenerator.generateKeyspace(&generateKeyspaceRequest{
+		// TODO: Abstract Go Generator by having a single method: Generate(schema, queries)
+		// TODO: Schema struct redundant?
+		resp, err := g.goGenerator.generateKeyspaceStructs(&generateKeyspaceStructsRequest{
 			keyspace:    k,
 			packageName: config.Gen.Go.Package,
 			out:         f,
-		}); err != nil {
+		})
+		if err != nil {
 			return fmt.Errorf("generate keyspace: %w", err)
 		}
+		// TODO: Match between keyspace and queries.
+		// TODO: Match between table and *.
+		noop := func(args ...any) {}
+		noop(queries, resp)
 	}
 	return nil
 }

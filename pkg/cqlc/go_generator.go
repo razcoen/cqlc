@@ -12,7 +12,7 @@ import (
 	"text/template"
 )
 
-type generateKeyspaceRequest struct {
+type generateKeyspaceStructsRequest struct {
 	keyspace    *Keyspace
 	packageName string
 	out         io.Writer
@@ -68,7 +68,11 @@ type keyspaceGoTemplateValue struct {
 	}
 }
 
-func (gg *goGenerator) generateKeyspace(req *generateKeyspaceRequest) error {
+type generateKeyspaceStructsResponse struct {
+	structNameByTableName map[string]string
+}
+
+func (gg *goGenerator) generateKeyspaceStructs(req *generateKeyspaceStructsRequest) (*generateKeyspaceStructsResponse, error) {
 	v := keyspaceGoTemplateValue{
 		PackageName: req.packageName,
 		Structs: []struct {
@@ -81,8 +85,9 @@ func (gg *goGenerator) generateKeyspace(req *generateKeyspaceRequest) error {
 		}{},
 	}
 	imports := make(map[string]bool)
+	structNameByTableName := make(map[string]string, len(req.keyspace.Tables))
 	for _, t := range req.keyspace.Tables {
-		name := strfmt.ToSingularPascalCase(t.Name)
+		structName := strfmt.ToSingularPascalCase(t.Name)
 		st := struct {
 			TableName string
 			Name      string
@@ -92,7 +97,7 @@ func (gg *goGenerator) generateKeyspace(req *generateKeyspaceRequest) error {
 			}
 		}{
 			TableName: t.Name,
-			Name:      name,
+			Name:      structName,
 		}
 		for _, c := range t.Columns {
 			name := strfmt.ToSingularPascalCase(c.Name)
@@ -110,18 +115,19 @@ func (gg *goGenerator) generateKeyspace(req *generateKeyspaceRequest) error {
 			}{Name: name, Type: goType.Name})
 		}
 		v.Structs = append(v.Structs, st)
+		structNameByTableName[t.Name] = structName
 	}
 	v.Imports = slices.Collect(maps.Keys(imports))
 	buf := &bytes.Buffer{}
 	if err := gg.keyspaceGoTemplate.Execute(buf, v); err != nil {
-		return fmt.Errorf("execute keyspace template: %w", err)
+		return nil, fmt.Errorf("execute keyspace template: %w", err)
 	}
 	out, err := format.Source(buf.Bytes())
 	if err != nil {
-		return fmt.Errorf("format out: %w", err)
+		return nil, fmt.Errorf("format out: %w", err)
 	}
 	if _, err := req.out.Write(out); err != nil {
-		return fmt.Errorf("write out: %w", err)
+		return nil, fmt.Errorf("write out: %w", err)
 	}
-	return nil
+	return &generateKeyspaceStructsResponse{structNameByTableName: structNameByTableName}, nil
 }

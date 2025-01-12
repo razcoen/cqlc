@@ -118,7 +118,8 @@ type Order struct {
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
 			buf := &bytes.Buffer{}
-			err := gg.generateKeyspace(&generateKeyspaceRequest{
+			// TODO: Assert response
+			_, err := gg.generateKeyspaceStructs(&generateKeyspaceStructsRequest{
 				keyspace:    tt.keyspace,
 				packageName: tt.packageName,
 				out:         buf,
