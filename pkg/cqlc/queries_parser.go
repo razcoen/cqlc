@@ -69,6 +69,7 @@ func (qp *QueriesParser) Parse(cql string) ([]*Query, error) {
 			Table:       l.table,
 			Params:      l.params,
 			Selects:     l.selects,
+			Keyspace:    l.keyspace,
 		})
 	}
 	return queries, nil
@@ -76,10 +77,11 @@ func (qp *QueriesParser) Parse(cql string) ([]*Query, error) {
 
 type queriesParserListener struct {
 	antlrcql.BaseCQLParserListener
-	selects []string
-	params  []string
-	table   string
-	err     error
+	selects  []string
+	params   []string
+	table    string
+	keyspace string
+	err      error
 }
 
 func newQueriesParserListener() *queriesParserListener {
@@ -189,14 +191,29 @@ func (l *queriesParserListener) parseFromSpec(c *antlrcql.FromSpecContext) {
 	if !ok {
 		return
 	}
-	if fromSpecElement.GetChildCount() != 1 {
-		return
+	if fromSpecElement.GetChildCount() == 1 {
+		tn, ok := fromSpecElement.GetChild(0).(antlr.TerminalNode)
+		if !ok {
+			return
+		}
+		l.table = tn.GetText()
 	}
-	tn, ok := fromSpecElement.GetChild(0).(antlr.TerminalNode)
-	if !ok {
-		return
+	if fromSpecElement.GetChildCount() == 3 {
+		dot, ok := fromSpecElement.GetChild(1).(antlr.TerminalNode)
+		if !ok || dot.GetText() != "." {
+			return
+		}
+		kn, ok := fromSpecElement.GetChild(0).(antlr.TerminalNode)
+		if !ok {
+			return
+		}
+		tn, ok := fromSpecElement.GetChild(2).(antlr.TerminalNode)
+		if !ok {
+			return
+		}
+		l.table = tn.GetText()
+		l.keyspace = kn.GetText()
 	}
-	l.table = tn.GetText()
 }
 
 func (l *queriesParserListener) parseWhereSpec(c *antlrcql.WhereSpecContext) {

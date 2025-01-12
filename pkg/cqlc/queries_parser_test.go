@@ -30,6 +30,22 @@ SELECT * FROM users;
 		},
 		{
 			query: `
+-- name: ListUsers :many
+SELECT * FROM auth.users;
+`,
+			expectedErr: false,
+			expectedQueries: []*Query{
+				{
+					Stmt:        "SELECT * FROM auth.users",
+					Table:       "users",
+					Keyspace:    "auth",
+					Selects:     []string{"*"},
+					FuncName:    "ListUsers",
+					Annotations: []string{"many"},
+				}},
+		},
+		{
+			query: `
 -- name: ListUserNamesOfAge :many
 SELECT id, name FROM users WHERE age > ?;
 `,

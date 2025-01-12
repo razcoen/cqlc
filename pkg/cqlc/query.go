@@ -7,4 +7,5 @@ type Query struct {
 	Params      []string
 	Selects     []string
 	Table       string
+	Keyspace    string
 }
