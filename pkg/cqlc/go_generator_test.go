@@ -112,7 +112,7 @@ type Order struct {
 	}
 
 	// TODO: Test all data types
-	gg, err := newGoGenerator()
+	gg, err := newGoGenerator(nil)
 	require.NoError(t, err)
 
 	for _, tt := range tests {

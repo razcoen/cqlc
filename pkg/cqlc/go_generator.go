@@ -20,9 +20,10 @@ type goGenerator struct {
 	execQueryTemplate  *template.Template
 	oneQueryTemplate   *template.Template
 	clientTemplate     *template.Template
+	logger             Logger
 }
 
-func newGoGenerator() (*goGenerator, error) {
+func newGoGenerator(logger Logger) (*goGenerator, error) {
 	tpl, err := template.New("keyspace-go-template").Parse(keyspaceGoTemplate)
 	if err != nil {
 		return nil, fmt.Errorf("parse keyspace template: %w", err)
@@ -43,7 +44,14 @@ func newGoGenerator() (*goGenerator, error) {
 	if err != nil {
 		return nil, fmt.Errorf("parse one query template: %w", err)
 	}
-	return &goGenerator{keyspaceGoTemplate: tpl, queriesGoTemplate: tpl2, clientTemplate: tpl3, execQueryTemplate: tpl4, oneQueryTemplate: tpl5}, nil
+	return &goGenerator{
+		keyspaceGoTemplate: tpl,
+		queriesGoTemplate:  tpl2,
+		clientTemplate:     tpl3,
+		execQueryTemplate:  tpl4,
+		oneQueryTemplate:   tpl5,
+		logger:             logger,
+	}, nil
 }
 
 func (gg goGenerator) generate(config *CQLGenGoConfig, schema *Schema, queries Queries) error {
@@ -58,7 +66,7 @@ func (gg goGenerator) generate(config *CQLGenGoConfig, schema *Schema, queries Q
 	}
 	defer func() {
 		if err := f.Close(); err != nil {
-			// TODO
+			gg.logger.Error("error closing file", "filepath", fn, "error", err)
 		}
 	}()
 	if err := gg.generateClient(&generateClientRequest{
@@ -94,19 +102,19 @@ func (gg goGenerator) generate(config *CQLGenGoConfig, schema *Schema, queries Q
 				if len(queries) == 0 {
 					return nil
 				}
-				filename := strfmt.ToSnakeCase(t.Name) + ".go"
+				fn := strfmt.ToSnakeCase(t.Name) + ".go"
 				if k.Name != "" {
-					filename = strfmt.ToSnakeCase(k.Name) + "_" + filename
+					fn = strfmt.ToSnakeCase(k.Name) + "_" + fn
 				}
-				filename = "query_" + filename
-				fn = filepath.Join(out, filename)
+				fn = "query_" + fn
+				fn = filepath.Join(out, fn)
 				f, err = os.OpenFile(fn, os.O_CREATE|os.O_TRUNC|os.O_WRONLY, 0777)
 				if err != nil {
 					return fmt.Errorf("open queries file: %w", err)
 				}
 				defer func() {
 					if err := f.Close(); err != nil {
-						// TODO
+						gg.logger.Error("error closing file", "filepath", fn, "error", err)
 					}
 				}()
 				if err := gg.generateQueries(&generateQueriesRequest{

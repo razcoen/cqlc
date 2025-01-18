@@ -3,6 +3,7 @@ package cqlc
 import (
 	"errors"
 	"fmt"
+	"log/slog"
 	"os"
 )
 
@@ -19,7 +20,12 @@ type Generator struct {
 }
 
 func NewGenerator() (*Generator, error) {
-	goGenerator, err := newGoGenerator()
+	// TODO: Logger configuration
+	logger := slog.New(slog.NewJSONHandler(os.Stdout, &slog.HandlerOptions{
+		AddSource: true,
+		Level:     slog.LevelError,
+	}))
+	goGenerator, err := newGoGenerator(logger)
 	if err != nil {
 		return nil, fmt.Errorf("new go generator: %w", err)
 	}
