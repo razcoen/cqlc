@@ -51,3 +51,17 @@ func ToSingularSnakeCase(s string) string {
 	s = strings.Join(words, "_")
 	return s
 }
+
+func ToSnakeCase(s string) string {
+	delimiters := regexp.MustCompile(`[-_]+`)
+	normalized := delimiters.ReplaceAllString(s, " ")
+	camelOrPascal := regexp.MustCompile(`([a-z0-9])([A-Z])`)
+	normalized = camelOrPascal.ReplaceAllString(normalized, `$1 $2`)
+	words := strings.Fields(normalized)
+	for i, word := range words {
+		word = strings.ToLower(word)
+		words[i] = word
+	}
+	s = strings.Join(words, "_")
+	return s
+}

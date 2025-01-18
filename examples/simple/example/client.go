@@ -3,15 +3,30 @@
 package example
 
 import (
+	"fmt"
 	"github.com/gocql/gocql"
-	"github.com/razcoen/cqlc/pkg/cqlc"
+	"github.com/razcoen/cqlc/pkg/gocqlc"
 )
 
 type Client struct {
-	Session *gocql.Session
-	Logger  cqlc.Logger
+	session *gocql.Session
+	logger  gocqlc.Logger
 }
 
-func NewClient(session *gocql.Session, logger cqlc.Logger) *Client {
-	return &Client{Session: session, Logger: logger}
+func NewClient(session *gocql.Session, logger gocqlc.Logger) (*Client, error) {
+	if session == nil {
+		return nil, fmt.Errorf("session cannot be nil")
+	}
+	if session.Closed() {
+		return nil, fmt.Errorf("session already closed")
+	}
+	if logger == nil {
+		logger = &gocqlc.NoopLogger{}
+	}
+	return &Client{session: session, logger: logger}, nil
+}
+
+func (c *Client) Close() error {
+	c.session.Close()
+	return nil
 }

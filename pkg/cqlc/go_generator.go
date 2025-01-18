@@ -8,6 +8,8 @@ import (
 	"go/format"
 	"io"
 	"maps"
+	"os"
+	"path/filepath"
 	"slices"
 	"text/template"
 )
@@ -15,23 +17,114 @@ import (
 type goGenerator struct {
 	keyspaceGoTemplate *template.Template
 	queriesGoTemplate  *template.Template
+	execQueryTemplate  *template.Template
+	oneQueryTemplate   *template.Template
 	clientTemplate     *template.Template
 }
 
 func newGoGenerator() (*goGenerator, error) {
 	tpl, err := template.New("keyspace-go-template").Parse(keyspaceGoTemplate)
 	if err != nil {
-		return nil, fmt.Errorf("parse keyspace go template: %w", err)
+		return nil, fmt.Errorf("parse keyspace template: %w", err)
 	}
 	tpl2, err := template.New("queries-go-template").Parse(queriesGoTemplate)
 	if err != nil {
-		return nil, fmt.Errorf("parse queries go template: %w", err)
+		return nil, fmt.Errorf("parse queries template: %w", err)
 	}
 	tpl3, err := template.New("client-template").Parse(clientTemplate)
 	if err != nil {
-		return nil, fmt.Errorf("parse client go template: %w", err)
+		return nil, fmt.Errorf("parse client template: %w", err)
 	}
-	return &goGenerator{keyspaceGoTemplate: tpl, queriesGoTemplate: tpl2, clientTemplate: tpl3}, nil
+	tpl4, err := template.New("exec-query-template").Parse(execQueryGoTemplate)
+	if err != nil {
+		return nil, fmt.Errorf("parse exec query template: %w", err)
+	}
+	tpl5, err := template.New("one-query-template").Parse(oneQueryGoTemplate)
+	if err != nil {
+		return nil, fmt.Errorf("parse one query template: %w", err)
+	}
+	return &goGenerator{keyspaceGoTemplate: tpl, queriesGoTemplate: tpl2, clientTemplate: tpl3, execQueryTemplate: tpl4, oneQueryTemplate: tpl5}, nil
+}
+
+func (gg goGenerator) generate(config *CQLGenGoConfig, schema *Schema, queries Queries) error {
+	out := config.Out
+	if err := os.Mkdir(out, 0777); err != nil && !os.IsExist(err) {
+		return fmt.Errorf("create output directory: %w", err)
+	}
+	fn := filepath.Join(out, "client.go")
+	f, err := os.OpenFile(fn, os.O_CREATE|os.O_TRUNC|os.O_WRONLY, 0777)
+	if err != nil {
+		return fmt.Errorf("open client file: %w", err)
+	}
+	defer func() {
+		if err := f.Close(); err != nil {
+			// TODO
+		}
+	}()
+	if err := gg.generateClient(&generateClientRequest{
+		packageName: config.Package,
+		out:         f,
+	}); err != nil {
+		return fmt.Errorf("generate client: %w", err)
+	}
+
+	queriesByTableByKeyspace := make(map[string]map[string]Queries)
+	for _, q := range queries {
+		if _, ok := queriesByTableByKeyspace[q.Keyspace]; !ok {
+			queriesByTableByKeyspace[q.Keyspace] = make(map[string]Queries)
+		}
+		if _, ok := queriesByTableByKeyspace[q.Keyspace][q.Table]; !ok {
+			queriesByTableByKeyspace[q.Keyspace][q.Table] = make(Queries, 0)
+		}
+		queriesByTableByKeyspace[q.Keyspace][q.Table] = append(queriesByTableByKeyspace[q.Keyspace][q.Table], q)
+	}
+
+	for _, k := range schema.Keyspaces {
+		resp, err := gg.generateKeyspaceStructs(&generateKeyspaceStructsRequest{
+			keyspace:    k,
+			packageName: config.Package,
+			out:         noopWriter{},
+		})
+		if err != nil {
+			return fmt.Errorf("generate keyspace: %w", err)
+		}
+		for _, t := range k.Tables {
+			err := func() error {
+				queries := queriesByTableByKeyspace[k.Name][t.Name]
+				if len(queries) == 0 {
+					return nil
+				}
+				filename := strfmt.ToSnakeCase(t.Name) + ".go"
+				if k.Name != "" {
+					filename = strfmt.ToSnakeCase(k.Name) + "_" + filename
+				}
+				filename = "query_" + filename
+				fn = filepath.Join(out, filename)
+				f, err = os.OpenFile(fn, os.O_CREATE|os.O_TRUNC|os.O_WRONLY, 0777)
+				if err != nil {
+					return fmt.Errorf("open queries file: %w", err)
+				}
+				defer func() {
+					if err := f.Close(); err != nil {
+						// TODO
+					}
+				}()
+				if err := gg.generateQueries(&generateQueriesRequest{
+					queries:           queries,
+					structByTableName: resp.structByTableName,
+					packageName:       config.Package,
+					out:               f,
+				}); err != nil {
+					return fmt.Errorf("generate queries: %w", err)
+				}
+				return nil
+			}()
+			if err != nil {
+				return fmt.Errorf("generate queries: %w", err)
+			}
+		}
+	}
+	return nil
 }
 
 type generateKeyspaceStructsRequest struct {
@@ -70,63 +163,174 @@ type {{.Name}} struct {
 package {{.PackageName}}
 
 import (
+	"fmt"
 	"github.com/gocql/gocql"
-  "github.com/razcoen/cqlc/pkg/cqlc"
+  "github.com/razcoen/cqlc/pkg/gocqlc"
 )
 
 type Client struct {
-	Session *gocql.Session
-  Logger cqlc.Logger
+	session *gocql.Session
+  logger gocqlc.Logger
 }
 
-func NewClient(session *gocql.Session, logger cqlc.Logger) *Client {
-	return &Client{Session: session, Logger: logger}
+func NewClient(session *gocql.Session, logger gocqlc.Logger) (*Client, error) {
+	if session == nil {
+		return nil, fmt.Errorf("session cannot be nil")
+	}
+	if session.Closed() {
+		return nil, fmt.Errorf("session already closed")
+	}
+	if logger == nil {
+		logger = &gocqlc.NoopLogger{}
+	}
+	return &Client{session: session, logger: logger}, nil
+}
+
+func (c *Client) Close() error {
+	c.session.Close()
+	return nil
 }
 `
+	oneQueryGoTemplate = `
+	var result {{.ResultType}}
+	if err := q.Scan({{- range .Selects -}}&result.{{.Name}},{{- end -}}); err != nil {
+		return nil, fmt.Errorf("scan row: %w", err)
+	}
+	return &result, nil`
 	execQueryGoTemplate = `
+	if err := q.Exec(); err != nil {
+		return fmt.Errorf("exec query: %w", err)
+	}
+	return nil`
 
-`
+	// TODO: Support batch insert
 	queriesGoTemplate = `// Code generated by cqlc. DO NOT EDIT.
 
 package {{.PackageName}}
 
-{{- if gt (len .Imports) 0}}
 import (
-{{- end}}
 {{- range .Imports}}
   "{{.}}"
 {{- end}}
-{{- if gt (len .Imports) 0}}
+	"fmt"
+	"context"
+	"github.com/gocql/gocql"
+	"github.com/razcoen/cqlc/pkg/gocqlc"
 )
-{{- end}}
 
 {{range .Queries}}
-type {{.FuncName}}Params struct {
+{{if .ParamsType -}}
+type {{.ParamsType}} struct {
 {{- range .Params}}
 {{.Name}} {{.GoType}}
 {{- end}}
 }
+{{- end}}
 
-type {{.FuncName}}Result struct {
+{{if .ResultType -}}
+type {{.ResultType}} struct {
 {{- range .Selects}}
 {{.Name}} {{.GoType}}
 {{- end}}
 }
+{{- end}}
 
-func (c *Client) {{.FuncName}}(params {{.FuncName}}Params) ([]*{{.FuncName}}Result, error) {
+{{if eq "many" .QueryType}}
+type {{.FuncName}}Querier struct {
+	query *gocql.Query
+	logger gocqlc.Logger
 }
+
+func (q *{{.FuncName}}Querier) All(ctx context.Context) ([]*{{.ResultType}}, error) { 
+	var results []*{{.ResultType}}
+	var pageState []byte
+	for {
+		page, err := q.Page(ctx, pageState)
+		if err != nil {
+			return nil, fmt.Errorf("page: %w", err)
+		}
+		results = append(results, page.Results()...)
+		if len(page.PageState()) == 0 {
+			break
+		}
+		pageState = page.PageState()
+	}
+	return results, nil
+}
+
+type {{.ResultType}}sPage struct {
+	results []*{{.ResultType}}
+	pageState []byte
+	numRows int
+}
+
+func (page *{{.ResultType}}sPage) Results() []*{{.ResultType}} { return page.results }
+func (page *{{.ResultType}}sPage) NumRows() int { return page.numRows }
+func (page *{{.ResultType}}sPage) PageState() []byte { return page.pageState }
+
+func (q *{{.FuncName}}Querier) Page(ctx context.Context, pageState []byte) (*{{.ResultType}}sPage, error) {
+	var results []*{{.ResultType}}
+	iter := q.query.WithContext(ctx).PageState(pageState).Iter()
+	defer func() {
+		if err := iter.Close(); err != nil {
+			q.logger.Error("iter.Close() returned with error", "error", err)
+		}
+	} ()
+	nextPageState := iter.PageState()
+	scanner := iter.Scanner()
+	for scanner.Next() {
+		var result {{.ResultType}}
+		if err := scanner.Scan({{- range .Selects -}}result.{{.Name}},{{- end -}}); err != nil {
+			return nil, fmt.Errorf("scan result: %w", err)
+		}
+		results = append(results, &result)
+	}
+	if err := scanner.Err(); err != nil {
+		return nil, fmt.Errorf("scanner error: %w", err)
+	}
+	return &{{.ResultType}}sPage{results: results, pageState: nextPageState, numRows: iter.NumRows()}, nil
+}
+
+func (c *Client) {{.FuncName}}({{if .ParamsType}}params *{{.ParamsType}}, {{end}}opts ...gocqlc.QueryOption) *{{.FuncName}}Querier {
+	q := c.session.Query("{{.Stmt}}"{{- range .Params -}}, params.{{.Name}}{{- end -}})
+	for _, opt := range opts {
+		q = opt.Apply(q)
+	}
+	return &{{.FuncName}}Querier{query: q, logger: c.logger}
+}
+
+{{ else }}
+func (c *Client) {{.FuncName}}(ctx context.Context{{if .ParamsType}}, params *{{.ParamsType}}{{end}}, opts ...gocqlc.QueryOption) {{- if .ResultType -}}(*{{.ResultType}}, error){{- else -}}error{{- end -}} {
+	q := c.session.Query("{{.Stmt}}"{{- range .Params -}}, params.{{.Name}}{{- end -}})
+  q = q.WithContext(ctx)
+	for _, opt := range opts {
+		q = opt.Apply(q)
+	}
+	{{- .ExecString}}
+}
+{{ end -}}
+
 {{end -}}
 `
 )
 
+// TODO: When returning "*" it might be needed to iterate through the column informations of the iterator just to be sure on the ordering.
+
 type queriesGoTemplateValue struct {
 	PackageName string
 	Imports     []string
-	Queries     []struct {
-		FuncName string
-		Params   []fieldTemplateValue
-		Selects  []fieldTemplateValue
-	}
+	Queries     []queryGoTemplateValue
+}
+
+type queryGoTemplateValue struct {
+	ExecString string
+	QueryType  QueryType
+	ParamsType string
+	ResultType string
+	FuncName   string
+	Stmt       string
+	Params     []fieldTemplateValue
+	Selects    []fieldTemplateValue
 }
 
 type fieldTemplateValue struct {
@@ -255,11 +459,38 @@ func (gg *goGenerator) generateQueries(req *generateQueriesRequest) error {
 				selects = append(selects, fieldTemplateValue{Name: f.name, GoType: f.goType.Name})
 			}
 		}
-		v.Queries = append(v.Queries, struct {
-			FuncName string
-			Params   []fieldTemplateValue
-			Selects  []fieldTemplateValue
-		}{FuncName: q.FuncName, Params: params, Selects: selects})
+		query := queryGoTemplateValue{FuncName: q.FuncName, Params: params, Selects: selects, Stmt: q.Stmt}
+		var queryType QueryType
+		for _, a := range q.Annotations {
+			if qt, ok := parseQueryType(a); ok {
+				queryType = qt
+			}
+		}
+		query.QueryType = queryType
+		// Set result type
+		if (queryType == QueryTypeOne || queryType == QueryTypeMany) && len(query.Selects) > 0 {
+			query.ResultType = fmt.Sprintf("%sResult", query.FuncName)
+		}
+		// Set params type
+		if len(query.Params) > 0 {
+			query.ParamsType = fmt.Sprintf("%sParams", query.FuncName)
+		}
+		switch queryType {
+		case QueryTypeExec:
+			buf := &bytes.Buffer{}
+			if err := gg.execQueryTemplate.Execute(buf, query); err != nil {
+				return fmt.Errorf("execute exec query template: %w", err)
+			}
+			query.ExecString = buf.String()
+		case QueryTypeOne:
+			buf := &bytes.Buffer{}
+			if err := gg.oneQueryTemplate.Execute(buf, query); err != nil {
+				return fmt.Errorf("execute one query template: %w", err)
+			}
+			query.ExecString = buf.String()
+		case QueryTypeMany:
+		}
+		v.Queries = append(v.Queries, query)
 	}
 	v.Imports = slices.Collect(maps.Keys(imports))
 	buf := &bytes.Buffer{}
@@ -268,6 +499,7 @@ func (gg *goGenerator) generateQueries(req *generateQueriesRequest) error {
 	}
 	out, err := format.Source(buf.Bytes())
 	if err != nil {
+		fmt.Println(buf.String())
 		return fmt.Errorf("format out: %w", err)
 	}
 	if _, err := req.out.Write(out); err != nil {
@@ -299,3 +531,7 @@ func (gg *goGenerator) generateClient(req *generateClientRequest) error {
 	}
 	return nil
 }
+
+type noopWriter struct{}
+
+func (w noopWriter) Write(b []byte) (n int, err error) { return 0, nil }

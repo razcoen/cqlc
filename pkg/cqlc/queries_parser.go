@@ -16,9 +16,9 @@ func NewQueriesParser() *QueriesParser {
 	return &QueriesParser{}
 }
 
-func (qp *QueriesParser) Parse(cql string) ([]*Query, error) {
+func (qp *QueriesParser) Parse(cql string) (Queries, error) {
 	queryStmts := strings.Split(cql, ";")
-	queries := make([]*Query, 0, len(queryStmts))
+	queries := make(Queries, 0, len(queryStmts))
 	for _, query := range queryStmts {
 		query = strings.TrimSpace(query)
 		if query == "" {

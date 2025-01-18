@@ -6,7 +6,7 @@ import (
 	"github.com/gocql/gocql"
 )
 
-const defaultKeyspaceName = "system"
+const defaultKeyspaceName = ""
 
 type SchemaBuilder struct {
 	keyspaceNames map[string]bool
