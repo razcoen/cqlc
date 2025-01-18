@@ -108,7 +108,7 @@ func (gg goGenerator) generate(config *CQLGenGoConfig, schema *Schema, queries Q
 				}
 				fn = "query_" + fn
 				fn = filepath.Join(out, fn)
-				f, err = os.OpenFile(fn, os.O_CREATE|os.O_TRUNC|os.O_WRONLY, 0777)
+				f, err := os.OpenFile(fn, os.O_CREATE|os.O_TRUNC|os.O_WRONLY, 0777)
 				if err != nil {
 					return fmt.Errorf("open queries file: %w", err)
 				}

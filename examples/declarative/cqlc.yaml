@@ -1,9 +1,9 @@
 version: "1"
 cql:
-  - queries: "./queries.cql"
-    schema: "./schema.cql"
+  - queries: "queries.cql"
+    schema: "schema.cql"
     gen:
       overwrite: true
       go:
         package: "example"
-        out: "./example"
+        out: "example"

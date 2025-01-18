@@ -13,14 +13,12 @@ func NewGenerateCommand() *cobra.Command {
 			if err != nil {
 				panic(err)
 			}
-			cfg, err := cqlc.ReadConfig("./cqlc.yaml")
+			cfg, err := cqlc.ReadConfig("cqlc.yaml")
 			if err != nil {
 				panic(err)
 			}
-			for _, c := range cfg.CQL {
-				if err := g.Generate(c); err != nil {
-					panic(err)
-				}
+			if err := g.Generate(cfg); err != nil {
+				panic(err)
 			}
 			return nil
 		},
