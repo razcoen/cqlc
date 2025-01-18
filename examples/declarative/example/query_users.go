@@ -121,10 +121,10 @@ func (c *Client) ListUserIDs(opts ...gocqlc.QueryOption) *ListUserIDsQuerier {
 }
 
 type ListUsersResult struct {
+	UserID    gocql.UUID
 	Username  string
 	Email     string
 	CreatedAt time.Time
-	UserID    gocql.UUID
 }
 
 type ListUsersQuerier struct {
@@ -171,7 +171,7 @@ func (q *ListUsersQuerier) Page(ctx context.Context, pageState []byte) (*ListUse
 	scanner := iter.Scanner()
 	for scanner.Next() {
 		var result ListUsersResult
-		if err := scanner.Scan(result.Username, result.Email, result.CreatedAt, result.UserID); err != nil {
+		if err := scanner.Scan(result.UserID, result.Username, result.Email, result.CreatedAt); err != nil {
 			return nil, fmt.Errorf("scan result: %w", err)
 		}
 		results = append(results, &result)

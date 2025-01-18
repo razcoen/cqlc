@@ -18,7 +18,8 @@ type CQLConfig struct {
 }
 
 type CQLGenConfig struct {
-	Go *CQLGenGoConfig `yaml:"go"`
+	Overwrite bool            `yaml:"overwrite"`
+	Go        *CQLGenGoConfig `yaml:"go"`
 }
 
 type CQLGenGoConfig struct {

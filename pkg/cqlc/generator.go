@@ -1,9 +1,18 @@
 package cqlc
 
 import (
+	"errors"
 	"fmt"
 	"os"
 )
+
+func Generate(config *CQLConfig) error {
+	gen, err := NewGenerator()
+	if err != nil {
+		return fmt.Errorf("creating generator: %w", err)
+	}
+	return gen.Generate(config)
+}
 
 type Generator struct {
 	goGenerator *goGenerator
@@ -35,6 +44,12 @@ func (g *Generator) Generate(config *CQLConfig) error {
 	queries, err := qp.Parse(string(qb))
 	if err != nil {
 		return fmt.Errorf("parse queries: %w", err)
+	}
+
+	if config.Gen.Overwrite {
+		if err := os.RemoveAll(config.Gen.Go.Out); err != nil && !errors.Is(err, os.ErrNotExist) {
+			return fmt.Errorf("remove generated go directory: %w", err)
+		}
 	}
 
 	if err := g.goGenerator.generate(config.Gen.Go, schema, queries); err != nil {

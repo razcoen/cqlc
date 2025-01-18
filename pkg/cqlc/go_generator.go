@@ -374,7 +374,7 @@ func (gg *goGenerator) generateKeyspaceStructs(req *generateKeyspaceStructsReque
 			Name:      structName,
 		}
 		fieldByColumnName := make(map[string]*field)
-		for _, c := range t.Columns {
+		for i, c := range t.Columns {
 			name := strfmt.ToSingularPascalCase(c.Name)
 			goType, err := gocqlhelpers.ParseGoType(c.DataType)
 			if err != nil {
@@ -385,7 +385,7 @@ func (gg *goGenerator) generateKeyspaceStructs(req *generateKeyspaceStructsReque
 				imports[goType.ImportPath] = true
 			}
 			st.Fields = append(st.Fields, fieldTemplateValue{Name: name, GoType: goType.Name})
-			fieldByColumnName[c.Name] = &field{name: name, goType: goType}
+			fieldByColumnName[c.Name] = &field{name: name, goType: goType, ordering: i + 1}
 		}
 		v.Structs = append(v.Structs, st)
 		structByTableName[t.Name] = &strct{
@@ -409,8 +409,9 @@ func (gg *goGenerator) generateKeyspaceStructs(req *generateKeyspaceStructsReque
 }
 
 type field struct {
-	name   string
-	goType *gocqlhelpers.GoType
+	name     string
+	goType   *gocqlhelpers.GoType
+	ordering int
 }
 
 type strct struct {
@@ -444,7 +445,9 @@ func (gg *goGenerator) generateQueries(req *generateQueriesRequest) error {
 		}
 		// TODO: Return the struct instead of copying the fields
 		if len(q.Selects) == 1 && q.Selects[0] == "*" {
-			for _, f := range strct.fieldByColumnName {
+			fields := slices.Collect(maps.Values(strct.fieldByColumnName))
+			slices.SortFunc(fields, func(a, b *field) int { return a.ordering - b.ordering })
+			for _, f := range fields {
 				if f.goType.ImportPath != "" {
 					imports[f.goType.ImportPath] = true
 				}
