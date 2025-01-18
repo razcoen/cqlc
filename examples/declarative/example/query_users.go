@@ -29,6 +29,28 @@ func (c *Client) CreateUser(ctx context.Context, params *CreateUserParams, opts 
 	return nil
 }
 
+type CreateUsersParams struct {
+	UserID    gocql.UUID
+	Username  string
+	Email     string
+	CreatedAt time.Time
+}
+
+func (c *Client) CreateUsers(ctx context.Context, params []*CreateUsersParams, opts ...gocqlc.BatchOption) error {
+	b := c.session.NewBatch(gocql.UnloggedBatch)
+	for _, v := range params {
+		b.Query("INSERT INTO users (user_id, username, email, created_at) VALUES (?, ?, ?, ?)", v.UserID, v.Username, v.Email, v.CreatedAt)
+	}
+	b = b.WithContext(ctx)
+	for _, opt := range opts {
+		b = opt.Apply(b)
+	}
+	if err := c.session.ExecuteBatch(b); err != nil {
+		return fmt.Errorf("exec batch: %w", err)
+	}
+	return nil
+}
+
 type FindUserParams struct {
 	UserID gocql.UUID
 }

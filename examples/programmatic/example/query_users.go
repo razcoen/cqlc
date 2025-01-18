@@ -53,87 +53,24 @@ func (c *Client) FindUser(ctx context.Context, params *FindUserParams, opts ...g
 	return &result, nil
 }
 
-type ListUserIDsResult struct {
-	UserID gocql.UUID
+type FindUsersParams struct {
+	Email string
 }
 
-type ListUserIDsQuerier struct {
-	query  *gocql.Query
-	logger gocqlc.Logger
-}
-
-func (q *ListUserIDsQuerier) All(ctx context.Context) ([]*ListUserIDsResult, error) {
-	var results []*ListUserIDsResult
-	var pageState []byte
-	for {
-		page, err := q.Page(ctx, pageState)
-		if err != nil {
-			return nil, fmt.Errorf("page: %w", err)
-		}
-		results = append(results, page.Results()...)
-		if len(page.PageState()) == 0 {
-			break
-		}
-		pageState = page.PageState()
-	}
-	return results, nil
-}
-
-type ListUserIDsResultsPage struct {
-	results   []*ListUserIDsResult
-	pageState []byte
-	numRows   int
-}
-
-func (page *ListUserIDsResultsPage) Results() []*ListUserIDsResult { return page.results }
-func (page *ListUserIDsResultsPage) NumRows() int                  { return page.numRows }
-func (page *ListUserIDsResultsPage) PageState() []byte             { return page.pageState }
-
-func (q *ListUserIDsQuerier) Page(ctx context.Context, pageState []byte) (*ListUserIDsResultsPage, error) {
-	var results []*ListUserIDsResult
-	iter := q.query.WithContext(ctx).PageState(pageState).Iter()
-	defer func() {
-		if err := iter.Close(); err != nil {
-			q.logger.Error("iter.Close() returned with error", "error", err)
-		}
-	}()
-	nextPageState := iter.PageState()
-	scanner := iter.Scanner()
-	for scanner.Next() {
-		var result ListUserIDsResult
-		if err := scanner.Scan(result.UserID); err != nil {
-			return nil, fmt.Errorf("scan result: %w", err)
-		}
-		results = append(results, &result)
-	}
-	if err := scanner.Err(); err != nil {
-		return nil, fmt.Errorf("scanner error: %w", err)
-	}
-	return &ListUserIDsResultsPage{results: results, pageState: nextPageState, numRows: iter.NumRows()}, nil
-}
-
-func (c *Client) ListUserIDs(opts ...gocqlc.QueryOption) *ListUserIDsQuerier {
-	q := c.session.Query("SELECT user_id FROM users")
-	for _, opt := range opts {
-		q = opt.Apply(q)
-	}
-	return &ListUserIDsQuerier{query: q, logger: c.logger}
-}
-
-type ListUsersResult struct {
+type FindUsersResult struct {
 	UserID    gocql.UUID
 	Username  string
 	Email     string
 	CreatedAt time.Time
 }
 
-type ListUsersQuerier struct {
+type FindUsersQuerier struct {
 	query  *gocql.Query
 	logger gocqlc.Logger
 }
 
-func (q *ListUsersQuerier) All(ctx context.Context) ([]*ListUsersResult, error) {
-	var results []*ListUsersResult
+func (q *FindUsersQuerier) All(ctx context.Context) ([]*FindUsersResult, error) {
+	var results []*FindUsersResult
 	var pageState []byte
 	for {
 		page, err := q.Page(ctx, pageState)
@@ -149,18 +86,18 @@ func (q *ListUsersQuerier) All(ctx context.Context) ([]*ListUsersResult, error) 
 	return results, nil
 }
 
-type ListUsersResultsPage struct {
-	results   []*ListUsersResult
+type FindUsersResultsPage struct {
+	results   []*FindUsersResult
 	pageState []byte
 	numRows   int
 }
 
-func (page *ListUsersResultsPage) Results() []*ListUsersResult { return page.results }
-func (page *ListUsersResultsPage) NumRows() int                { return page.numRows }
-func (page *ListUsersResultsPage) PageState() []byte           { return page.pageState }
+func (page *FindUsersResultsPage) Results() []*FindUsersResult { return page.results }
+func (page *FindUsersResultsPage) NumRows() int                { return page.numRows }
+func (page *FindUsersResultsPage) PageState() []byte           { return page.pageState }
 
-func (q *ListUsersQuerier) Page(ctx context.Context, pageState []byte) (*ListUsersResultsPage, error) {
-	var results []*ListUsersResult
+func (q *FindUsersQuerier) Page(ctx context.Context, pageState []byte) (*FindUsersResultsPage, error) {
+	var results []*FindUsersResult
 	iter := q.query.WithContext(ctx).PageState(pageState).Iter()
 	defer func() {
 		if err := iter.Close(); err != nil {
@@ -170,7 +107,7 @@ func (q *ListUsersQuerier) Page(ctx context.Context, pageState []byte) (*ListUse
 	nextPageState := iter.PageState()
 	scanner := iter.Scanner()
 	for scanner.Next() {
-		var result ListUsersResult
+		var result FindUsersResult
 		if err := scanner.Scan(result.UserID, result.Username, result.Email, result.CreatedAt); err != nil {
 			return nil, fmt.Errorf("scan result: %w", err)
 		}
@@ -179,13 +116,13 @@ func (q *ListUsersQuerier) Page(ctx context.Context, pageState []byte) (*ListUse
 	if err := scanner.Err(); err != nil {
 		return nil, fmt.Errorf("scanner error: %w", err)
 	}
-	return &ListUsersResultsPage{results: results, pageState: nextPageState, numRows: iter.NumRows()}, nil
+	return &FindUsersResultsPage{results: results, pageState: nextPageState, numRows: iter.NumRows()}, nil
 }
 
-func (c *Client) ListUsers(opts ...gocqlc.QueryOption) *ListUsersQuerier {
-	q := c.session.Query("SELECT * FROM users")
+func (c *Client) FindUsers(params *FindUsersParams, opts ...gocqlc.QueryOption) *FindUsersQuerier {
+	q := c.session.Query("SELECT * FROM users WHERE email = ?", params.Email)
 	for _, opt := range opts {
 		q = opt.Apply(q)
 	}
-	return &ListUsersQuerier{query: q, logger: c.logger}
+	return &FindUsersQuerier{query: q, logger: c.logger}
 }

@@ -1,7 +1,5 @@
 package cqlc
 
-import "errors"
-
 type Queries []*Query
 
 type Query struct {
@@ -14,19 +12,18 @@ type Query struct {
 	Keyspace    string
 }
 
-type QueryType string
+type Annotation string
 
 const (
-	QueryTypeExec QueryType = "exec"
-	QueryTypeOne  QueryType = "one"
-	QueryTypeMany QueryType = "many"
+	AnnotationExec  Annotation = "exec"
+	AnnotationOne   Annotation = "one"
+	AnnotationMany  Annotation = "many"
+	AnnotationBatch Annotation = "batch"
 )
 
-var errInvalidQueryType = errors.New("invalid query type")
-
-func parseQueryType(s string) (QueryType, bool) {
-	m := map[QueryType]bool{QueryTypeExec: true, QueryTypeOne: true, QueryTypeMany: true}
-	qt := QueryType(s)
-	_, ok := m[qt]
-	return qt, ok
+func parseAnnotation(s string) (Annotation, bool) {
+	m := map[Annotation]bool{AnnotationExec: true, AnnotationOne: true, AnnotationMany: true, AnnotationBatch: true}
+	a := Annotation(s)
+	_, ok := m[a]
+	return a, ok
 }
