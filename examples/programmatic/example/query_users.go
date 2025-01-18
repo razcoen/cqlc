@@ -53,6 +53,27 @@ func (c *Client) FindUser(ctx context.Context, params *FindUserParams, opts ...g
 	return &result, nil
 }
 
+type FindUsernameByUserIDParams struct {
+	UserID gocql.UUID
+}
+
+type FindUsernameByUserIDResult struct {
+	Username string
+}
+
+func (c *Client) FindUsernameByUserID(ctx context.Context, params *FindUsernameByUserIDParams, opts ...gocqlc.QueryOption) (*FindUsernameByUserIDResult, error) {
+	q := c.session.Query("SELECT username FROM users WHERE user_id = ? LIMIT 1", params.UserID)
+	q = q.WithContext(ctx)
+	for _, opt := range opts {
+		q = opt.Apply(q)
+	}
+	var result FindUsernameByUserIDResult
+	if err := q.Scan(&result.Username); err != nil {
+		return nil, fmt.Errorf("scan row: %w", err)
+	}
+	return &result, nil
+}
+
 type FindUsersParams struct {
 	Email string
 }
