@@ -1,19 +1,20 @@
 
 ## Support Matrix
 
-### Queries
+### Cassandra Syntax
 
-| Query  | Support | Examples                        |
-|--------|------|---------------------------------|
-| SELECT | 🟩 Full | `SELECT x FROM y WHERE z = ?;`  |
-| INSERT | 🟩 Full | `INSERT INTO x (y) VALUES (z);` |
-| DELETE | 🟩 Full | `DELETE FROM x WHERE y = ?;`    |
+* [x] SELECT
+* [x] INSERT
+* [x] DELETE
+* [x] CREATE TABLE
+* [ ] ALTER TABLE
+* [ ] CREATE TYPE
+* [ ] CREATE KEYSPACE
+* [ ] CREATE MATERIALIZED VIEW
 
-### Schema
+### Golang
 
-| Query        | Support | Examples                        |
-|--------------|---------|---------------------------------|
-| CREATE TABLE | 🟩 Full | `CREATE TABLE x (y);`  |
-| CREATE KEYSPACE  | 🟥 None  |   |
-| CREATE TYPE  | 🟥 None  |   |
-| ALTER TABLE  | 🟥 None  |   |
+* [x] `:one` Fetch one row
+* [x] `:many` Fetch many rows
+* [x] `:exec` Execute query
+* [x] `:batch` Batch insert 
