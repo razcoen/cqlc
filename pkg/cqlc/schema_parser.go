@@ -3,6 +3,7 @@ package cqlc
 import (
 	"errors"
 	"fmt"
+	"github.com/razcoen/cqlc/pkg/antlrhelpers"
 	"github.com/razcoen/cqlc/pkg/gocqlhelpers"
 	"log"
 	"os"
@@ -30,7 +31,9 @@ func (sp *SchemaParser) Parse(cql string) (*Schema, error) {
 		p := antlrcql.NewCQLParser(stream)
 		p.RemoveErrorListeners()
 		p.AddErrorListener(el)
-		antlr.ParseTreeWalkerDefault.Walk(l, p.Cql())
+		t := p.Cql()
+		antlrhelpers.PrintTree(t)
+		antlr.ParseTreeWalkerDefault.Walk(l, t)
 	}
 	if el.errors != nil {
 		return nil, errors.Join(el.errors...)
@@ -92,6 +95,7 @@ func newSchemaParserTreeListener() *schemaParserTreeListener {
 }
 
 func (l *schemaParserTreeListener) EnterCreateTable(ctx *antlrcql.CreateTableContext) {
+	// TODO: Refactor to more resilient
 	var columnDefinitionListContext *antlrcql.ColumnDefinitionListContext
 	for _, child := range ctx.GetChildren() {
 		ctx, ok := child.(*antlrcql.ColumnDefinitionListContext)
@@ -107,24 +111,84 @@ func (l *schemaParserTreeListener) EnterCreateTable(ctx *antlrcql.CreateTableCon
 
 	tableBuilder := NewTableBuilder(ctx.Table().GetText())
 	for _, child := range columnDefinitionListContext.GetChildren() {
-		columnDefinitionContext, ok := child.(*antlrcql.ColumnDefinitionContext)
-		if !ok {
-			continue
-		}
-		var columnName string
-		var columnType string
-		for _, child := range columnDefinitionContext.GetChildren() {
-			switch child := child.(type) {
-			case *antlrcql.ColumnContext:
-				columnName = child.GetText()
-			case *antlrcql.DataTypeContext:
-				columnType = child.GetText()
-			default:
+		switch child := child.(type) {
+		case *antlrcql.PrimaryKeyElementContext:
+			if child.GetChildCount() < 4 {
+				continue
+			}
+			primaryKeyDefinitionContext, ok := child.GetChild(3).(*antlrcql.PrimaryKeyDefinitionContext)
+			if !ok {
+				continue
+			}
+			handlePartitionKeyContext := func(partitionKeyContext *antlrcql.PartitionKeyContext) {
+				for _, c := range partitionKeyContext.GetChildren() {
+					columnContext, ok := c.(*antlrcql.ColumnContext)
+					if !ok {
+						continue
+					}
+					tableBuilder = tableBuilder.WithPartitionKey(columnContext.GetText())
+				}
+			}
+			keyContext := primaryKeyDefinitionContext.GetChild(0) // Either CompositeKeyContext or CompoundKeyContext
+			partitionKeyContext, ok := keyContext.GetChild(0).(*antlrcql.PartitionKeyContext)
+			if ok {
+				handlePartitionKeyContext(partitionKeyContext)
+			}
+			partitionKeyListContext, ok := keyContext.GetChild(1).(*antlrcql.PartitionKeyListContext)
+			if ok {
+				for _, c := range partitionKeyListContext.GetChildren() {
+					partitionKeyContext, ok := c.(*antlrcql.PartitionKeyContext)
+					if ok {
+						handlePartitionKeyContext(partitionKeyContext)
+					}
+				}
+			}
+			if keyContext.GetChildCount() < 3 {
+				continue
+			}
+			clusteringKeyContext, ok := keyContext.GetChild(2).(*antlrcql.ClusteringKeyListContext)
+			if !ok {
+				clusteringKeyContext, ok = keyContext.GetChild(4).(*antlrcql.ClusteringKeyListContext)
+				if !ok {
+					continue
+				}
+			}
+			for _, c := range clusteringKeyContext.GetChildren() {
+				clusteringKeyContext, ok := c.(*antlrcql.ClusteringKeyContext)
+				if !ok {
+					continue
+				}
+				for _, col := range clusteringKeyContext.GetChildren() {
+					columnContext, ok := col.(*antlrcql.ColumnContext)
+					if !ok {
+						continue
+					}
+					tableBuilder = tableBuilder.WithClusteringKey(columnContext.GetText())
+
+				}
+			}
+		case *antlrcql.ColumnDefinitionContext:
+			var columnName string
+			var columnType string
+			isPrimaryKey := false
+			for _, child := range child.GetChildren() {
+				switch child := child.(type) {
+				case *antlrcql.ColumnContext:
+					columnName = child.GetText()
+				case *antlrcql.DataTypeContext:
+					columnType = child.GetText()
+				case *antlrcql.PrimaryKeyColumnContext:
+					isPrimaryKey = true
+				default:
+				}
+			}
+			// TODO: Logger? Errors?
+			ti := gocqlhelpers.ParseCassandraType(columnType, log.New(os.Stdout, "", 0))
+			tableBuilder = tableBuilder.WithColumn(columnName, ti)
+			if isPrimaryKey {
+				tableBuilder = tableBuilder.WithPrimaryKey(columnName)
 			}
 		}
-		// TODO: Logger? Errors?
-		ti := gocqlhelpers.ParseCassandraType(columnType, log.New(os.Stdout, "", 0))
-		tableBuilder = tableBuilder.WithColumn(columnName, ti)
 	}
 	table, err := tableBuilder.Build()
 	if err != nil {

@@ -11,10 +11,10 @@ jobs:
       - uses: goreleaser/goreleaser-action@v6
         with:
           distribution: goreleaser
-          version: '~> v2'
+          version: '~> v2.6'
           install-only: true
       - run: go version
-      - run: goreleaser build --clean --snapshot
+      - run: goreleaser release --clean --snapshot
   lint:
     needs: build
     runs-on: ubuntu-latest
@@ -35,4 +35,5 @@ jobs:
         with:
           go-version: 1.23
       - run: go version
+      - run: make cassandra-up
       - run: go test ./...

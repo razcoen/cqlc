@@ -1,0 +1,14 @@
+services:
+  cassandra:
+    image: cassandra:latest
+    network_mode: host
+    environment:
+      - CASSANDRA_CLUSTER_NAME=local
+      - CASSANDRA_DC=dc1
+      - CASSANDRA_RACK=r1
+      - CASSANDRA_START_RPC=true
+    healthcheck:
+      test: ["CMD-SHELL", "cqlsh -e 'describe cluster' 127.0.0.1"]
+      interval: 30s
+      timeout: 10s
+      retries: 5

@@ -1,5 +1,7 @@
 SHELL := /bin/bash
 
+include ./cassandra.mk
+
 GOLANGCI_LINT="golangci-lint"
 GORELEASER="goreleaser"
 

@@ -16,10 +16,10 @@ type ListUserPostsParams struct {
 }
 
 type ListUserPostsResult struct {
-	PostID    gocql.UUID
 	UserID    gocql.UUID
-	Content   string
 	CreatedAt time.Time
+	Content   string
+	PostID    gocql.UUID
 }
 
 type ListUserPostsQuerier struct {
@@ -66,7 +66,7 @@ func (q *ListUserPostsQuerier) Page(ctx context.Context, pageState []byte) (*Lis
 	scanner := iter.Scanner()
 	for scanner.Next() {
 		var result ListUserPostsResult
-		if err := scanner.Scan(result.PostID, result.UserID, result.Content, result.CreatedAt); err != nil {
+		if err := scanner.Scan(result.UserID, result.CreatedAt, result.Content, result.PostID); err != nil {
 			return nil, fmt.Errorf("scan result: %w", err)
 		}
 		results = append(results, &result)
