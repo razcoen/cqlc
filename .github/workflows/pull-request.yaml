@@ -7,4 +7,4 @@ jobs:
       - run: npm install -g @commitlint/cli @commitlint/config-conventional
       - run: |
           echo "export default { extends: ['@commitlint/config-conventional'] };" > commitlint.config.js
-      - run: echo ${{ github.event.pull_request.title }} | commitlint
+      - run: echo "${{ github.event.pull_request.title }}" | commitlint
