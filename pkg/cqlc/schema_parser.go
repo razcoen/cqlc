@@ -3,7 +3,6 @@ package cqlc
 import (
 	"errors"
 	"fmt"
-	"github.com/razcoen/cqlc/pkg/antlrhelpers"
 	"github.com/razcoen/cqlc/pkg/gocqlhelpers"
 	"log"
 	"os"
@@ -32,7 +31,6 @@ func (sp *SchemaParser) Parse(cql string) (*Schema, error) {
 		p.RemoveErrorListeners()
 		p.AddErrorListener(el)
 		t := p.Cql()
-		antlrhelpers.PrintTree(t)
 		antlr.ParseTreeWalkerDefault.Walk(l, t)
 	}
 	if el.errors != nil {
