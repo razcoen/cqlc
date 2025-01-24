@@ -1,0 +1,10 @@
+name: pull-request
+on: [ pull_request ]
+jobs:
+  commitlint:
+    runs-on: ubuntu-latest
+    steps:
+      - run: npm install -g @commitlint/cli @commitlint/config-conventional
+      - run: |
+          echo "export default { extends: ['@commitlint/config-conventional'] };" > commitlint.config.js
+      - run: echo ${{ github.event.pull_request.title }} | commitlint
