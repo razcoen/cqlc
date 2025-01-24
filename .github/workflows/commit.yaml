@@ -1,7 +1,7 @@
 name: commit
 on: [push]
 jobs:
-  build:
+  go-build:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -15,8 +15,8 @@ jobs:
           install-only: true
       - run: go version
       - run: goreleaser release --clean --snapshot
-  lint:
-    needs: build
+  go-lint:
+    needs: go-build
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -26,8 +26,8 @@ jobs:
       - uses: golangci/golangci-lint-action@v6
         with:
           version: v1.63.4
-  test:
-    needs: build
+  go-test:
+    needs: go-build
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -37,3 +37,11 @@ jobs:
       - run: go version
       - run: make cassandra-up
       - run: go test ./...
+  commit-message-lint:
+    runs-on: ubuntu-latest
+    steps:
+      - run: npm install -g @commitlint/cli @commitlint/config-conventional
+      - run: |
+          echo "export default { extends: ['@commitlint/config-conventional'] };" > commitlint.config.js
+          echo '{ "type": "module" }' > package.json
+      - run: npx commitlint --from ${{ github.event.pull_request.head.sha }}~${{ github.event.pull_request.commits }} --to ${{ github.event.pull_request.head.sha }} --verbose
