@@ -14,7 +14,7 @@ func ConnectWithRandomKeyspace(t *testing.T) (session *gocql.Session, keyspace s
 	keyspace = createRandomKeyspace(t, adminSession)
 	session = establishSession(t, keyspace)
 	t.Cleanup(func() {
-		//dropKeyspace(t, adminSession, keyspace)
+		dropKeyspace(t, adminSession, keyspace)
 		adminSession.Close()
 		session.Close()
 	})
