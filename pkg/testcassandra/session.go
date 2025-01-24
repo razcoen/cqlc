@@ -9,14 +9,15 @@ import (
 	"time"
 )
 
-func NewRandomKeyspaceSession(t *testing.T) (session *gocql.Session, keyspace string) {
+func ConnectWithRandomKeyspace(t *testing.T) (session *gocql.Session, keyspace string) {
 	adminSession := establishAdminSession(t)
 	keyspace = createRandomKeyspace(t, adminSession)
-	t.Cleanup(func() {
-		dropKeyspace(t, adminSession, keyspace)
-		adminSession.Close()
-	})
 	session = establishSession(t, keyspace)
+	t.Cleanup(func() {
+		//dropKeyspace(t, adminSession, keyspace)
+		adminSession.Close()
+		session.Close()
+	})
 	return session, keyspace
 }
 

@@ -1,82 +1,72 @@
 package cqlc
 
 import (
+	"encoding/json"
+	"fmt"
 	"github.com/gocql/gocql"
-	"strings"
 )
 
 type Schema struct {
-	Keyspaces []*Keyspace
+	Keyspaces []*Keyspace `json:"keyspaces"`
 }
 
 func (s *Schema) String() string {
-	sb := strings.Builder{}
-	sb.WriteString("{keyspaces:[")
-	for i, k := range s.Keyspaces {
-		sb.WriteString(k.String())
-		if i < len(s.Keyspaces)-1 {
-			sb.WriteString(",")
-		}
+	b, err := json.MarshalIndent(s, "", "  ")
+	if err != nil {
+		return fmt.Errorf("json.Marshal: %w", err).Error()
 	}
-	sb.WriteString("]}")
-	return sb.String()
+	return string(b)
 }
 
 type Keyspace struct {
-	Name   string
-	Tables []*Table
+	Name   string   `json:"name"`
+	Tables []*Table `json:"tables"`
 }
 
 func (k *Keyspace) String() string {
-	sb := strings.Builder{}
-	sb.WriteString("{name:")
-	sb.WriteString(k.Name)
-	sb.WriteString(",tables:[")
-	for i, t := range k.Tables {
-		sb.WriteString(t.String())
-		if i < len(k.Tables)-1 {
-			sb.WriteString(",")
-		}
+	b, err := json.MarshalIndent(k, "", "  ")
+	if err != nil {
+		return fmt.Errorf("json.Marshal: %w", err).Error()
 	}
-	sb.WriteString("]}")
-	return sb.String()
+	return string(b)
 }
 
 type Table struct {
-	Name    string
-	Columns []*Column
+	Name       string      `json:"name"`
+	Columns    []*Column   `json:"columns"`
+	PrimaryKey *PrimaryKey `json:"primary_key"`
+}
+
+type PrimaryKey struct {
+	PartitionKey  []string `json:"partition_key"`
+	ClusteringKey []string `json:"clustering_key"`
 }
 
 func (t *Table) String() string {
-	sb := strings.Builder{}
-	sb.WriteString("{name:")
-	sb.WriteString(t.Name)
-	sb.WriteString(",columns:[")
-	for i, c := range t.Columns {
-		sb.WriteString(c.String())
-		if i < len(t.Columns)-1 {
-			sb.WriteString(",")
-		}
+	b, err := json.MarshalIndent(t, "", "  ")
+	if err != nil {
+		return fmt.Errorf("json.Marshal: %w", err).Error()
 	}
-	sb.WriteString("]}")
-	return sb.String()
+	return string(b)
 }
 
 type Column struct {
-	Name     string
-	DataType gocql.TypeInfo
+	Name     string         // JSON marshalling is customer, therefore no tags
+	DataType gocql.TypeInfo // JSON marshalling is customer, therefore no tags
+}
+
+func (c *Column) MarshalJSON() ([]byte, error) {
+	node := map[string]string{"name": c.Name, "data_type": c.DataType.Type().String()}
+	if c.DataType.Type() == gocql.TypeCustom {
+		node["data_type"] = node["data_type"] + ":" + c.DataType.Custom()
+	}
+	return json.Marshal(node)
 }
 
 func (c *Column) String() string {
-	sb := strings.Builder{}
-	sb.WriteString("{name:")
-	sb.WriteString(c.Name)
-	sb.WriteString(",type:")
-	sb.WriteString(c.DataType.Type().String())
-	if c.DataType.Type() == gocql.TypeCustom {
-		sb.WriteString(":")
-		sb.WriteString(c.DataType.Custom())
+	b, err := json.MarshalIndent(c, "", "  ")
+	if err != nil {
+		return fmt.Errorf("json.Marshal: %w", err).Error()
 	}
-	sb.WriteString("}")
-	return sb.String()
+	return string(b)
 }

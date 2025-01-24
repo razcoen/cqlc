@@ -12,19 +12,18 @@ import (
 )
 
 func TestLogic(t *testing.T) {
-	// TODO: Requires cassandra cluster running within the CI
-	t.Skip()
-	session, _ := testcassandra.NewRandomKeyspaceSession(t)
-	testcassandra.Migrate(t, session, "schema.cql")
+	session, _ := testcassandra.ConnectWithRandomKeyspace(t)
+	testcassandra.Exec(t, session, "schema.cql")
+
 	client, err := example.NewClient(session, nil)
 	require.NoError(t, err)
-	defer client.Close()
+	defer func() { require.NoError(t, client.Close()) }()
+
 	ctx := context.Background()
-	uuid, err := uuid.NewUUID()
+	userID := gocql.UUID(uuid.Must(uuid.NewUUID()))
 	require.NoError(t, err)
-	userID := gocql.UUID(uuid)
-	require.NoError(t, err)
-	createdAt := time.Now()
+
+	createdAt := time.UnixMilli(time.Now().UnixMilli()).UTC() // Cassandra only keeps milliseconds precision on timestamps
 	err = client.CreateUser(ctx, &example.CreateUserParams{
 		UserID:    userID,
 		Username:  "test_user",
@@ -32,16 +31,13 @@ func TestLogic(t *testing.T) {
 		CreatedAt: createdAt,
 	})
 	require.NoError(t, err)
-	result, err := client.FindUsernameByUserID(ctx, &example.FindUsernameByUserIDParams{UserID: userID})
+
+	result, err := client.FindUser(ctx, &example.FindUserParams{UserID: userID})
 	require.NoError(t, err)
-	require.Equal(t, "test_user", result.Username)
-	// TODO: Not working since "*" does not match the column ordering.
-	//result, err := client.FindUser(ctx, &example.FindUserParams{UserID: userID})
-	//require.NoError(t, err)
-	//require.Equal(t, example.FindUserResult{
-	//	UserID:    userID,
-	//	Username:  "test_user",
-	//	Email:     "test_email",
-	//	CreatedAt: createdAt,
-	//}, *result)
+	require.Equal(t, example.FindUserResult{
+		UserID:    userID,
+		Username:  "test_user",
+		Email:     "test_email",
+		CreatedAt: createdAt,
+	}, *result)
 }

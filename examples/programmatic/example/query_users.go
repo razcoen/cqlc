@@ -35,9 +35,9 @@ type FindUserParams struct {
 
 type FindUserResult struct {
 	UserID    gocql.UUID
-	Username  string
-	Email     string
 	CreatedAt time.Time
+	Email     string
+	Username  string
 }
 
 func (c *Client) FindUser(ctx context.Context, params *FindUserParams, opts ...gocqlc.QueryOption) (*FindUserResult, error) {
@@ -47,7 +47,7 @@ func (c *Client) FindUser(ctx context.Context, params *FindUserParams, opts ...g
 		q = opt.Apply(q)
 	}
 	var result FindUserResult
-	if err := q.Scan(&result.UserID, &result.Username, &result.Email, &result.CreatedAt); err != nil {
+	if err := q.Scan(&result.UserID, &result.CreatedAt, &result.Email, &result.Username); err != nil {
 		return nil, fmt.Errorf("scan row: %w", err)
 	}
 	return &result, nil
@@ -80,9 +80,9 @@ type FindUsersParams struct {
 
 type FindUsersResult struct {
 	UserID    gocql.UUID
-	Username  string
-	Email     string
 	CreatedAt time.Time
+	Email     string
+	Username  string
 }
 
 type FindUsersQuerier struct {
@@ -129,7 +129,7 @@ func (q *FindUsersQuerier) Page(ctx context.Context, pageState []byte) (*FindUse
 	scanner := iter.Scanner()
 	for scanner.Next() {
 		var result FindUsersResult
-		if err := scanner.Scan(result.UserID, result.Username, result.Email, result.CreatedAt); err != nil {
+		if err := scanner.Scan(result.UserID, result.CreatedAt, result.Email, result.Username); err != nil {
 			return nil, fmt.Errorf("scan result: %w", err)
 		}
 		results = append(results, &result)
