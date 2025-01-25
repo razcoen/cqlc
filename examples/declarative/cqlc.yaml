@@ -1,4 +1,3 @@
-version: "1"
 cql:
   - queries: "queries.cql"
     schema: "schema.cql"
