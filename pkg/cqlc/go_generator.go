@@ -287,7 +287,7 @@ func (q *{{.FuncName}}Querier) Page(ctx context.Context, pageState []byte) (*{{.
 	scanner := iter.Scanner()
 	for scanner.Next() {
 		var result {{.ResultType}}
-		if err := scanner.Scan({{- range .Selects -}}result.{{.Name}},{{- end -}}); err != nil {
+		if err := scanner.Scan({{- range .Selects -}}&result.{{.Name}},{{- end -}}); err != nil {
 			return nil, fmt.Errorf("scan result: %w", err)
 		}
 		results = append(results, &result)

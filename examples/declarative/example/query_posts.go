@@ -66,7 +66,7 @@ func (q *ListUserPostsQuerier) Page(ctx context.Context, pageState []byte) (*Lis
 	scanner := iter.Scanner()
 	for scanner.Next() {
 		var result ListUserPostsResult
-		if err := scanner.Scan(result.UserID, result.CreatedAt, result.Content, result.PostID); err != nil {
+		if err := scanner.Scan(&result.UserID, &result.CreatedAt, &result.Content, &result.PostID); err != nil {
 			return nil, fmt.Errorf("scan result: %w", err)
 		}
 		results = append(results, &result)

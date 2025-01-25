@@ -123,7 +123,7 @@ func (q *ListUserIDsQuerier) Page(ctx context.Context, pageState []byte) (*ListU
 	scanner := iter.Scanner()
 	for scanner.Next() {
 		var result ListUserIDsResult
-		if err := scanner.Scan(result.UserID); err != nil {
+		if err := scanner.Scan(&result.UserID); err != nil {
 			return nil, fmt.Errorf("scan result: %w", err)
 		}
 		results = append(results, &result)
@@ -193,7 +193,7 @@ func (q *ListUsersQuerier) Page(ctx context.Context, pageState []byte) (*ListUse
 	scanner := iter.Scanner()
 	for scanner.Next() {
 		var result ListUsersResult
-		if err := scanner.Scan(result.UserID, result.CreatedAt, result.Email, result.Username); err != nil {
+		if err := scanner.Scan(&result.UserID, &result.CreatedAt, &result.Email, &result.Username); err != nil {
 			return nil, fmt.Errorf("scan result: %w", err)
 		}
 		results = append(results, &result)
