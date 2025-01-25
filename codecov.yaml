@@ -2,6 +2,9 @@ coverage:
   status:
     project:
       default:
+        enabled: yes
         target: auto
-comment:
-  require_changes: true
+    patch:
+      default:
+        enabled: yes
+        target: auto

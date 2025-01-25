@@ -11,7 +11,7 @@ import (
 	"time"
 )
 
-func TestLogic(t *testing.T) {
+func TestExample(t *testing.T) {
 	session, _ := testcassandra.ConnectWithRandomKeyspace(t)
 	testcassandra.Exec(t, session, "schema.cql")
 
@@ -20,24 +20,31 @@ func TestLogic(t *testing.T) {
 	defer func() { require.NoError(t, client.Close()) }()
 
 	ctx := context.Background()
-	userID := gocql.UUID(uuid.Must(uuid.NewUUID()))
-	require.NoError(t, err)
-
+	userID1 := gocql.UUID(uuid.Must(uuid.NewUUID()))
 	createdAt := time.UnixMilli(time.Now().UnixMilli()).UTC() // Cassandra only keeps milliseconds precision on timestamps
 	err = client.CreateUser(ctx, &example.CreateUserParams{
-		UserID:    userID,
-		Username:  "test_user",
-		Email:     "test_email",
+		UserID:    userID1,
+		Username:  "test_user_1",
+		Email:     "test_email_1",
 		CreatedAt: createdAt,
 	})
 	require.NoError(t, err)
 
-	result, err := client.FindUser(ctx, &example.FindUserParams{UserID: userID})
+	userID2 := gocql.UUID(uuid.Must(uuid.NewUUID()))
+	err = client.CreateUser(ctx, &example.CreateUserParams{
+		UserID:    userID2,
+		Username:  "test_user_2",
+		Email:     "test_email_2",
+		CreatedAt: createdAt,
+	})
+	require.NoError(t, err)
+
+	result, err := client.FindUser(ctx, &example.FindUserParams{UserID: userID1})
 	require.NoError(t, err)
 	require.Equal(t, example.FindUserResult{
-		UserID:    userID,
-		Username:  "test_user",
-		Email:     "test_email",
+		UserID:    userID1,
+		Username:  "test_user_1",
+		Email:     "test_email_1",
 		CreatedAt: createdAt,
 	}, *result)
 }
