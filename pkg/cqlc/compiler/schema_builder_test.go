@@ -1,7 +1,8 @@
-package cqlc
+package compiler
 
 import (
-	"github.com/razcoen/cqlc/pkg/gocqlhelpers"
+	"github.com/razcoen/cqlc/pkg/cqlc/codegen/sdk"
+	"github.com/razcoen/cqlc/pkg/cqlc/gocqlhelpers"
 	"reflect"
 	"testing"
 
@@ -21,12 +22,12 @@ func TestSchemaBuilder(t *testing.T) {
 	require.NoError(t, err)
 	s1, err := NewSchemaBuilder().WithKeyspace(k1).Build()
 	require.NoError(t, err)
-	expected := &Schema{
-		Keyspaces: []*Keyspace{
-			{Name: "k1", Tables: []*Table{{
+	expected := &sdk.Schema{
+		Keyspaces: []*sdk.Keyspace{
+			{Name: "k1", Tables: []*sdk.Table{{
 				Name:       "t1",
-				PrimaryKey: &PrimaryKey{PartitionKey: []string{"c1"}},
-				Columns: []*Column{
+				PrimaryKey: &sdk.PrimaryKey{PartitionKey: []string{"c1"}},
+				Columns: []*sdk.Column{
 					{Name: "c1", DataType: gocqlhelpers.NewTypeText()},
 					{Name: "c2", DataType: gocqlhelpers.NewTypeSet(gocqlhelpers.NewTypeTimestamp())},
 				},

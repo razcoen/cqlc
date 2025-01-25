@@ -1,15 +1,16 @@
-package cqlc
+package compiler
 
 import (
 	"errors"
 	"fmt"
-	"github.com/razcoen/cqlc/pkg/gocqlhelpers"
+	"github.com/razcoen/cqlc/pkg/cqlc/codegen/sdk"
+	"github.com/razcoen/cqlc/pkg/cqlc/gocqlhelpers"
 	"log"
 	"os"
 	"strings"
 
 	"github.com/antlr4-go/antlr/v4"
-	"github.com/razcoen/cqlc/pkg/cqlc/internal/antlrcql"
+	"github.com/razcoen/cqlc/pkg/cqlc/compiler/internal/antlrcql"
 )
 
 type SchemaParser struct{}
@@ -18,7 +19,7 @@ func NewSchemaParser() *SchemaParser {
 	return &SchemaParser{}
 }
 
-func (sp *SchemaParser) Parse(cql string) (*Schema, error) {
+func (sp *SchemaParser) Parse(cql string) (*sdk.Schema, error) {
 	l := newSchemaParserTreeListener()
 	el := newErrorListener()
 	for _, stmt := range strings.Split(cql, ";") {

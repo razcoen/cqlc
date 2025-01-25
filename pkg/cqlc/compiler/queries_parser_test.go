@@ -1,6 +1,7 @@
-package cqlc
+package compiler
 
 import (
+	"github.com/razcoen/cqlc/pkg/cqlc/codegen/sdk"
 	"github.com/stretchr/testify/require"
 	"testing"
 )
@@ -10,7 +11,7 @@ func TestQueriesParser(t *testing.T) {
 	tests := []struct {
 		query           string
 		expectedErr     bool
-		expectedQueries []*Query
+		expectedQueries []*sdk.Query
 	}{
 		// Valid SELECT Queries
 		{
@@ -19,7 +20,7 @@ func TestQueriesParser(t *testing.T) {
 SELECT * FROM users;
 `,
 			expectedErr: false,
-			expectedQueries: []*Query{
+			expectedQueries: []*sdk.Query{
 				{
 					Stmt:        "SELECT * FROM users",
 					Table:       "users",
@@ -34,7 +35,7 @@ SELECT * FROM users;
 SELECT * FROM auth.users;
 `,
 			expectedErr: false,
-			expectedQueries: []*Query{
+			expectedQueries: []*sdk.Query{
 				{
 					Stmt:        "SELECT * FROM auth.users",
 					Table:       "users",
@@ -50,7 +51,7 @@ SELECT * FROM auth.users;
 SELECT id, name FROM users WHERE age > ?;
 `,
 			expectedErr: false,
-			expectedQueries: []*Query{
+			expectedQueries: []*sdk.Query{
 				{
 					Stmt:        "SELECT id, name FROM users WHERE age > ?",
 					Table:       "users",
@@ -65,7 +66,7 @@ SELECT id, name FROM users WHERE age > ?;
 -- name: ListUserNamesOfAgeOrderByName :many
 SELECT id, name FROM users WHERE age > ? ORDER BY name ASC;
 `,
-			expectedQueries: []*Query{
+			expectedQueries: []*sdk.Query{
 				{
 					Stmt:        "SELECT id, name FROM users WHERE age > ? ORDER BY name ASC",
 					Table:       "users",
@@ -80,7 +81,7 @@ SELECT id, name FROM users WHERE age > ? ORDER BY name ASC;
 -- name: ListActiveUserIDsOfAge :many
 SELECT id FROM users WHERE age > ? AND active = ?;
 `,
-			expectedQueries: []*Query{
+			expectedQueries: []*sdk.Query{
 				{
 					Stmt:        "SELECT id FROM users WHERE age > ? AND active = ?",
 					Table:       "users",
@@ -111,7 +112,7 @@ SELECT id FROM users WHERE age > ? AND active = ?;
 INSERT INTO users (id, name, age) VALUES (?, ?, 10);
 `,
 			expectedErr: false,
-			expectedQueries: []*Query{
+			expectedQueries: []*sdk.Query{
 				{
 					Stmt:        "INSERT INTO users (id, name, age) VALUES (?, ?, 10)",
 					Table:       "users",
@@ -127,7 +128,7 @@ INSERT INTO users (id, name, age) VALUES (?, ?, 10);
 INSERT INTO users (id, name) VALUES (?, ?);
 `,
 			expectedErr: false,
-			expectedQueries: []*Query{
+			expectedQueries: []*sdk.Query{
 				{
 					Stmt:        "INSERT INTO users (id, name) VALUES (?, ?)",
 					Table:       "users",
@@ -143,7 +144,7 @@ INSERT INTO users (id, name) VALUES (?, ?);
 INSERT INTO users (id, active, name) VALUES (?, true, ?);
 `,
 			expectedErr: false,
-			expectedQueries: []*Query{
+			expectedQueries: []*sdk.Query{
 				{
 					Stmt:        "INSERT INTO users (id, active, name) VALUES (?, true, ?)",
 					Table:       "users",
@@ -174,7 +175,7 @@ INSERT INTO users (id, active, name) VALUES (?, true, ?);
 DELETE FROM users WHERE id = ?;
 `,
 			expectedErr: false,
-			expectedQueries: []*Query{
+			expectedQueries: []*sdk.Query{
 				{
 					Stmt:        "DELETE FROM users WHERE id = ?",
 					Params:      []string{"id"},
@@ -190,7 +191,7 @@ DELETE FROM users WHERE id = ?;
 DELETE FROM users WHERE name = ? AND age > 20;
 `,
 			expectedErr: false,
-			expectedQueries: []*Query{
+			expectedQueries: []*sdk.Query{
 				{
 					Stmt:        "DELETE FROM users WHERE name = ? AND age > 20",
 					Params:      []string{"name"},

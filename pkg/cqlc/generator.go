@@ -3,36 +3,40 @@ package cqlc
 import (
 	"errors"
 	"fmt"
+	"github.com/razcoen/cqlc/pkg/cqlc/codegen/golang"
+	"github.com/razcoen/cqlc/pkg/cqlc/codegen/sdk"
+	"github.com/razcoen/cqlc/pkg/cqlc/compiler"
+	"github.com/razcoen/cqlc/pkg/cqlc/config"
 	"log/slog"
 	"os"
 )
 
-func Generate(config *Config) error {
-	gen, err := NewGenerator()
+func Generate(config *config.Config) error {
+	gen, err := newGenerator()
 	if err != nil {
 		return fmt.Errorf("creating generator: %w", err)
 	}
 	return gen.Generate(config)
 }
 
-type Generator struct {
-	goGenerator *goGenerator
+type generator struct {
+	goGenerator *golang.Generator
 }
 
-func NewGenerator() (*Generator, error) {
+func newGenerator() (*generator, error) {
 	// TODO: Logger configuration
 	logger := slog.New(slog.NewJSONHandler(os.Stdout, &slog.HandlerOptions{
 		AddSource: true,
 		Level:     slog.LevelError,
 	}))
-	goGenerator, err := newGoGenerator(logger)
+	goGenerator, err := golang.NewGenerator(logger)
 	if err != nil {
 		return nil, fmt.Errorf("new go generator: %w", err)
 	}
-	return &Generator{goGenerator: goGenerator}, nil
+	return &generator{goGenerator: goGenerator}, nil
 }
 
-func (g *Generator) Generate(config *Config) error {
+func (g *generator) Generate(config *config.Config) error {
 	for _, config := range config.CQL {
 		sb, err := os.ReadFile(config.Schema)
 		if err != nil {
@@ -42,8 +46,8 @@ func (g *Generator) Generate(config *Config) error {
 		if err != nil {
 			return fmt.Errorf("read queries file: %w", err)
 		}
-		sp := NewSchemaParser()
-		qp := NewQueriesParser()
+		sp := compiler.NewSchemaParser()
+		qp := compiler.NewQueriesParser()
 		schema, err := sp.Parse(string(sb))
 		if err != nil {
 			return fmt.Errorf("parse schema: %w", err)
@@ -59,7 +63,7 @@ func (g *Generator) Generate(config *Config) error {
 			}
 		}
 
-		if err := g.goGenerator.generate(config.Gen.Go, schema, queries); err != nil {
+		if err := g.goGenerator.Generate(&sdk.GenerateRequest{Schema: schema, Queries: queries}, config.Gen.Go); err != nil {
 			return fmt.Errorf("generate go: %w", err)
 		}
 

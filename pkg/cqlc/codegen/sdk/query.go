@@ -1,4 +1,4 @@
-package cqlc
+package sdk
 
 type Queries []*Query
 
@@ -21,7 +21,7 @@ const (
 	AnnotationBatch Annotation = "batch"
 )
 
-func parseAnnotation(s string) (Annotation, bool) {
+func ParseAnnotation(s string) (Annotation, bool) {
 	m := map[Annotation]bool{AnnotationExec: true, AnnotationOne: true, AnnotationMany: true, AnnotationBatch: true}
 	a := Annotation(s)
 	_, ok := m[a]

@@ -1,4 +1,4 @@
-package cqlc
+package log
 
 type Logger interface {
 	Debug(msg string, args ...any)

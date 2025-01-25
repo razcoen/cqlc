@@ -1,10 +1,11 @@
-package cqlc
+package golang
 
 import (
 	"bytes"
 	"fmt"
-	"github.com/razcoen/cqlc/pkg/gocqlhelpers"
-	"github.com/razcoen/cqlc/pkg/strfmt"
+	"github.com/razcoen/cqlc/pkg/cqlc/codegen/sdk"
+	"github.com/razcoen/cqlc/pkg/cqlc/gocqlhelpers"
+	"github.com/razcoen/cqlc/pkg/cqlc/log"
 	"go/format"
 	"io"
 	"maps"
@@ -14,16 +15,16 @@ import (
 	"text/template"
 )
 
-type goGenerator struct {
+type Generator struct {
 	keyspaceGoTemplate *template.Template
 	queriesGoTemplate  *template.Template
 	execQueryTemplate  *template.Template
 	oneQueryTemplate   *template.Template
 	clientTemplate     *template.Template
-	logger             Logger
+	logger             log.Logger
 }
 
-func newGoGenerator(logger Logger) (*goGenerator, error) {
+func NewGenerator(logger log.Logger) (*Generator, error) {
 	tpl, err := template.New("keyspace-go-template").Parse(keyspaceGoTemplate)
 	if err != nil {
 		return nil, fmt.Errorf("parse keyspace template: %w", err)
@@ -44,7 +45,7 @@ func newGoGenerator(logger Logger) (*goGenerator, error) {
 	if err != nil {
 		return nil, fmt.Errorf("parse one query template: %w", err)
 	}
-	return &goGenerator{
+	return &Generator{
 		keyspaceGoTemplate: tpl,
 		queriesGoTemplate:  tpl2,
 		clientTemplate:     tpl3,
@@ -54,8 +55,10 @@ func newGoGenerator(logger Logger) (*goGenerator, error) {
 	}, nil
 }
 
-func (gg goGenerator) generate(config *CQLGenGoConfig, schema *Schema, queries Queries) error {
-	out := config.Out
+func (gg *Generator) Generate(req *sdk.GenerateRequest, opts *Options) error {
+	schema := req.Schema
+	queries := req.Queries
+	out := opts.Out
 	if err := os.Mkdir(out, 0777); err != nil && !os.IsExist(err) {
 		return fmt.Errorf("create output directory: %w", err)
 	}
@@ -70,19 +73,19 @@ func (gg goGenerator) generate(config *CQLGenGoConfig, schema *Schema, queries Q
 		}
 	}()
 	if err := gg.generateClient(&generateClientRequest{
-		packageName: config.Package,
+		packageName: opts.Package,
 		out:         f,
 	}); err != nil {
 		return fmt.Errorf("generate client: %w", err)
 	}
 
-	queriesByTableByKeyspace := make(map[string]map[string]Queries)
+	queriesByTableByKeyspace := make(map[string]map[string]sdk.Queries)
 	for _, q := range queries {
 		if _, ok := queriesByTableByKeyspace[q.Keyspace]; !ok {
-			queriesByTableByKeyspace[q.Keyspace] = make(map[string]Queries)
+			queriesByTableByKeyspace[q.Keyspace] = make(map[string]sdk.Queries)
 		}
 		if _, ok := queriesByTableByKeyspace[q.Keyspace][q.Table]; !ok {
-			queriesByTableByKeyspace[q.Keyspace][q.Table] = make(Queries, 0)
+			queriesByTableByKeyspace[q.Keyspace][q.Table] = make(sdk.Queries, 0)
 		}
 		queriesByTableByKeyspace[q.Keyspace][q.Table] = append(queriesByTableByKeyspace[q.Keyspace][q.Table], q)
 	}
@@ -90,7 +93,7 @@ func (gg goGenerator) generate(config *CQLGenGoConfig, schema *Schema, queries Q
 	for _, k := range schema.Keyspaces {
 		resp, err := gg.generateKeyspaceStructs(&generateKeyspaceStructsRequest{
 			keyspace:    k,
-			packageName: config.Package,
+			packageName: opts.Package,
 			out:         noopWriter{},
 		})
 		if err != nil {
@@ -102,9 +105,9 @@ func (gg goGenerator) generate(config *CQLGenGoConfig, schema *Schema, queries Q
 				if len(queries) == 0 {
 					return nil
 				}
-				fn := strfmt.ToSnakeCase(t.Name) + ".go"
+				fn := sdk.ToSnakeCase(t.Name) + ".go"
 				if k.Name != "" {
-					fn = strfmt.ToSnakeCase(k.Name) + "_" + fn
+					fn = sdk.ToSnakeCase(k.Name) + "_" + fn
 				}
 				fn = "query_" + fn
 				fn = filepath.Join(out, fn)
@@ -120,7 +123,7 @@ func (gg goGenerator) generate(config *CQLGenGoConfig, schema *Schema, queries Q
 				if err := gg.generateQueries(&generateQueriesRequest{
 					queries:           queries,
 					structByTableName: resp.structByTableName,
-					packageName:       config.Package,
+					packageName:       opts.Package,
 					out:               f,
 				}); err != nil {
 					return fmt.Errorf("generate queries: %w", err)
@@ -136,7 +139,7 @@ func (gg goGenerator) generate(config *CQLGenGoConfig, schema *Schema, queries Q
 }
 
 type generateKeyspaceStructsRequest struct {
-	keyspace    *Keyspace
+	keyspace    *sdk.Keyspace
 	packageName string
 	out         io.Writer
 }
@@ -348,7 +351,7 @@ type queriesGoTemplateValue struct {
 
 type queryGoTemplateValue struct {
 	ExecString string
-	Annotation Annotation
+	Annotation sdk.Annotation
 	ParamsType string
 	ResultType string
 	FuncName   string
@@ -376,7 +379,7 @@ type generateKeyspaceStructsResponse struct {
 	structByTableName map[string]*strct
 }
 
-func (gg *goGenerator) generateKeyspaceStructs(req *generateKeyspaceStructsRequest) (*generateKeyspaceStructsResponse, error) {
+func (gg *Generator) generateKeyspaceStructs(req *generateKeyspaceStructsRequest) (*generateKeyspaceStructsResponse, error) {
 	v := keyspaceGoTemplateValue{
 		PackageName: req.packageName,
 		Structs: []struct {
@@ -388,7 +391,7 @@ func (gg *goGenerator) generateKeyspaceStructs(req *generateKeyspaceStructsReque
 	imports := make(map[string]bool)
 	structByTableName := make(map[string]*strct, len(req.keyspace.Tables))
 	for _, t := range req.keyspace.Tables {
-		structName := strfmt.ToSingularPascalCase(t.Name)
+		structName := sdk.ToSingularPascalCase(t.Name)
 		st := struct {
 			TableName string
 			Name      string
@@ -399,7 +402,7 @@ func (gg *goGenerator) generateKeyspaceStructs(req *generateKeyspaceStructsReque
 		}
 		fieldByColumnName := make(map[string]*field)
 		for i, c := range t.Columns {
-			name := strfmt.ToSingularPascalCase(c.Name)
+			name := sdk.ToSingularPascalCase(c.Name)
 			goType, err := gocqlhelpers.ParseGoType(c.DataType)
 			if err != nil {
 				// TODO
@@ -444,14 +447,14 @@ type strct struct {
 }
 
 type generateQueriesRequest struct {
-	queries           []*Query
+	queries           []*sdk.Query
 	structByTableName map[string]*strct
 	packageName       string
 	out               io.Writer
 }
 
 // TODO: Support keyspaces
-func (gg *goGenerator) generateQueries(req *generateQueriesRequest) error {
+func (gg *Generator) generateQueries(req *generateQueriesRequest) error {
 	v := queriesGoTemplateValue{
 		PackageName: req.packageName,
 	}
@@ -487,15 +490,15 @@ func (gg *goGenerator) generateQueries(req *generateQueriesRequest) error {
 			}
 		}
 		query := queryGoTemplateValue{FuncName: q.FuncName, Params: params, Selects: selects, Stmt: q.Stmt}
-		var annotation Annotation
+		var annotation sdk.Annotation
 		for _, a := range q.Annotations {
-			if qt, ok := parseAnnotation(a); ok {
+			if qt, ok := sdk.ParseAnnotation(a); ok {
 				annotation = qt
 			}
 		}
 		query.Annotation = annotation
 		// Set result type
-		if (annotation == AnnotationOne || annotation == AnnotationMany) && len(query.Selects) > 0 {
+		if (annotation == sdk.AnnotationOne || annotation == sdk.AnnotationMany) && len(query.Selects) > 0 {
 			query.ResultType = fmt.Sprintf("%sResult", query.FuncName)
 		}
 		// Set params type
@@ -503,19 +506,19 @@ func (gg *goGenerator) generateQueries(req *generateQueriesRequest) error {
 			query.ParamsType = fmt.Sprintf("%sParams", query.FuncName)
 		}
 		switch annotation {
-		case AnnotationExec:
+		case sdk.AnnotationExec:
 			buf := &bytes.Buffer{}
 			if err := gg.execQueryTemplate.Execute(buf, query); err != nil {
 				return fmt.Errorf("execute exec query template: %w", err)
 			}
 			query.ExecString = buf.String()
-		case AnnotationOne:
+		case sdk.AnnotationOne:
 			buf := &bytes.Buffer{}
 			if err := gg.oneQueryTemplate.Execute(buf, query); err != nil {
 				return fmt.Errorf("execute one query template: %w", err)
 			}
 			query.ExecString = buf.String()
-		case AnnotationBatch:
+		case sdk.AnnotationBatch:
 
 		}
 		v.Queries = append(v.Queries, query)
@@ -545,7 +548,7 @@ type clientTemplateValue struct {
 	PackageName string
 }
 
-func (gg *goGenerator) generateClient(req *generateClientRequest) error {
+func (gg *Generator) generateClient(req *generateClientRequest) error {
 	buf := &bytes.Buffer{}
 	if err := gg.clientTemplate.Execute(buf, &clientTemplateValue{PackageName: req.packageName}); err != nil {
 		return fmt.Errorf("execute queries template: %w", err)
