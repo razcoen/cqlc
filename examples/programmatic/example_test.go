@@ -5,6 +5,7 @@ import (
 	"github.com/gocql/gocql"
 	"github.com/google/uuid"
 	"github.com/razcoen/cqlc/examples/programmatic/example"
+	"github.com/razcoen/cqlc/pkg/cqlc"
 	"github.com/razcoen/cqlc/pkg/testcassandra"
 	"github.com/stretchr/testify/require"
 	"testing"
@@ -12,6 +13,7 @@ import (
 )
 
 func TestLogic(t *testing.T) {
+	generateExampleCode(t)
 	session, _ := testcassandra.ConnectWithRandomKeyspace(t)
 	testcassandra.Exec(t, session, "schema.cql")
 
@@ -40,4 +42,24 @@ func TestLogic(t *testing.T) {
 		Email:     "test_email",
 		CreatedAt: createdAt,
 	}, *result)
+}
+
+func generateExampleCode(t *testing.T) {
+	err := cqlc.Generate(&cqlc.Config{
+		Version: "1",
+		CQL: []*cqlc.CQLConfig{
+			{
+				Queries: "queries.cql",
+				Schema:  "schema.cql",
+				Gen: &cqlc.CQLGenConfig{
+					Overwrite: true,
+					Go: &cqlc.CQLGenGoConfig{
+						Package: "example",
+						Out:     "example",
+					},
+				},
+			},
+		},
+	})
+	require.NoError(t, err)
 }
