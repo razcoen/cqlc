@@ -3,14 +3,12 @@ package compiler
 import (
 	"errors"
 	"fmt"
+	"github.com/antlr4-go/antlr/v4"
 	"github.com/razcoen/cqlc/pkg/cqlc/codegen/sdk"
+	"github.com/razcoen/cqlc/pkg/cqlc/compiler/internal/antlrcql"
 	"github.com/razcoen/cqlc/pkg/cqlc/gocqlhelpers"
 	"log"
 	"os"
-	"strings"
-
-	"github.com/antlr4-go/antlr/v4"
-	"github.com/razcoen/cqlc/pkg/cqlc/compiler/internal/antlrcql"
 )
 
 type SchemaParser struct{}
@@ -20,66 +18,33 @@ func NewSchemaParser() *SchemaParser {
 }
 
 func (sp *SchemaParser) Parse(cql string) (*sdk.Schema, error) {
-	l := newSchemaParserTreeListener()
-	el := newErrorListener()
-	for _, stmt := range strings.Split(cql, ";") {
-		stmt := strings.TrimSpace(stmt)
-		lexer := antlrcql.NewCQLLexer(antlr.NewInputStream(stmt))
-		lexer.RemoveErrorListeners()
-		lexer.AddErrorListener(el)
-		stream := antlr.NewCommonTokenStream(lexer, antlr.TokenDefaultChannel)
-		p := antlrcql.NewCQLParser(stream)
-		p.RemoveErrorListeners()
-		p.AddErrorListener(el)
-		t := p.Cql()
-		antlr.ParseTreeWalkerDefault.Walk(l, t)
+	cqls, err := antlrParse(cql)
+	if err != nil {
+		return nil, fmt.Errorf("antlr parse cql: %w", err)
 	}
-	if el.errors != nil {
-		return nil, errors.Join(el.errors...)
+
+	l := newSchemaParserTreeListener()
+	for _, cql := range cqls {
+		antlr.ParseTreeWalkerDefault.Walk(l, cql)
 	}
 	if l.err != nil {
 		return nil, fmt.Errorf("error during traversal: %w", l.err)
 	}
 	for _, kb := range l.keyspaceBuilders {
-		ks, err := kb.Build()
+		ks, err := kb.build()
 		if err != nil {
 			return nil, fmt.Errorf("build keyspace: %w", err)
 		}
-		l.schemaBuilder = l.schemaBuilder.WithKeyspace(ks)
+		l.schemaBuilder = l.schemaBuilder.withKeyspace(ks)
 	}
-	return l.schemaBuilder.Build()
-}
-
-type errorListener struct {
-	*antlr.DefaultErrorListener
-	errors []error
-}
-
-func newErrorListener() *errorListener {
-	return &errorListener{
-		DefaultErrorListener: antlr.NewDefaultErrorListener(),
-	}
-}
-
-func (l *errorListener) SyntaxError(recognizer antlr.Recognizer, offendingSymbol interface{}, line, column int, msg string, e antlr.RecognitionException) {
-	token, ok := offendingSymbol.(antlr.Token)
-	var tokenText string
-	if ok {
-		tokenText = token.GetText()
-	}
-	// TODO: The following are ignored but requires fix through the g4 syntax files.
-	if tokenText == "<EOF>" || tokenText == "<" {
-		return
-	}
-	err := fmt.Errorf(`syntax error "%s" in line %d:%d %s`, tokenText, line, column, msg)
-	l.errors = append(l.errors, err)
+	return l.schemaBuilder.build()
 }
 
 type schemaParserTreeListener struct {
 	*antlrcql.BaseCQLParserListener
-	schemaBuilder          *SchemaBuilder
-	keyspaceBuilders       map[string]*KeyspaceBuilder
-	defaultKeyspaceBuilder *KeyspaceBuilder
+	schemaBuilder          *schemaBuilder
+	keyspaceBuilders       map[string]*keyspaceBuilder
+	defaultKeyspaceBuilder *keyspaceBuilder
 	err                    error
 }
 
@@ -87,8 +52,8 @@ func newSchemaParserTreeListener() *schemaParserTreeListener {
 	l := &schemaParserTreeListener{
 		BaseCQLParserListener: &antlrcql.BaseCQLParserListener{},
 		// TODO: Do we even need to support more than one keyspace as part of the code generation?
-		schemaBuilder:          NewSchemaBuilder(),
-		defaultKeyspaceBuilder: NewDefaultKeyspaceBuilder(),
+		schemaBuilder:          newSchemaBuilder(),
+		defaultKeyspaceBuilder: newDefaultKeyspaceBuilder(),
 	}
 	return l
 }
@@ -108,7 +73,7 @@ func (l *schemaParserTreeListener) EnterCreateTable(ctx *antlrcql.CreateTableCon
 		return
 	}
 
-	tableBuilder := NewTableBuilder(ctx.Table().GetText())
+	tableBuilder := newTableBuilder(ctx.Table().GetText())
 	for _, child := range columnDefinitionListContext.GetChildren() {
 		switch child := child.(type) {
 		case *antlrcql.PrimaryKeyElementContext:
@@ -125,7 +90,7 @@ func (l *schemaParserTreeListener) EnterCreateTable(ctx *antlrcql.CreateTableCon
 					if !ok {
 						continue
 					}
-					tableBuilder = tableBuilder.WithPartitionKey(columnContext.GetText())
+					tableBuilder = tableBuilder.withPartitionKey(columnContext.GetText())
 				}
 			}
 			keyContext := primaryKeyDefinitionContext.GetChild(0) // Either CompositeKeyContext or CompoundKeyContext
@@ -162,7 +127,7 @@ func (l *schemaParserTreeListener) EnterCreateTable(ctx *antlrcql.CreateTableCon
 					if !ok {
 						continue
 					}
-					tableBuilder = tableBuilder.WithClusteringKey(columnContext.GetText())
+					tableBuilder = tableBuilder.withClusteringKey(columnContext.GetText())
 
 				}
 			}
@@ -183,13 +148,13 @@ func (l *schemaParserTreeListener) EnterCreateTable(ctx *antlrcql.CreateTableCon
 			}
 			// TODO: Logger? Errors?
 			ti := gocqlhelpers.ParseCassandraType(columnType, log.New(os.Stdout, "", 0))
-			tableBuilder = tableBuilder.WithColumn(columnName, ti)
+			tableBuilder = tableBuilder.withColumn(columnName, ti)
 			if isPrimaryKey {
-				tableBuilder = tableBuilder.WithPrimaryKey(columnName)
+				tableBuilder = tableBuilder.withPrimaryKey(columnName)
 			}
 		}
 	}
-	table, err := tableBuilder.Build()
+	table, err := tableBuilder.build()
 	if err != nil {
 		l.err = errors.Join(l.err, fmt.Errorf("build table: %w", err))
 		return
@@ -200,12 +165,12 @@ func (l *schemaParserTreeListener) EnterCreateTable(ctx *antlrcql.CreateTableCon
 		keyspace = ctx.Keyspace().GetText()
 	}
 	if l.keyspaceBuilders == nil {
-		l.keyspaceBuilders = make(map[string]*KeyspaceBuilder, 1)
+		l.keyspaceBuilders = make(map[string]*keyspaceBuilder, 1)
 	}
 	kb, ok := l.keyspaceBuilders[keyspace]
 	if !ok {
-		kb = NewKeyspaceBuilder(keyspace)
+		kb = newKeyspaceBuilder(keyspace)
 	}
-	kb = kb.WithTable(table)
+	kb = kb.withTable(table)
 	l.keyspaceBuilders[keyspace] = kb
 }

@@ -12,17 +12,17 @@ import (
 
 const defaultKeyspaceName = ""
 
-type SchemaBuilder struct {
+type schemaBuilder struct {
 	keyspaceNames map[string]bool
 	keyspaces     []*sdk.Keyspace
 	err           error
 }
 
-func NewSchemaBuilder() *SchemaBuilder {
-	return &SchemaBuilder{keyspaceNames: make(map[string]bool)}
+func newSchemaBuilder() *schemaBuilder {
+	return &schemaBuilder{keyspaceNames: make(map[string]bool)}
 }
 
-func (sb *SchemaBuilder) WithKeyspace(keyspace *sdk.Keyspace) *SchemaBuilder {
+func (sb *schemaBuilder) withKeyspace(keyspace *sdk.Keyspace) *schemaBuilder {
 	if _, ok := sb.keyspaceNames[keyspace.Name]; ok {
 		sb.err = errors.Join(sb.err, fmt.Errorf(`keyspace "%s" already exists`, keyspace.Name))
 		return sb
@@ -32,9 +32,9 @@ func (sb *SchemaBuilder) WithKeyspace(keyspace *sdk.Keyspace) *SchemaBuilder {
 	return sb
 }
 
-func (sb *SchemaBuilder) Build() (*sdk.Schema, error) {
+func (sb *schemaBuilder) build() (*sdk.Schema, error) {
 	if _, ok := sb.keyspaceNames[defaultKeyspaceName]; !ok {
-		defaultKeyspace, err := NewDefaultKeyspaceBuilder().Build()
+		defaultKeyspace, err := newDefaultKeyspaceBuilder().build()
 		if err != nil {
 			return nil, fmt.Errorf("build default keyspace: %w", err)
 		}
@@ -47,25 +47,25 @@ func (sb *SchemaBuilder) Build() (*sdk.Schema, error) {
 	return &sdk.Schema{Keyspaces: sb.keyspaces}, nil
 }
 
-type KeyspaceBuilder struct {
+type keyspaceBuilder struct {
 	name       string
 	tableNames map[string]bool
 	tables     []*sdk.Table
 	err        error
 }
 
-func NewDefaultKeyspaceBuilder() *KeyspaceBuilder {
-	return NewKeyspaceBuilder(defaultKeyspaceName)
+func newDefaultKeyspaceBuilder() *keyspaceBuilder {
+	return newKeyspaceBuilder(defaultKeyspaceName)
 }
 
-func NewKeyspaceBuilder(name string) *KeyspaceBuilder {
-	return &KeyspaceBuilder{
+func newKeyspaceBuilder(name string) *keyspaceBuilder {
+	return &keyspaceBuilder{
 		name:       name,
 		tableNames: make(map[string]bool),
 	}
 }
 
-func (kb *KeyspaceBuilder) WithTable(table *sdk.Table) *KeyspaceBuilder {
+func (kb *keyspaceBuilder) withTable(table *sdk.Table) *keyspaceBuilder {
 	if _, ok := kb.tableNames[table.Name]; ok {
 		kb.err = errors.Join(kb.err, fmt.Errorf(`table "%s" already exists`, table.Name))
 		return kb
@@ -75,14 +75,14 @@ func (kb *KeyspaceBuilder) WithTable(table *sdk.Table) *KeyspaceBuilder {
 	return kb
 }
 
-func (kb *KeyspaceBuilder) Build() (*sdk.Keyspace, error) {
+func (kb *keyspaceBuilder) build() (*sdk.Keyspace, error) {
 	if kb.err != nil {
 		return nil, fmt.Errorf("error during keyspace build process: %w", kb.err)
 	}
 	return &sdk.Keyspace{Name: kb.name, Tables: kb.tables}, nil
 }
 
-type TableBuilder struct {
+type tableBuilder struct {
 	name          string
 	columnNames   map[string]bool
 	partitionKey  []string
@@ -91,29 +91,29 @@ type TableBuilder struct {
 	err           error
 }
 
-func NewTableBuilder(name string) *TableBuilder {
-	return &TableBuilder{
+func newTableBuilder(name string) *tableBuilder {
+	return &tableBuilder{
 		name:        name,
 		columnNames: make(map[string]bool),
 	}
 }
 
-func (tb *TableBuilder) WithPrimaryKey(columnName string) *TableBuilder {
+func (tb *tableBuilder) withPrimaryKey(columnName string) *tableBuilder {
 	tb.partitionKey = append(tb.partitionKey, columnName)
 	return tb
 }
 
-func (tb *TableBuilder) WithPartitionKey(columnName string) *TableBuilder {
+func (tb *tableBuilder) withPartitionKey(columnName string) *tableBuilder {
 	tb.partitionKey = append(tb.partitionKey, columnName)
 	return tb
 }
 
-func (tb *TableBuilder) WithClusteringKey(columnName string) *TableBuilder {
+func (tb *tableBuilder) withClusteringKey(columnName string) *tableBuilder {
 	tb.clusteringKey = append(tb.clusteringKey, columnName)
 	return tb
 }
 
-func (tb *TableBuilder) WithColumn(columnName string, columnType gocql.TypeInfo) *TableBuilder {
+func (tb *tableBuilder) withColumn(columnName string, columnType gocql.TypeInfo) *tableBuilder {
 	if _, ok := tb.columnNames[columnName]; ok {
 		tb.err = errors.Join(tb.err, fmt.Errorf(`column "%s" already exists`, columnName))
 		return tb
@@ -123,7 +123,7 @@ func (tb *TableBuilder) WithColumn(columnName string, columnType gocql.TypeInfo)
 	return tb
 }
 
-func (tb *TableBuilder) Build() (*sdk.Table, error) {
+func (tb *tableBuilder) build() (*sdk.Table, error) {
 	if tb.err != nil {
 		return nil, fmt.Errorf("error during table build process: %w", tb.err)
 	}
