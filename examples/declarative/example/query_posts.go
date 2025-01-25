@@ -78,7 +78,7 @@ func (q *ListUserPostsQuerier) Page(ctx context.Context, pageState []byte) (*Lis
 }
 
 func (c *Client) ListUserPosts(params *ListUserPostsParams, opts ...gocqlc.QueryOption) *ListUserPostsQuerier {
-	q := c.session.Query("SELECT * FROM posts WHERE user_id = ? AND created_at = ?", params.UserID, params.CreatedAt)
+	q := c.session.Query("SELECT * FROM posts WHERE user_id = ? AND created_at = ?;", params.UserID, params.CreatedAt)
 	for _, opt := range opts {
 		q = opt.Apply(q)
 	}

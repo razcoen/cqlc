@@ -18,7 +18,7 @@ type CreateUserParams struct {
 }
 
 func (c *Client) CreateUser(ctx context.Context, params *CreateUserParams, opts ...gocqlc.QueryOption) error {
-	q := c.session.Query("INSERT INTO users (user_id, username, email, created_at) VALUES (?, ?, ?, ?)", params.UserID, params.Username, params.Email, params.CreatedAt)
+	q := c.session.Query("INSERT INTO users (user_id, username, email, created_at) VALUES (?, ?, ?, ?);", params.UserID, params.Username, params.Email, params.CreatedAt)
 	q = q.WithContext(ctx)
 	for _, opt := range opts {
 		q = opt.Apply(q)
@@ -39,7 +39,7 @@ type CreateUsersParams struct {
 func (c *Client) CreateUsers(ctx context.Context, params []*CreateUsersParams, opts ...gocqlc.BatchOption) error {
 	b := c.session.NewBatch(gocql.UnloggedBatch)
 	for _, v := range params {
-		b.Query("INSERT INTO users (user_id, username, email, created_at) VALUES (?, ?, ?, ?)", v.UserID, v.Username, v.Email, v.CreatedAt)
+		b.Query("INSERT INTO users (user_id, username, email, created_at) VALUES (?, ?, ?, ?);", v.UserID, v.Username, v.Email, v.CreatedAt)
 	}
 	b = b.WithContext(ctx)
 	for _, opt := range opts {
@@ -63,7 +63,7 @@ type FindUserResult struct {
 }
 
 func (c *Client) FindUser(ctx context.Context, params *FindUserParams, opts ...gocqlc.QueryOption) (*FindUserResult, error) {
-	q := c.session.Query("SELECT * FROM users WHERE user_id = ? LIMIT 1", params.UserID)
+	q := c.session.Query("SELECT * FROM users WHERE user_id = ? LIMIT 1;", params.UserID)
 	q = q.WithContext(ctx)
 	for _, opt := range opts {
 		q = opt.Apply(q)
@@ -135,7 +135,7 @@ func (q *ListUserIDsQuerier) Page(ctx context.Context, pageState []byte) (*ListU
 }
 
 func (c *Client) ListUserIDs(opts ...gocqlc.QueryOption) *ListUserIDsQuerier {
-	q := c.session.Query("SELECT user_id FROM users")
+	q := c.session.Query("SELECT user_id FROM users;")
 	for _, opt := range opts {
 		q = opt.Apply(q)
 	}
@@ -205,7 +205,7 @@ func (q *ListUsersQuerier) Page(ctx context.Context, pageState []byte) (*ListUse
 }
 
 func (c *Client) ListUsers(opts ...gocqlc.QueryOption) *ListUsersQuerier {
-	q := c.session.Query("SELECT * FROM users")
+	q := c.session.Query("SELECT * FROM users;")
 	for _, opt := range opts {
 		q = opt.Apply(q)
 	}

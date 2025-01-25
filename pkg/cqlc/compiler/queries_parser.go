@@ -17,33 +17,43 @@ func NewQueriesParser() *QueriesParser {
 	return &QueriesParser{}
 }
 
+type queryStmt struct {
+	cql      antlrcql.ICqlContext
+	comments []string
+	text     string
+}
+
 func (qp *QueriesParser) Parse(cql string) (sdk.Queries, error) {
-	queryStmts := strings.Split(cql, ";")
-	queries := make(sdk.Queries, 0, len(queryStmts))
-	for _, query := range queryStmts {
-		query = strings.TrimSpace(query)
-		if query == "" {
-			continue
+	el := newErrorListener()
+	lexer := antlrcql.NewCQLLexer(antlr.NewInputStream(cql))
+	lexer.AddErrorListener(el)
+	stream := antlr.NewCommonTokenStream(lexer, antlr.TokenDefaultChannel)
+	p := antlrcql.NewCQLParser(stream)
+	p.AddErrorListener(el)
+	cqls := p.Cqls().AllCql()
+	if el.errors != nil {
+		return nil, errors.Join(el.errors...)
+	}
+
+	lineNumber := 1
+	var stmts []*queryStmt
+	lines := strings.Split(cql, "\n")
+	for _, cql := range cqls {
+		stmt := &queryStmt{
+			cql:  cql,
+			text: strings.Join(lines[cql.GetStart().GetLine()-1:cql.GetStop().GetLine()], "\n"),
 		}
-		items := strings.Split(query, "\n")
-		if len(items) != 2 {
-			return nil, fmt.Errorf("invalid query missing comment: %s", query)
+		for i := lineNumber - 1; i < cql.GetStart().GetLine()-1; i++ {
+			stmt.comments = append(stmt.comments, lines[i])
 		}
-		comment := strings.TrimSpace(items[0])
-		stmt := strings.TrimSpace(items[1])
-		if !strings.HasPrefix(comment, "--") {
-			return nil, fmt.Errorf("invalid query expected a comment: %s", query)
-		}
-		el := newErrorListener()
+		stmts = append(stmts, stmt)
+		lineNumber = cql.GetStop().GetLine() + 1
+	}
+
+	queries := make(sdk.Queries, 0, len(stmts))
+	for _, stmt := range stmts {
 		l := newQueriesParserListener()
-		lexer := antlrcql.NewCQLLexer(antlr.NewInputStream(stmt))
-		lexer.RemoveErrorListeners()
-		lexer.AddErrorListener(el)
-		stream := antlr.NewCommonTokenStream(lexer, antlr.TokenDefaultChannel)
-		p := antlrcql.NewCQLParser(stream)
-		p.RemoveErrorListeners()
-		p.AddErrorListener(el)
-		var t antlr.Tree = p.Cql()
+		var t antlr.Tree = stmt.cql
 		t = t.GetChild(0)
 		switch t := t.(type) {
 		case *antlrcql.Select_Context:
@@ -56,17 +66,14 @@ func (qp *QueriesParser) Parse(cql string) (sdk.Queries, error) {
 		if l.err != nil {
 			return nil, fmt.Errorf("error during traversal: %w", l.err)
 		}
-		if el.errors != nil {
-			return nil, errors.Join(el.errors...)
-		}
-		funcName, annotations, err := parseComment(comment)
+		funcName, annotations, err := parseComment(stmt.comments[len(stmt.comments)-1])
 		if err != nil {
 			return nil, fmt.Errorf("error parsing comment: %w", err)
 		}
 		queries = append(queries, &sdk.Query{
 			FuncName:    funcName,
 			Annotations: annotations,
-			Stmt:        stmt,
+			Stmt:        stmt.text,
 			Table:       l.table,
 			Params:      l.params,
 			Selects:     l.selects,
@@ -86,9 +93,7 @@ type queriesParserListener struct {
 }
 
 func newQueriesParserListener() *queriesParserListener {
-	return &queriesParserListener{
-		//baseCQLParserListener: baseCQLParserListener{},
-	}
+	return &queriesParserListener{}
 }
 
 func (l *queriesParserListener) EnterInsert(ctx *antlrcql.InsertContext) {
