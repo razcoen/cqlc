@@ -27,6 +27,19 @@ jobs:
       - uses: golangci/golangci-lint-action@v6
         with:
           version: v1.63.4
+  go-generate-validation:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-go@v5
+        with:
+          go-version: 1.23
+      - run: go version
+      - run: go mod download
+      - run: go generate ./...
+      - name: git status
+        run: |
+          [[ -n "$(git status --porcelain)" ]] && echo "Go code generation caused changes. Please commit them." && git status && exit 1
   go-test:
     needs: go-build
     runs-on: ubuntu-latest
