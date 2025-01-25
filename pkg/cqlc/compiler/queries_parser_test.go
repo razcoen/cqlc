@@ -260,19 +260,55 @@ SELECT * FROM users WHERE email = ? ALLOW FILTERING;
 			},
 		},
 		{
-			name: "multi line query",
+			name: "ignore empty lines after comment",
 			query: `
 -- name: FindUsers :many
-SELECT * FROM users 
-WHERE email = ? 
+
+
+SELECT * FROM users WHERE email = ? ALLOW FILTERING;
+`,
+			expectedErr: false,
+			expectedQueries: []*sdk.Query{
+				{
+					Stmt:        `SELECT * FROM users WHERE email = ? ALLOW FILTERING;`,
+					Params:      []string{"email"},
+					Selects:     []string{"*"},
+					Table:       "users",
+					FuncName:    "FindUsers",
+					Annotations: []string{"many"},
+				},
+			},
+		},
+		{
+			name: "multi line astQueryAnalysis",
+			query: `
+-- name: FindUsers :many
+SELECT * FROM users
+WHERE email = ?
 ALLOW FILTERING;
 `,
 			expectedErr: false,
 			expectedQueries: []*sdk.Query{
 				{
-					Stmt: `SELECT * FROM users 
-WHERE email = ? 
-ALLOW FILTERING;`,
+					Stmt:        `SELECT * FROM users WHERE email = ? ALLOW FILTERING;`,
+					Params:      []string{"email"},
+					Selects:     []string{"*"},
+					Table:       "users",
+					FuncName:    "FindUsers",
+					Annotations: []string{"many"},
+				},
+			},
+		},
+		{
+			name: "remove extra spaces",
+			query: `
+-- name: FindUsers :many
+SELECT * FROM users  WHERE email =     ? ALLOW FILTERING;
+`,
+			expectedErr: false,
+			expectedQueries: []*sdk.Query{
+				{
+					Stmt:        `SELECT * FROM users WHERE email = ? ALLOW FILTERING;`,
 					Params:      []string{"email"},
 					Selects:     []string{"*"},
 					Table:       "users",
@@ -287,7 +323,7 @@ ALLOW FILTERING;`,
 		t.Run(tt.name, func(t *testing.T) {
 			queries, err := parser.Parse(tt.query)
 			if (err != nil) != tt.expectedErr {
-				t.Errorf("expected error: %v, but got: %v for query: %s", tt.expectedErr, err, tt.query)
+				t.Errorf("expected error: %v, but got: %v for astQueryAnalysis: %s", tt.expectedErr, err, tt.query)
 			}
 			if err != nil || tt.expectedErr {
 				return
