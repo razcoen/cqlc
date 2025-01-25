@@ -1,4 +1,4 @@
-package strfmt
+package sdk
 
 import (
 	"github.com/jinzhu/inflection"

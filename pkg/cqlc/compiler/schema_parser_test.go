@@ -1,10 +1,11 @@
-package cqlc
+package compiler
 
 import (
 	"fmt"
+	"github.com/razcoen/cqlc/pkg/cqlc/codegen/sdk"
+	"github.com/razcoen/cqlc/pkg/cqlc/gocqlhelpers"
 	"testing"
 
-	"github.com/razcoen/cqlc/pkg/gocqlhelpers"
 	"github.com/stretchr/testify/require"
 )
 
@@ -13,18 +14,18 @@ func TestSchemaParser(t *testing.T) {
 	tests := []struct {
 		query          string
 		expectedErr    bool
-		expectedSchema *Schema
+		expectedSchema *sdk.Schema
 	}{
 		// Valid CREATE TABLE
 		{
 			query:       "CREATE TABLE users (id UUID PRIMARY KEY, name TEXT, age INT);",
 			expectedErr: false,
-			expectedSchema: &Schema{Keyspaces: []*Keyspace{
-				{Name: defaultKeyspaceName, Tables: []*Table{
+			expectedSchema: &sdk.Schema{Keyspaces: []*sdk.Keyspace{
+				{Name: defaultKeyspaceName, Tables: []*sdk.Table{
 					{
 						Name:       "users",
-						PrimaryKey: &PrimaryKey{PartitionKey: []string{"id"}},
-						Columns: []*Column{
+						PrimaryKey: &sdk.PrimaryKey{PartitionKey: []string{"id"}},
+						Columns: []*sdk.Column{
 							{Name: "id", DataType: gocqlhelpers.NewTypeUUID()},
 							{Name: "age", DataType: gocqlhelpers.NewTypeInt()},
 							{Name: "name", DataType: gocqlhelpers.NewTypeText()},
@@ -36,12 +37,12 @@ func TestSchemaParser(t *testing.T) {
 		{
 			query:       "CREATE TABLE orders (order_id UUID, customer_id UUID, total DECIMAL, PRIMARY KEY (order_id, customer_id));",
 			expectedErr: false,
-			expectedSchema: &Schema{Keyspaces: []*Keyspace{
-				{Name: defaultKeyspaceName, Tables: []*Table{
+			expectedSchema: &sdk.Schema{Keyspaces: []*sdk.Keyspace{
+				{Name: defaultKeyspaceName, Tables: []*sdk.Table{
 					{
 						Name:       "orders",
-						PrimaryKey: &PrimaryKey{PartitionKey: []string{"order_id"}, ClusteringKey: []string{"customer_id"}},
-						Columns: []*Column{
+						PrimaryKey: &sdk.PrimaryKey{PartitionKey: []string{"order_id"}, ClusteringKey: []string{"customer_id"}},
+						Columns: []*sdk.Column{
 							{Name: "order_id", DataType: gocqlhelpers.NewTypeUUID()},
 							{Name: "customer_id", DataType: gocqlhelpers.NewTypeUUID()},
 							{Name: "total", DataType: gocqlhelpers.NewTypeDecimal()},
@@ -53,12 +54,12 @@ func TestSchemaParser(t *testing.T) {
 		{
 			query:       "CREATE TABLE blog_posts (id UUID PRIMARY KEY, title TEXT, tags SET<TEXT>);",
 			expectedErr: false,
-			expectedSchema: &Schema{Keyspaces: []*Keyspace{
-				{Name: defaultKeyspaceName, Tables: []*Table{
+			expectedSchema: &sdk.Schema{Keyspaces: []*sdk.Keyspace{
+				{Name: defaultKeyspaceName, Tables: []*sdk.Table{
 					{
 						Name:       "blog_posts",
-						PrimaryKey: &PrimaryKey{PartitionKey: []string{"id"}},
-						Columns: []*Column{
+						PrimaryKey: &sdk.PrimaryKey{PartitionKey: []string{"id"}},
+						Columns: []*sdk.Column{
 							{Name: "id", DataType: gocqlhelpers.NewTypeUUID()},
 							{Name: "tags", DataType: gocqlhelpers.NewTypeSet(gocqlhelpers.NewTypeText())},
 							{Name: "title", DataType: gocqlhelpers.NewTypeText()},
@@ -70,12 +71,12 @@ func TestSchemaParser(t *testing.T) {
 		{
 			query:       "CREATE TABLE events (id UUID PRIMARY KEY, event_dates LIST<TIMESTAMP>);",
 			expectedErr: false,
-			expectedSchema: &Schema{Keyspaces: []*Keyspace{
-				{Name: defaultKeyspaceName, Tables: []*Table{
+			expectedSchema: &sdk.Schema{Keyspaces: []*sdk.Keyspace{
+				{Name: defaultKeyspaceName, Tables: []*sdk.Table{
 					{
 						Name:       "events",
-						PrimaryKey: &PrimaryKey{PartitionKey: []string{"id"}},
-						Columns: []*Column{
+						PrimaryKey: &sdk.PrimaryKey{PartitionKey: []string{"id"}},
+						Columns: []*sdk.Column{
 							{Name: "id", DataType: gocqlhelpers.NewTypeUUID()},
 							{Name: "event_dates", DataType: gocqlhelpers.NewTypeList(gocqlhelpers.NewTypeTimestamp())},
 						}},
@@ -86,13 +87,13 @@ func TestSchemaParser(t *testing.T) {
 		{
 			query:       "CREATE TABLE events (id UUID PRIMARY KEY, participants FROZEN<SET<TEXT>>);",
 			expectedErr: false,
-			expectedSchema: &Schema{Keyspaces: []*Keyspace{
+			expectedSchema: &sdk.Schema{Keyspaces: []*sdk.Keyspace{
 				{
-					Name: defaultKeyspaceName, Tables: []*Table{
+					Name: defaultKeyspaceName, Tables: []*sdk.Table{
 						{
 							Name:       "events",
-							PrimaryKey: &PrimaryKey{PartitionKey: []string{"id"}},
-							Columns: []*Column{
+							PrimaryKey: &sdk.PrimaryKey{PartitionKey: []string{"id"}},
+							Columns: []*sdk.Column{
 								{Name: "id", DataType: gocqlhelpers.NewTypeUUID()},
 								{Name: "participants", DataType: gocqlhelpers.NewTypeSet(gocqlhelpers.NewTypeText())},
 							}},
@@ -104,12 +105,12 @@ func TestSchemaParser(t *testing.T) {
 		{
 			query:       "CREATE TABLE orders (id UUID PRIMARY KEY, products FROZEN<LIST<TEXT>>);",
 			expectedErr: false,
-			expectedSchema: &Schema{Keyspaces: []*Keyspace{
-				{Name: defaultKeyspaceName, Tables: []*Table{
+			expectedSchema: &sdk.Schema{Keyspaces: []*sdk.Keyspace{
+				{Name: defaultKeyspaceName, Tables: []*sdk.Table{
 					{
 						Name:       "orders",
-						PrimaryKey: &PrimaryKey{PartitionKey: []string{"id"}},
-						Columns: []*Column{
+						PrimaryKey: &sdk.PrimaryKey{PartitionKey: []string{"id"}},
+						Columns: []*sdk.Column{
 							{Name: "id", DataType: gocqlhelpers.NewTypeUUID()},
 							{Name: "products", DataType: gocqlhelpers.NewTypeList(gocqlhelpers.NewTypeText())},
 						}},
@@ -173,12 +174,12 @@ func TestSchemaParser(t *testing.T) {
 		{
 			query:       "CREATE TABLE articles (author TEXT, category TEXT, published_at TIMESTAMP, title TEXT, PRIMARY KEY (author, category, published_at));",
 			expectedErr: false,
-			expectedSchema: &Schema{Keyspaces: []*Keyspace{
-				{Name: defaultKeyspaceName, Tables: []*Table{
+			expectedSchema: &sdk.Schema{Keyspaces: []*sdk.Keyspace{
+				{Name: defaultKeyspaceName, Tables: []*sdk.Table{
 					{
 						Name:       "articles",
-						PrimaryKey: &PrimaryKey{PartitionKey: []string{"author"}, ClusteringKey: []string{"category", "published_at"}},
-						Columns: []*Column{
+						PrimaryKey: &sdk.PrimaryKey{PartitionKey: []string{"author"}, ClusteringKey: []string{"category", "published_at"}},
+						Columns: []*sdk.Column{
 							{Name: "author", DataType: gocqlhelpers.NewTypeText()},
 							{Name: "category", DataType: gocqlhelpers.NewTypeText()},
 							{Name: "published_at", DataType: gocqlhelpers.NewTypeTimestamp()},
@@ -192,12 +193,12 @@ func TestSchemaParser(t *testing.T) {
 		{
 			query:       "CREATE TABLE articles (author TEXT, category TEXT, published_at TIMESTAMP, title TEXT, PRIMARY KEY ((author, category), published_at));",
 			expectedErr: false,
-			expectedSchema: &Schema{Keyspaces: []*Keyspace{
-				{Name: defaultKeyspaceName, Tables: []*Table{
+			expectedSchema: &sdk.Schema{Keyspaces: []*sdk.Keyspace{
+				{Name: defaultKeyspaceName, Tables: []*sdk.Table{
 					{
 						Name:       "articles",
-						PrimaryKey: &PrimaryKey{PartitionKey: []string{"author", "category"}, ClusteringKey: []string{"published_at"}},
-						Columns: []*Column{
+						PrimaryKey: &sdk.PrimaryKey{PartitionKey: []string{"author", "category"}, ClusteringKey: []string{"published_at"}},
+						Columns: []*sdk.Column{
 							{Name: "author", DataType: gocqlhelpers.NewTypeText()},
 							{Name: "category", DataType: gocqlhelpers.NewTypeText()},
 							{Name: "published_at", DataType: gocqlhelpers.NewTypeTimestamp()},
@@ -211,12 +212,12 @@ func TestSchemaParser(t *testing.T) {
 		{
 			query:       "CREATE TABLE articles (author TEXT, category TEXT, published_at TIMESTAMP, title TEXT, PRIMARY KEY ((author, category), title, published_at));",
 			expectedErr: false,
-			expectedSchema: &Schema{Keyspaces: []*Keyspace{
-				{Name: defaultKeyspaceName, Tables: []*Table{
+			expectedSchema: &sdk.Schema{Keyspaces: []*sdk.Keyspace{
+				{Name: defaultKeyspaceName, Tables: []*sdk.Table{
 					{
 						Name:       "articles",
-						PrimaryKey: &PrimaryKey{PartitionKey: []string{"author", "category"}, ClusteringKey: []string{"title", "published_at"}},
-						Columns: []*Column{
+						PrimaryKey: &sdk.PrimaryKey{PartitionKey: []string{"author", "category"}, ClusteringKey: []string{"title", "published_at"}},
+						Columns: []*sdk.Column{
 							{Name: "author", DataType: gocqlhelpers.NewTypeText()},
 							{Name: "category", DataType: gocqlhelpers.NewTypeText()},
 							{Name: "title", DataType: gocqlhelpers.NewTypeText()},
@@ -231,12 +232,12 @@ func TestSchemaParser(t *testing.T) {
 		{
 			query:       "CREATE TABLE users (id UUID PRIMARY KEY, name TEXT) WITH TTL 86400;",
 			expectedErr: false,
-			expectedSchema: &Schema{Keyspaces: []*Keyspace{
-				{Name: defaultKeyspaceName, Tables: []*Table{
+			expectedSchema: &sdk.Schema{Keyspaces: []*sdk.Keyspace{
+				{Name: defaultKeyspaceName, Tables: []*sdk.Table{
 					{
 						Name:       "users",
-						PrimaryKey: &PrimaryKey{PartitionKey: []string{"id"}},
-						Columns: []*Column{
+						PrimaryKey: &sdk.PrimaryKey{PartitionKey: []string{"id"}},
+						Columns: []*sdk.Column{
 							{Name: "id", DataType: gocqlhelpers.NewTypeUUID()},
 							{Name: "name", DataType: gocqlhelpers.NewTypeText()},
 						}},
@@ -249,12 +250,12 @@ func TestSchemaParser(t *testing.T) {
 		{
 			query:       "CREATE TABLE users (id UUID PRIMARY KEY, name TEXT) WITH compaction = {'class': 'LeveledCompactionStrategy'};",
 			expectedErr: false,
-			expectedSchema: &Schema{Keyspaces: []*Keyspace{
-				{Name: defaultKeyspaceName, Tables: []*Table{
+			expectedSchema: &sdk.Schema{Keyspaces: []*sdk.Keyspace{
+				{Name: defaultKeyspaceName, Tables: []*sdk.Table{
 					{
 						Name:       "users",
-						PrimaryKey: &PrimaryKey{PartitionKey: []string{"id"}},
-						Columns: []*Column{
+						PrimaryKey: &sdk.PrimaryKey{PartitionKey: []string{"id"}},
+						Columns: []*sdk.Column{
 							{Name: "id", DataType: gocqlhelpers.NewTypeUUID()},
 							{Name: "name", DataType: gocqlhelpers.NewTypeText()},
 						}},
@@ -297,12 +298,12 @@ func TestSchemaParser(t *testing.T) {
 		{
 			query:       `CREATE TABLE users (id UUID PRIMARY KEY, name CUSTOMTYPE);`,
 			expectedErr: false,
-			expectedSchema: &Schema{Keyspaces: []*Keyspace{
-				{Name: defaultKeyspaceName, Tables: []*Table{
+			expectedSchema: &sdk.Schema{Keyspaces: []*sdk.Keyspace{
+				{Name: defaultKeyspaceName, Tables: []*sdk.Table{
 					{
 						Name:       "users",
-						PrimaryKey: &PrimaryKey{PartitionKey: []string{"id"}},
-						Columns: []*Column{
+						PrimaryKey: &sdk.PrimaryKey{PartitionKey: []string{"id"}},
+						Columns: []*sdk.Column{
 							{Name: "id", DataType: gocqlhelpers.NewTypeUUID()},
 							{Name: "name", DataType: gocqlhelpers.NewTypeCustom("customtype")},
 						}},
@@ -325,12 +326,12 @@ func TestSchemaParser(t *testing.T) {
 		{
 			query:       "CREATE TABLE customer_orders (customer_id UUID, order_id UUID, product TEXT, PRIMARY KEY (customer_id, order_id));",
 			expectedErr: false,
-			expectedSchema: &Schema{Keyspaces: []*Keyspace{
-				{Name: defaultKeyspaceName, Tables: []*Table{
+			expectedSchema: &sdk.Schema{Keyspaces: []*sdk.Keyspace{
+				{Name: defaultKeyspaceName, Tables: []*sdk.Table{
 					{
 						Name:       "customer_orders",
-						PrimaryKey: &PrimaryKey{PartitionKey: []string{"customer_id"}, ClusteringKey: []string{"order_id"}},
-						Columns: []*Column{
+						PrimaryKey: &sdk.PrimaryKey{PartitionKey: []string{"customer_id"}, ClusteringKey: []string{"order_id"}},
+						Columns: []*sdk.Column{
 							{Name: "customer_id", DataType: gocqlhelpers.NewTypeUUID()},
 							{Name: "order_id", DataType: gocqlhelpers.NewTypeUUID()},
 							{Name: "product", DataType: gocqlhelpers.NewTypeText()},
@@ -387,12 +388,12 @@ func TestSchemaParser(t *testing.T) {
 		{
 			query:       "CREATE TABLE articles (author TEXT, category TEXT, published_at TIMESTAMP, title TEXT, PRIMARY KEY (author, category, published_at)) WITH CLUSTERING ORDER BY (published_at DESC);",
 			expectedErr: false,
-			expectedSchema: &Schema{Keyspaces: []*Keyspace{
-				{Name: defaultKeyspaceName, Tables: []*Table{
+			expectedSchema: &sdk.Schema{Keyspaces: []*sdk.Keyspace{
+				{Name: defaultKeyspaceName, Tables: []*sdk.Table{
 					{
 						Name:       "articles",
-						PrimaryKey: &PrimaryKey{PartitionKey: []string{"author"}, ClusteringKey: []string{"category", "published_at"}},
-						Columns: []*Column{
+						PrimaryKey: &sdk.PrimaryKey{PartitionKey: []string{"author"}, ClusteringKey: []string{"category", "published_at"}},
+						Columns: []*sdk.Column{
 							{Name: "author", DataType: gocqlhelpers.NewTypeText()},
 							{Name: "category", DataType: gocqlhelpers.NewTypeText()},
 							{Name: "published_at", DataType: gocqlhelpers.NewTypeTimestamp()},
@@ -413,12 +414,12 @@ func TestSchemaParser(t *testing.T) {
 		{
 			query:       "CREATE TABLE users (id UUID PRIMARY KEY, name TEXT) WITH validation = {'validator': 'my_custom_validator'};",
 			expectedErr: false,
-			expectedSchema: &Schema{Keyspaces: []*Keyspace{
-				{Name: defaultKeyspaceName, Tables: []*Table{
+			expectedSchema: &sdk.Schema{Keyspaces: []*sdk.Keyspace{
+				{Name: defaultKeyspaceName, Tables: []*sdk.Table{
 					{
 						Name:       "users",
-						PrimaryKey: &PrimaryKey{PartitionKey: []string{"id"}},
-						Columns: []*Column{
+						PrimaryKey: &sdk.PrimaryKey{PartitionKey: []string{"id"}},
+						Columns: []*sdk.Column{
 							{Name: "id", DataType: gocqlhelpers.NewTypeUUID()},
 							{Name: "name", DataType: gocqlhelpers.NewTypeText()},
 						}},
@@ -431,12 +432,12 @@ func TestSchemaParser(t *testing.T) {
 		{
 			query:       "CREATE TABLE auth.users (id UUID PRIMARY KEY, name TEXT);",
 			expectedErr: false,
-			expectedSchema: &Schema{Keyspaces: []*Keyspace{
-				{Name: "auth", Tables: []*Table{
+			expectedSchema: &sdk.Schema{Keyspaces: []*sdk.Keyspace{
+				{Name: "auth", Tables: []*sdk.Table{
 					{
 						Name:       "users",
-						PrimaryKey: &PrimaryKey{PartitionKey: []string{"id"}},
-						Columns: []*Column{
+						PrimaryKey: &sdk.PrimaryKey{PartitionKey: []string{"id"}},
+						Columns: []*sdk.Column{
 							{Name: "id", DataType: gocqlhelpers.NewTypeUUID()},
 							{Name: "name", DataType: gocqlhelpers.NewTypeText()},
 						}},
@@ -452,28 +453,28 @@ func TestSchemaParser(t *testing.T) {
 		CREATE TABLE logins (id UUID PRIMARY KEY, last_seen TIMESTAMP);
 		      `,
 			expectedErr: false,
-			expectedSchema: &Schema{Keyspaces: []*Keyspace{
-				{Name: defaultKeyspaceName, Tables: []*Table{
+			expectedSchema: &sdk.Schema{Keyspaces: []*sdk.Keyspace{
+				{Name: defaultKeyspaceName, Tables: []*sdk.Table{
 					{
 						Name:       "users",
-						PrimaryKey: &PrimaryKey{PartitionKey: []string{"id"}},
-						Columns: []*Column{
+						PrimaryKey: &sdk.PrimaryKey{PartitionKey: []string{"id"}},
+						Columns: []*sdk.Column{
 							{Name: "id", DataType: gocqlhelpers.NewTypeUUID()},
 							{Name: "age", DataType: gocqlhelpers.NewTypeInt()},
 							{Name: "name", DataType: gocqlhelpers.NewTypeText()},
 						}},
 					{
 						Name:       "orders",
-						PrimaryKey: &PrimaryKey{PartitionKey: []string{"order_id"}, ClusteringKey: []string{"customer_id"}},
-						Columns: []*Column{
+						PrimaryKey: &sdk.PrimaryKey{PartitionKey: []string{"order_id"}, ClusteringKey: []string{"customer_id"}},
+						Columns: []*sdk.Column{
 							{Name: "order_id", DataType: gocqlhelpers.NewTypeUUID()},
 							{Name: "customer_id", DataType: gocqlhelpers.NewTypeUUID()},
 							{Name: "total", DataType: gocqlhelpers.NewTypeDecimal()},
 						}},
 					{
 						Name:       "logins",
-						PrimaryKey: &PrimaryKey{PartitionKey: []string{"id"}},
-						Columns: []*Column{
+						PrimaryKey: &sdk.PrimaryKey{PartitionKey: []string{"id"}},
+						Columns: []*sdk.Column{
 							{Name: "id", DataType: gocqlhelpers.NewTypeUUID()},
 							{Name: "last_seen", DataType: gocqlhelpers.NewTypeTimestamp()},
 						}},

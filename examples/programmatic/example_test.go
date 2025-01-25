@@ -5,7 +5,7 @@ import (
 	"github.com/gocql/gocql"
 	"github.com/google/uuid"
 	"github.com/razcoen/cqlc/examples/programmatic/example"
-	"github.com/razcoen/cqlc/pkg/testcassandra"
+	"github.com/razcoen/cqlc/internal/testcassandra"
 	"github.com/stretchr/testify/require"
 	"testing"
 	"time"

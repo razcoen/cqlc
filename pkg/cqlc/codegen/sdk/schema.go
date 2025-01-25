@@ -1,4 +1,4 @@
-package cqlc
+package sdk
 
 import (
 	"encoding/json"

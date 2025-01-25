@@ -3,18 +3,21 @@
 
 package main
 
-import "github.com/razcoen/cqlc/pkg/cqlc"
+import (
+	"github.com/razcoen/cqlc/pkg/cqlc"
+	"github.com/razcoen/cqlc/pkg/cqlc/codegen/golang"
+	"github.com/razcoen/cqlc/pkg/cqlc/config"
+)
 
 func main() {
-	if err := cqlc.Generate(&cqlc.Config{
-		Version: "1",
-		CQL: []*cqlc.CQLConfig{
+	if err := cqlc.Generate(&config.Config{
+		CQL: []*config.CQL{
 			{
 				Queries: "queries.cql",
 				Schema:  "schema.cql",
-				Gen: &cqlc.CQLGenConfig{
+				Gen: &config.CQLGen{
 					Overwrite: true,
-					Go: &cqlc.CQLGenGoConfig{
+					Go: &golang.Options{
 						Package: "example",
 						Out:     "example",
 					},

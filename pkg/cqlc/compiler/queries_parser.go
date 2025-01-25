@@ -1,13 +1,14 @@
-package cqlc
+package compiler
 
 import (
 	"errors"
 	"fmt"
+	"github.com/razcoen/cqlc/pkg/cqlc/codegen/sdk"
 	"regexp"
 	"strings"
 
 	"github.com/antlr4-go/antlr/v4"
-	"github.com/razcoen/cqlc/pkg/cqlc/internal/antlrcql"
+	"github.com/razcoen/cqlc/pkg/cqlc/compiler/internal/antlrcql"
 )
 
 type QueriesParser struct{}
@@ -16,9 +17,9 @@ func NewQueriesParser() *QueriesParser {
 	return &QueriesParser{}
 }
 
-func (qp *QueriesParser) Parse(cql string) (Queries, error) {
+func (qp *QueriesParser) Parse(cql string) (sdk.Queries, error) {
 	queryStmts := strings.Split(cql, ";")
-	queries := make(Queries, 0, len(queryStmts))
+	queries := make(sdk.Queries, 0, len(queryStmts))
 	for _, query := range queryStmts {
 		query = strings.TrimSpace(query)
 		if query == "" {
@@ -62,7 +63,7 @@ func (qp *QueriesParser) Parse(cql string) (Queries, error) {
 		if err != nil {
 			return nil, fmt.Errorf("error parsing comment: %w", err)
 		}
-		queries = append(queries, &Query{
+		queries = append(queries, &sdk.Query{
 			FuncName:    funcName,
 			Annotations: annotations,
 			Stmt:        stmt,
