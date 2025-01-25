@@ -1,7 +1,7 @@
 name: commit
 on: [push]
 jobs:
-  build:
+  go-build:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -14,9 +14,9 @@ jobs:
           version: '~> v2.6'
           install-only: true
       - run: go version
+      - run: go mod download
       - run: goreleaser release --clean --snapshot
-  lint:
-    needs: build
+  go-lint:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -26,8 +26,7 @@ jobs:
       - uses: golangci/golangci-lint-action@v6
         with:
           version: v1.63.4
-  test:
-    needs: build
+  go-generate-validation:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -35,5 +34,41 @@ jobs:
         with:
           go-version: 1.23
       - run: go version
+      - uses: actions/setup-java@v4
+        with:
+          distribution: 'temurin'
+          java-version: '21'
+      - run: java --version
+      - name: install antlr
+        run: |
+          curl -O https://www.antlr.org/download/antlr-4.13.2-complete.jar
+          chmod +x antlr-4.13.2-complete.jar
+          mv antlr-4.13.2-complete.jar /usr/local/bin
+          echo '#!/bin/bash' > /usr/local/bin/antlr
+          echo 'CLASSPATH="/usr/local/bin/antlr-4.13.2-complete.jar:." exec java -jar /usr/local/bin/antlr-4.13.2-complete.jar "$@"' >> /usr/local/bin/antlr
+          chmod +x /usr/local/bin/antlr
+      - run: antlr
+      - run: go mod download
+      - run: go generate ./...
+      - name: git status
+        run: |
+          if [[ -n "$(git status --porcelain)" ]]; then 
+            echo "Go code generation caused changes. Please commit them."
+            git status
+            exit 1
+          fi
+  go-test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-go@v5
+        with:
+          go-version: 1.23
+      - run: go version
+      - run: go mod download
       - run: make cassandra-up
-      - run: go test ./...
+      - run: go test -coverprofile=coverage.txt ./...
+      - uses: codecov/codecov-action@v5
+        with:
+          token: ${{ secrets.CODECOV_TOKEN }}
+          slug: razcoen/cqlc
