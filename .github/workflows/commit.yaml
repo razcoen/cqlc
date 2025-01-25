@@ -1,7 +1,7 @@
 name: commit
 on: [push]
 jobs:
-  build:
+  go-build:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -16,7 +16,7 @@ jobs:
       - run: go version
       - run: go mod download
       - run: goreleaser release --clean --snapshot
-  lint:
+  go-lint:
     needs: build
     runs-on: ubuntu-latest
     steps:
@@ -27,7 +27,7 @@ jobs:
       - uses: golangci/golangci-lint-action@v6
         with:
           version: v1.63.4
-  test:
+  go-test:
     needs: build
     runs-on: ubuntu-latest
     steps:
