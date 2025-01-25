@@ -36,4 +36,8 @@ jobs:
           go-version: 1.23
       - run: go version
       - run: make cassandra-up
-      - run: go test ./...
+      - run: go test -coverprofile=coverage.txt ./...
+      - uses: codecov/codecov-action@v5
+        with:
+          token: ${{ secrets.CODECOV_TOKEN }}
+          slug: razcoen/cqlc
