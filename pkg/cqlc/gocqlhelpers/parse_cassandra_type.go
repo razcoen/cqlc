@@ -123,14 +123,6 @@ func getCassandraBaseType(name string) gocql.Type {
 		return gocql.TypeTimeUUID
 	case "inet":
 		return gocql.TypeInet
-	case "Mapgocql.Type":
-		return gocql.TypeMap
-	case "Listgocql.Type":
-		return gocql.TypeList
-	case "Setgocql.Type":
-		return gocql.TypeSet
-	case "Tuplegocql.Type":
-		return gocql.TypeTuple
 	default:
 		return gocql.TypeCustom
 	}
