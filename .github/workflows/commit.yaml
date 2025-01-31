@@ -57,7 +57,7 @@ jobs:
           chmod +x /usr/local/bin/antlr
       - run: antlr
       - run: go mod download
-      - run: go generate ./...
+      - run: make generate-and-format
       - name: git status
         run: |
           if [[ -n "$(git status --porcelain)" ]]; then

@@ -41,7 +41,7 @@ func establishSession(t *testing.T, keyspace string) *gocql.Session {
 		slog.
 			With("error", err).
 			With("keyspace", keyspace).
-			With("deadline", deadline.Sub(time.Now())).
+			With("deadline", time.Until(deadline)).
 			Info("casssandra session atttempt failed")
 		time.Sleep(sleep)
 	}

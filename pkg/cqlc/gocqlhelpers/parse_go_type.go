@@ -2,11 +2,12 @@ package gocqlhelpers
 
 import (
 	"fmt"
-	"github.com/gocql/gocql"
-	"gopkg.in/inf.v0"
 	"math/big"
 	"reflect"
 	"time"
+
+	"github.com/gocql/gocql"
+	"gopkg.in/inf.v0"
 )
 
 type GoType struct {

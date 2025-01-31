@@ -1,4 +1,4 @@
-DOCKER_COMPOSE := docker compose
+DOCKER_COMPOSE=docker compose
 
 cassandra-up:
 	$(DOCKER_COMPOSE) up -d cassandra
