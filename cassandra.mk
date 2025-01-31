@@ -8,4 +8,4 @@ cassandra-down:
 	$(DOCKER_COMPOSE) down cassandra
 
 cassandra-healthcheck:
-	$(GO_RUN) ./scripts/cassandra-healthcheck.go -sleep 1s
+	$(GO_RUN) ./scripts/cassandra-healthcheck.go -sleep 1s -timeout 2m
