@@ -110,9 +110,9 @@ go install github.com/razcoen/cqlc/cmd/cqlc@latest
     import (
     	"context"
     	"log"
-    	"testcql/gencql"
     	"time"
-    
+
+      "your.project/gencql"
     	"github.com/gocql/gocql"
     )
     
