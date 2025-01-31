@@ -7,5 +7,6 @@ func NewRootCommand() *cobra.Command {
 		Use: "cqlc",
 	}
 	cmd.AddCommand(NewGenerateCommand())
+	cmd.AddCommand(NewVersionCommand())
 	return cmd
 }

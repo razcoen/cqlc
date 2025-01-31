@@ -10,12 +10,14 @@ import (
 )
 
 func NewGenerateCommand() *cobra.Command {
+	var options struct {
+		configPath string
+	}
+
 	cmd := &cobra.Command{
 		Use: "generate",
 		RunE: func(cmd *cobra.Command, args []string) error {
-			pf := cmd.Flag("config")
-			cfgpath := pf.Value.String()
-			f, err := os.Open(cfgpath)
+			f, err := os.Open(options.configPath)
 			if err != nil {
 				return fmt.Errorf("open config file: %w", err)
 			}
@@ -34,7 +36,7 @@ func NewGenerateCommand() *cobra.Command {
 			return nil
 		},
 	}
-	// TODO: Bind flags to viper config
-	cmd.Flags().String("config", "cqlc.yaml", "generate configuration file")
+
+	cmd.Flags().StringVar(&options.configPath, "config", "cqlc.yaml", "generate configuration file")
 	return cmd
 }

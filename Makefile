@@ -17,5 +17,6 @@ generate-and-format:
 	$(GOIMPORTS) -w $(shell find . -type f -name '*.go')
 	$(GOLANGCI_LINT) run --fix
 
-bin: ./cmd ./internal ./pkg
+.PHONY: build
+build:
 	$(GORELEASER) release --snapshot --clean
