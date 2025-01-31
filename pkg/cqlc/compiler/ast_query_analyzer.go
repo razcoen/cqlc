@@ -1,10 +1,11 @@
 package compiler
 
 import (
-	"github.com/antlr4-go/antlr/v4"
-	"github.com/razcoen/cqlc/pkg/cqlc/compiler/internal/antlrcql"
 	"regexp"
 	"sync"
+
+	"github.com/antlr4-go/antlr/v4"
+	"github.com/razcoen/cqlc/pkg/cqlc/compiler/internal/antlrcql"
 )
 
 type astQueryAnalyzer struct {

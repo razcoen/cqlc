@@ -2,9 +2,10 @@ package config
 
 import (
 	"fmt"
+	"io"
+
 	"github.com/razcoen/cqlc/pkg/cqlc/codegen/golang"
 	"gopkg.in/yaml.v3"
-	"io"
 )
 
 type Config struct {

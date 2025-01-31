@@ -2,11 +2,13 @@ package testcassandra
 
 import (
 	"fmt"
+	"log/slog"
+	"testing"
+	"time"
+
 	"github.com/gocql/gocql"
 	"github.com/google/uuid"
 	"github.com/stretchr/testify/require"
-	"testing"
-	"time"
 )
 
 func ConnectWithRandomKeyspace(t *testing.T) (session *gocql.Session, keyspace string) {
@@ -36,6 +38,11 @@ func establishSession(t *testing.T, keyspace string) *gocql.Session {
 		if err == nil {
 			return session
 		}
+		slog.
+			With("error", err).
+			With("keyspace", keyspace).
+			With("deadline", deadline.Sub(time.Now())).
+			Info("casssandra session atttempt failed")
 		time.Sleep(sleep)
 	}
 	require.NoError(t, err)

@@ -9,5 +9,8 @@ GORELEASER="goreleaser"
 lint:
 	$(GOLANGCI_LINT) run
 
+format:
+    goimoprts -w **/*.go
+
 bin: ./cmd ./internal ./pkg
 	$(GORELEASER) release --snapshot --clean

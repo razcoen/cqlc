@@ -3,12 +3,13 @@ package cqlc
 import (
 	"errors"
 	"fmt"
+	"log/slog"
+	"os"
+
 	"github.com/razcoen/cqlc/pkg/cqlc/codegen/golang"
 	"github.com/razcoen/cqlc/pkg/cqlc/codegen/sdk"
 	"github.com/razcoen/cqlc/pkg/cqlc/compiler"
 	"github.com/razcoen/cqlc/pkg/cqlc/config"
-	"log/slog"
-	"os"
 )
 
 func Generate(config *config.Config) error {

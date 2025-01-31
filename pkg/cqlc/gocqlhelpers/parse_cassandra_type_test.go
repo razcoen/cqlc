@@ -1,9 +1,10 @@
 package gocqlhelpers
 
 import (
-	"github.com/gocql/gocql"
 	"reflect"
 	"testing"
+
+	"github.com/gocql/gocql"
 )
 
 func TestParseCassandraType_Set(t *testing.T) {

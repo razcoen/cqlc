@@ -4,6 +4,7 @@ package example
 
 import (
 	"fmt"
+
 	"github.com/gocql/gocql"
 	"github.com/razcoen/cqlc/pkg/gocqlc"
 )

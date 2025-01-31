@@ -2,9 +2,10 @@ package compiler
 
 import (
 	"fmt"
+	"testing"
+
 	"github.com/razcoen/cqlc/pkg/cqlc/codegen/sdk"
 	"github.com/razcoen/cqlc/pkg/cqlc/gocqlhelpers"
-	"testing"
 
 	"github.com/stretchr/testify/require"
 )

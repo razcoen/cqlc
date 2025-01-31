@@ -2,10 +2,11 @@ package cmd
 
 import (
 	"fmt"
+	"os"
+
 	"github.com/razcoen/cqlc/pkg/cqlc"
 	"github.com/razcoen/cqlc/pkg/cqlc/config"
 	"github.com/spf13/cobra"
-	"os"
 )
 
 func NewGenerateCommand() *cobra.Command {

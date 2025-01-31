@@ -11,7 +11,7 @@ jobs:
       - uses: goreleaser/goreleaser-action@v6
         with:
           distribution: goreleaser
-          version: '~> v2.6'
+          version: "~> v2.6"
           install-only: true
       - run: go version
       - run: go mod download
@@ -23,6 +23,14 @@ jobs:
       - uses: actions/setup-go@v5
         with:
           go-version: 1.23
+      - name: goimports
+        run: |
+          unformatted=$(goimports -l **/*.go)
+          if [ -n "$unformatted" ]; then
+            echo "The following files are not formatted, make sure to run goimports:"
+            echo "$unformatted"
+            exit 1
+          fi
       - uses: golangci/golangci-lint-action@v6
         with:
           version: v1.63.4
@@ -36,8 +44,8 @@ jobs:
       - run: go version
       - uses: actions/setup-java@v4
         with:
-          distribution: 'temurin'
-          java-version: '21'
+          distribution: "temurin"
+          java-version: "21"
       - run: java --version
       - name: install antlr
         run: |
@@ -52,7 +60,7 @@ jobs:
       - run: go generate ./...
       - name: git status
         run: |
-          if [[ -n "$(git status --porcelain)" ]]; then 
+          if [[ -n "$(git status --porcelain)" ]]; then
             echo "Go code generation caused changes. Please commit them."
             git status
             exit 1

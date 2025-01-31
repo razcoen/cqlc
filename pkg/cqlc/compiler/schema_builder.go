@@ -3,11 +3,12 @@ package compiler
 import (
 	"errors"
 	"fmt"
-	"github.com/gocql/gocql"
-	"github.com/razcoen/cqlc/pkg/cqlc/codegen/sdk"
 	"maps"
 	"slices"
 	"strings"
+
+	"github.com/gocql/gocql"
+	"github.com/razcoen/cqlc/pkg/cqlc/codegen/sdk"
 )
 
 const defaultKeyspaceName = ""

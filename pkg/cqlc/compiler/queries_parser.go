@@ -2,10 +2,11 @@ package compiler
 
 import (
 	"fmt"
-	"github.com/razcoen/cqlc/pkg/cqlc/codegen/sdk"
-	"github.com/razcoen/cqlc/pkg/cqlc/compiler/internal/antlrcql"
 	"regexp"
 	"strings"
+
+	"github.com/razcoen/cqlc/pkg/cqlc/codegen/sdk"
+	"github.com/razcoen/cqlc/pkg/cqlc/compiler/internal/antlrcql"
 )
 
 type QueriesParser struct{}

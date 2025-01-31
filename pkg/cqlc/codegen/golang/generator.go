@@ -3,9 +3,6 @@ package golang
 import (
 	"bytes"
 	"fmt"
-	"github.com/razcoen/cqlc/pkg/cqlc/codegen/sdk"
-	"github.com/razcoen/cqlc/pkg/cqlc/gocqlhelpers"
-	"github.com/razcoen/cqlc/pkg/cqlc/log"
 	"go/format"
 	"io"
 	"maps"
@@ -13,6 +10,10 @@ import (
 	"path/filepath"
 	"slices"
 	"text/template"
+
+	"github.com/razcoen/cqlc/pkg/cqlc/codegen/sdk"
+	"github.com/razcoen/cqlc/pkg/cqlc/gocqlhelpers"
+	"github.com/razcoen/cqlc/pkg/cqlc/log"
 )
 
 type Generator struct {
@@ -59,7 +60,7 @@ func (gg *Generator) Generate(req *sdk.GenerateRequest, opts *Options) error {
 	schema := req.Schema
 	queries := req.Queries
 	out := opts.Out
-	if err := os.Mkdir(out, 0777); err != nil && !os.IsExist(err) {
+	if err := os.MkdirAll(out, 0777); err != nil && !os.IsExist(err) {
 		return fmt.Errorf("create output directory: %w", err)
 	}
 	fn := filepath.Join(out, "client.go")
@@ -251,7 +252,7 @@ type {{.FuncName}}Querier struct {
 	logger gocqlc.Logger
 }
 
-func (q *{{.FuncName}}Querier) All(ctx context.Context) ([]*{{.ResultType}}, error) { 
+func (q *{{.FuncName}}Querier) All(ctx context.Context) ([]*{{.ResultType}}, error) {
 	var results []*{{.ResultType}}
 	var pageState []byte
 	for {

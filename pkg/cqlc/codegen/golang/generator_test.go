@@ -2,10 +2,10 @@ package golang
 
 import (
 	"bytes"
-	"github.com/razcoen/cqlc/pkg/cqlc/codegen/sdk"
-	"github.com/razcoen/cqlc/pkg/cqlc/gocqlhelpers"
 	"testing"
 
+	"github.com/razcoen/cqlc/pkg/cqlc/codegen/sdk"
+	"github.com/razcoen/cqlc/pkg/cqlc/gocqlhelpers"
 	"github.com/stretchr/testify/require"
 )
 

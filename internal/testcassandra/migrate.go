@@ -1,10 +1,11 @@
 package testcassandra
 
 import (
-	"github.com/gocql/gocql"
-	"github.com/stretchr/testify/require"
 	"os"
 	"testing"
+
+	"github.com/gocql/gocql"
+	"github.com/stretchr/testify/require"
 )
 
 func Exec(t *testing.T, session *gocql.Session, path string) {
