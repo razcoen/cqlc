@@ -1,9 +1,10 @@
 package sdk
 
 import (
-	"github.com/jinzhu/inflection"
 	"regexp"
 	"strings"
+
+	"github.com/jinzhu/inflection"
 )
 
 func ToSingularPascalCase(s string) string {

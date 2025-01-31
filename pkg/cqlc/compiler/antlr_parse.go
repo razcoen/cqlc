@@ -3,6 +3,7 @@ package compiler
 import (
 	"errors"
 	"fmt"
+
 	"github.com/antlr4-go/antlr/v4"
 	"github.com/razcoen/cqlc/pkg/cqlc/compiler/internal/antlrcql"
 )

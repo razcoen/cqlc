@@ -5,9 +5,10 @@ package example
 import (
 	"context"
 	"fmt"
+	"time"
+
 	"github.com/gocql/gocql"
 	"github.com/razcoen/cqlc/pkg/gocqlc"
-	"time"
 )
 
 type ListUserPostsParams struct {

@@ -3,12 +3,13 @@ package compiler
 import (
 	"errors"
 	"fmt"
+	"log"
+	"os"
+
 	"github.com/antlr4-go/antlr/v4"
 	"github.com/razcoen/cqlc/pkg/cqlc/codegen/sdk"
 	"github.com/razcoen/cqlc/pkg/cqlc/compiler/internal/antlrcql"
 	"github.com/razcoen/cqlc/pkg/cqlc/gocqlhelpers"
-	"log"
-	"os"
 )
 
 type SchemaParser struct{}

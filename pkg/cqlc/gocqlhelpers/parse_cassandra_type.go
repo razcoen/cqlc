@@ -1,8 +1,9 @@
 package gocqlhelpers
 
 import (
-	"github.com/gocql/gocql"
 	"strings"
+
+	"github.com/gocql/gocql"
 )
 
 func ParseCassandraType(str string, logger gocql.StdLogger) gocql.TypeInfo {

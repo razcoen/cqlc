@@ -2,44 +2,44 @@ package testcassandra
 
 import (
 	"fmt"
+
 	"github.com/gocql/gocql"
 	"github.com/google/uuid"
-	"github.com/stretchr/testify/require"
-	"testing"
-	"time"
 )
 
-func ConnectWithRandomKeyspace(t *testing.T) (session *gocql.Session, keyspace string) {
-	adminSession := establishAdminSession(t)
-	keyspace = createRandomKeyspace(t, adminSession)
-	session = establishSession(t, keyspace)
-	t.Cleanup(func() {
-		dropKeyspace(t, adminSession, keyspace)
-		adminSession.Close()
-		session.Close()
-	})
-	return session, keyspace
+type SessionWrapper struct {
+	Session  *gocql.Session
+	Keyspace string
+
+	// adminSession is used to create and drop keyspaces.
+	// It should not be used for any other purpose.
+	adminSession *gocql.Session
 }
 
-func establishAdminSession(t *testing.T) *gocql.Session {
-	return establishSession(t, "system")
-}
-
-func establishSession(t *testing.T, keyspace string) *gocql.Session {
-	sleep := time.Second
-	timeout := time.Minute
-	deadline := time.Now().Add(timeout)
-	var err error
-	var session *gocql.Session
-	for time.Now().Before(deadline) {
-		session, err = createSession(keyspace)
-		if err == nil {
-			return session
-		}
-		time.Sleep(sleep)
+func (s *SessionWrapper) Close() error {
+	var closeErr error
+	if err := dropKeyspace(s.adminSession, s.Keyspace); err != nil {
+		closeErr = fmt.Errorf("drop keyspace %s: %w", s.Keyspace, err)
 	}
-	require.NoError(t, err)
-	return nil
+	s.adminSession.Close()
+	s.Session.Close()
+	return closeErr
+}
+
+func ConnectWithRandomKeyspace() (*SessionWrapper, error) {
+	adminSession, err := createSession("system")
+	if err != nil {
+		return nil, fmt.Errorf("create admin session: %w", err)
+	}
+	keyspace, err := createRandomKeyspace(adminSession)
+	if err != nil {
+		return nil, fmt.Errorf("create random keyspace: %w", err)
+	}
+	session, err := createSession(keyspace)
+	if err != nil {
+		return nil, fmt.Errorf("create session: %w", err)
+	}
+	return &SessionWrapper{Session: session, Keyspace: keyspace, adminSession: adminSession}, nil
 }
 
 func createSession(keyspace string) (*gocql.Session, error) {
@@ -48,18 +48,20 @@ func createSession(keyspace string) (*gocql.Session, error) {
 	return cluster.CreateSession()
 }
 
-func createRandomKeyspace(t *testing.T, session *gocql.Session) string {
+func createRandomKeyspace(session *gocql.Session) (string, error) {
 	keyspaceID, err := uuid.NewRandom()
-	require.NoError(t, err)
+	if err != nil {
+		return "", fmt.Errorf("generate keyspace id: %w", err)
+	}
 	keyspace := fmt.Sprintf("test%x", keyspaceID[:])
 	stmt := fmt.Sprintf("CREATE KEYSPACE %s WITH replication = {'class': 'SimpleStrategy', 'replication_factor': 1}", keyspace)
-	err = session.Query(stmt).Exec()
-	require.NoError(t, err)
-	return keyspace
+	if err := session.Query(stmt).Exec(); err != nil {
+		return "", fmt.Errorf("create keyspace: %w", err)
+	}
+	return keyspace, nil
 }
 
-func dropKeyspace(t *testing.T, session *gocql.Session, keyspace string) {
+func dropKeyspace(session *gocql.Session, keyspace string) error {
 	stmt := fmt.Sprintf("DROP KEYSPACE %s", keyspace)
-	err := session.Query(stmt).Exec()
-	require.NoError(t, err)
+	return session.Query(stmt).Exec()
 }

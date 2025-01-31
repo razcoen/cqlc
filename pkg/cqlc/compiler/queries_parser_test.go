@@ -1,9 +1,10 @@
 package compiler
 
 import (
+	"testing"
+
 	"github.com/razcoen/cqlc/pkg/cqlc/codegen/sdk"
 	"github.com/stretchr/testify/require"
-	"testing"
 )
 
 func TestQueriesParser(t *testing.T) {
