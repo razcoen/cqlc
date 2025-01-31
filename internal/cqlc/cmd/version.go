@@ -3,12 +3,13 @@ package cmd
 import (
 	"encoding/json"
 	"fmt"
+	"log/slog"
 
 	"github.com/razcoen/cqlc/internal/buildinfo"
 	"github.com/spf13/cobra"
 )
 
-func NewVersionCommand() *cobra.Command {
+func NewVersionCommand(logger *slog.Logger) *cobra.Command {
 	var options struct {
 		format string
 	}
@@ -27,8 +28,8 @@ func NewVersionCommand() *cobra.Command {
 			case "json":
 				b, err := json.MarshalIndent(info, "", "  ")
 				if err != nil {
-					// TODO
-					panic(err)
+					logger.With("error", err).Error("failed to marshal build info")
+					return nil
 				}
 				output = string(b)
 			default:
