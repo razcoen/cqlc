@@ -28,6 +28,7 @@ func establishAdminSession(t *testing.T) *gocql.Session {
 }
 
 func establishSession(t *testing.T, keyspace string) *gocql.Session {
+	logger := slog.Default().With("keyspace", keyspace)
 	sleep := time.Second
 	timeout := time.Minute
 	deadline := time.Now().Add(timeout)
@@ -36,16 +37,17 @@ func establishSession(t *testing.T, keyspace string) *gocql.Session {
 	for time.Now().Before(deadline) {
 		session, err = createSession(keyspace)
 		if err == nil {
+			logger.Info("successfuly established cassandra session")
 			return session
 		}
-		slog.
+		logger.
 			With("error", err).
-			With("keyspace", keyspace).
 			With("deadline", time.Until(deadline)).
-			Info("casssandra session atttempt failed")
+			Warn("create casssandra session atttempt failed")
 		time.Sleep(sleep)
 	}
-	require.NoError(t, err)
+	require.NoError(t, err, "failed to establish cassandra session")
+	logger.Info("successfuly established cassandra session")
 	return nil
 }
 
