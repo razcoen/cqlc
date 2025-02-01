@@ -1,5 +1,4 @@
-CREATE TABLE users
-(
+CREATE TABLE users (
     user_id    UUID PRIMARY KEY,
     username   TEXT,
     email      TEXT,

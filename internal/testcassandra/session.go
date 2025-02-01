@@ -7,30 +7,34 @@ import (
 	"github.com/google/uuid"
 )
 
+// SessionWrapper wraps a gocql.Session and a keyspace name.
+// It is used to manage the lifecycle of a session and a keyspace.
 type SessionWrapper struct {
 	Session  *gocql.Session
 	Keyspace string
 
-	// adminSession is used to create and drop keyspaces.
-	// It should not be used for any other purpose.
-	adminSession *gocql.Session
+	dropKeyspaceOnCleanup bool
 }
 
+// Close closes the session and drops the keyspace if it was created by the wrapper.
 func (s *SessionWrapper) Close() error {
-	var closeErr error
-	if err := dropKeyspace(s.adminSession, s.Keyspace); err != nil {
-		closeErr = fmt.Errorf("drop keyspace %s: %w", s.Keyspace, err)
+	defer s.Session.Close()
+	if !s.dropKeyspaceOnCleanup {
+		return nil
 	}
-	s.adminSession.Close()
-	s.Session.Close()
-	return closeErr
+	if err := dropKeyspace(s.Session, s.Keyspace); err != nil {
+		return fmt.Errorf("drop keyspace %s: %w", s.Keyspace, err)
+	}
+	return nil
 }
 
+// ConnectWithRandomKeyspace creates a new session with a random keyspace.
 func ConnectWithRandomKeyspace() (*SessionWrapper, error) {
 	adminSession, err := createSession("system")
 	if err != nil {
 		return nil, fmt.Errorf("create admin session: %w", err)
 	}
+	defer adminSession.Close()
 	keyspace, err := createRandomKeyspace(adminSession)
 	if err != nil {
 		return nil, fmt.Errorf("create random keyspace: %w", err)
@@ -39,7 +43,24 @@ func ConnectWithRandomKeyspace() (*SessionWrapper, error) {
 	if err != nil {
 		return nil, fmt.Errorf("create session: %w", err)
 	}
-	return &SessionWrapper{Session: session, Keyspace: keyspace, adminSession: adminSession}, nil
+	return &SessionWrapper{
+		Session:               session,
+		Keyspace:              keyspace,
+		dropKeyspaceOnCleanup: true,
+	}, nil
+}
+
+// Connect creates a new session with the given keyspace.
+func Connect(keyspace string) (*SessionWrapper, error) {
+	session, err := createSession(keyspace)
+	if err != nil {
+		return nil, fmt.Errorf("create session: %w", err)
+	}
+	return &SessionWrapper{
+		Session:               session,
+		Keyspace:              keyspace,
+		dropKeyspaceOnCleanup: false,
+	}, nil
 }
 
 func createSession(keyspace string) (*gocql.Session, error) {

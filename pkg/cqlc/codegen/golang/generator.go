@@ -2,6 +2,7 @@ package golang
 
 import (
 	"bytes"
+	"errors"
 	"fmt"
 	"go/format"
 	"io"
@@ -80,8 +81,27 @@ func (gg *Generator) Generate(req *sdk.GenerateRequest, opts *Options) error {
 		return fmt.Errorf("generate client: %w", err)
 	}
 
+	keyspaceTableSet := make(map[string]map[string]bool)
+	for _, k := range schema.Keyspaces {
+		if _, ok := keyspaceTableSet[k.Name]; !ok {
+			keyspaceTableSet[k.Name] = make(map[string]bool)
+		}
+		for _, t := range k.Tables {
+			keyspaceTableSet[k.Name][t.Name] = true
+		}
+	}
+
 	queriesByTableByKeyspace := make(map[string]map[string]sdk.Queries)
+	var invalidQueriesErrs []error
 	for _, q := range queries {
+		// Validate that the query keyspace and table exist in the schema.
+		if _, ok := keyspaceTableSet[q.Keyspace]; !ok {
+			invalidQueriesErrs = append(invalidQueriesErrs, fmt.Errorf("keyspace %q does not exist in schema", q.Keyspace))
+		}
+		if _, ok := keyspaceTableSet[q.Keyspace][q.Table]; !ok {
+			invalidQueriesErrs = append(invalidQueriesErrs, fmt.Errorf("table %q does not exist in keyspace %q", q.Table, q.Keyspace))
+		}
+		// Map queries by keyspace and table.
 		if _, ok := queriesByTableByKeyspace[q.Keyspace]; !ok {
 			queriesByTableByKeyspace[q.Keyspace] = make(map[string]sdk.Queries)
 		}
@@ -89,6 +109,10 @@ func (gg *Generator) Generate(req *sdk.GenerateRequest, opts *Options) error {
 			queriesByTableByKeyspace[q.Keyspace][q.Table] = make(sdk.Queries, 0)
 		}
 		queriesByTableByKeyspace[q.Keyspace][q.Table] = append(queriesByTableByKeyspace[q.Keyspace][q.Table], q)
+	}
+
+	if len(invalidQueriesErrs) > 0 {
+		return fmt.Errorf("invalid queries: %w", errors.Join(invalidQueriesErrs...))
 	}
 
 	for _, k := range schema.Keyspaces {
