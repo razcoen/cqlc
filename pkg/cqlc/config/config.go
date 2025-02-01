@@ -10,7 +10,7 @@ import (
 )
 
 type Config struct {
-	CQL []*CQL `yaml:"cql" validate:"required"`
+	CQL []*CQL `yaml:"cql" validate:"required,min=1,dive"`
 }
 
 type CQL struct {

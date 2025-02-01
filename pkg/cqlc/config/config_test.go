@@ -8,6 +8,12 @@ import (
 )
 
 func TestValidate(t *testing.T) {
+	t.Run("missing cqls", func(t *testing.T) {
+		config := &Config{}
+		require.ErrorContains(t, config.Validate(), "validation", "cql")
+		config = &Config{CQL: []*CQL{}}
+		require.ErrorContains(t, config.Validate(), "validation", "cql")
+	})
 	t.Run("missing queries", func(t *testing.T) {
 		config := &Config{CQL: []*CQL{
 			{
@@ -15,7 +21,7 @@ func TestValidate(t *testing.T) {
 				Gen:    &CQLGen{},
 			},
 		}}
-		require.NoError(t, config.Validate())
+		require.ErrorContains(t, config.Validate(), "validation", "queries")
 	})
 	t.Run("missing schema", func(t *testing.T) {
 		config := &Config{CQL: []*CQL{
@@ -24,7 +30,7 @@ func TestValidate(t *testing.T) {
 				Gen:     &CQLGen{},
 			},
 		}}
-		require.NoError(t, config.Validate())
+		require.ErrorContains(t, config.Validate(), "validation", "schema")
 	})
 	t.Run("missing gen", func(t *testing.T) {
 		config := &Config{CQL: []*CQL{
@@ -33,7 +39,7 @@ func TestValidate(t *testing.T) {
 				Queries: "queries",
 			},
 		}}
-		require.NoError(t, config.Validate())
+		require.ErrorContains(t, config.Validate(), "validation", "gen")
 	})
 	t.Run("missing gen go package", func(t *testing.T) {
 		config := &Config{CQL: []*CQL{
@@ -47,7 +53,7 @@ func TestValidate(t *testing.T) {
 				},
 			},
 		}}
-		require.NoError(t, config.Validate())
+		require.ErrorContains(t, config.Validate(), "validation", "package")
 	})
 	t.Run("missing gen go out", func(t *testing.T) {
 		config := &Config{CQL: []*CQL{
@@ -61,7 +67,7 @@ func TestValidate(t *testing.T) {
 				},
 			},
 		}}
-		require.NoError(t, config.Validate())
+		require.ErrorContains(t, config.Validate(), "validation", "out")
 	})
 	t.Run("valid config", func(t *testing.T) {
 		config := &Config{CQL: []*CQL{
