@@ -10,6 +10,40 @@ import (
 )
 
 func TestGenerate(t *testing.T) {
+	t.Run("missing schema file", func(t *testing.T) {
+		err := Generate(&config.Config{
+			CQL: []*config.CQL{
+				{
+					Schema:  "nonexistingfile",
+					Queries: "internal/testdata/basic_queries.cql",
+					Gen: &config.CQLGen{
+						Go: &golang.Options{
+							Package: "basic",
+							Out:     "internal/testgen/basic",
+						},
+					},
+				},
+			},
+		})
+		require.Error(t, err)
+	})
+	t.Run("missing queries file", func(t *testing.T) {
+		err := Generate(&config.Config{
+			CQL: []*config.CQL{
+				{
+					Schema:  "internal/testdata/basic_schema.cql",
+					Queries: "nonexistingfile",
+					Gen: &config.CQLGen{
+						Go: &golang.Options{
+							Package: "basic",
+							Out:     "internal/testgen/basic",
+						},
+					},
+				},
+			},
+		})
+		require.Error(t, err)
+	})
 	t.Run("basic", func(t *testing.T) {
 		err := Generate(&config.Config{
 			CQL: []*config.CQL{
