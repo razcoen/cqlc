@@ -2,6 +2,7 @@ package programmatic
 
 import (
 	"context"
+	"os"
 	"testing"
 	"time"
 
@@ -9,12 +10,32 @@ import (
 	"github.com/google/uuid"
 	"github.com/razcoen/cqlc/examples/programmatic/example"
 	"github.com/razcoen/cqlc/internal/testcassandra"
+	"github.com/razcoen/cqlc/pkg/cqlc"
+	"github.com/razcoen/cqlc/pkg/cqlc/codegen/golang"
+	"github.com/razcoen/cqlc/pkg/cqlc/config"
 	"github.com/stretchr/testify/require"
 )
 
 func TestExample(t *testing.T) {
-	ctx := context.Background()
+	err := cqlc.Generate(&config.Config{
+		CQL: []*config.CQL{
+			{
+				Queries: "queries.cql",
+				Schema:  "schema.cql",
+				Gen: &config.CQLGen{
+					Overwrite: true,
+					Go: &golang.Options{
+						Package: "example",
+						Out:     "example",
+					},
+				},
+			},
+		},
+	})
+	t.Cleanup(func() { _ = os.RemoveAll("example") })
+	require.NoError(t, err)
 
+	ctx := context.Background()
 	t.Run("create 2 users and find one by one", func(t *testing.T) {
 		client := newClientWithRandomKeyspace(t)
 
