@@ -2,6 +2,7 @@ package golang
 
 import (
 	"bytes"
+	"errors"
 	"fmt"
 	"go/format"
 	"io"
@@ -56,18 +57,21 @@ func NewGenerator(logger log.Logger) (*Generator, error) {
 	}, nil
 }
 
-func (gg *Generator) Generate(req *sdk.GenerateRequest, opts *Options) error {
+func (gg *Generator) Generate(req *sdk.GenerateRequest, opts *Options) (err error) {
 	schema := req.Schema
 	queries := req.Queries
-	out := opts.Out
-	if err := os.MkdirAll(out, 0777); err != nil && !os.IsExist(err) {
-		return fmt.Errorf("create output directory: %w", err)
+	dir, err := os.MkdirTemp("", "cqlc-gen-go-*")
+	if err != nil {
+		return fmt.Errorf("create temp file: %w", err)
 	}
-	fn := filepath.Join(out, "client.go")
+
+	var filenames []string
+	fn := filepath.Join(dir, "client.go")
 	f, err := os.OpenFile(fn, os.O_CREATE|os.O_TRUNC|os.O_WRONLY, 0777)
 	if err != nil {
 		return fmt.Errorf("open client file: %w", err)
 	}
+	filenames = append(filenames, "client.go")
 	defer func() {
 		if err := f.Close(); err != nil {
 			gg.logger.Error("error closing file", "filepath", fn, "error", err)
@@ -80,8 +84,27 @@ func (gg *Generator) Generate(req *sdk.GenerateRequest, opts *Options) error {
 		return fmt.Errorf("generate client: %w", err)
 	}
 
+	keyspaceTableSet := make(map[string]map[string]bool)
+	for _, k := range schema.Keyspaces {
+		if _, ok := keyspaceTableSet[k.Name]; !ok {
+			keyspaceTableSet[k.Name] = make(map[string]bool)
+		}
+		for _, t := range k.Tables {
+			keyspaceTableSet[k.Name][t.Name] = true
+		}
+	}
+
 	queriesByTableByKeyspace := make(map[string]map[string]sdk.Queries)
+	var invalidQueriesErrs []error
 	for _, q := range queries {
+		// Validate that the query keyspace and table exist in the schema.
+		if _, ok := keyspaceTableSet[q.Keyspace]; !ok {
+			invalidQueriesErrs = append(invalidQueriesErrs, fmt.Errorf("keyspace %q does not exist in schema", q.Keyspace))
+		}
+		if _, ok := keyspaceTableSet[q.Keyspace][q.Table]; !ok {
+			invalidQueriesErrs = append(invalidQueriesErrs, fmt.Errorf("table %q does not exist in keyspace %q", q.Table, q.Keyspace))
+		}
+		// Map queries by keyspace and table.
 		if _, ok := queriesByTableByKeyspace[q.Keyspace]; !ok {
 			queriesByTableByKeyspace[q.Keyspace] = make(map[string]sdk.Queries)
 		}
@@ -89,6 +112,10 @@ func (gg *Generator) Generate(req *sdk.GenerateRequest, opts *Options) error {
 			queriesByTableByKeyspace[q.Keyspace][q.Table] = make(sdk.Queries, 0)
 		}
 		queriesByTableByKeyspace[q.Keyspace][q.Table] = append(queriesByTableByKeyspace[q.Keyspace][q.Table], q)
+	}
+
+	if len(invalidQueriesErrs) > 0 {
+		return fmt.Errorf("invalid queries: %w", errors.Join(invalidQueriesErrs...))
 	}
 
 	for _, k := range schema.Keyspaces {
@@ -111,7 +138,8 @@ func (gg *Generator) Generate(req *sdk.GenerateRequest, opts *Options) error {
 					fn = sdk.ToSnakeCase(k.Name) + "_" + fn
 				}
 				fn = "query_" + fn
-				fn = filepath.Join(out, fn)
+				filenames = append(filenames, fn)
+				fn = filepath.Join(dir, fn)
 				f, err := os.OpenFile(fn, os.O_CREATE|os.O_TRUNC|os.O_WRONLY, 0777)
 				if err != nil {
 					return fmt.Errorf("open queries file: %w", err)
@@ -135,6 +163,20 @@ func (gg *Generator) Generate(req *sdk.GenerateRequest, opts *Options) error {
 				return fmt.Errorf("generate queries: %w", err)
 			}
 		}
+	}
+
+	// Given that the client is generated in a temporary file, we need to move it to the output directory.
+	out := opts.Out
+	if err := os.MkdirAll(out, 0777); err != nil && !os.IsExist(err) {
+		return fmt.Errorf("create output directory: %w", err)
+	}
+	for _, f := range filenames {
+		if err := os.Remove(filepath.Join(out, f)); err != nil && !os.IsNotExist(err) {
+			return fmt.Errorf("remove file %s: %w", f, err)
+		}
+	}
+	if err := os.CopyFS(out, os.DirFS(dir)); err != nil {
+		return fmt.Errorf("copy client file: %w", err)
 	}
 	return nil
 }

@@ -46,6 +46,7 @@ func (qa *astQueryAnalyzer) analyze(ctx antlrcql.ICqlContext) *astQueryAnalysis 
 func (qa *astQueryAnalyzer) visitInsert(ctx *antlrcql.InsertContext) {
 	var insertColumnSpec *antlrcql.InsertColumnSpecContext
 	var insertValuesSpec *antlrcql.InsertValuesSpecContext
+	var keyspace *antlrcql.KeyspaceContext
 	var table *antlrcql.TableContext
 	for _, child := range ctx.GetChildren() {
 		switch child := child.(type) {
@@ -53,6 +54,8 @@ func (qa *astQueryAnalyzer) visitInsert(ctx *antlrcql.InsertContext) {
 			insertColumnSpec = child
 		case *antlrcql.InsertValuesSpecContext:
 			insertValuesSpec = child
+		case *antlrcql.KeyspaceContext:
+			keyspace = child
 		case *antlrcql.TableContext:
 			table = child
 		}
@@ -98,6 +101,9 @@ func (qa *astQueryAnalyzer) visitInsert(ctx *antlrcql.InsertContext) {
 	}
 	qa.queryAnalysis.params = params
 	qa.queryAnalysis.table = table.GetText()
+	if keyspace != nil {
+		qa.queryAnalysis.keyspace = keyspace.GetText()
+	}
 }
 
 func (qa *astQueryAnalyzer) visitSelect(c *antlrcql.Select_Context) {
