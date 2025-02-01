@@ -241,7 +241,7 @@ func TestClient(t *testing.T) {
 func newClientWithRandomKeyspace(t *testing.T) *Client {
 	session, err := testcassandra.ConnectWithRandomKeyspace()
 	require.NoError(t, err, "create cassandra session in random keyspace")
-	err = testcassandra.ExecFile(session.Session, "schema.cql")
+	err = testcassandra.ExecFile(session.Session, "../../testdata/basic_schema.cql")
 	require.NoError(t, err, "migrate cassandra schema")
 	client, err := NewClient(session.Session, nil)
 	require.NoError(t, err, "create client")

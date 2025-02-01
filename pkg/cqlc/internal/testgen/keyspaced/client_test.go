@@ -246,7 +246,7 @@ func createClientWithEmptyAuthKeyspace(t *testing.T) *Client {
 	// There is an implicit dependency on the auth keyspace already existing within the schema file.
 	require.NoError(t, session.Session.Query("DROP KEYSPACE IF EXISTS auth;").Exec(), "drop auth keyspace")
 	require.NoError(t, session.Session.Query("CREATE KEYSPACE IF NOT EXISTS auth WITH REPLICATION = {'class':'SimpleStrategy','replication_factor':1};").Exec(), "create auth keyspace")
-	require.NoError(t, testcassandra.ExecFile(session.Session, "schema.cql"), "migrate cassandra schema")
+	require.NoError(t, testcassandra.ExecFile(session.Session, "../../testdata/keyspaced_schema.cql"), "migrate cassandra schema")
 
 	client, err := NewClient(session.Session, nil)
 	require.NoError(t, err, "create client")
