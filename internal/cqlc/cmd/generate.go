@@ -2,6 +2,7 @@ package cmd
 
 import (
 	"fmt"
+	"log/slog"
 	"os"
 
 	"github.com/razcoen/cqlc/pkg/cqlc"
@@ -9,32 +10,36 @@ import (
 	"github.com/spf13/cobra"
 )
 
-func NewGenerateCommand() *cobra.Command {
+func NewGenerateCommand(logger *slog.Logger) *cobra.Command {
+	var options struct {
+		configPath string
+	}
+
 	cmd := &cobra.Command{
 		Use: "generate",
 		RunE: func(cmd *cobra.Command, args []string) error {
-			pf := cmd.Flag("config")
-			cfgpath := pf.Value.String()
-			f, err := os.Open(cfgpath)
+			logger = logger.With("config", options.configPath)
+			f, err := os.Open(options.configPath)
 			if err != nil {
 				return fmt.Errorf("open config file: %w", err)
 			}
 			defer func() {
 				if err := f.Close(); err != nil {
-					panic(err)
+					logger.With("error", err).Error("failed to close config file")
 				}
 			}()
 			cfg, err := config.ParseConfig(f)
 			if err != nil {
-				panic(err)
+				logger.With("error", err).Error("failed to parse config file")
+				return nil
 			}
 			if err := cqlc.Generate(cfg); err != nil {
-				panic(err)
+				logger.With("error", err).Error("failed during cqlc generate")
 			}
 			return nil
 		},
 	}
-	// TODO: Bind flags to viper config
-	cmd.Flags().String("config", "cqlc.yaml", "generate configuration file")
+
+	cmd.Flags().StringVar(&options.configPath, "config", "cqlc.yaml", "generate configuration file")
 	return cmd
 }
