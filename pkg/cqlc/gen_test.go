@@ -19,14 +19,14 @@ func TestGenerate(t *testing.T) {
 					Gen: &config.CQLGen{
 						Go: &golang.Options{
 							Package: "basic",
-							Out:     "internal/testdata/gen/basic",
+							Out:     "internal/testgen/basic",
 						},
 					},
 				},
 			},
 		})
 		require.NoError(t, err)
-		formatDirAndExpectForNoDiff(t, "internal/testdata/gen/basic")
+		formatDirAndExpectForNoDiff(t, "internal/testgen/basic")
 	})
 	t.Run("keyspaced query", func(t *testing.T) {
 		err := Generate(&config.Config{
@@ -37,14 +37,14 @@ func TestGenerate(t *testing.T) {
 					Gen: &config.CQLGen{
 						Go: &golang.Options{
 							Package: "keyspaced",
-							Out:     "internal/testdata/gen/keyspaced",
+							Out:     "internal/testgen/keyspaced",
 						},
 					},
 				},
 			},
 		})
 		require.NoError(t, err)
-		formatDirAndExpectForNoDiff(t, "internal/testdata/gen/keyspaced")
+		formatDirAndExpectForNoDiff(t, "internal/testgen/keyspaced")
 	})
 	t.Run("partially keyspaced queries", func(t *testing.T) {
 		err := Generate(&config.Config{
@@ -55,14 +55,14 @@ func TestGenerate(t *testing.T) {
 					Gen: &config.CQLGen{
 						Go: &golang.Options{
 							Package: "partiallykeyspaced",
-							Out:     "internal/testdata/gen/partiallykeyspaced",
+							Out:     "internal/testgen/partiallykeyspaced",
 						},
 					},
 				},
 			},
 		})
 		require.Error(t, err)
-		require.NoDirExists(t, "internal/testdata/gen/partiallykeyspaced")
+		require.NoDirExists(t, "internal/testgen/partiallykeyspaced")
 	})
 }
 
