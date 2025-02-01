@@ -1,6 +1,6 @@
 # cqlc
 
-![GitHub CI](https://github.com/razcoen/cqlc/actions/workflows/commit.yaml/badge.svg) [![codecov](https://codecov.io/gh/razcoen/cqlc/graph/badge.svg?token=RCKM4XXK1I)](https://codecov.io/gh/razcoen/cqlc)
+![GitHub CI](https://github.com/razcoen/cqlc/actions/workflows/commit.yaml/badge.svg) [![codecov](https://codecov.io/gh/razcoen/cqlc/graph/badge.svg?token=RCKM4XXK1I)](https://codecov.io/gh/razcoen/cqlc) [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT) 
 
 [`cqlc`](https://github.com/razcoen/cqlc) is a tool designed to simplify working with Cassandra databases by generating type-safe code from CQL queries.
 <br> Inspired by [`sqlc`](https://github.com/sqlc-dev/sqlc/).
