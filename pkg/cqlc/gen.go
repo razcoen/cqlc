@@ -38,6 +38,9 @@ func newGenerator() (*generator, error) {
 }
 
 func (g *generator) Generate(config *config.Config) error {
+	if err := config.Validate(); err != nil {
+		return fmt.Errorf("validate config: %w", err)
+	}
 	for _, config := range config.CQL {
 		sb, err := os.ReadFile(config.Schema)
 		if err != nil {
