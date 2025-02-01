@@ -64,11 +64,14 @@ func (gg *Generator) Generate(req *sdk.GenerateRequest, opts *Options) (err erro
 	if err != nil {
 		return fmt.Errorf("create temp file: %w", err)
 	}
+
+	var filenames []string
 	fn := filepath.Join(dir, "client.go")
 	f, err := os.OpenFile(fn, os.O_CREATE|os.O_TRUNC|os.O_WRONLY, 0777)
 	if err != nil {
 		return fmt.Errorf("open client file: %w", err)
 	}
+	filenames = append(filenames, "client.go")
 	defer func() {
 		if err := f.Close(); err != nil {
 			gg.logger.Error("error closing file", "filepath", fn, "error", err)
@@ -135,6 +138,7 @@ func (gg *Generator) Generate(req *sdk.GenerateRequest, opts *Options) (err erro
 					fn = sdk.ToSnakeCase(k.Name) + "_" + fn
 				}
 				fn = "query_" + fn
+				filenames = append(filenames, fn)
 				fn = filepath.Join(dir, fn)
 				f, err := os.OpenFile(fn, os.O_CREATE|os.O_TRUNC|os.O_WRONLY, 0777)
 				if err != nil {
@@ -165,6 +169,11 @@ func (gg *Generator) Generate(req *sdk.GenerateRequest, opts *Options) (err erro
 	out := opts.Out
 	if err := os.MkdirAll(out, 0777); err != nil && !os.IsExist(err) {
 		return fmt.Errorf("create output directory: %w", err)
+	}
+	for _, f := range filenames {
+		if err := os.Remove(filepath.Join(out, f)); err != nil && !os.IsNotExist(err) {
+			return fmt.Errorf("remove file %s: %w", f, err)
+		}
 	}
 	if err := os.CopyFS(out, os.DirFS(dir)); err != nil {
 		return fmt.Errorf("copy client file: %w", err)
