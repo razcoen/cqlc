@@ -57,14 +57,14 @@ func NewGenerator(logger log.Logger) (*Generator, error) {
 	}, nil
 }
 
-func (gg *Generator) Generate(req *sdk.GenerateRequest, opts *Options) error {
+func (gg *Generator) Generate(req *sdk.GenerateRequest, opts *Options) (err error) {
 	schema := req.Schema
 	queries := req.Queries
-	out := opts.Out
-	if err := os.MkdirAll(out, 0777); err != nil && !os.IsExist(err) {
-		return fmt.Errorf("create output directory: %w", err)
+	dir, err := os.MkdirTemp("", "cqlc-gen-go-*")
+	if err != nil {
+		return fmt.Errorf("create temp file: %w", err)
 	}
-	fn := filepath.Join(out, "client.go")
+	fn := filepath.Join(dir, "client.go")
 	f, err := os.OpenFile(fn, os.O_CREATE|os.O_TRUNC|os.O_WRONLY, 0777)
 	if err != nil {
 		return fmt.Errorf("open client file: %w", err)
@@ -135,7 +135,7 @@ func (gg *Generator) Generate(req *sdk.GenerateRequest, opts *Options) error {
 					fn = sdk.ToSnakeCase(k.Name) + "_" + fn
 				}
 				fn = "query_" + fn
-				fn = filepath.Join(out, fn)
+				fn = filepath.Join(dir, fn)
 				f, err := os.OpenFile(fn, os.O_CREATE|os.O_TRUNC|os.O_WRONLY, 0777)
 				if err != nil {
 					return fmt.Errorf("open queries file: %w", err)
@@ -159,6 +159,15 @@ func (gg *Generator) Generate(req *sdk.GenerateRequest, opts *Options) error {
 				return fmt.Errorf("generate queries: %w", err)
 			}
 		}
+	}
+
+	// Given that the client is generated in a temporary file, we need to move it to the output directory.
+	out := opts.Out
+	if err := os.MkdirAll(out, 0777); err != nil && !os.IsExist(err) {
+		return fmt.Errorf("create output directory: %w", err)
+	}
+	if err := os.CopyFS(out, os.DirFS(dir)); err != nil {
+		return fmt.Errorf("copy client file: %w", err)
 	}
 	return nil
 }
