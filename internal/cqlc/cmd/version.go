@@ -3,13 +3,14 @@ package cmd
 import (
 	"encoding/json"
 	"fmt"
+	"io"
 	"log/slog"
 
 	"github.com/razcoen/cqlc/internal/buildinfo"
 	"github.com/spf13/cobra"
 )
 
-func NewVersionCommand(logger *slog.Logger) *cobra.Command {
+func NewVersionCommand(logger *slog.Logger, buildInfo *buildinfo.BuildInfo) *cobra.Command {
 	var options struct {
 		format string
 	}
@@ -17,14 +18,14 @@ func NewVersionCommand(logger *slog.Logger) *cobra.Command {
 	cmd := &cobra.Command{
 		Use: "version",
 		RunE: func(cmd *cobra.Command, args []string) error {
-			info := buildinfo.Load()
+			info := buildInfo
 			var output string
 			switch options.format {
 			case "text":
-				output += "version: " + info.Version + "\n"
-				output += "commit: " + info.Commit + "\n"
-				output += "time: " + info.Time.String() + "\n"
-				output += "go version: " + info.GoVersion + "\n"
+				output += "cqlc version " + info.Version + "\n"
+				output += "build commit: " + info.Commit + "\n"
+				output += "build time: " + info.Time.String() + "\n"
+				output += "build go version: " + info.GoVersion + "\n"
 			case "json":
 				b, err := json.MarshalIndent(info, "", "  ")
 				if err != nil {
@@ -35,7 +36,8 @@ func NewVersionCommand(logger *slog.Logger) *cobra.Command {
 			default:
 				return fmt.Errorf("unsupported format: %s", options.format)
 			}
-			fmt.Print(output)
+
+			_, _ = io.WriteString(cmd.OutOrStdout(), output)
 			return nil
 		},
 	}

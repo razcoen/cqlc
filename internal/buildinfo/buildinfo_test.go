@@ -6,29 +6,25 @@ import (
 	"github.com/stretchr/testify/require"
 )
 
-func TestStoreAndLoad(t *testing.T) {
+func TestParseBuildInfo(t *testing.T) {
 	t.Run("empty version", func(t *testing.T) {
-		t.Cleanup(func() { buildInfo.Store(nil) })
-		err := Store(&Flags{})
+		bi, err := ParseBuildInfo(&Flags{})
 		require.Error(t, err)
-		require.Nil(t, Load())
+		require.Nil(t, bi)
 	})
 	t.Run("invalid version", func(t *testing.T) {
-		t.Cleanup(func() { buildInfo.Store(nil) })
-		err := Store(&Flags{Version: "hello"})
+		bi, err := ParseBuildInfo(&Flags{})
 		require.Error(t, err)
-		require.Nil(t, Load())
+		require.Nil(t, bi)
 	})
 	t.Run("valid version", func(t *testing.T) {
-		t.Cleanup(func() { buildInfo.Store(nil) })
-		err := Store(&Flags{Version: "v1.0.0"})
+		bi, err := ParseBuildInfo(&Flags{Version: "v1.0.0"})
 		require.NoError(t, err)
-		require.Equal(t, "v1.0.0", Load().Version)
+		require.Equal(t, "v1.0.0", bi.Version)
 	})
 	t.Run("snapshot version", func(t *testing.T) {
-		t.Cleanup(func() { buildInfo.Store(nil) })
-		err := Store(&Flags{Version: "v1.0.0-SNAPSHOT-2021-01-01"})
+		bi, err := ParseBuildInfo(&Flags{Version: "v1.0.0-SNAPSHOT-2021-01-01"})
 		require.NoError(t, err)
-		require.Equal(t, "v1.0.0-SNAPSHOT-2021-01-01", Load().Version)
+		require.Equal(t, "v1.0.0-SNAPSHOT-2021-01-01", bi.Version)
 	})
 }
