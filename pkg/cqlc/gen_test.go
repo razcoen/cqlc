@@ -10,6 +10,16 @@ import (
 )
 
 func TestGenerate(t *testing.T) {
+	t.Run("partial config", func(t *testing.T) {
+		err := Generate(&config.Config{
+			CQL: []*config.CQL{
+				{
+					Gen: &config.CQLGen{},
+				},
+			},
+		})
+		require.Error(t, err)
+	})
 	t.Run("missing schema file", func(t *testing.T) {
 		err := Generate(&config.Config{
 			CQL: []*config.CQL{
@@ -97,6 +107,42 @@ func TestGenerate(t *testing.T) {
 		})
 		require.Error(t, err)
 		require.NoDirExists(t, "internal/testgen/partiallykeyspaced")
+	})
+	t.Run("invalid queries", func(t *testing.T) {
+		err := Generate(&config.Config{
+			CQL: []*config.CQL{
+				{
+					Queries: "internal/testdata/invalid_queries.cql",
+					Schema:  "internal/testdata/basic_schema.cql",
+					Gen: &config.CQLGen{
+						Go: &golang.Options{
+							Package: "invalidqueries",
+							Out:     "internal/testgen/invalidqueries",
+						},
+					},
+				},
+			},
+		})
+		require.Error(t, err)
+		require.NoDirExists(t, "internal/testgen/invalidqueries")
+	})
+	t.Run("invalid schema", func(t *testing.T) {
+		err := Generate(&config.Config{
+			CQL: []*config.CQL{
+				{
+					Queries: "internal/testdata/basic_queries.cql",
+					Schema:  "internal/testdata/invalid_schema.cql",
+					Gen: &config.CQLGen{
+						Go: &golang.Options{
+							Package: "invalidschema",
+							Out:     "internal/testgen/invalidschema",
+						},
+					},
+				},
+			},
+		})
+		require.Error(t, err)
+		require.NoDirExists(t, "internal/testgen/invalidschema")
 	})
 }
 
