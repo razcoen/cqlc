@@ -33,7 +33,7 @@ func NewGenerateCommand(logger *slog.Logger) *cobra.Command {
 				logger.With("error", err).Error("failed to parse config file")
 				return nil
 			}
-			if err := cqlc.Generate(cfg); err != nil {
+			if err := cqlc.Generate(cfg, cqlc.WithConfigPath(options.configPath)); err != nil {
 				logger.With("error", err).Error("failed during cqlc generate")
 			}
 			return nil

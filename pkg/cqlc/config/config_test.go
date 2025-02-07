@@ -1,6 +1,7 @@
 package config
 
 import (
+	"bytes"
 	"testing"
 
 	"github.com/razcoen/cqlc/pkg/cqlc/codegen/golang"
@@ -93,5 +94,41 @@ func TestValidate(t *testing.T) {
 			},
 		}}
 		require.NoError(t, config.Validate())
+	})
+}
+
+func TestParseConfig(t *testing.T) {
+	t.Run("invalid config", func(t *testing.T) {
+		buf := bytes.Buffer{}
+		str := `a:
+  - b: "b"
+    c: "c"
+`
+		buf.WriteString(str)
+		config, err := ParseConfig(&buf)
+		// TODO: Validate the error message
+		require.Error(t, err)
+		require.Nil(t, config)
+	})
+	t.Run("valid config", func(t *testing.T) {
+		buf := bytes.Buffer{}
+		str := `cql:
+  - schema: "schema"
+    queries: "queries"
+    gen:
+      go:
+        package: "package"
+        out: "out"
+`
+		buf.WriteString(str)
+		config, err := ParseConfig(&buf)
+		require.NoError(t, err)
+		require.Equal(t, &Config{
+			CQL: []*CQL{{
+				Queries: "queries",
+				Schema:  "schema",
+				Gen:     &CQLGen{Go: &golang.Options{Package: "package", Out: "out"}}},
+			},
+		}, config)
 	})
 }
