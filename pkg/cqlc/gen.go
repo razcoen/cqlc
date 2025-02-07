@@ -6,6 +6,7 @@ import (
 	"log/slog"
 	"os"
 
+	"github.com/razcoen/cqlc/internal/buildinfo"
 	"github.com/razcoen/cqlc/pkg/cqlc/codegen/golang"
 	"github.com/razcoen/cqlc/pkg/cqlc/codegen/sdk"
 	"github.com/razcoen/cqlc/pkg/cqlc/compiler"
@@ -79,14 +80,17 @@ func (g *generator) Generate(config *config.Config) error {
 		if err != nil {
 			return fmt.Errorf("new go generator: %w", err)
 		}
+		version, err := buildinfo.ReadModuleVersion()
+		if err != nil {
+			logger.With("error", err).Warn("cannot evaluate the module version")
+		}
 		if err := goGenerator.Generate(&sdk.Context{
 			Schema:      schema,
 			Queries:     queries,
 			SchemaPath:  config.Schema,
 			QueriesPath: config.Queries,
 			ConfigPath:  g.configPath,
-			// TODO: How to determine which pacakge version is used when imported directly?
-			Version: "v0.0.0-alpha",
+			Version:     version,
 		}, config.Gen.Go); err != nil {
 			return fmt.Errorf("generate go: %w", err)
 		}

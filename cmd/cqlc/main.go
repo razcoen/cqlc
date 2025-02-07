@@ -7,7 +7,7 @@ import (
 	"github.com/razcoen/cqlc/internal/cqlc"
 )
 
-var version = "v0.0.0-dev"
+var version = buildinfo.DevelopmentVersion
 
 func main() {
 	if err := cqlc.Run(cqlc.WithBuildFlags(&buildinfo.Flags{Version: version})); err != nil {

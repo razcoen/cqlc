@@ -9,6 +9,8 @@ import (
 	"golang.org/x/mod/semver"
 )
 
+const DevelopmentVersion = "(devel)"
+
 // BuildInfo contains information about the build
 type BuildInfo struct {
 	// Version is the version of the binary
@@ -58,4 +60,20 @@ func ParseBuildInfo(flags *Flags) (*BuildInfo, error) {
 		}
 	}
 	return bi, nil
+}
+
+// ReadModuleVersion reads the build information of the running executable and evaluates the cqlc package version.
+func ReadModuleVersion() (string, error) {
+	info, ok := debug.ReadBuildInfo()
+	if !ok {
+		return "", fmt.Errorf("cannot evaulate build info since debug.ReadBuildInfo does not return any information: possibly not running within a binary")
+	}
+	for _, dep := range info.Deps {
+		if dep.Path == "github.com/razcoen/cqlc" {
+			return dep.Version, nil
+		}
+	}
+	// Not running as a dependency, therefore it must be within a test or similar.
+	// TODO: Warn here.
+	return DevelopmentVersion, nil
 }
