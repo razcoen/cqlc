@@ -22,7 +22,11 @@
   - [x] `INSERT`
   - [x] `DELETE`
   - [x] `CREATE TABLE`
-  - [ ] `ALTER TABLE`
+  - [x] `ALTER TABLE`
+    - [x] ADD COLUMN
+    - [x] DROP COLUMN
+    - [ ] ALTER TYPE
+  - [x] `DROP TABLE`
   - [ ] `CREATE TYPE`
   - [ ] `CREATE KEYSPACE`
 

@@ -180,6 +180,62 @@ func TestGenerate(t *testing.T) {
 		require.NoError(t, err)
 		formatDirAndExpectForNoDiff(t, "internal/testgen/basicmigrations")
 	})
+	t.Run("altering migrations", func(t *testing.T) {
+		t.Run("queries", func(t *testing.T) {
+			err := Generate(&config.Config{
+				CQL: []*config.CQL{
+					{
+						Queries: "internal/testdata/altering_migrations_queries.cql",
+						Schema:  "internal/testdata/alteringmigrations",
+						Gen: &config.CQLGen{
+							Go: &golang.Options{
+								Package: "alteringmigrations",
+								Out:     "internal/testgen/alteringmigrations",
+							},
+						},
+					},
+				},
+			}, opts...)
+			require.NoError(t, err)
+			formatDirAndExpectForNoDiff(t, "internal/testgen/alteringmigrations")
+		})
+		t.Run("query dropped table", func(t *testing.T) {
+			err := Generate(&config.Config{
+				CQL: []*config.CQL{
+					{
+						Queries: "internal/testdata/altering_migrations_dropped_table_queries.cql",
+						Schema:  "internal/testdata/alteringmigrations",
+						Gen: &config.CQLGen{
+							Go: &golang.Options{
+								Package: "altermigrations2",
+								Out:     "internal/testgen/altermigrations2",
+							},
+						},
+					},
+				},
+			}, opts...)
+			require.ErrorContains(t, err, `table "logins" does not exist in keyspace`)
+			require.NoDirExists(t, "internal/testgen/altermigrations2")
+		})
+		t.Run("query dropped column", func(t *testing.T) {
+			err := Generate(&config.Config{
+				CQL: []*config.CQL{
+					{
+						Queries: "internal/testdata/altering_migrations_dropped_column_queries.cql",
+						Schema:  "internal/testdata/alteringmigrations",
+						Gen: &config.CQLGen{
+							Go: &golang.Options{
+								Package: "altermigrations3",
+								Out:     "internal/testgen/altermigrations3",
+							},
+						},
+					},
+				},
+			}, opts...)
+			require.ErrorContains(t, err, `unfamiliar column "created_at" found in query`)
+			require.NoDirExists(t, "internal/testgen/altermigrations3")
+		})
+	})
 }
 
 func formatDirAndExpectForNoDiff(t *testing.T, dir string) {
