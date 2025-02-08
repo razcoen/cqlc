@@ -23,9 +23,9 @@
   - [x] `DELETE`
   - [x] `CREATE TABLE`
   - [x] `ALTER TABLE`
-    - [x] ADD COLUMN
-    - [x] DROP COLUMN
-    - [ ] ALTER TYPE
+    - [x] `ADD COLUMN`
+    - [x] `DROP COLUMN`
+    - [ ] `ALTER TYPE`
   - [x] `DROP TABLE`
   - [ ] `CREATE TYPE`
   - [ ] `CREATE KEYSPACE`
