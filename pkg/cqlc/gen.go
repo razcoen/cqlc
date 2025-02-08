@@ -15,10 +15,7 @@ import (
 )
 
 func Generate(config *config.Config, opts ...Option) error {
-	gen, err := newGenerator(opts...)
-	if err != nil {
-		return fmt.Errorf("creating generator: %w", err)
-	}
+	gen := newGenerator(opts...)
 	return gen.Generate(config)
 }
 
@@ -27,7 +24,7 @@ type generator struct {
 	configPath string
 }
 
-func newGenerator(opts ...Option) (*generator, error) {
+func newGenerator(opts ...Option) *generator {
 	var gen generator
 	for _, opt := range opts {
 		opt.apply(&gen)
@@ -36,7 +33,7 @@ func newGenerator(opts ...Option) (*generator, error) {
 		slogLogger := slog.New(slog.NewJSONHandler(os.Stdout, &slog.HandlerOptions{AddSource: true, Level: slog.LevelWarn}))
 		gen.logger = log.NewSlogAdapter(slogLogger).With("context", "codegen")
 	}
-	return &gen, nil
+	return &gen
 }
 
 func (g *generator) Generate(config *config.Config) error {
