@@ -1,5 +1,0 @@
-title: cqlc
-description: cqlc is a tool designed to simplify working with Cassandra databases by generating type-safe code from CQL queries.
-show_downloads: true
-google_analytics:
-theme: jekyll-theme-cayman

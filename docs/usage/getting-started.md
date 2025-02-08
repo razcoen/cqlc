@@ -1,11 +1,18 @@
-# Getting Started
+---
+parent: Usage
+title: Getting started
+---
 
-1. **Set up your cassandra schema:**
+# Getting started
+
+1. **[Install cqlc](./installation.md)**
+
+2. **Set up your cassandra schema:**
 
    Ensure that your Cassandra keyspace and tables are properly defined. For example, you might have a `schema.cql` file with the following content:
 
    #### schema.cql
-   ```cql
+   ```sql
     CREATE KEYSPACE IF NOT EXISTS your_keyspace WITH replication = {'class': 'SimpleStrategy', 'replication_factor': 1};
 
     USE your_keyspace;
@@ -18,12 +25,12 @@
     );
    ```
 
-2. **Define your cql queries:**
+3. **Define your cql queries:**
 
    Create a `queries.cql` file containing your CQL queries. For example:
 
-   #### queries.yaml
-   ```cql
+   #### queries.cql
+   ```sql
     -- name: CreateUser :exec
     INSERT INTO users (user_id, username, email, created_at) VALUES (?, ?, ?, ?);
 
@@ -31,7 +38,7 @@
     SELECT * FROM users WHERE user_id = ? LIMIT 1;
    ```
 
-3. **Create a configuration file:**
+4. **Create a configuration file:**
 
    In your project directory, create a `cqlc.yaml` configuration file with the following content:
 
@@ -49,7 +56,7 @@
    This configuration specifies that the generated code will be placed in the `gencql` directory under the `gencql` package, using `queries.cql` for the CQL queries and `schema.cql` for the database schema.
 
 
-4. **Generate go code:**
+5. **Generate go code:**
 
    Run the `cqlc` tool to generate Go code from your CQL queries:
 
@@ -59,7 +66,7 @@
 
    This command will generate Go files in the `gencql` directory as specified in your configuration.
 
-5. **Integrate into your go application:**
+6. **Integrate into your go application:**
 
    Use the generated code in your Go application:
 
