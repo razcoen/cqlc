@@ -5,6 +5,8 @@ title: Getting started
 
 # Getting started
 
+---
+
 1. **[Install cqlc](./installation.md)**
 
 2. **Set up your cassandra schema:**
