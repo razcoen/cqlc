@@ -2,7 +2,7 @@ name: go
 on:
   push:
     paths-ignore:
-      - "docs/*"
+      - "docs/**"
       - "README.md"
       - "CODEOWNERS"
       - "LICENSE"

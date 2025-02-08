@@ -2,8 +2,8 @@ name: github-pages
 on:
   push:
     paths:
-      - ".github/*"
-      - "docs/*"
+      - ".github/**"
+      - "docs/**"
   workflow_dispatch:
 permissions:
   contents: read
