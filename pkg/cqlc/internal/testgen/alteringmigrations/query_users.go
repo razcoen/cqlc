@@ -17,7 +17,7 @@ type CreateUserParams struct {
 	UserID    gocql.UUID
 	Username  string
 	Email     string
-	LastLogin time.Duration
+	LastLogin time.Time
 }
 
 func (c *Client) CreateUser(ctx context.Context, params *CreateUserParams, opts ...gocqlc.QueryOption) error {
@@ -41,7 +41,7 @@ type FindUserResult struct {
 	UserID    gocql.UUID
 	Email     string
 	Username  string
-	LastLogin time.Duration
+	LastLogin time.Time
 }
 
 func (c *Client) FindUser(ctx context.Context, params *FindUserParams, opts ...gocqlc.QueryOption) (*FindUserResult, error) {
