@@ -63,6 +63,7 @@ func (gen *generator) Generate(config *config.Config) error {
 			// 	2. Files with the keyword "down" are considered down migrations.
 			// 	3. Migrations should be run in an alphabetic ascending order.
 			// Therefore, given these assumptions, flatten the migrations into a single schema file.
+			// TODO: Need to test this by supporting alter table.
 			downMigrationKeywords := []string{"down"}
 			logger.Info("assuming provided schema is a migrations directory: provided schema path is a directory")
 			entries, err := os.ReadDir(config.Schema)

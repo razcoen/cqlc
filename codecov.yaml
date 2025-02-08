@@ -14,3 +14,7 @@ ignore:
   - "examples"
   - "cmd"
   - "scripts"
+  # Decided to leave testgen out of the code coverage calculations.
+  # This directory contains the generated code that was generated from pkg/cqlc/internal/testdata and also tests to validate the generated code logic.
+  # Since this is not part of the actual library code, not including it.
+  - "pkg/cqlc/internal/testgen"
