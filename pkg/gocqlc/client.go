@@ -1,9 +1,14 @@
 package gocqlc
 
 import (
+	"errors"
+
 	"github.com/gocql/gocql"
 	"github.com/razcoen/cqlc/pkg/log"
 )
+
+var ErrNilSession = errors.New("session cannot be nil")
+var ErrClosedSession = errors.New("session cannot be closed")
 
 type Client struct {
 	logger  log.Logger
@@ -19,7 +24,7 @@ func NewClient(session *gocql.Session, opts ...ClientOption) (*Client, error) {
 	}
 	client := &Client{
 		session: session,
-		logger:  log.EmptyLogger(),
+		logger:  log.NopLogger(),
 	}
 	for _, opt := range opts {
 		opt.apply(client)

@@ -8,16 +8,16 @@ type Logger interface {
 	With(args ...any) Logger
 }
 
-var _ Logger = (*emptyLogger)(nil)
+var _ Logger = (*nopLogger)(nil)
 
-func EmptyLogger() Logger {
-	return &emptyLogger{}
+func NopLogger() Logger {
+	return &nopLogger{}
 }
 
-type emptyLogger struct{}
+type nopLogger struct{}
 
-func (n emptyLogger) Debug(msg string, args ...any) {}
-func (n emptyLogger) Info(msg string, args ...any)  {}
-func (n emptyLogger) Warn(msg string, args ...any)  {}
-func (n emptyLogger) Error(msg string, args ...any) {}
-func (n emptyLogger) With(args ...any) Logger       { return n }
+func (n nopLogger) Debug(msg string, args ...any) {}
+func (n nopLogger) Info(msg string, args ...any)  {}
+func (n nopLogger) Warn(msg string, args ...any)  {}
+func (n nopLogger) Error(msg string, args ...any) {}
+func (n nopLogger) With(args ...any) Logger       { return n }
