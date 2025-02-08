@@ -520,6 +520,28 @@ func TestSchemaParser(t *testing.T) {
 				}},
 			}},
 		},
+
+		// TODO: Test edge cases of drop and alter table where column does not exist or similar
+		{
+			query: `
+		CREATE TABLE users (id UUID PRIMARY KEY, name TEXT, age INT);
+		CREATE TABLE logins (id UUID PRIMARY KEY, last_seen TIMESTAMP);
+		DROP TABLE logins;
+		      `,
+			expectedErr: false,
+			expectedSchema: &sdk.Schema{Keyspaces: []*sdk.Keyspace{
+				{Name: defaultKeyspaceName, Tables: []*sdk.Table{
+					{
+						Name:       "users",
+						PrimaryKey: &sdk.PrimaryKey{PartitionKey: []string{"id"}},
+						Columns: []*sdk.Column{
+							{Name: "id", DataType: gocqlhelpers.NewTypeUUID()},
+							{Name: "age", DataType: gocqlhelpers.NewTypeInt()},
+							{Name: "name", DataType: gocqlhelpers.NewTypeText()},
+						}},
+				}},
+			}},
+		},
 	}
 	parser := NewSchemaParser()
 	for _, tt := range tests {
