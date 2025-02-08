@@ -21,7 +21,7 @@ jobs:
           install-only: true
       - run: go version
       - run: go mod download
-      - run: goreleaser release --clean --snapshot
+      - run: make build
   go-lint:
     runs-on: ubuntu-latest
     steps:
