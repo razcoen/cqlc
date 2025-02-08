@@ -2,8 +2,8 @@ package cqlc
 
 import (
 	"fmt"
-	"log/slog"
-	"os"
+
+	"github.com/charmbracelet/log"
 
 	"github.com/razcoen/cqlc/internal/buildinfo"
 	"github.com/razcoen/cqlc/internal/cqlc/cmd"
@@ -13,7 +13,7 @@ import (
 // Command is the main cqlc command.
 type Command struct {
 	// Logger is the logger for the command.
-	Logger *slog.Logger
+	Logger *log.Logger
 	// BuildFlags are the build flags for the command.
 	BuildFlags *buildinfo.Flags
 	// Config is the internal configuration for the command.
@@ -41,15 +41,13 @@ func (c *Command) Run() error {
 	rootCmd := &cobra.Command{
 		Use: "cqlc",
 		PersistentPreRun: func(cmd *cobra.Command, args []string) {
-			logLevel := slog.LevelInfo
+			logLevel := log.InfoLevel
+			c.Logger.SetPrefix(cmd.Use)
 			if options.verbosity >= 2 {
-				logLevel = slog.LevelDebug
+				logLevel = log.DebugLevel
 			}
 			if options.verbosity > 0 {
-				*c.Logger = *slog.New(slog.NewTextHandler(os.Stdout, &slog.HandlerOptions{
-					AddSource: false,
-					Level:     logLevel,
-				}))
+				c.Logger.SetLevel(logLevel)
 			}
 		},
 	}

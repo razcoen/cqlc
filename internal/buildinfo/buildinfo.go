@@ -9,8 +9,6 @@ import (
 	"golang.org/x/mod/semver"
 )
 
-const DevelopmentVersion = "(devel)"
-
 // BuildInfo contains information about the build
 type BuildInfo struct {
 	// Version is the version of the binary
@@ -66,14 +64,15 @@ func ParseBuildInfo(flags *Flags) (*BuildInfo, error) {
 func ReadModuleVersion() (string, error) {
 	info, ok := debug.ReadBuildInfo()
 	if !ok {
-		return "", fmt.Errorf("cannot evaulate build info since debug.ReadBuildInfo does not return any information: possibly not running within a binary")
+		return "", fmt.Errorf("read build info did not return any result: possibly not running within a binary")
+	}
+	if info.Main.Path == "github.com/razcoen/cqlc" {
+		return info.Main.Version, nil
 	}
 	for _, dep := range info.Deps {
 		if dep.Path == "github.com/razcoen/cqlc" {
 			return dep.Version, nil
 		}
 	}
-	// Not running as a dependency, therefore it must be within a test or similar.
-	// TODO: Warn here.
-	return DevelopmentVersion, nil
+	return "", fmt.Errorf(`internal error: no such dependency or module "github.com/razcoen/cqlc"`)
 }

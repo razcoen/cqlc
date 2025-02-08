@@ -2,15 +2,16 @@ package cqlc
 
 import (
 	"bytes"
-	"log/slog"
 	"testing"
+
+	"github.com/charmbracelet/log"
 
 	"github.com/razcoen/cqlc/internal/buildinfo"
 	"github.com/stretchr/testify/require"
 )
 
 func TestRun(t *testing.T) {
-	noopLogger := slog.New(slog.NewTextHandler(&bytes.Buffer{}, &slog.HandlerOptions{}))
+	noopLogger := log.New(&bytes.Buffer{})
 	config := &Config{DisableOutput: true}
 	testOptions := []Option{WithLogger(noopLogger), WithConfig(config)}
 	t.Run("empty version", func(t *testing.T) {
