@@ -19,4 +19,4 @@ generate-and-format:
 
 .PHONY: build
 build:
-	$(GORELEASER) build --snapshot --clean
+	$(GORELEASER) build --snapshot --clean --single-target
