@@ -5,6 +5,9 @@ import (
 	"fmt"
 	"log/slog"
 	"os"
+	"path/filepath"
+	"slices"
+	"strings"
 
 	"github.com/razcoen/cqlc/internal/buildinfo"
 	"github.com/razcoen/cqlc/pkg/cqlc/codegen/golang"
@@ -36,7 +39,7 @@ func newGenerator(opts ...Option) *generator {
 	return &gen
 }
 
-func (g *generator) Generate(config *config.Config) error {
+func (gen *generator) Generate(config *config.Config) error {
 	if err := config.Validate(); err != nil {
 		return fmt.Errorf("validate config: %w", err)
 	}
@@ -44,9 +47,67 @@ func (g *generator) Generate(config *config.Config) error {
 		if config.Gen.Go == nil {
 			return fmt.Errorf("golang generation config is required: only golang support")
 		}
-		sb, err := os.ReadFile(config.Schema)
+		logger := gen.logger.
+			With("schema", config.Schema).
+			With("queries", config.Queries)
+		logger.Debug("test123")
+		f, err := os.Stat(config.Schema)
 		if err != nil {
-			return fmt.Errorf("read schema file: %w", err)
+			return fmt.Errorf("stat schema file: %w", err)
+		}
+		var schemaContents string
+		if f.IsDir() {
+			// If the given schema file is indeed a directory, then assuming this is a migrations directory.
+			// A migrations directory is assumed to have the following attributes:
+			// 	1. Migrations directory is a flat list of files.
+			// 	2. Files with the keyword "down" are considered down migrations.
+			// 	3. Migrations should be run in an alphabetic ascending order.
+			// Therefore, given these assumptions, flatten the migrations into a single schema file.
+			// TODO: Need to test this by supporting alter table.
+			downMigrationKeywords := []string{"down"}
+			logger.Info("assuming provided schema is a migrations directory: provided schema path is a directory")
+			entries, err := os.ReadDir(config.Schema)
+			if err != nil {
+				return fmt.Errorf("read schema migrations directory: %w", err)
+			}
+			var migrations []string
+			for _, e := range entries {
+				file := filepath.Join(config.Schema, e.Name())
+				logger := logger.With("file", file)
+				if e.IsDir() {
+					logger.Debug("skipping file: only flat migrations structure is supported")
+					continue
+				}
+				for _, keyword := range downMigrationKeywords {
+					logger := logger.With("keyword", keyword)
+					if strings.Contains(e.Name(), keyword) {
+						// TODO: Provide an option to override the keywords.
+						logger.Debug(`skipping file: file contains a down migration keyword`)
+						continue
+					}
+					migrations = append(migrations, file)
+				}
+			}
+			// Sort the migrations in ascending order, assuming that they are ordered alphabetically.
+			slices.Sort(migrations)
+			logger.With("migrations", migrations).Debug("assuming migrations are orderd alphabetically")
+			var cql strings.Builder
+			for _, migration := range migrations {
+				logger := logger.With("file", migration)
+				b, err := os.ReadFile(migration)
+				if err != nil {
+					logger.With("error", err).Error("failed to read migration file")
+					return fmt.Errorf("read migration file: %w", err)
+				}
+				_, _ = cql.Write(b)
+			}
+			schemaContents = cql.String()
+		} else {
+			sb, err := os.ReadFile(config.Schema)
+			if err != nil {
+				return fmt.Errorf("read schema file: %w", err)
+			}
+			schemaContents = string(sb)
 		}
 		qb, err := os.ReadFile(config.Queries)
 		if err != nil {
@@ -54,7 +115,7 @@ func (g *generator) Generate(config *config.Config) error {
 		}
 		sp := compiler.NewSchemaParser()
 		qp := compiler.NewQueriesParser()
-		schema, err := sp.Parse(string(sb))
+		schema, err := sp.Parse(schemaContents)
 		if err != nil {
 			return fmt.Errorf("parse schema: %w", err)
 		}
@@ -69,8 +130,7 @@ func (g *generator) Generate(config *config.Config) error {
 			}
 		}
 
-		logger := g.logger.With("language", "golang")
-		goGenerator, err := golang.NewGenerator(logger)
+		goGenerator, err := golang.NewGenerator(logger.With("language", "golang"))
 		if err != nil {
 			return fmt.Errorf("new go generator: %w", err)
 		}
@@ -83,7 +143,7 @@ func (g *generator) Generate(config *config.Config) error {
 			Queries:     queries,
 			SchemaPath:  config.Schema,
 			QueriesPath: config.Queries,
-			ConfigPath:  g.configPath,
+			ConfigPath:  gen.configPath,
 			Version:     version,
 		}, config.Gen.Go); err != nil {
 			return fmt.Errorf("generate go: %w", err)

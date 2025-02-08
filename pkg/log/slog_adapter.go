@@ -28,4 +28,4 @@ func (s *SlogAdapter) Info(msg string, args ...any) { s.SlogLogger.Info(msg, arg
 func (s *SlogAdapter) Warn(msg string, args ...any) { s.SlogLogger.Warn(msg, args...) }
 
 // With creates a new SlogAdapter with additional context using the underlying slog.Logger.
-func (s *SlogAdapter) With(args ...any) Logger { return NewSlogAdapter(slog.With(args...)) }
+func (s *SlogAdapter) With(args ...any) Logger { return NewSlogAdapter(s.SlogLogger.With(args...)) }
