@@ -4,6 +4,7 @@ import (
 	"encoding/json"
 	"fmt"
 	"io"
+	"time"
 
 	"github.com/charmbracelet/log"
 	"github.com/razcoen/cqlc/internal/buildinfo"
@@ -23,9 +24,9 @@ func NewVersionCommand(logger *log.Logger, buildInfo *buildinfo.BuildInfo) *cobr
 			switch options.format {
 			case "text":
 				output += "cqlc version " + info.Version + "\n"
-				output += "build commit: " + info.Commit + "\n"
-				output += "build time: " + info.Time.String() + "\n"
-				output += "build go version: " + info.GoVersion + "\n"
+				output += "\tcommit\t\t" + info.Commit + "\n"
+				output += "\tbuild time\t" + info.Time.Format(time.RFC3339) + "\n"
+				output += "\tgo version\t" + info.GoVersion + "\n"
 			case "json":
 				b, err := json.MarshalIndent(info, "", "  ")
 				if err != nil {
