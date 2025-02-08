@@ -33,10 +33,7 @@ func newGenerator(opts ...Option) (*generator, error) {
 		opt.apply(&gen)
 	}
 	if gen.logger == nil {
-		slogLogger := slog.New(slog.NewJSONHandler(os.Stdout, &slog.HandlerOptions{
-			AddSource: true,
-			Level:     slog.LevelError,
-		}))
+		slogLogger := slog.New(slog.NewJSONHandler(os.Stdout, &slog.HandlerOptions{AddSource: true, Level: slog.LevelWarn}))
 		gen.logger = log.NewSlogAdapter(slogLogger).With("context", "codegen")
 	}
 	return &gen, nil
