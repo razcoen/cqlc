@@ -12,24 +12,13 @@ import (
 )
 
 type Client struct {
-	session *gocql.Session
-	logger  gocqlc.Logger
+	gocqlc.Client
 }
 
-func NewClient(session *gocql.Session, logger gocqlc.Logger) (*Client, error) {
-	if session == nil {
-		return nil, fmt.Errorf("session cannot be nil")
+func NewClient(session *gocql.Session, opts ...gocqlc.ClientOption) (*Client, error) {
+	client, err := gocqlc.NewClient(session, opts...)
+	if err != nil {
+		return nil, fmt.Errorf("new client: %w", err)
 	}
-	if session.Closed() {
-		return nil, fmt.Errorf("session already closed")
-	}
-	if logger == nil {
-		logger = &gocqlc.NoopLogger{}
-	}
-	return &Client{session: session, logger: logger}, nil
-}
-
-func (c *Client) Close() error {
-	c.session.Close()
-	return nil
+	return &Client{Client: *client}, nil
 }

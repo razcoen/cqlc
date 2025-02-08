@@ -12,6 +12,7 @@ import (
 
 	"github.com/gocql/gocql"
 	"github.com/razcoen/cqlc/pkg/gocqlc"
+	"github.com/razcoen/cqlc/pkg/log"
 )
 
 type CreateUserParams struct {
@@ -22,7 +23,8 @@ type CreateUserParams struct {
 }
 
 func (c *Client) CreateUser(ctx context.Context, params *CreateUserParams, opts ...gocqlc.QueryOption) error {
-	q := c.session.Query("INSERT INTO users (user_id, username, email, created_at) VALUES (?, ?, ?, ?);", params.UserID, params.Username, params.Email, params.CreatedAt)
+	session := c.Session()
+	q := session.Query("INSERT INTO users (user_id, username, email, created_at) VALUES (?, ?, ?, ?);", params.UserID, params.Username, params.Email, params.CreatedAt)
 	q = q.WithContext(ctx)
 	for _, opt := range opts {
 		q = opt.Apply(q)
@@ -41,7 +43,8 @@ type CreateUsersParams struct {
 }
 
 func (c *Client) CreateUsers(ctx context.Context, params []*CreateUsersParams, opts ...gocqlc.BatchOption) error {
-	b := c.session.NewBatch(gocql.UnloggedBatch)
+	session := c.Session()
+	b := session.NewBatch(gocql.UnloggedBatch)
 	for _, v := range params {
 		b.Query("INSERT INTO users (user_id, username, email, created_at) VALUES (?, ?, ?, ?);", v.UserID, v.Username, v.Email, v.CreatedAt)
 	}
@@ -49,7 +52,7 @@ func (c *Client) CreateUsers(ctx context.Context, params []*CreateUsersParams, o
 	for _, opt := range opts {
 		b = opt.Apply(b)
 	}
-	if err := c.session.ExecuteBatch(b); err != nil {
+	if err := session.ExecuteBatch(b); err != nil {
 		return fmt.Errorf("exec batch: %w", err)
 	}
 	return nil
@@ -60,7 +63,8 @@ type DeleteUserParams struct {
 }
 
 func (c *Client) DeleteUser(ctx context.Context, params *DeleteUserParams, opts ...gocqlc.QueryOption) error {
-	q := c.session.Query("DELETE FROM users WHERE user_id = ?;", params.UserID)
+	session := c.Session()
+	q := session.Query("DELETE FROM users WHERE user_id = ?;", params.UserID)
 	q = q.WithContext(ctx)
 	for _, opt := range opts {
 		q = opt.Apply(q)
@@ -76,7 +80,8 @@ type DeleteUsersParams struct {
 }
 
 func (c *Client) DeleteUsers(ctx context.Context, params []*DeleteUsersParams, opts ...gocqlc.BatchOption) error {
-	b := c.session.NewBatch(gocql.UnloggedBatch)
+	session := c.Session()
+	b := session.NewBatch(gocql.UnloggedBatch)
 	for _, v := range params {
 		b.Query("DELETE FROM users WHERE user_id = ?;", v.UserID)
 	}
@@ -84,7 +89,7 @@ func (c *Client) DeleteUsers(ctx context.Context, params []*DeleteUsersParams, o
 	for _, opt := range opts {
 		b = opt.Apply(b)
 	}
-	if err := c.session.ExecuteBatch(b); err != nil {
+	if err := session.ExecuteBatch(b); err != nil {
 		return fmt.Errorf("exec batch: %w", err)
 	}
 	return nil
@@ -102,7 +107,8 @@ type FindUserResult struct {
 }
 
 func (c *Client) FindUser(ctx context.Context, params *FindUserParams, opts ...gocqlc.QueryOption) (*FindUserResult, error) {
-	q := c.session.Query("SELECT * FROM users WHERE user_id = ? LIMIT 1;", params.UserID)
+	session := c.Session()
+	q := session.Query("SELECT * FROM users WHERE user_id = ? LIMIT 1;", params.UserID)
 	q = q.WithContext(ctx)
 	for _, opt := range opts {
 		q = opt.Apply(q)
@@ -127,7 +133,7 @@ type FindUsersResult struct {
 
 type FindUsersQuerier struct {
 	query  *gocql.Query
-	logger gocqlc.Logger
+	logger log.Logger
 }
 
 func (q *FindUsersQuerier) All(ctx context.Context) ([]*FindUsersResult, error) {
@@ -181,9 +187,10 @@ func (q *FindUsersQuerier) Page(ctx context.Context, pageState []byte) (*FindUse
 }
 
 func (c *Client) FindUsers(params *FindUsersParams, opts ...gocqlc.QueryOption) *FindUsersQuerier {
-	q := c.session.Query("SELECT * FROM users WHERE email = ? ALLOW FILTERING;", params.Email)
+	session := c.Session()
+	q := session.Query("SELECT * FROM users WHERE email = ? ALLOW FILTERING;", params.Email)
 	for _, opt := range opts {
 		q = opt.Apply(q)
 	}
-	return &FindUsersQuerier{query: q, logger: c.logger}
+	return &FindUsersQuerier{query: q, logger: c.Logger()}
 }

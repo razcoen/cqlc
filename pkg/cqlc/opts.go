@@ -1,7 +1,7 @@
 package cqlc
 
 import (
-	"github.com/razcoen/cqlc/pkg/cqlc/log"
+	"github.com/razcoen/cqlc/pkg/log"
 )
 
 type Option interface {

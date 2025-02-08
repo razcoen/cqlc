@@ -13,6 +13,7 @@ import (
 
 	"github.com/gocql/gocql"
 	"github.com/razcoen/cqlc/pkg/gocqlc"
+	"github.com/razcoen/cqlc/pkg/log"
 )
 
 type CreateUserParams struct {
@@ -23,7 +24,8 @@ type CreateUserParams struct {
 }
 
 func (c *Client) CreateUser(ctx context.Context, params *CreateUserParams, opts ...gocqlc.QueryOption) error {
-	q := c.session.Query("INSERT INTO users (user_id, username, email, created_at) VALUES (?, ?, ?, ?);", params.UserID, params.Username, params.Email, params.CreatedAt)
+	session := c.Session()
+	q := session.Query("INSERT INTO users (user_id, username, email, created_at) VALUES (?, ?, ?, ?);", params.UserID, params.Username, params.Email, params.CreatedAt)
 	q = q.WithContext(ctx)
 	for _, opt := range opts {
 		q = opt.Apply(q)
@@ -42,7 +44,8 @@ type CreateUsersParams struct {
 }
 
 func (c *Client) CreateUsers(ctx context.Context, params []*CreateUsersParams, opts ...gocqlc.BatchOption) error {
-	b := c.session.NewBatch(gocql.UnloggedBatch)
+	session := c.Session()
+	b := session.NewBatch(gocql.UnloggedBatch)
 	for _, v := range params {
 		b.Query("INSERT INTO users (user_id, username, email, created_at) VALUES (?, ?, ?, ?);", v.UserID, v.Username, v.Email, v.CreatedAt)
 	}
@@ -50,7 +53,7 @@ func (c *Client) CreateUsers(ctx context.Context, params []*CreateUsersParams, o
 	for _, opt := range opts {
 		b = opt.Apply(b)
 	}
-	if err := c.session.ExecuteBatch(b); err != nil {
+	if err := session.ExecuteBatch(b); err != nil {
 		return fmt.Errorf("exec batch: %w", err)
 	}
 	return nil
@@ -68,7 +71,8 @@ type FindUserResult struct {
 }
 
 func (c *Client) FindUser(ctx context.Context, params *FindUserParams, opts ...gocqlc.QueryOption) (*FindUserResult, error) {
-	q := c.session.Query("SELECT * FROM users WHERE user_id = ? LIMIT 1;", params.UserID)
+	session := c.Session()
+	q := session.Query("SELECT * FROM users WHERE user_id = ? LIMIT 1;", params.UserID)
 	q = q.WithContext(ctx)
 	for _, opt := range opts {
 		q = opt.Apply(q)
@@ -86,7 +90,7 @@ type ListUserIDsResult struct {
 
 type ListUserIDsQuerier struct {
 	query  *gocql.Query
-	logger gocqlc.Logger
+	logger log.Logger
 }
 
 func (q *ListUserIDsQuerier) All(ctx context.Context) ([]*ListUserIDsResult, error) {
@@ -140,11 +144,12 @@ func (q *ListUserIDsQuerier) Page(ctx context.Context, pageState []byte) (*ListU
 }
 
 func (c *Client) ListUserIDs(opts ...gocqlc.QueryOption) *ListUserIDsQuerier {
-	q := c.session.Query("SELECT user_id FROM users;")
+	session := c.Session()
+	q := session.Query("SELECT user_id FROM users;")
 	for _, opt := range opts {
 		q = opt.Apply(q)
 	}
-	return &ListUserIDsQuerier{query: q, logger: c.logger}
+	return &ListUserIDsQuerier{query: q, logger: c.Logger()}
 }
 
 type ListUsersResult struct {
@@ -156,7 +161,7 @@ type ListUsersResult struct {
 
 type ListUsersQuerier struct {
 	query  *gocql.Query
-	logger gocqlc.Logger
+	logger log.Logger
 }
 
 func (q *ListUsersQuerier) All(ctx context.Context) ([]*ListUsersResult, error) {
@@ -210,9 +215,10 @@ func (q *ListUsersQuerier) Page(ctx context.Context, pageState []byte) (*ListUse
 }
 
 func (c *Client) ListUsers(opts ...gocqlc.QueryOption) *ListUsersQuerier {
-	q := c.session.Query("SELECT * FROM users;")
+	session := c.Session()
+	q := session.Query("SELECT * FROM users;")
 	for _, opt := range opts {
 		q = opt.Apply(q)
 	}
-	return &ListUsersQuerier{query: q, logger: c.logger}
+	return &ListUsersQuerier{query: q, logger: c.Logger()}
 }

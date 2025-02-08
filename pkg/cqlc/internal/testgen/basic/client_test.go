@@ -243,12 +243,8 @@ func newClientWithRandomKeyspace(t *testing.T) *Client {
 	require.NoError(t, err, "create cassandra session in random keyspace")
 	err = testcassandra.ExecFile(session.Session, "../../testdata/basic_schema.cql")
 	require.NoError(t, err, "migrate cassandra schema")
-	client, err := NewClient(session.Session, nil)
+	client, err := NewClient(session.Session)
 	require.NoError(t, err, "create client")
-	t.Cleanup(func() {
-		require.NoError(t, session.Close(), "close session")
-		// TODO: It might be just better of not encapsulating the close functionality and let the user handle it.
-		require.NoError(t, client.Close(), "close client")
-	})
+	t.Cleanup(func() { require.NoError(t, session.Close(), "close session") })
 	return client
 }

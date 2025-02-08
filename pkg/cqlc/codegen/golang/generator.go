@@ -15,7 +15,7 @@ import (
 
 	"github.com/razcoen/cqlc/pkg/cqlc/codegen/sdk"
 	"github.com/razcoen/cqlc/pkg/cqlc/gocqlhelpers"
-	"github.com/razcoen/cqlc/pkg/cqlc/log"
+	"github.com/razcoen/cqlc/pkg/log"
 )
 
 type Generator struct {
@@ -193,7 +193,7 @@ func (gen *Generator) Generate(ctx *sdk.Context, opts *Options) (err error) {
 		resp, err := gen.generateKeyspaceStructs(ctx, &generateKeyspaceStructsRequest{
 			keyspace:    k,
 			packageName: opts.Package,
-			out:         noopWriter{},
+			out:         nopWriter{},
 			path:        "",
 		})
 		if err != nil {
@@ -291,32 +291,24 @@ package {{.PackageName}}
 
 import (
 	"fmt"
+	"errors"
 	"github.com/gocql/gocql"
+  "github.com/razcoen/cqlc/pkg/log"
   "github.com/razcoen/cqlc/pkg/gocqlc"
 )
 
 type Client struct {
-	session *gocql.Session
-  logger gocqlc.Logger
+	gocqlc.Client
 }
 
-func NewClient(session *gocql.Session, logger gocqlc.Logger) (*Client, error) {
-	if session == nil {
-		return nil, fmt.Errorf("session cannot be nil")
+func NewClient(session *gocql.Session, opts ...gocqlc.ClientOption) (*Client, error) {
+	client, err := gocqlc.NewClient(session, opts...)
+	if err != nil {
+		return nil, fmt.Errorf("new client: %w", err)
 	}
-	if session.Closed() {
-		return nil, fmt.Errorf("session already closed")
-	}
-	if logger == nil {
-		logger = &gocqlc.NoopLogger{}
-	}
-	return &Client{session: session, logger: logger}, nil
+	return &Client{Client: *client}, nil
 }
 
-func (c *Client) Close() error {
-	c.session.Close()
-	return nil
-}
 `
 	oneQueryGoTemplate = `
 	var result {{.ResultType}}
@@ -340,6 +332,7 @@ import (
 	"fmt"
 	"context"
 	"github.com/gocql/gocql"
+	"github.com/razcoen/cqlc/pkg/log"
 	"github.com/razcoen/cqlc/pkg/gocqlc"
 )
 
@@ -363,7 +356,7 @@ type {{.ResultType}} struct {
 {{if eq "many" .Annotation}}
 type {{.FuncName}}Querier struct {
 	query *gocql.Query
-	logger gocqlc.Logger
+	logger log.Logger
 }
 
 func (q *{{.FuncName}}Querier) All(ctx context.Context) ([]*{{.ResultType}}, error) {
@@ -417,17 +410,19 @@ func (q *{{.FuncName}}Querier) Page(ctx context.Context, pageState []byte) (*{{.
 }
 
 func (c *Client) {{.FuncName}}({{if .ParamsType}}params *{{.ParamsType}}, {{end}}opts ...gocqlc.QueryOption) *{{.FuncName}}Querier {
-	q := c.session.Query("{{.Stmt}}"{{- range .Params -}}, params.{{.Name}}{{- end -}})
+	session := c.Session()
+	q := session.Query("{{.Stmt}}"{{- range .Params -}}, params.{{.Name}}{{- end -}})
 	for _, opt := range opts {
 		q = opt.Apply(q)
 	}
-	return &{{.FuncName}}Querier{query: q, logger: c.logger}
+	return &{{.FuncName}}Querier{query: q, logger: c.Logger()}
 }
 
 {{else}}
 {{if eq "batch" .Annotation}}
 func (c *Client) {{.FuncName}}(ctx context.Context{{if .ParamsType}}, params []*{{.ParamsType}}{{end}}, opts ...gocqlc.BatchOption) error {
-	b := c.session.NewBatch(gocql.UnloggedBatch)
+	session := c.Session()
+	b := session.NewBatch(gocql.UnloggedBatch)
 	for _, v := range params {
 		b.Query("{{.Stmt}}"{{- range .Params -}}, v.{{.Name}}{{- end -}})
 	}
@@ -435,14 +430,15 @@ func (c *Client) {{.FuncName}}(ctx context.Context{{if .ParamsType}}, params []*
 	for _, opt := range opts {
 		b = opt.Apply(b)
 	}
-	if err := c.session.ExecuteBatch(b); err != nil {
+	if err := session.ExecuteBatch(b); err != nil {
 		return fmt.Errorf("exec batch: %w", err)
 	}
 	return nil
 }
 {{ else }}
 func (c *Client) {{.FuncName}}(ctx context.Context{{if .ParamsType}}, params *{{.ParamsType}}{{end}}, opts ...gocqlc.QueryOption) {{- if .ResultType -}}(*{{.ResultType}}, error){{- else -}}error{{- end -}} {
-	q := c.session.Query("{{.Stmt}}"{{- range .Params -}}, params.{{.Name}}{{- end -}})
+	session := c.Session()
+	q := session.Query("{{.Stmt}}"{{- range .Params -}}, params.{{.Name}}{{- end -}})
   q = q.WithContext(ctx)
 	for _, opt := range opts {
 		q = opt.Apply(q)
@@ -683,6 +679,6 @@ func (gg *Generator) generateClient(ctx *sdk.Context, req *generateClientRequest
 	return nil
 }
 
-type noopWriter struct{}
+type nopWriter struct{}
 
-func (w noopWriter) Write(b []byte) (n int, err error) { return 0, nil }
+func (w nopWriter) Write(b []byte) (n int, err error) { return 0, nil }
