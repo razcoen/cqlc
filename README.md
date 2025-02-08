@@ -1,6 +1,6 @@
 # cqlc
 
-![GitHub CI](https://github.com/razcoen/cqlc/actions/workflows/commit.yaml/badge.svg) [![codecov](https://codecov.io/gh/razcoen/cqlc/graph/badge.svg?token=RCKM4XXK1I)](https://codecov.io/gh/razcoen/cqlc)
+![GitHub CI](https://github.com/razcoen/cqlc/actions/workflows/go.yaml/badge.svg) [![codecov](https://codecov.io/gh/razcoen/cqlc/graph/badge.svg?token=RCKM4XXK1I)](https://codecov.io/gh/razcoen/cqlc)
 
 ---
 

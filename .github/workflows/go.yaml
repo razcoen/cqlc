@@ -1,5 +1,11 @@
-name: commit
-on: [push]
+name: go
+on:
+  push:
+    paths-ignore:
+      - "docs/*"
+      - "README.md"
+      - "CODEOWNERS"
+      - "LICENSE"
 jobs:
   go-build:
     runs-on: ubuntu-latest
