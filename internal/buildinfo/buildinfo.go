@@ -59,3 +59,20 @@ func ParseBuildInfo(flags *Flags) (*BuildInfo, error) {
 	}
 	return bi, nil
 }
+
+// ReadModuleVersion reads the build information of the running executable and evaluates the cqlc package version.
+func ReadModuleVersion() (string, error) {
+	info, ok := debug.ReadBuildInfo()
+	if !ok {
+		return "", fmt.Errorf("read build info did not return any result: possibly not running within a binary")
+	}
+	if info.Main.Path == "github.com/razcoen/cqlc" {
+		return info.Main.Version, nil
+	}
+	for _, dep := range info.Deps {
+		if dep.Path == "github.com/razcoen/cqlc" {
+			return dep.Version, nil
+		}
+	}
+	return "", fmt.Errorf(`internal error: no such dependency or module "github.com/razcoen/cqlc"`)
+}

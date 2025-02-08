@@ -3,17 +3,17 @@ package cmd
 import (
 	"bytes"
 	"encoding/json"
-	"log/slog"
 	"testing"
 	"time"
 
+	"github.com/charmbracelet/log"
 	"github.com/razcoen/cqlc/internal/buildinfo"
 	"github.com/spf13/pflag"
 	"github.com/stretchr/testify/require"
 )
 
 func TestNewVersionCommand(t *testing.T) {
-	noopLogger := slog.New(slog.NewTextHandler(&bytes.Buffer{}, &slog.HandlerOptions{}))
+	noopLogger := log.New(&bytes.Buffer{})
 	t.Run("flags", func(t *testing.T) {
 		cmd := NewVersionCommand(noopLogger, &buildinfo.BuildInfo{
 			Version:   "v1.0.0",

@@ -6,35 +6,34 @@ import (
 	"log/slog"
 	"os"
 
+	"github.com/razcoen/cqlc/internal/buildinfo"
 	"github.com/razcoen/cqlc/pkg/cqlc/codegen/golang"
 	"github.com/razcoen/cqlc/pkg/cqlc/codegen/sdk"
 	"github.com/razcoen/cqlc/pkg/cqlc/compiler"
 	"github.com/razcoen/cqlc/pkg/cqlc/config"
+	"github.com/razcoen/cqlc/pkg/cqlc/log"
 )
 
-func Generate(config *config.Config) error {
-	gen, err := newGenerator()
-	if err != nil {
-		return fmt.Errorf("creating generator: %w", err)
-	}
+func Generate(config *config.Config, opts ...Option) error {
+	gen := newGenerator(opts...)
 	return gen.Generate(config)
 }
 
 type generator struct {
-	goGenerator *golang.Generator
+	logger     log.Logger
+	configPath string
 }
 
-func newGenerator() (*generator, error) {
-	// TODO: Logger configuration
-	logger := slog.New(slog.NewJSONHandler(os.Stdout, &slog.HandlerOptions{
-		AddSource: true,
-		Level:     slog.LevelError,
-	}))
-	goGenerator, err := golang.NewGenerator(logger)
-	if err != nil {
-		return nil, fmt.Errorf("new go generator: %w", err)
+func newGenerator(opts ...Option) *generator {
+	var gen generator
+	for _, opt := range opts {
+		opt.apply(&gen)
 	}
-	return &generator{goGenerator: goGenerator}, nil
+	if gen.logger == nil {
+		slogLogger := slog.New(slog.NewJSONHandler(os.Stdout, &slog.HandlerOptions{AddSource: true, Level: slog.LevelWarn}))
+		gen.logger = log.NewSlogAdapter(slogLogger).With("context", "codegen")
+	}
+	return &gen
 }
 
 func (g *generator) Generate(config *config.Config) error {
@@ -42,6 +41,9 @@ func (g *generator) Generate(config *config.Config) error {
 		return fmt.Errorf("validate config: %w", err)
 	}
 	for _, config := range config.CQL {
+		if config.Gen.Go == nil {
+			return fmt.Errorf("golang generation config is required: only golang support")
+		}
 		sb, err := os.ReadFile(config.Schema)
 		if err != nil {
 			return fmt.Errorf("read schema file: %w", err)
@@ -67,7 +69,23 @@ func (g *generator) Generate(config *config.Config) error {
 			}
 		}
 
-		if err := g.goGenerator.Generate(&sdk.GenerateRequest{Schema: schema, Queries: queries}, config.Gen.Go); err != nil {
+		logger := g.logger.With("language", "golang")
+		goGenerator, err := golang.NewGenerator(logger)
+		if err != nil {
+			return fmt.Errorf("new go generator: %w", err)
+		}
+		version, err := buildinfo.ReadModuleVersion()
+		if err != nil {
+			logger.With("error", err).Warn("cannot evaluate the module version")
+		}
+		if err := goGenerator.Generate(&sdk.Context{
+			Schema:      schema,
+			Queries:     queries,
+			SchemaPath:  config.Schema,
+			QueriesPath: config.Queries,
+			ConfigPath:  g.configPath,
+			Version:     version,
+		}, config.Gen.Go); err != nil {
 			return fmt.Errorf("generate go: %w", err)
 		}
 

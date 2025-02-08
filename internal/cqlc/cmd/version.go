@@ -4,13 +4,13 @@ import (
 	"encoding/json"
 	"fmt"
 	"io"
-	"log/slog"
 
+	"github.com/charmbracelet/log"
 	"github.com/razcoen/cqlc/internal/buildinfo"
 	"github.com/spf13/cobra"
 )
 
-func NewVersionCommand(logger *slog.Logger, buildInfo *buildinfo.BuildInfo) *cobra.Command {
+func NewVersionCommand(logger *log.Logger, buildInfo *buildinfo.BuildInfo) *cobra.Command {
 	var options struct {
 		format string
 	}

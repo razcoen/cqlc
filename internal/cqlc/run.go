@@ -1,9 +1,9 @@
 package cqlc
 
 import (
-	"log/slog"
 	"os"
 
+	"github.com/charmbracelet/log"
 	"github.com/razcoen/cqlc/internal/buildinfo"
 )
 
@@ -12,10 +12,10 @@ type Option func(*Command)
 
 // Run executes the cqlc command line interface.
 func Run(opts ...Option) error {
-	logger := slog.New(slog.NewTextHandler(os.Stdout, &slog.HandlerOptions{
-		AddSource: false,
-		Level:     slog.LevelWarn,
-	}))
+	logger := log.NewWithOptions(os.Stdout, log.Options{
+		Level:  log.WarnLevel,
+		Prefix: "cqlc",
+	})
 
 	cmd := &Command{
 		Logger: logger,
@@ -35,7 +35,7 @@ func Run(opts ...Option) error {
 }
 
 // WithLogger is an option for configuring the logger for the command.
-func WithLogger(logger *slog.Logger) Option {
+func WithLogger(logger *log.Logger) Option {
 	return func(c *Command) {
 		c.Logger = logger
 	}

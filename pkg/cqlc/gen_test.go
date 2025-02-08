@@ -54,6 +54,18 @@ func TestGenerate(t *testing.T) {
 		})
 		require.Error(t, err)
 	})
+	t.Run("missing gen go", func(t *testing.T) {
+		err := Generate(&config.Config{
+			CQL: []*config.CQL{
+				{
+					Queries: "internal/testdata/basic_queries.cql",
+					Schema:  "internal/testdata/basic_schema.cql",
+					Gen:     &config.CQLGen{},
+				},
+			},
+		})
+		require.ErrorContains(t, err, "golang generation config is required: only golang support")
+	})
 	t.Run("basic", func(t *testing.T) {
 		err := Generate(&config.Config{
 			CQL: []*config.CQL{

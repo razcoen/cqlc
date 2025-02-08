@@ -1,3 +1,3 @@
 package declarative
 
-//go:generate go run ../../cmd/cqlc generate
+//go:generate go run ../../cmd/cqlc generate -vv
