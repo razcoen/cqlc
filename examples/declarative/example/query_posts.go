@@ -13,6 +13,7 @@ import (
 
 	"github.com/gocql/gocql"
 	"github.com/razcoen/cqlc/pkg/gocqlc"
+	"github.com/razcoen/cqlc/pkg/log"
 )
 
 type ListUserPostsParams struct {
@@ -29,7 +30,7 @@ type ListUserPostsResult struct {
 
 type ListUserPostsQuerier struct {
 	query  *gocql.Query
-	logger gocqlc.Logger
+	logger log.Logger
 }
 
 func (q *ListUserPostsQuerier) All(ctx context.Context) ([]*ListUserPostsResult, error) {
@@ -83,9 +84,10 @@ func (q *ListUserPostsQuerier) Page(ctx context.Context, pageState []byte) (*Lis
 }
 
 func (c *Client) ListUserPosts(params *ListUserPostsParams, opts ...gocqlc.QueryOption) *ListUserPostsQuerier {
-	q := c.session.Query("SELECT * FROM posts WHERE user_id = ? AND created_at = ?;", params.UserID, params.CreatedAt)
+	session := c.Session()
+	q := session.Query("SELECT * FROM posts WHERE user_id = ? AND created_at = ?;", params.UserID, params.CreatedAt)
 	for _, opt := range opts {
 		q = opt.Apply(q)
 	}
-	return &ListUserPostsQuerier{query: q, logger: c.logger}
+	return &ListUserPostsQuerier{query: q, logger: c.Logger()}
 }

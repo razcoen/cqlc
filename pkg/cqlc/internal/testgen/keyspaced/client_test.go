@@ -248,14 +248,12 @@ func createClientWithEmptyAuthKeyspace(t *testing.T) *Client {
 	require.NoError(t, session.Session.Query("CREATE KEYSPACE IF NOT EXISTS auth WITH REPLICATION = {'class':'SimpleStrategy','replication_factor':1};").Exec(), "create auth keyspace")
 	require.NoError(t, testcassandra.ExecFile(session.Session, "../../testdata/keyspaced_schema.cql"), "migrate cassandra schema")
 
-	client, err := NewClient(session.Session, nil)
+	client, err := NewClient(session.Session)
 	require.NoError(t, err, "create client")
 	t.Cleanup(func() {
 		// Make sure to drop the keyspace after the test is done.
 		require.NoError(t, session.Session.Query("DROP KEYSPACE IF EXISTS auth;").Exec(), "drop auth keyspace")
 		require.NoError(t, session.Close(), "close session")
-		// TODO: It might be just better of not encapsulating the close functionality and let the user handle it.
-		require.NoError(t, client.Close(), "close client")
 	})
 	return client
 }

@@ -4,7 +4,7 @@ import (
 	"log/slog"
 	"testing"
 
-	"github.com/razcoen/cqlc/pkg/cqlc/log"
+	"github.com/razcoen/cqlc/pkg/log"
 	"github.com/stretchr/testify/require"
 )
 

@@ -11,7 +11,7 @@ import (
 	"github.com/razcoen/cqlc/pkg/cqlc/codegen/sdk"
 	"github.com/razcoen/cqlc/pkg/cqlc/compiler"
 	"github.com/razcoen/cqlc/pkg/cqlc/config"
-	"github.com/razcoen/cqlc/pkg/cqlc/log"
+	"github.com/razcoen/cqlc/pkg/log"
 )
 
 func Generate(config *config.Config, opts ...Option) error {
