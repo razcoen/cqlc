@@ -100,6 +100,7 @@ func (gen *generator) Generate(config *config.Config) error {
 					return fmt.Errorf("read migration file: %w", err)
 				}
 				_, _ = cql.Write(b)
+				_, _ = cql.WriteString("\n") // for formatting purposes
 			}
 			schemaContents = cql.String()
 		} else {
@@ -114,11 +115,16 @@ func (gen *generator) Generate(config *config.Config) error {
 			return fmt.Errorf("read queries file: %w", err)
 		}
 		sp := compiler.NewSchemaParser()
-		qp := compiler.NewQueriesParser()
+		// TODO: Since migrations are flattened, errors from the parsing are shown in incorrect lines.
+		// TODO: Run some parsing logic, without actually building the schema, to allow better error handling by the user.
+		logger.
+			With("schema.contents", schemaContents).
+			Debug("parsing the following schema")
 		schema, err := sp.Parse(schemaContents)
 		if err != nil {
 			return fmt.Errorf("parse schema: %w", err)
 		}
+		qp := compiler.NewQueriesParser()
 		queries, err := qp.Parse(string(qb))
 		if err != nil {
 			return fmt.Errorf("parse queries: %w", err)
