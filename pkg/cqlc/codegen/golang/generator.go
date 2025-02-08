@@ -566,7 +566,6 @@ type generateQueriesRequest struct {
 	path              string
 }
 
-// TODO: Support keyspaces
 func (gg *Generator) generateQueries(ctx *sdk.Context, req *generateQueriesRequest) error {
 	v := queriesGoTemplateValue{
 		PackageName: req.packageName,
@@ -577,7 +576,10 @@ func (gg *Generator) generateQueries(ctx *sdk.Context, req *generateQueriesReque
 		selects := make([]fieldTemplateValue, 0, len(q.Selects))
 		strct := req.structByTableName[q.Table]
 		for _, p := range q.Params {
-			field := strct.fieldByColumnName[p]
+			field, ok := strct.fieldByColumnName[p]
+			if !ok {
+				return fmt.Errorf(`unfamiliar column "%s" found in query "%s"`, p, q.Stmt)
+			}
 			if field.goType.ImportPath != "" {
 				imports[field.goType.ImportPath] = true
 			}
