@@ -482,6 +482,44 @@ func TestSchemaParser(t *testing.T) {
 				}},
 			}},
 		},
+		{
+			query: `
+		CREATE TABLE users (id UUID PRIMARY KEY, name TEXT, age INT);
+		ALTER TABLE users ADD created_at TIMESTAMP;
+		      `,
+			expectedErr: false,
+			expectedSchema: &sdk.Schema{Keyspaces: []*sdk.Keyspace{
+				{Name: defaultKeyspaceName, Tables: []*sdk.Table{
+					{
+						Name:       "users",
+						PrimaryKey: &sdk.PrimaryKey{PartitionKey: []string{"id"}},
+						Columns: []*sdk.Column{
+							{Name: "id", DataType: gocqlhelpers.NewTypeUUID()},
+							{Name: "age", DataType: gocqlhelpers.NewTypeInt()},
+							{Name: "name", DataType: gocqlhelpers.NewTypeText()},
+							{Name: "created_at", DataType: gocqlhelpers.NewTypeTimestamp()},
+						}},
+				}},
+			}},
+		},
+		{
+			query: `
+		CREATE TABLE users (id UUID PRIMARY KEY, name TEXT, age INT);
+		ALTER TABLE users DROP age;
+		      `,
+			expectedErr: false,
+			expectedSchema: &sdk.Schema{Keyspaces: []*sdk.Keyspace{
+				{Name: defaultKeyspaceName, Tables: []*sdk.Table{
+					{
+						Name:       "users",
+						PrimaryKey: &sdk.PrimaryKey{PartitionKey: []string{"id"}},
+						Columns: []*sdk.Column{
+							{Name: "id", DataType: gocqlhelpers.NewTypeUUID()},
+							{Name: "name", DataType: gocqlhelpers.NewTypeText()},
+						}},
+				}},
+			}},
+		},
 	}
 	parser := NewSchemaParser()
 	for _, tt := range tests {
