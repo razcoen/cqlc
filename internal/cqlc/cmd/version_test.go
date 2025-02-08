@@ -26,19 +26,23 @@ func TestNewVersionCommand(t *testing.T) {
 		})
 	})
 	t.Run("format text", func(t *testing.T) {
+		buildTime, err := time.Parse(time.RFC3339, "2025-02-08T14:09:01Z")
+		require.NoError(t, err)
 		cmd := NewVersionCommand(noopLogger, &buildinfo.BuildInfo{
 			Version:   "v1.0.0",
 			Commit:    "7d23a9c24c9e683f76ddb01e38a0404838628cb0",
-			Time:      time.Now(),
+			Time:      buildTime,
 			GoVersion: "go1.16.3",
 		})
 		buf := &bytes.Buffer{}
 		cmd.SetOut(buf)
-		err := cmd.Execute()
+		err = cmd.Execute()
 		require.NoError(t, err)
-		require.Contains(t, buf.String(), "cqlc version v1.0.0")
-		require.Contains(t, buf.String(), "7d23a9c24c9e683f76ddb01e38a0404838628cb0")
-		require.Contains(t, buf.String(), "go1.16.3")
+		require.Equal(t, `cqlc version v1.0.0
+	commit		7d23a9c24c9e683f76ddb01e38a0404838628cb0
+	build time	2025-02-08T14:09:01Z
+	go version	go1.16.3
+`, buf.String())
 	})
 	t.Run("format json", func(t *testing.T) {
 		bi := &buildinfo.BuildInfo{
