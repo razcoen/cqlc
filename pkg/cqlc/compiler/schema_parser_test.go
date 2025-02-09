@@ -520,14 +520,72 @@ func TestSchemaParser(t *testing.T) {
 				}},
 			}},
 		},
-
-		// TODO: Test edge cases of drop and alter table where column does not exist or similar
+		{ // Add an existing column, should do nothing
+			query: `
+		CREATE TABLE users (id UUID PRIMARY KEY, name TEXT, age INT);
+		ALTER TABLE users ADD age INT;
+		      `,
+			expectedErr: false,
+			expectedSchema: &sdk.Schema{Keyspaces: []*sdk.Keyspace{
+				{Name: defaultKeyspaceName, Tables: []*sdk.Table{
+					{
+						Name:       "users",
+						PrimaryKey: &sdk.PrimaryKey{PartitionKey: []string{"id"}},
+						Columns: []*sdk.Column{
+							{Name: "id", DataType: gocqlhelpers.NewTypeUUID()},
+							{Name: "age", DataType: gocqlhelpers.NewTypeInt()},
+							{Name: "name", DataType: gocqlhelpers.NewTypeText()},
+						}},
+				}},
+			}},
+		},
+		// Should ignore drop column of column that does not exist
+		{
+			query: `
+		CREATE TABLE users (id UUID PRIMARY KEY, name TEXT, age INT);
+		ALTER TABLE users DROP age2;
+		      `,
+			expectedErr: false,
+			expectedSchema: &sdk.Schema{Keyspaces: []*sdk.Keyspace{
+				{Name: defaultKeyspaceName, Tables: []*sdk.Table{
+					{
+						Name:       "users",
+						PrimaryKey: &sdk.PrimaryKey{PartitionKey: []string{"id"}},
+						Columns: []*sdk.Column{
+							{Name: "id", DataType: gocqlhelpers.NewTypeUUID()},
+							{Name: "age", DataType: gocqlhelpers.NewTypeInt()},
+							{Name: "name", DataType: gocqlhelpers.NewTypeText()},
+						}},
+				}},
+			}},
+		},
 		{
 			query: `
 		CREATE TABLE users (id UUID PRIMARY KEY, name TEXT, age INT);
 		CREATE TABLE logins (id UUID PRIMARY KEY, last_seen TIMESTAMP);
 		DROP TABLE logins;
 		      `,
+			expectedErr: false,
+			expectedSchema: &sdk.Schema{Keyspaces: []*sdk.Keyspace{
+				{Name: defaultKeyspaceName, Tables: []*sdk.Table{
+					{
+						Name:       "users",
+						PrimaryKey: &sdk.PrimaryKey{PartitionKey: []string{"id"}},
+						Columns: []*sdk.Column{
+							{Name: "id", DataType: gocqlhelpers.NewTypeUUID()},
+							{Name: "age", DataType: gocqlhelpers.NewTypeInt()},
+							{Name: "name", DataType: gocqlhelpers.NewTypeText()},
+						}},
+				}},
+			}},
+		},
+
+		// Should ignore drop table of table that does not exist
+		{
+			query: `
+		CREATE TABLE users (id UUID PRIMARY KEY, name TEXT, age INT);
+		DROP TABLE users2;
+				`,
 			expectedErr: false,
 			expectedSchema: &sdk.Schema{Keyspaces: []*sdk.Keyspace{
 				{Name: defaultKeyspaceName, Tables: []*sdk.Table{

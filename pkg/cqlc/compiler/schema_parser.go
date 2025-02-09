@@ -124,6 +124,17 @@ func (l *schemaParserTreeListener) EnterAlterTable(ctx *antlrcql.AlterTableConte
 						l.recordError(fmt.Errorf("alter table: parse alter table column definition context: %w", err))
 						continue
 					}
+					columnAlreadyExists := false
+					for _, c := range table.Columns {
+						if c.Name == col.Name {
+							columnAlreadyExists = true
+							break
+						}
+					}
+					if columnAlreadyExists {
+						// TODO: Logger
+						continue
+					}
 					table.Columns = append(table.Columns, col)
 				}
 			}
