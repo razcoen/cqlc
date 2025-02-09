@@ -1,6 +1,8 @@
 # cqlc
 
-![GitHub CI](https://github.com/razcoen/cqlc/actions/workflows/go.yaml/badge.svg) [![codecov](https://codecov.io/gh/razcoen/cqlc/graph/badge.svg?token=RCKM4XXK1I)](https://codecov.io/gh/razcoen/cqlc)
+![GitHub CI](https://github.com/razcoen/cqlc/actions/workflows/go.yaml/badge.svg)
+[![codecov](https://codecov.io/gh/razcoen/cqlc/graph/badge.svg?token=RCKM4XXK1I)](https://codecov.io/gh/razcoen/cqlc)
+[![Go Report Card](https://goreportcard.com/badge/github.com/razcoen/cqlc)](https://goreportcard.com/report/github.com/razcoen/cqlc)
 
 ---
 
@@ -28,7 +30,6 @@
     - [ ] `ALTER TYPE`
   - [x] `DROP TABLE`
   - [ ] `CREATE TYPE`
-  - [ ] `CREATE KEYSPACE`
 
 - **Supported Query Annotations:**
   <br><br> When defining your CQL queries, you can use the following annotations to specify the expected behavior of each query:
