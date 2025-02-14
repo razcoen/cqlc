@@ -425,7 +425,7 @@ func (gg *Generator) generateQueries(ctx *sdk.Context, req *generateQueriesReque
 	}
 	v.Imports = slices.Collect(maps.Keys(imports))
 	buf := &bytes.Buffer{}
-	_, _ = buf.WriteString(createHeader(ctx, req.options, nil))
+	_, _ = buf.WriteString(createHeader(ctx, req.options, gg.logger))
 	if err := gg.queriesGoTemplate.Execute(buf, v); err != nil {
 		return fmt.Errorf("execute queries template: %w", err)
 	}
@@ -451,7 +451,7 @@ type clientTemplateValue struct {
 
 func (gg *Generator) generateClient(ctx *sdk.Context, req *generateClientRequest) error {
 	buf := &bytes.Buffer{}
-	_, _ = buf.WriteString(createHeader(ctx, req.options, nil))
+	_, _ = buf.WriteString(createHeader(ctx, req.options, gg.logger))
 	if err := gg.clientTemplate.Execute(buf, &clientTemplateValue{PackageName: req.options.Package}); err != nil {
 		return fmt.Errorf("execute queries template: %w", err)
 	}
