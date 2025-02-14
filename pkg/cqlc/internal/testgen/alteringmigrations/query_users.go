@@ -40,8 +40,8 @@ type FindUserParams struct {
 type FindUserResult struct {
 	UserID    gocql.UUID
 	Email     string
-	Username  string
 	LastLogin time.Time
+	Username  string
 }
 
 func (c *Client) FindUser(ctx context.Context, params *FindUserParams, opts ...gocqlc.QueryOption) (*FindUserResult, error) {
@@ -52,7 +52,7 @@ func (c *Client) FindUser(ctx context.Context, params *FindUserParams, opts ...g
 		q = opt.Apply(q)
 	}
 	var result FindUserResult
-	if err := q.Scan(&result.UserID, &result.Email, &result.Username, &result.LastLogin); err != nil {
+	if err := q.Scan(&result.UserID, &result.Email, &result.LastLogin, &result.Username); err != nil {
 		return nil, fmt.Errorf("scan row: %w", err)
 	}
 	return &result, nil

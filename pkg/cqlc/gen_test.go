@@ -232,7 +232,7 @@ func TestGenerate(t *testing.T) {
 					},
 				},
 			}, opts...)
-			require.ErrorContains(t, err, `unfamiliar column "created_at" found in query`)
+			require.ErrorContains(t, err, `query "ListUsersFromTime": parametrized column "created_at" does not exist in table "users"`)
 			require.NoDirExists(t, "internal/testgen/altermigrations3")
 		})
 	})
