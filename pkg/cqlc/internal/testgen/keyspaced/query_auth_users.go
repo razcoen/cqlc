@@ -26,6 +26,9 @@ func (c *Client) CreateUser(ctx context.Context, params *CreateUserParams, opts 
 	session := c.Session()
 	q := session.Query("INSERT INTO auth.users (user_id, username, email, created_at) VALUES (?, ?, ?, ?);", params.UserID, params.Username, params.Email, params.CreatedAt)
 	q = q.WithContext(ctx)
+	for _, opt := range c.DefaultQueryOptions() {
+		q = opt.Apply(q)
+	}
 	for _, opt := range opts {
 		q = opt.Apply(q)
 	}
@@ -49,6 +52,9 @@ func (c *Client) CreateUsers(ctx context.Context, params []*CreateUsersParams, o
 		b.Query("INSERT INTO auth.users (user_id, username, email, created_at) VALUES (?, ?, ?, ?);", v.UserID, v.Username, v.Email, v.CreatedAt)
 	}
 	b = b.WithContext(ctx)
+	for _, opt := range c.DefaultBatchOptions() {
+		b = opt.Apply(b)
+	}
 	for _, opt := range opts {
 		b = opt.Apply(b)
 	}
@@ -66,6 +72,9 @@ func (c *Client) DeleteUser(ctx context.Context, params *DeleteUserParams, opts 
 	session := c.Session()
 	q := session.Query("DELETE FROM auth.users WHERE user_id = ?;", params.UserID)
 	q = q.WithContext(ctx)
+	for _, opt := range c.DefaultQueryOptions() {
+		q = opt.Apply(q)
+	}
 	for _, opt := range opts {
 		q = opt.Apply(q)
 	}
@@ -86,6 +95,9 @@ func (c *Client) DeleteUsers(ctx context.Context, params []*DeleteUsersParams, o
 		b.Query("DELETE FROM auth.users WHERE user_id = ?;", v.UserID)
 	}
 	b = b.WithContext(ctx)
+	for _, opt := range c.DefaultBatchOptions() {
+		b = opt.Apply(b)
+	}
 	for _, opt := range opts {
 		b = opt.Apply(b)
 	}
@@ -110,6 +122,9 @@ func (c *Client) FindUser(ctx context.Context, params *FindUserParams, opts ...g
 	session := c.Session()
 	q := session.Query("SELECT * FROM auth.users WHERE user_id = ? LIMIT 1;", params.UserID)
 	q = q.WithContext(ctx)
+	for _, opt := range c.DefaultQueryOptions() {
+		q = opt.Apply(q)
+	}
 	for _, opt := range opts {
 		q = opt.Apply(q)
 	}
@@ -189,6 +204,9 @@ func (q *FindUsersQuerier) Page(ctx context.Context, pageState []byte) (*FindUse
 func (c *Client) FindUsers(params *FindUsersParams, opts ...gocqlc.QueryOption) *FindUsersQuerier {
 	session := c.Session()
 	q := session.Query("SELECT * FROM auth.users WHERE email = ? ALLOW FILTERING;", params.Email)
+	for _, opt := range c.DefaultQueryOptions() {
+		q = opt.Apply(q)
+	}
 	for _, opt := range opts {
 		q = opt.Apply(q)
 	}
