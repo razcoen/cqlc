@@ -71,7 +71,7 @@ func (qp *QueriesParser) Parse(cql string) (sdk.Queries, error) {
 func parseComment(comment string) (funcName string, annotations []string, err error) {
 	regex := regexp.MustCompile(`--\s*name:\s*(\w+)\s*(:\w+)*`)
 	matches := regex.FindStringSubmatch(comment)
-	if matches == nil || len(matches) < 2 {
+	if len(matches) < 2 {
 		return "", nil, fmt.Errorf("invalid comment structure")
 	}
 	funcName = matches[1]
