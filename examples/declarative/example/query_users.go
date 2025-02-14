@@ -45,7 +45,7 @@ type CreateUsersParams struct {
 
 func (c *Client) CreateUsers(ctx context.Context, params []*CreateUsersParams, opts ...gocqlc.BatchOption) error {
 	session := c.Session()
-	b := session.NewBatch(gocql.UnloggedBatch)
+	b := session.NewBatch(gocql.LoggedBatch)
 	for _, v := range params {
 		b.Query("INSERT INTO users (user_id, username, email, created_at) VALUES (?, ?, ?, ?);", v.UserID, v.Username, v.Email, v.CreatedAt)
 	}
