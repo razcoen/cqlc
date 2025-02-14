@@ -1,6 +1,6 @@
 module github.com/razcoen/cqlc
 
-go 1.23.4
+go 1.24.0
 
 require (
 	github.com/gocql/gocql v1.7.0

@@ -33,8 +33,8 @@ func TestParseBuildInfo(t *testing.T) {
 func TestReadModuleVersion(t *testing.T) {
 	t.Run("in test runtime", func(t *testing.T) {
 		version, err := ReadModuleVersion()
-		require.ErrorContains(t, err, "internal error", "no such dependency or module")
-		require.Empty(t, version)
+		require.NoError(t, err)
+		require.Equal(t, "(devel)", version)
 	})
 	t.Run("in development runtime", func(t *testing.T) {
 		out, err := exec.Command("go", "run", "-tags=test", "./internal/testdata/gorun/read_module_version_main.go").Output()
