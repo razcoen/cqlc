@@ -25,6 +25,9 @@ func (c *Client) CreateUser(ctx context.Context, params *CreateUserParams, opts 
 	session := c.Session()
 	q := session.Query("INSERT INTO users (user_id, username, email, last_login) VALUES (?, ?, ?, ?);", params.UserID, params.Username, params.Email, params.LastLogin)
 	q = q.WithContext(ctx)
+	for _, opt := range c.DefaultQueryOptions() {
+		q = opt.Apply(q)
+	}
 	for _, opt := range opts {
 		q = opt.Apply(q)
 	}
@@ -49,6 +52,9 @@ func (c *Client) FindUser(ctx context.Context, params *FindUserParams, opts ...g
 	session := c.Session()
 	q := session.Query("SELECT * FROM users WHERE user_id = ? LIMIT 1;", params.UserID)
 	q = q.WithContext(ctx)
+	for _, opt := range c.DefaultQueryOptions() {
+		q = opt.Apply(q)
+	}
 	for _, opt := range opts {
 		q = opt.Apply(q)
 	}

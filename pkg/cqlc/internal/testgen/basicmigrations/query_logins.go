@@ -24,6 +24,9 @@ func (c *Client) RecordLogin(ctx context.Context, params *RecordLoginParams, opt
 	session := c.Session()
 	q := session.Query("INSERT INTO logins (user_id, login_time) VALUES (?, ?);", params.UserID, params.LoginTime)
 	q = q.WithContext(ctx)
+	for _, opt := range c.DefaultQueryOptions() {
+		q = opt.Apply(q)
+	}
 	for _, opt := range opts {
 		q = opt.Apply(q)
 	}
@@ -99,6 +102,9 @@ func (q *ListLoginsQuerier) Page(ctx context.Context, pageState []byte) (*ListLo
 func (c *Client) ListLogins(params *ListLoginsParams, opts ...gocqlc.QueryOption) *ListLoginsQuerier {
 	session := c.Session()
 	q := session.Query("SELECT login_time FROM logins WHERE user_id = ?;", params.UserID)
+	for _, opt := range c.DefaultQueryOptions() {
+		q = opt.Apply(q)
+	}
 	for _, opt := range opts {
 		q = opt.Apply(q)
 	}

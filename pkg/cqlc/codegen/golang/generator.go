@@ -279,6 +279,9 @@ func (q *{{.FuncName}}Querier) Page(ctx context.Context, pageState []byte) (*{{.
 func (c *Client) {{.FuncName}}({{if .ParamsType}}params *{{.ParamsType}}, {{end}}opts ...gocqlc.QueryOption) *{{.FuncName}}Querier {
 	session := c.Session()
 	q := session.Query("{{.Stmt}}"{{- range .Params -}}, params.{{.Name}}{{- end -}})
+	for _, opt := range c.DefaultQueryOptions() {
+		q = opt.Apply(q)
+	}
 	for _, opt := range opts {
 		q = opt.Apply(q)
 	}
@@ -293,7 +296,10 @@ func (c *Client) {{.FuncName}}(ctx context.Context{{if .ParamsType}}, params []*
 	for _, v := range params {
 		b.Query("{{.Stmt}}"{{- range .Params -}}, v.{{.Name}}{{- end -}})
 	}
-  b = b.WithContext(ctx)
+	b = b.WithContext(ctx)
+	for _, opt := range c.DefaultBatchOptions() {
+		b = opt.Apply(b)
+	}
 	for _, opt := range opts {
 		b = opt.Apply(b)
 	}
@@ -306,7 +312,10 @@ func (c *Client) {{.FuncName}}(ctx context.Context{{if .ParamsType}}, params []*
 func (c *Client) {{.FuncName}}(ctx context.Context{{if .ParamsType}}, params *{{.ParamsType}}{{end}}, opts ...gocqlc.QueryOption) {{- if .ResultType -}}(*{{.ResultType}}, error){{- else -}}error{{- end -}} {
 	session := c.Session()
 	q := session.Query("{{.Stmt}}"{{- range .Params -}}, params.{{.Name}}{{- end -}})
-  q = q.WithContext(ctx)
+  	q = q.WithContext(ctx)
+   	for _, opt := range c.DefaultQueryOptions() {
+		q = opt.Apply(q)
+	}
 	for _, opt := range opts {
 		q = opt.Apply(q)
 	}
