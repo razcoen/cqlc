@@ -129,6 +129,10 @@ func (gen *generator) Generate(config *config.Config) error {
 		if err != nil {
 			return fmt.Errorf("parse queries: %w", err)
 		}
+		provider, err := sdk.CompileSchemaWithQueries(schema, queries)
+		if err != nil {
+			return fmt.Errorf("create schema queries provider: %w", err)
+		}
 
 		if config.Gen.Overwrite {
 			if err := os.RemoveAll(config.Gen.Go.Out); err != nil && !errors.Is(err, os.ErrNotExist) {
@@ -145,8 +149,7 @@ func (gen *generator) Generate(config *config.Config) error {
 			logger.With("error", err).Warn("cannot evaluate the module version")
 		}
 		if err := goGenerator.Generate(&sdk.Context{
-			Schema:      schema,
-			Queries:     queries,
+			Provider:    provider,
 			SchemaPath:  config.Schema,
 			QueriesPath: config.Queries,
 			ConfigPath:  gen.configPath,

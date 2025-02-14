@@ -25,10 +25,10 @@ func ToSingularPascalCase(s string) string {
 		return strings.ToUpper(word[:1]) + strings.ToLower(word[1:])
 	}
 	for i, word := range words {
-		word = capitalizeWord(word)
 		if i == len(words)-1 {
 			word = inflection.Singular(word)
 		}
+		word = capitalizeWord(word)
 		words[i] = word
 	}
 

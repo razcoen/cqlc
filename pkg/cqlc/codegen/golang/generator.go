@@ -2,7 +2,6 @@ package golang
 
 import (
 	"bytes"
-	"errors"
 	"fmt"
 	"go/format"
 	"io"
@@ -19,19 +18,14 @@ import (
 )
 
 type Generator struct {
-	keyspaceGoTemplate *template.Template
-	queriesGoTemplate  *template.Template
-	execQueryTemplate  *template.Template
-	oneQueryTemplate   *template.Template
-	clientTemplate     *template.Template
-	logger             log.Logger
+	queriesGoTemplate *template.Template
+	execQueryTemplate *template.Template
+	oneQueryTemplate  *template.Template
+	clientTemplate    *template.Template
+	logger            log.Logger
 }
 
 func NewGenerator(logger log.Logger) (*Generator, error) {
-	tpl, err := template.New("keyspace-go-template").Parse(keyspaceGoTemplate)
-	if err != nil {
-		return nil, fmt.Errorf("parse keyspace template: %w", err)
-	}
 	tpl2, err := template.New("queries-go-template").Parse(queriesGoTemplate)
 	if err != nil {
 		return nil, fmt.Errorf("parse queries template: %w", err)
@@ -49,12 +43,11 @@ func NewGenerator(logger log.Logger) (*Generator, error) {
 		return nil, fmt.Errorf("parse one query template: %w", err)
 	}
 	return &Generator{
-		keyspaceGoTemplate: tpl,
-		queriesGoTemplate:  tpl2,
-		clientTemplate:     tpl3,
-		execQueryTemplate:  tpl4,
-		oneQueryTemplate:   tpl5,
-		logger:             logger,
+		queriesGoTemplate: tpl2,
+		clientTemplate:    tpl3,
+		execQueryTemplate: tpl4,
+		oneQueryTemplate:  tpl5,
+		logger:            logger,
 	}, nil
 }
 
@@ -122,8 +115,6 @@ func createHeader(ctx *fileContext) string {
 }
 
 func (gen *Generator) Generate(ctx *sdk.Context, opts *Options) (err error) {
-	schema := ctx.Schema
-	queries := ctx.Queries
 	dir, err := os.MkdirTemp("", "cqlc-gen-go-*")
 	if err != nil {
 		return fmt.Errorf("create temp file: %w", err)
@@ -155,53 +146,41 @@ func (gen *Generator) Generate(ctx *sdk.Context, opts *Options) (err error) {
 		return fmt.Errorf("generate client: %w", err)
 	}
 
-	keyspaceTableSet := make(map[string]map[string]bool)
-	for _, k := range schema.Keyspaces {
-		if _, ok := keyspaceTableSet[k.Name]; !ok {
-			keyspaceTableSet[k.Name] = make(map[string]bool)
-		}
+	for _, k := range ctx.Provider.Schema().Keyspaces {
+		imports := make(map[string]bool)
+		structByTableName := make(map[string]*strct, len(k.Tables))
 		for _, t := range k.Tables {
-			keyspaceTableSet[k.Name][t.Name] = true
-		}
-	}
-
-	queriesByTableByKeyspace := make(map[string]map[string]sdk.Queries)
-	var invalidQueriesErrs []error
-	for _, q := range queries {
-		// Validate that the query keyspace and table exist in the schema.
-		if _, ok := keyspaceTableSet[q.Keyspace]; !ok {
-			invalidQueriesErrs = append(invalidQueriesErrs, fmt.Errorf("keyspace %q does not exist in schema", q.Keyspace))
-		}
-		if _, ok := keyspaceTableSet[q.Keyspace][q.Table]; !ok {
-			invalidQueriesErrs = append(invalidQueriesErrs, fmt.Errorf("table %q does not exist in keyspace %q", q.Table, q.Keyspace))
-		}
-		// Map queries by keyspace and table.
-		if _, ok := queriesByTableByKeyspace[q.Keyspace]; !ok {
-			queriesByTableByKeyspace[q.Keyspace] = make(map[string]sdk.Queries)
-		}
-		if _, ok := queriesByTableByKeyspace[q.Keyspace][q.Table]; !ok {
-			queriesByTableByKeyspace[q.Keyspace][q.Table] = make(sdk.Queries, 0)
-		}
-		queriesByTableByKeyspace[q.Keyspace][q.Table] = append(queriesByTableByKeyspace[q.Keyspace][q.Table], q)
-	}
-
-	if len(invalidQueriesErrs) > 0 {
-		return fmt.Errorf("invalid queries: %w", errors.Join(invalidQueriesErrs...))
-	}
-
-	for _, k := range schema.Keyspaces {
-		resp, err := gen.generateKeyspaceStructs(ctx, &generateKeyspaceStructsRequest{
-			keyspace:    k,
-			packageName: opts.Package,
-			out:         nopWriter{},
-			path:        "",
-		})
-		if err != nil {
-			return fmt.Errorf("generate keyspace: %w", err)
+			structName := sdk.ToSingularPascalCase(t.Name)
+			st := struct {
+				TableName string
+				Name      string
+				Fields    []fieldTemplateValue
+			}{
+				TableName: t.Name,
+				Name:      structName,
+			}
+			fieldByColumnName := make(map[string]*field)
+			for i, c := range t.Columns {
+				name := sdk.ToSingularPascalCase(c.Name)
+				goType, err := gocqlhelpers.ParseGoType(c.DataType)
+				if err != nil {
+					// TODO
+					continue
+				}
+				if goType.ImportPath != "" {
+					imports[goType.ImportPath] = true
+				}
+				st.Fields = append(st.Fields, fieldTemplateValue{Name: name, GoType: goType.Name})
+				fieldByColumnName[c.Name] = &field{name: name, goType: goType, ordering: i + 1}
+			}
+			structByTableName[t.Name] = &strct{
+				name:              st.Name,
+				fieldByColumnName: fieldByColumnName,
+			}
 		}
 		for _, t := range k.Tables {
 			err := func() error {
-				queries := queriesByTableByKeyspace[k.Name][t.Name]
+				queries := ctx.Provider.ListTableQueries(k.Name, t.Name)
 				if len(queries) == 0 {
 					return nil
 				}
@@ -224,7 +203,7 @@ func (gen *Generator) Generate(ctx *sdk.Context, opts *Options) (err error) {
 				}()
 				if err := gen.generateQueries(ctx, &generateQueriesRequest{
 					queries:           queries,
-					structByTableName: resp.structByTableName,
+					structByTableName: structByTableName,
 					packageName:       opts.Package,
 					out:               f,
 					path:              filepath.Join(opts.Out, filename),
@@ -255,37 +234,7 @@ func (gen *Generator) Generate(ctx *sdk.Context, opts *Options) (err error) {
 	return nil
 }
 
-type generateKeyspaceStructsRequest struct {
-	keyspace    *sdk.Keyspace
-	packageName string
-	out         io.Writer
-	path        string
-}
-
 var (
-	// TODO: Create a header that is always appended
-	keyspaceGoTemplate = `
-package {{.PackageName}}
-
-{{- if gt (len .Imports) 0}}
-import (
-{{- end}}
-{{- range .Imports}}
-  "{{.}}"
-{{- end}}
-{{- if gt (len .Imports) 0}}
-)
-{{- end}}
-{{range .Structs}}
-// Table: {{.TableName}}
-type {{.Name}} struct {
-  {{- range .Fields }}
-  {{ .Name }} {{ .GoType }}
-  {{- end }}
-}
-{{end -}}
-`
-
 	clientTemplate = `
 package {{.PackageName}}
 
@@ -476,77 +425,6 @@ type fieldTemplateValue struct {
 	GoType string
 }
 
-type keyspaceGoTemplateValue struct {
-	PackageName string
-	Imports     []string
-	Structs     []struct {
-		TableName string
-		Name      string
-		Fields    []fieldTemplateValue
-	}
-}
-
-type generateKeyspaceStructsResponse struct {
-	structByTableName map[string]*strct
-}
-
-func (gg *Generator) generateKeyspaceStructs(ctx *sdk.Context, req *generateKeyspaceStructsRequest) (*generateKeyspaceStructsResponse, error) {
-	v := keyspaceGoTemplateValue{
-		PackageName: req.packageName,
-		Structs: []struct {
-			TableName string
-			Name      string
-			Fields    []fieldTemplateValue
-		}{},
-	}
-	imports := make(map[string]bool)
-	structByTableName := make(map[string]*strct, len(req.keyspace.Tables))
-	for _, t := range req.keyspace.Tables {
-		structName := sdk.ToSingularPascalCase(t.Name)
-		st := struct {
-			TableName string
-			Name      string
-			Fields    []fieldTemplateValue
-		}{
-			TableName: t.Name,
-			Name:      structName,
-		}
-		fieldByColumnName := make(map[string]*field)
-		for i, c := range t.Columns {
-			name := sdk.ToSingularPascalCase(c.Name)
-			goType, err := gocqlhelpers.ParseGoType(c.DataType)
-			if err != nil {
-				// TODO
-				continue
-			}
-			if goType.ImportPath != "" {
-				imports[goType.ImportPath] = true
-			}
-			st.Fields = append(st.Fields, fieldTemplateValue{Name: name, GoType: goType.Name})
-			fieldByColumnName[c.Name] = &field{name: name, goType: goType, ordering: i + 1}
-		}
-		v.Structs = append(v.Structs, st)
-		structByTableName[t.Name] = &strct{
-			name:              st.Name,
-			fieldByColumnName: fieldByColumnName,
-		}
-	}
-	v.Imports = slices.Collect(maps.Keys(imports))
-	buf := &bytes.Buffer{}
-	_, _ = buf.WriteString(createHeader(&fileContext{Context: ctx, path: req.path}))
-	if err := gg.keyspaceGoTemplate.Execute(buf, v); err != nil {
-		return nil, fmt.Errorf("execute keyspace template: %w", err)
-	}
-	out, err := format.Source(buf.Bytes())
-	if err != nil {
-		return nil, fmt.Errorf("format out: %w", err)
-	}
-	if _, err := req.out.Write(out); err != nil {
-		return nil, fmt.Errorf("write out: %w", err)
-	}
-	return &generateKeyspaceStructsResponse{structByTableName: structByTableName}, nil
-}
-
 type field struct {
 	name     string
 	goType   *gocqlhelpers.GoType
@@ -585,24 +463,12 @@ func (gg *Generator) generateQueries(ctx *sdk.Context, req *generateQueriesReque
 			}
 			params = append(params, fieldTemplateValue{Name: field.name, GoType: field.goType.Name})
 		}
-		// TODO: Return the struct instead of copying the fields
-		if len(q.Selects) == 1 && q.Selects[0] == "*" {
-			fields := slices.Collect(maps.Values(strct.fieldByColumnName))
-			slices.SortFunc(fields, func(a, b *field) int { return a.ordering - b.ordering })
-			for _, f := range fields {
-				if f.goType.ImportPath != "" {
-					imports[f.goType.ImportPath] = true
-				}
-				selects = append(selects, fieldTemplateValue{Name: f.name, GoType: f.goType.Name})
+		for _, s := range q.Selects {
+			f := strct.fieldByColumnName[s]
+			if f.goType.ImportPath != "" {
+				imports[f.goType.ImportPath] = true
 			}
-		} else {
-			for _, s := range q.Selects {
-				f := strct.fieldByColumnName[s]
-				if f.goType.ImportPath != "" {
-					imports[f.goType.ImportPath] = true
-				}
-				selects = append(selects, fieldTemplateValue{Name: f.name, GoType: f.goType.Name})
-			}
+			selects = append(selects, fieldTemplateValue{Name: f.name, GoType: f.goType.Name})
 		}
 		query := queryGoTemplateValue{FuncName: q.FuncName, Params: params, Selects: selects, Stmt: q.Stmt}
 		var annotation sdk.Annotation
@@ -680,7 +546,3 @@ func (gg *Generator) generateClient(ctx *sdk.Context, req *generateClientRequest
 	}
 	return nil
 }
-
-type nopWriter struct{}
-
-func (w nopWriter) Write(b []byte) (n int, err error) { return 0, nil }

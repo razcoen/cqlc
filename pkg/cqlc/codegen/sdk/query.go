@@ -21,6 +21,15 @@ const (
 	AnnotationBatch Annotation = "batch"
 )
 
+func Annotations() []Annotation {
+	return []Annotation{
+		AnnotationExec,
+		AnnotationOne,
+		AnnotationMany,
+		AnnotationBatch,
+	}
+}
+
 func ParseAnnotation(s string) (Annotation, bool) {
 	m := map[Annotation]bool{AnnotationExec: true, AnnotationOne: true, AnnotationMany: true, AnnotationBatch: true}
 	a := Annotation(s)
