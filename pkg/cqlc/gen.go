@@ -140,20 +140,19 @@ func (gen *generator) Generate(config *config.Config) error {
 			}
 		}
 
-		goGenerator, err := golang.NewGenerator(logger.With("language", "golang"))
-		if err != nil {
-			return fmt.Errorf("new go generator: %w", err)
-		}
+		goGenerator := golang.NewGenerator(logger.With("language", "golang"))
 		version, err := buildinfo.ReadModuleVersion()
 		if err != nil {
 			logger.With("error", err).Warn("cannot evaluate the module version")
 		}
 		if err := goGenerator.Generate(&sdk.Context{
-			Provider:    provider,
-			SchemaPath:  config.Schema,
-			QueriesPath: config.Queries,
-			ConfigPath:  gen.configPath,
-			Version:     version,
+			Provider: provider,
+			Metadata: &sdk.Metadata{
+				SchemaPath:  config.Schema,
+				QueriesPath: config.Queries,
+				ConfigPath:  gen.configPath,
+				Version:     version,
+			},
 		}, config.Gen.Go); err != nil {
 			return fmt.Errorf("generate go: %w", err)
 		}
