@@ -12,6 +12,7 @@ import (
 	"strings"
 	"text/template"
 
+	"github.com/gocql/gocql"
 	"github.com/razcoen/cqlc/pkg/cqlc/codegen/sdk"
 	"github.com/razcoen/cqlc/pkg/cqlc/gocqlhelpers"
 	"github.com/razcoen/cqlc/pkg/log"
@@ -446,19 +447,7 @@ type generateQueriesRequest struct {
 }
 
 func (gg *Generator) generateQueries(ctx *sdk.Context, req *generateQueriesRequest) error {
-	batchType := "Unlogged"
-	validBatchTypes := []string{"Logged", "Unlogged", "Counter"}
-	foundValidBatchType := false
-	for _, validBatchType := range validBatchTypes {
-		if strings.ToLower(validBatchType) == req.options.Defaults.BatchType {
-			batchType = validBatchType
-			foundValidBatchType = true
-			break
-		}
-	}
-	if len(req.options.Defaults.BatchType) > 0 && !foundValidBatchType {
-		gg.logger.Warn(fmt.Sprintf("using default batch type %q: invalid batch type %q was provided", batchType, req.options.Defaults.BatchType))
-	}
+	batchType := parseBatchType(req.options.Defaults.BatchType, gocql.UnloggedBatch, gg.logger)
 	v := queriesGoTemplateValue{
 		PackageName: req.options.Package,
 		BatchType:   batchType,
@@ -560,4 +549,21 @@ func (gg *Generator) generateClient(ctx *sdk.Context, req *generateClientRequest
 		return fmt.Errorf("write out: %w", err)
 	}
 	return nil
+}
+
+func parseBatchType(input string, fallback gocql.BatchType, logger log.Logger) string {
+	parsed := fallback
+	mapping := map[gocql.BatchType]string{gocql.UnloggedBatch: "Unlogged", gocql.LoggedBatch: "Logged", gocql.CounterBatch: "Counter"}
+	foundValidBatchType := false
+	for k, str := range mapping {
+		if strings.ToLower(str) == input {
+			parsed = k
+			foundValidBatchType = true
+			break
+		}
+	}
+	if len(input) > 0 && !foundValidBatchType && logger != nil {
+		logger.Warn(fmt.Sprintf("using default batch type %q: invalid batch type %q was provided", strings.ToLower(mapping[parsed]), input))
+	}
+	return mapping[parsed]
 }

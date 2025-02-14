@@ -1,9 +1,14 @@
 package golang
 
 import (
+	"bytes"
 	"testing"
 
+	cblog "github.com/charmbracelet/log"
+	"github.com/gocql/gocql"
 	"github.com/razcoen/cqlc/pkg/cqlc/codegen/sdk"
+	"github.com/razcoen/cqlc/pkg/log"
+	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
 )
 
@@ -63,5 +68,34 @@ func TestCreateHeader(t *testing.T) {
 			},
 			path: "example/client.go",
 		}))
+	})
+}
+
+func TestParseBatchType(t *testing.T) {
+	t.Run("fallback", func(t *testing.T) {
+		assert.Equal(t, "Logged", parseBatchType("hello", gocql.LoggedBatch, nil))
+		assert.Equal(t, "Unlogged", parseBatchType("hello", gocql.UnloggedBatch, nil))
+		assert.Equal(t, "Counter", parseBatchType("hello", gocql.CounterBatch, nil))
+	})
+	t.Run("input with logged fallback", func(t *testing.T) {
+		assert.Equal(t, "Unlogged", parseBatchType("unlogged", gocql.LoggedBatch, nil))
+		assert.Equal(t, "Counter", parseBatchType("counter", gocql.LoggedBatch, nil))
+		assert.Equal(t, "Logged", parseBatchType("logged", gocql.LoggedBatch, nil))
+	})
+	t.Run("input with unlogged fallback", func(t *testing.T) {
+		assert.Equal(t, "Unlogged", parseBatchType("unlogged", gocql.UnloggedBatch, nil))
+		assert.Equal(t, "Counter", parseBatchType("counter", gocql.UnloggedBatch, nil))
+		assert.Equal(t, "Logged", parseBatchType("logged", gocql.UnloggedBatch, nil))
+	})
+	t.Run("input with counter fallback", func(t *testing.T) {
+		assert.Equal(t, "Unlogged", parseBatchType("unlogged", gocql.CounterBatch, nil))
+		assert.Equal(t, "Counter", parseBatchType("counter", gocql.CounterBatch, nil))
+		assert.Equal(t, "Logged", parseBatchType("logged", gocql.CounterBatch, nil))
+	})
+	t.Run("logger", func(t *testing.T) {
+		var buf bytes.Buffer
+		logger := cblog.New(&buf)
+		assert.Equal(t, "Logged", parseBatchType("hello", gocql.LoggedBatch, log.NewCharmbraceletAdapter(logger)))
+		assert.Contains(t, buf.String(), `using default batch type "logged": invalid batch type "hello" was provided`)
 	})
 }
