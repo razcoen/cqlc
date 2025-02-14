@@ -6,3 +6,5 @@ cql:
       go:
         package: "example"
         out: "example"
+        defaults:
+          batch_type: "logged"

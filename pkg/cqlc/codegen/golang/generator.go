@@ -204,7 +204,7 @@ func (gen *Generator) Generate(ctx *sdk.Context, opts *Options) (err error) {
 				if err := gen.generateQueries(ctx, &generateQueriesRequest{
 					queries:           queries,
 					structByTableName: structByTableName,
-					packageName:       opts.Package,
+					options:           opts,
 					out:               f,
 					path:              filepath.Join(opts.Out, filename),
 				}); err != nil {
@@ -371,7 +371,7 @@ func (c *Client) {{.FuncName}}({{if .ParamsType}}params *{{.ParamsType}}, {{end}
 {{if eq "batch" .Annotation}}
 func (c *Client) {{.FuncName}}(ctx context.Context{{if .ParamsType}}, params []*{{.ParamsType}}{{end}}, opts ...gocqlc.BatchOption) error {
 	session := c.Session()
-	b := session.NewBatch(gocql.UnloggedBatch)
+	b := session.NewBatch(gocql.{{$.BatchType}}Batch)
 	for _, v := range params {
 		b.Query("{{.Stmt}}"{{- range .Params -}}, v.{{.Name}}{{- end -}})
 	}
@@ -407,6 +407,7 @@ type queriesGoTemplateValue struct {
 	PackageName string
 	Imports     []string
 	Queries     []queryGoTemplateValue
+	BatchType   string
 }
 
 type queryGoTemplateValue struct {
@@ -437,16 +438,30 @@ type strct struct {
 }
 
 type generateQueriesRequest struct {
+	options           *Options
 	queries           []*sdk.Query
 	structByTableName map[string]*strct
-	packageName       string
 	out               io.Writer
 	path              string
 }
 
 func (gg *Generator) generateQueries(ctx *sdk.Context, req *generateQueriesRequest) error {
+	batchType := "Unlogged"
+	validBatchTypes := []string{"Logged", "Unlogged", "Counter"}
+	foundValidBatchType := false
+	for _, validBatchType := range validBatchTypes {
+		if strings.ToLower(validBatchType) == req.options.Defaults.BatchType {
+			batchType = validBatchType
+			foundValidBatchType = true
+			break
+		}
+	}
+	if len(req.options.Defaults.BatchType) > 0 && !foundValidBatchType {
+		gg.logger.Warn(fmt.Sprintf("using default batch type %q: invalid batch type %q was provided", batchType, req.options.Defaults.BatchType))
+	}
 	v := queriesGoTemplateValue{
-		PackageName: req.packageName,
+		PackageName: req.options.Package,
+		BatchType:   batchType,
 	}
 	imports := make(map[string]bool)
 	for _, q := range req.queries {
