@@ -11,6 +11,7 @@ jobs:
       - uses: actions/setup-go@v5
         with:
           go-version: 1.24
+      - uses: ncipollo/release-action@v1
       - uses: goreleaser/goreleaser-action@v6
         with:
           distribution: goreleaser
@@ -18,7 +19,7 @@ jobs:
           args: release --clean
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      - uses: actions/upload-artifact@v4
-        with:
-          name: cqlc
-          path: bin/*
+      # - uses: actions/upload-artifact@v4
+      #   with:
+      #     name: cqlc
+      #     path: bin/*
