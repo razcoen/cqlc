@@ -30,8 +30,6 @@ jobs:
         with:
           go-version: 1.24
       - uses: golangci/golangci-lint-action@v6
-        with:
-          version: v1.64.5
   go-generate-and-format-validation:
     runs-on: ubuntu-latest
     steps:
