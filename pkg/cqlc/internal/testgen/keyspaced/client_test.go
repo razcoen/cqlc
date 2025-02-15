@@ -2,12 +2,14 @@ package keyspaced
 
 import (
 	"context"
+	"slices"
 	"testing"
 	"time"
 
 	"github.com/gocql/gocql"
 	"github.com/google/uuid"
 	"github.com/razcoen/cqlc/internal/testcassandra"
+	"github.com/razcoen/cqlc/pkg/gocqlc"
 	"github.com/stretchr/testify/require"
 )
 
@@ -36,7 +38,7 @@ func TestClient(t *testing.T) {
 
 		result1, err := client.FindUser(ctx, &FindUserParams{UserID: userID1})
 		require.NoError(t, err)
-		require.Equal(t, FindUserResult{
+		require.Equal(t, FindUserRow{
 			UserID:    userID1,
 			Username:  "test_user_1",
 			Email:     "test_email_1",
@@ -45,7 +47,7 @@ func TestClient(t *testing.T) {
 
 		result2, err := client.FindUser(ctx, &FindUserParams{UserID: userID2})
 		require.NoError(t, err)
-		require.Equal(t, FindUserResult{
+		require.Equal(t, FindUserRow{
 			UserID:    userID2,
 			Username:  "test_user_2",
 			Email:     "test_email_2",
@@ -75,10 +77,11 @@ func TestClient(t *testing.T) {
 		require.NoError(t, err)
 
 		querier := client.FindUsers(&FindUsersParams{Email: "test_email_1"})
-		results, err := querier.All(ctx)
-		require.NoError(t, err)
+		it := querier.Iter(ctx)
+		results := slices.Collect(it.Rows())
+		require.NoError(t, it.Err())
 		require.Len(t, results, 1)
-		require.Equal(t, FindUsersResult{
+		require.Equal(t, FindUsersRow{
 			UserID:    userID1,
 			Username:  "test_user_1",
 			Email:     "test_email_1",
@@ -108,10 +111,14 @@ func TestClient(t *testing.T) {
 		require.NoError(t, err)
 
 		querier := client.FindUsers(&FindUsersParams{Email: "test_email_1"})
-		results, err := querier.All(ctx)
-		require.NoError(t, err)
+		it := querier.PageIter(ctx, nil, gocqlc.WithPageSize(1))
+		results := slices.Collect(it.Rows())
+		require.NoError(t, it.Err())
+		it = querier.PageIter(ctx, it.Info().PageState(), gocqlc.WithPageSize(1))
+		results = append(results, slices.Collect(it.Rows())...)
+		require.NoError(t, it.Err())
 		require.Len(t, results, 2)
-		require.ElementsMatch(t, []*FindUsersResult{
+		require.ElementsMatch(t, []*FindUsersRow{
 			{
 				UserID:    userID1,
 				Username:  "test_user_1",
@@ -151,7 +158,7 @@ func TestClient(t *testing.T) {
 
 		result1, err := client.FindUser(ctx, &FindUserParams{UserID: userID1})
 		require.NoError(t, err)
-		require.Equal(t, FindUserResult{
+		require.Equal(t, FindUserRow{
 			UserID:    userID1,
 			Username:  "test_user_1",
 			Email:     "test_email_1",
@@ -159,7 +166,7 @@ func TestClient(t *testing.T) {
 		}, *result1)
 		result2, err := client.FindUser(ctx, &FindUserParams{UserID: userID2})
 		require.NoError(t, err)
-		require.Equal(t, FindUserResult{
+		require.Equal(t, FindUserRow{
 			UserID:    userID2,
 			Username:  "test_user_2",
 			Email:     "test_email_2",
@@ -197,7 +204,7 @@ func TestClient(t *testing.T) {
 
 		result2, err := client.FindUser(ctx, &FindUserParams{UserID: userID2})
 		require.NoError(t, err)
-		require.Equal(t, FindUserResult{
+		require.Equal(t, FindUserRow{
 			UserID:    userID2,
 			Username:  "test_user_2",
 			Email:     "test_email_2",
