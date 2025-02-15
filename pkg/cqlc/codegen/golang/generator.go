@@ -178,11 +178,11 @@ func NewClient(session *gocql.Session, opts ...gocqlc.ClientOption) (*Client, er
 
 `
 	oneQueryGoTemplate = `
-	var result {{.ResultType}}
-	if err := q.Scan({{- range .Selects -}}&result.{{.Name}},{{- end -}}); err != nil {
+	var row {{.RowType}}
+	if err := q.Scan({{- range .Selects -}}&row.{{.Name}},{{- end -}}); err != nil {
 		return nil, fmt.Errorf("scan row: %w", err)
 	}
-	return &result, nil`
+	return &row, nil`
 	execQueryGoTemplate = `
 	if err := q.Exec(); err != nil {
 		return fmt.Errorf("exec query: %w", err)
@@ -212,8 +212,8 @@ type {{.ParamsType}} struct {
 }
 {{- end}}
 
-{{if .ResultType -}}
-type {{.ResultType}} struct {
+{{if .RowType -}}
+type {{.RowType}} struct {
 {{- range .Selects}}
 {{.Name}} {{.GoType}}
 {{- end}}
@@ -221,71 +221,14 @@ type {{.ResultType}} struct {
 {{- end}}
 
 {{if eq "many" .Annotation}}
-type {{.FuncName}}Querier struct {
-	query *gocql.Query
-	logger log.Logger
-}
 
-func (q *{{.FuncName}}Querier) All(ctx context.Context) ([]*{{.ResultType}}, error) {
-	var results []*{{.ResultType}}
-	var pageState []byte
-	for {
-		page, err := q.Page(ctx, pageState)
-		if err != nil {
-			return nil, fmt.Errorf("page: %w", err)
-		}
-		results = append(results, page.Results()...)
-		if len(page.PageState()) == 0 {
-			break
-		}
-		pageState = page.PageState()
-	}
-	return results, nil
-}
-
-type {{.ResultType}}sPage struct {
-	results []*{{.ResultType}}
-	pageState []byte
-	numRows int
-}
-
-func (page *{{.ResultType}}sPage) Results() []*{{.ResultType}} { return page.results }
-func (page *{{.ResultType}}sPage) NumRows() int { return page.numRows }
-func (page *{{.ResultType}}sPage) PageState() []byte { return page.pageState }
-
-func (q *{{.FuncName}}Querier) Page(ctx context.Context, pageState []byte) (*{{.ResultType}}sPage, error) {
-	var results []*{{.ResultType}}
-	iter := q.query.WithContext(ctx).PageState(pageState).Iter()
-	defer func() {
-		if err := iter.Close(); err != nil {
-			q.logger.Error("iter.Close() returned with error", "error", err)
-		}
-	} ()
-	nextPageState := iter.PageState()
-	scanner := iter.Scanner()
-	for scanner.Next() {
-		var result {{.ResultType}}
-		if err := scanner.Scan({{- range .Selects -}}&result.{{.Name}},{{- end -}}); err != nil {
-			return nil, fmt.Errorf("scan result: %w", err)
-		}
-		results = append(results, &result)
-	}
-	if err := scanner.Err(); err != nil {
-		return nil, fmt.Errorf("scanner error: %w", err)
-	}
-	return &{{.ResultType}}sPage{results: results, pageState: nextPageState, numRows: iter.NumRows()}, nil
-}
-
-func (c *Client) {{.FuncName}}({{if .ParamsType}}params *{{.ParamsType}}, {{end}}opts ...gocqlc.QueryOption) *{{.FuncName}}Querier {
+func (c *Client) {{.FuncName}}({{if .ParamsType}}params *{{.ParamsType}}, {{end}}opts ...gocqlc.QueryOption) *gocqlc.Querier[{{.RowType}}] {
 	session := c.Session()
 	q := session.Query("{{.Stmt}}"{{- range .Params -}}, params.{{.Name}}{{- end -}})
-	for _, opt := range c.DefaultQueryOptions() {
-		q = opt.Apply(q)
+	scan := func (it *gocql.Iter, dest *{{.RowType}}) bool {
+		return it.Scan({{- range .Selects -}}&(*dest).{{.Name}},{{- end -}})
 	}
-	for _, opt := range opts {
-		q = opt.Apply(q)
-	}
-	return &{{.FuncName}}Querier{query: q, logger: c.Logger()}
+	return gocqlc.NewQuerier(q, scan, c.Logger(), c.DefaultQueryOptions()...)
 }
 
 {{else}}
@@ -297,28 +240,20 @@ func (c *Client) {{.FuncName}}(ctx context.Context{{if .ParamsType}}, params []*
 		b.Query("{{.Stmt}}"{{- range .Params -}}, v.{{.Name}}{{- end -}})
 	}
 	b = b.WithContext(ctx)
-	for _, opt := range c.DefaultBatchOptions() {
-		b = opt.Apply(b)
-	}
-	for _, opt := range opts {
-		b = opt.Apply(b)
-	}
+	gocqlc.ApplyBatchOptions(b, c.DefaultBatchOptions()...)
+	gocqlc.ApplyBatchOptions(b, opts...)
 	if err := session.ExecuteBatch(b); err != nil {
 		return fmt.Errorf("exec batch: %w", err)
 	}
 	return nil
 }
 {{ else }}
-func (c *Client) {{.FuncName}}(ctx context.Context{{if .ParamsType}}, params *{{.ParamsType}}{{end}}, opts ...gocqlc.QueryOption) {{- if .ResultType -}}(*{{.ResultType}}, error){{- else -}}error{{- end -}} {
+func (c *Client) {{.FuncName}}(ctx context.Context{{if .ParamsType}}, params *{{.ParamsType}}{{end}}, opts ...gocqlc.QueryOption) {{- if .RowType -}}(*{{.RowType}}, error){{- else -}}error{{- end -}} {
 	session := c.Session()
 	q := session.Query("{{.Stmt}}"{{- range .Params -}}, params.{{.Name}}{{- end -}})
   	q = q.WithContext(ctx)
-   	for _, opt := range c.DefaultQueryOptions() {
-		q = opt.Apply(q)
-	}
-	for _, opt := range opts {
-		q = opt.Apply(q)
-	}
+   	gocqlc.ApplyQueryOptions(q, c.DefaultQueryOptions()...)
+	gocqlc.ApplyQueryOptions(q, opts...)
 	{{- .ExecString}}
 }
 {{ end -}}
@@ -339,7 +274,7 @@ type queryGoTemplateValue struct {
 	ExecString string
 	Annotation sdk.Annotation
 	ParamsType string
-	ResultType string
+	RowType    string
 	FuncName   string
 	Stmt       string
 	Params     []fieldTemplateValue
@@ -406,9 +341,9 @@ func (gg *Generator) generateQueries(ctx *sdk.Context, req *generateQueriesReque
 			}
 		}
 		query.Annotation = annotation
-		// Set result type
+		// Set row type
 		if (annotation == sdk.AnnotationOne || annotation == sdk.AnnotationMany) && len(query.Selects) > 0 {
-			query.ResultType = fmt.Sprintf("%sResult", query.FuncName)
+			query.RowType = fmt.Sprintf("%sRow", query.FuncName)
 		}
 		// Set params type
 		if len(query.Params) > 0 {

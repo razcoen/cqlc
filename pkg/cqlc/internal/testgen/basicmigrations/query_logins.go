@@ -12,7 +12,6 @@ import (
 
 	"github.com/gocql/gocql"
 	"github.com/razcoen/cqlc/pkg/gocqlc"
-	"github.com/razcoen/cqlc/pkg/log"
 )
 
 type RecordLoginParams struct {
@@ -24,12 +23,8 @@ func (c *Client) RecordLogin(ctx context.Context, params *RecordLoginParams, opt
 	session := c.Session()
 	q := session.Query("INSERT INTO logins (user_id, login_time) VALUES (?, ?);", params.UserID, params.LoginTime)
 	q = q.WithContext(ctx)
-	for _, opt := range c.DefaultQueryOptions() {
-		q = opt.Apply(q)
-	}
-	for _, opt := range opts {
-		q = opt.Apply(q)
-	}
+	gocqlc.ApplyQueryOptions(q, c.DefaultQueryOptions()...)
+	gocqlc.ApplyQueryOptions(q, opts...)
 	if err := q.Exec(); err != nil {
 		return fmt.Errorf("exec query: %w", err)
 	}
@@ -40,73 +35,15 @@ type ListLoginsParams struct {
 	UserID gocql.UUID
 }
 
-type ListLoginsResult struct {
+type ListLoginsRow struct {
 	LoginTime time.Time
 }
 
-type ListLoginsQuerier struct {
-	query  *gocql.Query
-	logger log.Logger
-}
-
-func (q *ListLoginsQuerier) All(ctx context.Context) ([]*ListLoginsResult, error) {
-	var results []*ListLoginsResult
-	var pageState []byte
-	for {
-		page, err := q.Page(ctx, pageState)
-		if err != nil {
-			return nil, fmt.Errorf("page: %w", err)
-		}
-		results = append(results, page.Results()...)
-		if len(page.PageState()) == 0 {
-			break
-		}
-		pageState = page.PageState()
-	}
-	return results, nil
-}
-
-type ListLoginsResultsPage struct {
-	results   []*ListLoginsResult
-	pageState []byte
-	numRows   int
-}
-
-func (page *ListLoginsResultsPage) Results() []*ListLoginsResult { return page.results }
-func (page *ListLoginsResultsPage) NumRows() int                 { return page.numRows }
-func (page *ListLoginsResultsPage) PageState() []byte            { return page.pageState }
-
-func (q *ListLoginsQuerier) Page(ctx context.Context, pageState []byte) (*ListLoginsResultsPage, error) {
-	var results []*ListLoginsResult
-	iter := q.query.WithContext(ctx).PageState(pageState).Iter()
-	defer func() {
-		if err := iter.Close(); err != nil {
-			q.logger.Error("iter.Close() returned with error", "error", err)
-		}
-	}()
-	nextPageState := iter.PageState()
-	scanner := iter.Scanner()
-	for scanner.Next() {
-		var result ListLoginsResult
-		if err := scanner.Scan(&result.LoginTime); err != nil {
-			return nil, fmt.Errorf("scan result: %w", err)
-		}
-		results = append(results, &result)
-	}
-	if err := scanner.Err(); err != nil {
-		return nil, fmt.Errorf("scanner error: %w", err)
-	}
-	return &ListLoginsResultsPage{results: results, pageState: nextPageState, numRows: iter.NumRows()}, nil
-}
-
-func (c *Client) ListLogins(params *ListLoginsParams, opts ...gocqlc.QueryOption) *ListLoginsQuerier {
+func (c *Client) ListLogins(params *ListLoginsParams, opts ...gocqlc.QueryOption) *gocqlc.Querier[ListLoginsRow] {
 	session := c.Session()
 	q := session.Query("SELECT login_time FROM logins WHERE user_id = ?;", params.UserID)
-	for _, opt := range c.DefaultQueryOptions() {
-		q = opt.Apply(q)
+	scan := func(it *gocql.Iter, dest *ListLoginsRow) bool {
+		return it.Scan(&(*dest).LoginTime)
 	}
-	for _, opt := range opts {
-		q = opt.Apply(q)
-	}
-	return &ListLoginsQuerier{query: q, logger: c.Logger()}
+	return gocqlc.NewQuerier(q, scan, c.Logger(), c.DefaultQueryOptions()...)
 }

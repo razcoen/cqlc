@@ -25,12 +25,8 @@ func (c *Client) CreateUser(ctx context.Context, params *CreateUserParams, opts 
 	session := c.Session()
 	q := session.Query("INSERT INTO users (user_id, username, email, created_at) VALUES (?, ?, ?, ?);", params.UserID, params.Username, params.Email, params.CreatedAt)
 	q = q.WithContext(ctx)
-	for _, opt := range c.DefaultQueryOptions() {
-		q = opt.Apply(q)
-	}
-	for _, opt := range opts {
-		q = opt.Apply(q)
-	}
+	gocqlc.ApplyQueryOptions(q, c.DefaultQueryOptions()...)
+	gocqlc.ApplyQueryOptions(q, opts...)
 	if err := q.Exec(); err != nil {
 		return fmt.Errorf("exec query: %w", err)
 	}
@@ -41,26 +37,22 @@ type FindUserParams struct {
 	UserID gocql.UUID
 }
 
-type FindUserResult struct {
+type FindUserRow struct {
 	UserID    gocql.UUID
 	CreatedAt time.Time
 	Email     string
 	Username  string
 }
 
-func (c *Client) FindUser(ctx context.Context, params *FindUserParams, opts ...gocqlc.QueryOption) (*FindUserResult, error) {
+func (c *Client) FindUser(ctx context.Context, params *FindUserParams, opts ...gocqlc.QueryOption) (*FindUserRow, error) {
 	session := c.Session()
 	q := session.Query("SELECT * FROM users WHERE user_id = ? LIMIT 1;", params.UserID)
 	q = q.WithContext(ctx)
-	for _, opt := range c.DefaultQueryOptions() {
-		q = opt.Apply(q)
-	}
-	for _, opt := range opts {
-		q = opt.Apply(q)
-	}
-	var result FindUserResult
-	if err := q.Scan(&result.UserID, &result.CreatedAt, &result.Email, &result.Username); err != nil {
+	gocqlc.ApplyQueryOptions(q, c.DefaultQueryOptions()...)
+	gocqlc.ApplyQueryOptions(q, opts...)
+	var row FindUserRow
+	if err := q.Scan(&row.UserID, &row.CreatedAt, &row.Email, &row.Username); err != nil {
 		return nil, fmt.Errorf("scan row: %w", err)
 	}
-	return &result, nil
+	return &row, nil
 }
